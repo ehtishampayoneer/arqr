@@ -17,6 +17,8 @@
     /* one warm palette for the whole site */
     --page:#FAF7F2;
     --page-hi:#FDFBF7;
+    --page-alt:#F4EFE5;   /* every other panel, a shade deeper */
+    --seam:#EDE6DA;       /* the divider band, recessed under both */
     --ink:#191919;
     --ink-soft:#6E6A64;
     --line:#E4DED4;
@@ -310,7 +312,7 @@
   /* ================= HANDOFF BETWEEN SECTIONS =================
      A dimension line — the same language as "true to scale" — that draws itself
      open from the centre as you arrive, with a scan running along it. */
-  .divider{position:relative;background:var(--page);overflow:hidden;
+  .divider{position:relative;background:var(--seam);overflow:hidden;
     height:clamp(92px,11.5vh,140px);display:grid;place-items:center}
 
   .dv-rule{position:absolute;left:7%;right:7%;top:50%;height:1px;
@@ -354,11 +356,25 @@
 
   @media(max-width:600px){.dv-badge{font-size:10.5px;letter-spacing:.14em;padding:0 14px}}
 
+  /* ---- each section is a panel that rises over the seam below it, so a
+     new one arriving reads as a new screen rather than more of the same
+     scroll. Alternating tones do the rest. ---- */
+  .how,.cat,.why,.pr,.cta{
+    position:relative;z-index:2;
+    margin-top:-26px;
+    border-radius:28px 28px 0 0;
+    box-shadow:0 -18px 36px -20px rgba(70,50,30,.38)}
+  .how::before,.cat::before,.why::before,.pr::before,.cta::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;z-index:9;
+    pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.95) 20%,
+      rgba(255,255,255,.95) 80%,transparent)}
+
   /* ================= HOW IT WORKS ================= */
   /* icons sit dead centre in their circles: block kills the inline baseline gap */
   .promise-ico svg,.how-cta i svg,.st-ico svg,.pill svg,.logo svg{display:block}
 
-  .how{position:relative;overflow:hidden;background:var(--page);color:var(--sec-ink);
+  .how{position:relative;overflow:hidden;background:var(--page-alt);color:var(--sec-ink);
     padding:clamp(70px,9vh,124px) 0 clamp(38px,4.5vh,62px)}
   .how-in{position:relative;z-index:5;max-width:1560px;margin:0 auto;
     padding:0 clamp(20px,4vw,58px);
@@ -573,7 +589,7 @@
   @media(max-width:580px){.cat-bens{grid-template-columns:1fr}}
 
   /* ================= WHY IT WORKS ================= */
-  .why{position:relative;overflow:hidden;background:var(--page);
+  .why{position:relative;overflow:hidden;background:var(--page-alt);
     padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
   .why-in{position:relative;z-index:5;max-width:1420px;margin:0 auto;
     padding:0 clamp(20px,4vw,58px)}
@@ -723,14 +739,14 @@
   .err{display:none;font-size:12.5px;color:#F1937F}
   .fld.bad .err{display:block}
 
-  .drop{display:flex;align-items:center;gap:13px;cursor:pointer;
+  .drop{position:relative;display:flex;align-items:center;gap:13px;cursor:pointer;
     border:1px dashed rgba(246,241,233,.28);border-radius:12px;padding:14px 16px;
     transition:border-color .25s ease,background .25s ease}
   .drop:hover{border-color:var(--accent);background:rgba(246,241,233,.05)}
   .drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
   .drop svg{flex:none;width:20px;height:20px;color:var(--accent);display:block}
-  .drop-txt{font-size:14px;color:rgba(246,241,233,.7);overflow:hidden;text-overflow:ellipsis;
-    white-space:nowrap}
+  .drop-txt{font-size:14px;line-height:1.4;color:rgba(246,241,233,.7);
+    overflow-wrap:anywhere;min-width:0}
 
   .frm-send{grid-column:1 / -1;display:inline-flex;align-items:center;justify-content:center;
     gap:10px;background:var(--accent);color:#fff;border:0;cursor:pointer;
@@ -746,7 +762,7 @@
   .frm-note.no{color:#F1937F}
 
   /* ================= CLOSING CTA ================= */
-  .cta{position:relative;background:var(--page);
+  .cta{position:relative;background:var(--page-alt);
     padding:clamp(28px,3.5vh,50px) 0 clamp(66px,8vh,110px)}
   .cta-in{max-width:1420px;margin:0 auto;padding:0 clamp(20px,4vw,58px)}
   .cta-panel{position:relative;overflow:hidden;border-radius:26px;
@@ -882,9 +898,16 @@
     .cta-panel h2{font-size:clamp(26px,7.6vw,34px)}
     .cta-panel p{font-size:15.5px;margin-bottom:26px}
     .cta-fine{justify-content:flex-start;font-size:13px}
-    .ct-grid{gap:30px}
-    .frm{gap:14px}
-    .frm-send{width:100%;padding:17px 24px}
+    .ct-grid{gap:28px}
+    .frm{grid-template-columns:1fr;gap:15px}
+    .fld label{font-size:11px;letter-spacing:.11em}
+    .fld input,.fld textarea{padding:15px 15px;border-radius:14px}
+    .fld textarea{min-height:118px}
+    .drop{padding:15px;border-radius:14px;align-items:flex-start}
+    .drop-txt{font-size:13.5px}
+    .frm-send{width:100%;padding:18px 24px}
+    .frm-note{font-size:13px}
+    .how,.cat,.why,.pr,.cta{margin-top:-22px;border-radius:22px 22px 0 0}
   }
 
   /* very narrow phones */
@@ -1462,7 +1485,7 @@
             <label>Product photos or a price list <span style="text-transform:none;letter-spacing:0;opacity:.6">(optional)</span></label>
             <label class="drop" for="f-file">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16.5V4.5m0 0L7.5 9M12 4.5 16.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15.5v2.6A2.4 2.4 0 0 0 6.4 20.5h11.2a2.4 2.4 0 0 0 2.4-2.4v-2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <span class="drop-txt" id="f-fileName">Choose a file — images, PDF or ZIP, up to 10 MB</span>
+              <span class="drop-txt" id="f-fileName">Attach photos or a price list — up to 10 MB</span>
               <input id="f-file" name="attachment" type="file" accept="image/*,.pdf,.zip,.csv,.xlsx">
             </label>
             <span class="err">That file is over 10 MB</span>
