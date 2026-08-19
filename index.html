@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FAF7F2">
+<meta name="description" content="ARQR turns your products into an AR catalog. Customers scan one code and see every item at true size in their own room, before they buy.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
 <title>ARQR — Your showroom, in their room</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +53,11 @@
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{font-family:var(--f-body);color:var(--ink);background:var(--page);
-    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-text-size-adjust:100%;text-size-adjust:100%;
+    overscroll-behavior-y:none}
+  body.locked{overflow:hidden}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -149,6 +158,31 @@
   .bar nav a.active::after{content:"";position:absolute;left:50%;bottom:0;
     width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--accent)}
   @media(max-width:1080px){.bar nav{display:none}}
+
+  /* ---- mobile menu ---- */
+  .burger{display:none;width:44px;height:44px;padding:0;margin-left:4px;
+    border:0;background:none;cursor:pointer;
+    flex-direction:column;align-items:center;justify-content:center;gap:5px}
+  .burger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--ink);
+    transition:transform .3s cubic-bezier(.2,.8,.3,1),opacity .2s ease}
+  .burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.on span:nth-child(2){opacity:0}
+  .burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:1080px){.burger{display:flex}}
+
+  .mnav{position:fixed;top:var(--bar-h);left:0;right:0;z-index:99;
+    background:rgba(250,247,242,.97);backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+    display:flex;flex-direction:column;padding:6px 22px 22px;
+    transform:translateY(-14px);opacity:0;visibility:hidden;
+    transition:transform .34s cubic-bezier(.2,.8,.3,1),opacity .26s ease,visibility .26s}
+  .mnav.open{transform:none;opacity:1;visibility:visible}
+  .mnav a{padding:16px 2px;font-size:17px;font-weight:600;color:var(--ink);
+    border-bottom:1px solid var(--line)}
+  .mnav a.active{color:var(--accent)}
+  .mnav .mnav-cta{margin-top:16px;background:var(--accent);color:#fff;border-bottom:0;
+    text-align:center;border-radius:100px;padding:16px}
+  @media(min-width:1081px){.mnav{display:none}}
   .bar .cta{font-weight:600;font-size:14px;background:var(--ink);color:#fff;
     padding:10px 19px;border-radius:100px;box-shadow:0 8px 20px -8px rgba(11,18,32,.55);
     transition:transform .2s ease}
@@ -677,7 +711,7 @@
   .fld label{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
     color:rgba(246,241,233,.62)}
   .fld input,.fld textarea{
-    width:100%;font-family:var(--f-body);font-size:15px;color:#F6F1E9;
+    width:100%;font-family:var(--f-body);font-size:16px;color:#F6F1E9;
     background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.2);
     border-radius:12px;padding:14px 16px;
     transition:border-color .25s ease,background .25s ease}
@@ -747,6 +781,118 @@
   .cta-fine span{display:inline-flex;align-items:center;gap:8px}
   .cta-fine span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
+  /* =================================================================
+     MOBILE — phones. Everything above is desktop-first; this block is
+     where the page stops being a shrunken website.
+     ================================================================= */
+  @media(max-width:700px){
+    :root{--bar-h:58px}
+
+    .bar{padding:12px 18px}
+    .logo svg{width:24px;height:24px}
+    .logo b{font-size:16px}
+    .bar .cta{padding:11px 16px;font-size:13.5px}
+
+    /* hero: copy, then one big visual. The three-card row is far wider
+       than a phone, so the room render carries the hero instead. */
+    .hero{min-height:0;padding-bottom:0}
+    .copy{max-width:100%;padding:20px 20px 0}
+    .kicker{font-size:11px;letter-spacing:.14em;margin-bottom:12px}
+    h1{font-size:clamp(30px,8.8vw,42px);margin-bottom:14px}
+    .sub{font-size:15.5px;max-width:100%;margin-bottom:22px}
+    .btns{gap:10px;margin-bottom:16px}
+    .btn{flex:1 1 auto;justify-content:center;padding:15px 20px;font-size:15px}
+    .trust{font-size:12.5px;gap:6px 16px}
+    .stage{display:none}
+    .scene{position:relative;right:auto;bottom:auto;
+      width:118vw;max-width:none;margin:14px -9vw -1px;
+      filter:drop-shadow(0 18px 28px rgba(70,50,30,.16))}
+    .floor{height:15%}
+    .grid{height:24%}
+
+    .divider{height:84px}
+    .dv-rule,.dv-ticks{left:5%;right:5%}
+    .dv-cap.l{left:5%}
+    .dv-cap.r{right:5%}
+
+    .how{padding:34px 0 30px}
+    .how-in{gap:26px;padding:0 20px}
+    .sec-eyebrow{margin-bottom:18px}
+    .how h2{font-size:26px;margin-bottom:18px}
+    .how-sub{font-size:15px;margin-bottom:24px}
+    .promise{max-width:100%;padding:18px;gap:14px}
+    .promise > .promise-ico{width:46px;height:46px}
+    .promise strong{font-size:16px}
+    .promise > div span{font-size:13.5px}
+    .how-cta{margin-top:28px;font-size:16px;gap:14px}
+    .how-cta i{width:54px;height:54px}
+    .how-cta i svg{width:25px;height:25px}
+    .vbox{border-radius:16px}
+    .pill{font-size:11px;padding:8px 11px;gap:6px}
+    .pill svg{width:15px;height:15px}
+    .pill-tl{top:12px;left:12px}
+    .pill-br{bottom:12px;right:12px}
+    .steps4{margin-top:26px;gap:26px 0}
+    .steps4 .st-ico{width:54px;height:54px;margin-bottom:12px}
+    .st-ico svg{width:24px;height:24px}
+
+    .cat{padding:30px 0 42px}
+    .cat-in{padding:0 20px}
+    .cat-head{margin-bottom:26px}
+    .cat h2{font-size:clamp(32px,10vw,44px)}
+    .cat-sub{font-size:15px}
+    .cat-steps{gap:16px}
+    .cat-steps .cat-card{padding:26px 20px 20px}
+    .cat-card h3{min-height:0;font-size:18px}
+    .cat-card > p{min-height:0;font-size:14.5px}
+    .cat-bens{padding:14px 16px;margin-top:24px}
+    .cat-bens li{padding:12px 2px;gap:13px}
+    .cat-bens .ben-ico{width:44px;height:44px}
+    .ben-ico svg{width:21px;height:21px}
+
+    .why{padding:30px 0 42px}
+    .why-in{padding:0 20px}
+    .why-head{margin-bottom:26px}
+    .why h2{font-size:26px}
+    .why-sub{font-size:15px}
+    .why-grid{gap:26px}
+    .why-stats li{padding:17px 18px;gap:14px}
+    .why-stats b{min-width:0;font-size:30px}
+    .why-stats p{font-size:14px}
+    .chart-card{padding:18px;border-radius:16px}
+    .chart-top{gap:8px;margin-bottom:14px}
+    .chart-top h3{font-size:15.5px}
+    .chart-legend{gap:14px;font-size:12px}
+    .c-lab{font-size:22px}   /* scales with the viewBox, lands at ~11px on screen */
+    .chart-cap{font-size:11.5px}
+
+    .pr{padding:30px 0 42px}
+    .pr-in{padding:0 20px}
+    .pr-head{margin-bottom:26px}
+    .pr h2{font-size:26px}
+    .pr-sub{font-size:15px}
+    .pr-grid{gap:16px}
+    .pr-grid .plan{padding:28px 22px 22px}
+    .plan-go{padding:16px 24px}
+    .pr-foot{font-size:13.5px}
+
+    .cta{padding:24px 0 42px}
+    .cta-in{padding:0 16px}
+    .cta-panel{border-radius:20px;padding:34px 20px}
+    .cta-panel h2{font-size:clamp(26px,7.6vw,34px)}
+    .cta-panel p{font-size:15.5px;margin-bottom:26px}
+    .cta-fine{justify-content:flex-start;font-size:13px}
+    .ct-grid{gap:30px}
+    .frm{gap:14px}
+    .frm-send{width:100%;padding:17px 24px}
+  }
+
+  /* very narrow phones */
+  @media(max-width:400px){
+    .bar .cta{display:none}
+    .copy,.how-in,.cat-in,.why-in,.pr-in{padding-left:16px;padding-right:16px}
+  }
+
   @media(prefers-reduced-motion:reduce){
     .rev{opacity:1;transform:none;transition:none}
     .cue span::after,.scanline{animation:none;opacity:0}
@@ -776,7 +922,19 @@
       <a href="#contact">Contact</a>
     </nav>
     <a class="cta" href="#contact">Get your catalog</a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+      <span></span><span></span><span></span>
+    </button>
 </header>
+
+<nav class="mnav" id="mnav">
+  <a href="#how">How it works</a>
+  <a href="#catalogs">Catalogs</a>
+  <a href="#why">Why it works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#contact">Contact</a>
+  <a class="mnav-cta" href="#contact">Get your catalog</a>
+</nav>
 
 <section class="hero">
 
@@ -1323,6 +1481,26 @@
 </section>
 
 <script>
+/* ---- mobile menu ---- */
+(function(){
+  var burger = document.getElementById("burger");
+  var mnav = document.getElementById("mnav");
+  if (!burger || !mnav) return;
+
+  function set(open){
+    burger.classList.toggle("on", open);
+    mnav.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("locked", open);
+  }
+
+  burger.addEventListener("click", function(){ set(!mnav.classList.contains("open")); });
+  mnav.addEventListener("click", function(e){ if (e.target.tagName === "A") set(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") set(false); });
+  window.addEventListener("resize", function(){ if (window.innerWidth > 1080) set(false); });
+})();
+
 /* ---- headlines animate a word at a time ----
    Walks the element so inline tags (the orange <em>, the second <span> line)
    survive; each word gets its own clipping box so it rises out of the line. */
@@ -1532,18 +1710,18 @@
 /* ---- nav marks the section you are looking at ---- */
 (function(){
   var links = {}, secs = [];
-  document.querySelectorAll('.bar nav a').forEach(function(a){
+  document.querySelectorAll('.bar nav a, .mnav a:not(.mnav-cta)').forEach(function(a){
     var id = a.getAttribute('href');
     if (id && id.charAt(0) === '#'){
       var sec = document.querySelector(id);
-      if (sec){ links[id.slice(1)] = a; secs.push(sec); }
+      if (sec){ var k = id.slice(1); (links[k] = links[k] || []).push(a); if (secs.indexOf(sec) < 0) secs.push(sec); }
     }
   });
   if (!secs.length || !('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      var a = links[e.target.id];
-      if (a) a.classList.toggle('active', e.isIntersecting);
+      var group = links[e.target.id];
+      if (group) group.forEach(function(a){ a.classList.toggle('active', e.isIntersecting); });
     });
   }, {rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(function(s){ io.observe(s); });
