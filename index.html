@@ -569,8 +569,9 @@
   @media(max-width:580px){.cat-bens{grid-template-columns:1fr}}
 
   /* ================= WHY IT WORKS =================
-     Three rows answering the three questions in order:
-     what AR is · why it matters · what it does to sales.
+     The artwork carries its own headings and callouts, so nothing is
+     drawn on top of it. Row 1 is a drag-to-compare slider, row 2 a
+     carousel so each banner is shown large enough to read.
      ================================================= */
   .why{position:relative;overflow:hidden;background:var(--page-alt);
     padding:clamp(38px,4.5vh,62px) 0 clamp(50px,6vh,86px)}
@@ -584,91 +585,67 @@
   .why h3{font-weight:800;font-size:clamp(21px,1.75vw,28px);line-height:1.2}
   .why h2 em,.why h3 em{font-style:normal;color:var(--accent)}
   .why p{margin:0;color:var(--ink-soft);line-height:1.65}
-  .why-lead{margin-top:18px !important;font-size:clamp(14.5px,1.05vw,17px);max-width:34ch}
+  .why-lead{margin-top:18px !important;font-size:clamp(14.5px,1.05vw,17px);max-width:36ch}
 
-  /* ---------- row 1 : the comparison ---------- */
-  .why-r1{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);
+  /* ---------- row 1 : drag to compare ---------- */
+  .why-r1{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);
     gap:clamp(26px,3vw,52px);align-items:center}
   @media(max-width:1040px){.why-r1{grid-template-columns:minmax(0,1fr)}}
 
-  .cmp{position:relative;display:grid;grid-template-columns:1fr 1fr;
-    border-radius:18px;overflow:hidden;background:var(--sec-card);
-    box-shadow:0 30px 60px -40px rgba(70,50,30,.6)}
-  .cmp-half{position:relative;aspect-ratio:1/0.78;overflow:hidden}
-  .cmp-half img{width:100%;height:100%;object-fit:cover;display:block}
-  .cmp-half .miss{position:absolute;inset:0;display:none;place-items:center;text-align:center;
+  .cmp{position:relative;aspect-ratio:3/2;border-radius:18px;overflow:hidden;
+    background:var(--sec-card);cursor:ew-resize;touch-action:pan-y;
+    box-shadow:0 30px 60px -40px rgba(70,50,30,.6);--split:50%}
+  .cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+    user-select:none;-webkit-user-drag:none}
+  .cmp-top{position:absolute;inset:0;
+    clip-path:inset(0 calc(100% - var(--split)) 0 0)}
+  .cmp .miss{position:absolute;inset:0;display:none;place-items:center;text-align:center;
     padding:16px;font-size:12px;color:#B3A895}
-  .cmp-half.broken img{display:none}
-  .cmp-half.broken .miss{display:grid}
-  .cmp-ar{border-left:2px solid rgba(255,255,255,.85)}
+  .cmp.broken .miss{display:grid}
 
-  .cmp-tag{position:absolute;top:14px;z-index:3;border-radius:100px;padding:7px 16px;
-    font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-  .cmp-photo .cmp-tag{left:14px;background:#1C1A17;color:#F6F1E9}
-  .cmp-ar .cmp-tag{left:14px;background:var(--accent);color:#fff}
-
-  /* the doubts a flat photo leaves behind */
-  .bub{position:absolute;z-index:3;background:#FFFDFA;color:var(--ink);
-    border-radius:12px;padding:10px 14px;max-width:15ch;
-    font-size:clamp(11px,.85vw,13.5px);line-height:1.35;font-weight:500;
-    box-shadow:0 10px 22px -12px rgba(40,30,20,.55);
-    opacity:0;transform:translateY(8px) scale(.96)}
-  .why.go .bub{animation:bubIn .6s cubic-bezier(.2,.8,.3,1) forwards}
-  .bub.b1{top:16%;left:16%;animation-delay:.35s}
-  .bub.b2{top:41%;left:30%;animation-delay:.55s}
-  .bub.b3{top:66%;left:20%;animation-delay:.75s}
-  @keyframes bubIn{to{opacity:1;transform:none}}
-
-  /* AR lock-on brackets */
-  .cmp-frame{position:absolute;inset:18% 16% 12%;z-index:3;pointer-events:none;opacity:0}
-  .why.go .cmp-frame{animation:bubIn .7s cubic-bezier(.2,.8,.3,1) .9s forwards}
-  .cmp-frame::before,.cmp-frame::after{content:"";position:absolute;width:34%;height:26%;
-    border:2px solid var(--accent);border-radius:3px}
-  .cmp-frame::before{top:0;left:0;border-right:0;border-bottom:0}
-  .cmp-frame::after{bottom:0;right:0;border-left:0;border-top:0}
-
-  .cmp-knob{position:absolute;top:50%;left:50%;z-index:4;
-    width:clamp(38px,3vw,46px);height:clamp(38px,3vw,46px);margin:0;
+  .cmp-line{position:absolute;top:0;bottom:0;left:var(--split);width:2px;z-index:4;
+    background:rgba(255,255,255,.9);transform:translateX(-1px);pointer-events:none;
+    box-shadow:0 0 12px rgba(40,30,20,.35)}
+  .cmp-knob{position:absolute;top:50%;left:var(--split);z-index:5;
+    width:clamp(40px,3vw,50px);height:clamp(40px,3vw,50px);
     transform:translate(-50%,-50%);border-radius:50%;background:#FFFDFA;color:var(--ink);
-    display:grid;place-items:center;box-shadow:0 8px 20px -8px rgba(40,30,20,.6)}
-  .cmp-knob svg{width:18px;height:18px;display:block}
+    display:grid;place-items:center;pointer-events:none;
+    box-shadow:0 8px 22px -8px rgba(40,30,20,.65)}
+  .cmp-knob svg{width:19px;height:19px;display:block}
+  .cmp-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:5;
+    background:rgba(28,26,23,.78);color:#F6F1E9;border-radius:100px;padding:7px 15px;
+    font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    pointer-events:none;transition:opacity .4s ease}
+  .cmp.touched .cmp-hint{opacity:0}
 
-  /* ---------- row 2 : problem -> solution ---------- */
-  .why-r2{display:grid;grid-template-columns:minmax(0,.52fr) minmax(0,1.3fr) minmax(0,.62fr);
+  /* ---------- row 2 : problem carousel + solution ---------- */
+  .why-r2{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.5fr) minmax(0,.55fr);
     gap:clamp(22px,2.4vw,42px);align-items:start;
     border-top:1px solid var(--line);padding-top:clamp(30px,3.6vh,48px)}
   @media(max-width:1240px){.why-r2{grid-template-columns:minmax(0,1fr)}}
 
-  .prob-cards{list-style:none;margin:0;padding:0;display:grid;
-    grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,20px)}
-  @media(max-width:720px){.prob-cards{grid-template-columns:1fr}}
-  .prob-cards li{background:#FFFDFA;border:1px solid var(--line);border-radius:16px;
-    padding:18px 18px 18px;
-    transition:transform .4s cubic-bezier(.2,.8,.3,1),border-color .4s ease}
-  .prob-cards li:hover{transform:translateY(-5px);border-color:rgba(224,104,42,.4)}
-  .prob-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
-  .prob-ico{flex:none;width:38px;height:38px;border-radius:10px;background:var(--sec-card);
-    display:grid;place-items:center;color:var(--accent)}
-  .prob-ico svg{width:19px;height:19px;display:block}
-  .prob-n{font-family:var(--f-head);font-weight:800;font-size:14px;color:var(--accent);
-    letter-spacing:.08em}
-  .prob-k{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-soft)}
-  .prob-cards h4{margin:0 0 14px;font-family:var(--f-head);font-weight:700;
-    font-size:clamp(15px,1.15vw,18px);line-height:1.25;color:var(--ink)}
-  .prob-shot{border-radius:11px;overflow:hidden;background:var(--sec-card);aspect-ratio:4/3}
-  .prob-shot img{width:100%;height:100%;object-fit:cover;display:block}
-  .prob-shot .miss{width:100%;height:100%;display:none;place-items:center;text-align:center;
-    padding:10px;font-size:11px;color:#B3A895}
-  .prob-shot.broken img{display:none}
-  .prob-shot.broken .miss{display:grid}
+  .carou{position:relative;border-radius:16px;overflow:hidden;background:var(--sec-card);
+    box-shadow:0 24px 48px -34px rgba(70,50,30,.55)}
+  .carou-track{display:flex;transition:transform .7s cubic-bezier(.4,.75,.28,1)}
+  .carou-track figure{flex:0 0 100%;margin:0;position:relative;aspect-ratio:3/2}
+  .carou-track img{width:100%;height:100%;object-fit:cover;display:block}
+  .carou-track .miss{position:absolute;inset:0;display:none;place-items:center;
+    text-align:center;padding:14px;font-size:12px;color:#B3A895}
+  .carou-track figure.broken img{display:none}
+  .carou-track figure.broken .miss{display:grid}
+  .carou-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;
+    display:flex;gap:8px;background:rgba(28,26,23,.55);border-radius:100px;padding:8px 12px;
+    backdrop-filter:blur(6px)}
+  .carou-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;cursor:pointer;
+    background:rgba(246,241,233,.45);transition:background .3s ease,width .3s ease}
+  .carou-dots button[aria-current="true"]{background:var(--accent);width:22px;border-radius:100px}
 
   .sol{border-left:1px solid var(--line);padding-left:clamp(20px,2.2vw,36px)}
   @media(max-width:1240px){.sol{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:26px}}
-  .sol-phone{margin-top:22px;border-radius:16px;overflow:hidden;background:var(--sec-card);
-    aspect-ratio:3/4;max-width:250px}
+  .sol-phone{position:relative;margin-top:22px;border-radius:16px;overflow:hidden;
+    background:var(--sec-card);aspect-ratio:2/3;max-width:260px}
   .sol-phone img{width:100%;height:100%;object-fit:cover;display:block}
-  .sol-phone .miss{width:100%;height:100%;display:none;place-items:center;text-align:center;
+  .sol-phone .miss{position:absolute;inset:0;display:none;place-items:center;text-align:center;
     padding:12px;font-size:11.5px;color:#B3A895}
   .sol-phone.broken img{display:none}
   .sol-phone.broken .miss{display:grid}
@@ -713,13 +690,27 @@
   .cg{stroke:var(--line);stroke-width:1;fill:none}
   .c-dull{stroke:#B9B0A2;stroke-width:2.6;fill:none;stroke-linecap:round}
   .c-live{stroke:var(--accent);stroke-width:3.4;fill:none;stroke-linecap:round}
-  .c-area{fill:var(--accent);opacity:0;transition:opacity .9s ease 1.1s}
-  .why.go .c-area{opacity:.09}
+  /* the fill grows up from the axis as the line draws */
+  .c-area{fill:var(--accent);opacity:0;transform:scaleY(0);transform-origin:50% 274px;
+    transition:opacity .5s ease .5s,transform 1.7s cubic-bezier(.3,.7,.3,1) .45s}
+  .why.go .c-area{opacity:.09;transform:scaleY(1)}
   .c-dull,.c-live{stroke-dasharray:1;stroke-dashoffset:1}
-  .why.go .c-dull{transition:stroke-dashoffset 1.5s ease-out .1s;stroke-dashoffset:0}
-  .why.go .c-live{transition:stroke-dashoffset 1.8s cubic-bezier(.3,.7,.3,1) .35s;stroke-dashoffset:0}
-  .c-dot{opacity:0;transition:opacity .4s ease}
-  .why.go .c-dot{opacity:1;transition-delay:1.5s}
+  .why.go .c-dull{transition:stroke-dashoffset 1.6s ease-out .15s;stroke-dashoffset:0}
+  .why.go .c-live{transition:stroke-dashoffset 2s cubic-bezier(.35,.65,.3,1) .4s;stroke-dashoffset:0}
+  /* each marker lands as the line reaches it, month by month */
+  .c-dot circle{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;
+    transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.5,.4,1)}
+  .why.go .c-dot circle{opacity:1;transform:scale(1)}
+  .why.go .c-dot circle:nth-child(1){transition-delay:.70s}
+  .why.go .c-dot circle:nth-child(2){transition-delay:.95s}
+  .why.go .c-dot circle:nth-child(3){transition-delay:1.20s}
+  .why.go .c-dot circle:nth-child(4){transition-delay:1.45s}
+  .why.go .c-dot circle:nth-child(5){transition-delay:1.70s}
+  .why.go .c-dot circle:nth-child(6){transition-delay:1.95s}
+  .c-halo{fill:none;stroke:var(--accent);stroke-width:2;opacity:0;
+    transform-box:fill-box;transform-origin:center}
+  .why.go .c-halo{animation:cHalo 2.4s ease-out 2.3s infinite}
+  @keyframes cHalo{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(2.6);opacity:0}}
   .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}
 
   /* ================= PRICING ================= */
@@ -939,21 +930,19 @@
     .why-r1,.why-r2{gap:22px}
     .why-r2{padding-top:26px}
     .why-r3{padding:22px;gap:24px}
-    .cmp{border-radius:14px}
-    .cmp-half{aspect-ratio:1/1.05}
-    .bub{padding:7px 10px;max-width:13ch;border-radius:9px}
-    .cmp-tag{padding:5px 11px;font-size:10px;top:10px}
-    .cmp-photo .cmp-tag,.cmp-ar .cmp-tag{left:10px}
-    .prob-cards li{padding:15px}
-    .prob-cards h4{font-size:16px;margin-bottom:12px}
-    .sol-phone{max-width:200px;margin-inline:auto}
+    .cmp{border-radius:14px;aspect-ratio:4/3}
+    .cmp-hint{font-size:10.5px;padding:6px 12px;bottom:10px}
+    .carou{border-radius:14px}
+    .carou-track figure{aspect-ratio:4/3}
+    .carou-dots{bottom:10px;padding:7px 10px}
+    .sol-phone{max-width:220px;margin-inline:auto}
     .imp-mini{flex-direction:column;gap:16px}
     .imp-mini li{max-width:none}
     .chart-top h4{font-size:15px}
     .chart-legend{gap:14px;font-size:12px}
     .ctag{min-width:0;flex:1;padding:10px 12px}
     .c-lab{font-size:20px}
-    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}
+    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}
 
     .pr{padding:30px 0 42px}
     .pr-head{margin-bottom:26px}
@@ -988,7 +977,8 @@
     .c-dull,.c-live{stroke-dashoffset:0}
     .c-area{opacity:.09}
     .c-dot{opacity:1}
-    .bub,.cmp-frame{opacity:1;transform:none;animation:none}
+    .c-halo{animation:none}
+    .carou-track{transition:none}
   }
 </style>
 </head>
@@ -1304,32 +1294,25 @@
 
   <div class="why-in">
 
-    <!-- ---------- 1. what AR actually is ---------- -->
+    <!-- ---------- 1. drag to compare ---------- -->
     <div class="why-row why-r1">
       <div class="why-copy">
         <p class="why-eyebrow rev">Why it works</p>
         <h2 class="rev">A photo asks them to imagine it. <em>AR just shows them.</em></h2>
-        <p class="why-lead rev">When customers can see your product in their own space, they understand it better and buy with confidence.</p>
+        <p class="why-lead rev">When customers can see your product in their own space, they understand it better and buy with confidence. Drag the handle to see the difference.</p>
       </div>
 
-      <div class="cmp rev">
-        <div class="cmp-half cmp-photo">
-          <img src="assets/why-photo.png" alt="A room with the product shown only as a flat photo">
-          <div class="miss">why-photo.png</div>
-          <span class="cmp-tag">Photo</span>
-          <span class="bub b1">Will it fit here?</span>
-          <span class="bub b2">Will the colour work?</span>
-          <span class="bub b3">Will it look good here?</span>
+      <div class="cmp rev" id="cmp">
+        <img src="assets/why-ar.png" alt="The product placed in the room through AR">
+        <div class="cmp-top">
+          <img src="assets/why-photo.png" alt="The same product shown only as a flat photo">
         </div>
-        <div class="cmp-half cmp-ar">
-          <img src="assets/why-ar.png" alt="The same room with the product placed in it through AR">
-          <div class="miss">why-ar.png</div>
-          <span class="cmp-tag">AR</span>
-          <span class="cmp-frame" aria-hidden="true"></span>
-        </div>
+        <div class="miss">why-photo.png / why-ar.png</div>
+        <span class="cmp-line" aria-hidden="true"></span>
         <span class="cmp-knob" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 7.5 5 12l4.5 4.5M14.5 7.5 19 12l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
+        <span class="cmp-hint">Drag to compare</span>
       </div>
     </div>
 
@@ -1340,26 +1323,18 @@
         <h3 class="rev">The hardest part of buying online isn't finding the product. <em>It's knowing whether it belongs in their space.</em></h3>
       </div>
 
-      <ul class="prob-cards">
-        <li class="rev">
-          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5v11M20.5 6.5v11M3.5 12h17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9l-3 3 3 3M17 9l3 3-3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="prob-n">01</span><span class="prob-k">Size</span></div>
-          <h4>Will it fit?</h4>
-          <div class="prob-shot"><img src="assets/why-size.png" alt="A chair measured against the space around it"><div class="miss">why-size.png</div></div>
-        </li>
-        <li class="rev">
-          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.8a9.2 9.2 0 0 0 0 18.4z" fill="currentColor" opacity=".35"/></svg></span>
-            <span class="prob-n">02</span><span class="prob-k">Style</span></div>
-          <h4>Will it look right?</h4>
-          <div class="prob-shot"><img src="assets/why-style.png" alt="Two chairs in different colours side by side"><div class="miss">why-style.png</div></div>
-        </li>
-        <li class="rev">
-          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="prob-n">03</span><span class="prob-k">Confidence</span></div>
-          <h4>Will I regret buying it?</h4>
-          <div class="prob-shot"><img src="assets/why-confidence.png" alt="A chair in a room with a question mark over it"><div class="miss">why-confidence.png</div></div>
-        </li>
-      </ul>
+      <div class="carou rev" id="carou">
+        <div class="carou-track" id="carouTrack">
+          <figure><img src="assets/why-size.png" alt="Will it fit? A chair measured against the room"><div class="miss">why-size.png</div></figure>
+          <figure><img src="assets/why-style.png" alt="Will it look right? Two colours compared side by side"><div class="miss">why-style.png</div></figure>
+          <figure><img src="assets/why-confidence.png" alt="Will I regret buying it? A chair with a question mark"><div class="miss">why-confidence.png</div></figure>
+        </div>
+        <div class="carou-dots" id="carouDots" role="tablist" aria-label="Choose a question">
+          <button type="button" role="tab" aria-label="Will it fit?" aria-current="true"></button>
+          <button type="button" role="tab" aria-label="Will it look right?" aria-current="false"></button>
+          <button type="button" role="tab" aria-label="Will I regret buying it?" aria-current="false"></button>
+        </div>
+      </div>
 
       <div class="sol rev">
         <p class="why-eyebrow">The solution</p>
@@ -1400,16 +1375,17 @@
             <path class="c-area" d="M62 274 C170 250 250 214 340 172 S520 92 640 44 L640 274 Z"/>
             <path class="c-dull" pathLength="1" d="M62 274 C170 268 250 264 340 258 S520 248 640 240"/>
             <path class="c-live" pathLength="1" d="M62 274 C170 250 250 214 340 172 S520 92 640 44"/>
-            <g class="c-dot" fill="var(--accent)">
-              <circle cx="158" cy="243" r="5"/><circle cx="254" cy="209" r="5"/>
-              <circle cx="350" cy="169" r="5"/><circle cx="446" cy="127" r="5"/>
-              <circle cx="542" cy="85" r="5"/><circle cx="640" cy="44" r="6"/>
-            </g>
             <g class="c-dot" fill="#B9B0A2">
               <circle cx="158" cy="266" r="4"/><circle cx="254" cy="262" r="4"/>
               <circle cx="350" cy="257" r="4"/><circle cx="446" cy="252" r="4"/>
               <circle cx="542" cy="246" r="4"/><circle cx="640" cy="240" r="4"/>
             </g>
+            <g class="c-dot" fill="#E0682A">
+              <circle cx="158" cy="243" r="5"/><circle cx="254" cy="209" r="5"/>
+              <circle cx="350" cy="169" r="5"/><circle cx="446" cy="127" r="5"/>
+              <circle cx="542" cy="85" r="5"/><circle cx="640" cy="44" r="6"/>
+            </g>
+            <circle class="c-halo" cx="640" cy="44" r="6"/>
             <g class="c-lab">
               <text x="46" y="38" text-anchor="end">100%</text>
               <text x="46" y="104" text-anchor="end">75%</text>
@@ -1787,11 +1763,89 @@
 
 /* ---- step shots: say which file is missing rather than showing a broken icon ---- */
 (function(){
-  document.querySelectorAll('.cat-shot img, .cmp-half img, .prob-shot img, .sol-phone img').forEach(function(img){
-    function fail(){ img.parentNode.classList.add('broken'); }
+  document.querySelectorAll('.cat-shot img, .cmp img, .carou-track img, .sol-phone img').forEach(function(img){
+    function fail(){ (img.closest('.cmp, .carou-track figure, .cat-shot, .sol-phone') || img.parentNode).classList.add('broken'); }
     img.addEventListener('error', fail);
     if (img.complete && img.naturalWidth === 0) fail();
   });
+})();
+
+/* ---- drag-to-compare ---- */
+(function(){
+  var box = document.getElementById("cmp");
+  if (!box) return;
+  var dragging = false;
+
+  function setSplit(pct){
+    pct = Math.max(2, Math.min(98, pct));
+    box.style.setProperty("--split", pct + "%");
+  }
+  function fromEvent(e){
+    var r = box.getBoundingClientRect();
+    setSplit(((e.clientX - r.left) / r.width) * 100);
+  }
+
+  box.addEventListener("pointerdown", function(e){
+    dragging = true; box.classList.add("touched");
+    box.setPointerCapture(e.pointerId); fromEvent(e); e.preventDefault();
+  });
+  box.addEventListener("pointermove", function(e){ if (dragging) fromEvent(e); });
+  ["pointerup","pointercancel"].forEach(function(t){
+    box.addEventListener(t, function(){ dragging = false; });
+  });
+
+  /* one slow sweep the first time it comes on screen, so it is obvious it moves */
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var t0 = null, dur = 2600;
+        function step(now){
+          if (box.classList.contains("touched")) return;
+          if (t0 === null) t0 = now;
+          var t = Math.min((now - t0) / dur, 1);
+          var e2 = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2;
+          setSplit(50 + Math.sin(e2 * Math.PI * 2) * 28);
+          if (t < 1) requestAnimationFrame(step); else setSplit(50);
+        }
+        requestAnimationFrame(step);
+      });
+    }, {threshold:.4});
+    io.observe(box);
+  }
+})();
+
+/* ---- problem carousel ---- */
+(function(){
+  var box = document.getElementById("carou");
+  var track = document.getElementById("carouTrack");
+  var dots = document.getElementById("carouDots");
+  if (!box || !track || !dots) return;
+
+  var slides = track.children.length;
+  var btns = [].slice.call(dots.children);
+  var i = 0, timer = null;
+
+  function go(n){
+    i = (n + slides) % slides;
+    track.style.transform = "translateX(" + (-i * 100) + "%)";
+    btns.forEach(function(b, k){ b.setAttribute("aria-current", String(k === i)); });
+  }
+  function play(){ stop(); timer = setInterval(function(){ go(i + 1); }, 4600); }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+  btns.forEach(function(b, k){
+    b.addEventListener("click", function(){ go(k); play(); });
+  });
+  box.addEventListener("mouseenter", stop);
+  box.addEventListener("mouseleave", play);
+
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){ e.isIntersecting ? play() : stop(); });
+    }, {threshold:.3}).observe(box);
+  } else play();
 })();
 
 /* ---- reveal on scroll ---- */
