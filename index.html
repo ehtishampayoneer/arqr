@@ -18,6 +18,11 @@
     --page:#FAF7F2;
     --page-hi:#FDFBF7;
     --page-alt:#F4EFE5;   /* every other panel, a shade deeper */
+
+    /* one container width, so the left edge never jumps between sections */
+    --wrap:1480px;
+    --wrap-wide:1680px;   /* only the five-across catalog row needs more */
+    --dv-w:min(var(--wrap),86vw);   /* banner rule matches the content */
     --ink:#191919;
     --ink-soft:#6E6A64;
     --line:#E4DED4;
@@ -322,25 +327,25 @@
       repeating-linear-gradient(90deg,rgba(255,236,214,.055) 0 1px,transparent 1px 46px),
       repeating-linear-gradient(0deg, rgba(255,236,214,.055) 0 1px,transparent 1px 46px)}
 
-  .dv-rule{position:absolute;left:7%;right:7%;top:50%;height:1px;
+  .dv-rule{position:absolute;left:50%;width:var(--dv-w);top:50%;height:1px;
     background:linear-gradient(90deg,transparent,rgba(246,241,233,.26) 10%,rgba(246,241,233,.26) 90%,transparent);
-    transform:scaleX(0);transform-origin:50% 50%;
+    transform:translateX(-50%) scaleX(0);transform-origin:50% 50%;
     transition:transform 1.15s cubic-bezier(.2,.82,.24,1)}
-  .divider.go .dv-rule{transform:scaleX(1)}
+  .divider.go .dv-rule{transform:translateX(-50%) scaleX(1)}
 
-  .dv-ticks{position:absolute;left:7%;right:7%;top:calc(50% - 6px);height:12px;
+  .dv-ticks{position:absolute;left:50%;width:var(--dv-w);top:calc(50% - 6px);height:12px;
     background:repeating-linear-gradient(90deg,rgba(246,241,233,.26) 0 1px,transparent 1px 46px);
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
-    opacity:0;transform:scaleX(.6);transform-origin:50% 50%;
+    opacity:0;transform:translateX(-50%) scaleX(.6);transform-origin:50% 50%;
     transition:opacity .9s ease .2s,transform 1.15s cubic-bezier(.2,.82,.24,1) .12s}
-  .divider.go .dv-ticks{opacity:.8;transform:scaleX(1)}
+  .divider.go .dv-ticks{opacity:.8;transform:translateX(-50%) scaleX(1)}
 
   /* the end caps, like a measurement's arrow ends */
   .dv-cap{position:absolute;top:calc(50% - 11px);width:2px;height:22px;
     background:var(--accent);opacity:0;transition:opacity .5s ease .95s}
-  .dv-cap.l{left:7%}
-  .dv-cap.r{right:7%}
+  .dv-cap.l{left:calc(50% - var(--dv-w) / 2)}
+  .dv-cap.r{right:calc(50% - var(--dv-w) / 2)}
   .divider.go .dv-cap{opacity:.7}
 
   .dv-run{position:absolute;top:calc(50% - 2px);left:-14%;width:130px;height:4px;
@@ -372,7 +377,7 @@
 
   .how{position:relative;overflow:hidden;background:var(--page-alt);color:var(--sec-ink);
     padding:clamp(70px,9vh,124px) 0 clamp(38px,4.5vh,62px)}
-  .how-in{position:relative;z-index:5;max-width:1560px;margin:0 auto;
+  .how-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
     padding:0 clamp(20px,4vw,58px);
     display:grid;grid-template-columns:minmax(300px,.72fr) minmax(0,1.55fr);
     gap:clamp(30px,4vw,72px);align-items:start}
@@ -455,7 +460,7 @@
   /* ================= GET YOUR CATALOG ================= */
   .cat{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(70px,9vh,120px)}
-  .cat-in{position:relative;z-index:5;max-width:1800px;margin:0 auto;
+  .cat-in{position:relative;z-index:5;max-width:var(--wrap-wide);margin:0 auto;
     padding:0 clamp(18px,2.3vw,38px)}
 
   .cat-head{text-align:center;max-width:980px;margin:0 auto clamp(34px,4.4vh,56px)}
@@ -587,7 +592,7 @@
   /* ================= WHY IT WORKS ================= */
   .why{position:relative;overflow:hidden;background:var(--page-alt);
     padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
-  .why-in{position:relative;z-index:5;max-width:1420px;margin:0 auto;
+  .why-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
     padding:0 clamp(20px,4vw,58px)}
   .why-head{max-width:760px;margin:0 0 clamp(32px,4.4vh,54px)}
   .why h2{font-family:var(--f-head);font-weight:800;
@@ -651,7 +656,7 @@
   /* ================= PRICING ================= */
   .pr{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
-  .pr-in{position:relative;z-index:5;max-width:1420px;margin:0 auto;
+  .pr-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
     padding:0 clamp(20px,4vw,58px)}
   .pr-head{text-align:center;max-width:720px;margin:0 auto clamp(32px,4.4vh,52px)}
   .pr-head .sec-eyebrow{display:inline-block}
@@ -760,7 +765,7 @@
   /* ================= CLOSING CTA ================= */
   .cta{position:relative;background:var(--page-alt);
     padding:clamp(28px,3.5vh,50px) 0 clamp(66px,8vh,110px)}
-  .cta-in{max-width:1420px;margin:0 auto;padding:0 clamp(20px,4vw,58px)}
+  .cta-in{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,58px)}
   .cta-panel{position:relative;overflow:hidden;border-radius:26px;
     background:#1C1A17;color:#F6F1E9;
     padding:clamp(44px,6vw,86px) clamp(24px,4vw,70px);text-align:center;
@@ -798,7 +803,7 @@
      where the page stops being a shrunken website.
      ================================================================= */
   @media(max-width:700px){
-    :root{--bar-h:58px}
+    :root{--bar-h:58px;--dv-w:90vw}
 
     .bar{padding:12px 18px}
     .logo svg{width:24px;height:24px}
@@ -823,9 +828,6 @@
     .grid{height:24%}
 
     .divider{height:98px}
-    .dv-rule,.dv-ticks{left:5%;right:5%}
-    .dv-cap.l{left:5%}
-    .dv-cap.r{right:5%}
 
     .how{padding:34px 0 30px}
     .how-in{gap:26px;padding:0 20px}
@@ -1006,7 +1008,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>02</em> — Surface detected
+    <em>02</em> — How it works
   </span>
 </div>
 
@@ -1106,7 +1108,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>03</em> — Catalog ready
+    <em>03</em> — Get your catalog
   </span>
 </div>
 
@@ -1334,7 +1336,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>05</em> — What it costs
+    <em>05</em> — Pricing
   </span>
 </div>
 
@@ -1428,7 +1430,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>06</em> — Ready when you are
+    <em>06</em> — Get in touch
   </span>
 </div>
 
