@@ -606,17 +606,41 @@
   .cmp-line{position:absolute;top:0;bottom:0;left:var(--split);width:2px;z-index:4;
     background:rgba(255,255,255,.9);transform:translateX(-1px);pointer-events:none;
     box-shadow:0 0 12px rgba(40,30,20,.35)}
-  .cmp-knob{position:absolute;top:50%;left:var(--split);z-index:5;
-    width:clamp(40px,3vw,50px);height:clamp(40px,3vw,50px);
-    transform:translate(-50%,-50%);border-radius:50%;background:#FFFDFA;color:var(--ink);
+  .cmp-knob{position:absolute;top:50%;left:var(--split);z-index:6;
+    width:clamp(44px,3.2vw,54px);height:clamp(44px,3.2vw,54px);
+    border-radius:50%;background:#FFFDFA;color:var(--ink);
     display:grid;place-items:center;pointer-events:none;
-    box-shadow:0 8px 22px -8px rgba(40,30,20,.65)}
-  .cmp-knob svg{width:19px;height:19px;display:block}
-  .cmp-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:5;
-    background:rgba(28,26,23,.78);color:#F6F1E9;border-radius:100px;padding:7px 15px;
-    font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    pointer-events:none;transition:opacity .4s ease}
-  .cmp.touched .cmp-hint{opacity:0}
+    box-shadow:0 8px 22px -8px rgba(40,30,20,.65);
+    /* keeps nudging until the visitor actually grabs it */
+    animation:knobNudge 2.8s cubic-bezier(.4,0,.3,1) infinite}
+  .cmp.touched .cmp-knob{animation:none;transform:translate(-50%,-50%)}
+  @keyframes knobNudge{
+    0%,100%{transform:translate(-50%,-50%)}
+    14%{transform:translate(calc(-50% - 9px),-50%)}
+    38%{transform:translate(calc(-50% + 9px),-50%)}
+    56%{transform:translate(-50%,-50%)}}
+
+  /* a ring pushing outwards from the knob, so it reads as grabbable */
+  .cmp-knob::after{content:"";position:absolute;inset:-7px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.92);
+    animation:knobRing 2.8s ease-out infinite}
+  .cmp.touched .cmp-knob::after{display:none}
+  @keyframes knobRing{0%{transform:scale(.82);opacity:.85}66%,100%{transform:scale(1.55);opacity:0}}
+
+  .cmp-knob svg{width:20px;height:20px;display:block}
+
+  /* the label rides with the knob rather than sitting where the artwork
+     already has its own controls */
+  .cmp-hint{position:absolute;left:var(--split);top:calc(50% + clamp(38px,3vw,46px));
+    transform:translateX(-50%);z-index:6;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(28,26,23,.86);color:#F6F1E9;border-radius:100px;padding:8px 16px;
+    font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    pointer-events:none;transition:opacity .45s ease,transform .45s ease;
+    box-shadow:0 8px 20px -10px rgba(28,26,23,.8)}
+  .cmp-hint svg{width:13px;height:13px;display:block;color:var(--accent);flex:none}
+  .cmp-hint svg:last-child{transform:scaleX(-1)}
+  .cmp.touched .cmp-hint{opacity:0;transform:translateX(-50%) translateY(6px)}
 
   /* ---------- row 2 : problem carousel + solution ---------- */
   .why-r2{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.5fr) minmax(0,.55fr);
@@ -931,7 +955,7 @@
     .why-r2{padding-top:26px}
     .why-r3{padding:22px;gap:24px}
     .cmp{border-radius:14px;aspect-ratio:4/3}
-    .cmp-hint{font-size:10.5px;padding:6px 12px;bottom:10px}
+    .cmp-hint{font-size:10px;padding:7px 12px;letter-spacing:.08em;gap:6px}
     .carou{border-radius:14px}
     .carou-track figure{aspect-ratio:4/3}
     .carou-dots{bottom:10px;padding:7px 10px}
@@ -979,6 +1003,7 @@
     .c-dot{opacity:1}
     .c-halo{animation:none}
     .carou-track{transition:none}
+    .cmp-knob,.cmp-knob::after{animation:none}
   }
 </style>
 </head>
@@ -1312,7 +1337,11 @@
         <span class="cmp-knob" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 7.5 5 12l4.5 4.5M14.5 7.5 19 12l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="cmp-hint">Drag to compare</span>
+        <span class="cmp-hint">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to compare
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
       </div>
     </div>
 
@@ -1786,7 +1815,7 @@
   }
 
   box.addEventListener("pointerdown", function(e){
-    dragging = true; box.classList.add("touched");
+    dragging = true; box.classList.add("touched"); stopOffering();
     box.setPointerCapture(e.pointerId); fromEvent(e); e.preventDefault();
   });
   box.addEventListener("pointermove", function(e){ if (dragging) fromEvent(e); });
@@ -1794,26 +1823,32 @@
     box.addEventListener(t, function(){ dragging = false; });
   });
 
-  /* one slow sweep the first time it comes on screen, so it is obvious it moves */
-  if ("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(en){
-      en.forEach(function(e){
-        if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        var t0 = null, dur = 2600;
-        function step(now){
-          if (box.classList.contains("touched")) return;
-          if (t0 === null) t0 = now;
-          var t = Math.min((now - t0) / dur, 1);
-          var e2 = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2;
-          setSplit(50 + Math.sin(e2 * Math.PI * 2) * 28);
-          if (t < 1) requestAnimationFrame(step); else setSplit(50);
-        }
-        requestAnimationFrame(step);
-      });
-    }, {threshold:.4});
-    io.observe(box);
+  /* The divider sweeps itself, waits, and sweeps again — it keeps offering
+     until someone takes it. Stops for good on the first real interaction. */
+  var again = null;
+  function sweep(){
+    if (box.classList.contains("touched")) return;
+    var t0 = null, dur = 2400;
+    function step(now){
+      if (box.classList.contains("touched")) { setSplit(50); return; }
+      if (t0 === null) t0 = now;
+      var t = Math.min((now - t0) / dur, 1);
+      var e2 = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
+      setSplit(50 + Math.sin(e2 * Math.PI * 2) * 27);
+      if (t < 1) requestAnimationFrame(step);
+      else { setSplit(50); again = setTimeout(sweep, 4200); }
+    }
+    requestAnimationFrame(step);
   }
+  function stopOffering(){ if (again) { clearTimeout(again); again = null; } }
+
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting) sweep(); else stopOffering();
+      });
+    }, {threshold:.4}).observe(box);
+  } else sweep();
 })();
 
 /* ---- problem carousel ---- */
