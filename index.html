@@ -693,87 +693,86 @@
     font-size:14px;line-height:1.6;color:var(--ink-soft)}
   .pr-foot b{color:var(--ink)}
 
-  /* ================= CONTACT FORM ================= */
-  .ct-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
-    gap:clamp(30px,4vw,64px);align-items:start;text-align:left}
-  @media(max-width:900px){.ct-grid{grid-template-columns:minmax(0,1fr)}}
+  /* ================= CONTACT — a true split panel =================
+     Dark half and light half, equal height, edge to edge in one card.
+     Fields are underlines, not boxes — on a form this size, boxes add
+     five borders per row and read as clutter. ================= */
+  .ct-panel{position:relative;display:grid;grid-template-columns:1fr 1fr;
+    border-radius:24px;overflow:hidden;
+    box-shadow:0 44px 84px -54px rgba(28,26,23,.72),0 0 0 1px rgba(28,26,23,.07)}
+  @media(max-width:900px){.ct-panel{grid-template-columns:1fr}}
 
-  .frm{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  /* --- dark half --- */
+  .ct-left{position:relative;overflow:hidden;background:#1C1A17;color:#F6F1E9;
+    display:flex;flex-direction:column;padding:clamp(34px,3.6vw,62px)}
+  .ct-left > :not(.mesh){position:relative;z-index:2}
+  .ct-left .mesh{z-index:0}
+  .ct-left .mesh-base{background:
+    repeating-linear-gradient(90deg,rgba(255,236,214,.07) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(0deg, rgba(255,236,214,.07) 0 1px,transparent 1px 46px)}
+  .ct-left .mesh-lit{background:
+    repeating-linear-gradient(90deg,rgba(255,168,110,.28) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(0deg, rgba(255,168,110,.28) 0 1px,transparent 1px 46px)}
+  .ct-left .mesh-band{background:linear-gradient(90deg,rgba(255,190,140,0),rgba(255,190,140,.10),rgba(255,190,140,0))}
+
+  .ct-eyebrow{margin:0 0 24px;font-size:11.5px;font-weight:700;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent)}
+  .ct-left h2{font-family:var(--f-head);font-weight:800;
+    font-size:clamp(26px,2.4vw,40px);line-height:1.12;letter-spacing:-.02em;
+    margin:0 0 20px;color:#FFF9F1;max-width:15ch}
+  .ct-left h2 em{font-style:normal;color:var(--accent)}
+  .ct-copy{margin:0;font-size:clamp(14.5px,1vw,16.5px);line-height:1.68;
+    color:rgba(246,241,233,.7);max-width:40ch}
+  /* pinned to the foot of the column, which is what removes the dead space */
+  .ct-fine{list-style:none;margin:auto 0 0;padding:36px 0 0;
+    display:flex;flex-wrap:wrap;gap:10px 24px;font-size:13.5px;color:rgba(246,241,233,.62)}
+  .ct-fine li{display:inline-flex;align-items:center;gap:9px}
+  .ct-fine li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* --- light half --- */
+  .ct-right{background:#FFFDFA;padding:clamp(34px,3.6vw,62px);
+    display:flex;flex-direction:column;justify-content:center}
+  .ct-title{margin:0 0 30px;font-family:var(--f-head);font-weight:700;
+    font-size:clamp(19px,1.6vw,25px);color:var(--ink)}
+
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:24px 28px}
   .frm .full{grid-column:1 / -1}
-  @media(max-width:560px){.frm{grid-template-columns:1fr}}
-  .fld{display:flex;flex-direction:column;gap:8px}
-  .fld label{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-    color:rgba(246,241,233,.62)}
-  .fld input,.fld textarea{
-    width:100%;font-family:var(--f-body);font-size:16px;color:#F6F1E9;
-    background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.2);
-    border-radius:12px;padding:14px 16px;
-    transition:border-color .25s ease,background .25s ease}
-  .fld textarea{min-height:132px;resize:vertical}
-  .fld input::placeholder,.fld textarea::placeholder{color:rgba(246,241,233,.35)}
-  .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--accent);
-    background:rgba(246,241,233,.09)}
-  .fld.bad input,.fld.bad textarea{border-color:#E86A55}
-  .err{display:none;font-size:12.5px;color:#F1937F}
+  .fld{display:flex;flex-direction:column;gap:7px;min-width:0}
+  .fld label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft)}
+  .fld label small{font-weight:500;text-transform:none;letter-spacing:0;opacity:.6}
+  .fld input,.fld textarea{width:100%;font-family:var(--f-body);font-size:16px;
+    color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);
+    border-radius:0;padding:10px 2px;transition:border-color .25s ease}
+  .fld textarea{min-height:86px;resize:vertical;line-height:1.55}
+  .fld input::placeholder,.fld textarea::placeholder{color:#BCB3A5}
+  .fld input:focus,.fld textarea:focus{outline:none;border-bottom-color:var(--accent)}
+  .fld.bad input,.fld.bad textarea{border-bottom-color:#C2412A}
+  .err{display:none;font-size:12.5px;color:#C2412A}
   .fld.bad .err{display:block}
 
-  .drop{position:relative;display:flex;align-items:center;gap:13px;cursor:pointer;
-    border:1px dashed rgba(246,241,233,.28);border-radius:12px;padding:14px 16px;
-    transition:border-color .25s ease,background .25s ease}
-  .drop:hover{border-color:var(--accent);background:rgba(246,241,233,.05)}
+  .drop{position:relative;display:flex;align-items:center;gap:11px;cursor:pointer;
+    border-bottom:1px dashed var(--line);padding:11px 2px;transition:border-color .25s ease}
+  .drop:hover{border-bottom-color:var(--accent)}
   .drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-  .drop svg{flex:none;width:20px;height:20px;color:var(--accent);display:block}
-  .drop-txt{font-size:14px;line-height:1.4;color:rgba(246,241,233,.7);
-    overflow-wrap:anywhere;min-width:0}
+  .drop svg{flex:none;width:18px;height:18px;color:var(--accent);display:block}
+  .drop-txt{font-size:14px;line-height:1.4;color:var(--ink-soft);overflow-wrap:anywhere;min-width:0}
 
-  .frm-send{grid-column:1 / -1;display:inline-flex;align-items:center;justify-content:center;
+  .frm-send{grid-column:1 / -1;justify-self:start;display:inline-flex;align-items:center;
     gap:10px;background:var(--accent);color:#fff;border:0;cursor:pointer;
     font-family:var(--f-body);font-weight:600;font-size:16px;
-    border-radius:100px;padding:17px 30px;
-    box-shadow:0 18px 34px -14px rgba(224,104,42,.95);
+    border-radius:100px;padding:16px 32px;margin-top:8px;
+    box-shadow:0 16px 30px -14px rgba(224,104,42,.85);
     transition:transform .25s ease,opacity .25s ease}
-  .frm-send:hover{transform:translateY(-3px)}
+  .frm-send:hover{transform:translateY(-2px)}
   .frm-send[disabled]{opacity:.6;cursor:default;transform:none}
-  .frm-note{grid-column:1 / -1;margin:0;font-size:13.5px;line-height:1.55;
-    color:rgba(246,241,233,.6)}
-  .frm-note.ok{color:#8FD3A8}
-  .frm-note.no{color:#F1937F}
+  .frm-note{grid-column:1 / -1;margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
+  .frm-note.ok{color:#1F7A4C}
+  .frm-note.no{color:#C2412A}
 
-  /* ================= CLOSING CTA ================= */
   .cta{position:relative;background:var(--page-alt);
     padding:clamp(28px,3.5vh,50px) 0 clamp(66px,8vh,110px)}
   .cta-in{width:var(--wrap);margin:0 auto}
-  .cta-panel{position:relative;overflow:hidden;border-radius:26px;
-    background:#1C1A17;color:#F6F1E9;
-    padding:clamp(44px,6vw,86px) clamp(24px,4vw,70px);text-align:center;
-    box-shadow:0 40px 70px -44px rgba(28,26,23,.8)}
-  .cta-panel .mesh{z-index:0}
-  .cta-panel .mesh-base{background:
-    repeating-linear-gradient(90deg,rgba(255,236,214,.07) 0 1px,transparent 1px 46px),
-    repeating-linear-gradient(0deg, rgba(255,236,214,.07) 0 1px,transparent 1px 46px)}
-  .cta-panel .mesh-lit{background:
-    repeating-linear-gradient(90deg,rgba(255,168,110,.30) 0 1px,transparent 1px 46px),
-    repeating-linear-gradient(0deg, rgba(255,168,110,.30) 0 1px,transparent 1px 46px)}
-  .cta-panel .mesh-band{background:linear-gradient(90deg,rgba(255,190,140,0),rgba(255,190,140,.10),rgba(255,190,140,0))}
-  .cta-body{position:relative;z-index:2;max-width:760px;margin:0 auto}
-  .cta-eyebrow{margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--accent)}
-  .cta-panel h2{font-family:var(--f-head);font-weight:900;
-    font-size:clamp(30px,4vw,60px);line-height:1.04;letter-spacing:-.03em;margin:0 0 20px;color:#FFF9F1}
-  .cta-panel h2 em{font-style:normal;color:var(--accent)}
-  .cta-panel p{margin:0 0 32px;font-size:clamp(15px,1.15vw,18.5px);line-height:1.6;
-    color:rgba(246,241,233,.74)}
-  .cta-btns{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-bottom:22px}
-  .cta-btns a{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;
-    padding:17px 30px;border-radius:100px;transition:transform .25s ease,border-color .25s ease}
-  .cta-go{background:var(--accent);color:#fff;box-shadow:0 18px 34px -14px rgba(224,104,42,.95)}
-  .cta-go:hover{transform:translateY(-3px)}
-  .cta-alt{border:1px solid rgba(246,241,233,.3);color:#F6F1E9}
-  .cta-alt:hover{transform:translateY(-3px);border-color:rgba(246,241,233,.6)}
-  .cta-fine{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin:0;
-    font-size:13.5px;color:rgba(246,241,233,.6)}
-  .cta-fine span{display:inline-flex;align-items:center;gap:8px}
-  .cta-fine span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
 
   /* =================================================================
      MOBILE — phones. Everything above is desktop-first; this block is
@@ -865,18 +864,14 @@
     .pr-foot{font-size:13.5px}
 
     .cta{padding:24px 0 42px}
-    .cta-panel{border-radius:20px;padding:34px 20px}
-    .cta-panel h2{font-size:clamp(26px,7.6vw,34px)}
-    .cta-panel p{font-size:15.5px;margin-bottom:26px}
-    .cta-fine{justify-content:flex-start;font-size:13px}
-    .ct-grid{gap:28px}
-    .frm{grid-template-columns:1fr;gap:15px}
-    .fld label{font-size:11px;letter-spacing:.11em}
-    .fld input,.fld textarea{padding:15px 15px;border-radius:14px}
-    .fld textarea{min-height:118px}
-    .drop{padding:15px;border-radius:14px;align-items:flex-start}
-    .drop-txt{font-size:13.5px}
-    .frm-send{width:100%;padding:18px 24px}
+    .ct-panel{border-radius:18px}
+    .ct-left,.ct-right{padding:30px 22px}
+    .ct-left h2{font-size:clamp(25px,7.2vw,33px);max-width:none}
+    .ct-copy{font-size:15px;max-width:none}
+    .ct-fine{padding-top:26px;gap:8px 18px;font-size:13px}
+    .ct-title{font-size:19px;margin-bottom:24px}
+    .frm{grid-template-columns:1fr;gap:21px}
+    .frm-send{justify-self:stretch;justify-content:center;padding:17px 24px}
     .frm-note{font-size:13px}
   }
 
@@ -1389,27 +1384,27 @@
 <!-- ================= CLOSING CTA ================= -->
 <section class="cta" id="contact">
   <div class="cta-in">
-    <div class="cta-panel rev">
+    <div class="ct-panel rev">
 
-      <div class="mesh" aria-hidden="true">
-        <div class="mesh-base"></div>
-        <div class="mesh-band"><div class="mesh-lit"></div></div>
+      <div class="ct-left">
+        <div class="mesh" aria-hidden="true">
+          <div class="mesh-base"></div>
+          <div class="mesh-band"><div class="mesh-lit"></div></div>
+        </div>
+        <p class="ct-eyebrow">Start with ten products</p>
+        <h2>Send us your ten best sellers. <em>We'll build them free.</em></h2>
+        <p class="ct-copy">We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.</p>
+        <ul class="ct-fine">
+          <li>No card</li>
+          <li>No contract</li>
+          <li>The models stay yours</li>
+        </ul>
       </div>
 
-      <div class="cta-body ct-grid">
-
-        <div>
-          <p class="cta-eyebrow">Start with ten products</p>
-          <h2>Send us your ten best sellers. <em>We'll build them free.</em></h2>
-          <p>We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then. If it doesn't sell for you, you've lost a folder of photos.</p>
-          <p class="cta-fine">
-            <span>No card</span>
-            <span>No contract</span>
-            <span>The models stay yours</span>
-          </p>
-        </div>
-
+      <div class="ct-right">
+        <p class="ct-title">Tell us about your shop</p>
         <form class="frm" id="contactForm" novalidate>
+
           <div class="fld">
             <label for="f-name">Your name</label>
             <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Ayesha Khan">
@@ -1420,18 +1415,24 @@
             <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@yourshop.com">
             <span class="err">That email doesn't look right</span>
           </div>
-          <div class="fld full">
-            <label for="f-phone">Phone or WhatsApp <span style="text-transform:none;letter-spacing:0;opacity:.6">(optional)</span></label>
+
+          <div class="fld">
+            <label for="f-phone">Phone or WhatsApp <small>(optional)</small></label>
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+92 300 0000000">
-            <span class="err">&nbsp;</span>
           </div>
+          <div class="fld">
+            <label for="f-site">Shop or website <small>(optional)</small></label>
+            <input id="f-site" name="website" type="text" autocomplete="url" placeholder="yourshop.com or @yourshop">
+          </div>
+
           <div class="fld full">
             <label for="f-msg">What do you sell, and what do you want to try?</label>
             <textarea id="f-msg" name="message" placeholder="We sell handmade rugs, about 120 designs. We'd like to try the ten that sell best."></textarea>
             <span class="err">A line or two is enough</span>
           </div>
+
           <div class="fld full">
-            <label>Product photos or a price list <span style="text-transform:none;letter-spacing:0;opacity:.6">(optional)</span></label>
+            <label>Product photos or a price list <small>(optional)</small></label>
             <label class="drop" for="f-file">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16.5V4.5m0 0L7.5 9M12 4.5 16.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15.5v2.6A2.4 2.4 0 0 0 6.4 20.5h11.2a2.4 2.4 0 0 0 2.4-2.4v-2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
               <span class="drop-txt" id="f-fileName">Attach photos or a price list — up to 10 MB</span>
@@ -1440,12 +1441,10 @@
             <span class="err">That file is over 10 MB</span>
           </div>
 
-          <button class="frm-send" type="submit">Send it over
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+          <button class="frm-send" type="submit">Send it over <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <p class="frm-note" id="f-note">We reply within one working day. Your details go nowhere else.</p>
-        </form>
 
+        </form>
       </div>
 
     </div>
@@ -1517,7 +1516,7 @@
   splitHeadline(document.querySelector('.how h2'), 38);
   splitHeadline(document.querySelector('.cat h2'), 55);
   splitHeadline(document.querySelector('.why h2'), 34);
-  splitHeadline(document.querySelector('.cta-panel h2'), 40);
+  splitHeadline(document.querySelector('.ct-left h2'), 40);
 })();
 
 /* ---- every handoff band draws itself; every section scans in ---- */
