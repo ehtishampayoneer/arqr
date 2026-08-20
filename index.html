@@ -568,67 +568,158 @@
   }
   @media(max-width:580px){.cat-bens{grid-template-columns:1fr}}
 
-  /* ================= WHY IT WORKS ================= */
+  /* ================= WHY IT WORKS =================
+     Three rows answering the three questions in order:
+     what AR is · why it matters · what it does to sales.
+     ================================================= */
   .why{position:relative;overflow:hidden;background:var(--page-alt);
-    padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
-  .why-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
-  .why-head{max-width:760px;margin:0 0 clamp(32px,4.4vh,54px)}
-  .why h2{font-family:var(--f-head);font-weight:800;
-    font-size:clamp(30px,3.3vw,52px);line-height:1.1;letter-spacing:-.025em;margin:0 0 18px}
-  .why h2 em{font-style:normal;color:var(--accent)}
-  .why-sub{margin:0;font-size:clamp(15px,1.1vw,18px);line-height:1.6;color:var(--ink-soft);
-    max-width:56ch}
+    padding:clamp(38px,4.5vh,62px) 0 clamp(50px,6vh,86px)}
+  .why-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto;
+    display:flex;flex-direction:column;gap:clamp(34px,4.4vh,58px)}
 
-  .why-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
-    gap:clamp(28px,3.4vw,60px);align-items:center}
-  @media(max-width:1040px){.why-grid{grid-template-columns:minmax(0,1fr)}}
+  .why-eyebrow{margin:0 0 18px;font-size:11.5px;font-weight:700;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent)}
+  .why h2,.why h3{font-family:var(--f-head);letter-spacing:-.02em;color:var(--ink);margin:0}
+  .why h2{font-weight:800;font-size:clamp(27px,2.7vw,42px);line-height:1.12}
+  .why h3{font-weight:800;font-size:clamp(21px,1.75vw,28px);line-height:1.2}
+  .why h2 em,.why h3 em{font-style:normal;color:var(--accent)}
+  .why p{margin:0;color:var(--ink-soft);line-height:1.65}
+  .why-lead{margin-top:18px !important;font-size:clamp(14.5px,1.05vw,17px);max-width:34ch}
 
-  .why-stats{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:14px}
-  .why-stats li{display:flex;align-items:flex-start;gap:18px;
-    background:#FFFDFA;border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  /* ---------- row 1 : the comparison ---------- */
+  .why-r1{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);
+    gap:clamp(26px,3vw,52px);align-items:center}
+  @media(max-width:1040px){.why-r1{grid-template-columns:minmax(0,1fr)}}
+
+  .cmp{position:relative;display:grid;grid-template-columns:1fr 1fr;
+    border-radius:18px;overflow:hidden;background:var(--sec-card);
+    box-shadow:0 30px 60px -40px rgba(70,50,30,.6)}
+  .cmp-half{position:relative;aspect-ratio:1/0.78;overflow:hidden}
+  .cmp-half img{width:100%;height:100%;object-fit:cover;display:block}
+  .cmp-half .miss{position:absolute;inset:0;display:none;place-items:center;text-align:center;
+    padding:16px;font-size:12px;color:#B3A895}
+  .cmp-half.broken img{display:none}
+  .cmp-half.broken .miss{display:grid}
+  .cmp-ar{border-left:2px solid rgba(255,255,255,.85)}
+
+  .cmp-tag{position:absolute;top:14px;z-index:3;border-radius:100px;padding:7px 16px;
+    font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .cmp-photo .cmp-tag{left:14px;background:#1C1A17;color:#F6F1E9}
+  .cmp-ar .cmp-tag{left:14px;background:var(--accent);color:#fff}
+
+  /* the doubts a flat photo leaves behind */
+  .bub{position:absolute;z-index:3;background:#FFFDFA;color:var(--ink);
+    border-radius:12px;padding:10px 14px;max-width:15ch;
+    font-size:clamp(11px,.85vw,13.5px);line-height:1.35;font-weight:500;
+    box-shadow:0 10px 22px -12px rgba(40,30,20,.55);
+    opacity:0;transform:translateY(8px) scale(.96)}
+  .why.go .bub{animation:bubIn .6s cubic-bezier(.2,.8,.3,1) forwards}
+  .bub.b1{top:16%;left:16%;animation-delay:.35s}
+  .bub.b2{top:41%;left:30%;animation-delay:.55s}
+  .bub.b3{top:66%;left:20%;animation-delay:.75s}
+  @keyframes bubIn{to{opacity:1;transform:none}}
+
+  /* AR lock-on brackets */
+  .cmp-frame{position:absolute;inset:18% 16% 12%;z-index:3;pointer-events:none;opacity:0}
+  .why.go .cmp-frame{animation:bubIn .7s cubic-bezier(.2,.8,.3,1) .9s forwards}
+  .cmp-frame::before,.cmp-frame::after{content:"";position:absolute;width:34%;height:26%;
+    border:2px solid var(--accent);border-radius:3px}
+  .cmp-frame::before{top:0;left:0;border-right:0;border-bottom:0}
+  .cmp-frame::after{bottom:0;right:0;border-left:0;border-top:0}
+
+  .cmp-knob{position:absolute;top:50%;left:50%;z-index:4;
+    width:clamp(38px,3vw,46px);height:clamp(38px,3vw,46px);margin:0;
+    transform:translate(-50%,-50%);border-radius:50%;background:#FFFDFA;color:var(--ink);
+    display:grid;place-items:center;box-shadow:0 8px 20px -8px rgba(40,30,20,.6)}
+  .cmp-knob svg{width:18px;height:18px;display:block}
+
+  /* ---------- row 2 : problem -> solution ---------- */
+  .why-r2{display:grid;grid-template-columns:minmax(0,.52fr) minmax(0,1.3fr) minmax(0,.62fr);
+    gap:clamp(22px,2.4vw,42px);align-items:start;
+    border-top:1px solid var(--line);padding-top:clamp(30px,3.6vh,48px)}
+  @media(max-width:1240px){.why-r2{grid-template-columns:minmax(0,1fr)}}
+
+  .prob-cards{list-style:none;margin:0;padding:0;display:grid;
+    grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,20px)}
+  @media(max-width:720px){.prob-cards{grid-template-columns:1fr}}
+  .prob-cards li{background:#FFFDFA;border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 18px;
     transition:transform .4s cubic-bezier(.2,.8,.3,1),border-color .4s ease}
-  .why-stats li:hover{transform:translateX(4px);border-color:rgba(224,104,42,.4)}
-  .why-stats b{flex:none;min-width:92px;font-family:var(--f-head);font-weight:900;
-    font-size:clamp(28px,2.5vw,38px);line-height:1;color:var(--accent);
-    font-variant-numeric:tabular-nums}
-  .why-stats p{margin:0 0 5px;font-size:14.5px;line-height:1.5;color:var(--ink)}
-  .why-stats cite{font-style:normal;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ink-soft);opacity:.85}
+  .prob-cards li:hover{transform:translateY(-5px);border-color:rgba(224,104,42,.4)}
+  .prob-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+  .prob-ico{flex:none;width:38px;height:38px;border-radius:10px;background:var(--sec-card);
+    display:grid;place-items:center;color:var(--accent)}
+  .prob-ico svg{width:19px;height:19px;display:block}
+  .prob-n{font-family:var(--f-head);font-weight:800;font-size:14px;color:var(--accent);
+    letter-spacing:.08em}
+  .prob-k{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft)}
+  .prob-cards h4{margin:0 0 14px;font-family:var(--f-head);font-weight:700;
+    font-size:clamp(15px,1.15vw,18px);line-height:1.25;color:var(--ink)}
+  .prob-shot{border-radius:11px;overflow:hidden;background:var(--sec-card);aspect-ratio:4/3}
+  .prob-shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .prob-shot .miss{width:100%;height:100%;display:none;place-items:center;text-align:center;
+    padding:10px;font-size:11px;color:#B3A895}
+  .prob-shot.broken img{display:none}
+  .prob-shot.broken .miss{display:grid}
 
-  .why-note{display:inline-flex;align-items:center;gap:10px;
-    background:rgba(224,104,42,.09);border:1px solid rgba(224,104,42,.28);
-    border-radius:100px;padding:10px 18px;
-    font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-  .why-note i{width:7px;height:7px;border-radius:50%;background:var(--accent);
-    animation:livedot 2.2s ease-in-out infinite}
-  @keyframes livedot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+  .sol{border-left:1px solid var(--line);padding-left:clamp(20px,2.2vw,36px)}
+  @media(max-width:1240px){.sol{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:26px}}
+  .sol-phone{margin-top:22px;border-radius:16px;overflow:hidden;background:var(--sec-card);
+    aspect-ratio:3/4;max-width:250px}
+  .sol-phone img{width:100%;height:100%;object-fit:cover;display:block}
+  .sol-phone .miss{width:100%;height:100%;display:none;place-items:center;text-align:center;
+    padding:12px;font-size:11.5px;color:#B3A895}
+  .sol-phone.broken img{display:none}
+  .sol-phone.broken .miss{display:grid}
 
-  .chart-card{background:#FFFDFA;border:1px solid var(--line);border-radius:20px;
-    padding:clamp(20px,2vw,30px);box-shadow:0 22px 44px -32px rgba(70,50,30,.5)}
+  /* ---------- row 3 : the business impact ---------- */
+  .why-r3{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,.5fr) minmax(0,1.5fr);
+    gap:clamp(22px,2.4vw,42px);align-items:center;
+    background:#FFFDFA;border:1px solid var(--line);border-radius:20px;
+    padding:clamp(24px,2.6vw,40px)}
+  @media(max-width:1240px){.why-r3{grid-template-columns:minmax(0,1fr)}}
+
+  .imp-mini{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px}
+  @media(max-width:1240px){.imp-mini{flex-direction:row;flex-wrap:wrap;gap:20px 30px}}
+  .imp-mini li{display:flex;flex-direction:column;gap:7px;max-width:22ch}
+  .imp-mini svg{width:26px;height:26px;color:var(--accent);display:block}
+  .imp-mini strong{font-size:14.5px;font-weight:700;color:var(--ink)}
+  .imp-mini span{font-size:13px;line-height:1.45;color:var(--ink-soft)}
+
+  .chart-wrap{position:relative}
   .chart-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
-    gap:12px;margin-bottom:18px}
-  .chart-top h3{font-family:var(--f-head);font-weight:700;font-size:17px;margin:0;color:var(--ink)}
+    gap:10px;margin-bottom:14px}
+  .chart-top h4{margin:0;font-family:var(--f-head);font-weight:700;font-size:15px;color:var(--ink)}
   .chart-legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink-soft)}
   .chart-legend span{display:inline-flex;align-items:center;gap:7px}
-  .chart-legend i{width:16px;height:3px;border-radius:2px;background:#C9C0B2;display:block}
+  .chart-legend i{width:16px;height:3px;border-radius:2px;background:#B9B0A2;display:block}
   .chart-legend .on i{background:var(--accent)}
-  .chart-card svg{width:100%;height:auto;display:block}
-  .chart-cap{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--ink-soft);opacity:.9}
+  .chart-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+  @media(max-width:620px){.chart-row{grid-template-columns:minmax(0,1fr)}}
+  .chart-row svg{width:100%;height:auto;display:block}
+  .chart-tags{display:flex;flex-direction:column;gap:12px}
+  @media(max-width:620px){.chart-tags{flex-direction:row}}
+  .ctag{border:1px solid var(--line);border-radius:12px;padding:11px 15px;text-align:center;
+    background:#FFFDFA;min-width:104px}
+  .ctag small{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-soft)}
+  .ctag b{display:block;font-family:var(--f-head);font-weight:900;font-size:clamp(20px,1.7vw,26px);
+    line-height:1.1;margin:3px 0;color:var(--accent)}
+  .ctag.flat b{color:var(--ink-soft)}
+  .ctag em{display:block;font-style:normal;font-size:11.5px;color:var(--ink-soft)}
+  .chart-cap{margin:14px 0 0;font-size:11.5px;line-height:1.5;color:var(--ink-soft);opacity:.9}
 
   .cg{stroke:var(--line);stroke-width:1;fill:none}
-  .c-dull{stroke:#C9C0B2;stroke-width:2.6;fill:none;stroke-linecap:round}
+  .c-dull{stroke:#B9B0A2;stroke-width:2.6;fill:none;stroke-linecap:round}
   .c-live{stroke:var(--accent);stroke-width:3.4;fill:none;stroke-linecap:round}
   .c-area{fill:var(--accent);opacity:0;transition:opacity .9s ease 1.1s}
-  .why.go .c-area{opacity:.08}
+  .why.go .c-area{opacity:.09}
   .c-dull,.c-live{stroke-dasharray:1;stroke-dashoffset:1}
   .why.go .c-dull{transition:stroke-dashoffset 1.5s ease-out .1s;stroke-dashoffset:0}
   .why.go .c-live{transition:stroke-dashoffset 1.8s cubic-bezier(.3,.7,.3,1) .35s;stroke-dashoffset:0}
-  .c-end{opacity:0;transition:opacity .5s ease 1.95s}
-  .why.go .c-end{opacity:1}
-  .c-end circle{fill:var(--accent)}
-  .c-ring{fill:none;stroke:var(--accent);transform-box:fill-box;transform-origin:center;
-    animation:endPing 2.6s ease-out infinite}
-  @keyframes endPing{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(2.6);opacity:0}}
+  .c-dot{opacity:0;transition:opacity .4s ease}
+  .why.go .c-dot{opacity:1;transition-delay:1.5s}
   .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}
 
   /* ================= PRICING ================= */
@@ -840,19 +931,29 @@
     .ben-ico svg{width:21px;height:21px}
 
     .why{padding:30px 0 42px}
-    .why-head{margin-bottom:26px}
+    .why-in{gap:30px}
     .why h2{font-size:26px}
-    .why-sub{font-size:15px}
-    .why-grid{gap:26px}
-    .why-stats li{padding:17px 18px;gap:14px}
-    .why-stats b{min-width:0;font-size:30px}
-    .why-stats p{font-size:14px}
-    .chart-card{padding:18px;border-radius:16px}
-    .chart-top{gap:8px;margin-bottom:14px}
-    .chart-top h3{font-size:15.5px}
+    .why h3{font-size:20px}
+    .why-lead{font-size:15px;max-width:none}
+    .why-eyebrow{margin-bottom:14px}
+    .why-r1,.why-r2{gap:22px}
+    .why-r2{padding-top:26px}
+    .why-r3{padding:22px;gap:24px}
+    .cmp{border-radius:14px}
+    .cmp-half{aspect-ratio:1/1.05}
+    .bub{padding:7px 10px;max-width:13ch;border-radius:9px}
+    .cmp-tag{padding:5px 11px;font-size:10px;top:10px}
+    .cmp-photo .cmp-tag,.cmp-ar .cmp-tag{left:10px}
+    .prob-cards li{padding:15px}
+    .prob-cards h4{font-size:16px;margin-bottom:12px}
+    .sol-phone{max-width:200px;margin-inline:auto}
+    .imp-mini{flex-direction:column;gap:16px}
+    .imp-mini li{max-width:none}
+    .chart-top h4{font-size:15px}
     .chart-legend{gap:14px;font-size:12px}
-    .c-lab{font-size:22px}   /* scales with the viewBox, lands at ~11px on screen */
-    .chart-cap{font-size:11.5px}
+    .ctag{min-width:0;flex:1;padding:10px 12px}
+    .c-lab{font-size:20px}
+    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}
 
     .pr{padding:30px 0 42px}
     .pr-head{margin-bottom:26px}
@@ -885,9 +986,9 @@
     .cue span::after,.scanline{animation:none;opacity:0}
     .wi{transform:none;opacity:1;transition:none}
     .c-dull,.c-live{stroke-dashoffset:0}
-    .c-area{opacity:.08}
-    .c-end{opacity:1}
-    .c-ring,.why-note i{animation:none}
+    .c-area{opacity:.09}
+    .c-dot{opacity:1}
+    .bub,.cmp-frame{opacity:1;transform:none;animation:none}
   }
 </style>
 </head>
@@ -1203,93 +1304,139 @@
 
   <div class="why-in">
 
-    <div class="why-head">
-      <p class="sec-eyebrow rev">Why it works</p>
-      <h2 class="rev">A photo asks them to imagine it. <em>AR just shows them.</em></h2>
-      <p class="why-sub rev">That gap is the whole business. When a shopper can already picture the thing in their room, the hesitation that kills the sale disappears — and so does the return that comes when it turns up the wrong size.</p>
-    </div>
-
-    <div class="why-grid">
-
-      <div class="why-left">
-        <ul class="why-stats">
-          <li class="rev">
-            <b>94%</b>
-            <div>
-              <p>Higher conversion on product pages that carry 3D and AR content, against the same pages without it.</p>
-              <cite>Shopify</cite>
-            </div>
-          </li>
-          <li class="rev">
-            <b>11×</b>
-            <div>
-              <p>More likely to buy after a shopper has viewed the product in their own space.</p>
-              <cite>Houzz</cite>
-            </div>
-          </li>
-          <li class="rev">
-            <b>7 days</b>
-            <div>
-              <p>From the photos you send us to a live catalog and a code you can start sharing.</p>
-              <cite>Our promise to you</cite>
-            </div>
-          </li>
-        </ul>
-        <p class="why-note rev"><i></i>Now onboarding our first shops</p>
+    <!-- ---------- 1. what AR actually is ---------- -->
+    <div class="why-row why-r1">
+      <div class="why-copy">
+        <p class="why-eyebrow rev">Why it works</p>
+        <h2 class="rev">A photo asks them to imagine it. <em>AR just shows them.</em></h2>
+        <p class="why-lead rev">When customers can see your product in their own space, they understand it better and buy with confidence.</p>
       </div>
 
-      <div class="chart-card rev">
+      <div class="cmp rev">
+        <div class="cmp-half cmp-photo">
+          <img src="assets/why-photo.png" alt="A room with the product shown only as a flat photo">
+          <div class="miss">why-photo.png</div>
+          <span class="cmp-tag">Photo</span>
+          <span class="bub b1">Will it fit here?</span>
+          <span class="bub b2">Will the colour work?</span>
+          <span class="bub b3">Will it look good here?</span>
+        </div>
+        <div class="cmp-half cmp-ar">
+          <img src="assets/why-ar.png" alt="The same room with the product placed in it through AR">
+          <div class="miss">why-ar.png</div>
+          <span class="cmp-tag">AR</span>
+          <span class="cmp-frame" aria-hidden="true"></span>
+        </div>
+        <span class="cmp-knob" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 7.5 5 12l4.5 4.5M14.5 7.5 19 12l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- ---------- 2. the problem, and what removes it ---------- -->
+    <div class="why-row why-r2">
+      <div class="why-copy">
+        <p class="why-eyebrow rev">The problem</p>
+        <h3 class="rev">The hardest part of buying online isn't finding the product. <em>It's knowing whether it belongs in their space.</em></h3>
+      </div>
+
+      <ul class="prob-cards">
+        <li class="rev">
+          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5v11M20.5 6.5v11M3.5 12h17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9l-3 3 3 3M17 9l3 3-3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="prob-n">01</span><span class="prob-k">Size</span></div>
+          <h4>Will it fit?</h4>
+          <div class="prob-shot"><img src="assets/why-size.png" alt="A chair measured against the space around it"><div class="miss">why-size.png</div></div>
+        </li>
+        <li class="rev">
+          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.8a9.2 9.2 0 0 0 0 18.4z" fill="currentColor" opacity=".35"/></svg></span>
+            <span class="prob-n">02</span><span class="prob-k">Style</span></div>
+          <h4>Will it look right?</h4>
+          <div class="prob-shot"><img src="assets/why-style.png" alt="Two chairs in different colours side by side"><div class="miss">why-style.png</div></div>
+        </li>
+        <li class="rev">
+          <div class="prob-top"><span class="prob-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="prob-n">03</span><span class="prob-k">Confidence</span></div>
+          <h4>Will I regret buying it?</h4>
+          <div class="prob-shot"><img src="assets/why-confidence.png" alt="A chair in a room with a question mark over it"><div class="miss">why-confidence.png</div></div>
+        </li>
+      </ul>
+
+      <div class="sol rev">
+        <p class="why-eyebrow">The solution</p>
+        <h3>AR removes <em>the guesswork.</em></h3>
+        <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
+        <div class="sol-phone"><img src="assets/why-phone.png" alt="A phone showing the product placed in a real room"><div class="miss">why-phone.png</div></div>
+      </div>
+    </div>
+
+    <!-- ---------- 3. what it does to sales ---------- -->
+    <div class="why-row why-r3 rev">
+      <div class="why-copy">
+        <p class="why-eyebrow">The business impact</p>
+        <h3>And that's where <em>the difference</em> begins.</h3>
+        <p class="why-lead">When uncertainty goes down, confidence goes up. And confident customers create higher sales potential.</p>
+      </div>
+
+      <ul class="imp-mini">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 17.5 9 11.5l3.6 3.4L20.5 6.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6.5h5v5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>More confidence</strong><span>Stronger intent to buy</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Fewer doubts</strong><span>Less hesitation before purchase</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M3.6 20.4h16.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 20.4v-6M12 20.4v-10M17 20.4v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><strong>Higher sales</strong><span>More opportunity to convert</span></li>
+      </ul>
+
+      <div class="chart-wrap">
         <div class="chart-top">
-          <h3>Visitors who go on to buy</h3>
+          <h4>Sales potential over time</h4>
           <div class="chart-legend">
-            <span><i></i>Photos only</span>
             <span class="on"><i></i>With AR</span>
+            <span><i></i>Without AR</span>
           </div>
         </div>
 
-        <svg viewBox="0 0 620 330" role="img" aria-label="Two lines comparing conversion over six months: a flat line for photos only, and a rising line for pages with AR">
-          <g class="cg">
-            <path d="M56 40h548M56 106h548M56 172h548M56 238h548M56 286h548"/>
-          </g>
+        <div class="chart-row">
+          <svg viewBox="0 0 660 330" role="img" aria-label="Two lines over six months: a rising line for stores using AR and a nearly flat line for those without">
+            <g class="cg">
+              <path d="M62 34h584M62 100h584M62 166h584M62 232h584M62 274h584"/>
+            </g>
+            <path class="c-area" d="M62 274 C170 250 250 214 340 172 S520 92 640 44 L640 274 Z"/>
+            <path class="c-dull" pathLength="1" d="M62 274 C170 268 250 264 340 258 S520 248 640 240"/>
+            <path class="c-live" pathLength="1" d="M62 274 C170 250 250 214 340 172 S520 92 640 44"/>
+            <g class="c-dot" fill="var(--accent)">
+              <circle cx="158" cy="243" r="5"/><circle cx="254" cy="209" r="5"/>
+              <circle cx="350" cy="169" r="5"/><circle cx="446" cy="127" r="5"/>
+              <circle cx="542" cy="85" r="5"/><circle cx="640" cy="44" r="6"/>
+            </g>
+            <g class="c-dot" fill="#B9B0A2">
+              <circle cx="158" cy="266" r="4"/><circle cx="254" cy="262" r="4"/>
+              <circle cx="350" cy="257" r="4"/><circle cx="446" cy="252" r="4"/>
+              <circle cx="542" cy="246" r="4"/><circle cx="640" cy="240" r="4"/>
+            </g>
+            <g class="c-lab">
+              <text x="46" y="38" text-anchor="end">100%</text>
+              <text x="46" y="104" text-anchor="end">75%</text>
+              <text x="46" y="170" text-anchor="end">50%</text>
+              <text x="46" y="236" text-anchor="end">25%</text>
+              <text x="46" y="278" text-anchor="end">0%</text>
+              <text x="158" y="308" text-anchor="middle">Month 1</text>
+              <text x="254" y="308" text-anchor="middle">Month 2</text>
+              <text x="350" y="308" text-anchor="middle">Month 3</text>
+              <text x="446" y="308" text-anchor="middle">Month 4</text>
+              <text x="542" y="308" text-anchor="middle">Month 5</text>
+              <text x="640" y="308" text-anchor="end">Month 6</text>
+            </g>
+          </svg>
 
-          <path class="c-area" d="M56 262 C150 244 210 214 290 178 S446 108 594 62 L594 286 L56 286 Z"/>
+          <div class="chart-tags">
+            <div class="ctag"><small>Up to</small><b>+94%</b><em>with AR — Shopify</em></div>
+            <div class="ctag flat"><small>Baseline</small><b>—</b><em>without AR</em></div>
+          </div>
+        </div>
 
-          <path class="c-dull" pathLength="1" d="M56 262 C150 258 210 254 290 250 S446 244 594 238"/>
-          <path class="c-live" pathLength="1" d="M56 262 C150 244 210 214 290 178 S446 108 594 62"/>
-
-          <g class="c-end">
-            <circle class="c-ring" cx="594" cy="62" r="6" stroke-width="1.6"/>
-            <circle cx="594" cy="62" r="5.5"/>
-          </g>
-          <g class="c-end">
-            <circle cx="594" cy="238" r="4.5" fill="#C9C0B2"/>
-          </g>
-
-          <g class="c-lab">
-            <text x="56" y="312">Month 1</text>
-            <text x="316" y="312" text-anchor="middle">Month 3</text>
-            <text x="594" y="312" text-anchor="end">Month 6</text>
-          </g>
-        </svg>
-
-        <p class="chart-cap">Illustrative shape, not a customer result — it draws the published figures above. We will replace it with our own numbers once our first shops have run long enough to have them.</p>
+        <p class="chart-cap">Illustrative growth model based on published industry research, not a measured customer result. The 94% figure is Shopify's reported conversion lift for product pages carrying 3D and AR content. Results vary by product, audience and store.</p>
       </div>
-
     </div>
+
   </div>
 </section>
-
-<!-- ============ HANDOFF ============ -->
-<div class="divider">
-  <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-badge">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    <em>05</em> — Pricing
-  </span>
-</div>
 
 <!-- ================= PRICING ================= -->
 <section class="pr" id="pricing">
@@ -1640,7 +1787,7 @@
 
 /* ---- step shots: say which file is missing rather than showing a broken icon ---- */
 (function(){
-  document.querySelectorAll('.cat-shot img').forEach(function(img){
+  document.querySelectorAll('.cat-shot img, .cmp-half img, .prob-shot img, .sol-phone img').forEach(function(img){
     function fail(){ img.parentNode.classList.add('broken'); }
     img.addEventListener('error', fail);
     if (img.complete && img.naturalWidth === 0) fail();
