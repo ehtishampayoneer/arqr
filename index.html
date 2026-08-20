@@ -699,14 +699,31 @@
   .chart-row svg{width:100%;height:auto;display:block}
   .chart-tags{display:flex;flex-direction:column;gap:12px}
   @media(max-width:620px){.chart-tags{flex-direction:row}}
-  .ctag{border:1px solid var(--line);border-radius:12px;padding:11px 15px;text-align:center;
+  .ctag{border:1px solid var(--line);border-radius:14px;padding:12px 16px;text-align:center;
     background:#FFFDFA;min-width:104px}
   .ctag small{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
     color:var(--ink-soft)}
   .ctag b{display:block;font-family:var(--f-head);font-weight:900;font-size:clamp(20px,1.7vw,26px);
-    line-height:1.1;margin:3px 0;color:var(--accent)}
+    line-height:1.1;margin:3px 0;color:var(--accent);font-variant-numeric:tabular-nums}
   .ctag.flat b{color:var(--ink-soft)}
   .ctag em{display:block;font-style:normal;font-size:11.5px;color:var(--ink-soft)}
+
+  /* the headline number carries the section — it should read from across the room */
+  .ctag.hero{min-width:clamp(150px,12vw,196px);padding:18px 20px;border-radius:18px;
+    border-color:rgba(224,104,42,.4);
+    background:linear-gradient(165deg,#FFF6EF,#FFFDFA);
+    box-shadow:0 16px 38px -20px rgba(224,104,42,.6);
+    opacity:0;transform:scale(.84);
+    transition:opacity .5s ease 1.85s,transform .75s cubic-bezier(.2,1.7,.35,1) 1.85s}
+  .chart-wrap.go .ctag.hero{opacity:1;transform:scale(1)}
+  .ctag.hero b{font-size:clamp(34px,3.4vw,56px);margin:5px 0 4px;letter-spacing:-.02em}
+  .ctag.hero small{font-size:11px;letter-spacing:.14em}
+  .ctag.hero em{font-size:12.5px}
+  /* once it has landed it keeps breathing so the eye returns to it */
+  .chart-wrap.done .ctag.hero{animation:tagBreathe 2.8s ease-in-out infinite}
+  @keyframes tagBreathe{
+    0%,100%{transform:scale(1);box-shadow:0 16px 38px -20px rgba(224,104,42,.55)}
+    50%{transform:scale(1.05);box-shadow:0 22px 50px -18px rgba(224,104,42,.95)}}
   .chart-cap{margin:14px 0 0;font-size:11.5px;line-height:1.5;color:var(--ink-soft);opacity:.9}
 
   .cg{stroke:var(--line);stroke-width:1;fill:none}
@@ -715,24 +732,35 @@
   /* the fill grows up from the axis as the line draws */
   .c-area{fill:var(--accent);opacity:0;transform:scaleY(0);transform-origin:50% 274px;
     transition:opacity .5s ease .5s,transform 1.7s cubic-bezier(.3,.7,.3,1) .45s}
-  .why.go .c-area{opacity:.09;transform:scaleY(1)}
+  .chart-wrap.go .c-area{opacity:.09;transform:scaleY(1)}
   .c-dull,.c-live{stroke-dasharray:1;stroke-dashoffset:1}
-  .why.go .c-dull{transition:stroke-dashoffset 1.6s ease-out .15s;stroke-dashoffset:0}
-  .why.go .c-live{transition:stroke-dashoffset 2s cubic-bezier(.35,.65,.3,1) .4s;stroke-dashoffset:0}
+  .chart-wrap.go .c-dull{transition:stroke-dashoffset 1.6s ease-out .15s;stroke-dashoffset:0}
+  .chart-wrap.go .c-live{transition:stroke-dashoffset 2s cubic-bezier(.35,.65,.3,1) .4s;stroke-dashoffset:0}
   /* each marker lands as the line reaches it, month by month */
   .c-dot circle{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;
     transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.5,.4,1)}
-  .why.go .c-dot circle{opacity:1;transform:scale(1)}
-  .why.go .c-dot circle:nth-child(1){transition-delay:.70s}
-  .why.go .c-dot circle:nth-child(2){transition-delay:.95s}
-  .why.go .c-dot circle:nth-child(3){transition-delay:1.20s}
-  .why.go .c-dot circle:nth-child(4){transition-delay:1.45s}
-  .why.go .c-dot circle:nth-child(5){transition-delay:1.70s}
-  .why.go .c-dot circle:nth-child(6){transition-delay:1.95s}
+  .chart-wrap.go .c-dot circle{opacity:1;transform:scale(1)}
+  .chart-wrap.go .c-dot circle:nth-child(1){transition-delay:.70s}
+  .chart-wrap.go .c-dot circle:nth-child(2){transition-delay:.95s}
+  .chart-wrap.go .c-dot circle:nth-child(3){transition-delay:1.20s}
+  .chart-wrap.go .c-dot circle:nth-child(4){transition-delay:1.45s}
+  .chart-wrap.go .c-dot circle:nth-child(5){transition-delay:1.70s}
+  .chart-wrap.go .c-dot circle:nth-child(6){transition-delay:1.95s}
   .c-halo{fill:none;stroke:var(--accent);stroke-width:2;opacity:0;
     transform-box:fill-box;transform-origin:center}
-  .why.go .c-halo{animation:cHalo 2.4s ease-out 2.3s infinite}
+  .chart-wrap.go .c-halo{animation:cHalo 2.4s ease-out 2.3s infinite}
   @keyframes cHalo{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(2.6);opacity:0}}
+  /* after the draw finishes the whole orange plot breathes, on the same
+     rhythm as the callout, so the two read as one thing */
+  .chart-wrap.done .c-live{animation:linePulse 2.8s ease-in-out infinite}
+  @keyframes linePulse{
+    0%,100%{stroke-width:3.4;filter:drop-shadow(0 0 0 rgba(224,104,42,0))}
+    50%{stroke-width:4.4;filter:drop-shadow(0 0 9px rgba(224,104,42,.85))}}
+  .chart-wrap.done .c-area{animation:areaPulse 2.8s ease-in-out infinite}
+  @keyframes areaPulse{0%,100%{opacity:.09}50%{opacity:.2}}
+  .chart-wrap.done .c-dot circle{animation:dotPulse 2.8s ease-in-out infinite}
+  @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
   .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}
 
   /* ================= PRICING ================= */
@@ -963,6 +991,8 @@
     .chart-top h4{font-size:15px}
     .chart-legend{gap:14px;font-size:12px}
     .ctag{min-width:0;flex:1;padding:10px 12px}
+    .ctag.hero{min-width:0;padding:14px 14px;border-radius:14px}
+    .ctag.hero b{font-size:34px}
     .c-lab{font-size:20px}
     .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}
 
@@ -1000,6 +1030,7 @@
     .c-area{opacity:.09}
     .c-dot{opacity:1}
     .c-halo{animation:none}
+    .ctag.hero,.c-live,.c-area,.c-dot circle{animation:none}
     .carou-track{transition:none}
     .cmp-knob::after{animation:none}
   }
@@ -1430,7 +1461,7 @@
           </svg>
 
           <div class="chart-tags">
-            <div class="ctag"><small>Up to</small><b>+94%</b><em>with AR — Shopify</em></div>
+            <div class="ctag hero"><small>Up to</small><b>+<span id="pctUp">0</span>%</b><em>with AR — Shopify</em></div>
             <div class="ctag flat"><small>Baseline</small><b>—</b><em>without AR</em></div>
           </div>
         </div>
@@ -1933,7 +1964,51 @@
   }
 })();
 
-/* ---- problem carousel ---- *//* ---- problem carousel ---- */
+/* ---- the impact chart ----
+   It gets its own trigger. Keying it to the section was wrong: the section
+   is three rows tall, so it fired while the visitor was still up at the
+   compare slider and the whole growth was over before they reached it. */
+(function(){
+  var wrap = document.querySelector(".chart-wrap");
+  if (!wrap) return;
+  var out = document.getElementById("pctUp");
+  var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var TARGET = 94, DRAW = 2400;
+
+  function countUp(){
+    if (!out) return;
+    if (reduce){ out.textContent = TARGET; return; }
+    var t0 = null;
+    function step(now){
+      if (t0 === null) t0 = now;
+      var t = Math.min((now - t0) / DRAW, 1);
+      var e = 1 - Math.pow(1 - t, 3);            /* eases out, like the line */
+      out.textContent = Math.round(TARGET * e);
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function run(){
+    wrap.classList.add("go");
+    countUp();
+    /* once everything has arrived, hand over to the endless pulse */
+    setTimeout(function(){ wrap.classList.add("done"); }, reduce ? 0 : DRAW + 500);
+  }
+
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        run();
+      });
+    }, {threshold:.35});
+    io.observe(wrap);
+  } else run();
+})();
+
+/* ---- problem carousel ---- */
 (function(){
   var box = document.getElementById("carou");
   var track = document.getElementById("carouTrack");
