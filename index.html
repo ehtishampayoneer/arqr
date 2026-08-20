@@ -587,7 +587,9 @@
   .why-lead{margin:16px 0 0;font-size:clamp(14.5px,1.05vw,17px);line-height:1.65;
     color:var(--ink-soft);max-width:60ch}
 
-  .card{background:#FFFFFF;border:1px solid var(--line);border-radius:16px;
+  /* NOT .card — the hero conveyor already owns that name and makes it
+     position:absolute at a fixed size, which collapses anything that reuses it */
+  .bi-card{background:#FFFFFF;border:1px solid var(--line);border-radius:16px;
     box-shadow:0 14px 30px -26px rgba(70,50,30,.42)}
 
   /* ---------- row 1 : move to compare ---------- */
@@ -1383,7 +1385,7 @@
 
       <div class="bi-grid">
 
-        <div class="bi-chart card" id="biChart">
+        <div class="bi-chart bi-card" id="biChart">
           <div class="bi-top">
             <h4>Sales potential over time</h4>
             <div class="bi-legend">
@@ -1436,7 +1438,7 @@
 
         <div class="bi-side">
 
-          <div class="bi-hero card">
+          <div class="bi-hero bi-card">
             <span class="bi-hero-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 16.5 9.2 10.8l3.4 3.2 7.9-8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.4 6h5.1v5.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="bi-hero-txt">
               <span class="bi-num">+<i id="pctUp">0</i>%</span>
@@ -1445,7 +1447,7 @@
             </div>
           </div>
 
-          <div class="bi-matters card">
+          <div class="bi-matters bi-card">
             <h4>Why it matters</h4>
             <ul class="bi-list">
               <li><span class="bi-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bi-txt"><span class="bi-t">More confidence</span><span class="bi-d">Stronger intent to buy</span></span></li>
@@ -1457,7 +1459,7 @@
         </div>
       </div>
 
-      <div class="bi-note card">
+      <div class="bi-note bi-card">
         <span class="bi-note-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9.3 17.4a6.4 6.4 0 1 1 5.4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9.4 17.4h5.2v2.1a2.6 2.6 0 0 1-5.2 0z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
         <span class="bi-note-txt">
           <span class="bi-note-t">Real impact. Measurable growth.</span>
