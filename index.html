@@ -603,6 +603,9 @@
     padding:16px;font-size:12px;color:#B3A895}
   .cmp.broken .miss{display:grid}
 
+  /* sparks thrown off the divider — the scan doing the work */
+  .cmp-spark{position:absolute;inset:0;z-index:5;pointer-events:none}
+
   .cmp-line{position:absolute;top:0;bottom:0;left:var(--split);width:2px;z-index:4;
     background:rgba(255,255,255,.9);transform:translateX(-1px);pointer-events:none;
     box-shadow:0 0 12px rgba(40,30,20,.35)}
@@ -611,14 +614,9 @@
     border-radius:50%;background:#FFFDFA;color:var(--ink);
     display:grid;place-items:center;pointer-events:none;
     box-shadow:0 8px 22px -8px rgba(40,30,20,.65);
-    /* keeps nudging until the visitor actually grabs it */
-    animation:knobNudge 2.8s cubic-bezier(.4,0,.3,1) infinite}
-  .cmp.touched .cmp-knob{animation:none;transform:translate(-50%,-50%)}
-  @keyframes knobNudge{
-    0%,100%{transform:translate(-50%,-50%)}
-    14%{transform:translate(calc(-50% - 9px),-50%)}
-    38%{transform:translate(calc(-50% + 9px),-50%)}
-    56%{transform:translate(-50%,-50%)}}
+    transform:translate(-50%,-50%);
+    transition:box-shadow .3s ease}
+  .cmp:hover .cmp-knob{box-shadow:0 10px 26px -8px rgba(224,104,42,.8)}
 
   /* a ring pushing outwards from the knob, so it reads as grabbable */
   .cmp-knob::after{content:"";position:absolute;inset:-7px;border-radius:50%;
@@ -1003,7 +1001,7 @@
     .c-dot{opacity:1}
     .c-halo{animation:none}
     .carou-track{transition:none}
-    .cmp-knob,.cmp-knob::after{animation:none}
+    .cmp-knob::after{animation:none}
   }
 </style>
 </head>
@@ -1333,6 +1331,7 @@
           <img src="assets/why-photo.png" alt="The same product shown only as a flat photo">
         </div>
         <div class="miss">why-photo.png / why-ar.png</div>
+        <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
         <span class="cmp-knob" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 7.5 5 12l4.5 4.5M14.5 7.5 19 12l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1799,59 +1798,142 @@
   });
 })();
 
-/* ---- drag-to-compare ---- */
+/* ---- compare slider ----
+   Slides itself on a loop so the effect is never missed. On a device with a
+   real pointer it simply follows the mouse across the frame — no click, no
+   drag. Touch still drags. Sparks are thrown off the divider wherever it is. */
 (function(){
   var box = document.getElementById("cmp");
   if (!box) return;
+
+  var canvas = box.querySelector(".cmp-spark");
+  var hint = box.querySelector(".cmp-hint");
+  var fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  var split = 50;          /* percent */
+  var engaged = false;     /* pointer is on it, so stop driving it ourselves */
+  var visible = false;
   var dragging = false;
 
+  /* swap the wording for pointer devices — target the text node, not the svgs */
+  if (hint){
+    [].forEach.call(hint.childNodes, function(n){
+      if (n.nodeType === 3 && n.nodeValue.trim()) n.nodeValue = fine ? " Move to compare " : " Drag to compare ";
+    });
+  }
+
   function setSplit(pct){
-    pct = Math.max(2, Math.min(98, pct));
-    box.style.setProperty("--split", pct + "%");
+    split = Math.max(2, Math.min(98, pct));
+    box.style.setProperty("--split", split + "%");
   }
   function fromEvent(e){
     var r = box.getBoundingClientRect();
     setSplit(((e.clientX - r.left) / r.width) * 100);
   }
+  function engage(){
+    engaged = true;
+    box.classList.add("touched");   /* fades the label for good */
+  }
 
+  /* pointer */
+  if (fine){
+    box.addEventListener("pointerenter", engage);
+    box.addEventListener("pointermove", function(e){ if (engaged) fromEvent(e); });
+    box.addEventListener("pointerleave", function(){ engaged = false; });
+  }
   box.addEventListener("pointerdown", function(e){
-    dragging = true; box.classList.add("touched"); stopOffering();
+    if (e.pointerType === "mouse" && fine) return;
+    dragging = true; engage();
     box.setPointerCapture(e.pointerId); fromEvent(e); e.preventDefault();
   });
   box.addEventListener("pointermove", function(e){ if (dragging) fromEvent(e); });
   ["pointerup","pointercancel"].forEach(function(t){
-    box.addEventListener(t, function(){ dragging = false; });
+    box.addEventListener(t, function(){ dragging = false; engaged = false; });
   });
 
-  /* The divider sweeps itself, waits, and sweeps again — it keeps offering
-     until someone takes it. Stops for good on the first real interaction. */
-  var again = null;
-  function sweep(){
-    if (box.classList.contains("touched")) return;
-    var t0 = null, dur = 2400;
-    function step(now){
-      if (box.classList.contains("touched")) { setSplit(50); return; }
-      if (t0 === null) t0 = now;
-      var t = Math.min((now - t0) / dur, 1);
-      var e2 = t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
-      setSplit(50 + Math.sin(e2 * Math.PI * 2) * 27);
-      if (t < 1) requestAnimationFrame(step);
-      else { setSplit(50); again = setTimeout(sweep, 4200); }
-    }
-    requestAnimationFrame(step);
+  /* the idle sweep — a slow, endless pass back and forth */
+  var phase = 0;
+  function drive(dt){
+    if (engaged || dragging || reduce) return;
+    phase += dt / 5200;                       /* one full cycle ≈ 5.2s */
+    setSplit(50 + Math.sin(phase * Math.PI * 2) * 26);
   }
-  function stopOffering(){ if (again) { clearTimeout(again); again = null; } }
+
+  /* sparks */
+  var ctx = canvas ? canvas.getContext("2d") : null;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var parts = [];
+  function resize(){
+    if (!ctx) return;
+    canvas.width = box.clientWidth * dpr;
+    canvas.height = box.clientHeight * dpr;
+  }
+  window.addEventListener("resize", resize);
+
+  function spawn(){
+    var w = box.clientWidth, h = box.clientHeight;
+    var x = (split / 100) * w;
+    parts.push({
+      x: x + (Math.random() - .5) * 5,
+      y: Math.random() * h,
+      vx: (Math.random() - .5) * 1.15,
+      vy: -0.2 - Math.random() * 0.75,
+      r: 0.7 + Math.random() * 2,
+      life: 1,
+      fade: 0.008 + Math.random() * 0.014,
+      warm: Math.random() < 0.5
+    });
+    if (parts.length > 150) parts.splice(0, parts.length - 150);
+  }
+
+  function paint(){
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = parts.length - 1; i >= 0; i--){
+      var q = parts[i];
+      q.x += q.vx; q.y += q.vy; q.life -= q.fade;
+      if (q.life <= 0){ parts.splice(i, 1); continue; }
+      var a = q.life * q.life;
+      ctx.beginPath();
+      ctx.arc(q.x * dpr, q.y * dpr, q.r * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = q.warm
+        ? "rgba(240,140,70," + a + ")"
+        : "rgba(255,248,240," + a + ")";
+      ctx.shadowBlur = 8 * dpr;
+      ctx.shadowColor = q.warm ? "rgba(224,104,42,.9)" : "rgba(255,240,220,.9)";
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+  }
+
+  var last = 0;
+  function frame(now){
+    if (!visible) return;
+    var dt = last ? Math.min(now - last, 48) : 16;
+    last = now;
+    drive(dt);
+    if (!reduce){ spawn(); spawn(); }
+    paint();
+    requestAnimationFrame(frame);
+  }
 
   if ("IntersectionObserver" in window){
     new IntersectionObserver(function(en){
       en.forEach(function(e){
-        if (e.isIntersecting) sweep(); else stopOffering();
+        if (e.isIntersecting && !visible){
+          visible = true; resize(); last = 0; requestAnimationFrame(frame);
+        } else if (!e.isIntersecting){
+          visible = false;
+        }
       });
-    }, {threshold:.4}).observe(box);
-  } else sweep();
+    }, {threshold:.25}).observe(box);
+  } else {
+    visible = true; resize(); requestAnimationFrame(frame);
+  }
 })();
 
-/* ---- problem carousel ---- */
+/* ---- problem carousel ---- *//* ---- problem carousel ---- */
 (function(){
   var box = document.getElementById("carou");
   var track = document.getElementById("carouTrack");
