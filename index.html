@@ -155,7 +155,7 @@
     transition:background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease}
   .bar.solid{background:rgba(250,247,242,.86);backdrop-filter:blur(14px);
     box-shadow:0 1px 0 rgba(26,26,26,.07)}
-  .logo{display:flex;align-items:center;gap:10px;margin-right:auto}
+  .logo{display:flex;align-items:center;gap:10px;margin-right:auto;padding:8px 0}
   .logo svg{width:26px;height:26px;color:var(--ink)}
   .logo b{font-family:var(--f-head);font-weight:800;font-size:18px;letter-spacing:.14em}
   .bar nav{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft)}
@@ -641,8 +641,11 @@
   .carou-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;
     display:flex;gap:8px;background:rgba(28,26,23,.55);border-radius:100px;padding:8px 12px;
     backdrop-filter:blur(6px)}
-  .carou-dots button{width:8px;height:8px;padding:0;border:0;border-radius:50%;cursor:pointer;
-    background:rgba(246,241,233,.45);transition:background .3s ease,width .3s ease}
+  .carou-dots button{position:relative;width:8px;height:8px;padding:0;border:0;
+    border-radius:50%;cursor:pointer;background:rgba(246,241,233,.45);
+    transition:background .3s ease,width .3s ease}
+  /* the dot stays 8px; the thing you can actually hit is 40px tall */
+  .carou-dots button::before{content:"";position:absolute;inset:-16px -7px}
   .carou-dots button[aria-current="true"]{background:var(--accent);width:22px;border-radius:100px}
 
   .sol{min-width:0;border-left:1px solid var(--line);padding-left:clamp(20px,2.2vw,36px)}
@@ -825,7 +828,7 @@
   .fld{display:flex;flex-direction:column;gap:8px;min-width:0}
   .fld label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
     color:var(--ink-soft)}
-  .fld label small{font-weight:600;letter-spacing:.09em;opacity:.6}
+  .fld label small{font-size:inherit;font-weight:600;letter-spacing:.09em;opacity:.55}
   .inp{position:relative;display:flex;align-items:center}
   .inp > svg{position:absolute;left:14px;width:18px;height:18px;color:#B6AC9C;
     pointer-events:none;display:block}
