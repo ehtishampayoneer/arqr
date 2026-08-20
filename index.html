@@ -18,7 +18,6 @@
     --page:#FAF7F2;
     --page-hi:#FDFBF7;
     --page-alt:#F4EFE5;   /* every other panel, a shade deeper */
-    --seam:#EDE6DA;       /* the divider band, recessed under both */
     --ink:#191919;
     --ink-soft:#6E6A64;
     --line:#E4DED4;
@@ -312,7 +311,7 @@
   /* ================= HANDOFF BETWEEN SECTIONS =================
      A dimension line — the same language as "true to scale" — that draws itself
      open from the centre as you arrive, with a scan running along it. */
-  .divider{position:relative;background:var(--seam);overflow:hidden;
+  .divider{position:relative;background:var(--page);overflow:hidden;
     height:clamp(92px,11.5vh,140px);display:grid;place-items:center}
 
   .dv-rule{position:absolute;left:7%;right:7%;top:50%;height:1px;
@@ -343,6 +342,9 @@
   @keyframes dvRun{
     0%{left:-14%;opacity:0} 9%{opacity:1} 78%{opacity:1}
     90%{left:104%;opacity:0} 100%{left:104%;opacity:0}}
+
+  /* a divider sitting under an alt-toned panel takes that tone instead */
+  .divider.on-alt,.divider.on-alt .dv-badge{background:var(--page-alt)}
 
   .dv-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:11px;
     background:var(--page);padding:0 22px;
@@ -1100,7 +1102,7 @@
 </section>
 
 <!-- ============ HANDOFF ============ -->
-<div class="divider">
+<div class="divider on-alt">
   <span class="dv-rule" aria-hidden="true"></span>
   <span class="dv-ticks" aria-hidden="true"></span>
   <span class="dv-cap l" aria-hidden="true"></span>
@@ -1328,7 +1330,7 @@
 </section>
 
 <!-- ============ HANDOFF ============ -->
-<div class="divider">
+<div class="divider on-alt">
   <span class="dv-rule" aria-hidden="true"></span>
   <span class="dv-ticks" aria-hidden="true"></span>
   <span class="dv-cap l" aria-hidden="true"></span>
