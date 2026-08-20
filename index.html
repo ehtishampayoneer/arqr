@@ -19,10 +19,11 @@
     --page-hi:#FDFBF7;
     --page-alt:#F4EFE5;   /* every other panel, a shade deeper */
 
-    /* one container width, so the left edge never jumps between sections */
-    --wrap:1480px;
-    --wrap-wide:1680px;   /* only the five-across catalog row needs more */
-    --dv-w:min(var(--wrap),86vw);   /* banner rule matches the content */
+    /* ONE measure for the whole page. Every block — hero copy, every
+       section, the divider rule — sits on this exact column, so the left
+       edge never moves from top to bottom. */
+    --gutter:clamp(20px,4vw,74px);
+    --wrap:min(1620px, calc(100% - 2 * var(--gutter)));
     --ink:#191919;
     --ink-soft:#6E6A64;
     --line:#E4DED4;
@@ -196,7 +197,9 @@
 
   /* ============ COPY (top layer) ============ */
   .copy{position:relative;z-index:var(--z-text);
-    max-width:min(900px,60vw);padding:clamp(2px,.8vh,14px) clamp(20px,4vw,58px) 0}
+    width:var(--wrap);margin:0 auto;padding:clamp(2px,.8vh,14px) 0 0}
+  /* the copy sits on the page column, the text measure is capped inside it */
+  .copy .kicker,.copy h1,.copy .sub,.copy .btns,.copy .trust{max-width:44rem}
   .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
     letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px}
   .kicker i{width:24px;height:2px;background:var(--accent);border-radius:2px;display:block}
@@ -317,7 +320,7 @@
      A dimension line — the same language as "true to scale" — that draws itself
      open from the centre as you arrive, with a scan running along it. */
   .divider{position:relative;overflow:hidden;display:grid;place-items:center;
-    height:clamp(108px,13.5vh,168px);
+    height:clamp(94px,10.5vh,128px);
     background:#1C1A17;color:#F6F1E9;
     box-shadow:0 16px 36px -20px rgba(28,26,23,.6),
                0 -16px 36px -20px rgba(28,26,23,.45)}
@@ -327,49 +330,27 @@
       repeating-linear-gradient(90deg,rgba(255,236,214,.055) 0 1px,transparent 1px 46px),
       repeating-linear-gradient(0deg, rgba(255,236,214,.055) 0 1px,transparent 1px 46px)}
 
-  .dv-rule{position:absolute;left:50%;width:var(--dv-w);top:50%;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(246,241,233,.26) 10%,rgba(246,241,233,.26) 90%,transparent);
+  /* One hairline on the page column, one label sitting in a gap in it.
+     Nothing else. The restraint is the point. */
+  .dv-rule{position:absolute;left:50%;width:var(--wrap);top:50%;height:1px;
+    background:linear-gradient(90deg,rgba(246,241,233,0),rgba(246,241,233,.24) 14%,
+      rgba(246,241,233,.24) 86%,rgba(246,241,233,0));
     transform:translateX(-50%) scaleX(0);transform-origin:50% 50%;
-    transition:transform 1.15s cubic-bezier(.2,.82,.24,1)}
+    transition:transform 1.4s cubic-bezier(.2,.82,.24,1)}
   .divider.go .dv-rule{transform:translateX(-50%) scaleX(1)}
 
-  .dv-ticks{position:absolute;left:50%;width:var(--dv-w);top:calc(50% - 6px);height:12px;
-    background:repeating-linear-gradient(90deg,rgba(246,241,233,.26) 0 1px,transparent 1px 46px);
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
-    opacity:0;transform:translateX(-50%) scaleX(.6);transform-origin:50% 50%;
-    transition:opacity .9s ease .2s,transform 1.15s cubic-bezier(.2,.82,.24,1) .12s}
-  .divider.go .dv-ticks{opacity:.8;transform:translateX(-50%) scaleX(1)}
-
-  /* the end caps, like a measurement's arrow ends */
-  .dv-cap{position:absolute;top:calc(50% - 11px);width:2px;height:22px;
-    background:var(--accent);opacity:0;transition:opacity .5s ease .95s}
-  .dv-cap.l{left:calc(50% - var(--dv-w) / 2)}
-  .dv-cap.r{right:calc(50% - var(--dv-w) / 2)}
-  .divider.go .dv-cap{opacity:.7}
-
-  .dv-run{position:absolute;top:calc(50% - 2px);left:-14%;width:130px;height:4px;
-    border-radius:4px;opacity:0;
-    background:linear-gradient(90deg,rgba(224,104,42,0),rgba(224,104,42,.85) 55%,rgba(255,201,155,0))}
-  .divider.go .dv-run{animation:dvRun 5.2s cubic-bezier(.42,0,.58,1) 1.1s infinite}
-  @keyframes dvRun{
-    0%{left:-14%;opacity:0} 9%{opacity:1} 78%{opacity:1}
-    90%{left:104%;opacity:0} 100%{left:104%;opacity:0}}
-
-  .dv-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:14px;
-    background:#1C1A17;padding:0 30px;
-    font-family:var(--f-head);
-    font-size:clamp(13px,1.45vw,20px);font-weight:700;letter-spacing:.15em;
-    text-transform:uppercase;
-    color:rgba(246,241,233,.92);white-space:nowrap;
-    opacity:0;transform:translateY(12px) scale(.94);
+  .dv-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:16px;
+    background:#1C1A17;padding:0 34px;
+    font-family:var(--f-head);font-weight:700;
+    font-size:clamp(14px,1.2vw,19px);letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(246,241,233,.9);white-space:nowrap;
+    opacity:0;transform:translateY(9px);
     transition:opacity .8s ease .3s,transform .8s cubic-bezier(.2,.82,.24,1) .3s}
   .divider.go .dv-badge{opacity:1;transform:none}
-  .dv-badge svg{width:clamp(21px,2.1vw,28px);height:clamp(21px,2.1vw,28px);
+  .dv-badge svg{width:clamp(20px,1.8vw,25px);height:clamp(20px,1.8vw,25px);
     display:block;color:var(--accent)}
-  .dv-badge em{font-style:normal;font-weight:800;color:var(--accent)}
-
-  @media(max-width:600px){.dv-badge{font-size:12px;letter-spacing:.12em;padding:0 16px;gap:10px}}
+  .dv-badge em{font-style:normal;font-weight:800;color:var(--accent);letter-spacing:.1em}
+  @media(max-width:700px){.dv-badge{font-size:12.5px;letter-spacing:.16em;padding:0 18px;gap:11px}}
 
   /* ================= HOW IT WORKS ================= */
   /* icons sit dead centre in their circles: block kills the inline baseline gap */
@@ -377,8 +358,7 @@
 
   .how{position:relative;overflow:hidden;background:var(--page-alt);color:var(--sec-ink);
     padding:clamp(70px,9vh,124px) 0 clamp(38px,4.5vh,62px)}
-  .how-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
-    padding:0 clamp(20px,4vw,58px);
+  .how-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto;
     display:grid;grid-template-columns:minmax(300px,.72fr) minmax(0,1.55fr);
     gap:clamp(30px,4vw,72px);align-items:start}
   @media(max-width:1080px){.how-in{grid-template-columns:minmax(0,1fr)}}
@@ -460,8 +440,7 @@
   /* ================= GET YOUR CATALOG ================= */
   .cat{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(70px,9vh,120px)}
-  .cat-in{position:relative;z-index:5;max-width:var(--wrap-wide);margin:0 auto;
-    padding:0 clamp(18px,2.3vw,38px)}
+  .cat-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
 
   .cat-head{text-align:center;max-width:980px;margin:0 auto clamp(34px,4.4vh,56px)}
   .cat-eyebrow{margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.2em;
@@ -592,8 +571,7 @@
   /* ================= WHY IT WORKS ================= */
   .why{position:relative;overflow:hidden;background:var(--page-alt);
     padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
-  .why-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
-    padding:0 clamp(20px,4vw,58px)}
+  .why-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
   .why-head{max-width:760px;margin:0 0 clamp(32px,4.4vh,54px)}
   .why h2{font-family:var(--f-head);font-weight:800;
     font-size:clamp(30px,3.3vw,52px);line-height:1.1;letter-spacing:-.025em;margin:0 0 18px}
@@ -656,8 +634,7 @@
   /* ================= PRICING ================= */
   .pr{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(60px,7.5vh,100px)}
-  .pr-in{position:relative;z-index:5;max-width:var(--wrap);margin:0 auto;
-    padding:0 clamp(20px,4vw,58px)}
+  .pr-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
   .pr-head{text-align:center;max-width:720px;margin:0 auto clamp(32px,4.4vh,52px)}
   .pr-head .sec-eyebrow{display:inline-block}
   .pr-head .sec-eyebrow::after{margin:12px auto 0}
@@ -765,7 +742,7 @@
   /* ================= CLOSING CTA ================= */
   .cta{position:relative;background:var(--page-alt);
     padding:clamp(28px,3.5vh,50px) 0 clamp(66px,8vh,110px)}
-  .cta-in{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,58px)}
+  .cta-in{width:var(--wrap);margin:0 auto}
   .cta-panel{position:relative;overflow:hidden;border-radius:26px;
     background:#1C1A17;color:#F6F1E9;
     padding:clamp(44px,6vw,86px) clamp(24px,4vw,70px);text-align:center;
@@ -803,7 +780,7 @@
      where the page stops being a shrunken website.
      ================================================================= */
   @media(max-width:700px){
-    :root{--bar-h:58px;--dv-w:90vw}
+    :root{--bar-h:58px}
 
     .bar{padding:12px 18px}
     .logo svg{width:24px;height:24px}
@@ -813,7 +790,7 @@
     /* hero: copy, then one big visual. The three-card row is far wider
        than a phone, so the room render carries the hero instead. */
     .hero{min-height:0;padding-bottom:0}
-    .copy{max-width:100%;padding:20px 20px 0}
+    .copy{padding:16px 0 0}
     .kicker{font-size:11px;letter-spacing:.14em;margin-bottom:12px}
     h1{font-size:clamp(30px,8.8vw,42px);margin-bottom:14px}
     .sub{font-size:15.5px;max-width:100%;margin-bottom:22px}
@@ -830,7 +807,7 @@
     .divider{height:98px}
 
     .how{padding:34px 0 30px}
-    .how-in{gap:26px;padding:0 20px}
+    .how-in{gap:26px}
     .sec-eyebrow{margin-bottom:18px}
     .how h2{font-size:26px;margin-bottom:18px}
     .how-sub{font-size:15px;margin-bottom:24px}
@@ -851,7 +828,6 @@
     .st-ico svg{width:24px;height:24px}
 
     .cat{padding:30px 0 42px}
-    .cat-in{padding:0 20px}
     .cat-head{margin-bottom:26px}
     .cat h2{font-size:clamp(32px,10vw,44px)}
     .cat-sub{font-size:15px}
@@ -865,7 +841,6 @@
     .ben-ico svg{width:21px;height:21px}
 
     .why{padding:30px 0 42px}
-    .why-in{padding:0 20px}
     .why-head{margin-bottom:26px}
     .why h2{font-size:26px}
     .why-sub{font-size:15px}
@@ -881,7 +856,6 @@
     .chart-cap{font-size:11.5px}
 
     .pr{padding:30px 0 42px}
-    .pr-in{padding:0 20px}
     .pr-head{margin-bottom:26px}
     .pr h2{font-size:26px}
     .pr-sub{font-size:15px}
@@ -891,7 +865,6 @@
     .pr-foot{font-size:13.5px}
 
     .cta{padding:24px 0 42px}
-    .cta-in{padding:0 16px}
     .cta-panel{border-radius:20px;padding:34px 20px}
     .cta-panel h2{font-size:clamp(26px,7.6vw,34px)}
     .cta-panel p{font-size:15.5px;margin-bottom:26px}
@@ -910,7 +883,6 @@
   /* very narrow phones */
   @media(max-width:400px){
     .bar .cta{display:none}
-    .copy,.how-in,.cat-in,.why-in,.pr-in{padding-left:16px;padding-right:16px}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -999,10 +971,6 @@
 <!-- ============ HANDOFF ============ -->
 <div class="divider" id="divider">
   <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-ticks" aria-hidden="true"></span>
-  <span class="dv-cap l" aria-hidden="true"></span>
-  <span class="dv-cap r" aria-hidden="true"></span>
-  <span class="dv-run" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1099,10 +1067,6 @@
 <!-- ============ HANDOFF ============ -->
 <div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-ticks" aria-hidden="true"></span>
-  <span class="dv-cap l" aria-hidden="true"></span>
-  <span class="dv-cap r" aria-hidden="true"></span>
-  <span class="dv-run" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1223,10 +1187,6 @@
 <!-- ============ HANDOFF ============ -->
 <div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-ticks" aria-hidden="true"></span>
-  <span class="dv-cap l" aria-hidden="true"></span>
-  <span class="dv-cap r" aria-hidden="true"></span>
-  <span class="dv-run" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1327,10 +1287,6 @@
 <!-- ============ HANDOFF ============ -->
 <div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-ticks" aria-hidden="true"></span>
-  <span class="dv-cap l" aria-hidden="true"></span>
-  <span class="dv-cap r" aria-hidden="true"></span>
-  <span class="dv-run" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1421,10 +1377,6 @@
 <!-- ============ HANDOFF ============ -->
 <div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-ticks" aria-hidden="true"></span>
-  <span class="dv-cap l" aria-hidden="true"></span>
-  <span class="dv-cap r" aria-hidden="true"></span>
-  <span class="dv-run" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
