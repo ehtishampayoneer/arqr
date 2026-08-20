@@ -694,74 +694,69 @@
   .chart-legend span{display:inline-flex;align-items:center;gap:7px}
   .chart-legend i{width:16px;height:3px;border-radius:2px;background:#B9B0A2;display:block}
   .chart-legend .on i{background:var(--accent)}
-  .chart-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
-  @media(max-width:620px){.chart-row{grid-template-columns:minmax(0,1fr)}}
+  .chart-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;
+    align-items:center}
+  @media(max-width:760px){.chart-row{grid-template-columns:minmax(0,1fr)}}
   .chart-row svg{width:100%;height:auto;display:block}
-  .chart-tags{display:flex;flex-direction:column;gap:12px}
-  @media(max-width:620px){.chart-tags{flex-direction:row}}
-  .ctag{border:1px solid var(--line);border-radius:14px;padding:12px 16px;text-align:center;
-    background:#FFFDFA;min-width:104px}
-  .ctag small{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
-    color:var(--ink-soft)}
-  .ctag b{display:block;font-family:var(--f-head);font-weight:900;font-size:clamp(20px,1.7vw,26px);
-    line-height:1.1;margin:3px 0;color:var(--accent);font-variant-numeric:tabular-nums}
-  .ctag.flat b{color:var(--ink-soft)}
-  .ctag em{display:block;font-style:normal;font-size:11.5px;color:var(--ink-soft)}
+  /* height:fit-content stops the callout column being stretched by the row */
+  .chart-tags{display:flex;flex-direction:column;gap:10px;
+    align-self:center;height:fit-content}
+  @media(max-width:760px){.chart-tags{flex-direction:row}}
 
-  /* the headline number carries the section — it should read from across the room */
-  .ctag.hero{min-width:clamp(150px,12vw,196px);padding:18px 20px;border-radius:18px;
-    border-color:rgba(224,104,42,.4);
-    background:linear-gradient(165deg,#FFF6EF,#FFFDFA);
-    box-shadow:0 16px 38px -20px rgba(224,104,42,.6);
-    opacity:0;transform:scale(.84);
-    transition:opacity .5s ease 1.85s,transform .75s cubic-bezier(.2,1.7,.35,1) 1.85s}
-  .chart-wrap.go .ctag.hero{opacity:1;transform:scale(1)}
-  .ctag.hero b{font-size:clamp(34px,3.4vw,56px);margin:5px 0 4px;letter-spacing:-.02em}
-  .ctag.hero small{font-size:11px;letter-spacing:.14em}
-  .ctag.hero em{font-size:12.5px}
-  /* once it has landed it keeps breathing so the eye returns to it */
-  .chart-wrap.done .ctag.hero{animation:tagBreathe 2.8s ease-in-out infinite}
-  @keyframes tagBreathe{
-    0%,100%{transform:scale(1);box-shadow:0 16px 38px -20px rgba(224,104,42,.55)}
-    50%{transform:scale(1.05);box-shadow:0 22px 50px -18px rgba(224,104,42,.95)}}
+  .ctag{flex:0 0 auto;height:fit-content;
+    border:1px solid var(--line);border-radius:12px;padding:11px 14px;text-align:center;
+    background:#FFFDFA;min-width:132px}
+  .ctag small{display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--ink-soft)}
+  .ctag b{display:block;font-family:var(--f-head);font-weight:900;
+    font-size:clamp(17px,1.25vw,21px);line-height:1.1;margin:3px 0;
+    color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .ctag em{display:block;font-style:normal;font-size:11px;color:var(--ink-soft)}
+
+  /* the number that matters — bigger and warmer than the baseline beside it,
+     but still a label, not a banner */
+  .ctag.hero{border-color:rgba(224,104,42,.42);background:#FFF7F1;padding:13px 16px}
+  .ctag.hero b{font-size:clamp(26px,2.1vw,36px);color:var(--accent);margin:4px 0 3px}
+  .ctag.hero small,.ctag.hero em{color:#9A6A46}
+
   .chart-cap{margin:14px 0 0;font-size:11.5px;line-height:1.5;color:var(--ink-soft);opacity:.9}
 
   .cg{stroke:var(--line);stroke-width:1;fill:none}
-  .c-dull{stroke:#B9B0A2;stroke-width:2.6;fill:none;stroke-linecap:round}
+  .c-dull{stroke:#B9B0A2;stroke-width:2.6;fill:none;stroke-linecap:round;
+    opacity:0;transition:opacity .8s ease .2s}
+  .chart-wrap.go .c-dull{opacity:1}
+  .c-dot-grey circle{fill:#B9B0A2;opacity:0;transition:opacity .8s ease .4s}
+  .chart-wrap.go .c-dot-grey circle{opacity:1}
+
+  /* the whole orange plot is revealed by a mask that rises off the baseline,
+     so it grows upward instead of just appearing */
+  .growRect{y:330px;height:0px;
+    transition:y 1.7s cubic-bezier(.22,.92,.3,1),height 1.7s cubic-bezier(.22,.92,.3,1)}
+  .chart-wrap.go .growRect{y:0px;height:330px}
+  .c-area{fill:var(--accent);opacity:.1}
   .c-live{stroke:var(--accent);stroke-width:3.4;fill:none;stroke-linecap:round}
-  /* the fill grows up from the axis as the line draws */
-  .c-area{fill:var(--accent);opacity:0;transform:scaleY(0);transform-origin:50% 274px;
-    transition:opacity .5s ease .5s,transform 1.7s cubic-bezier(.3,.7,.3,1) .45s}
-  .chart-wrap.go .c-area{opacity:.09;transform:scaleY(1)}
-  .c-dull,.c-live{stroke-dasharray:1;stroke-dashoffset:1}
-  .chart-wrap.go .c-dull{transition:stroke-dashoffset 1.6s ease-out .15s;stroke-dashoffset:0}
-  .chart-wrap.go .c-live{transition:stroke-dashoffset 2s cubic-bezier(.35,.65,.3,1) .4s;stroke-dashoffset:0}
-  /* each marker lands as the line reaches it, month by month */
-  .c-dot circle{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;
-    transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.5,.4,1)}
-  .chart-wrap.go .c-dot circle{opacity:1;transform:scale(1)}
-  .chart-wrap.go .c-dot circle:nth-child(1){transition-delay:.70s}
-  .chart-wrap.go .c-dot circle:nth-child(2){transition-delay:.95s}
-  .chart-wrap.go .c-dot circle:nth-child(3){transition-delay:1.20s}
-  .chart-wrap.go .c-dot circle:nth-child(4){transition-delay:1.45s}
-  .chart-wrap.go .c-dot circle:nth-child(5){transition-delay:1.70s}
-  .chart-wrap.go .c-dot circle:nth-child(6){transition-delay:1.95s}
+  .c-dot circle{fill:#E0682A}
+
+  /* once it has arrived it beats — twice, then rests, on a loop */
+  .plot{transform-box:view-box;transform-origin:50% 330px}
+  .chart-wrap.done .plot{animation:beat 2.6s ease-in-out infinite}
+  @keyframes beat{
+    0%,58%,100%{transform:scale(1)}
+    8%{transform:scale(1.022)}
+    16%{transform:scale(1)}
+    26%{transform:scale(1.035)}
+    40%{transform:scale(1)}}
+  .chart-wrap.done .c-live{animation:lineGlow 2.6s ease-in-out infinite}
+  @keyframes lineGlow{
+    0%,58%,100%{filter:drop-shadow(0 0 0 rgba(224,104,42,0))}
+    26%{filter:drop-shadow(0 0 8px rgba(224,104,42,.85))}}
+
   .c-halo{fill:none;stroke:var(--accent);stroke-width:2;opacity:0;
     transform-box:fill-box;transform-origin:center}
-  .chart-wrap.go .c-halo{animation:cHalo 2.4s ease-out 2.3s infinite}
-  @keyframes cHalo{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(2.6);opacity:0}}
-  /* after the draw finishes the whole orange plot breathes, on the same
-     rhythm as the callout, so the two read as one thing */
-  .chart-wrap.done .c-live{animation:linePulse 2.8s ease-in-out infinite}
-  @keyframes linePulse{
-    0%,100%{stroke-width:3.4;filter:drop-shadow(0 0 0 rgba(224,104,42,0))}
-    50%{stroke-width:4.4;filter:drop-shadow(0 0 9px rgba(224,104,42,.85))}}
-  .chart-wrap.done .c-area{animation:areaPulse 2.8s ease-in-out infinite}
-  @keyframes areaPulse{0%,100%{opacity:.09}50%{opacity:.2}}
-  .chart-wrap.done .c-dot circle{animation:dotPulse 2.8s ease-in-out infinite}
-  @keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+  .chart-wrap.done .c-halo{animation:cHalo 2.6s ease-out infinite}
+  @keyframes cHalo{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(2.6);opacity:0}}
 
-  .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}
+  .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}  .c-lab{font-family:var(--f-body);font-size:13px;fill:var(--ink-soft)}
 
   /* ================= PRICING ================= */
   .pr{position:relative;overflow:hidden;background:var(--page);
@@ -991,8 +986,7 @@
     .chart-top h4{font-size:15px}
     .chart-legend{gap:14px;font-size:12px}
     .ctag{min-width:0;flex:1;padding:10px 12px}
-    .ctag.hero{min-width:0;padding:14px 14px;border-radius:14px}
-    .ctag.hero b{font-size:34px}
+    .ctag.hero b{font-size:28px}
     .c-lab{font-size:20px}
     .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}    .chart-cap{font-size:11.5px}
 
@@ -1030,7 +1024,8 @@
     .c-area{opacity:.09}
     .c-dot{opacity:1}
     .c-halo{animation:none}
-    .ctag.hero,.c-live,.c-area,.c-dot circle{animation:none}
+    .plot,.c-live,.c-halo{animation:none}
+    .growRect{y:0px;height:330px}
     .carou-track{transition:none}
     .cmp-knob::after{animation:none}
   }
@@ -1428,23 +1423,34 @@
 
         <div class="chart-row">
           <svg viewBox="0 0 660 330" role="img" aria-label="Two lines over six months: a rising line for stores using AR and a nearly flat line for those without">
+            <defs>
+              <clipPath id="grow"><rect class="growRect" x="0" width="660"/></clipPath>
+            </defs>
+
             <g class="cg">
               <path d="M62 34h584M62 100h584M62 166h584M62 232h584M62 274h584"/>
             </g>
-            <path class="c-area" d="M62 274 C170 250 250 214 340 172 S520 92 640 44 L640 274 Z"/>
-            <path class="c-dull" pathLength="1" d="M62 274 C170 268 250 264 340 258 S520 248 640 240"/>
-            <path class="c-live" pathLength="1" d="M62 274 C170 250 250 214 340 172 S520 92 640 44"/>
-            <g class="c-dot" fill="#B9B0A2">
+
+            <path class="c-dull" d="M62 274 C170 268 250 264 340 258 S520 248 640 240"/>
+            <g class="c-dot-grey">
               <circle cx="158" cy="266" r="4"/><circle cx="254" cy="262" r="4"/>
               <circle cx="350" cy="257" r="4"/><circle cx="446" cy="252" r="4"/>
               <circle cx="542" cy="246" r="4"/><circle cx="640" cy="240" r="4"/>
             </g>
-            <g class="c-dot" fill="#E0682A">
-              <circle cx="158" cy="243" r="5"/><circle cx="254" cy="209" r="5"/>
-              <circle cx="350" cy="169" r="5"/><circle cx="446" cy="127" r="5"/>
-              <circle cx="542" cy="85" r="5"/><circle cx="640" cy="44" r="6"/>
+
+            <g class="plot">
+              <g clip-path="url(#grow)">
+                <path class="c-area" d="M62 274 C170 250 250 214 340 172 S520 92 640 44 L640 274 Z"/>
+                <path class="c-live" d="M62 274 C170 250 250 214 340 172 S520 92 640 44"/>
+                <g class="c-dot">
+                  <circle cx="158" cy="243" r="5"/><circle cx="254" cy="209" r="5"/>
+                  <circle cx="350" cy="169" r="5"/><circle cx="446" cy="127" r="5"/>
+                  <circle cx="542" cy="85" r="5"/><circle cx="640" cy="44" r="6"/>
+                </g>
+              </g>
             </g>
             <circle class="c-halo" cx="640" cy="44" r="6"/>
+
             <g class="c-lab">
               <text x="46" y="38" text-anchor="end">100%</text>
               <text x="46" y="104" text-anchor="end">75%</text>
@@ -1973,7 +1979,7 @@
   if (!wrap) return;
   var out = document.getElementById("pctUp");
   var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var TARGET = 94, DRAW = 2400;
+  var TARGET = 94, DRAW = 1700;
 
   function countUp(){
     if (!out) return;
@@ -1989,22 +1995,25 @@
     requestAnimationFrame(step);
   }
 
+  var timer = null;
   function run(){
+    wrap.classList.remove("done");
     wrap.classList.add("go");
     countUp();
-    /* once everything has arrived, hand over to the endless pulse */
-    setTimeout(function(){ wrap.classList.add("done"); }, reduce ? 0 : DRAW + 500);
+    clearTimeout(timer);
+    timer = setTimeout(function(){ wrap.classList.add("done"); }, reduce ? 0 : DRAW);
+  }
+  function rewind(){
+    /* reset so it grows again next time rather than being watched once */
+    clearTimeout(timer);
+    wrap.classList.remove("go", "done");
+    if (out) out.textContent = "0";
   }
 
   if ("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(en){
-      en.forEach(function(e){
-        if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        run();
-      });
-    }, {threshold:.35});
-    io.observe(wrap);
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){ e.isIntersecting ? run() : rewind(); });
+    }, {threshold:.35}).observe(wrap);
   } else run();
 })();
 
