@@ -265,7 +265,7 @@
   .scene img{width:100%;height:auto}
   @keyframes sceneIn{from{opacity:0;transform:translate3d(28px,26px,0) scale(.985)}to{opacity:1;transform:none}}
   .scan{position:absolute;inset:0;pointer-events:none;overflow:hidden;
-    -webkit-mask-image:url("assets/room.png?v=2");mask-image:url("assets/room.png?v=2");
+    -webkit-mask-image:url("assets/room.png?v=3");mask-image:url("assets/room.png?v=3");
     -webkit-mask-size:100% 100%;mask-size:100% 100%;
     -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mix-blend-mode:screen}
   .scan::before{content:"";position:absolute;top:-20%;left:-40%;width:32%;height:140%;
@@ -967,8 +967,11 @@
     .cta{padding:24px 0 42px}
     .ct-panel{border-radius:18px}
     .ct-left,.ct-right{padding:26px 20px}
-    .ct-trust{margin-bottom:22px;font-size:12.5px;gap:8px 12px}
-    .ct-trust li+li{padding-left:12px}
+    .ct-trust{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;
+      margin-bottom:22px;font-size:12.5px}
+    .ct-trust li+li{padding-left:0}
+    .ct-trust li+li::before{display:none}
+    .ct-trust li:last-child{grid-column:1 / -1}
     .ct-pitch{gap:20px}
     .ct-left h2{font-size:clamp(25px,7.2vw,31px);flex-basis:100%;
       line-height:1.22;letter-spacing:-.012em}
@@ -1073,7 +1076,7 @@
   <div class="grid" aria-hidden="true"><i></i></div>
 
   <div class="scene">
-    <img src="assets/room.png?v=2" alt="A living room with furniture and a rug shown as augmented-reality wireframes">
+    <img src="assets/room.png?v=3" alt="A living room with furniture and a rug shown as augmented-reality wireframes">
     <div class="scan" aria-hidden="true"></div>
   </div>
 
@@ -1141,8 +1144,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=2"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=2"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=3"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=3"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1214,7 +1217,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.png?v=2" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.png?v=3" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1226,7 +1229,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.png?v=2" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.png?v=3" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1238,7 +1241,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand — laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.png?v=2" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.png?v=3" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1250,7 +1253,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio — one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.png?v=2" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.png?v=3" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1262,7 +1265,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.png?v=2" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.png?v=3" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1330,9 +1333,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.png?v=2" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.png?v=3" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.png?v=2" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.png?v=3" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1350,9 +1353,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.png?v=2" alt="Will it fit? A chair measured against the room"></figure>
-          <figure><img src="assets/why-style.png?v=2" alt="Will it look right? Two colours compared side by side"></figure>
-          <figure><img src="assets/why-confidence.png?v=2" alt="Will I regret buying it? A chair with a question mark"></figure>
+          <figure><img src="assets/why-size.png?v=3" alt="Will it fit? A chair measured against the room"></figure>
+          <figure><img src="assets/why-style.png?v=3" alt="Will it look right? Two colours compared side by side"></figure>
+          <figure><img src="assets/why-confidence.png?v=3" alt="Will I regret buying it? A chair with a question mark"></figure>
         </div>
         <div class="carou-dots" id="carouDots" role="tablist" aria-label="Choose a question">
           <button type="button" role="tab" aria-label="Will it fit?" aria-current="true"></button>
@@ -1365,7 +1368,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.png?v=2" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.png?v=3" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1543,7 +1546,7 @@
               <text x="355" y="308" text-anchor="middle">Month 3</text>
               <text x="450" y="308" text-anchor="middle">Month 4</text>
               <text x="545" y="308" text-anchor="middle">Month 5</text>
-              <text x="640" y="308" text-anchor="middle">Month 6</text>
+              <text x="656" y="308" text-anchor="end">Month 6</text>
             </g>
           </svg>
         </div>
@@ -1654,7 +1657,9 @@
     split(el, []).forEach(function(inner, i){
       inner.style.transitionDelay = (i * (step || 42)) + 'ms';
     });
-    el.classList.add('split');
+    /* register for reveal too — a split headline whose words never get
+       .in stays invisible forever, and still takes up its full height */
+    el.classList.add('split', 'rev');
   };
 
   /* hero headline plays on load */
@@ -2126,10 +2131,10 @@
 
 (function(){
   var DECKS = [
-    {src:'assets/card-furniture.png?v=2', c:'#E0682A', label:'Furniture'},
-    {src:'assets/card-rugs.png?v=2',      c:'#3A241C', label:'Rugs &amp; carpets'},
-    {src:'assets/card-decor.png?v=2',     c:'#1F7A78', label:'Decoration'},
-    {src:'assets/card-art.png?v=2',       c:'#1B2A4A', label:'Wall art'}
+    {src:'assets/card-furniture.png?v=3', c:'#E0682A', label:'Furniture'},
+    {src:'assets/card-rugs.png?v=3',      c:'#3A241C', label:'Rugs &amp; carpets'},
+    {src:'assets/card-decor.png?v=3',     c:'#1F7A78', label:'Decoration'},
+    {src:'assets/card-art.png?v=3',       c:'#1B2A4A', label:'Wall art'}
   ];
 
   var STEP = 2500;   /* ms per station */
