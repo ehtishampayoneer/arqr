@@ -31,3 +31,15 @@ Vercel is connected to this repository. Any push to `main` deploys.
 - Verify the Shopify and Houzz figures in the "Why it works" section and link sources.
 - Compress the images in `assets/` — they are full-size PNGs and dominate page weight.
 - Prices in the pricing section are hypotheses, not yet validated with customers.
+
+## Replacing an image
+
+Asset URLs carry a version query — `assets/why-size.png?v=2`. A browser that
+cached a file under the old `immutable` header will not revalidate it, so
+replacing the file alone is not enough: the URL has to change too.
+
+After replacing anything in `assets/`, bump every `?v=N` in `index.html` to the
+next number. There is a script for it:
+
+    npm run bump
+

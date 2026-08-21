@@ -1,0 +1,9 @@
+{
+  "name": "arqr-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ARQR marketing site — one static page, no build step.",
+  "scripts": {
+    "bump": "node bump-assets.js"
+  }
+}
