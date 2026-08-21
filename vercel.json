@@ -5,11 +5,7 @@
     {
       "source": "/assets/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "comment": "NOT immutable. Art is replaced under the same filenames while we iterate, and immutable pins the old file even through a hard refresh. Revalidate every time; ETags keep it cheap. Raise this to a long max-age once the art is final.",
-          "value": "public, max-age=0, must-revalidate"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]
