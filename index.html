@@ -69,56 +69,7 @@
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-  /* ============ HERO ============ */
-  .hero{
-    position:relative;min-height:100svh;overflow:hidden;isolation:isolate;
-    padding-top:var(--bar-h);   /* the bar is fixed now — hold its space back */
-    background:
-      radial-gradient(120% 80% at 78% 16%, #FFFEFB 0%, rgba(255,254,251,0) 56%),
-      radial-gradient(90% 70% at 10% 6%, #FFFDF9 0%, rgba(255,253,249,0) 58%),
-      linear-gradient(180deg,var(--page-hi) 0%,#FBF9F4 46%,var(--page) 100%);
-  }
-  .hero::before{content:"";position:absolute;inset:0;z-index:var(--z-bg);pointer-events:none;
-    background:radial-gradient(56% 50% at 76% 50%, rgba(206,166,116,.16) 0%, rgba(206,166,116,0) 70%)}
-
-  /* floor sits ABOVE the cards, so a sinking card is occluded by it */
-  .floor{position:absolute;left:0;right:0;bottom:0;height:15%;z-index:var(--z-floor);
-    pointer-events:none;
-    background:linear-gradient(180deg,
-      rgba(250,247,242,0) 0%,
-      rgba(249,245,239,.78) 20%,
-      rgba(250,247,242,.97) 46%,
-      var(--page) 100%)}
-  .floor::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;
-    background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 18%,rgba(255,255,255,.95) 82%,rgba(255,255,255,0))}
-
   /* ============ AR AMBIENCE ============ */
-
-  /* ground plane the way a phone draws one when it locks onto a floor */
-  .grid{position:absolute;left:-30%;right:-30%;bottom:0;height:31%;
-    z-index:16;pointer-events:none;perspective:540px;perspective-origin:50% 0%;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 16%,#000 84%,transparent 100%);
-    mask-image:linear-gradient(90deg,transparent 0%,#000 16%,#000 84%,transparent 100%)}
-  .grid i{position:absolute;inset:0;transform:rotateX(73deg);transform-origin:50% 0%;
-    background:
-      repeating-linear-gradient(90deg,rgba(150,112,68,.13) 0 1px,transparent 1px 68px),
-      repeating-linear-gradient(0deg, rgba(150,112,68,.13) 0 1px,transparent 1px 68px);
-    -webkit-mask-image:linear-gradient(to top,#000 6%,rgba(0,0,0,.5) 42%,transparent 88%);
-    mask-image:linear-gradient(to top,#000 6%,rgba(0,0,0,.5) 42%,transparent 88%);
-    animation:gridflow 6.5s linear infinite, gridpulse 11s ease-in-out infinite}
-  @keyframes gridflow{from{background-position:0 0,0 0}to{background-position:0 0,0 68px}}
-  @keyframes gridpulse{0%,100%{opacity:.45}42%{opacity:1}}
-
-  /* feature points, the way AR finds anchors on a surface */
-  .pts{position:absolute;inset:0;z-index:3;pointer-events:none}
-  .pts b{position:absolute;width:4px;height:4px;border-radius:50%;
-    background:var(--accent-2);opacity:0;animation:pt 4.4s ease-in-out infinite}
-  @keyframes pt{
-    0%,100%{opacity:0;transform:scale(.5)}
-    10%{opacity:.6;transform:scale(1.35)}
-    22%{opacity:.16;transform:scale(1)}
-    52%{opacity:.16;transform:scale(1)}
-    64%{opacity:0;transform:scale(.9)}}
 
   /* ---- the scan mesh over the whole page ----
      .mesh-base is a permanent, almost invisible grid.
@@ -143,11 +94,6 @@
   @keyframes meshBand{from{transform:translateX(-36vw)}to{transform:translateX(102vw)}}
   @keyframes meshBack{from{transform:translateX(36vw)}to{transform:translateX(-102vw)}}
 
-  @media(prefers-reduced-motion:reduce){
-    .grid i,.pts b,.mesh-band,.mesh-lit{animation:none}
-    .pts b{opacity:.16}
-    .mesh-band{display:none}
-  }
 
   /* ============ TOP BAR ============ */
   .bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:26px;
@@ -195,21 +141,8 @@
     transition:transform .2s ease}
   .bar .cta:hover{transform:translateY(-1px)}
 
-  /* ============ COPY (top layer) ============ */
-  .copy{position:relative;z-index:var(--z-text);
-    width:var(--wrap);margin:0 auto;padding:clamp(2px,.8vh,14px) 0 0}
-  /* the copy sits on the page column, the text measure is capped inside it */
-  .copy .kicker,.copy h1,.copy .sub,.copy .btns,.copy .trust{max-width:44rem}
-  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 12px}
-  .kicker i{width:24px;height:2px;background:var(--accent);border-radius:2px;display:block}
-  h1{font-family:var(--f-head);font-weight:900;
-    font-size:clamp(32px,min(4.2vw,7.4vh),64px);
-    line-height:.96;letter-spacing:-.025em;margin:0 0 14px}
-  h1 .l2{display:block;color:var(--accent)}
-  .sub{font-size:clamp(14.5px,1vw,17px);line-height:1.5;color:var(--ink-soft);
-    max-width:42ch;margin:0 0 20px}
-  .btns{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:14px}
+  /* shared button styles, used by the opener */
+    .btns{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:14px}
   .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;
     padding:13px 22px;border-radius:100px;transition:transform .2s ease}
   .btn-a{background:var(--accent);color:#fff;box-shadow:0 14px 30px -12px rgba(224,104,42,.85)}
@@ -220,75 +153,6 @@
   .trust{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-soft);margin:0}
   .trust span{display:inline-flex;align-items:center;gap:7px}
   .trust span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent-2)}
-
-  /* ============ CARD ROW (middle layer) ============ */
-  .stage{position:absolute;z-index:var(--z-cards);
-    left:calc(clamp(18px,4vw,58px) + var(--row-shift));right:0;
-    bottom:calc(clamp(44px,7.5vh,92px) + var(--row-lift));
-    height:var(--ch);pointer-events:none}
-  .card{position:absolute;left:0;bottom:0;
-    width:var(--cw);height:var(--ch);
-    transform-origin:50% 100%;
-    will-change:transform,opacity}
-  .card .skin{position:absolute;inset:0;border-radius:16px;overflow:hidden;background:#fff;
-    box-shadow:
-      0 2px 5px rgba(20,40,80,.10),
-      0 16px 32px -12px rgba(20,40,80,.38),
-      0 40px 64px -30px rgba(30,60,120,.30),
-      inset 0 0 0 1px rgba(255,255,255,.9)}
-  .card .skin::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
-    background:linear-gradient(126deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,0) 34%,
-      rgba(255,255,255,0) 70%,rgba(255,255,255,.15) 100%)}
-  .card .skin img{width:100%;height:100%;object-fit:cover;object-position:top center}
-  .card .glow{position:absolute;left:8%;right:8%;bottom:-3%;height:32%;border-radius:50%;
-    filter:blur(28px);opacity:.32;z-index:-1;background:var(--c,#3A66B4)}
-  .refl{position:absolute;left:0;right:0;top:100%;height:38%;overflow:hidden;opacity:.16;
-    pointer-events:none;
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 86%);
-    mask-image:linear-gradient(to bottom,#000 0%,transparent 86%)}
-  .refl img{width:100%;height:263%;object-fit:cover;object-position:top center;transform:scaleY(-1)}
-
-  .card.ph .skin,.card.ph .refl{background:var(--c,#3A66B4)}
-  .card.ph .skin img,.card.ph .refl img{visibility:hidden}
-  .ph-label{position:absolute;inset:0;display:none;align-items:flex-start;padding:22px;
-    color:#fff;font-family:var(--f-head);font-weight:800;font-size:19px;letter-spacing:.04em;
-    text-transform:uppercase;opacity:.92}
-
-  /* on narrow screens a 40vw shift would push the row off the edge */
-  @media(max-width:980px){.copy{max-width:100%} :root{--row-shift:8vw}}
-
-  /* ============ ROOM (top layer) ============ */
-  .scene{position:absolute;z-index:var(--z-room);right:-2%;bottom:-1%;
-    width:min(56vw,960px);pointer-events:none;
-    filter:drop-shadow(0 40px 60px rgba(30,60,120,.20));
-    animation:sceneIn 1.1s cubic-bezier(.16,.84,.32,1) both}
-  .scene img{width:100%;height:auto}
-  @keyframes sceneIn{from{opacity:0;transform:translate3d(28px,26px,0) scale(.985)}to{opacity:1;transform:none}}
-  .scan{position:absolute;inset:0;pointer-events:none;overflow:hidden;
-    -webkit-mask-image:url("assets/room.png?v=4");mask-image:url("assets/room.png?v=4");
-    -webkit-mask-size:100% 100%;mask-size:100% 100%;
-    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;mix-blend-mode:screen}
-  .scan::before{content:"";position:absolute;top:-20%;left:-40%;width:32%;height:140%;
-    background:linear-gradient(100deg,rgba(120,180,255,0) 0%,rgba(150,200,255,.5) 45%,
-      rgba(205,232,255,.82) 52%,rgba(150,200,255,.5) 60%,rgba(120,180,255,0) 100%);
-    transform:skewX(-12deg);animation:sweep 7s cubic-bezier(.5,0,.5,1) 1.4s infinite}
-  @keyframes sweep{0%{left:-40%;opacity:0}8%{opacity:1}52%{opacity:1}
-    62%{left:118%;opacity:0}100%{left:118%;opacity:0}}
-  @media(max-width:1240px){.scene{width:min(88vw,640px);right:-8%;opacity:.92}}
-
-  /* ================= SCROLL CUE ================= */
-  .cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:var(--z-text);
-    display:flex;flex-direction:column;align-items:center;gap:7px;
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
-    text-decoration:none;opacity:.75;transition:opacity .25s ease}
-  .cue:hover{opacity:1}
-  .cue span{width:22px;height:34px;border:1.5px solid currentColor;border-radius:12px;position:relative}
-  .cue span::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:6px;
-    margin-left:-1.5px;border-radius:2px;background:currentColor;
-    animation:cuedrop 1.9s cubic-bezier(.4,0,.3,1) infinite}
-  @keyframes cuedrop{0%{opacity:0;transform:translateY(0)}
-    25%{opacity:1}70%{opacity:0;transform:translateY(11px)}100%{opacity:0;transform:translateY(11px)}}
-  @media(max-width:980px){.cue{display:none}}
 
   /* ================= SCROLL REVEAL ================= */
   .rev{opacity:0;transform:translateY(26px);
@@ -439,7 +303,9 @@
 
   /* ================= GET YOUR CATALOG ================= */
   .cat{position:relative;overflow:hidden;background:var(--page);
-    padding:clamp(38px,4.5vh,62px) 0 clamp(70px,9vh,120px)}
+    padding:calc(var(--bar-h) + clamp(30px,5vh,64px)) 0 clamp(70px,9vh,120px)}
+  .cat-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+  .cat-head .trust{justify-content:center;margin-top:20px}
   .cat-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
 
   .cat-head{text-align:center;max-width:980px;margin:0 auto clamp(34px,4.4vh,56px)}
@@ -888,22 +754,8 @@
     .logo b{font-size:16px}
     .bar .cta{padding:11px 16px;font-size:13.5px}
 
-    /* hero: copy, then one big visual. The three-card row is far wider
-       than a phone, so the room render carries the hero instead. */
-    .hero{min-height:0;padding-bottom:0}
-    .copy{padding:16px 0 0}
-    .kicker{font-size:11px;letter-spacing:.14em;margin-bottom:12px}
-    h1{font-size:clamp(30px,8.8vw,42px);line-height:1.04;margin-bottom:14px}
-    .sub{font-size:15.5px;max-width:100%;margin-bottom:22px}
-    .btns{gap:10px;margin-bottom:16px}
     .btn{flex:1 1 auto;justify-content:center;padding:15px 20px;font-size:15px}
     .trust{font-size:12.5px;gap:6px 16px}
-    .stage{display:none}
-    .scene{position:relative;right:auto;bottom:auto;
-      width:118vw;max-width:none;margin:14px -9vw -1px;
-      filter:drop-shadow(0 18px 28px rgba(70,50,30,.16))}
-    .floor{height:15%}
-    .grid{height:24%}
 
     .divider{height:98px}
 
@@ -1003,13 +855,14 @@
 
   @media(prefers-reduced-motion:reduce){
     .rev{opacity:1;transform:none;transition:none}
-    .cue span::after,.scanline{animation:none;opacity:0}
+    .scanline{animation:none;opacity:0}
+
     .wi{transform:none;opacity:1;transition:none}
     .bi-plot,.bi-halo,.cmp-knob::after{animation:none}
     .bi-mask{y:0px;height:330px}
+    .mesh-band,.mesh-lit{animation:none}
+    .mesh-band{display:none}
     .carou-track{transition:none}
-    .carou-track{transition:none}
-    .cmp-knob::after{animation:none}
   }
 </style>
 </head>
@@ -1025,7 +878,6 @@
     </a>
     <nav>
       <a href="#how">How it works</a>
-      <a href="#catalogs">Catalogs</a>
       <a href="#why">Why it works</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
@@ -1038,55 +890,135 @@
 
 <nav class="mnav" id="mnav">
   <a href="#how">How it works</a>
-  <a href="#catalogs">Catalogs</a>
   <a href="#why">Why it works</a>
   <a href="#pricing">Pricing</a>
   <a href="#contact">Contact</a>
   <a class="mnav-cta" href="#contact">Get your catalog</a>
 </nav>
 
-<section class="hero">
+<!-- ================= GET YOUR CATALOG ================= -->
+<section class="cat" id="catalogs">
 
-  <div class="copy">
-    <p class="kicker"><i></i>One QR code · Your entire catalog</p>
-    <h1>Your showroom<span class="l2">in their room</span></h1>
-    <p class="sub">Customers scan one code, browse every product you sell, and see it at true size in their own space — before they decide.</p>
-    <div class="btns">
-      <a class="btn btn-a" href="#contact">Get your AR catalog
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a class="btn btn-b" href="#catalogs">See a live example</a>
-    </div>
-    <p class="trust">
-      <span>No app to download</span>
-      <span>iPhone &amp; Android</span>
-      <span>Live in 7 days</span>
-    </p>
-  </div>
+  <div class="scanline" aria-hidden="true"></div>
 
   <div class="mesh" aria-hidden="true">
     <div class="mesh-base"></div>
     <div class="mesh-band"><div class="mesh-lit"></div></div>
   </div>
 
-  <div class="pts" id="pts" aria-hidden="true"></div>
+  <div class="cat-in">
 
-  <div class="stage" id="stage" aria-hidden="true"></div>
+    <div class="cat-head">
+      <p class="cat-eyebrow rev">For shops, showrooms &amp; online sellers</p>
+      <h2 class="rev">You send photos. <em>We do the rest.</em></h2>
+      <p class="cat-sub rev">You send us product photos. We build every item as a true-to-size 3D model and hand you one QR code — your customers scan it, browse your range, and see any piece standing in their own room before they buy.</p>
 
-  <div class="floor" aria-hidden="true"></div>
-  <div class="grid" aria-hidden="true"><i></i></div>
+      <div class="cat-cta rev">
+        <a class="btn btn-a" href="#contact">Get your AR catalog
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-b" href="#how">See a live example</a>
+      </div>
 
-  <div class="scene">
-    <img src="assets/room.png?v=4" alt="A living room with furniture and a rug shown as augmented-reality wireframes">
-    <div class="scan" aria-hidden="true"></div>
+      <p class="trust rev">
+        <span>No app to download</span>
+        <span>iPhone &amp; Android</span>
+        <span>Live in 7 days</span>
+      </p>
+    </div>
+
+    <ol class="cat-steps">
+
+      <li class="cat-card rev">
+        <span class="cat-num">01</span>
+        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+        <h3>You send us photos</h3>
+        <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
+        <div class="cat-shot"><img src="assets/step-1.png?v=5" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-foot">
+          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
+        </div>
+        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </li>
+
+      <li class="cat-card rev">
+        <span class="cat-num">02</span>
+        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <h3>We build every product</h3>
+        <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
+        <div class="cat-shot"><img src="assets/step-2.png?v=5" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-foot">
+          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
+        </div>
+        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </li>
+
+      <li class="cat-card rev">
+        <span class="cat-num">03</span>
+        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <h3>You get your own catalog</h3>
+        <p>Your products, your prices, your brand — laid out as a shop customers can browse.</p>
+        <div class="cat-shot"><img src="assets/step-3.png?v=5" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-foot">
+          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
+        </div>
+        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </li>
+
+      <li class="cat-card rev">
+        <span class="cat-num">04</span>
+        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
+        <h3>One code for everything</h3>
+        <p>Print it, post it, message it. Shop window, packaging, Instagram bio — one code covers all of it.</p>
+        <div class="cat-shot"><img src="assets/step-4.png?v=5" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-foot">
+          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
+        </div>
+        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </li>
+
+      <li class="cat-card rev">
+        <span class="cat-num">05</span>
+        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <h3>They see it in their room</h3>
+        <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
+        <div class="cat-shot"><img src="assets/step-5.png?v=5" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-foot">
+          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
+        </div>
+        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </li>
+
+    </ol>
+
+    <ul class="cat-bens rev">
+      <li>
+        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+        <span><strong>No guessing</strong><em>They see the true size in their own room, not a photo on a white background.</em></span>
+      </li>
+      <li>
+        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>Fewer returns</strong><em>Nobody sends back a rug that turned out too small.</em></span>
+      </li>
+      <li>
+        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3.4 20.6h17.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6.6 20.6v-5.2M11 20.6v-8.4M15.4 20.6v-4M19.8 20.6v-11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M15.6 6.4h4.4v4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>More orders</strong><em>People buy once they can picture it in place.</em></span>
+      </li>
+      <li>
+        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M2.8 12h18.4M12 2.8c2.7 3.1 2.7 15.1 0 18.4M12 2.8c-2.7 3.1-2.7 15.1 0 18.4" stroke="currentColor" stroke-width="1.7"/></svg></span>
+        <span><strong>Share anywhere</strong><em>One code works on WhatsApp, Instagram, print and your website.</em></span>
+      </li>
+      <li>
+        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 6.6V12l3.7 2.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>Live in 7 days</strong><em>Send photos this week. Share your code next week.</em></span>
+      </li>
+    </ul>
+
   </div>
-
-  <a class="cue" href="#divider" aria-label="Scroll to how it works"><span></span>Scroll</a>
-
 </section>
 
 <!-- ============ HANDOFF ============ -->
-<div class="divider" id="divider">
+<div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
   <span class="dv-badge">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1145,8 +1077,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=4"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=4"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=5"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=5"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1189,130 +1121,11 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>03</em> — Get your catalog
+    <em>03</em> — Why it works
   </span>
 </div>
-
-<!-- ================= GET YOUR CATALOG ================= -->
-<section class="cat" id="catalogs">
-
-  <div class="scanline" aria-hidden="true"></div>
-
-  <div class="mesh" aria-hidden="true">
-    <div class="mesh-base"></div>
-    <div class="mesh-band"><div class="mesh-lit"></div></div>
-  </div>
-
-  <div class="cat-in">
-
-    <div class="cat-head">
-      <p class="cat-eyebrow rev">For shops, showrooms &amp; online sellers</p>
-      <h2 class="rev">You send photos. <em>We do the rest.</em></h2>
-      <p class="cat-sub rev">We turn your products into something your customer can see standing in their own room, at true size, before they buy. One code to share anywhere. No app for them, nothing to install for you.</p>
-    </div>
-
-    <ol class="cat-steps">
-
-      <li class="cat-card rev">
-        <span class="cat-num">01</span>
-        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
-        <h3>You send us photos</h3>
-        <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.png?v=4" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
-        <div class="cat-foot">
-          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
-        </div>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">02</span>
-        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-        <h3>We build every product</h3>
-        <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.png?v=4" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
-        <div class="cat-foot">
-          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
-        </div>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">03</span>
-        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-        <h3>You get your own catalog</h3>
-        <p>Your products, your prices, your brand — laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.png?v=4" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
-        <div class="cat-foot">
-          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
-        </div>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">04</span>
-        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
-        <h3>One code for everything</h3>
-        <p>Print it, post it, message it. Shop window, packaging, Instagram bio — one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.png?v=4" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
-        <div class="cat-foot">
-          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
-        </div>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">05</span>
-        <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-        <h3>They see it in their room</h3>
-        <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.png?v=4" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
-        <div class="cat-foot">
-          <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
-        </div>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-    </ol>
-
-    <ul class="cat-bens rev">
-      <li>
-        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
-        <span><strong>No guessing</strong><em>They see the true size in their own room, not a photo on a white background.</em></span>
-      </li>
-      <li>
-        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span><strong>Fewer returns</strong><em>Nobody sends back a rug that turned out too small.</em></span>
-      </li>
-      <li>
-        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3.4 20.6h17.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6.6 20.6v-5.2M11 20.6v-8.4M15.4 20.6v-4M19.8 20.6v-11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M15.6 6.4h4.4v4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span><strong>More orders</strong><em>People buy once they can picture it in place.</em></span>
-      </li>
-      <li>
-        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M2.8 12h18.4M12 2.8c2.7 3.1 2.7 15.1 0 18.4M12 2.8c-2.7 3.1-2.7 15.1 0 18.4" stroke="currentColor" stroke-width="1.7"/></svg></span>
-        <span><strong>Share anywhere</strong><em>One code works on WhatsApp, Instagram, print and your website.</em></span>
-      </li>
-      <li>
-        <span class="ben-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="currentColor" stroke-width="1.7"/><path d="M12 6.6V12l3.7 2.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span><strong>Live in 7 days</strong><em>Send photos this week. Share your code next week.</em></span>
-      </li>
-    </ul>
-
-  </div>
-</section>
 
 <!-- ============ HANDOFF ============ -->
-<div class="divider">
-  <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-badge">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    <em>04</em> — Why it works
-  </span>
-</div>
-
 <!-- ================= WHY IT WORKS ================= -->
 <section class="why" id="why">
 
@@ -1334,9 +1147,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.png?v=4" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.png?v=5" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.png?v=4" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.png?v=5" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1354,9 +1167,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.png?v=4" alt="Will it fit? A chair measured against the room"></figure>
-          <figure><img src="assets/why-style.png?v=4" alt="Will it look right? Two colours compared side by side"></figure>
-          <figure><img src="assets/why-confidence.png?v=4" alt="Will I regret buying it? A chair with a question mark"></figure>
+          <figure><img src="assets/why-size.png?v=5" alt="Will it fit? A chair measured against the room"></figure>
+          <figure><img src="assets/why-style.png?v=5" alt="Will it look right? Two colours compared side by side"></figure>
+          <figure><img src="assets/why-confidence.png?v=5" alt="Will I regret buying it? A chair with a question mark"></figure>
         </div>
         <div class="carou-dots" id="carouDots" role="tablist" aria-label="Choose a question">
           <button type="button" role="tab" aria-label="Will it fit?" aria-current="true"></button>
@@ -1369,7 +1182,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.png?v=4" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.png?v=5" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1385,7 +1198,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>05</em> — Pricing
+    <em>04</em> — Pricing
   </span>
 </div>
 
@@ -1475,7 +1288,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>06</em> — Get in touch
+    <em>05</em> — Get in touch
   </span>
 </div>
 
@@ -1675,16 +1488,14 @@
     el.classList.add('split', 'rev');
   };
 
-  /* hero headline plays on load */
-  var h1 = document.querySelector('.hero h1');
-  splitHeadline(h1, 48);
+  /* the opener plays on load; the rest wait until you scroll to them */
+  var lead = document.querySelector('.cat h2');
+  splitHeadline(lead, 46);
   requestAnimationFrame(function(){
-    requestAnimationFrame(function(){ if (h1) h1.classList.add('in'); });
+    requestAnimationFrame(function(){ if (lead) lead.classList.add('in'); });
   });
 
-  /* section headlines wait until you scroll to them */
   splitHeadline(document.querySelector('.how h2'), 38);
-  splitHeadline(document.querySelector('.cat h2'), 55);
   splitHeadline(document.querySelector('.why h2'), 34);
   splitHeadline(document.querySelector('.ct-left h2'), 40);
 })();
@@ -2126,103 +1937,6 @@
   }
 })();
 
-/* AR feature points — a faint cloud that keeps re-finding anchors.
-   Seeded so the layout is identical on every load. */
-(function(){
-  var host = document.getElementById('pts');
-  var seed = 20260817;
-  function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
-  for (var i = 0; i < 34; i++){
-    var b = document.createElement('b');
-    b.style.left = (40 + rnd() * 56).toFixed(2) + '%';   /* right side only — clear of the copy */
-    b.style.top  = (10 + rnd() * 54).toFixed(2) + '%';
-    b.style.animationDelay = (rnd() * 5).toFixed(2) + 's';
-    b.style.animationDuration = (3.6 + rnd() * 2.8).toFixed(2) + 's';
-    host.appendChild(b);
-  }
-})();
-
-(function(){
-  var DECKS = [
-    {src:'assets/card-furniture.png?v=4', c:'#E0682A', label:'Furniture'},
-    {src:'assets/card-rugs.png?v=4',      c:'#3A241C', label:'Rugs &amp; carpets'},
-    {src:'assets/card-decor.png?v=4',     c:'#1F7A78', label:'Decoration'},
-    {src:'assets/card-art.png?v=4',       c:'#1B2A4A', label:'Wall art'}
-  ];
-
-  var STEP = 2500;   /* ms per station */
-  var MOVE = 0.46;   /* share of a step spent moving; the rest is a hold */
-
-  var S = 1.12;      /* every card the same size, at the larger one */
-
-  var stage = document.getElementById('stage');
-  var cards = [];
-
-  DECKS.forEach(function(d){
-    var el = document.createElement('div');
-    el.className = 'card ph';
-    el.style.setProperty('--c', d.c);
-    el.innerHTML =
-      '<div class="glow"></div>' +
-      '<div class="skin"><img alt="" src="' + d.src + '">' +
-        '<div class="ph-label">' + d.label + '</div></div>' +
-      '<div class="refl"><img alt="" src="' + d.src + '"></div>';
-    var im = el.querySelector('.skin img');
-    im.addEventListener('load',  function(){ el.classList.remove('ph'); });
-    im.addEventListener('error', function(){ el.querySelector('.ph-label').style.display = 'flex'; });
-    stage.appendChild(el);
-    cards.push(el);
-  });
-
-  /* geometry, recomputed from what the browser actually rendered */
-  var G = {};
-  function measure(){
-    var w = cards[0].offsetWidth, h = cards[0].offsetHeight;
-    var sw = w * S;                      /* the width you actually see once scaled */
-    var span = sw * 1.24;                /* equal gaps: 24% of a card, every time */
-    var pad = (sw - w) / 2;              /* keeps the head flush with the stage edge */
-    G.x = [pad, pad + span, pad + span * 2];   /* head · middle · tail */
-    G.drop = h + 60;                     /* one distance, used for both down and up */
-  }
-  measure();
-  window.addEventListener('resize', measure);
-
-  function lerp(a, b, t){ return a + (b - a) * t; }
-  function ease(t){ return t * t * (3 - 2 * t); }
-
-  /* Four stations. The sink at the head and the rise at the tail run in the same
-     beat, over the same distance, off the same eased value — so at every instant
-     the one going down is exactly as far below the line as the one coming up. */
-  function stateAt(u){
-    var seg = Math.floor(u) % 4;
-    var q = ease(Math.min((u - Math.floor(u)) / MOVE, 1));
-    var X = G.x;
-
-    /* the two cards in transit sit BEHIND the settled row, so a card on its way
-       down is never drawn over the card sliding into its place */
-    if (seg === 0) return {x:X[2], y:G.drop * (1 - q), o:q,     s:S, z:1};  /* rising  at the tail */
-    if (seg === 1) return {x:lerp(X[2], X[1], q), y:0, o:1,      s:S, z:3};  /* tail -> middle */
-    if (seg === 2) return {x:lerp(X[1], X[0], q), y:0, o:1,      s:S, z:4};  /* middle -> head */
-    return               {x:X[0], y:G.drop * q,       o:1 - q,   s:S, z:0};  /* sinking at the head */
-  }
-
-  var t0 = null;
-  function frame(now){
-    if (t0 === null) t0 = now;
-    var base = (now - t0) / STEP;
-    for (var i = 0; i < cards.length; i++){
-      /* offset so one card is always at each station */
-      var u = (base + i) % 4;
-      var st = stateAt(u);
-      var el = cards[i];
-      el.style.transform = 'translate3d(' + st.x.toFixed(1) + 'px,' + st.y.toFixed(1) + 'px,0) scale(' + st.s.toFixed(3) + ')';
-      el.style.opacity = st.o.toFixed(3);
-      el.style.zIndex = st.z;
-    }
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
 </script>
 </body>
 </html>
