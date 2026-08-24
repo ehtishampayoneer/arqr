@@ -280,7 +280,7 @@
       '.lang-menu button i{font-style:normal;font-size:11px;letter-spacing:.1em;',
       '  text-transform:uppercase;color:#8A8378}',
       '@media(max-width:700px){',
-      '  .lang-btn{padding:7px 10px;font-size:0;gap:0}',
+      '  .lang-btn{padding:11px 12px;font-size:0;gap:0}',
       '  .lang-btn svg{width:19px;height:19px;opacity:.9}',
       '  .lang-menu{min-width:172px}',
       '}'

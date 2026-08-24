@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=11"></script>
+<script src="i18n.js?v=18"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -78,7 +78,7 @@
   .shop-mark{flex:none;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
     background:var(--tone-soft);color:var(--tone)}
   .shop-mark svg{width:58%;height:58%;display:block}
-  .kind{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.16em;
+  .kind{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.14em;
     text-transform:uppercase;color:var(--tone);margin:0 0 5px}
   .shop-name{font-family:var(--f-head);font-weight:800;letter-spacing:.09em;text-transform:uppercase;
     font-size:clamp(16px,1.6vw,20px);line-height:1.1;margin:0}
@@ -97,7 +97,8 @@
   .shop-url{font-size:12.5px;color:var(--ink-soft);font-weight:500;min-width:0;
     overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .shop-url b{color:var(--ink);font-weight:600}
-  .open{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--tone);color:#FFF;
+  .open{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    text-align:center;background:var(--tone);color:#FFF;
     border-radius:100px;padding:11px 20px;font-size:13.5px;font-weight:600;transition:filter .2s ease}
   .shop:hover .open{filter:brightness(1.08)}
   .open svg{width:14px;height:14px;display:block}
@@ -115,12 +116,16 @@
 
   @media(max-width:700px){
     .bar{padding:0 16px}
-    .logo{font-size:17px}
-    .back{padding:8px 13px;font-size:13px}
+    .logo{font-size:17px;padding:9px 0}
+    .back{padding:11px 14px;font-size:13px}
     .top{padding-top:calc(var(--bar-h) + 24px)}
     .top h1{font-size:27px}
     .top p{font-size:14.5px}
-    .not{font-size:12.5px;padding:10px 16px;gap:8px;margin-top:18px}
+    /* four lines of text inside a 100px pill radius reads as a lens,
+       not a badge — square it off and put the tick beside line one */
+    .not{font-size:12.5px;padding:12px 15px;gap:9px;margin-top:18px;
+      border-radius:14px;align-items:flex-start;text-align:start}
+    .not svg{margin-top:2px}
     .shop-top{padding:20px 16px 0}
     .shop-note,.peek,.shop-go{margin-left:16px;margin-right:16px}
     .shop-go{flex-wrap:wrap;margin-bottom:16px}
@@ -131,7 +136,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=11"></script>
+<script src="sprite.js?v=18"></script>
 
 <header class="bar">
   <a class="logo" href="/">
@@ -171,7 +176,7 @@
   </div>
 </main>
 
-<script src="stores.js?v=11"></script>
+<script src="stores.js?v=18"></script>
 <script>
 (function () {
   var host = location.host || 'arqr-two.vercel.app';

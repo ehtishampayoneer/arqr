@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=11"></script>
+<script src="i18n.js?v=18"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -79,7 +79,7 @@
     overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
   .cats::-webkit-scrollbar{display:none}
   .cats button{position:relative;white-space:nowrap;cursor:pointer;background:none;border:0;
-    padding:0 0 12px;font-size:14.5px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+    padding:10px 0 12px;font-size:14.5px;font-weight:500;color:var(--ink-soft);transition:color .2s}
   .cats button:hover{color:var(--ink)}
   .cats button[aria-selected="true"]{color:var(--ink);font-weight:600}
   .cats button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;
@@ -100,10 +100,10 @@
     box-shadow:0 22px 40px -30px rgba(70,50,30,.6)}
   .shot{position:relative;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;
     background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%)}
-  .shot svg{width:60%;height:60%;display:block;color:#A99C89}
+  .shot svg{width:62%;height:62%;display:block;color:#A99C89}
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .tag{position:absolute;top:10px;left:10px;z-index:2;background:rgba(255,255,255,.94);
-    border-radius:100px;padding:5px 11px;font-size:10.5px;font-weight:700;
+    border-radius:100px;padding:5px 11px;font-size:11.5px;font-weight:700;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 
   .meta{padding:14px 15px 0;flex:1 1 auto;min-width:0}
@@ -137,7 +137,7 @@
   .ar-box{width:min(420px,100%);background:var(--page-hi);border-radius:20px;
     padding:clamp(22px,4vw,30px);text-align:center;position:relative;
     box-shadow:0 40px 90px -40px rgba(20,16,12,.8)}
-  .ar-close{position:absolute;top:12px;right:12px;width:34px;height:34px;cursor:pointer;
+  .ar-close{position:absolute;top:12px;right:12px;width:40px;height:40px;cursor:pointer;
     border:0;border-radius:50%;background:var(--page-alt);display:grid;place-items:center}
   .ar-close svg{width:15px;height:15px;display:block}
   .ar-shot{width:110px;height:110px;margin:0 auto 16px;border-radius:16px;
@@ -150,7 +150,13 @@
   .ar-qr img{display:block;width:100%}
 
   @media(max-width:700px){
-    .demo-in{padding:8px 0;font-size:11.5px;gap:6px}
+    /* this bar was running to six lines on a phone and swamping the
+       shop header underneath it. One line of label, one of link. */
+    .demo-in{padding:6px 0;font-size:11.5px;gap:3px;line-height:1.4}
+    .demo-in > svg{display:none}
+    /* reads as a small button rather than a 25px strip of text */
+    .demo a{padding:13px 15px;border:1px solid rgba(240,168,126,.4);
+      border-radius:100px;margin-top:2px;line-height:1}
     .shop-in{padding:14px 0;gap:12px}
     .shop-name{font-size:17px}
     .shop-tag{font-size:11.5px;margin-top:4px}
@@ -162,14 +168,18 @@
     .grid{gap:12px}
     .meta{padding:12px 12px 0}
     .pname,.price{font-size:14px}
-    .place{width:calc(100% - 24px);margin:12px;padding:12px;font-size:13.5px}
+    .place{width:calc(100% - 24px);margin:12px;padding:12px;font-size:13.5px;
+      text-align:center;line-height:1.35}
+    .shot svg{width:68%;height:68%}
+    .cats{gap:18px}
+    .cats button{padding:12px 0 12px;font-size:14px}
     .foot-in{padding:24px 0;flex-direction:column;align-items:flex-start}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<script src="sprite.js?v=11"></script>
+<script src="sprite.js?v=18"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -196,7 +206,7 @@
       <p id="sub">Sofas, tables and storage — every one to scale in your room.</p>
     </div>
     <div class="scan">
-      <div class="scan-qr"><img id="scanQr" src="assets/qr-novara.svg?v=11" alt="This shop's catalog code"></div>
+      <div class="scan-qr"><img id="scanQr" src="assets/qr-novara.svg?v=18" alt="This shop's catalog code"></div>
       <div>
         <strong>This shop's code</strong>
         <span id="scanSay">One code on the shelf, the window or the receipt. It opens this catalog.</span>
@@ -228,13 +238,13 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=11" alt="Code to open this catalog on a phone"></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=18" alt="Code to open this catalog on a phone"></div>
   </div>
 </div>
 
-<script src="stores.js?v=11"></script>
+<script src="stores.js?v=18"></script>
 <script>
-var V = '?v=11';
+var V = '?v=18';
 var STORES = window.ARQR_STORES;
 
 /* Which shop is this? The address is the shop's own — /novara, /corso — and
