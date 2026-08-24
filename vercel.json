@@ -1,11 +1,32 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/novara",
+      "destination": "/store"
+    },
+    {
+      "source": "/corso",
+      "destination": "/store"
+    },
+    {
+      "source": "/maison",
+      "destination": "/store"
+    },
+    {
+      "source": "/terra",
+      "destination": "/store"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     }
   ]

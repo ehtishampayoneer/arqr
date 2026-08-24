@@ -46,25 +46,41 @@ next number. There is a script for it:
 
 ## The sample catalogs
 
-`catalog.html` is the page the QR code opens (`/catalog`). It carries four
-sample shops — Novara Living, Terra & Weave, Lumen Studio, Atelier Nine — each
-with its own products, prices and a **See it in your place** button.
+These are **not** a marketplace. Each sample is one shop's own catalog, at its
+own address, carrying only that shop's name, colour, products and code. Four of
+them exist purely to show a seller one that sells what they sell.
 
-### The QR code
+| Business | Shop | Address | Button says |
+|---|---|---|---|
+| Furniture | Novara Living | `/novara` | See it in your room |
+| Footwear | Corso Footwear | `/corso` | Try them on |
+| Decoration | Maison Ora | `/maison` | See it in your room |
+| Rugs & carpets | Terra & Weave | `/terra` | See it on your floor |
 
-`assets/qr-catalog.svg` is generated, not drawn. It currently points at
-`https://arqr-two.vercel.app/catalog`.
+`catalog.html` (`/catalog`) is only the sampler that hands you off to one of
+them — the QR on the home page points there. `store.html` renders whichever
+shop the address names; `vercel.json` rewrites `/novara` and friends onto it,
+so each shop gets a clean address of its own.
 
-**If the site ever moves to a custom domain the code must be regenerated**,
-otherwise every scan lands on the old address:
+`stores.js` holds all four shops. **Adding a fifth means three edits:** append
+it to `stores.js`, add a rewrite in `vercel.json`, then `npm run qr`.
 
-    node qr-gen.js https://yourdomain.com/catalog
+### The QR codes
+
+Generated, not drawn — one for the sampler and one per shop, so a shop's code
+opens that shop's catalog and nothing else. They point at
+`https://arqr-two.vercel.app`.
+
+**If the site moves to a custom domain every code must be regenerated**,
+otherwise scans land on the old address:
+
+    node qr-gen.js https://yourdomain.com
 
 ### Product photos
 
-The tiles fall back to line art. Drop a real photo at
+Tiles fall back to line art. Drop a real photo at
 
-    assets/catalog/<shop>-<n>.webp     e.g. assets/catalog/novara-1.webp
+    assets/catalog/<shop>-<n>.webp     e.g. assets/catalog/corso-1.webp
 
 and it appears on that tile by itself — no code change. `<n>` is the product's
 position in its shop, counting from 1. Until a photo exists the page probes for
@@ -72,15 +88,15 @@ it and the browser console logs a 404; that is the fallback working, not a bug.
 
 ### What still needs 3D files
 
-**See it in your place** cannot open a real camera view until each product has
-a 3D model — `.usdz` for iPhone, `.glb` for Android. The wiring is already
-there (`rel="ar"` on iOS, Scene Viewer on Android); add `usdz:` and `glb:`
-paths to a product in `catalog.html` and that product goes straight into AR.
-Without them the button explains what would happen instead of failing.
+The AR button cannot open a real camera view until each product has a 3D model
+— `.usdz` for iPhone, `.glb` for Android. The wiring is already there
+(`rel="ar"` on iOS, Scene Viewer on Android); add `usdz:` and `glb:` paths to a
+product in `stores.js` and that product goes straight into AR. Without them the
+button explains what would happen instead of failing.
 
 ## Commands
 
     npm run images   # re-encode assets/*.png to webp after replacing art
-    npm run qr       # rebuild the QR code
-    npm run bump     # raise ?v=N on both pages so browsers refetch
+    npm run qr       # rebuild every QR code
+    npm run bump     # raise ?v=N across all pages so browsers refetch
     npm run art      # images + bump, the usual one after swapping art

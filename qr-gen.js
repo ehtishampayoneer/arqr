@@ -284,12 +284,32 @@ function svg(grid, n, opts) {
   ].join('\n');
 }
 
-const url = process.argv[2] || 'https://arqr-two.vercel.app/catalog';
+/* ------------------------------------------------------------------
+   One code for the sampler and one for every shop, because a shop's
+   code has to open that shop's own catalog and nothing else.
+
+   Run:  node qr-gen.js                       (uses the site below)
+         node qr-gen.js https://yourdomain.com
+   ------------------------------------------------------------------ */
+const SITE = (process.argv[2] || 'https://arqr-two.vercel.app').replace(/\/+$/, '');
+
+const stores = (function () {
+  const src = fs.readFileSync('stores.js', 'utf8');
+  const box = { window: {} };
+  new Function('window', src)(box.window);
+  return box.window.ARQR_STORES.map(s => s.slug);
+})();
+
 const level = 'H';                       /* 30% recovery — the centre mark is safe */
-const enc = encode(url, level);
-const out = build(enc.ver, enc.words, level);
-fs.writeFileSync('assets/qr-catalog.svg',
-  svg(out.grid, out.size, { dark: '#191919', light: '#FFFFFF', accent: '#E0682A', logo: true }));
-console.log('qr  ' + url);
-console.log('    version ' + enc.ver + '  ' + out.size + 'x' + out.size +
-            '  level ' + level + '  mask ' + out.mask + '  ->  assets/qr-catalog.svg');
+const targets = [['catalog', SITE + '/catalog']]
+  .concat(stores.map(slug => [slug, SITE + '/' + slug]));
+
+targets.forEach(([name, url]) => {
+  const enc = encode(url, level);
+  const out = build(enc.ver, enc.words, level);
+  const file = 'assets/qr-' + name + '.svg';
+  fs.writeFileSync(file,
+    svg(out.grid, out.size, { dark: '#191919', light: '#FFFFFF', accent: '#E0682A', logo: true }));
+  console.log('  ' + file.padEnd(26) + 'v' + enc.ver + '  ' + out.size + 'x' + out.size +
+              '  mask ' + out.mask + '   ' + url);
+});
