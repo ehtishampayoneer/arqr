@@ -94,6 +94,62 @@ The AR button cannot open a real camera view until each product has a 3D model
 product in `stores.js` and that product goes straight into AR. Without them the
 button explains what would happen instead of failing.
 
+## Languages
+
+A globe in the top bar switches the whole site between 13 languages:
+
+| | | |
+|---|---|---|
+| English | العربية Arabic | اردو Urdu |
+| 简体中文 Chinese | 日本語 Japanese | Русский Russian |
+| Oʻzbekcha Uzbek | Türkçe Turkish | Español Spanish |
+| Français French | Deutsch German | Italiano Italian |
+| Português Portuguese | | |
+
+On a first visit the browser's own language is used if we speak it, otherwise
+English. After that the choice is remembered. Arabic and Urdu switch the whole
+page to right-to-left, and the four non-Latin scripts pull in a font that
+actually contains them.
+
+**These translations have not been checked by a native speaker.** They are good
+enough to read and to send, but before a language goes into cold outreach it is
+worth having someone who speaks it read the headline and the pricing section.
+
+### Editing the words
+
+`lang-source/part1.js`, `part2.js` and `part3.js` hold every string with all
+eleven translations side by side, so you can see them together. Change one and
+rebuild:
+
+    npm run lang
+
+Arabic is hand-written at `lang/ar.js` and is not generated — edit it directly.
+
+Every row is length-checked at build time, so a miscounted line fails loudly
+instead of quietly putting Turkish copy on the Japanese page.
+
+### Adding a language
+
+Add it to `LANGS` in `i18n.js` (with `dir:'rtl'` and a `font:` if the script
+needs one), add its code to `LANGS` and a title to `TITLES` in `build-lang.js`,
+add one more entry to every row in `lang-source/part*.js`, then `npm run lang`.
+
+### Pictures with words in them
+
+Most of the art is photography and needs no translation. Six do have English
+set into the image itself — `why-ar`, `why-photo`, `why-size`, `why-style`,
+`why-confidence` and `why-phone`. Those cannot be translated by code.
+
+When you have a translated version, save it beside the original with the
+language code in the name and the page picks it up on its own:
+
+    assets/why-size.webp        <- English, the fallback
+    assets/why-size.ar.webp     <- shown when Arabic is on
+    assets/why-size.zh.webp     <- shown when Chinese is on
+
+Nothing else to change. A language with no translated picture keeps the
+English one, which is why nothing breaks if you only ever do a few.
+
 ## Commands
 
     npm run images   # re-encode assets/*.png to webp after replacing art

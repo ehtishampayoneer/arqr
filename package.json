@@ -7,7 +7,8 @@
     "images": "node build-images.js",
     "qr": "node qr-gen.js",
     "bump": "node bump-assets.js",
-    "art": "node build-images.js && node bump-assets.js"
+    "art": "node build-images.js && node bump-assets.js",
+    "lang": "node build-lang.js"
   },
   "devDependencies": {
     "jsqr": "^1.4.0",
