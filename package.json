@@ -4,6 +4,14 @@
   "version": "1.0.0",
   "description": "ARQR marketing site — one static page, no build step.",
   "scripts": {
-    "bump": "node bump-assets.js"
+    "images": "node build-images.js",
+    "qr": "node qr-gen.js",
+    "bump": "node bump-assets.js",
+    "art": "node build-images.js && node bump-assets.js"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.3"
   }
 }

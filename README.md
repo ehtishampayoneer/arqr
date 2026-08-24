@@ -43,3 +43,44 @@ next number. There is a script for it:
 
     npm run bump
 
+
+## The sample catalogs
+
+`catalog.html` is the page the QR code opens (`/catalog`). It carries four
+sample shops — Novara Living, Terra & Weave, Lumen Studio, Atelier Nine — each
+with its own products, prices and a **See it in your place** button.
+
+### The QR code
+
+`assets/qr-catalog.svg` is generated, not drawn. It currently points at
+`https://arqr-two.vercel.app/catalog`.
+
+**If the site ever moves to a custom domain the code must be regenerated**,
+otherwise every scan lands on the old address:
+
+    node qr-gen.js https://yourdomain.com/catalog
+
+### Product photos
+
+The tiles fall back to line art. Drop a real photo at
+
+    assets/catalog/<shop>-<n>.webp     e.g. assets/catalog/novara-1.webp
+
+and it appears on that tile by itself — no code change. `<n>` is the product's
+position in its shop, counting from 1. Until a photo exists the page probes for
+it and the browser console logs a 404; that is the fallback working, not a bug.
+
+### What still needs 3D files
+
+**See it in your place** cannot open a real camera view until each product has
+a 3D model — `.usdz` for iPhone, `.glb` for Android. The wiring is already
+there (`rel="ar"` on iOS, Scene Viewer on Android); add `usdz:` and `glb:`
+paths to a product in `catalog.html` and that product goes straight into AR.
+Without them the button explains what would happen instead of failing.
+
+## Commands
+
+    npm run images   # re-encode assets/*.png to webp after replacing art
+    npm run qr       # rebuild the QR code
+    npm run bump     # raise ?v=N on both pages so browsers refetch
+    npm run art      # images + bump, the usual one after swapping art

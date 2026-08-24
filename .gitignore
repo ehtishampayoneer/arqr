@@ -1,14 +1,4 @@
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# tooling
 node_modules/
-.vercel
-*.log
-
-# partial / temp downloads
 *.crdownload
 *.part
 *.tmp

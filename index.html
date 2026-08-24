@@ -218,31 +218,42 @@
 
   /* ================= HOW IT WORKS ================= */
   /* icons sit dead centre in their circles: block kills the inline baseline gap */
-  .promise-ico svg,.how-cta i svg,.st-ico svg,.pill svg,.logo svg{display:block}
+  .promise-ico svg,.st-ico svg,.pill svg,.logo svg{display:block}
 
+  /* The opening screen lands inside one viewport. The clip takes whatever
+     height is left over, but the copy column has a floor it cannot go under,
+     so the full-screen behaviour is only claimed on a screen tall enough to
+     honour it — below that the section grows and the page simply scrolls,
+     which reads better than crushing the type. */
   .how{position:relative;overflow:hidden;background:var(--page-alt);color:var(--sec-ink);
-    padding:calc(var(--bar-h) + clamp(26px,4vh,56px)) 0 clamp(38px,4.5vh,62px)}
+    padding:calc(var(--bar-h) + clamp(16px,2.4vh,30px)) 0 clamp(20px,2.8vh,36px)}
+  @media(min-width:1081px) and (min-height:800px){
+    .how{min-height:100svh;display:flex;align-items:center}
+  }
+  @media(max-width:1080px){.how{
+    padding:calc(var(--bar-h) + clamp(22px,3.4vh,44px)) 0 clamp(30px,4vh,52px)}}
+
   .how-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto;
     display:grid;grid-template-columns:minmax(300px,.72fr) minmax(0,1.55fr);
     gap:clamp(30px,4vw,72px);align-items:start}
   @media(max-width:1080px){.how-in{grid-template-columns:minmax(0,1fr)}}
 
   /* ---- left column ---- */
-  .sec-eyebrow{margin:0 0 26px;font-size:12.5px;font-weight:600;letter-spacing:.2em;
+  .sec-eyebrow{margin:0 0 clamp(13px,1.8vh,26px);font-size:12.5px;font-weight:600;letter-spacing:.2em;
     text-transform:uppercase;color:var(--accent)}
   .sec-eyebrow::after{content:"";display:block;width:34px;height:2.5px;border-radius:2px;
     background:var(--accent);margin-top:12px}
   .how h2{font-family:var(--f-head);font-weight:700;
     font-size:clamp(30px,2.55vw,45px);line-height:1.16;letter-spacing:-.02em;
-    margin:0 0 26px;color:var(--sec-ink)}
+    margin:0 0 clamp(13px,1.9vh,26px);color:var(--sec-ink)}
   .how h2 em{font-style:normal;color:var(--accent)}
   .how .rule{display:block;width:34px;height:2.5px;border-radius:2px;
-    background:var(--accent);opacity:.5;margin-bottom:24px}
-  .how-sub{margin:0 0 32px;font-size:clamp(15px,1.05vw,17px);line-height:1.65;
+    background:var(--accent);opacity:.5;margin-bottom:clamp(12px,1.7vh,24px)}
+  .how-sub{margin:0 0 clamp(15px,2.2vh,32px);font-size:clamp(15px,1.05vw,17px);line-height:1.65;
     color:var(--sec-muted);max-width:38ch}
 
   .promise{display:flex;align-items:center;gap:18px;background:var(--sec-card);
-    border-radius:16px;padding:22px 24px;max-width:430px}
+    border-radius:16px;padding:clamp(14px,1.9vh,22px) 24px;max-width:430px}
   /* .promise > .promise-ico beats .promise span — otherwise the block rule below
      wins on specificity and kills the grid centring */
   .promise > .promise-ico{flex:none;width:52px;height:52px;border-radius:50%;background:#FFF;
@@ -252,20 +263,36 @@
   .promise strong{display:block;font-size:17.5px;font-weight:600;margin-bottom:5px}
   .promise > div span{display:block;font-size:14.5px;line-height:1.5;color:var(--sec-muted)}
 
-  .how-cta{display:inline-flex;align-items:center;gap:18px;margin-top:clamp(36px,6vh,86px);
-    font-size:17px;font-weight:600;color:var(--sec-ink)}
-  .how-cta i{flex:none;width:64px;height:64px;border-radius:50%;background:var(--accent);
-    color:#fff;display:grid;place-items:center;
-    box-shadow:0 16px 30px -14px rgba(224,104,42,.9);
-    transition:transform .25s ease}
-  .how-cta i svg{width:29px;height:29px}
-  .how-cta .arw{transition:transform .25s ease}
-  .how-cta:hover i{transform:scale(1.06)}
-  .how-cta:hover .arw{transform:translateX(5px)}
+  /* ---- the sample-catalog code ---- */
+  .how-qr{display:flex;align-items:center;gap:clamp(13px,1.2vw,18px);
+    margin-top:clamp(14px,2vh,22px);padding:clamp(11px,1.3vh,15px);max-width:430px;
+    background:var(--sec-card);border-radius:16px}
+  .qr-shot{flex:none;display:block;width:clamp(84px,7vw,100px);height:clamp(84px,7vw,100px);
+    background:#FFF;border-radius:12px;padding:5px;
+    box-shadow:0 8px 20px -14px rgba(40,30,20,.7);transition:transform .25s ease}
+  .qr-shot img{width:100%;height:100%;display:block}
+  .qr-shot:hover{transform:scale(1.03)}
+  .qr-copy{min-width:0}
+  .qr-copy strong{display:block;font-size:15px;font-weight:600;margin-bottom:4px}
+  .qr-copy span{display:block;font-size:12.8px;line-height:1.5;color:var(--sec-muted)}
+  /* the wording swaps: a mouse cannot tap, a phone cannot scan its own screen */
+  .qr-copy .qr-tap{display:none}
+  .qr-open{display:none;align-items:center;gap:6px;margin-top:8px;
+    font-size:13px;font-weight:600;color:var(--accent)}
+  @media(hover:none) and (pointer:coarse){
+    .qr-copy .qr-scan{display:none}
+    .qr-copy .qr-tap{display:block}
+    .qr-open{display:inline-flex}
+  }
 
   /* ---- video box ---- */
   .vbox{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/10.4;
     background:#EDE7DE;box-shadow:0 30px 60px -34px rgba(40,30,20,.45)}
+  /* on a full-height screen the clip is sized by what is left, not by its
+     own ratio — object-fit:cover keeps it filled either way */
+  @media(min-width:1081px){
+    .vbox{aspect-ratio:auto;height:clamp(240px,calc(100svh - var(--bar-h) - 320px),640px)}
+  }
   .vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity .7s ease}
   .vbox video.on{opacity:1}
@@ -282,7 +309,7 @@
   .pill-br{bottom:18px;right:18px}
 
   /* ---- the four steps ---- */
-  .steps4{list-style:none;margin:clamp(30px,4vh,52px) 0 0;padding:0;
+  .steps4{list-style:none;margin:clamp(18px,2.8vh,42px) 0 0;padding:0;
     display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
   .steps4 li{position:relative;padding:0 8px}
   .steps4 li+li::before{content:"";position:absolute;left:-50%;right:50%;top:31px;
@@ -304,7 +331,7 @@
   /* ================= GET YOUR CATALOG ================= */
   .cat{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(70px,9vh,120px)}
-  .cat-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .cat-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(15px,2.1vh,26px)}
   .how-left .trust{margin-top:18px}
   .cat-in{position:relative;z-index:5;width:var(--wrap);margin:0 auto}
 
@@ -501,7 +528,21 @@
 
   .carou{position:relative;min-width:0;border-radius:16px;overflow:hidden;
     background:var(--sec-card);box-shadow:0 24px 48px -34px rgba(70,50,30,.55)}
-  .carou-track{display:flex;transition:transform .7s cubic-bezier(.4,.75,.28,1)}
+  .carou-track{display:flex;transition:transform .42s cubic-bezier(.32,.78,.28,1)}
+
+  .carou-arw{position:absolute;top:50%;z-index:4;transform:translateY(-50%);
+    width:clamp(36px,2.7vw,44px);height:clamp(36px,2.7vw,44px);cursor:pointer;
+    border:0;padding:0;border-radius:50%;background:rgba(255,253,250,.94);color:var(--ink);
+    display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(40,30,20,.65);
+    opacity:0;transition:opacity .25s ease,transform .25s ease}
+  .carou:hover .carou-arw,.carou:focus-within .carou-arw{opacity:1}
+  .carou-arw:hover{transform:translateY(-50%) scale(1.07)}
+  .carou-arw svg{width:18px;height:18px;display:block}
+  .carou-prev{left:12px}
+  .carou-next{right:12px}
+  .carou-next svg{transform:scaleX(-1)}
+  /* a touch screen has no hover to reveal them, so they simply stay put */
+  @media(hover:none){.carou-arw{opacity:1;background:rgba(255,253,250,.86)}}
   .carou-track figure{flex:0 0 100%;margin:0;position:relative;aspect-ratio:3/2}
   .carou-track img{width:100%;height:100%;object-fit:cover;display:block}
   .carou-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;
@@ -759,24 +800,43 @@
 
     .divider{height:98px}
 
-    .how{padding:34px 0 30px}
-    .how-in{gap:26px}
+    /* the video has to be visible without scrolling, so the two columns are
+       dissolved and every child is ordered by hand: headline, clip, then the
+       ask, then the supporting blocks. */
+    .how{padding:calc(var(--bar-h) + 16px) 0 30px}
+    /* align-items:start carries over from the desktop grid; in a column
+       flex box that sizes every child to its own content, which collapses
+       the video box to nothing because its children are all absolute */
+    .how-in{display:flex;flex-direction:column;align-items:stretch;gap:0}
+    .how-left,.how-right{display:contents}
+    .how .sec-eyebrow{order:1;margin-bottom:12px}
+    .how h2{order:2}
+    .how .rule{order:3}
+    .how-sub{order:4}
+    .how .vbox{order:5}
+    .how .cat-cta{order:6;margin-top:16px}
+    .how .trust{order:7;margin-top:14px}
+    .how-qr{order:8;margin-top:16px}
+    .how .promise{order:9;margin-top:18px}
+    .how .steps4{order:10}
     .sec-eyebrow{margin-bottom:18px}
-    .how h2{font-size:26px;margin-bottom:18px}
-    .how-sub{font-size:15px;margin-bottom:24px}
+    .how h2{font-size:25px;margin-bottom:14px}
+    .how-sub{font-size:14.5px;margin-bottom:18px}
+    .how .rule{margin-bottom:14px}
+    .how-qr{padding:12px;gap:12px}
+    .qr-shot{width:88px;height:88px}
+    .qr-copy strong{font-size:14.5px}
+    .qr-copy span{font-size:12.5px}
     .promise{max-width:100%;padding:18px;gap:14px}
     .promise > .promise-ico{width:46px;height:46px}
     .promise strong{font-size:16px}
     .promise > div span{font-size:13.5px}
-    .how-cta{margin-top:28px;font-size:16px;gap:14px}
-    .how-cta i{width:54px;height:54px}
-    .how-cta i svg{width:25px;height:25px}
     .vbox{border-radius:16px}
     .pill{font-size:11px;padding:8px 11px;gap:6px}
     .pill svg{width:15px;height:15px}
     .pill-tl{top:12px;left:12px}
     .pill-br{bottom:12px;right:12px}
-    .steps4{margin-top:26px;gap:26px 0}
+    .steps4{margin-top:22px;gap:22px 0}
     .steps4 .st-ico{width:54px;height:54px;margin-bottom:12px}
     .st-ico svg{width:24px;height:24px}
 
@@ -807,6 +867,9 @@
     .carou{border-radius:14px}
     .carou-track figure{aspect-ratio:4/3}
     .carou-dots{bottom:10px;padding:7px 10px}
+    .carou-arw{width:34px;height:34px}
+    .carou-prev{left:8px}
+    .carou-next{right:8px}
     .sol-phone{max-width:210px;margin-inline:auto}
     .pr{padding:30px 0 42px}
     .pr-head{margin-bottom:26px}
@@ -864,6 +927,28 @@
     .mesh-band{display:none}
     .carou-track{transition:none}
   }
+  /* short laptop screens: same layout, every measurement pulled in a notch */
+  @media(min-width:1081px) and (max-height:799px){
+    /* a touch more room on the left so the two buttons stay on one line */
+    .how-in{grid-template-columns:minmax(340px,.86fr) minmax(0,1.5fr)}
+    .how h2{font-size:clamp(25px,2vw,32px)}
+    .how-sub{font-size:14.5px;max-width:34ch}
+    .promise{padding:12px 16px;gap:14px}
+    .promise > .promise-ico{width:44px;height:44px}
+    .promise-ico svg{width:22px;height:22px}
+    .promise strong{font-size:15.5px;margin-bottom:3px}
+    .promise > div span{font-size:13px}
+    .how-qr{padding:10px;gap:12px}
+    .qr-shot{width:76px;height:76px;padding:4px}
+    .qr-copy strong{font-size:14px}
+    .qr-copy span{font-size:12px}
+    .steps4 .st-ico{width:50px;height:50px;margin-bottom:10px}
+    .steps4 li+li::before{top:25px}
+    .steps4 li+li::after{top:21px}
+    .steps4 strong{font-size:15px}
+    .steps4 .st-txt{font-size:13px}
+  }
+
 </style>
 </head>
 <body>
@@ -927,24 +1012,11 @@
         </div>
       </div>
 
-      <a class="how-cta rev" href="#catalogs">
-        <i aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </i>
-        See how it works
-        <svg class="arw" width="24" height="16" viewBox="0 0 24 16" fill="none" aria-hidden="true">
-          <path d="M1 8h20m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-
       <div class="cat-cta rev">
-        <a class="btn btn-a" href="#contact">Get your AR catalog
+        <a class="btn btn-a" href="#contact">Apply for your AR catalog
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="btn btn-b" href="#catalogs">See a live example</a>
+        <a class="btn btn-b" href="catalog">See a live example</a>
       </div>
 
       <p class="trust rev">
@@ -952,13 +1024,26 @@
         <span>iPhone &amp; Android</span>
         <span>Live in 7 days</span>
       </p>
+      <div class="how-qr rev">
+        <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
+          <img src="assets/qr-catalog.svg?v=8" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+        </a>
+        <div class="qr-copy">
+          <strong>See a real catalog first</strong>
+          <span class="qr-scan">Point your phone camera at this code. Four sample shops open, and you can stand any product in your own room.</span>
+          <span class="qr-tap">Tap this code. Four sample shops open, and you can stand any product in your own room.</span>
+          <a class="qr-open" href="catalog">Open the samples
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=7"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=7"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=8"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=8"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1026,9 +1111,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.png?v=7" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=8" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.png?v=7" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=8" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1046,10 +1131,16 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.png?v=7" alt="Will it fit? A chair measured against the room"></figure>
-          <figure><img src="assets/why-style.png?v=7" alt="Will it look right? Two colours compared side by side"></figure>
-          <figure><img src="assets/why-confidence.png?v=7" alt="Will I regret buying it? A chair with a question mark"></figure>
+          <figure><img src="assets/why-size.webp?v=8" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=8" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=8" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
+        <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carou-arw carou-next" id="carouNext" type="button" aria-label="Next question">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="carou-dots" id="carouDots" role="tablist" aria-label="Choose a question">
           <button type="button" role="tab" aria-label="Will it fit?" aria-current="true"></button>
           <button type="button" role="tab" aria-label="Will it look right?" aria-current="false"></button>
@@ -1061,7 +1152,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.png?v=7" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=8" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1107,7 +1198,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.png?v=7" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=8" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1119,7 +1210,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.png?v=7" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=8" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1131,7 +1222,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand — laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.png?v=7" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=8" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1143,7 +1234,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio — one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.png?v=7" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=8" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1155,7 +1246,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.png?v=7" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=8" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1744,6 +1835,8 @@
 
   var n = track.children.length;
   var btns = [].slice.call(dots.children);
+  var prev = document.getElementById("carouPrev");
+  var next = document.getElementById("carouNext");
   var i = 0, timer = null;
 
   function go(k){
@@ -1751,10 +1844,13 @@
     track.style.transform = "translateX(" + (-i * 100) + "%)";
     btns.forEach(function(b, j){ b.setAttribute("aria-current", String(j === i)); });
   }
-  function play(){ stop(); timer = setInterval(function(){ go(i + 1); }, 4600); }
+  function play(){ stop(); timer = setInterval(function(){ go(i + 1); }, 3200); }
   function stop(){ if (timer){ clearInterval(timer); timer = null; } }
 
   btns.forEach(function(b, k){ b.addEventListener("click", function(){ go(k); play(); }); });
+  /* stepping by hand restarts the clock, so it never jumps straight after a tap */
+  if (prev) prev.addEventListener("click", function(){ go(i - 1); play(); });
+  if (next) next.addEventListener("click", function(){ go(i + 1); play(); });
   box.addEventListener("mouseenter", stop);
   box.addEventListener("mouseleave", play);
 
