@@ -11,7 +11,8 @@
     "lang": "node build-lang.js",
     "shops": "node import-shop.js",
     "models": "node compress-models.js",
-    "usdz": "node make-usdz.js"
+    "usdz": "node make-usdz.js",
+    "restore": "node restore-models.js"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",

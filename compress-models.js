@@ -1,3 +1,15 @@
+/* ==================================================================
+   SUPERSEDED — DO NOT RUN. Kept only so the mistake stays readable.
+
+   This is what damaged the model files. Between the two of them they
+   shipped usdz that declared metersPerUnit = 1 on models that are not
+   authored in metres (a chair read as 334 metres tall in Quick Look)
+   and wrote base colour only, so alpha-masked and normal-mapped
+   materials disappeared — the rattan chair rendered as a bare frame.
+
+   restore-models.js replaces both: it copies the original usdz files
+   in byte for byte and rebuilds the glb with Draco and nothing else.
+   ================================================================== */
 /* ------------------------------------------------------------------
    Makes the models small enough to send to a phone.
 
