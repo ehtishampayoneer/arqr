@@ -9,10 +9,16 @@
     "bump": "node bump-assets.js",
     "art": "node build-images.js && node bump-assets.js",
     "lang": "node build-lang.js",
-    "shops": "node import-shop.js"
+    "shops": "node import-shop.js",
+    "models": "node compress-models.js"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.4.2",
+    "@gltf-transform/extensions": "^4.4.2",
+    "@gltf-transform/functions": "^4.4.2",
+    "draco3dgltf": "^1.5.7",
     "jsqr": "^1.4.0",
+    "meshoptimizer": "^1.2.0",
     "qrcode": "^1.5.4",
     "sharp": "^0.35.3"
   }

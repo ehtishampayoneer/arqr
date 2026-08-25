@@ -23,17 +23,17 @@ window.ARQR_STORES = [
     note: 'Furniture is the hardest thing to buy online. Nobody knows if a 244cm sofa fits until it is in the room.',
     cats: ['All', 'Seating', 'Tables'],
     items: [
-      { n:'Armchair With Rattan Black', p:'$1,410', d:'77 × 96 cm', c:'Seating', i:'ic-chair', f:'armchair-with-rattan-black-themasie-emba' },
-      { n:'Designer Chair', p:'$1,970', d:'75 × 97 cm', c:'Seating', i:'ic-chair', f:'designer-chair-02a' },
-      { n:'Elegant Chair', p:'$1,100', d:'81 × 116 cm', c:'Seating', i:'ic-chair', f:'elegant-chair' },
-      { n:'Flick Accent Chair Yolk Yellow', p:'$1,770', d:'210 × 90 cm', c:'Seating', i:'ic-chair', f:'flick-accent-chair-yolk-yellow' },
-      { n:'Flippa Functional Coffee Table', p:'$1,850', d:'180 × 85 cm', c:'Tables', i:'ic-table', f:'flippa-functional-coffee-table-w-storagewalnut' },
-      { n:'Miki Sofa Bed Quartz Blue', p:'$2,440', d:'78 × 82 cm', c:'Seating', i:'ic-sofa', f:'miki-sofa-bed-quartz-blue' },
-      { n:'Moby 2 Seater Sofa', p:'$580', d:'120 × 45 cm', c:'Seating', i:'ic-sofa', f:'moby-2-seater-sofa' },
-      { n:'Sofa 42', p:'$1,970', d:'201 × 81 cm', c:'Seating', i:'ic-sofa', f:'sofa-42' },
-      { n:'Sofa', p:'$2,050', d:'280 × 101 cm', c:'Seating', i:'ic-sofa', f:'sofa-free' },
-      { n:'Sofa M33523', p:'$1,190', d:'320 × 92 cm', c:'Seating', i:'ic-sofa', f:'sofa-m33523' },
-      { n:'TV Table Vicco Lowboard Amber', p:'$1,700', d:'150 × 47 cm', c:'Tables', i:'ic-table', f:'tv-table-vicco-lowboard-amber-4096px2' }
+      { n:'Armchair With Rattan Black', p:'$1,410', d:'77 × 96 cm', c:'Seating', i:'ic-chair', f:'armchair-with-rattan-black-themasie-emba', glb:'assets/shops/novara/armchair-with-rattan-black-themasie-emba.glb' },
+      { n:'Designer Chair', p:'$1,970', d:'75 × 97 cm', c:'Seating', i:'ic-chair', f:'designer-chair-02a', glb:'assets/shops/novara/designer-chair-02a.glb' },
+      { n:'Elegant Chair', p:'$1,100', d:'81 × 116 cm', c:'Seating', i:'ic-chair', f:'elegant-chair', glb:'assets/shops/novara/elegant-chair.glb' },
+      { n:'Flick Accent Chair Yolk Yellow', p:'$1,770', d:'210 × 90 cm', c:'Seating', i:'ic-chair', f:'flick-accent-chair-yolk-yellow', glb:'assets/shops/novara/flick-accent-chair-yolk-yellow.glb' },
+      { n:'Flippa Functional Coffee Table', p:'$1,850', d:'180 × 85 cm', c:'Tables', i:'ic-table', f:'flippa-functional-coffee-table-w-storagewalnut', glb:'assets/shops/novara/flippa-functional-coffee-table-w-storagewalnut.glb' },
+      { n:'Miki Sofa Bed Quartz Blue', p:'$2,440', d:'78 × 82 cm', c:'Seating', i:'ic-sofa', f:'miki-sofa-bed-quartz-blue', glb:'assets/shops/novara/miki-sofa-bed-quartz-blue.glb' },
+      { n:'Moby 2 Seater Sofa', p:'$580', d:'120 × 45 cm', c:'Seating', i:'ic-sofa', f:'moby-2-seater-sofa', glb:'assets/shops/novara/moby-2-seater-sofa.glb' },
+      { n:'Sofa 42', p:'$1,970', d:'201 × 81 cm', c:'Seating', i:'ic-sofa', f:'sofa-42', glb:'assets/shops/novara/sofa-42.glb' },
+      { n:'Sofa', p:'$2,050', d:'280 × 101 cm', c:'Seating', i:'ic-sofa', f:'sofa-free', glb:'assets/shops/novara/sofa-free.glb' },
+      { n:'Sofa M33523', p:'$1,190', d:'320 × 92 cm', c:'Seating', i:'ic-sofa', f:'sofa-m33523', glb:'assets/shops/novara/sofa-m33523.glb' },
+      { n:'TV Table Vicco Lowboard Amber', p:'$1,700', d:'150 × 47 cm', c:'Tables', i:'ic-table', f:'tv-table-vicco-lowboard-amber-4096px2', glb:'assets/shops/novara/tv-table-vicco-lowboard-amber-4096px2.glb' }
     ]
   },
   {
@@ -50,16 +50,16 @@ window.ARQR_STORES = [
     note: 'Shoes come back more than anything else online. Seeing them on your own foot, in your own size, stops most of it.',
     cats: ['All', 'Boots', 'Casual', 'Formal'],
     items: [
-      { n:'Asics Shoe', p:'$170', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'asics-shoe' },
-      { n:'Carhartt Construction Boot', p:'$220', d:'EU 36–46', c:'Boots', i:'ic-chelsea', f:'carhartt-construction-boot' },
-      { n:'Cat Shoe', p:'$290', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'cat-shoe-left' },
-      { n:'Gladiator Sandal Heels', p:'$130', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'gladiator-sandal-heels' },
-      { n:'High Heels', p:'$330', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'high-heels' },
-      { n:'Mule Shoe Multicolor', p:'$150', d:'EU 36–46', c:'Formal', i:'ic-loafer', f:'mule-dway-shoe-multicolor' },
-      { n:'Hoka Shoe', p:'$200', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'photorealistic-hoka-shoe' },
-      { n:'Adidas Sports Shoe', p:'$160', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'scanned-adidas-sports-shoe' },
-      { n:'Sievi Racer Safety Shoe', p:'$200', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'sievi-racer-safety-shoe' },
-      { n:'YSL High Heels', p:'$330', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'ysl-high-heels' }
+      { n:'Asics Shoe', p:'$170', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'asics-shoe', glb:'assets/shops/corso/asics-shoe.glb' },
+      { n:'Carhartt Construction Boot', p:'$220', d:'EU 36–46', c:'Boots', i:'ic-chelsea', f:'carhartt-construction-boot', glb:'assets/shops/corso/carhartt-construction-boot.glb' },
+      { n:'Cat Shoe', p:'$290', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'cat-shoe-left', glb:'assets/shops/corso/cat-shoe-left.glb' },
+      { n:'Gladiator Sandal Heels', p:'$130', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'gladiator-sandal-heels', glb:'assets/shops/corso/gladiator-sandal-heels.glb' },
+      { n:'High Heels', p:'$330', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'high-heels', glb:'assets/shops/corso/high-heels.glb' },
+      { n:'Mule Shoe Multicolor', p:'$150', d:'EU 36–46', c:'Formal', i:'ic-loafer', f:'mule-dway-shoe-multicolor', glb:'assets/shops/corso/mule-dway-shoe-multicolor.glb' },
+      { n:'Hoka Shoe', p:'$200', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'photorealistic-hoka-shoe', glb:'assets/shops/corso/photorealistic-hoka-shoe.glb' },
+      { n:'Adidas Sports Shoe', p:'$160', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'scanned-adidas-sports-shoe', glb:'assets/shops/corso/scanned-adidas-sports-shoe.glb' },
+      { n:'Sievi Racer Safety Shoe', p:'$200', d:'EU 36–46', c:'Casual', i:'ic-sneaker', f:'sievi-racer-safety-shoe', glb:'assets/shops/corso/sievi-racer-safety-shoe.glb' },
+      { n:'YSL High Heels', p:'$330', d:'EU 36–46', c:'Formal', i:'ic-oxford', f:'ysl-high-heels', glb:'assets/shops/corso/ysl-high-heels.glb' }
     ]
   },
   {
@@ -75,19 +75,19 @@ window.ARQR_STORES = [
     note: 'Decor is bought on feel. A pendant that looks right in a studio photo can be twice the size you pictured.',
     cats: ['All', 'Lighting', 'Objects', 'Wall'],
     items: [
-      { n:'Cat Statue', p:'$640', d:'170 × 77 cm', c:'Objects', i:'ic-object', f:'cat-statue' },
-      { n:'Ding Censer With An Openwork Cover', p:'$410', d:'H 27 cm', c:'Lighting', i:'ic-lantern', f:'ding-censer-with-an-openwork-cover' },
-      { n:'Egyptian Cat Statue', p:'$730', d:'H 96 cm', c:'Objects', i:'ic-object', f:'egyptian-cat-statue' },
-      { n:'Ibex Statue Berlin Tierpark', p:'$420', d:'H 200 cm', c:'Objects', i:'ic-object', f:'ibex-statue-scan-berlin-tierpark' },
-      { n:'Lamp Marble Base', p:'$740', d:'H 42 cm', c:'Lighting', i:'ic-pendant', f:'lamp-marble-base-free' },
-      { n:'Painting Rembrandt Landscape', p:'$490', d:'H 28 cm', c:'Wall', i:'ic-frame', f:'painting-rembrandt-landscape1' },
-      { n:'Plant Interior Decoration', p:'$540', d:'H 38 cm', c:'Objects', i:'ic-vase', f:'plant-interior-decoration' },
-      { n:'Table Lamp', p:'$620', d:'H 74 cm', c:'Lighting', i:'ic-pendant', f:'table-lamp' },
-      { n:'Table Lamp Free', p:'$480', d:'H 42 cm', c:'Lighting', i:'ic-pendant', f:'table-lamp-free' },
-      { n:'Torsion Pendulum Clock', p:'$170', d:'H 27 cm', c:'Wall', i:'ic-lantern', f:'torsion-pendulum-clock-animation' },
-      { n:'Victorian Framed Painting', p:'$550', d:'114 × 84 cm', c:'Wall', i:'ic-frame', f:'victorian-framed-painting-pbr-game-ready' },
-      { n:'Vintage Painting Dani', p:'$690', d:'H 89 cm', c:'Wall', i:'ic-frame', f:'vintage-painting-dani' },
-      { n:'Wall Decor Photoframe', p:'$260', d:'H 16 cm', c:'Wall', i:'ic-frame', f:'wall-decor-photoframe' }
+      { n:'Cat Statue', p:'$640', d:'170 × 77 cm', c:'Objects', i:'ic-object', f:'cat-statue', glb:'assets/shops/maison/cat-statue.glb' },
+      { n:'Ding Censer With An Openwork Cover', p:'$410', d:'H 27 cm', c:'Lighting', i:'ic-lantern', f:'ding-censer-with-an-openwork-cover', glb:'assets/shops/maison/ding-censer-with-an-openwork-cover.glb' },
+      { n:'Egyptian Cat Statue', p:'$730', d:'H 96 cm', c:'Objects', i:'ic-object', f:'egyptian-cat-statue', glb:'assets/shops/maison/egyptian-cat-statue.glb' },
+      { n:'Ibex Statue Berlin Tierpark', p:'$420', d:'H 200 cm', c:'Objects', i:'ic-object', f:'ibex-statue-scan-berlin-tierpark', glb:'assets/shops/maison/ibex-statue-scan-berlin-tierpark.glb' },
+      { n:'Lamp Marble Base', p:'$740', d:'H 42 cm', c:'Lighting', i:'ic-pendant', f:'lamp-marble-base-free', glb:'assets/shops/maison/lamp-marble-base-free.glb' },
+      { n:'Painting Rembrandt Landscape', p:'$490', d:'H 28 cm', c:'Wall', i:'ic-frame', f:'painting-rembrandt-landscape1', glb:'assets/shops/maison/painting-rembrandt-landscape1.glb' },
+      { n:'Plant Interior Decoration', p:'$540', d:'H 38 cm', c:'Objects', i:'ic-vase', f:'plant-interior-decoration', glb:'assets/shops/maison/plant-interior-decoration.glb' },
+      { n:'Table Lamp', p:'$620', d:'H 74 cm', c:'Lighting', i:'ic-pendant', f:'table-lamp', glb:'assets/shops/maison/table-lamp.glb' },
+      { n:'Table Lamp Free', p:'$480', d:'H 42 cm', c:'Lighting', i:'ic-pendant', f:'table-lamp-free', glb:'assets/shops/maison/table-lamp-free.glb' },
+      { n:'Torsion Pendulum Clock', p:'$170', d:'H 27 cm', c:'Wall', i:'ic-lantern', f:'torsion-pendulum-clock-animation', glb:'assets/shops/maison/torsion-pendulum-clock-animation.glb' },
+      { n:'Victorian Framed Painting', p:'$550', d:'114 × 84 cm', c:'Wall', i:'ic-frame', f:'victorian-framed-painting-pbr-game-ready', glb:'assets/shops/maison/victorian-framed-painting-pbr-game-ready.glb' },
+      { n:'Vintage Painting Dani', p:'$690', d:'H 89 cm', c:'Wall', i:'ic-frame', f:'vintage-painting-dani', glb:'assets/shops/maison/vintage-painting-dani.glb' },
+      { n:'Wall Decor Photoframe', p:'$260', d:'H 16 cm', c:'Wall', i:'ic-frame', f:'wall-decor-photoframe', glb:'assets/shops/maison/wall-decor-photoframe.glb' }
     ]
   },
   {
@@ -103,18 +103,18 @@ window.ARQR_STORES = [
     note: 'A rug is all about proportion. 240 × 170 means nothing until it is lying between your own sofa and wall.',
     cats: ['All', 'Flatweave', 'Hand-knotted', 'Runners'],
     items: [
-      { n:'Antique Turkish Runner Carpet', p:'$1,410', d:'196 × 100 cm', c:'Runners', i:'ic-runner', f:'antique-turkish-runner-carpet' },
-      { n:'Ava Large Geometric Hand Tufted Wool Rug', p:'$1,290', d:'334 × 334 cm', c:'Hand-knotted', i:'ic-rug', f:'ava-large-geometric-hand-tufted-wool-rug' },
-      { n:'Bess Arabian Gallery Kilim Runner', p:'$990', d:'424 × 208 cm', c:'Runners', i:'ic-runner', f:'bess-arabian-gallery-kilim-i-runner' },
-      { n:'Bhadoi Rug', p:'$1,630', d:'241 × 172 cm', c:'Hand-knotted', i:'ic-rug', f:'bhadoi-rug' },
-      { n:'Boho Rug', p:'$2,130', d:'302 × 184 cm', c:'Flatweave', i:'ic-rug', f:'boho-rug' },
-      { n:'Carpet II', p:'$540', d:'200 × 140 cm', c:'Flatweave', i:'ic-rug', f:'carpet-2' },
-      { n:'Carpet Carpet', p:'$1,070', d:'300 × 200 cm', c:'Flatweave', i:'ic-rug', f:'carpet-carpet' },
-      { n:'Fine Persian Heriz Carpet', p:'$970', d:'393 × 288 cm', c:'Hand-knotted', i:'ic-rug', f:'fine-persian-heriz-carpet' },
-      { n:'Carpet', p:'$330', d:'240 × 170 cm', c:'Flatweave', i:'ic-rug', f:'game-ready-carpet' },
-      { n:'Persian Nain Carpet', p:'$1,970', d:'417 × 310 cm', c:'Hand-knotted', i:'ic-rug', f:'persian-nain-carpet' },
-      { n:'Persian Tabriz Pictorial Carpet', p:'$980', d:'361 × 262 cm', c:'Hand-knotted', i:'ic-rug', f:'persian-tabriz-pictorial-carpet' },
-      { n:'Signed Persian Nain Square Carpet', p:'$510', d:'288 × 262 cm', c:'Hand-knotted', i:'ic-rug', f:'signed-persian-nain-square-carpet' }
+      { n:'Antique Turkish Runner Carpet', p:'$1,410', d:'196 × 100 cm', c:'Runners', i:'ic-runner', f:'antique-turkish-runner-carpet', glb:'assets/shops/terra/antique-turkish-runner-carpet.glb' },
+      { n:'Ava Large Geometric Hand Tufted Wool Rug', p:'$1,290', d:'334 × 334 cm', c:'Hand-knotted', i:'ic-rug', f:'ava-large-geometric-hand-tufted-wool-rug', glb:'assets/shops/terra/ava-large-geometric-hand-tufted-wool-rug.glb' },
+      { n:'Bess Arabian Gallery Kilim Runner', p:'$990', d:'424 × 208 cm', c:'Runners', i:'ic-runner', f:'bess-arabian-gallery-kilim-i-runner', glb:'assets/shops/terra/bess-arabian-gallery-kilim-i-runner.glb' },
+      { n:'Bhadoi Rug', p:'$1,630', d:'241 × 172 cm', c:'Hand-knotted', i:'ic-rug', f:'bhadoi-rug', glb:'assets/shops/terra/bhadoi-rug.glb' },
+      { n:'Boho Rug', p:'$2,130', d:'302 × 184 cm', c:'Flatweave', i:'ic-rug', f:'boho-rug', glb:'assets/shops/terra/boho-rug.glb' },
+      { n:'Carpet II', p:'$540', d:'200 × 140 cm', c:'Flatweave', i:'ic-rug', f:'carpet-2', glb:'assets/shops/terra/carpet-2.glb' },
+      { n:'Carpet Carpet', p:'$1,070', d:'300 × 200 cm', c:'Flatweave', i:'ic-rug', f:'carpet-carpet', glb:'assets/shops/terra/carpet-carpet.glb' },
+      { n:'Fine Persian Heriz Carpet', p:'$970', d:'393 × 288 cm', c:'Hand-knotted', i:'ic-rug', f:'fine-persian-heriz-carpet', glb:'assets/shops/terra/fine-persian-heriz-carpet.glb' },
+      { n:'Carpet', p:'$330', d:'240 × 170 cm', c:'Flatweave', i:'ic-rug', f:'game-ready-carpet', glb:'assets/shops/terra/game-ready-carpet.glb' },
+      { n:'Persian Nain Carpet', p:'$1,970', d:'417 × 310 cm', c:'Hand-knotted', i:'ic-rug', f:'persian-nain-carpet', glb:'assets/shops/terra/persian-nain-carpet.glb' },
+      { n:'Persian Tabriz Pictorial Carpet', p:'$980', d:'361 × 262 cm', c:'Hand-knotted', i:'ic-rug', f:'persian-tabriz-pictorial-carpet', glb:'assets/shops/terra/persian-tabriz-pictorial-carpet.glb' },
+      { n:'Signed Persian Nain Square Carpet', p:'$510', d:'288 × 262 cm', c:'Hand-knotted', i:'ic-rug', f:'signed-persian-nain-square-carpet', glb:'assets/shops/terra/signed-persian-nain-square-carpet.glb' }
     ]
   }
 ];

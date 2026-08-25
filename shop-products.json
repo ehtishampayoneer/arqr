@@ -11,7 +11,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "armchair_with_rattan_black_-_themasie_emba.glb",
-      "srcUsdz": "Armchair_With_Rattan_Black_-_TheMasie_EMBA.usdz"
+      "srcUsdz": "Armchair_With_Rattan_Black_-_TheMasie_EMBA.usdz",
+      "glb": "assets/shops/novara/armchair-with-rattan-black-themasie-emba.glb"
     },
     {
       "n": "Designer Chair",
@@ -24,7 +25,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "designer_chair_02a.glb",
-      "srcUsdz": "Designer_Chair_02a.usdz"
+      "srcUsdz": "Designer_Chair_02a.usdz",
+      "glb": "assets/shops/novara/designer-chair-02a.glb"
     },
     {
       "n": "Elegant Chair",
@@ -37,7 +39,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "elegant_chair.glb",
-      "srcUsdz": "Elegant_Chair.usdz"
+      "srcUsdz": "Elegant_Chair.usdz",
+      "glb": "assets/shops/novara/elegant-chair.glb"
     },
     {
       "n": "Flick Accent Chair Yolk Yellow",
@@ -50,7 +53,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "flick_accent_chair_yolk_yellow.glb",
-      "srcUsdz": "Flick_Accent_Chair_Yolk_Yellow.usdz"
+      "srcUsdz": "Flick_Accent_Chair_Yolk_Yellow.usdz",
+      "glb": "assets/shops/novara/flick-accent-chair-yolk-yellow.glb"
     },
     {
       "n": "Flippa Functional Coffee Table",
@@ -63,7 +67,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "flippa_functional_coffee_table_w._storagewalnut.glb",
-      "srcUsdz": "Flippa_Functional_Coffee_Table_w.usdz"
+      "srcUsdz": "Flippa_Functional_Coffee_Table_w.usdz",
+      "glb": "assets/shops/novara/flippa-functional-coffee-table-w-storagewalnut.glb"
     },
     {
       "n": "Miki Sofa Bed Quartz Blue",
@@ -76,7 +81,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "miki_sofa_bed_quartz_blue.glb",
-      "srcUsdz": "Miki_Sofa_Bed_Quartz_Blue.usdz"
+      "srcUsdz": "Miki_Sofa_Bed_Quartz_Blue.usdz",
+      "glb": "assets/shops/novara/miki-sofa-bed-quartz-blue.glb"
     },
     {
       "n": "Moby 2 Seater Sofa",
@@ -89,7 +95,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "moby_2_seater_sofa.glb",
-      "srcUsdz": "Moby_2_Seater_Sofa.usdz"
+      "srcUsdz": "Moby_2_Seater_Sofa.usdz",
+      "glb": "assets/shops/novara/moby-2-seater-sofa.glb"
     },
     {
       "n": "Sofa 42",
@@ -102,7 +109,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "sofa_42.glb",
-      "srcUsdz": "Sofa_42.usdz"
+      "srcUsdz": "Sofa_42.usdz",
+      "glb": "assets/shops/novara/sofa-42.glb"
     },
     {
       "n": "Sofa",
@@ -115,7 +123,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "sofa_free.glb",
-      "srcUsdz": "Sofa_Free.usdz"
+      "srcUsdz": "Sofa_Free.usdz",
+      "glb": "assets/shops/novara/sofa-free.glb"
     },
     {
       "n": "Sofa M33523",
@@ -128,7 +137,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "sofa_m33523.glb",
-      "srcUsdz": "Sofa_M33523.usdz"
+      "srcUsdz": "Sofa_M33523.usdz",
+      "glb": "assets/shops/novara/sofa-m33523.glb"
     },
     {
       "n": "TV Table Vicco Lowboard Amber",
@@ -141,7 +151,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "tv-table_vicco_lowboard_amber_-_4096px2.glb",
-      "srcUsdz": "TV-Table_Vicco_Lowboard_Amber_-_4096px².usdz"
+      "srcUsdz": "TV-Table_Vicco_Lowboard_Amber_-_4096px².usdz",
+      "glb": "assets/shops/novara/tv-table-vicco-lowboard-amber-4096px2.glb"
     }
   ],
   "corso": [
@@ -156,7 +167,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "asics_shoe.glb",
-      "srcUsdz": "Asics_Shoe.usdz"
+      "srcUsdz": "Asics_Shoe.usdz",
+      "glb": "assets/shops/corso/asics-shoe.glb"
     },
     {
       "n": "Carhartt Construction Boot",
@@ -169,7 +181,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "carhartt_construction_boot.glb",
-      "srcUsdz": "Carhartt_Construction_Boot.usdz"
+      "srcUsdz": "Carhartt_Construction_Boot.usdz",
+      "glb": "assets/shops/corso/carhartt-construction-boot.glb"
     },
     {
       "n": "Cat Shoe",
@@ -182,7 +195,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "cat_shoe_-_left.glb",
-      "srcUsdz": "Cat_shoe_-_Left.usdz"
+      "srcUsdz": "Cat_shoe_-_Left.usdz",
+      "glb": "assets/shops/corso/cat-shoe-left.glb"
     },
     {
       "n": "Gladiator Sandal Heels",
@@ -195,7 +209,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "gladiator_sandal_heels.glb",
-      "srcUsdz": "Gladiator_Sandal_Heels.usdz"
+      "srcUsdz": "Gladiator_Sandal_Heels.usdz",
+      "glb": "assets/shops/corso/gladiator-sandal-heels.glb"
     },
     {
       "n": "High Heels",
@@ -208,7 +223,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "high_heels.glb",
-      "srcUsdz": "High_Heels.usdz"
+      "srcUsdz": "High_Heels.usdz",
+      "glb": "assets/shops/corso/high-heels.glb"
     },
     {
       "n": "Mule Shoe Multicolor",
@@ -221,7 +237,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "mule_dway_shoe_multicolor.glb",
-      "srcUsdz": "Mule_DWAY_SHOE_MULTICOLOR.usdz"
+      "srcUsdz": "Mule_DWAY_SHOE_MULTICOLOR.usdz",
+      "glb": "assets/shops/corso/mule-dway-shoe-multicolor.glb"
     },
     {
       "n": "Hoka Shoe",
@@ -234,7 +251,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "photorealistic_hoka_shoe.glb",
-      "srcUsdz": "Photorealistic_Hoka_Shoe.usdz"
+      "srcUsdz": "Photorealistic_Hoka_Shoe.usdz",
+      "glb": "assets/shops/corso/photorealistic-hoka-shoe.glb"
     },
     {
       "n": "Adidas Sports Shoe",
@@ -247,7 +265,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "scanned_adidas_sports_shoe.glb",
-      "srcUsdz": "Scanned_Adidas_Sports_Shoe.usdz"
+      "srcUsdz": "Scanned_Adidas_Sports_Shoe.usdz",
+      "glb": "assets/shops/corso/scanned-adidas-sports-shoe.glb"
     },
     {
       "n": "Sievi Racer Safety Shoe",
@@ -260,7 +279,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "sievi_racer_safety_shoe.glb",
-      "srcUsdz": "Sievi_Racer_safety_shoe.usdz"
+      "srcUsdz": "Sievi_Racer_safety_shoe.usdz",
+      "glb": "assets/shops/corso/sievi-racer-safety-shoe.glb"
     },
     {
       "n": "YSL High Heels",
@@ -273,7 +293,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "ysl_high_heels.glb",
-      "srcUsdz": "YSL_High_Heels.usdz"
+      "srcUsdz": "YSL_High_Heels.usdz",
+      "glb": "assets/shops/corso/ysl-high-heels.glb"
     }
   ],
   "maison": [
@@ -288,7 +309,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "cat_statue.glb",
-      "srcUsdz": "Cat_statue.usdz"
+      "srcUsdz": "Cat_statue.usdz",
+      "glb": "assets/shops/maison/cat-statue.glb"
     },
     {
       "n": "Ding Censer With An Openwork Cover",
@@ -301,7 +323,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "ding_censer_with_an_openwork_cover.glb",
-      "srcUsdz": "Ding_censer_with_an_openwork_cover.usdz"
+      "srcUsdz": "Ding_censer_with_an_openwork_cover.usdz",
+      "glb": "assets/shops/maison/ding-censer-with-an-openwork-cover.glb"
     },
     {
       "n": "Egyptian Cat Statue",
@@ -314,7 +337,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "egyptian_cat_statue.glb",
-      "srcUsdz": "Egyptian_Cat_Statue.usdz"
+      "srcUsdz": "Egyptian_Cat_Statue.usdz",
+      "glb": "assets/shops/maison/egyptian-cat-statue.glb"
     },
     {
       "n": "Ibex Statue Berlin Tierpark",
@@ -327,7 +351,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "ibex_statue_scan_-_berlin_-_tierpark.glb",
-      "srcUsdz": "Ibex_Statue_Scan_-_Berlin_-_Tierpark.usdz"
+      "srcUsdz": "Ibex_Statue_Scan_-_Berlin_-_Tierpark.usdz",
+      "glb": "assets/shops/maison/ibex-statue-scan-berlin-tierpark.glb"
     },
     {
       "n": "Lamp Marble Base",
@@ -340,7 +365,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "lamp__marble_base__free.glb",
-      "srcUsdz": "Lamp__Marble_Base__FREE.usdz"
+      "srcUsdz": "Lamp__Marble_Base__FREE.usdz",
+      "glb": "assets/shops/maison/lamp-marble-base-free.glb"
     },
     {
       "n": "Painting Rembrandt Landscape",
@@ -353,7 +379,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "painting_rembrandt_landscape1.glb",
-      "srcUsdz": "Painting_Rembrandt_Landscape1.usdz"
+      "srcUsdz": "Painting_Rembrandt_Landscape1.usdz",
+      "glb": "assets/shops/maison/painting-rembrandt-landscape1.glb"
     },
     {
       "n": "Plant Interior Decoration",
@@ -366,7 +393,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "plant_interior_decoration.glb",
-      "srcUsdz": "Plant_Interior_decoration.usdz"
+      "srcUsdz": "Plant_Interior_decoration.usdz",
+      "glb": "assets/shops/maison/plant-interior-decoration.glb"
     },
     {
       "n": "Table Lamp",
@@ -379,7 +407,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "table_lamp.glb",
-      "srcUsdz": "Table_Lamp.usdz"
+      "srcUsdz": "Table_Lamp.usdz",
+      "glb": "assets/shops/maison/table-lamp.glb"
     },
     {
       "n": "Table Lamp Free",
@@ -392,7 +421,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "table_lamp__free.glb",
-      "srcUsdz": "Table_Lamp__FREE.usdz"
+      "srcUsdz": "Table_Lamp__FREE.usdz",
+      "glb": "assets/shops/maison/table-lamp-free.glb"
     },
     {
       "n": "Torsion Pendulum Clock",
@@ -405,7 +435,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "torsion_pendulum_clock_-_animation.glb",
-      "srcUsdz": "Torsion_Pendulum_Clock_-_Animation.usdz"
+      "srcUsdz": "Torsion_Pendulum_Clock_-_Animation.usdz",
+      "glb": "assets/shops/maison/torsion-pendulum-clock-animation.glb"
     },
     {
       "n": "Victorian Framed Painting",
@@ -418,7 +449,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "victorian_framed_painting_-_pbr_game_ready.glb",
-      "srcUsdz": "Victorian_Framed_Painting_-_PBR_Game_Ready.usdz"
+      "srcUsdz": "Victorian_Framed_Painting_-_PBR_Game_Ready.usdz",
+      "glb": "assets/shops/maison/victorian-framed-painting-pbr-game-ready.glb"
     },
     {
       "n": "Vintage Painting Dani",
@@ -431,7 +463,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "vintage_painting_dani.glb",
-      "srcUsdz": "Vintage_painting_Dani.usdz"
+      "srcUsdz": "Vintage_painting_Dani.usdz",
+      "glb": "assets/shops/maison/vintage-painting-dani.glb"
     },
     {
       "n": "Wall Decor Photoframe",
@@ -444,7 +477,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "wall_decor_photoframe.glb",
-      "srcUsdz": "Wall_Decor_Photoframe.usdz"
+      "srcUsdz": "Wall_Decor_Photoframe.usdz",
+      "glb": "assets/shops/maison/wall-decor-photoframe.glb"
     }
   ],
   "terra": [
@@ -459,7 +493,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "antique_turkish_runner_carpet.glb",
-      "srcUsdz": "Antique_Turkish_Runner_Carpet.usdz"
+      "srcUsdz": "Antique_Turkish_Runner_Carpet.usdz",
+      "glb": "assets/shops/terra/antique-turkish-runner-carpet.glb"
     },
     {
       "n": "Ava Large Geometric Hand Tufted Wool Rug",
@@ -472,7 +507,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "ava_large_geometric_hand_tufted_wool_rug.glb",
-      "srcUsdz": "Ava_Large_Geometric_Hand_Tufted_Wool_Rug.usdz"
+      "srcUsdz": "Ava_Large_Geometric_Hand_Tufted_Wool_Rug.usdz",
+      "glb": "assets/shops/terra/ava-large-geometric-hand-tufted-wool-rug.glb"
     },
     {
       "n": "Bess Arabian Gallery Kilim Runner",
@@ -485,7 +521,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "bess_arabian_gallery_kilim_i_runner.glb",
-      "srcUsdz": "Bess_Arabian_Gallery_Kilim_I_Runner.usdz"
+      "srcUsdz": "Bess_Arabian_Gallery_Kilim_I_Runner.usdz",
+      "glb": "assets/shops/terra/bess-arabian-gallery-kilim-i-runner.glb"
     },
     {
       "n": "Bhadoi Rug",
@@ -498,7 +535,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "bhadoi_rug.glb",
-      "srcUsdz": "Bhadoi_Rug.usdz"
+      "srcUsdz": "Bhadoi_Rug.usdz",
+      "glb": "assets/shops/terra/bhadoi-rug.glb"
     },
     {
       "n": "Boho Rug",
@@ -511,7 +549,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "boho_rug.glb",
-      "srcUsdz": "Boho_Rug.usdz"
+      "srcUsdz": "Boho_Rug.usdz",
+      "glb": "assets/shops/terra/boho-rug.glb"
     },
     {
       "n": "Carpet II",
@@ -524,7 +563,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "carpet (2).glb",
-      "srcUsdz": "carpet (2).usdz"
+      "srcUsdz": "carpet (2).usdz",
+      "glb": "assets/shops/terra/carpet-2.glb"
     },
     {
       "n": "Carpet Carpet",
@@ -537,7 +577,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "carpet_carpet.glb",
-      "srcUsdz": "Carpet_carpet.usdz"
+      "srcUsdz": "Carpet_carpet.usdz",
+      "glb": "assets/shops/terra/carpet-carpet.glb"
     },
     {
       "n": "Fine Persian Heriz Carpet",
@@ -550,7 +591,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "fine_persian_heriz_carpet.glb",
-      "srcUsdz": "Fine_Persian_Heriz_Carpet.usdz"
+      "srcUsdz": "Fine_Persian_Heriz_Carpet.usdz",
+      "glb": "assets/shops/terra/fine-persian-heriz-carpet.glb"
     },
     {
       "n": "Carpet",
@@ -563,7 +605,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "game_ready_carpet.glb",
-      "srcUsdz": "Game_Ready_Carpet.usdz"
+      "srcUsdz": "Game_Ready_Carpet.usdz",
+      "glb": "assets/shops/terra/game-ready-carpet.glb"
     },
     {
       "n": "Persian Nain Carpet",
@@ -576,7 +619,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "persian_nain_carpet.glb",
-      "srcUsdz": "Persian_Nain_Carpet.usdz"
+      "srcUsdz": "Persian_Nain_Carpet.usdz",
+      "glb": "assets/shops/terra/persian-nain-carpet.glb"
     },
     {
       "n": "Persian Tabriz Pictorial Carpet",
@@ -589,7 +633,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "persian_tabriz_pictorial_carpet.glb",
-      "srcUsdz": "Persian_Tabriz_Pictorial_Carpet.usdz"
+      "srcUsdz": "Persian_Tabriz_Pictorial_Carpet.usdz",
+      "glb": "assets/shops/terra/persian-tabriz-pictorial-carpet.glb"
     },
     {
       "n": "Signed Persian Nain Square Carpet",
@@ -602,7 +647,8 @@
       "hasGlb": true,
       "hasUsdz": true,
       "srcGlb": "signed_persian_nain_square_carpet.glb",
-      "srcUsdz": "Signed_Persian_Nain_Square_Carpet.usdz"
+      "srcUsdz": "Signed_Persian_Nain_Square_Carpet.usdz",
+      "glb": "assets/shops/terra/signed-persian-nain-square-carpet.glb"
     }
   ]
 }
