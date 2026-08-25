@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=30"></script>
+<script src="i18n.js?v=42"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -25,15 +25,20 @@
     --wrap:min(1320px, calc(100% - 2 * var(--gutter)));
   }
   *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;height:100%}
+  /* A catalog is a screen, not a page. The whole thing is one viewport tall
+     and the parts that can give — the product tiles — take whatever height
+     is left after the fixed furniture. Nothing here scrolls except the grid,
+     and that only on a screen too short to hold two rows. */
   body{margin:0;background:var(--page);color:var(--ink);font-family:var(--f-body);
-    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+    height:100svh;overflow:hidden;display:flex;flex-direction:column}
   img,svg{max-width:100%}
   a{color:inherit;text-decoration:none}
   button,select{font:inherit;color:inherit}
 
   /* ---- the only ARQR chrome, and it says what it is ---- */
-  .demo{background:#1C1A17;color:#F6F1E9;font-size:12.5px}
+  .demo{flex:none;background:#1C1A17;color:#F6F1E9;font-size:12.5px}
   .demo-in{width:var(--wrap);margin:0 auto;padding:9px 0;
     display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .demo b{font-weight:600}
@@ -46,17 +51,14 @@
   .demo-in .lang-btn:hover{border-color:rgba(246,241,233,.55)}
 
   /* ================= the two columns ================= */
-  .shell{width:var(--wrap);margin:0 auto;
-    padding:clamp(16px,2.2vw,28px) 0 0;
+  .shell{flex:1;min-height:0;width:var(--wrap);margin:0 auto;
+    padding:clamp(12px,1.8vw,22px) 0 clamp(12px,1.6vw,20px);
     display:grid;grid-template-columns:minmax(0,1.34fr) minmax(300px,.86fr);
-    gap:clamp(18px,2.2vw,34px);align-items:start}
-  @media(max-width:1000px){
-    .shell{grid-template-columns:minmax(0,1fr)}
-    .brand{order:-1}
-  }
+    gap:clamp(14px,1.8vw,28px);align-items:stretch;overflow:hidden}
+  .col{display:flex;flex-direction:column;min-height:0}
 
   /* ---------------- left: the shop's products ---------------- */
-  .cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .cats{flex:none;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
   .cats::-webkit-scrollbar{display:none}
   .cats button{white-space:nowrap;cursor:pointer;border:1px solid var(--line);
     background:var(--page-hi);border-radius:100px;padding:11px 20px;
@@ -66,8 +68,8 @@
   .cats button[aria-selected="true"]{background:var(--tone);border-color:var(--tone);
     color:#FFF;font-weight:600}
 
-  .tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    margin:clamp(12px,1.6vw,18px) 0 0}
+  .tools{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    margin:clamp(10px,1.3vw,15px) 0 0}
   .sel{position:relative;display:inline-flex;align-items:center}
   .sel select{appearance:none;-webkit-appearance:none;cursor:pointer;
     border:1px solid var(--line);background:var(--page-hi);border-radius:12px;
@@ -77,18 +79,23 @@
   .sel svg{position:absolute;inset-inline-end:14px;width:14px;height:14px;
     pointer-events:none;color:var(--ink-soft)}
 
-  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:clamp(12px,1.5vw,20px);margin:clamp(14px,1.8vw,22px) 0 0;padding:0;list-style:none}
+  /* two rows that share whatever height is left; the tiles are sized by the
+     screen rather than by a fixed picture ratio */
+  .grid{flex:1;min-height:0;overflow:auto;scrollbar-width:none;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:clamp(10px,1.3vw,18px);margin:clamp(11px,1.4vw,18px) 0 0;padding:0;list-style:none}
+  .grid::-webkit-scrollbar{display:none}
   @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   /* two across holds down to about a 340px phone; below that, one */
   @media(max-width:339px){.grid{grid-template-columns:minmax(0,1fr)}}
 
-  .prod{display:flex;flex-direction:column;background:var(--page-hi);
-    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  .prod{display:flex;flex-direction:column;min-height:0;background:var(--page-hi);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
     transition:transform .3s cubic-bezier(.3,.8,.3,1),box-shadow .3s,border-color .3s}
   .prod:hover{transform:translateY(-3px);border-color:#D9D0C2;
     box-shadow:0 24px 44px -32px rgba(70,50,30,.6)}
-  .shot{position:relative;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;
+  .shot{position:relative;flex:1;min-height:64px;display:grid;place-items:center;overflow:hidden;
     background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%)}
   .shot svg{width:54%;height:54%;display:block;color:#A99C89}
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -97,7 +104,7 @@
     font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
     color:var(--ink-soft)}
 
-  .meta{padding:13px 14px 0;flex:1 1 auto;min-width:0}
+  .meta{flex:none;padding:11px 13px 0;min-width:0}
   .pname{display:block;font-size:14.5px;font-weight:600;line-height:1.35;margin:0 0 5px}
   .price{display:block;font-size:15px;font-weight:600;color:var(--tone)}
   .dims{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-soft)}
@@ -105,15 +112,15 @@
   .place{display:flex;align-items:center;justify-content:center;gap:8px;
     width:calc(100% - 28px);margin:13px 14px 14px;cursor:pointer;
     background:var(--tone);color:#FFF;border:0;border-radius:11px;padding:12px 10px;
-    font-size:13px;font-weight:600;text-align:center;line-height:1.35;
+    font-size:13px;font-weight:600;text-align:center;line-height:1.35;min-height:40px;
     transition:transform .18s ease,filter .18s ease}
   .place svg{width:16px;height:16px;display:block;flex:none}
   .place:hover{filter:brightness(1.07)}
   .place:active{transform:scale(.98)}
 
   /* ---- pages ---- */
-  .pager{display:flex;align-items:center;justify-content:center;gap:8px;
-    margin:clamp(18px,2.4vw,28px) 0 0}
+  .pager{flex:none;display:flex;align-items:center;justify-content:center;gap:8px;
+    margin:clamp(11px,1.4vw,16px) 0 0}
   .pager button{min-width:40px;height:40px;cursor:pointer;border:1px solid var(--line);
     background:var(--page-hi);border-radius:12px;padding:0 12px;
     font-size:14px;font-weight:600;color:var(--ink-soft);
@@ -130,14 +137,17 @@
      child is positioned against the padding box, so with padding on .brand
      an inset:0 photograph stopped short of the edges and left a border of
      flat colour around it. */
-  .brand{position:sticky;top:16px;border-radius:clamp(20px,2vw,26px);overflow:hidden;
+  .brand{position:relative;height:100%;min-height:0;
+    border-radius:clamp(18px,1.8vw,24px);overflow:hidden;
     color:#FFF;display:flex;flex-direction:column;padding:0;
-    min-height:min(760px, calc(100svh - 32px));
     background:linear-gradient(158deg,var(--tone-lo) 0%,var(--tone) 46%,var(--tone-hi) 100%);
     box-shadow:0 40px 70px -46px rgba(60,40,25,.75)}
-  .brand-in{position:relative;z-index:2;flex:1;min-width:0;
-    display:flex;flex-direction:column;justify-content:space-between;gap:26px;
-    padding:clamp(22px,2.4vw,34px)}
+  .brand-in{position:relative;z-index:2;flex:none;min-width:0;
+    display:flex;flex-direction:column;gap:clamp(12px,1.6vh,20px);
+    padding:clamp(18px,2vw,28px)}
+  /* with no photograph the copy spreads over the whole panel instead */
+  .brand:not(.has-photo) .brand-in{flex:1;justify-content:space-between;
+    gap:clamp(18px,3vh,30px)}
 
   /* A photograph takes a band of its own across the top rather than sitting
      behind everything. Laying the copy over the picture meant the name and
@@ -145,8 +155,7 @@
      keep white text readable would have buried the photograph anyway. This
      way the picture is seen at full strength and the words sit on solid
      colour, which is also what the reference does. */
-  .brand-figure{position:relative;flex:none;overflow:hidden;
-    height:clamp(200px,30vh,330px)}
+  .brand-figure{position:relative;flex:1;min-height:0;overflow:hidden}
   .brand-figure img{width:100%;height:100%;object-fit:cover;display:block}
   /* the picture melts into the colour rather than stopping on a hard line */
   .brand-figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;
@@ -165,14 +174,14 @@
   .brand-tag{display:block;margin-top:5px;font-size:12px;color:rgba(255,255,255,.78)}
 
   .brand-say h2{font-family:var(--f-head);font-weight:800;letter-spacing:-.022em;
-    font-size:clamp(28px,3vw,42px);line-height:1.04;margin:0}
-  .brand-say p{margin:14px 0 0;font-size:clamp(13.5px,1vw,15.5px);line-height:1.6;
+    font-size:clamp(24px,2.6vw,38px);line-height:1.04;margin:0}
+  .brand-say p{margin:10px 0 0;font-size:clamp(13px,.95vw,15px);line-height:1.55;
     color:rgba(255,255,255,.86);max-width:34ch}
 
-  .brand-scan{display:flex;align-items:center;gap:14px;
-    background:rgba(255,255,255,.13);border-radius:16px;padding:13px;
+  .brand-scan{flex:none;display:flex;align-items:center;gap:13px;
+    background:rgba(255,255,255,.13);border-radius:14px;padding:11px;
     backdrop-filter:blur(6px)}
-  .brand-qr{flex:none;width:clamp(74px,6vw,88px);height:clamp(74px,6vw,88px);
+  .brand-qr{flex:none;width:clamp(66px,5.4vw,80px);height:clamp(66px,5.4vw,80px);
     background:#FFF;border-radius:11px;padding:5px}
   .brand-qr img{width:100%;height:100%;display:block}
   .brand-scan strong{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;
@@ -181,14 +190,15 @@
     color:rgba(255,255,255,.82);word-break:break-all}
 
   /* ---------------- footer ---------------- */
-  .foot{margin-top:clamp(34px,5vh,60px);border-top:1px solid var(--line);background:var(--page-hi)}
-  .foot-in{width:var(--wrap);margin:0 auto;padding:clamp(24px,4vh,42px) 0;
-    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .foot{flex:none;border-top:1px solid var(--line);background:var(--page-hi)}
+  .foot-in{width:var(--wrap);margin:0 auto;padding:10px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:14px}
   .foot-by{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft)}
   .foot-by svg{width:19px;height:19px;display:block;color:#E0682A}
   .foot-by b{font-family:var(--f-head);font-weight:800;letter-spacing:.07em;color:var(--ink)}
-  .foot-cta{display:inline-flex;align-items:center;gap:8px;background:#E0682A;color:#FFF;
-    border-radius:100px;padding:12px 22px;font-size:14px;font-weight:600}
+  .foot-cta{flex:none;display:inline-flex;align-items:center;gap:8px;background:#E0682A;
+    color:#FFF;border-radius:100px;padding:10px 18px;font-size:13.5px;font-weight:600;
+    white-space:nowrap}
   .foot-cta svg{width:15px;height:15px;display:block}
   [dir="rtl"] .foot-cta svg,[dir="rtl"] .place svg{transform:scaleX(-1)}
 
@@ -212,30 +222,92 @@
     border-radius:14px;padding:8px}
   .ar-qr img{display:block;width:100%}
 
+  /* This sits below the .brand rules on purpose. A media query adds no
+     specificity, so a plain .brand further down the sheet would beat it —
+     which is exactly what was happening: height:100% won and the banner
+     kept its full-panel height, squeezing the tiles to nothing. */
+  @media(max-width:1000px){
+    .shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+    .brand{order:-1}
+
+    /* Stacked, the panel cannot keep a whole portrait — that plus six tiles
+       is more than a phone screen holds. It becomes a banner instead: the
+       photograph fills it, the name and headline sit over the dark end. */
+    /* height comes from the grid row now, not from a guess */
+    .brand-figure{position:absolute;inset:0;flex:none}
+    .brand-figure::after{inset:0;height:100%;
+      background:linear-gradient(180deg,rgba(var(--tone-hi-rgb),.18) 0%,
+        rgba(var(--tone-hi-rgb),.58) 46%,rgba(var(--tone-hi-rgb),.95) 100%)}
+    .brand-in,.brand:not(.has-photo) .brand-in{position:relative;flex:1;
+      justify-content:flex-end;gap:9px;padding:14px 17px}
+    .brand-say p{display:none}
+    /* the code is for someone who is not holding the phone yet */
+    .brand-scan{display:none}
+    .brand-say h2{font-size:clamp(20px,4.4vw,27px)}
+    .brand-id{gap:11px}
+    .brand-mark{width:36px;height:36px;border-radius:11px}
+    .brand-name{font-size:13.5px}
+    .brand-tag{display:none}
+  }
+
+  /* Short screens: the words and the button give up a few pixels each so the
+     picture is not left on its 64px floor. Keyed to height, because a 1280x720
+     desktop is as tight vertically as a phone. */
+  @media(max-height:820px){
+    .meta{padding:9px 11px 0}
+    .pname{font-size:13.5px;margin-bottom:3px}
+    .price{font-size:13.5px}
+    .dims{font-size:11.5px;margin-top:2px}
+    .place{margin:9px 11px 10px;padding:10px 8px;font-size:12.5px}
+    .cats button{padding:9px 16px}
+    .brand-in{padding:clamp(14px,1.6vw,22px)}
+  }
+
   /* ---------------- phone ---------------- */
   @media(max-width:700px){
-    .demo-in{padding:6px 0;font-size:11.5px;gap:3px;line-height:1.4}
+    .demo-in{padding:5px 0;font-size:11px;gap:2px;line-height:1.35}
     .demo-in > svg{display:none}
     .demo > .demo-in > a{padding:13px 15px;border:1px solid rgba(240,168,126,.4);
       border-radius:100px;margin-top:2px;line-height:1}
     .demo-in [data-lang-slot]{margin-inline-start:auto}
 
-    .brand{position:static;min-height:clamp(420px,58vh,520px);border-radius:18px}
-    .brand-in{gap:18px;padding:18px}
-    .brand-say h2{font-size:27px}
-    .brand-say p{font-size:13.5px;margin-top:11px}
-    .brand-scan{padding:11px;gap:12px}
-    .brand-qr{width:70px;height:70px}
+    .brand{border-radius:15px}
 
     .cats{gap:7px}
-    .cats button{padding:10px 16px;font-size:13.5px}
-    .tools{margin-top:12px}
-    .sel select{padding:11px 36px 11px 14px;font-size:13px}
-    .grid{gap:11px}
-    .meta{padding:12px 12px 0}
-    .pname,.price{font-size:14px}
-    .place{width:calc(100% - 24px);margin:12px;padding:12px;font-size:13px}
-    .foot-in{padding:24px 0;flex-direction:column;align-items:flex-start}
+    .cats button{padding:9px 15px;font-size:13px}
+    .tools{margin-top:10px}
+    .sel select{padding:9px 34px 9px 13px;font-size:12.5px}
+    .grid{gap:9px;margin-top:10px}
+    /* every pixel out of the words here goes to the picture, which is the
+       part that has to carry the product */
+    .meta{padding:7px 10px 0}
+    .pname,.price{font-size:13px;line-height:1.3}
+    .pname{margin-bottom:2px}
+    .dims{font-size:11.5px;margin-top:2px;line-height:1.3}
+    /* the picture may go smaller here than on a desktop; better a short
+       strip than a tile whose button gets trimmed off the bottom */
+    .shot{min-height:50px}
+  }
+
+  @media(max-width:760px){
+    /* One row on a phone. Four tiles plus the banner in 812px left the
+       picture a 54px strip, which reads as broken rather than compact.
+
+       The tiles are also sized here rather than stretched: the picture keeps
+       a 4:3 shape and the tile is as tall as its contents, so it cannot end
+       up 169 wide by 398 tall. Whatever height is then left goes to the
+       banner, which has a photograph to show and no fixed size it must be. */
+    .grid{flex:none;grid-template-rows:auto}
+    .shot{flex:none;aspect-ratio:4/3;min-height:0}
+    .shell{grid-template-rows:minmax(110px,1fr) auto}
+    .brand{height:auto;min-height:110px}
+    .col{min-height:0}
+    .place{width:calc(100% - 20px);margin:9px 10px 10px;padding:11px 8px;
+      font-size:12.5px;min-height:40px}
+    /* a column here would cost 60px of a screen that has none to spare */
+    .foot-in{padding:6px 0;gap:10px}
+    .foot-by{font-size:11.5px}
+    .foot-cta{padding:9px 14px;font-size:12.5px}
   }
   /* A tablet is a touch screen at desktop width, so this is keyed to the
      absence of a mouse rather than to a breakpoint — the width rules above
@@ -249,7 +321,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=30"></script>
+<script src="sprite.js?v=42"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -293,7 +365,7 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=30" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=42" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
@@ -325,15 +397,25 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=30" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=42" alt=""></div>
   </div>
 </div>
 
-<script src="stores.js?v=30"></script>
+<script src="stores.js?v=42"></script>
 <script>
-var V = '?v=30';
+var V = '?v=42';
 var STORES = window.ARQR_STORES;
-var PER_PAGE = 6;
+/* Two rows always; how many across depends on the screen, so the page size
+   follows the layout rather than being a fixed number that overflows. */
+function perPage(){
+  var cols = matchMedia('(max-width:339px)').matches ? 1
+           : matchMedia('(max-width:760px)').matches ? 2 : 3;
+  /* A short phone cannot hold two rows without squashing the tiles into
+     something unreadable, so it shows one row and pages instead. Fewer,
+     properly sized tiles beat a full grid of crushed ones. */
+  var rows = matchMedia('(max-width:760px)').matches ? 1 : 2;
+  return cols * rows;
+}
 
 /* Which shop is this? The address is the shop's own — /novara, /corso — and
    a rewrite serves this one file for all of them. The query and hash forms
@@ -452,9 +534,10 @@ function selection(){
 
 function render(){
   var list = selection();
-  var pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+  var per = perPage();
+  var pages = Math.max(1, Math.ceil(list.length / per));
   if (page > pages) page = pages;
-  var slice = list.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  var slice = list.slice((page - 1) * per, page * per);
 
   gridEl.innerHTML = slice.map(function(it){
     return '<li class="prod">' +
@@ -549,6 +632,13 @@ arEl.addEventListener('click', function(e){ if (e.target === arEl) shut(); });
 addEventListener('keydown', function(e){ if (e.key === 'Escape') shut(); });
 
 render();
+
+/* turning the phone, or dragging a window wider, changes how many tiles fit */
+var reflow;
+addEventListener('resize', function(){
+  clearTimeout(reflow);
+  reflow = setTimeout(render, 150);
+});
 </script>
 <script>ARQR_I18N.apply();</script>
 </body>
