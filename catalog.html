@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=45"></script>
+<script src="i18n.js?v=47"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -65,70 +65,26 @@
     display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.8vw,24px)}
   @media(max-width:780px){.shops{grid-template-columns:minmax(0,1fr)}}
 
-  .shop{position:relative;display:flex;flex-direction:column;overflow:hidden;
-    background:var(--page-hi);border:1px solid var(--line);border-radius:clamp(16px,1.8vw,22px);
-    transition:transform .3s cubic-bezier(.3,.8,.3,1),box-shadow .3s,border-color .3s}
-  .shop:hover{transform:translateY(-4px);border-color:#D9D0C2;
-    box-shadow:0 30px 56px -38px rgba(70,50,30,.65)}
-  /* the shop's own colour, as a band across the top */
-  .shop::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--tone)}
+  /* The artwork carries its own inner card and margin, so nothing is added
+     around it — a border here would be a second frame around a framed
+     picture. Only a shadow, to lift it off the page. */
+  .shop{position:relative;display:flex;flex-direction:column;
+    transition:transform .3s cubic-bezier(.3,.8,.3,1)}
+  .shop:hover{transform:translateY(-4px)}
 
-  /* One label per card rather than the word 'sample' four times in the
-     headings — the cards have to read as four shops, not four of ours. */
-  /* Heading and chip share one flex row rather than the chip floating in
-     the corner over a guessed gap. Both strings change length with the
-     language — Portuguese has the longest of each — so the only reliable
-     way to keep them apart is to let the layout measure them. */
-  .shop-head{display:flex;align-items:flex-start;justify-content:space-between;
-    gap:14px;padding:clamp(22px,2.6vw,30px) clamp(18px,2.2vw,26px) 0}
-  /* It was three per cent off the card and disappeared into it. Dark, so it
-     separates on any card, and the same on all four because it says the same
-     thing on all four — the per-shop colour is carried by the band, the mark,
-     the name and the button. Solid ARQR orange was the other option, but the
-     furniture card is #B4623A and the brand is #E0682A: near enough to read
-     as a mistake. The orange lands on the dot instead. Matches the dark
-     sample bar on the shop pages, so the marker means one thing sitewide. */
-  .sample-chip{flex:none;margin-top:5px;
-    display:inline-flex;align-items:center;gap:7px;
-    background:#1C1A17;color:#F6F1E9;border-radius:100px;padding:6px 13px;
-    font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-    white-space:nowrap;box-shadow:0 10px 20px -14px rgba(28,26,23,.95)}
-  .sample-chip::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;
-    background:var(--accent)}
-
-  .shop-top{display:flex;align-items:center;gap:15px;min-width:0}
-  .shop-mark{flex:none;width:clamp(48px,4.4vw,56px);height:clamp(48px,4.4vw,56px);
-    border-radius:14px;display:grid;place-items:center;
-    background:var(--tone-soft);color:var(--tone)}
-  .shop-mark svg{width:56%;height:56%;display:block}
-  .shop-id{min-width:0}
-
-  /* the trade, big — the one word that tells a shopkeeper this is theirs */
-  .trade{font-family:var(--f-head);font-weight:800;letter-spacing:-.018em;
-    font-size:clamp(23px,2.5vw,31px);line-height:1.04;margin:0;color:var(--ink)}
-  /* the shop underneath it, in that shop's own colour */
-  .shop-name{display:block;margin-top:7px;font-family:var(--f-body);
-    font-weight:600;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;
-    color:var(--tone)}
-
-  .shop-note{margin:16px clamp(18px,2.2vw,26px) 0;font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
-
-  /* a glance at what is inside, without pretending to be the catalog */
-  .peek{display:flex;gap:8px;margin:16px clamp(18px,2.2vw,26px) 0}
-  .peek span{flex:1 1 0;aspect-ratio:1;border-radius:11px;display:grid;place-items:center;
-    background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%);
-    border:1px solid var(--line)}
-  .peek svg{width:58%;height:58%;display:block;color:#A99C89}
-  .peek img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
+  .shop-card{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;
+    border-radius:clamp(14px,1.5vw,20px);
+    box-shadow:0 26px 50px -34px rgba(70,50,30,.55);transition:box-shadow .3s}
+  .shop:hover .shop-card{box-shadow:0 34px 60px -32px rgba(70,50,30,.68)}
 
   .shop-go{display:flex;align-items:center;justify-content:space-between;gap:12px;
-    margin:auto clamp(18px,2.2vw,26px) clamp(18px,2.2vw,24px);padding-top:18px}
+    padding:14px 4px 0}
   .shop-url{font-size:12.5px;color:var(--ink-soft);font-weight:500;min-width:0;
     overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .shop-url b{color:var(--ink);font-weight:600}
   .open{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    text-align:center;background:var(--tone);color:#FFF;
-    border-radius:100px;padding:11px 20px;font-size:13.5px;font-weight:600;transition:filter .2s ease}
+    text-align:center;background:var(--tone);color:#FFF;border-radius:100px;
+    padding:11px 20px;font-size:13.5px;font-weight:600;transition:filter .2s ease}
   .shop:hover .open{filter:brightness(1.08)}
   .open svg{width:14px;height:14px;display:block}
 
@@ -155,16 +111,7 @@
     .not{font-size:12.5px;padding:12px 15px;gap:9px;margin-top:18px;
       border-radius:14px;align-items:flex-start;text-align:start}
     .not svg{margin-top:2px}
-    /* on a phone the chip goes above the row so the heading keeps the
-       full width — column-reverse puts it first without moving the markup */
-    .shop-head{flex-direction:column-reverse;align-items:flex-start;
-      gap:11px;padding:18px 16px 0}
-    .sample-chip{margin-top:0;font-size:10.5px;padding:6px 12px;gap:6px}
-    .trade{font-size:25px}
-    .shop-name{font-size:12px;margin-top:6px}
-    .shop-mark{width:46px;height:46px}
-    .shop-note,.peek,.shop-go{margin-left:16px;margin-right:16px}
-    .shop-go{flex-wrap:wrap;margin-bottom:16px}
+    .shop-go{flex-wrap:wrap;padding:12px 2px 0}
     .shop-url{width:100%;order:2}
     .open{order:1;width:100%;justify-content:center;padding:13px}
   }
@@ -172,7 +119,6 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=45"></script>
 
 <header class="bar">
   <a class="logo" href="/">
@@ -212,11 +158,11 @@
   </div>
 </main>
 
-<script src="stores.js?v=45"></script>
+<script src="stores.js?v=47"></script>
 <script>
 (function () {
   var host = location.host || 'arqr-two.vercel.app';
-  var V = '?v=45';
+  var V = '?v=47';
   /* the shop list is data, so it is translated on the way in — shop names
      stay as they are, because a brand name is not a word to translate */
   var t = function (x){ return window.ARQR_I18N ? ARQR_I18N.s(x) : x; };
@@ -232,27 +178,17 @@
 
   document.getElementById('shops').innerHTML = window.ARQR_STORES.map(function (s) {
     var href = direct ? 'store.html?s=' + s.slug : '/' + s.slug;
+    /* The card is artwork now. Trade, shop name, the line about that trade
+       and the product shots are all set into the picture, so none of it is
+       repeated here — printing it twice reads worse than not printing it.
+       The address and the button stay as markup so they can be reworded,
+       and the address follows the domain by itself. */
     return '<a class="shop" href="' + href + '" style="--tone:' + s.tone +
              ';--tone-soft:' + rgba(s.tone, .12) + '">' +
-      '<div class="shop-head">' +
-      '<div class="shop-top">' +
-        '<span class="shop-mark"><svg viewBox="0 0 27 24"><use href="#' + s.mark + '"></use></svg></span>' +
-        '<div class="shop-id">' +
-          /* the trade leads: it is the word a shopkeeper scans for. The
-             shop name is a made-up brand, so it supports rather than leads. */
-          '<h2 class="trade">' + esc(t(s.kind)) + '</h2>' +
-          '<span class="shop-name">' + esc(s.name) + '</span>' +
-        '</div>' +
-      '</div>' +
-      '<span class="sample-chip">' + esc(t('Sample catalog')) + '</span>' +
-      '</div>' +
-      '<p class="shop-note">' + esc(t(s.note)) + '</p>' +
-      '<div class="peek" aria-hidden="true">' +
-        s.items.slice(0, 4).map(function (it) {
-          return '<span><img src="assets/shops/' + s.slug + '/' + it.f + '.webp' + V +
-                 '" alt="" loading="lazy"></span>';
-        }).join('') +
-      '</div>' +
+      /* four pictures that ARE the page — lazy just leaves three of them
+         blank on arrival, so they load up front */
+      '<img class="shop-card" src="assets/shop-card-' + s.slug + '.webp' + V +
+           '" alt="' + esc(t(s.kind)) + ' — ' + esc(s.name) + '">' +
       '<div class="shop-go">' +
         '<span class="shop-url">' + esc(host) + '/<b>' + esc(s.slug) + '</b></span>' +
         '<span class="open">' + esc(t('Open this catalog')) + '' +
