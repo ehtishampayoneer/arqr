@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=42"></script>
+<script src="i18n.js?v=43"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -119,6 +119,7 @@
     background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%);
     border:1px solid var(--line)}
   .peek svg{width:58%;height:58%;display:block;color:#A99C89}
+  .peek img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
 
   .shop-go{display:flex;align-items:center;justify-content:space-between;gap:12px;
     margin:auto clamp(18px,2.2vw,26px) clamp(18px,2.2vw,24px);padding-top:18px}
@@ -171,7 +172,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=42"></script>
+<script src="sprite.js?v=43"></script>
 
 <header class="bar">
   <a class="logo" href="/">
@@ -211,10 +212,11 @@
   </div>
 </main>
 
-<script src="stores.js?v=42"></script>
+<script src="stores.js?v=43"></script>
 <script>
 (function () {
   var host = location.host || 'arqr-two.vercel.app';
+  var V = '?v=43';
   /* the shop list is data, so it is translated on the way in — shop names
      stay as they are, because a brand name is not a word to translate */
   var t = function (x){ return window.ARQR_I18N ? ARQR_I18N.s(x) : x; };
@@ -247,7 +249,8 @@
       '<p class="shop-note">' + esc(t(s.note)) + '</p>' +
       '<div class="peek" aria-hidden="true">' +
         s.items.slice(0, 4).map(function (it) {
-          return '<span><svg viewBox="0 0 48 48"><use href="#' + it.i + '"></use></svg></span>';
+          return '<span><img src="assets/shops/' + s.slug + '/' + it.f + '.webp' + V +
+                 '" alt="" loading="lazy"></span>';
         }).join('') +
       '</div>' +
       '<div class="shop-go">' +
