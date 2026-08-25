@@ -261,7 +261,7 @@
       '.shop-in .lang{margin-inline-start:auto}',
       '.lang-btn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;',
       '  background:transparent;border:1px solid var(--line,#E4DED4);border-radius:100px;',
-      '  padding:8px 13px;font:inherit;font-size:13.5px;font-weight:600;',
+      '  padding:8px 13px;min-height:40px;font:inherit;font-size:13.5px;font-weight:600;',
       '  color:inherit;line-height:1;transition:border-color .2s,background .2s}',
       '.lang-btn:hover{border-color:#B9AE9C}',
       '.lang-btn svg{width:17px;height:17px;display:block;flex:none;opacity:.8}',

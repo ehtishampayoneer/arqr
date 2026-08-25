@@ -59,6 +59,15 @@ t: {
 'AR catalog by <b>ARQR</b>': ['AR 目录，由 <b>ARQR</b> 制作','AR カタログ制作：<b>ARQR</b>','AR-каталог от <b>ARQR</b>','AR katalog — <b>ARQR</b>','AR katalog: <b>ARQR</b>','Catálogo AR de <b>ARQR</b>','Catalogue RA par <b>ARQR</b>','AR-Katalog von <b>ARQR</b>','Catalogo AR di <b>ARQR</b>','Catálogo RA por <b>ARQR</b>','AR کیٹلاگ از <b>ARQR</b>'],
 'Apply for your own catalog': ['申请你自己的目录','自分のカタログを申し込む','Заказать свой каталог','O‘z katalogingizga ariza bering','Kendi kataloğunuz için başvurun','Solicita tu propio catálogo','Demandez votre propre catalogue','Eigenen Katalog anfragen','Richiedi il tuo catalogo','Peça o seu próprio catálogo','اپنے کیٹلاگ کے لیے درخواست دیں'],
 
+/* ---------------- the shop page's own controls ---------------- */
+'Scan to explore': ['扫码浏览','スキャンして見る','Сканируйте, чтобы открыть','Ochish uchun skanlang','Taratıp keşfedin','Escanea para explorar','Scannez pour explorer','Scannen und entdecken','Scansiona per esplorare','Digitalize para explorar','دیکھنے کے لیے اسکین کریں'],
+'Sort by': ['排序方式','並び替え','Сортировка','Saralash','Sırala','Ordenar por','Trier par','Sortieren nach','Ordina per','Ordenar por','ترتیب دیں'],
+'Featured': ['推荐','おすすめ','Рекомендуемые','Tavsiya etilgan','Öne çıkanlar','Destacados','En vedette','Empfohlen','In evidenza','Destaques','نمایاں'],
+'Price: low to high': ['价格：从低到高','価格：安い順','Цена: по возрастанию','Narx: arzondan qimmatga','Fiyat: düşükten yükseğe','Precio: de menor a mayor','Prix : croissant','Preis: aufsteigend','Prezzo: dal più basso','Preço: do menor ao maior','قیمت: کم سے زیادہ'],
+'Price: high to low': ['价格：从高到低','価格：高い順','Цена: по убыванию','Narx: qimmatdan arzonga','Fiyat: yüksekten düşüğe','Precio: de mayor a menor','Prix : décroissant','Preis: absteigend','Prezzo: dal più alto','Preço: do maior ao menor','قیمت: زیادہ سے کم'],
+'Previous': ['上一页','前へ','Назад','Oldingi','Önceki','Anterior','Précédent','Zurück','Precedente','Anterior','پچھلا'],
+'Next': ['下一页','次へ','Вперёд','Keyingi','Sonraki','Siguiente','Suivant','Weiter','Successivo','Seguinte','اگلا'],
+
 /* ---------------- the four sample shops ---------------- */
 'Furniture': ['家具','家具','Мебель','Mebel','Mobilya','Muebles','Mobilier','Möbel','Mobili','Mobiliário','فرنیچر'],
 'Footwear': ['鞋履','靴','Обувь','Poyabzal','Ayakkabı','Calzado','Chaussures','Schuhe','Calzature','Calçado','جوتے'],

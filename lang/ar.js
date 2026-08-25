@@ -196,6 +196,15 @@ window.ARQR_LANG = {
     'Product categories': 'أقسام المنتجات',
     'Close': 'إغلاق',
 
+    /* ---- the shop page's own controls ---- */
+    'Scan to explore': 'امسح لتتصفّح',
+    'Sort by': 'ترتيب حسب',
+    'Featured': 'مختارة',
+    'Price: low to high': 'السعر: من الأقل للأعلى',
+    'Price: high to low': 'السعر: من الأعلى للأقل',
+    'Previous': 'السابق',
+    'Next': 'التالي',
+
     /* ---- the four sample shops ---- */
     'Furniture': 'أثاث',
     'Footwear': 'أحذية',
