@@ -140,6 +140,7 @@ window.ARQR_LANG = {
     "Open this catalog": "打开这个目录",
     "Whatever you sell, it has to be seen in the room.": "无论你卖什么，都得让人在房间里看见。",
     "Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.": "家具、鞋履、家饰、地毯——只要顾客能把它放进自己的空间，猜测就结束了。目录我们来做，你只需发出一个码。",
+    "Sample catalog": "示例目录",
     "<b>Sample catalog.</b> This is one shop's own catalog, built by ARQR.": "<b>示例目录。</b>这是某一家店自己的目录，由 ARQR 制作。",
     "See the other three →": "查看其他三个 &rarr;",
     "This shop's code": "这家店的二维码",

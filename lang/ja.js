@@ -140,6 +140,7 @@ window.ARQR_LANG = {
     "Open this catalog": "このカタログを開く",
     "Whatever you sell, it has to be seen in the room.": "何を売るにしても、部屋の中で見てもらう必要があります。",
     "Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.": "家具、靴、インテリア、カーペット——お客様が自分の空間に置けた瞬間、迷いは消えます。カタログは私たちが作り、あなたはコードを配るだけです。",
+    "Sample catalog": "サンプルカタログ",
     "<b>Sample catalog.</b> This is one shop's own catalog, built by ARQR.": "<b>サンプルカタログ。</b>これは一つの店の専用カタログで、ARQR が制作しました。",
     "See the other three →": "ほかの3つを見る &rarr;",
     "This shop's code": "この店のコード",

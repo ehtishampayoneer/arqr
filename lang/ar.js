@@ -182,6 +182,8 @@ window.ARQR_LANG = {
     'Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.':
       'أثاث، أحذية، ديكور، سجاد — لحظة أن يضعه العميل في مساحته، ينتهي التخمين. نحن نبني الكتالوج، وأنت توزّع رمزاً واحداً.',
 
+    'Sample catalog': 'كتالوج نموذجي',
+
     /* ---- a shop's own page ---- */
     '<b>Sample catalog.</b> This is one shop\'s own catalog, built by ARQR.':
       '<b>كتالوج نموذجي.</b> هذا كتالوج خاص بمتجر واحد، من بناء ARQR.',

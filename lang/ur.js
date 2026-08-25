@@ -140,6 +140,7 @@ window.ARQR_LANG = {
     "Open this catalog": "یہ کیٹلاگ کھولیں",
     "Whatever you sell, it has to be seen in the room.": "آپ جو بھی بیچیں، اسے کمرے میں دیکھنا ضروری ہے۔",
     "Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.": "فرنیچر، جوتے، ڈیکور، قالین — جیسے ہی گاہک اسے اپنی جگہ میں رکھ سکے، اندازے ختم ہو جاتے ہیں۔ کیٹلاگ ہم بناتے ہیں؛ آپ صرف ایک کوڈ دیتے ہیں۔",
+    "Sample catalog": "نمونہ کیٹلاگ",
     "<b>Sample catalog.</b> This is one shop's own catalog, built by ARQR.": "<b>نمونہ کیٹلاگ۔</b> یہ ایک دکان کا اپنا کیٹلاگ ہے، جو ARQR نے بنایا۔",
     "See the other three →": "باقی تین دیکھیں &rarr;",
     "This shop's code": "اس دکان کا کوڈ",

@@ -140,6 +140,7 @@ window.ARQR_LANG = {
     "Open this catalog": "Bu kataloğu aç",
     "Whatever you sell, it has to be seen in the room.": "Ne satarsanız satın, odada görülmesi gerekir.",
     "Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.": "Mobilya, ayakkabı, dekor, halı — müşteri onu kendi mekânına koyabildiği anda tahmin biter. Kataloğu biz yaparız; siz tek bir kod verirsiniz.",
+    "Sample catalog": "Örnek katalog",
     "<b>Sample catalog.</b> This is one shop's own catalog, built by ARQR.": "<b>Örnek katalog.</b> Bu, tek bir mağazanın kendi kataloğudur; ARQR yaptı.",
     "See the other three →": "Diğer üçünü gör &rarr;",
     "This shop's code": "Bu mağazanın kodu",

@@ -140,6 +140,7 @@ window.ARQR_LANG = {
     "Open this catalog": "Bu katalogni ochish",
     "Whatever you sell, it has to be seen in the room.": "Nima sotmang, uni xonada ko‘rish kerak.",
     "Furniture, footwear, decor, carpets — the moment a customer can put it in their own space, the guessing stops. We build the catalog; you hand out one code.": "Mebel, poyabzal, dekor, gilam — xaridor uni o‘z joyiga qo‘ya olgan zahoti taxmin tugaydi. Katalogni biz quramiz; siz bitta kod tarqatasiz.",
+    "Sample catalog": "Namuna katalog",
     "<b>Sample catalog.</b> This is one shop's own catalog, built by ARQR.": "<b>Namuna katalog.</b> Bu bitta do‘konning o‘z katalogi, ARQR tomonidan qurilgan.",
     "See the other three →": "Qolgan uchtasini ko‘ring &rarr;",
     "This shop's code": "Shu do‘konning kodi",
