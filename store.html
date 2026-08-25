@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=27"></script>
+<script src="i18n.js?v=30"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -77,9 +77,11 @@
   .sel svg{position:absolute;inset-inline-end:14px;width:14px;height:14px;
     pointer-events:none;color:var(--ink-soft)}
 
-  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
     gap:clamp(12px,1.5vw,20px);margin:clamp(14px,1.8vw,22px) 0 0;padding:0;list-style:none}
-  @media(max-width:360px){.grid{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  /* two across holds down to about a 340px phone; below that, one */
+  @media(max-width:339px){.grid{grid-template-columns:minmax(0,1fr)}}
 
   .prod{display:flex;flex-direction:column;background:var(--page-hi);
     border:1px solid var(--line);border-radius:18px;overflow:hidden;
@@ -88,24 +90,24 @@
     box-shadow:0 24px 44px -32px rgba(70,50,30,.6)}
   .shot{position:relative;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;
     background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%)}
-  .shot svg{width:62%;height:62%;display:block;color:#A99C89}
+  .shot svg{width:54%;height:54%;display:block;color:#A99C89}
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .tag{position:absolute;top:11px;inset-inline-start:11px;z-index:2;
     background:rgba(255,255,255,.94);border-radius:100px;padding:5px 11px;
     font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
     color:var(--ink-soft)}
 
-  .meta{padding:14px 15px 0;flex:1 1 auto;min-width:0}
-  .pname{display:block;font-size:15px;font-weight:600;line-height:1.35;margin:0 0 5px}
+  .meta{padding:13px 14px 0;flex:1 1 auto;min-width:0}
+  .pname{display:block;font-size:14.5px;font-weight:600;line-height:1.35;margin:0 0 5px}
   .price{display:block;font-size:15px;font-weight:600;color:var(--tone)}
   .dims{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-soft)}
 
-  .place{display:flex;align-items:center;justify-content:center;gap:9px;
-    width:calc(100% - 30px);margin:14px 15px 15px;cursor:pointer;
-    background:var(--tone);color:#FFF;border:0;border-radius:12px;padding:13px 14px;
-    font-size:13.5px;font-weight:600;text-align:center;line-height:1.35;
+  .place{display:flex;align-items:center;justify-content:center;gap:8px;
+    width:calc(100% - 28px);margin:13px 14px 14px;cursor:pointer;
+    background:var(--tone);color:#FFF;border:0;border-radius:11px;padding:12px 10px;
+    font-size:13px;font-weight:600;text-align:center;line-height:1.35;
     transition:transform .18s ease,filter .18s ease}
-  .place svg{width:17px;height:17px;display:block;flex:none}
+  .place svg{width:16px;height:16px;display:block;flex:none}
   .place:hover{filter:brightness(1.07)}
   .place:active{transform:scale(.98)}
 
@@ -124,23 +126,34 @@
   [dir="rtl"] .pager svg{transform:scaleX(-1)}
 
   /* ---------------- right: the shop itself ---------------- */
+  /* The padding lives on the inner block, not here. An absolutely placed
+     child is positioned against the padding box, so with padding on .brand
+     an inset:0 photograph stopped short of the edges and left a border of
+     flat colour around it. */
   .brand{position:sticky;top:16px;border-radius:clamp(20px,2vw,26px);overflow:hidden;
-    color:#FFF;
-    /* tall enough to hold the screen beside the scrolling products, but
-       never taller than the screen — a sticky block that overflows the
-       viewport stops sticking and drifts */
+    color:#FFF;display:flex;flex-direction:column;padding:0;
     min-height:min(760px, calc(100svh - 32px));
-    display:flex;flex-direction:column;justify-content:space-between;gap:26px;
-    padding:clamp(22px,2.4vw,34px);
     background:linear-gradient(158deg,var(--tone-lo) 0%,var(--tone) 46%,var(--tone-hi) 100%);
     box-shadow:0 40px 70px -46px rgba(60,40,25,.75)}
-  /* a photograph, if this shop has one, sits behind the wash */
-  .brand-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    z-index:0;opacity:.42}
-  .brand-scrim{position:absolute;inset:0;z-index:1;display:none;
-    background:linear-gradient(158deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.45) 100%)}
-  .brand.has-photo .brand-scrim{display:block}
-  .brand > *{position:relative;z-index:2}
+  .brand-in{position:relative;z-index:2;flex:1;min-width:0;
+    display:flex;flex-direction:column;justify-content:space-between;gap:26px;
+    padding:clamp(22px,2.4vw,34px)}
+
+  /* A photograph takes a band of its own across the top rather than sitting
+     behind everything. Laying the copy over the picture meant the name and
+     headline landed a third of the way down, where any wash strong enough to
+     keep white text readable would have buried the photograph anyway. This
+     way the picture is seen at full strength and the words sit on solid
+     colour, which is also what the reference does. */
+  .brand-figure{position:relative;flex:none;overflow:hidden;
+    height:clamp(200px,30vh,330px)}
+  .brand-figure img{width:100%;height:100%;object-fit:cover;display:block}
+  /* the picture melts into the colour rather than stopping on a hard line */
+  .brand-figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;
+    background:linear-gradient(to bottom,rgba(var(--tone-hi-rgb),0) 0%,
+      rgba(var(--tone-hi-rgb),.55) 62%,rgba(var(--tone-hi-rgb),1) 100%)}
+  .brand.has-photo{background:linear-gradient(180deg,
+    var(--tone-hi) 0%,var(--tone) 62%,var(--tone-hi) 100%)}
 
   .brand-id{display:flex;align-items:center;gap:13px}
   .brand-mark{flex:none;width:46px;height:46px;border-radius:13px;display:grid;
@@ -207,7 +220,8 @@
       border-radius:100px;margin-top:2px;line-height:1}
     .demo-in [data-lang-slot]{margin-inline-start:auto}
 
-    .brand{position:static;min-height:0;gap:20px;padding:20px;border-radius:18px}
+    .brand{position:static;min-height:clamp(420px,58vh,520px);border-radius:18px}
+    .brand-in{gap:18px;padding:18px}
     .brand-say h2{font-size:27px}
     .brand-say p{font-size:13.5px;margin-top:11px}
     .brand-scan{padding:11px;gap:12px}
@@ -235,7 +249,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=27"></script>
+<script src="sprite.js?v=30"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -263,7 +277,7 @@
   </div>
 
   <aside class="brand" id="brand">
-    <span class="brand-scrim" aria-hidden="true"></span>
+    <div class="brand-in">
 
     <div class="brand-id">
       <span class="brand-mark"><svg viewBox="0 0 27 24"><use id="shopMark" href="#mk-novara"></use></svg></span>
@@ -279,11 +293,13 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=27" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=30" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
       </div>
+    </div>
+
     </div>
   </aside>
 
@@ -309,15 +325,15 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=27" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=30" alt=""></div>
   </div>
 </div>
 
-<script src="stores.js?v=27"></script>
+<script src="stores.js?v=30"></script>
 <script>
-var V = '?v=27';
+var V = '?v=30';
 var STORES = window.ARQR_STORES;
-var PER_PAGE = 4;
+var PER_PAGE = 6;
 
 /* Which shop is this? The address is the shop's own — /novara, /corso — and
    a rewrite serves this one file for all of them. The query and hash forms
@@ -348,11 +364,11 @@ function mix(hex, to, amt){
   }
   return out;
 }
-function rgba(hex, a){
+function channels(hex){
   var m = hex.replace('#','');
-  return 'rgba(' + parseInt(m.slice(0,2),16) + ',' + parseInt(m.slice(2,4),16) + ',' +
-         parseInt(m.slice(4,6),16) + ',' + a + ')';
+  return parseInt(m.slice(0,2),16) + ',' + parseInt(m.slice(2,4),16) + ',' + parseInt(m.slice(4,6),16);
 }
+function rgba(hex, a){ return 'rgba(' + channels(hex) + ',' + a + ')'; }
 
 /* ---------------- dress the page in the shop's identity ---------------- */
 var root = document.documentElement.style;
@@ -360,6 +376,7 @@ root.setProperty('--tone', shop.tone);
 root.setProperty('--tone-soft', rgba(shop.tone, .12));
 root.setProperty('--tone-lo', mix(shop.tone, '#FFFFFF', .18));
 root.setProperty('--tone-hi', mix(shop.tone, '#000000', .42));
+root.setProperty('--tone-hi-rgb', channels(mix(shop.tone, '#000000', .42)));
 
 document.title = shop.name + ' — AR catalog';
 document.querySelector('meta[name=theme-color]').setAttribute('content', shop.tone);
@@ -383,9 +400,12 @@ document.getElementById('arQrImg').src = 'assets/qr-' + shop.slug + '.svg' + V;
 (function () {
   var probe = new Image();
   probe.onload = function(){
-    probe.className = 'brand-photo'; probe.alt = '';
+    probe.alt = '';
     var b = document.getElementById('brand');
-    b.insertBefore(probe, b.firstChild);
+    var fig = document.createElement('div');
+    fig.className = 'brand-figure';
+    fig.appendChild(probe);
+    b.insertBefore(fig, b.firstChild);
     b.classList.add('has-photo');
   };
   probe.src = 'assets/hero-' + shop.slug + '.webp' + V;
