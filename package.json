@@ -10,7 +10,8 @@
     "art": "node build-images.js && node bump-assets.js",
     "lang": "node build-lang.js",
     "shops": "node import-shop.js",
-    "models": "node compress-models.js"
+    "models": "node compress-models.js",
+    "usdz": "node make-usdz.js"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",
