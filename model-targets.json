@@ -1,0 +1,646 @@
+{
+ "armchair-with-rattan-black-themasie-emba": {
+  "shop": "novara",
+  "usdz": [
+   0.7746,
+   0.9592,
+   0.7667
+  ],
+  "glb": [
+   0.7746,
+   0.9592,
+   0.7667
+  ],
+  "why": "measured correct as supplied"
+ },
+ "designer-chair-02a": {
+  "shop": "novara",
+  "usdz": [
+   0.7504,
+   0.9714,
+   0.6266
+  ],
+  "glb": [
+   0.7504,
+   0.9714,
+   0.6266
+  ],
+  "why": "measured correct as supplied"
+ },
+ "elegant-chair": {
+  "shop": "novara",
+  "usdz": [
+   0.813,
+   1.1552,
+   0.7806
+  ],
+  "glb": [
+   0.813,
+   1.1553,
+   0.7806
+  ],
+  "why": "measured correct as supplied"
+ },
+ "flick-accent-chair-yolk-yellow": {
+  "shop": "novara",
+  "usdz": [
+   0.7783,
+   0.6924,
+   0.756
+  ],
+  "glb": [
+   0.7783,
+   0.6924,
+   0.7561
+  ],
+  "why": "78 x 69 x 76 cm accent chair"
+ },
+ "flippa-functional-coffee-table-w-storagewalnut": {
+  "shop": "novara",
+  "usdz": [
+   1.2,
+   0.3848,
+   0.7016
+  ],
+  "glb": [
+   1.2,
+   0.3848,
+   0.7016
+  ],
+  "why": "120 x 38 x 70 cm coffee table"
+ },
+ "miki-sofa-bed-quartz-blue": {
+  "shop": "novara",
+  "usdz": [
+   1.918,
+   0.817,
+   0.9822
+  ],
+  "glb": [
+   1.918,
+   0.817,
+   0.9822
+  ],
+  "why": "192 x 82 x 98 cm sofa bed"
+ },
+ "moby-2-seater-sofa": {
+  "shop": "novara",
+  "usdz": [
+   1.2238,
+   0.8875,
+   0.8139
+  ],
+  "glb": [
+   1.2238,
+   0.8875,
+   0.8139
+  ],
+  "why": "122 x 89 x 81 cm two-seater"
+ },
+ "sofa-42": {
+  "shop": "novara",
+  "usdz": [
+   2.0142,
+   0.8145,
+   0.894
+  ],
+  "glb": [
+   2.0142,
+   0.8145,
+   0.8939
+  ],
+  "why": "measured correct as supplied"
+ },
+ "sofa-free": {
+  "shop": "novara",
+  "usdz": [
+   2.7966,
+   1.0057,
+   1.1487
+  ],
+  "glb": [
+   2.7966,
+   1.0058,
+   1.1486
+  ],
+  "why": "measured correct as supplied"
+ },
+ "sofa-m33523": {
+  "shop": "novara",
+  "usdz": [
+   3.1992,
+   0.905,
+   1.5714
+  ],
+  "glb": [
+   3.1992,
+   0.916,
+   1.5714
+  ],
+  "why": "measured correct as supplied"
+ },
+ "tv-table-vicco-lowboard-amber-4096px2": {
+  "shop": "novara",
+  "usdz": [
+   1.5,
+   0.4725,
+   0.395
+  ],
+  "glb": [
+   1.5,
+   0.4725,
+   0.395
+  ],
+  "why": "measured correct as supplied"
+ },
+ "asics-shoe": {
+  "shop": "corso",
+  "usdz": [
+   0.1225,
+   0.119,
+   0.2818
+  ],
+  "glb": [
+   0.1342,
+   0.119,
+   0.2868
+  ],
+  "why": "measured correct as supplied"
+ },
+ "carhartt-construction-boot": {
+  "shop": "corso",
+  "usdz": [
+   0.286,
+   0.2051,
+   0.2122
+  ],
+  "glb": [
+   0.3387,
+   0.2051,
+   0.262
+  ],
+  "why": "measured correct as supplied"
+ },
+ "cat-shoe-left": {
+  "shop": "corso",
+  "usdz": [
+   0.31,
+   0.1655,
+   0.1116
+  ],
+  "glb": [
+   0.31,
+   0.1762,
+   0.1093
+  ],
+  "why": "work boot, EU 45"
+ },
+ "gladiator-sandal-heels": {
+  "shop": "corso",
+  "usdz": [
+   0.0817,
+   0.2332,
+   0.24
+  ],
+  "glb": [
+   0.0817,
+   0.2332,
+   0.24
+  ],
+  "why": "ankle-strap heel, EU 38"
+ },
+ "high-heels": {
+  "shop": "corso",
+  "usdz": [
+   0.1984,
+   0.1474,
+   0.2518
+  ],
+  "glb": [
+   0.2362,
+   0.1474,
+   0.2768
+  ],
+  "why": "pair: 25 cm long, 15 cm heel, 20 cm across the two"
+ },
+ "mule-dway-shoe-multicolor": {
+  "shop": "corso",
+  "usdz": [
+   0.27,
+   0.1006,
+   0.1061
+  ],
+  "glb": [
+   0.27,
+   0.1162,
+   0.1031
+  ],
+  "why": "slide mule, EU 39"
+ },
+ "photorealistic-hoka-shoe": {
+  "shop": "corso",
+  "usdz": [
+   0.3,
+   0.1946,
+   0.1221
+  ],
+  "glb": [
+   0.3,
+   0.2597,
+   0.1989
+  ],
+  "why": "running shoe, EU 44"
+ },
+ "scanned-adidas-sports-shoe": {
+  "shop": "corso",
+  "usdz": [
+   0.29,
+   0.1262,
+   0.1537
+  ],
+  "glb": [
+   0.29,
+   0.1262,
+   0.1537
+  ],
+  "why": "football boot, EU 43"
+ },
+ "sievi-racer-safety-shoe": {
+  "shop": "corso",
+  "usdz": [
+   0.1185,
+   0.1398,
+   0.3
+  ],
+  "glb": [
+   0.1185,
+   0.1398,
+   0.3
+  ],
+  "why": "safety shoe, EU 44"
+ },
+ "ysl-high-heels": {
+  "shop": "corso",
+  "usdz": [
+   0.0921,
+   0.2341,
+   0.24
+  ],
+  "glb": [
+   0.0921,
+   0.2341,
+   0.24
+  ],
+  "why": "ankle-strap heel, EU 38"
+ },
+ "cat-statue": {
+  "shop": "maison",
+  "usdz": [
+   0.3,
+   0.1165,
+   0.2454
+  ],
+  "glb": [
+   0.3,
+   0.1363,
+   0.2416
+  ],
+  "why": "sleeping-cat ornament; it was 1.7 m long"
+ },
+ "ding-censer-with-an-openwork-cover": {
+  "shop": "maison",
+  "usdz": [
+   0.2252,
+   0.2718,
+   0.1523
+  ],
+  "glb": [
+   0.2342,
+   0.2718,
+   0.1665
+  ],
+  "why": "27 cm tall censer — matches the museum record"
+ },
+ "egyptian-cat-statue": {
+  "shop": "maison",
+  "usdz": [
+   0.4047,
+   0.9599,
+   0.551
+  ],
+  "glb": [
+   0.4047,
+   0.9599,
+   0.551
+  ],
+  "why": "96 cm floor statue"
+ },
+ "ibex-statue-scan-berlin-tierpark": {
+  "shop": "maison",
+  "usdz": [
+   0.777,
+   2,
+   0.9806
+  ],
+  "glb": [
+   0.777,
+   2,
+   0.9807
+  ],
+  "why": "measured correct as supplied"
+ },
+ "lamp-marble-base-free": {
+  "shop": "maison",
+  "usdz": [
+   0.2558,
+   0.45,
+   0.2558
+  ],
+  "glb": [
+   0.2558,
+   0.45,
+   0.2558
+  ],
+  "why": "table lamp, 45 cm to the top of the shade"
+ },
+ "painting-rembrandt-landscape1": {
+  "shop": "maison",
+  "usdz": [
+   0.5168,
+   0.3724,
+   0.0057
+  ],
+  "glb": [
+   0.5168,
+   0.3724,
+   0.0057
+  ],
+  "why": "framed canvas, 52 x 37 cm"
+ },
+ "plant-interior-decoration": {
+  "shop": "maison",
+  "usdz": [
+   0.2865,
+   0.3781,
+   0.2246
+  ],
+  "glb": [
+   0.2865,
+   0.3781,
+   0.2246
+  ],
+  "why": "measured correct as supplied"
+ },
+ "table-lamp": {
+  "shop": "maison",
+  "usdz": [
+   0.4924,
+   0.7444,
+   0.4924
+  ],
+  "glb": [
+   0.4924,
+   0.7444,
+   0.4924
+  ],
+  "why": "measured correct as supplied"
+ },
+ "table-lamp-free": {
+  "shop": "maison",
+  "usdz": [
+   0.206,
+   0.45,
+   0.206
+  ],
+  "glb": [
+   0.2059,
+   0.45,
+   0.2059
+  ],
+  "why": "table lamp, 45 cm to the top of the shade"
+ },
+ "torsion-pendulum-clock-animation": {
+  "shop": "maison",
+  "usdz": [
+   0.1638,
+   0.2682,
+   0.1638
+  ],
+  "glb": [
+   0.1638,
+   0.2682,
+   0.1638
+  ],
+  "why": "measured correct as supplied"
+ },
+ "victorian-framed-painting-pbr-game-ready": {
+  "shop": "maison",
+  "usdz": [
+   1.1358,
+   0.84,
+   0.047
+  ],
+  "glb": [
+   1.1358,
+   0.84,
+   0.0471
+  ],
+  "why": "measured correct as supplied"
+ },
+ "vintage-painting-dani": {
+  "shop": "maison",
+  "usdz": [
+   0.65,
+   0.894,
+   0.0503
+  ],
+  "glb": [
+   0.65,
+   0.894,
+   0.0503
+  ],
+  "why": "measured correct as supplied"
+ },
+ "wall-decor-photoframe": {
+  "shop": "maison",
+  "usdz": [
+   0.0128,
+   0.4076,
+   0.3495
+  ],
+  "glb": [
+   0.0128,
+   0.4076,
+   0.3495
+  ],
+  "why": "stretched canvas, 41 x 35 cm, 13 mm deep"
+ },
+ "antique-turkish-runner-carpet": {
+  "shop": "terra",
+  "usdz": [
+   1.9626,
+   0.0077,
+   1.0035
+  ],
+  "glb": [
+   1.9626,
+   0.0077,
+   1.0035
+  ],
+  "why": "196 x 100 cm rug"
+ },
+ "ava-large-geometric-hand-tufted-wool-rug": {
+  "shop": "terra",
+  "usdz": [
+   2.3046,
+   0.029,
+   1.6
+  ],
+  "glb": [
+   2.3046,
+   0.029,
+   1.6
+  ],
+  "why": "230 x 160 cm rug (also carries a FLOOR plane)"
+ },
+ "bess-arabian-gallery-kilim-i-runner": {
+  "shop": "terra",
+  "usdz": [
+   4.2389,
+   0.0162,
+   2.0758
+  ],
+  "glb": [
+   4.2389,
+   0.0162,
+   2.0758
+  ],
+  "why": "measured correct as supplied"
+ },
+ "bhadoi-rug": {
+  "shop": "terra",
+  "usdz": [
+   2.408,
+   0.0136,
+   1.716
+  ],
+  "glb": [
+   2.408,
+   0.0137,
+   1.716
+  ],
+  "why": "measured correct as supplied"
+ },
+ "boho-rug": {
+  "shop": "terra",
+  "usdz": [
+   1.84,
+   0.0066,
+   3.0172
+  ],
+  "glb": [
+   1.84,
+   0.0066,
+   3.0172
+  ],
+  "why": "184 x 302 cm rug"
+ },
+ "carpet-2": {
+  "shop": "terra",
+  "usdz": [
+   2.0509,
+   0,
+   3.661
+  ],
+  "glb": [
+   2.051,
+   0,
+   3.661
+  ],
+  "why": "205 x 366 cm carpet"
+ },
+ "carpet-carpet": {
+  "shop": "terra",
+  "usdz": [
+   2.6123,
+   0,
+   4
+  ],
+  "glb": [
+   2.6122,
+   0,
+   4
+  ],
+  "why": "261 x 400 cm carpet"
+ },
+ "fine-persian-heriz-carpet": {
+  "shop": "terra",
+  "usdz": [
+   3.9335,
+   0.0225,
+   2.8807
+  ],
+  "glb": [
+   3.9336,
+   0.0226,
+   2.8807
+  ],
+  "why": "measured correct as supplied"
+ },
+ "game-ready-carpet": {
+  "shop": "terra",
+  "usdz": [
+   1.6857,
+   0.0047,
+   1.0979
+  ],
+  "glb": [
+   1.6857,
+   0.0047,
+   1.0979
+  ],
+  "why": "169 x 110 cm rug"
+ },
+ "persian-nain-carpet": {
+  "shop": "terra",
+  "usdz": [
+   4.1696,
+   0.0246,
+   3.0981
+  ],
+  "glb": [
+   4.1697,
+   0.0247,
+   3.0981
+  ],
+  "why": "measured correct as supplied"
+ },
+ "persian-tabriz-pictorial-carpet": {
+  "shop": "terra",
+  "usdz": [
+   3.6112,
+   0.006,
+   2.6213
+  ],
+  "glb": [
+   3.6112,
+   0.006,
+   2.6213
+  ],
+  "why": "361 x 262 cm carpet"
+ },
+ "signed-persian-nain-square-carpet": {
+  "shop": "terra",
+  "usdz": [
+   2.8811,
+   0.0208,
+   2.6155
+  ],
+  "glb": [
+   2.8811,
+   0.0207,
+   2.6155
+  ],
+  "why": "measured correct as supplied"
+ }
+}

@@ -12,7 +12,10 @@
     "shops": "node import-shop.js",
     "models": "node compress-models.js",
     "usdz": "node make-usdz.js",
-    "restore": "node restore-models.js"
+    "restore": "node restore-models.js",
+    "measure": "python measure-usdz.py && node measure-glb.js",
+    "plan": "node plan-sizes.js",
+    "sizes": "npm run measure && npm run plan && python fix-usdz-scale.py && node fix-glb-scale.js"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",

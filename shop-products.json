@@ -48,7 +48,7 @@
     {
       "n": "Flick Accent Chair Yolk Yellow",
       "p": "$1,770",
-      "d": "210 × 90 cm",
+      "d": "78 × 69 cm",
       "dReal": false,
       "c": "Seating",
       "i": "ic-chair",
@@ -63,7 +63,7 @@
     {
       "n": "Flippa Functional Coffee Table",
       "p": "$1,850",
-      "d": "180 × 85 cm",
+      "d": "120 × 38 cm",
       "dReal": false,
       "c": "Tables",
       "i": "ic-table",
@@ -78,7 +78,7 @@
     {
       "n": "Miki Sofa Bed Quartz Blue",
       "p": "$2,440",
-      "d": "78 × 82 cm",
+      "d": "192 × 82 cm",
       "dReal": false,
       "c": "Seating",
       "i": "ic-sofa",
@@ -93,7 +93,7 @@
     {
       "n": "Moby 2 Seater Sofa",
       "p": "$580",
-      "d": "120 × 45 cm",
+      "d": "122 × 89 cm",
       "dReal": false,
       "c": "Seating",
       "i": "ic-sofa",
@@ -138,7 +138,7 @@
     {
       "n": "Sofa M33523",
       "p": "$1,190",
-      "d": "320 × 92 cm",
+      "d": "320 × 90 cm",
       "dReal": true,
       "c": "Seating",
       "i": "ic-sofa",
@@ -322,7 +322,7 @@
     {
       "n": "Cat Statue",
       "p": "$640",
-      "d": "170 × 77 cm",
+      "d": "30 × 25 cm",
       "dReal": true,
       "c": "Objects",
       "i": "ic-object",
@@ -382,7 +382,7 @@
     {
       "n": "Lamp Marble Base",
       "p": "$740",
-      "d": "H 42 cm",
+      "d": "H 45 cm",
       "dReal": false,
       "c": "Lighting",
       "i": "ic-pendant",
@@ -397,7 +397,7 @@
     {
       "n": "Painting Rembrandt Landscape",
       "p": "$490",
-      "d": "H 28 cm",
+      "d": "52 × 37 cm",
       "dReal": false,
       "c": "Wall",
       "i": "ic-frame",
@@ -442,7 +442,7 @@
     {
       "n": "Table Lamp Free",
       "p": "$480",
-      "d": "H 42 cm",
+      "d": "H 45 cm",
       "dReal": false,
       "c": "Lighting",
       "i": "ic-pendant",
@@ -487,7 +487,7 @@
     {
       "n": "Vintage Painting Dani",
       "p": "$690",
-      "d": "H 89 cm",
+      "d": "89 × 65 cm",
       "dReal": true,
       "c": "Wall",
       "i": "ic-frame",
@@ -502,7 +502,7 @@
     {
       "n": "Wall Decor Photoframe",
       "p": "$260",
-      "d": "H 16 cm",
+      "d": "41 × 35 cm",
       "dReal": true,
       "c": "Wall",
       "i": "ic-frame",
@@ -534,7 +534,7 @@
     {
       "n": "Ava Large Geometric Hand Tufted Wool Rug",
       "p": "$1,290",
-      "d": "334 × 334 cm",
+      "d": "230 × 160 cm",
       "dReal": true,
       "c": "Hand-knotted",
       "i": "ic-rug",
@@ -594,7 +594,7 @@
     {
       "n": "Carpet II",
       "p": "$540",
-      "d": "200 × 140 cm",
+      "d": "366 × 205 cm",
       "dReal": false,
       "c": "Flatweave",
       "i": "ic-rug",
@@ -609,7 +609,7 @@
     {
       "n": "Carpet Carpet",
       "p": "$1,070",
-      "d": "300 × 200 cm",
+      "d": "400 × 261 cm",
       "dReal": false,
       "c": "Flatweave",
       "i": "ic-rug",
@@ -639,7 +639,7 @@
     {
       "n": "Carpet",
       "p": "$330",
-      "d": "240 × 170 cm",
+      "d": "169 × 110 cm",
       "dReal": false,
       "c": "Flatweave",
       "i": "ic-rug",
