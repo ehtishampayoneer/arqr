@@ -497,9 +497,9 @@
   "rotateUsdz": [
    -90,
    0,
-   90
+   -90
   ],
-  "rotateUsdzWhy": "hangs on a wall: face turned to +Y for the wall normal and the top to -Z, the same way round as the paintings. glb stays upright for Scene Viewer."
+  "rotateUsdzWhy": "hangs on a wall. Its picture plane is wound the opposite way from the paintings — front face on -X — so it needs -90 about Z where they need none, to send the picture out of the wall rather than into it, with the top still at -Z."
  },
  "antique-turkish-runner-carpet": {
   "shop": "terra",

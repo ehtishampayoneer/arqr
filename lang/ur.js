@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "ہر ماہ",
     "Per product": "فی پروڈکٹ",
     "Start with 10": "10 سے شروع کریں",
-    "Start with 25": "25 سے شروع کریں",
     "Start with 50": "50 سے شروع کریں",
     "People’s choice": "لوگوں کی پسند",
-    "Twice the range of Studio, at the same price per product.": "Studio سے دگنی مصنوعات، فی پروڈکٹ وہی قیمت۔",
     "More than one shop or branch, each with its own code": "ایک سے زیادہ دکانیں یا برانچیں، ہر ایک کا اپنا کوڈ",
     "More than 50 products?": "50 سے زیادہ پروڈکٹس؟",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "بڑی رینج، کئی برانچیں، یا براہِ راست آپ کی دکان سے فیڈ۔ ہمیں بتائیں آپ کا کیٹلاگ کتنا بڑا ہے، ہم قیمت بتا دیں گے۔",
     "Get a custom quote": "اپنی قیمت معلوم کریں",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "ہر پلان میں آپ کا اپنا صفحہ، اپنا QR کوڈ اور آرڈرز وہیں آتے ہیں جہاں آپ چاہیں۔ <b>کوئی سیٹ اپ فیس نہیں</b>، اور ہمارے بنائے ہر ماڈل کا کوئی الگ خرچ نہیں۔ جس مہینے آپ کی رینج بڑھے، پلان اوپر کر لیں۔"
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "ہر پلان میں آپ کا اپنا صفحہ، اپنا QR کوڈ اور آرڈرز وہیں آتے ہیں جہاں آپ چاہیں۔ <b>کوئی سیٹ اپ فیس نہیں</b>، اور ہمارے بنائے ہر ماڈل کا کوئی الگ خرچ نہیں۔ جس مہینے آپ کی رینج بڑھے، پلان اوپر کر لیں۔",
+    "Start with 20": "20 سے شروع کریں",
+    "The dearest rate we charge": "ہماری سب سے مہنگی فی پروڈکٹ قیمت",
+    "17% less a product than Starter": "Starter سے فی پروڈکٹ 17% کم",
+    "33% less a product than Starter": "Starter سے فی پروڈکٹ 33% کم",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Studio سے اوپر کی تیس مصنوعات <b>$1.67 فی عدد</b> پڑتی ہیں — اس سے سستی کبھی نہیں ہوتیں۔"
   },
   a: {
     "Sarah Mitchell": "سارہ مچل",

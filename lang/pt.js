@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "Todos os meses",
     "Per product": "Por produto",
     "Start with 10": "Começar com 10",
-    "Start with 25": "Começar com 25",
     "Start with 50": "Começar com 50",
     "People’s choice": "A mais escolhida",
-    "Twice the range of Studio, at the same price per product.": "O dobro dos produtos do Studio, ao mesmo preço por produto.",
     "More than one shop or branch, each with its own code": "Mais do que uma loja ou filial, cada uma com o seu código",
     "More than 50 products?": "Mais de 50 produtos?",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "Gamas grandes, várias filiais ou uma ligação direta à sua loja. Diga-nos o tamanho do seu catálogo e fazemos-lhe um orçamento.",
     "Get a custom quote": "Peça um orçamento",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Todos os planos incluem a sua própria página, o seu código QR e as encomendas onde quiser. <b>Sem taxa de adesão</b> e sem pagar por cada modelo que construímos. Suba de plano no mês em que a sua gama crescer."
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Todos os planos incluem a sua própria página, o seu código QR e as encomendas onde quiser. <b>Sem taxa de adesão</b> e sem pagar por cada modelo que construímos. Suba de plano no mês em que a sua gama crescer.",
+    "Start with 20": "Começar com 20",
+    "The dearest rate we charge": "A nossa tarifa mais cara por produto",
+    "17% less a product than Starter": "Menos 17% por produto do que o Starter",
+    "33% less a product than Starter": "Menos 33% por produto do que o Starter",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Os trinta produtos acima do Studio ficam a <b>$1,67 cada</b> — o mais barato que chegam a custar."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

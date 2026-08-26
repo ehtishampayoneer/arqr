@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "Monatlich",
     "Per product": "Pro Produkt",
     "Start with 10": "Mit 10 starten",
-    "Start with 25": "Mit 25 starten",
     "Start with 50": "Mit 50 starten",
     "People’s choice": "Am beliebtesten",
-    "Twice the range of Studio, at the same price per product.": "Doppelt so viele Produkte wie Studio, zum gleichen Preis pro Produkt.",
     "More than one shop or branch, each with its own code": "Mehrere Läden oder Filialen, jede mit eigenem Code",
     "More than 50 products?": "Mehr als 50 Produkte?",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "Große Sortimente, mehrere Filialen oder ein Feed direkt aus Ihrem Shop. Sagen Sie uns, wie groß Ihr Katalog ist, und wir machen Ihnen ein Angebot.",
     "Get a custom quote": "Angebot anfordern",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Jeder Tarif enthält Ihre eigene Seite, Ihren eigenen QR-Code und Bestellungen dorthin, wo Sie sie haben wollen. <b>Keine Einrichtungsgebühr</b> und keine Kosten für jedes gebaute Modell. Wechseln Sie in dem Monat hoch, in dem Ihr Sortiment wächst."
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Jeder Tarif enthält Ihre eigene Seite, Ihren eigenen QR-Code und Bestellungen dorthin, wo Sie sie haben wollen. <b>Keine Einrichtungsgebühr</b> und keine Kosten für jedes gebaute Modell. Wechseln Sie in dem Monat hoch, in dem Ihr Sortiment wächst.",
+    "Start with 20": "Mit 20 starten",
+    "The dearest rate we charge": "Unser teuerster Preis pro Produkt",
+    "17% less a product than Starter": "17% weniger pro Produkt als Starter",
+    "33% less a product than Starter": "33% weniger pro Produkt als Starter",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Die dreißig Produkte oberhalb von Studio kosten <b>je 1,67 $</b> — günstiger werden sie nie."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

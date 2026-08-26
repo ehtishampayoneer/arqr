@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "Каждый месяц",
     "Per product": "За товар",
     "Start with 10": "Начать с 10",
-    "Start with 25": "Начать с 25",
     "Start with 50": "Начать с 50",
     "People’s choice": "Выбор клиентов",
-    "Twice the range of Studio, at the same price per product.": "Вдвое больше товаров, чем в Studio, по той же цене за товар.",
     "More than one shop or branch, each with its own code": "Несколько магазинов или филиалов, у каждого свой код",
     "More than 50 products?": "Больше 50 товаров?",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "Большой ассортимент, несколько филиалов или выгрузка прямо из вашего магазина. Скажите, насколько велик каталог, и мы посчитаем.",
     "Get a custom quote": "Получить расчёт",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "В каждый план входит ваша собственная страница, ваш QR-код и заказы туда, куда вам удобно. <b>Без платы за подключение</b> и без оплаты за каждую построенную модель. Переходите на план выше в тот месяц, когда ассортимент вырастет."
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "В каждый план входит ваша собственная страница, ваш QR-код и заказы туда, куда вам удобно. <b>Без платы за подключение</b> и без оплаты за каждую построенную модель. Переходите на план выше в тот месяц, когда ассортимент вырастет.",
+    "Start with 20": "Начать с 20",
+    "The dearest rate we charge": "Самая высокая цена за товар",
+    "17% less a product than Starter": "На 17% дешевле за товар, чем Starter",
+    "33% less a product than Starter": "На 33% дешевле за товар, чем Starter",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Тридцать товаров сверх Studio выходят по <b>$1.67 за штуку</b> — дешевле не бывает."
   },
   a: {
     "Sarah Mitchell": "Сара Митчелл",

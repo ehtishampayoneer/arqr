@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "每月",
     "Per product": "每件产品",
     "Start with 10": "从 10 件开始",
-    "Start with 25": "从 25 件开始",
     "Start with 50": "从 50 件开始",
     "People’s choice": "大家的选择",
-    "Twice the range of Studio, at the same price per product.": "产品数量是 Studio 的两倍，每件价格相同。",
     "More than one shop or branch, each with its own code": "多家门店或分店，每家都有自己的二维码",
     "More than 50 products?": "超过 50 件产品？",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "大型产品线、多家分店，或直接从你的商店同步。告诉我们你的目录有多大，我们来报价。",
     "Get a custom quote": "获取专属报价",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "每个套餐都包含你自己的页面、你自己的二维码，以及送到你指定位置的订单。<b>没有安装费</b>，我们制作的每个模型也不额外收费。产品增加的那个月再升级套餐即可。"
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "每个套餐都包含你自己的页面、你自己的二维码，以及送到你指定位置的订单。<b>没有安装费</b>，我们制作的每个模型也不额外收费。产品增加的那个月再升级套餐即可。",
+    "Start with 20": "从 20 件开始",
+    "The dearest rate we charge": "我们最贵的单价",
+    "17% less a product than Starter": "每件比 Starter 便宜 17%",
+    "33% less a product than Starter": "每件比 Starter 便宜 33%",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "超出 Studio 的那三十件，每件仅 <b>$1.67</b>，这是最低的单价。"
   },
   a: {
     "Sarah Mitchell": "莎拉·米切尔",

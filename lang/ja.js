@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "毎月",
     "Per product": "商品ごと",
     "Start with 10": "10点から始める",
-    "Start with 25": "25点から始める",
     "Start with 50": "50点から始める",
     "People’s choice": "人気No.1",
-    "Twice the range of Studio, at the same price per product.": "Studio の2倍の点数を、同じ単価で。",
     "More than one shop or branch, each with its own code": "複数の店舗や支店に対応し、それぞれ専用コード",
     "More than 50 products?": "50点を超える場合は？",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "大規模な品揃え、複数の支店、あるいは店舗から直接の連携。カタログの規模をお知らせいただければ、お見積りします。",
     "Get a custom quote": "見積りを依頼する",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "どのプランにも、専用ページ、専用QRコード、そしてご希望の場所に届く注文が含まれます。<b>初期費用はなく</b>、制作するモデルごとの料金もありません。品揃えが増えた月にプランを上げてください。"
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "どのプランにも、専用ページ、専用QRコード、そしてご希望の場所に届く注文が含まれます。<b>初期費用はなく</b>、制作するモデルごとの料金もありません。品揃えが増えた月にプランを上げてください。",
+    "Start with 20": "20点から始める",
+    "The dearest rate we charge": "単価はいちばん高くなります",
+    "17% less a product than Starter": "Starter より1点あたり17%安く",
+    "33% less a product than Starter": "Starter より1点あたり33%安く",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Studio を超える30点は1点あたり <b>$1.67</b>。これがいちばん安くなる価格です。"
   },
   a: {
     "Sarah Mitchell": "サラ・ミッチェル",

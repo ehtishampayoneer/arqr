@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "Her ay",
     "Per product": "Ürün başına",
     "Start with 10": "10 ile başla",
-    "Start with 25": "25 ile başla",
     "Start with 50": "50 ile başla",
     "People’s choice": "Müşteri favorisi",
-    "Twice the range of Studio, at the same price per product.": "Studio'nun iki katı ürün, ürün başına aynı fiyata.",
     "More than one shop or branch, each with its own code": "Birden fazla mağaza veya şube, her birine kendi kodu",
     "More than 50 products?": "50'den fazla ürün mü?",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "Geniş ürün yelpazesi, birden fazla şube ya da doğrudan mağazanızdan besleme. Kataloğunuzun büyüklüğünü söyleyin, sizin için fiyatlandıralım.",
     "Get a custom quote": "Size özel teklif alın",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Her planda kendi sayfanız, kendi QR kodunuz ve siparişlerin istediğiniz yere gelmesi vardır. <b>Kurulum ücreti yok</b>, hazırladığımız her model için de ödeme yok. Ürün yelpazeniz büyüdüğü ay bir üst plana geçin."
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Her planda kendi sayfanız, kendi QR kodunuz ve siparişlerin istediğiniz yere gelmesi vardır. <b>Kurulum ücreti yok</b>, hazırladığımız her model için de ödeme yok. Ürün yelpazeniz büyüdüğü ay bir üst plana geçin.",
+    "Start with 20": "20 ile başla",
+    "The dearest rate we charge": "En yüksek birim fiyatımız",
+    "17% less a product than Starter": "Starter'a göre ürün başına %17 daha az",
+    "33% less a product than Starter": "Starter'a göre ürün başına %33 daha az",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Studio'nun üzerindeki otuz ürün tanesi <b>$1.67</b>'ye geliyor — en ucuz olduğu nokta."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

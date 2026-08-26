@@ -211,15 +211,18 @@ window.ARQR_LANG = {
     'Every month': 'كل شهر',
     'Per product': 'لكل منتج',
     'Start with 10': 'ابدأ بـ 10',
-    'Start with 25': 'ابدأ بـ 25',
     'Start with 50': 'ابدأ بـ 50',
     'People’s choice': 'اختيار العملاء',
-    'Twice the range of Studio, at the same price per product.': 'ضِعف عدد منتجات Studio، وبالسعر نفسه لكل منتج.',
     'More than one shop or branch, each with its own code': 'أكثر من متجر أو فرع، ولكل واحد رمزه الخاص',
     'More than 50 products?': 'أكثر من 50 منتجًا؟',
     'Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.': 'تشكيلات كبيرة، أو عدة فروع، أو ربط مباشر مع متجرك. أخبرنا بحجم كتالوجك وسنحدد لك السعر.',
     'Get a custom quote': 'اطلب عرض سعر خاص',
-    'Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.': 'كل باقة تشمل صفحتك الخاصة ورمز QR الخاص بك ووصول الطلبات إلى حيث تريد. <b>لا رسوم تأسيس</b>، ولا دفع مقابل كل نموذج نبنيه. ارتقِ إلى باقة أعلى في الشهر الذي تكبر فيه تشكيلتك.'
+    'Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.': 'كل باقة تشمل صفحتك الخاصة ورمز QR الخاص بك ووصول الطلبات إلى حيث تريد. <b>لا رسوم تأسيس</b>، ولا دفع مقابل كل نموذج نبنيه. ارتقِ إلى باقة أعلى في الشهر الذي تكبر فيه تشكيلتك.',
+    'Start with 20': 'ابدأ بـ 20',
+    'The dearest rate we charge': 'أعلى سعر لكل منتج لدينا',
+    '17% less a product than Starter': 'أقل بنسبة 17% لكل منتج من Starter',
+    '33% less a product than Starter': 'أقل بنسبة 33% لكل منتج من Starter',
+    'The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.': 'المنتجات الثلاثون التي تزيد عن Studio تكلف <b>1.67 دولارًا للواحد</b> — وهو أرخص سعر ممكن.'
   },
   a: {
     'Sarah Mitchell': 'سارة ميتشل',

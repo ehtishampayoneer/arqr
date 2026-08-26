@@ -206,15 +206,18 @@ window.ARQR_LANG = {
     "Every month": "Har oyda",
     "Per product": "Har mahsulot",
     "Start with 10": "10 tadan boshlash",
-    "Start with 25": "25 tadan boshlash",
     "Start with 50": "50 tadan boshlash",
     "People’s choice": "Mijozlar tanlovi",
-    "Twice the range of Studio, at the same price per product.": "Studio’dan ikki barobar ko‘p mahsulot, har biri o‘sha narxda.",
     "More than one shop or branch, each with its own code": "Bir nechta do‘kon yoki filial, har birida o‘z kodi",
     "More than 50 products?": "50 tadan ko‘pmi?",
     "Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.": "Katta assortiment, bir nechta filial yoki to‘g‘ridan-to‘g‘ri do‘koningizdan ma’lumot. Katalogingiz hajmini ayting, biz narxini aytamiz.",
     "Get a custom quote": "Alohida narx olish",
-    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Har bir tarifda o‘z sahifangiz, o‘z QR kodingiz va buyurtmalar siz xohlagan joyga keladi. <b>O‘rnatish to‘lovi yo‘q</b>, tayyorlagan modellarimiz uchun ham to‘lov yo‘q. Assortiment o‘sgan oyda yuqoriroq tarifga o‘ting."
+    "Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.": "Har bir tarifda o‘z sahifangiz, o‘z QR kodingiz va buyurtmalar siz xohlagan joyga keladi. <b>O‘rnatish to‘lovi yo‘q</b>, tayyorlagan modellarimiz uchun ham to‘lov yo‘q. Assortiment o‘sgan oyda yuqoriroq tarifga o‘ting.",
+    "Start with 20": "20 tadan boshlash",
+    "The dearest rate we charge": "Eng qimmat narx",
+    "17% less a product than Starter": "Starter’ga qaraganda har mahsulot 17% arzon",
+    "33% less a product than Starter": "Starter’ga qaraganda har mahsulot 33% arzon",
+    "The thirty products above Studio work out at <b>$1.67 each</b> — the cheapest they ever get.": "Studio’dan ortiq o‘ttiz mahsulot har biri <b>$1.67</b> ga tushadi — bundan arzoni yo‘q."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",
