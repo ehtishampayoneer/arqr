@@ -41,18 +41,30 @@ for (const it of usd){
   const g = gm[it.f];
   const uNow = it.metres, gNow = g ? g.product : null;
   const uOff = off(uNow, t.usdz), gOff = gNow ? off(gNow, t.glb) : 0;
-  const change = uOff > 0.004 || gOff > 0.004;
+  /* size is not the only thing that can be wrong with a model. A rotation,
+     a running animation or a wall anchor are asked for by name in the
+     targets, and each is expressed as the state the file should end in
+     rather than a change to make, so asking twice is the same as once. */
+  const ops = !!(t.rotate || t.freeze || t.anchor);
+  const change = uOff > 0.004 || gOff > 0.004 || ops;
 
   if (it.shop !== shop){ shop = it.shop; console.log(''); console.log('=== ' + shop + ' ==='); }
+  const note = [];
+  if (uOff > 0.004 || gOff > 0.004)
+    note.push('iPhone ' + (uOff * 100).toFixed(0) + '% off, Android ' + (gOff * 100).toFixed(0) + '% off');
+  if (t.rotate) note.push('rotate ' + t.rotate.join(',') + ' deg');
+  if (t.freeze) note.push('hold animation');
+  if (t.anchor) note.push('anchor ' + t.anchor);
   console.log('  ' + (change ? '* ' : '  ') + it.f.slice(0, 40).padEnd(41) +
-    (change ? 'iPhone ' + (uOff * 100).toFixed(0) + '% off, Android ' + (gOff * 100).toFixed(0) + '% off'
-            : 'correct — ' + t.usdz.map(v => Math.round(v * 100)).join(' x ') + ' cm'));
+    (note.length ? note.join('; ')
+                 : 'correct — ' + t.usdz.map(v => Math.round(v * 100)).join(' x ') + ' cm'));
 
   plan.push({
     shop: it.shop, f: it.f, change, why: t.why,
     /* the scale op is absolute, so it is the current one moved by the ratio */
     usdzScale: sm[it.f] * (Math.max(...t.usdz) / Math.max(...uNow)),
     glbFactor: gNow ? Math.max(...t.glb) / Math.max(...gNow) : 1,
+    rotate: t.rotate || null, freeze: !!t.freeze, anchor: t.anchor || null,
     want: t.usdz, wantGlb: t.glb
   });
 }

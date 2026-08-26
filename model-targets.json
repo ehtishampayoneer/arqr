@@ -375,7 +375,9 @@
    0.3724,
    0.0057
   ],
-  "why": "framed canvas, 52 x 37 cm"
+  "why": "framed canvas, 52 x 37 cm",
+  "anchor": "vertical",
+  "anchorWhy": "hangs on a wall rather than standing on the floor"
  },
  "plant-interior-decoration": {
   "shop": "maison",
@@ -431,7 +433,9 @@
    0.2682,
    0.1638
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied",
+  "freeze": true,
+  "freezeWhy": "pendulum animation held on its first frame"
  },
  "victorian-framed-painting-pbr-game-ready": {
   "shop": "maison",
@@ -445,7 +449,9 @@
    0.84,
    0.0471
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied",
+  "anchor": "vertical",
+  "anchorWhy": "hangs on a wall rather than standing on the floor"
  },
  "vintage-painting-dani": {
   "shop": "maison",
@@ -459,21 +465,31 @@
    0.894,
    0.0503
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied",
+  "anchor": "vertical",
+  "anchorWhy": "hangs on a wall rather than standing on the floor"
  },
  "wall-decor-photoframe": {
   "shop": "maison",
   "usdz": [
-   0.0128,
+   0.3495,
    0.4076,
-   0.3495
+   0.0128
   ],
   "glb": [
-   0.0128,
+   0.3495,
    0.4076,
-   0.3495
+   0.0128
   ],
-  "why": "stretched canvas, 41 x 35 cm, 13 mm deep"
+  "why": "stretched canvas, 41 x 35 cm, 13 mm deep",
+  "rotate": [
+   0,
+   -90,
+   0
+  ],
+  "rotateWhy": "artwork faced +X, edge-on to the viewer",
+  "anchor": "vertical",
+  "anchorWhy": "hangs on a wall rather than standing on the floor"
  },
  "antique-turkish-runner-carpet": {
   "shop": "terra",
@@ -506,16 +522,16 @@
  "bess-arabian-gallery-kilim-i-runner": {
   "shop": "terra",
   "usdz": [
-   4.2389,
-   0.0162,
-   2.0758
+   3,
+   0.0115,
+   1.4691
   ],
   "glb": [
-   4.2389,
-   0.0162,
-   2.0758
+   3,
+   0.0115,
+   1.4691
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied [capped to a 3 m room rug from 424 cm]"
  },
  "bhadoi-rug": {
   "shop": "terra",
@@ -534,58 +550,58 @@
  "boho-rug": {
   "shop": "terra",
   "usdz": [
-   1.84,
+   1.8295,
    0.0066,
-   3.0172
+   3
   ],
   "glb": [
-   1.84,
+   1.8295,
    0.0066,
-   3.0172
+   3
   ],
-  "why": "184 x 302 cm rug"
+  "why": "184 x 302 cm rug [capped to a 3 m room rug from 302 cm]"
  },
  "carpet-2": {
   "shop": "terra",
   "usdz": [
-   2.0509,
+   1.6806,
    0,
-   3.661
+   3
   ],
   "glb": [
-   2.051,
+   1.6807,
    0,
-   3.661
+   3
   ],
-  "why": "205 x 366 cm carpet"
+  "why": "205 x 366 cm carpet [capped to a 3 m room rug from 366 cm]"
  },
  "carpet-carpet": {
   "shop": "terra",
   "usdz": [
-   2.6123,
+   1.9592,
    0,
-   4
+   3
   ],
   "glb": [
-   2.6122,
+   1.9592,
    0,
-   4
+   3
   ],
-  "why": "261 x 400 cm carpet"
+  "why": "261 x 400 cm carpet [capped to a 3 m room rug from 400 cm]"
  },
  "fine-persian-heriz-carpet": {
   "shop": "terra",
   "usdz": [
-   3.9335,
-   0.0225,
-   2.8807
+   3,
+   0.0172,
+   2.1971
   ],
   "glb": [
-   3.9336,
-   0.0226,
-   2.8807
+   3.0001,
+   0.0172,
+   2.1971
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied [capped to a 3 m room rug from 393 cm]"
  },
  "game-ready-carpet": {
   "shop": "terra",
@@ -604,30 +620,30 @@
  "persian-nain-carpet": {
   "shop": "terra",
   "usdz": [
-   4.1696,
-   0.0246,
-   3.0981
+   3,
+   0.0177,
+   2.2291
   ],
   "glb": [
-   4.1697,
-   0.0247,
-   3.0981
+   3.0001,
+   0.0178,
+   2.2291
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied [capped to a 3 m room rug from 417 cm]"
  },
  "persian-tabriz-pictorial-carpet": {
   "shop": "terra",
   "usdz": [
-   3.6112,
-   0.006,
-   2.6213
+   3,
+   0.005,
+   2.1776
   ],
   "glb": [
-   3.6112,
-   0.006,
-   2.6213
+   3,
+   0.005,
+   2.1776
   ],
-  "why": "361 x 262 cm carpet"
+  "why": "361 x 262 cm carpet [capped to a 3 m room rug from 361 cm]"
  },
  "signed-persian-nain-square-carpet": {
   "shop": "terra",

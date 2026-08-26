@@ -170,7 +170,7 @@
     {
       "n": "Asics Shoe",
       "p": "$170",
-      "d": "EU 36–46",
+      "d": "28 cm long",
       "dReal": true,
       "c": "Casual",
       "i": "ic-sneaker",
@@ -185,7 +185,7 @@
     {
       "n": "Carhartt Construction Boot",
       "p": "$220",
-      "d": "EU 36–46",
+      "d": "29 cm long",
       "dReal": true,
       "c": "Boots",
       "i": "ic-chelsea",
@@ -200,7 +200,7 @@
     {
       "n": "Cat Shoe",
       "p": "$290",
-      "d": "EU 36–46",
+      "d": "31 cm long",
       "dReal": true,
       "c": "Casual",
       "i": "ic-sneaker",
@@ -215,7 +215,7 @@
     {
       "n": "Gladiator Sandal Heels",
       "p": "$130",
-      "d": "EU 36–46",
+      "d": "24 cm long",
       "dReal": true,
       "c": "Formal",
       "i": "ic-oxford",
@@ -230,7 +230,7 @@
     {
       "n": "High Heels",
       "p": "$330",
-      "d": "EU 36–46",
+      "d": "25 cm long",
       "dReal": true,
       "c": "Formal",
       "i": "ic-oxford",
@@ -245,7 +245,7 @@
     {
       "n": "Mule Shoe Multicolor",
       "p": "$150",
-      "d": "EU 36–46",
+      "d": "27 cm long",
       "dReal": true,
       "c": "Formal",
       "i": "ic-loafer",
@@ -260,7 +260,7 @@
     {
       "n": "Hoka Shoe",
       "p": "$200",
-      "d": "EU 36–46",
+      "d": "30 cm long",
       "dReal": true,
       "c": "Casual",
       "i": "ic-sneaker",
@@ -275,7 +275,7 @@
     {
       "n": "Adidas Sports Shoe",
       "p": "$160",
-      "d": "EU 36–46",
+      "d": "29 cm long",
       "dReal": true,
       "c": "Casual",
       "i": "ic-sneaker",
@@ -290,7 +290,7 @@
     {
       "n": "Sievi Racer Safety Shoe",
       "p": "$200",
-      "d": "EU 36–46",
+      "d": "30 cm long",
       "dReal": true,
       "c": "Casual",
       "i": "ic-sneaker",
@@ -305,7 +305,7 @@
     {
       "n": "YSL High Heels",
       "p": "$330",
-      "d": "EU 36–46",
+      "d": "24 cm long",
       "dReal": true,
       "c": "Formal",
       "i": "ic-oxford",
@@ -322,7 +322,7 @@
     {
       "n": "Cat Statue",
       "p": "$640",
-      "d": "30 × 25 cm",
+      "d": "30 × 12 cm",
       "dReal": true,
       "c": "Objects",
       "i": "ic-object",
@@ -407,7 +407,8 @@
       "srcGlb": "painting_rembrandt_landscape1.glb",
       "srcUsdz": "Painting_Rembrandt_Landscape1.usdz",
       "glb": "assets/shops/maison/painting-rembrandt-landscape1.glb",
-      "usdz": "assets/shops/maison/painting-rembrandt-landscape1.usdz"
+      "usdz": "assets/shops/maison/painting-rembrandt-landscape1.usdz",
+      "wall": true
     },
     {
       "n": "Plant Interior Decoration",
@@ -482,12 +483,13 @@
       "srcGlb": "victorian_framed_painting_-_pbr_game_ready.glb",
       "srcUsdz": "Victorian_Framed_Painting_-_PBR_Game_Ready.usdz",
       "glb": "assets/shops/maison/victorian-framed-painting-pbr-game-ready.glb",
-      "usdz": "assets/shops/maison/victorian-framed-painting-pbr-game-ready.usdz"
+      "usdz": "assets/shops/maison/victorian-framed-painting-pbr-game-ready.usdz",
+      "wall": true
     },
     {
       "n": "Vintage Painting Dani",
       "p": "$690",
-      "d": "89 × 65 cm",
+      "d": "65 × 89 cm",
       "dReal": true,
       "c": "Wall",
       "i": "ic-frame",
@@ -497,12 +499,13 @@
       "srcGlb": "vintage_painting_dani.glb",
       "srcUsdz": "Vintage_painting_Dani.usdz",
       "glb": "assets/shops/maison/vintage-painting-dani.glb",
-      "usdz": "assets/shops/maison/vintage-painting-dani.usdz"
+      "usdz": "assets/shops/maison/vintage-painting-dani.usdz",
+      "wall": true
     },
     {
       "n": "Wall Decor Photoframe",
       "p": "$260",
-      "d": "41 × 35 cm",
+      "d": "35 × 41 cm",
       "dReal": true,
       "c": "Wall",
       "i": "ic-frame",
@@ -512,7 +515,8 @@
       "srcGlb": "wall_decor_photoframe.glb",
       "srcUsdz": "Wall_Decor_Photoframe.usdz",
       "glb": "assets/shops/maison/wall-decor-photoframe.glb",
-      "usdz": "assets/shops/maison/wall-decor-photoframe.usdz"
+      "usdz": "assets/shops/maison/wall-decor-photoframe.usdz",
+      "wall": true
     }
   ],
   "terra": [
@@ -549,7 +553,7 @@
     {
       "n": "Bess Arabian Gallery Kilim Runner",
       "p": "$990",
-      "d": "424 × 208 cm",
+      "d": "300 × 147 cm",
       "dReal": true,
       "c": "Runners",
       "i": "ic-runner",
@@ -579,7 +583,7 @@
     {
       "n": "Boho Rug",
       "p": "$2,130",
-      "d": "302 × 184 cm",
+      "d": "300 × 183 cm",
       "dReal": true,
       "c": "Flatweave",
       "i": "ic-rug",
@@ -594,7 +598,7 @@
     {
       "n": "Carpet II",
       "p": "$540",
-      "d": "366 × 205 cm",
+      "d": "300 × 168 cm",
       "dReal": false,
       "c": "Flatweave",
       "i": "ic-rug",
@@ -609,7 +613,7 @@
     {
       "n": "Carpet Carpet",
       "p": "$1,070",
-      "d": "400 × 261 cm",
+      "d": "300 × 196 cm",
       "dReal": false,
       "c": "Flatweave",
       "i": "ic-rug",
@@ -624,7 +628,7 @@
     {
       "n": "Fine Persian Heriz Carpet",
       "p": "$970",
-      "d": "393 × 288 cm",
+      "d": "300 × 220 cm",
       "dReal": true,
       "c": "Hand-knotted",
       "i": "ic-rug",
@@ -654,7 +658,7 @@
     {
       "n": "Persian Nain Carpet",
       "p": "$1,970",
-      "d": "417 × 310 cm",
+      "d": "300 × 223 cm",
       "dReal": true,
       "c": "Hand-knotted",
       "i": "ic-rug",
@@ -669,7 +673,7 @@
     {
       "n": "Persian Tabriz Pictorial Carpet",
       "p": "$980",
-      "d": "361 × 262 cm",
+      "d": "300 × 218 cm",
       "dReal": true,
       "c": "Hand-knotted",
       "i": "ic-rug",

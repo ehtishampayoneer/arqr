@@ -4,12 +4,8 @@
     {
       "name": "arqr",
       "runtimeExecutable": "python",
-      "runtimeArgs": [
-        "-m",
-        "http.server",
-        "4321"
-      ],
-      "port": 4321
+      "runtimeArgs": ["-m", "http.server", "8788"],
+      "port": 8788
     }
   ]
 }

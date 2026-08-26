@@ -137,7 +137,36 @@ def main():
             problems.append(p['f'] + ' — %d scale ops, expected 1' % len(sops)); continue
         before = float(sops[0].Get()[0])
         k = p['usdzScale']
-        sops[0].Set(Gf.Vec3f(k, k, k))
+        if k and abs(k - before) > 1e-9:
+            sops[0].Set(Gf.Vec3f(k, k, k))
+
+        # a rotation, if this one is facing the wrong way. Set, not added:
+        # the op is written to an absolute value so running twice is the
+        # same as running once.
+        if p.get('rotate'):
+            rx, ry, rz = p['rotate']
+            x = UsdGeom.Xformable(prim)
+            ops = [o for o in x.GetOrderedXformOps()
+                   if o.GetOpType() == UsdGeom.XformOp.TypeRotateXYZ]
+            op = ops[0] if ops else x.AddRotateXYZOp()
+            op.Set(Gf.Vec3f(rx, ry, rz))
+
+        # hold a running animation on its first frame
+        if p.get('freeze'):
+            stage.SetStartTimeCode(0.0)
+            stage.SetEndTimeCode(0.0)
+
+        # hang it on a wall instead of standing it on the floor. These are
+        # Apple's preliminary anchoring tokens, the ones Quick Look reads.
+        if p.get('anchor') == 'vertical':
+            # note: not `root`, which is the name of the zip's root layer
+            top = stage.GetDefaultPrim() or stage.GetPrimAtPath('/scene')
+            if not top:
+                problems.append(p['f'] + ' - no root prim to anchor'); continue
+            top.CreateAttribute('preliminary:anchoring:type',
+                                Sdf.ValueTypeNames.Token, True).Set('plane')
+            top.CreateAttribute('preliminary:planeAnchoring:alignment',
+                                Sdf.ValueTypeNames.Token, True).Set('vertical')
 
         dropped = floor_prims(was_meshes)
         for _, cut in dropped:
@@ -177,12 +206,27 @@ def main():
             problems.append(p['f'] + ' — textures changed: ' + ', '.join(moved[:3]))
             continue
 
+        # A repack writes a new zip every time even when nothing inside it
+        # moved, so a file that is already right would churn on every run.
+        # Compare what is in the package, not the package.
+        if kept == original:
+            print('  %-44s already correct, left alone' % p['f'][:44])
+            continue
+
         shutil.copyfile(out, src)
         done += 1
-        print('  %-44s scale %-11s -> %-9s %s m %s' % (
-            p['f'][:44], '%.4g' % before, '%.4g' % k,
-            ' x '.join('%.3f' % v for v in got),
-            '[floor removed]' if dropped else ''))
+        extra = []
+        if dropped:
+            extra.append('floor removed')
+        if p.get('rotate'):
+            extra.append('rotated %s' % ','.join(str(v) for v in p['rotate']))
+        if p.get('freeze'):
+            extra.append('animation held')
+        if p.get('anchor'):
+            extra.append(p['anchor'] + ' anchor')
+        print('  %-44s %s m  %s' % (
+            p['f'][:44], ' x '.join('%.3f' % v for v in got),
+            ('[' + ', '.join(extra) + ']') if extra else ''))
 
     print('\n  %d corrected, textures byte-identical throughout' % done)
     if problems:

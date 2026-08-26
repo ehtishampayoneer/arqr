@@ -38,6 +38,7 @@ Object.keys(data).forEach(slug => {
     if (it.glb)  bits.push('glb:' + q(it.glb));
     if (it.usdz) bits.push('usdz:' + q(it.usdz));
     if (it.tag)  bits.push('tag:' + q(it.tag));
+    if (it.wall) bits.push('wall:1');
     return '      { ' + bits.join(', ') + ' }';
   }).join(',\n');
 

@@ -30,6 +30,18 @@ const PLAN = JSON.parse(fs.readFileSync(
   'C:/Users/Ehtisham/AppData/Local/Temp/claude/plan.json', 'utf8'));
 
 const GLTF = 0x46546C67, JSON_CHUNK = 0x4E4F534A, BIN_CHUNK = 0x004E4942;
+
+/* euler xyz in degrees -> the quaternion glTF wants, [x, y, z, w] */
+function quat(deg){
+  const [a, b, c] = deg.map(d => d * Math.PI / 360);   /* half angles */
+  const [sx, cx, sy, cy, sz, cz] = [Math.sin(a), Math.cos(a),
+                                    Math.sin(b), Math.cos(b),
+                                    Math.sin(c), Math.cos(c)];
+  return [ sx*cy*cz + cx*sy*sz,
+           cx*sy*cz - sx*cy*sz,
+           cx*cy*sz + sx*sy*cz,
+           cx*cy*cz - sx*sy*sz ].map(v => +v.toFixed(9));
+}
 const sha = b => crypto.createHash('sha256').update(b).digest('hex').slice(0, 16);
 
 function readGlb(buf){
@@ -153,13 +165,41 @@ function measure(doc){
     (json.nodes || []).forEach((n, i) => { if (floors.has(n.mesh)) dropNodes.add(i); });
     const cut = dropNodes.size ? detach(json, dropNodes) : 0;
 
-    /* the scale, on one wrapper above every scene root */
+    /* the scale and, where one is asked for, the rotation. Both ride on a
+       single wrapper above every scene root, so the buffer is still never
+       read. A uniform scale commutes with a rotation, so it makes no
+       difference that glTF applies them R then S. */
     const k = p.glbFactor;
     if (Math.abs(k - 1) > 1e-9){
       (json.scenes || []).forEach(scene => {
         json.nodes.push({ name: 'ARQR_real_size', scale: [k, k, k], children: scene.nodes || [] });
         scene.nodes = [json.nodes.length - 1];
       });
+    }
+
+    /* The rotation gets a wrapper of its own, and the same one every time.
+       The scale factor is a ratio, so it converges on 1 and stops adding
+       wrappers by itself; a rotation is an absolute bearing, so stacking a
+       second one would turn the model another ninety degrees on every run.
+       Found or created once, then set. */
+    if (p.rotate){
+      const q = quat(p.rotate);
+      let at = (json.nodes || []).findIndex(n => n.name === 'ARQR_orient');
+      if (at < 0){
+        (json.scenes || []).forEach(scene => {
+          json.nodes.push({ name: 'ARQR_orient', rotation: q, children: scene.nodes || [] });
+          scene.nodes = [json.nodes.length - 1];
+        });
+      } else {
+        json.nodes[at].rotation = q;
+      }
+    }
+
+    /* a running animation reads as the model drifting on the card */
+    let heldAnim = 0;
+    if (p.freeze && json.animations && json.animations.length){
+      heldAnim = json.animations.length;
+      delete json.animations;
     }
 
     const out = writeGlb(json, bin);
@@ -187,10 +227,14 @@ function measure(doc){
 
     fs.writeFileSync(path, out);
     done++;
+    const extra = [];
+    if (cut) extra.push('floor unhooked, ' + lostTris + ' tris');
+    if (p.rotate) extra.push('rotated ' + p.rotate.join(','));
+    if (heldAnim) extra.push(heldAnim + ' animation held');
     console.log('  ' + p.f.slice(0, 44).padEnd(45) +
       ('x' + (k < 0.01 ? k.toExponential(2) : k.toFixed(4))).padEnd(12) +
       after.size.map(v => v.toFixed(3)).join(' x ') + ' m  ' +
-      (cut ? '[floor unhooked, ' + lostTris + ' tris]' : ''));
+      (extra.length ? '[' + extra.join('; ') + ']' : ''));
   }
 
   console.log('\n  ' + done + ' corrected — every binary chunk hash-identical to before');
