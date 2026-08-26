@@ -169,8 +169,18 @@ function measure(doc){
        single wrapper above every scene root, so the buffer is still never
        read. A uniform scale commutes with a rotation, so it makes no
        difference that glTF applies them R then S. */
+    /* A factor this close to 1 is the measurement, not the model — the
+       armchair came back at 0.99995, a correction of 0.005%, which is well
+       inside the noise and would have hung another wrapper node on the file
+       every single run. The plan already calls anything under 0.4% correct. */
     const k = p.glbFactor;
-    if (Math.abs(k - 1) > 1e-9){
+    const needsScale = Math.abs(k - 1) > 1e-3;
+    const needsFreeze = !!(p.freeze && json.animations && json.animations.length);
+    if (!needsScale && !p.rotate && !needsFreeze && !dropNodes.size){
+      console.log('  ' + p.f.slice(0, 44).padEnd(45) + 'nothing to do on this side, left alone');
+      continue;
+    }
+    if (needsScale){
       (json.scenes || []).forEach(scene => {
         json.nodes.push({ name: 'ARQR_real_size', scale: [k, k, k], children: scene.nodes || [] });
         scene.nodes = [json.nodes.length - 1];

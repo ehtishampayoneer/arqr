@@ -45,7 +45,7 @@ for (const it of usd){
      a running animation or a wall anchor are asked for by name in the
      targets, and each is expressed as the state the file should end in
      rather than a change to make, so asking twice is the same as once. */
-  const ops = !!(t.rotate || t.freeze || t.anchor);
+  const ops = !!(t.rotate || t.freeze || t.anchor || t.cutout);
   const change = uOff > 0.004 || gOff > 0.004 || ops;
 
   if (it.shop !== shop){ shop = it.shop; console.log(''); console.log('=== ' + shop + ' ==='); }
@@ -55,6 +55,7 @@ for (const it of usd){
   if (t.rotate) note.push('rotate ' + t.rotate.join(',') + ' deg');
   if (t.freeze) note.push('hold animation');
   if (t.anchor) note.push('anchor ' + t.anchor);
+  if (t.cutout) note.push('cutout ' + Object.keys(t.cutout).join(', '));
   console.log('  ' + (change ? '* ' : '  ') + it.f.slice(0, 40).padEnd(41) +
     (note.length ? note.join('; ')
                  : 'correct — ' + t.usdz.map(v => Math.round(v * 100)).join(' x ') + ' cm'));
@@ -65,6 +66,7 @@ for (const it of usd){
     usdzScale: sm[it.f] * (Math.max(...t.usdz) / Math.max(...uNow)),
     glbFactor: gNow ? Math.max(...t.glb) / Math.max(...gNow) : 1,
     rotate: t.rotate || null, freeze: !!t.freeze, anchor: t.anchor || null,
+    cutout: t.cutout || null,
     want: t.usdz, wantGlb: t.glb
   });
 }

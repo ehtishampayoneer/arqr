@@ -11,7 +11,11 @@
    0.9592,
    0.7667
   ],
-  "why": "measured correct as supplied"
+  "why": "measured correct as supplied",
+  "cutout": {
+   "M_Vienna_Straw": 0.682689443
+  },
+  "cutoutWhy": "cane webbing is an alpha cutout; usdz was missing opacityThreshold so Quick Look blended it away"
  },
  "designer-chair-02a": {
   "shop": "novara",

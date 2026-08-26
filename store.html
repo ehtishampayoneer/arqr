@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=52"></script>
+<script src="i18n.js?v=53"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -119,6 +119,8 @@
   .place:active{transform:scale(.98)}
 
   /* ---- pages ---- */
+  /* one page means no pager, and an empty one still held its padding */
+  .pager:empty{display:none}
   .pager{flex:none;display:flex;align-items:center;justify-content:center;gap:8px;
     margin:clamp(11px,1.4vw,16px) 0 0}
   .pager button{min-width:40px;height:40px;cursor:pointer;border:1px solid var(--line);
@@ -354,9 +356,22 @@
        a 4:3 shape and the tile is as tall as its contents, so it cannot end
        up 169 wide by 398 tall. Whatever height is then left goes to the
        banner, which has a photograph to show and no fixed size it must be. */
-    .grid{flex:none;grid-template-rows:auto}
+    /* the grid is the scroller now: rows take their own height and the
+       whole range sits in one list, while the shop's banner and the filters
+       above it stay put */
+    /* `grid-template-rows:none` clears the desktop's two fixed rows so every
+       row here is an implicit one, and `max-content` is what makes those
+       rows take the tile's own height. Left on `auto` they collapsed to an
+       equal share of the box - thirteen tiles 55px tall, the picture
+       spilling out of each - because an auto row still answers to a grid
+       with a definite height. */
+    .grid{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+      grid-template-rows:none;grid-auto-rows:max-content;
+      align-content:start;padding-bottom:4px}
     .shot{flex:none;aspect-ratio:4/3;min-height:0}
-    .shell{grid-template-rows:minmax(110px,1fr) auto}
+    /* the banner takes what it needs and the products take the rest,
+       rather than the banner growing into the space the list now wants */
+    .shell{grid-template-rows:auto minmax(0,1fr)}
     .brand{height:auto;min-height:110px}
     .col{min-height:0}
     .place{width:calc(100% - 20px);margin:9px 10px 10px;padding:11px 8px;
@@ -378,7 +393,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=52"></script>
+<script src="sprite.js?v=53"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -422,7 +437,7 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=52" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=53" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
@@ -454,7 +469,7 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=52" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=53" alt=""></div>
   </div>
 </div>
 
@@ -529,20 +544,20 @@
   </div>
 </div>
 
-<script src="stores.js?v=52"></script>
+<script src="stores.js?v=53"></script>
 <script>
-var V = '?v=52';
+var V = '?v=53';
 var STORES = window.ARQR_STORES;
-/* Two rows always; how many across depends on the screen, so the page size
-   follows the layout rather than being a fixed number that overflows. */
+/* On a desktop the catalog is a fixed board: six tiles, two rows, no
+   scrolling, because there is room to lay them out and paging through them
+   reads as a showroom.
+
+   A phone is a different thing. Paging two at a time meant eleven taps to
+   see eleven chairs, and nobody does that — so the phone shows the whole
+   range and lets a thumb do the work, which is what a thumb is for. */
 function perPage(){
-  var cols = matchMedia('(max-width:339px)').matches ? 1
-           : matchMedia('(max-width:760px)').matches ? 2 : 3;
-  /* A short phone cannot hold two rows without squashing the tiles into
-     something unreadable, so it shows one row and pages instead. Fewer,
-     properly sized tiles beat a full grid of crushed ones. */
-  var rows = matchMedia('(max-width:760px)').matches ? 1 : 2;
-  return cols * rows;
+  if (matchMedia('(max-width:760px)').matches) return Infinity;
+  return 6;
 }
 
 /* Which shop is this? The address is the shop's own — /novara, /corso — and

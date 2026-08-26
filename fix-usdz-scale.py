@@ -22,7 +22,7 @@ shadow, which belongs to the product photograph and not to the product.
 Run:  npm run sizes
 """
 import io, json, os, shutil, sys, zipfile, hashlib
-from pxr import Usd, UsdGeom, UsdUtils, Sdf, Gf
+from pxr import Usd, UsdGeom, UsdShade, UsdUtils, Sdf, Gf
 
 os.chdir('C:/Users/Ehtisham/Documents/arqr')
 
@@ -168,6 +168,30 @@ def main():
             top.CreateAttribute('preliminary:planeAnchoring:alignment',
                                 Sdf.ValueTypeNames.Token, True).Set('vertical')
 
+        # An alpha cutout. glTF calls it alphaMode MASK with a cutoff; USD
+        # calls it opacityThreshold, and if it is missing Quick Look blends
+        # the surface instead of cutting it out. On anything solid you would
+        # never notice. On cane webbing, which is mostly holes, the whole
+        # panel disappears and the chair arrives as a bare frame.
+        changed_attrs = set()
+        if p.get('cutout'):
+            want = dict(p['cutout'])
+            for prim in stage.Traverse():
+                if prim.GetTypeName() != 'Shader':
+                    continue
+                sh = UsdShade.Shader(prim)
+                if sh.GetIdAttr().Get() != 'UsdPreviewSurface':
+                    continue
+                mat = str(prim.GetPath()).split('/')[-2]
+                if mat not in want:
+                    continue
+                sh.CreateInput('opacityThreshold',
+                               Sdf.ValueTypeNames.Float).Set(float(want.pop(mat)))
+                changed_attrs.add((str(prim.GetPath()), 'inputs:opacityThreshold'))
+            if want:
+                problems.append(p['f'] + ' - cutout material not found: ' +
+                                ', '.join(want)); continue
+
         dropped = floor_prims(was_meshes)
         for _, cut in dropped:
             stage.RemovePrim(Sdf.Path(cut))
@@ -182,7 +206,13 @@ def main():
                        if a not in [d[0] for d in dropped]}
         if now_meshes != want_meshes:
             problems.append(p['f'] + ' — geometry moved'); continue
-        if now_shaders != was_shaders:
+        # everything about the materials must still match, except the one
+        # attribute this was asked to set
+        def without(d):
+            return {path: {k: v for k, v in attrs.items()
+                           if (path, k) not in changed_attrs}
+                    for path, attrs in d.items()}
+        if without(now_shaders) != without(was_shaders):
             problems.append(p['f'] + ' — materials moved'); continue
 
         out = os.path.join(work, '_packed.usdz')
@@ -224,6 +254,9 @@ def main():
             extra.append('animation held')
         if p.get('anchor'):
             extra.append(p['anchor'] + ' anchor')
+        if p.get('cutout'):
+            extra.append('cutout ' + ', '.join(
+                '%s@%.3f' % (k, v) for k, v in p['cutout'].items()))
         print('  %-44s %s m  %s' % (
             p['f'][:44], ' x '.join('%.3f' % v for v in got),
             ('[' + ', '.join(extra) + ']') if extra else ''))
