@@ -45,7 +45,7 @@ for (const it of usd){
      a running animation or a wall anchor are asked for by name in the
      targets, and each is expressed as the state the file should end in
      rather than a change to make, so asking twice is the same as once. */
-  const ops = !!(t.rotate || t.freeze || t.anchor || t.cutout);
+  const ops = !!(t.rotate || t.rotateUsdz || t.freeze || t.anchor || t.cutout);
   const change = uOff > 0.004 || gOff > 0.004 || ops;
 
   if (it.shop !== shop){ shop = it.shop; console.log(''); console.log('=== ' + shop + ' ==='); }
@@ -53,6 +53,7 @@ for (const it of usd){
   if (uOff > 0.004 || gOff > 0.004)
     note.push('iPhone ' + (uOff * 100).toFixed(0) + '% off, Android ' + (gOff * 100).toFixed(0) + '% off');
   if (t.rotate) note.push('rotate ' + t.rotate.join(',') + ' deg');
+  if (t.rotateUsdz) note.push('usdz rotate ' + t.rotateUsdz.join(',') + ' deg');
   if (t.freeze) note.push('hold animation');
   if (t.anchor) note.push('anchor ' + t.anchor);
   if (t.cutout) note.push('cutout ' + Object.keys(t.cutout).join(', '));
@@ -65,7 +66,11 @@ for (const it of usd){
     /* the scale op is absolute, so it is the current one moved by the ratio */
     usdzScale: sm[it.f] * (Math.max(...t.usdz) / Math.max(...uNow)),
     glbFactor: gNow ? Math.max(...t.glb) / Math.max(...gNow) : 1,
-    rotate: t.rotate || null, freeze: !!t.freeze, anchor: t.anchor || null,
+    /* the two formats are anchored differently, so they can legitimately
+       want different orientations — a picture lies in the wall's plane for
+       Quick Look and stands upright on the floor for Scene Viewer */
+    rotate: t.rotate || null, rotateUsdz: t.rotateUsdz || null,
+    freeze: !!t.freeze, anchor: t.anchor || null,
     cutout: t.cutout || null,
     want: t.usdz, wantGlb: t.glb
   });

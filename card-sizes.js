@@ -40,8 +40,16 @@ function describe(shop, f, m){
   if (shop === 'corso') return Math.max(cm(x), cm(y), cm(z)) + ' cm long';
   if (shop === 'novara') return wide + ' × ' + cm(y) + ' cm';
 
-  /* maison is mixed: framed art hangs, everything else stands */
-  if (targets[f] && targets[f].anchor === 'vertical') return wide + ' × ' + cm(y) + ' cm';
+  /* Maison is mixed: framed art hangs, everything else stands.
+     A wall piece is measured from its glb, not the usdz on the desk beside
+     it. The usdz for those lies flat in the wall's plane so Quick Look can
+     hang it, which makes its y axis the thickness of the frame — printing
+     "41 x 1 cm" on the card. The glb keeps the picture upright, so width
+     and height still mean what they say. */
+  if (targets[f] && targets[f].anchor === 'vertical'){
+    const g = targets[f].glb;
+    return Math.max(cm(g[0]), cm(g[2])) + ' × ' + cm(g[1]) + ' cm';
+  }
   if (cm(y) >= wide) return 'H ' + cm(y) + ' cm';
   return wide + ' × ' + cm(y) + ' cm';
 }

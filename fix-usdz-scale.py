@@ -143,8 +143,9 @@ def main():
         # a rotation, if this one is facing the wrong way. Set, not added:
         # the op is written to an absolute value so running twice is the
         # same as running once.
-        if p.get('rotate'):
-            rx, ry, rz = p['rotate']
+        turn = p.get('rotateUsdz') or p.get('rotate')
+        if turn:
+            rx, ry, rz = turn
             x = UsdGeom.Xformable(prim)
             ops = [o for o in x.GetOrderedXformOps()
                    if o.GetOpType() == UsdGeom.XformOp.TypeRotateXYZ]
@@ -248,8 +249,8 @@ def main():
         extra = []
         if dropped:
             extra.append('floor removed')
-        if p.get('rotate'):
-            extra.append('rotated %s' % ','.join(str(v) for v in p['rotate']))
+        if turn:
+            extra.append('rotated %s' % ','.join(str(v) for v in turn))
         if p.get('freeze'):
             extra.append('animation held')
         if p.get('anchor'):
