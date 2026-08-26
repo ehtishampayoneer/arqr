@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "Çok satan",
     "New": "Yeni",
     "Product categories": "Ürün kategorileri",
-    "Close": "Kapat"
+    "Close": "Kapat",
+    "Before you place it": "Yerleştirmeden önce",
+    "Three things and you are done": "Üç adım, hepsi bu",
+    "Point the camera at the floor": "Kamerayı yere doğrultun",
+    "Move the phone slowly until a circle appears on the ground.": "Yerde bir daire belirene kadar telefonu yavaşça hareket ettirin.",
+    "Tap the circle to drop it": "Yerleştirmek için daireye dokunun",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "Bu daire ürünün merkezidir. Yerleşirken telefonu bir saniye sabit tutun.",
+    "Turn it with two fingers": "İki parmakla çevirin",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "Yönünü değiştirmek için iki parmağınızı çevirin. Tek parmakla yerde kaydırılır.",
+    "Place it in my room": "Odama yerleştir",
+    "Do not show this again": "Bir daha gösterme",
+    "Point the camera at the wall": "Kamerayı duvara doğrultun",
+    "Move the phone slowly across the wall until it is recognised.": "Duvar tanınana kadar telefonu duvar boyunca yavaşça gezdirin.",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "Asmak için dokunun. Yerleşirken telefonu bir saniye sabit tutun.",
+    "Shown at its real size": "Gerçek boyutunda gösterilir",
+    "Pinching will not make it bigger or smaller.": "Parmakla büyütüp küçültemezsiniz."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

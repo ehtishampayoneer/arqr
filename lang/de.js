@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "Bestseller",
     "New": "Neu",
     "Product categories": "Produktkategorien",
-    "Close": "Schließen"
+    "Close": "Schließen",
+    "Before you place it": "Bevor Sie es aufstellen",
+    "Three things and you are done": "Drei Dinge, dann sind Sie fertig",
+    "Point the camera at the floor": "Richten Sie die Kamera auf den Boden",
+    "Move the phone slowly until a circle appears on the ground.": "Bewegen Sie das Handy langsam, bis ein Kreis auf dem Boden erscheint.",
+    "Tap the circle to drop it": "Tippen Sie auf den Kreis, um es abzustellen",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "Dieser Kreis ist die Mitte des Stücks. Halten Sie das Handy eine Sekunde ruhig.",
+    "Turn it with two fingers": "Mit zwei Fingern drehen",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "Drehen Sie zwei Finger, um es auszurichten. Mit einem Finger gleitet es über den Boden.",
+    "Place it in my room": "In meinen Raum stellen",
+    "Do not show this again": "Nicht mehr anzeigen",
+    "Point the camera at the wall": "Richten Sie die Kamera auf die Wand",
+    "Move the phone slowly across the wall until it is recognised.": "Führen Sie das Handy langsam an der Wand entlang, bis sie erkannt wird.",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "Tippen Sie, um es dort aufzuhängen. Halten Sie das Handy eine Sekunde ruhig.",
+    "Shown at its real size": "Wird in Originalgröße gezeigt",
+    "Pinching will not make it bigger or smaller.": "Mit den Fingern lässt sich die Größe nicht ändern."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

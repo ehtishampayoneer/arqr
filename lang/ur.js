@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "سب سے زیادہ فروخت",
     "New": "نیا",
     "Product categories": "پروڈکٹ زمرے",
-    "Close": "بند کریں"
+    "Close": "بند کریں",
+    "Before you place it": "رکھنے سے پہلے",
+    "Three things and you are done": "تین باتیں، بس",
+    "Point the camera at the floor": "کیمرہ فرش کی طرف کریں",
+    "Move the phone slowly until a circle appears on the ground.": "فون کو آہستہ حرکت دیں یہاں تک کہ فرش پر دائرہ نظر آئے۔",
+    "Tap the circle to drop it": "رکھنے کے لیے دائرے پر ٹیپ کریں",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "یہ دائرہ چیز کا مرکز ہے۔ ایک لمحے کے لیے فون کو ساکت رکھیں۔",
+    "Turn it with two fingers": "دو انگلیوں سے گھمائیں",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "رخ بدلنے کے لیے دو انگلیاں گھمائیں۔ ایک انگلی سے یہ فرش پر کھسکتی ہے۔",
+    "Place it in my room": "میرے کمرے میں رکھیں",
+    "Do not show this again": "دوبارہ نہ دکھائیں",
+    "Point the camera at the wall": "کیمرہ دیوار کی طرف کریں",
+    "Move the phone slowly across the wall until it is recognised.": "فون کو دیوار کے ساتھ آہستہ چلائیں یہاں تک کہ وہ پہچانی جائے۔",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "ٹانگنے کے لیے ٹیپ کریں۔ ایک لمحے کے لیے فون کو ساکت رکھیں۔",
+    "Shown at its real size": "اصل سائز میں دکھایا گیا ہے",
+    "Pinching will not make it bigger or smaller.": "انگلیوں سے اسے بڑا یا چھوٹا نہیں کیا جا سکتا۔"
   },
   a: {
     "Sarah Mitchell": "سارہ مچل",

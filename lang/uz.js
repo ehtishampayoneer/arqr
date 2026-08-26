@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "Eng ko‘p sotilgan",
     "New": "Yangi",
     "Product categories": "Mahsulot turkumlari",
-    "Close": "Yopish"
+    "Close": "Yopish",
+    "Before you place it": "Qo‘yishdan oldin",
+    "Three things and you are done": "Uch qadam — va tayyor",
+    "Point the camera at the floor": "Kamerani polga qarating",
+    "Move the phone slowly until a circle appears on the ground.": "Polda doira paydo bo‘lguncha telefonni sekin harakatlantiring.",
+    "Tap the circle to drop it": "Qo‘yish uchun doirani bosing",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "Bu doira buyumning markazi. Bir soniya telefonni qimirlatmay ushlab turing.",
+    "Turn it with two fingers": "Ikki barmoq bilan buring",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "Yo‘nalishini o‘zgartirish uchun ikki barmoqni buring. Bir barmoq bilan pol bo‘ylab suriladi.",
+    "Place it in my room": "Xonamga qo‘yish",
+    "Do not show this again": "Boshqa ko‘rsatilmasin",
+    "Point the camera at the wall": "Kamerani devorga qarating",
+    "Move the phone slowly across the wall until it is recognised.": "Devor tanilguncha telefonni sekin devor bo‘ylab yuriting.",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "Osish uchun bosing. Bir soniya telefonni qimirlatmay ushlab turing.",
+    "Shown at its real size": "Haqiqiy o‘lchamda ko‘rsatiladi",
+    "Pinching will not make it bigger or smaller.": "Barmoq bilan kattalashtirib yoki kichraytirib bo‘lmaydi."
   },
   a: {
     "Sarah Mitchell": "Sarah Mitchell",

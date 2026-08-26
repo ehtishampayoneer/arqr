@@ -240,7 +240,23 @@ window.ARQR_LANG = {
     'Formal': 'رسمي', 'Boots': 'بوت', 'Casual': 'كاجوال',
     'Lighting': 'إضاءة', 'Wall': 'جدار', 'Objects': 'قطع',
     'Hand-knotted': 'يدوي العقد', 'Flatweave': 'نسيج مسطح', 'Runners': 'ممرات',
-    'Bestseller': 'الأكثر مبيعاً', 'New': 'جديد'
+    'Bestseller': 'الأكثر مبيعاً', 'New': 'جديد',
+    /* the placing guide */
+    'Before you place it': 'قبل أن تضعها',
+    'Three things and you are done': 'ثلاث خطوات وانتهيت',
+    'Point the camera at the floor': 'وجّه الكاميرا نحو الأرض',
+    'Move the phone slowly until a circle appears on the ground.': 'حرّك الهاتف ببطء حتى تظهر دائرة على الأرض.',
+    'Tap the circle to drop it': 'اضغط على الدائرة لوضعها',
+    'That circle is the centre of the piece. Hold the phone still for a second while it settles.': 'هذه الدائرة هي مركز القطعة. أمسك الهاتف ثابتًا لثانية حتى تستقر.',
+    'Turn it with two fingers': 'أدرها بإصبعين',
+    'Twist two fingers to face it the way you want. One finger slides it along the floor.': 'أدر إصبعين لتوجيهها كما تريد. إصبع واحد يحرّكها على الأرض.',
+    'Place it in my room': 'ضعها في غرفتي',
+    'Do not show this again': 'لا تعرض هذا مرة أخرى',
+    'Point the camera at the wall': 'وجّه الكاميرا نحو الحائط',
+    'Move the phone slowly across the wall until it is recognised.': 'حرّك الهاتف ببطء على طول الحائط حتى يتم التعرف عليه.',
+    'Tap to hang it there. Hold the phone still for a second while it settles.': 'اضغط لتعليقها هناك. أمسك الهاتف ثابتًا لثانية حتى تستقر.',
+    'Shown at its real size': 'تُعرض بحجمها الحقيقي',
+    'Pinching will not make it bigger or smaller.': 'التصغير أو التكبير بالأصابع لن يغيّر حجمها.'
   },
   a: {
     'Sarah Mitchell': 'سارة ميتشل',

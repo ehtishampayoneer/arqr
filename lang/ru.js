@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "Хит продаж",
     "New": "Новинка",
     "Product categories": "Категории товаров",
-    "Close": "Закрыть"
+    "Close": "Закрыть",
+    "Before you place it": "Перед тем как поставить",
+    "Three things and you are done": "Три шага — и готово",
+    "Point the camera at the floor": "Наведите камеру на пол",
+    "Move the phone slowly until a circle appears on the ground.": "Медленно двигайте телефон, пока на полу не появится круг.",
+    "Tap the circle to drop it": "Нажмите на круг, чтобы поставить",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "Этот круг — центр предмета. Подержите телефон неподвижно секунду.",
+    "Turn it with two fingers": "Поворачивайте двумя пальцами",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "Поверните двумя пальцами, чтобы развернуть предмет. Одним пальцем он двигается по полу.",
+    "Place it in my room": "Поставить в моей комнате",
+    "Do not show this again": "Больше не показывать",
+    "Point the camera at the wall": "Наведите камеру на стену",
+    "Move the phone slowly across the wall until it is recognised.": "Медленно ведите телефон вдоль стены, пока она не распознается.",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "Нажмите, чтобы повесить. Подержите телефон неподвижно секунду.",
+    "Shown at its real size": "Показан в натуральную величину",
+    "Pinching will not make it bigger or smaller.": "Щипком размер изменить нельзя."
   },
   a: {
     "Sarah Mitchell": "Сара Митчелл",

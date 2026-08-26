@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "人気",
     "New": "新着",
     "Product categories": "商品カテゴリ",
-    "Close": "閉じる"
+    "Close": "閉じる",
+    "Before you place it": "置く前に",
+    "Three things and you are done": "三つだけ覚えてください",
+    "Point the camera at the floor": "カメラを床に向けます",
+    "Move the phone slowly until a circle appears on the ground.": "床に円が表示されるまで、ゆっくりスマホを動かします。",
+    "Tap the circle to drop it": "円をタップして置きます",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "その円が家具の中心です。置いたあと、少しの間スマホを動かさないでください。",
+    "Turn it with two fingers": "二本指で向きを変えます",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "二本指でひねると向きが変わり、一本指で床の上を移動できます。",
+    "Place it in my room": "部屋に置いてみる",
+    "Do not show this again": "次回から表示しない",
+    "Point the camera at the wall": "カメラを壁に向けます",
+    "Move the phone slowly across the wall until it is recognised.": "壁に沿ってゆっくりスマホを動かし、認識されるまで待ちます。",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "タップして壁に掛けます。そのあと、少しの間スマホを動かさないでください。",
+    "Shown at its real size": "実物と同じ大きさで表示されます",
+    "Pinching will not make it bigger or smaller.": "ピンチしても大きさは変わりません。"
   },
   a: {
     "Sarah Mitchell": "サラ・ミッチェル",

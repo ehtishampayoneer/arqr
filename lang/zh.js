@@ -193,7 +193,22 @@ window.ARQR_LANG = {
     "Bestseller": "热卖",
     "New": "新品",
     "Product categories": "产品分类",
-    "Close": "关闭"
+    "Close": "关闭",
+    "Before you place it": "放置之前",
+    "Three things and you are done": "三步就好",
+    "Point the camera at the floor": "把摄像头对准地面",
+    "Move the phone slowly until a circle appears on the ground.": "缓慢移动手机，直到地面上出现圆圈。",
+    "Tap the circle to drop it": "点一下圆圈即可放置",
+    "That circle is the centre of the piece. Hold the phone still for a second while it settles.": "圆圈就是这件家具的中心。放好后请把手机拿稳一会儿。",
+    "Turn it with two fingers": "用两根手指旋转",
+    "Twist two fingers to face it the way you want. One finger slides it along the floor.": "两指转动即可调整朝向，单指拖动可沿地面移动。",
+    "Place it in my room": "放到我的房间里",
+    "Do not show this again": "不再显示",
+    "Point the camera at the wall": "把摄像头对准墙面",
+    "Move the phone slowly across the wall until it is recognised.": "沿着墙面缓慢移动手机，直到识别成功。",
+    "Tap to hang it there. Hold the phone still for a second while it settles.": "点一下即可挂上。放好后请把手机拿稳一会儿。",
+    "Shown at its real size": "按真实尺寸显示",
+    "Pinching will not make it bigger or smaller.": "双指缩放不会改变它的大小。"
   },
   a: {
     "Sarah Mitchell": "莎拉·米切尔",
