@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=51"></script>
+<script src="i18n.js?v=52"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -378,7 +378,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=51"></script>
+<script src="sprite.js?v=52"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -422,7 +422,7 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=51" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=52" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
@@ -454,7 +454,7 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=51" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=52" alt=""></div>
   </div>
 </div>
 
@@ -479,20 +479,27 @@
         </svg>
       </span>
       <div><b id="guideS1">Point the camera at the floor</b>
-      <span id="guideS1b">Move the phone slowly until a circle appears on the ground.</span></div>
+      <span id="guideS1b">Move the phone slowly so it can find the floor.</span></div>
     </div>
 
     <div class="step">
       <span class="step-art" aria-hidden="true">
-        <!-- the reticle: the circle is where the middle of the piece lands -->
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+        <!-- android really does show a marker to tap; ios does not, so it
+             gets a finger sliding the piece instead of a reticle it will
+             never see -->
+        <svg id="artTap" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
           <ellipse cx="16" cy="19" rx="10.5" ry="5"/>
           <circle cx="16" cy="19" r="1.6" fill="currentColor" stroke="none"/>
           <path d="M16 6.5v4.2M16 27.5v-3.6M4 19h3.4M28 19h-3.4"/>
         </svg>
+        <svg id="artDrag" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <ellipse cx="16" cy="24" rx="11" ry="4"/>
+          <path d="M6.5 24h-3M28.5 24h-3M16 3.5v3"/>
+          <path d="M13.4 19.6v-6.1a1.35 1.35 0 0 1 2.7 0v-1.4a1.35 1.35 0 0 1 2.7 0v1.4a1.35 1.35 0 0 1 2.7 0v4.2c0 2.4-1.7 4.1-4.1 4.1h-1.2c-1.6 0-2.3-.7-3.2-1.9l-1.7-2.3a1.3 1.3 0 0 1 2-1.6z" fill="var(--page-hi)"/>
+        </svg>
       </span>
-      <div><b id="guideS2">Tap the circle to drop it</b>
-      <span id="guideS2b">That circle is the centre of the piece. Hold the phone still for a second while it settles.</span></div>
+      <div><b id="guideS2">Tap to place it</b>
+      <span id="guideS2b">Tap where you want it, then drag with one finger to move it.</span></div>
     </div>
 
     <div class="step">
@@ -505,7 +512,7 @@
         </svg>
       </span>
       <div><b id="guideS3">Turn it with two fingers</b>
-      <span id="guideS3b">Twist two fingers to face it the way you want. One finger slides it along the floor.</span></div>
+      <span id="guideS3b">Twist two fingers to face it the way you want.</span></div>
     </div>
 
     <p class="guide-size">
@@ -522,9 +529,9 @@
   </div>
 </div>
 
-<script src="stores.js?v=51"></script>
+<script src="stores.js?v=52"></script>
 <script>
-var V = '?v=51';
+var V = '?v=52';
 var STORES = window.ARQR_STORES;
 /* Two rows always; how many across depends on the screen, so the page size
    follows the layout rather than being a fixed number that overflows. */
@@ -767,16 +774,29 @@ function showGuide(it){
   pending = it;
   var wall = !!it.wall;
   var g = function(id){ return document.getElementById(id); };
+
   /* a picture on a wall is found by pointing at the wall, not the floor,
      and the usdz for those carries a vertical anchor to match */
   g('guideS1').textContent  = wall ? t('Point the camera at the wall')
                                    : t('Point the camera at the floor');
   g('guideS1b').textContent = wall
-    ? t('Move the phone slowly across the wall until it is recognised.')
-    : t('Move the phone slowly until a circle appears on the ground.');
-  g('guideS2b').textContent = wall
-    ? t('Tap to hang it there. Hold the phone still for a second while it settles.')
-    : t('That circle is the centre of the piece. Hold the phone still for a second while it settles.');
+    ? t('Move the phone slowly across the wall so it can find it.')
+    : t('Move the phone slowly so it can find the floor.');
+
+  /* The two viewers do genuinely different things here, and saying the
+     wrong one is worse than saying nothing: Quick Look drops the piece the
+     moment it finds a surface and never shows anything to tap, while Scene
+     Viewer puts a marker down and waits for you. */
+  g('guideS2').textContent  = isIOS ? t('It places itself') : t('Tap to place it');
+  g('guideS2b').textContent = !isIOS
+    ? t('Tap where you want it, then drag with one finger to move it.')
+    : wall ? t('The picture appears as soon as the wall is found. Drag it with one finger to move it.')
+           : t('The piece appears as soon as the floor is found. Drag it with one finger to move it.');
+  g('artTap').style.display  = isIOS ? 'none' : 'block';
+  g('artDrag').style.display = isIOS ? 'block' : 'none';
+
+  g('guideS3b').textContent = t('Twist two fingers to face it the way you want.') +
+    (isIOS ? ' ' + t('Double-tap it to face front again.') : '');
   /* a middle dot rather than a full stop: the two halves are separate
      sentences in every language, and a Latin '.' sits badly between two
      Chinese clauses */
