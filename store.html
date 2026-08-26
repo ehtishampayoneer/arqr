@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=53"></script>
+<script src="i18n.js?v=54"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -352,30 +352,47 @@
     /* One row on a phone. Four tiles plus the banner in 812px left the
        picture a 54px strip, which reads as broken rather than compact.
 
-       The tiles are also sized here rather than stretched: the picture keeps
-       a 4:3 shape and the tile is as tall as its contents, so it cannot end
-       up 169 wide by 398 tall. Whatever height is then left goes to the
-       banner, which has a photograph to show and no fixed size it must be. */
-    /* the grid is the scroller now: rows take their own height and the
-       whole range sits in one list, while the shop's banner and the filters
-       above it stay put */
-    /* `grid-template-rows:none` clears the desktop's two fixed rows so every
-       row here is an implicit one, and `max-content` is what makes those
-       rows take the tile's own height. Left on `auto` they collapsed to an
-       equal share of the box - thirteen tiles 55px tall, the picture
-       spilling out of each - because an auto row still answers to a grid
-       with a definite height. */
+       Four tiles to a phone screen is a tight budget, so everything that is
+       not the photograph is trimmed here: the banner, the words on the tile
+       and the button all give up a few pixels each, and all of it goes to
+       the picture, which is the only part carrying the product. */
+    /* Four to a page, two by two. The rows share the box between them on a
+       normal phone, so the page fits with nothing cut off.
+
+       The floor of 168px is what stops a short screen from doing what it did
+       before: with plain 1fr rows a 640-tall phone squeezed each tile to
+       104px and the photograph inside it to two, which is not a smaller
+       tile, it is a broken one. Below that height the four still stand at
+       full size and a short screen scrolls a little instead. */
     .grid{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
-      grid-template-rows:none;grid-auto-rows:max-content;
-      align-content:start;padding-bottom:4px}
-    .shot{flex:none;aspect-ratio:4/3;min-height:0}
-    /* the banner takes what it needs and the products take the rest,
-       rather than the banner growing into the space the list now wants */
+      grid-template-rows:repeat(2,minmax(168px,1fr));
+      grid-auto-rows:minmax(168px,auto)}
+    /* and the picture keeps a floor of its own, whatever happens above it */
+    .shot{min-height:72px}
+    /* the picture takes whatever the row has left after the name, the price
+       and the button, rather than claiming a fixed shape and pushing the
+       button off the tile */
+    .shot{flex:1;aspect-ratio:auto}
+    /* the banner takes what it needs and the products take the rest */
     .shell{grid-template-rows:auto minmax(0,1fr)}
-    .brand{height:auto;min-height:110px}
+    .brand{height:auto;min-height:84px}
     .col{min-height:0}
-    .place{width:calc(100% - 20px);margin:9px 10px 10px;padding:11px 8px;
-      font-size:12.5px;min-height:40px}
+    .grid{gap:8px;margin-top:8px}
+    /* still a 44px target, which is the floor for a thumb, but without the
+       margins it was carrying on a screen this size */
+    .place{width:calc(100% - 16px);margin:6px 8px 8px;padding:8px 6px;
+      font-size:12.5px;min-height:44px;border-radius:9px}
+    /* price and size share a line here. On a desktop they are stacked and
+       have the room for it; on a phone showing four tiles that third line
+       costs the photograph fourteen pixels it cannot spare, and the two of
+       them read perfectly well side by side. */
+    .meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;padding:5px 9px 0}
+    .pname{flex:0 0 100%;font-size:12.5px;line-height:1.25;margin-bottom:1px}
+    .price{font-size:12.5px;line-height:1.2}
+    .dims{font-size:11px;margin-top:0;line-height:1.2}
+    .dims::before{content:'·';margin-inline-end:6px;color:var(--ink-soft);opacity:.6}
+    .pager{padding-top:8px}
+    .pager button{min-width:34px;height:34px}
     /* a column here would cost 60px of a screen that has none to spare */
     .foot-in{padding:6px 0;gap:10px}
     .foot-by{font-size:11.5px}
@@ -393,7 +410,7 @@
 </style>
 </head>
 <body>
-<script src="sprite.js?v=53"></script>
+<script src="sprite.js?v=54"></script>
 
 <div class="demo">
   <div class="demo-in">
@@ -437,7 +454,7 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=53" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=54" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
@@ -469,7 +486,7 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=53" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=54" alt=""></div>
   </div>
 </div>
 
@@ -544,20 +561,16 @@
   </div>
 </div>
 
-<script src="stores.js?v=53"></script>
+<script src="stores.js?v=54"></script>
 <script>
-var V = '?v=53';
+var V = '?v=54';
 var STORES = window.ARQR_STORES;
-/* On a desktop the catalog is a fixed board: six tiles, two rows, no
-   scrolling, because there is room to lay them out and paging through them
-   reads as a showroom.
-
-   A phone is a different thing. Paging two at a time meant eleven taps to
-   see eleven chairs, and nobody does that — so the phone shows the whole
-   range and lets a thumb do the work, which is what a thumb is for. */
+/* A page of the catalog: six on a desktop, three across and two down, and
+   four on a phone, two by two. Two at a time was too few to browse and the
+   whole range at once made the tiles too small to read, so four is the
+   number that fills a phone screen with tiles you can still see. */
 function perPage(){
-  if (matchMedia('(max-width:760px)').matches) return Infinity;
-  return 6;
+  return matchMedia('(max-width:760px)').matches ? 4 : 6;
 }
 
 /* Which shop is this? The address is the shop's own — /novara, /corso — and

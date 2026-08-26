@@ -176,7 +176,9 @@ function measure(doc){
     const k = p.glbFactor;
     const needsScale = Math.abs(k - 1) > 1e-3;
     const needsFreeze = !!(p.freeze && json.animations && json.animations.length);
-    if (!needsScale && !p.rotate && !needsFreeze && !dropNodes.size){
+    const needsCutout = !!(p.cutout && (json.materials || []).some(
+      m => m.name in p.cutout && m.alphaCutoff !== p.cutout[m.name]));
+    if (!needsScale && !p.rotate && !needsFreeze && !dropNodes.size && !needsCutout){
       console.log('  ' + p.f.slice(0, 44).padEnd(45) + 'nothing to do on this side, left alone');
       continue;
     }
@@ -203,6 +205,21 @@ function measure(doc){
       } else {
         json.nodes[at].rotation = q;
       }
+    }
+
+    /* The same cutoff has to move on this side too. Scene Viewer runs the
+       identical alpha test against the identical texture, so a threshold
+       above the texture's mean alpha erases the panel there just as surely.
+       This is a value in the json; the buffer is not touched. */
+    let cutoutSet = 0;
+    if (p.cutout){
+      const want = p.cutout;
+      (json.materials || []).forEach(m => {
+        if (!(m.name in want)) return;
+        if (m.alphaCutoff === want[m.name]) return;
+        m.alphaCutoff = want[m.name];
+        cutoutSet++;
+      });
     }
 
     /* a running animation reads as the model drifting on the card */
@@ -241,6 +258,7 @@ function measure(doc){
     if (cut) extra.push('floor unhooked, ' + lostTris + ' tris');
     if (p.rotate) extra.push('rotated ' + p.rotate.join(','));
     if (heldAnim) extra.push(heldAnim + ' animation held');
+    if (cutoutSet) extra.push('cutoff ' + Object.values(p.cutout).join(', '));
     console.log('  ' + p.f.slice(0, 44).padEnd(45) +
       ('x' + (k < 0.01 ? k.toExponential(2) : k.toFixed(4))).padEnd(12) +
       after.size.map(v => v.toFixed(3)).join(' x ') + ' m  ' +
