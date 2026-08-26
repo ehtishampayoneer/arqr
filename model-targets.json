@@ -1,22 +1,4 @@
 {
- "armchair-with-rattan-black-themasie-emba": {
-  "shop": "novara",
-  "usdz": [
-   0.7746,
-   0.9592,
-   0.7667
-  ],
-  "glb": [
-   0.7746,
-   0.9592,
-   0.7667
-  ],
-  "why": "measured correct as supplied",
-  "cutout": {
-   "M_Vienna_Straw": 0.5
-  },
-  "cutoutWhy": "cane alpha is binary with a 0.674 mean; the shipped 0.683 cutoff sat above that mean, so any mipmap erased the whole panel. 0.5 gives the same weave at full size and keeps it when minified."
- },
  "designer-chair-02a": {
   "shop": "novara",
   "usdz": [
@@ -662,5 +644,19 @@
    2.6155
   ],
   "why": "measured correct as supplied"
+ },
+ "chair": {
+  "shop": "novara",
+  "usdz": [
+   0.6102,
+   0.8808,
+   0.5864
+  ],
+  "glb": [
+   0.6102,
+   0.8808,
+   0.5864
+  ],
+  "why": "measured correct as supplied — 61 x 88 x 59 cm chair"
  }
 }

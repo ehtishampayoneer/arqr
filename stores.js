@@ -23,7 +23,7 @@ window.ARQR_STORES = [
     note: 'Furniture is the hardest thing to buy online. Nobody knows if a 244cm sofa fits until it is in the room.',
     cats: ['All', 'Seating', 'Tables'],
     items: [
-      { n:'Armchair With Rattan Black', p:'$1,410', d:'77 × 96 cm', c:'Seating', i:'ic-chair', f:'armchair-with-rattan-black-themasie-emba', glb:'assets/shops/novara/armchair-with-rattan-black-themasie-emba.glb', usdz:'assets/shops/novara/armchair-with-rattan-black-themasie-emba.usdz' },
+      { n:'Woven Rattan Chair', p:'$1,410', d:'61 × 88 cm', c:'Seating', i:'ic-chair', f:'chair', glb:'assets/shops/novara/chair.glb', usdz:'assets/shops/novara/chair.usdz' },
       { n:'Designer Chair', p:'$1,970', d:'75 × 97 cm', c:'Seating', i:'ic-chair', f:'designer-chair-02a', glb:'assets/shops/novara/designer-chair-02a.glb', usdz:'assets/shops/novara/designer-chair-02a.usdz' },
       { n:'Elegant Chair', p:'$1,100', d:'81 × 116 cm', c:'Seating', i:'ic-chair', f:'elegant-chair', glb:'assets/shops/novara/elegant-chair.glb', usdz:'assets/shops/novara/elegant-chair.usdz' },
       { n:'Flick Accent Chair Yolk Yellow', p:'$1,770', d:'78 × 69 cm', c:'Seating', i:'ic-chair', f:'flick-accent-chair-yolk-yellow', glb:'assets/shops/novara/flick-accent-chair-yolk-yellow.glb', usdz:'assets/shops/novara/flick-accent-chair-yolk-yellow.usdz' },

@@ -75,6 +75,10 @@ function survey(doc){
   });
 
   const list = JSON.parse(fs.readFileSync('shop-products.json', 'utf8'));
+  /* naming products on the command line brings in just those, which is what
+     adding one model to an existing catalog needs — the whole run copies
+     294 MB of usdz and re-compresses every glb to achieve nothing. */
+  const only = process.argv.slice(2);
   let usdzIn = 0, usdzBytes = 0, glbIn = 0, glbBefore = 0, glbAfter = 0;
   const problems = [];
 
@@ -83,6 +87,7 @@ function survey(doc){
        not already exist */
     fs.mkdirSync(path.join(OUT, shop.slug), { recursive: true });
     for (const it of (list[shop.slug] || [])){
+      if (only.length && !only.includes(it.f)) continue;
       const dir = path.join(SRC, shop.dir);
 
       /* ---- usdz: straight copy, verified by hash ---- */

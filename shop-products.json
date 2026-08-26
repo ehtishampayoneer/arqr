@@ -1,19 +1,19 @@
 {
   "novara": [
     {
-      "n": "Armchair With Rattan Black",
+      "n": "Woven Rattan Chair",
       "p": "$1,410",
-      "d": "77 × 96 cm",
+      "d": "61 × 88 cm",
       "dReal": true,
       "c": "Seating",
       "i": "ic-chair",
-      "f": "armchair-with-rattan-black-themasie-emba",
+      "f": "chair",
       "hasGlb": true,
       "hasUsdz": true,
-      "srcGlb": "armchair_with_rattan_black_-_themasie_emba.glb",
-      "srcUsdz": "Armchair_With_Rattan_Black_-_TheMasie_EMBA.usdz",
-      "glb": "assets/shops/novara/armchair-with-rattan-black-themasie-emba.glb",
-      "usdz": "assets/shops/novara/armchair-with-rattan-black-themasie-emba.usdz"
+      "srcGlb": "chair.glb",
+      "srcUsdz": "chair.usdz",
+      "glb": "assets/shops/novara/chair.glb",
+      "usdz": "assets/shops/novara/chair.usdz"
     },
     {
       "n": "Designer Chair",
