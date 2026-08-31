@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=67"></script>
+<script src="i18n.js?v=70"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -593,6 +593,110 @@
      The margin buys back the bar plus the heading above the field. */
   #f-name{scroll-margin-top:calc(var(--bar-h) + 150px)}
 
+  /* ---------------- founder pricing ---------------- */
+  /* A dark band above the cards. It carries the offer and the clock, and
+     it is the only place on the page allowed to feel like an offer, so
+     the cards below can stay a plain price list. */
+  .founder{display:flex;align-items:center;justify-content:space-between;
+    gap:clamp(18px,3vw,40px);flex-wrap:wrap;
+    max-width:1160px;margin:0 auto clamp(14px,2vh,20px);
+    background:linear-gradient(115deg,#221E1A 0%,#2C2521 58%,#3A2A1F 100%);
+    color:#F6F1E9;border-radius:20px;
+    padding:clamp(20px,2.6vw,30px) clamp(22px,3vw,34px);
+    box-shadow:0 26px 52px -30px rgba(40,28,18,.7)}
+  .founder-say{flex:1 1 380px;min-width:0}
+  .founder-eyebrow{margin:0 0 8px;font-family:var(--f-head);font-weight:800;
+    font-size:12.5px;letter-spacing:.17em;text-transform:uppercase;color:#F0A87E}
+  .founder-txt{margin:0;font-size:14.5px;line-height:1.6;color:rgba(246,241,233,.86);
+    max-width:56ch}
+
+  .founder-clock{flex:none;text-align:center}
+  .clock-label{display:block;font-size:11.5px;font-weight:600;letter-spacing:.13em;
+    text-transform:uppercase;color:rgba(246,241,233,.62);margin-bottom:10px}
+  .clock-dials{display:flex;gap:8px;justify-content:center}
+  .dial{display:flex;flex-direction:column;align-items:center;gap:3px;
+    min-width:56px;background:rgba(246,241,233,.08);
+    border:1px solid rgba(246,241,233,.16);border-radius:12px;padding:9px 6px}
+  .dial b{font-family:var(--f-head);font-weight:800;font-size:22px;line-height:1;
+    font-variant-numeric:tabular-nums;color:#FFF}
+  .dial i{font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(246,241,233,.55)}
+  .clock-review{margin:0;max-width:34ch;font-size:13.5px;line-height:1.55;
+    color:#F0A87E;font-weight:600}
+  .founder-terms{max-width:1160px;margin:0 auto clamp(22px,3vh,32px);
+    font-size:12.5px;color:var(--ink-soft)}
+
+  /* ---------------- what a plan costs ---------------- */
+  /* Two numbers, and they must not compete. The setup fee is what is being
+     bought today, so it is the one set in the display face; the monthly is
+     a quiet line under it. */
+  .plan-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;margin:2px 0 6px}
+  .plan-price .was{font-size:16px;color:var(--ink-soft)}
+  .plan-price .was s{text-decoration-thickness:1.5px;text-decoration-color:rgba(160,148,132,.9)}
+  .plan-price .now{font-family:var(--f-head);font-weight:900;
+    font-size:clamp(32px,3vw,42px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .plan-price .save{flex:none;background:rgba(224,104,42,.12);color:var(--accent-ink,#A8481A);
+    border-radius:100px;padding:5px 11px;font-size:12px;font-weight:700;
+    letter-spacing:.02em;white-space:nowrap}
+  .plan-once{margin:0 0 12px;font-size:12.5px;font-weight:600;letter-spacing:.02em;
+    color:var(--ink-soft)}
+  .plan-mo{margin:0 0 18px;padding-top:12px;border-top:1px solid var(--line);
+    font-size:14px;color:var(--ink-soft)}
+  .plan-mo b{font-family:var(--f-head);font-weight:800;font-size:17px;color:var(--ink)}
+  .plan-extra{margin:0 0 18px;font-size:12.5px;color:var(--ink-soft)}
+  .plan-extra b{color:var(--ink);font-weight:700}
+
+  /* the custom block carries a list now, not a sentence */
+  .pm-list{list-style:none;margin:10px 0 0;padding:0;display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px}
+  .pm-list li{position:relative;padding-inline-start:16px;font-size:14px;
+    line-height:1.55;color:var(--ink-soft)}
+  .pm-list li::before{content:"";position:absolute;inset-inline-start:0;top:9px;
+    width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  @media(max-width:760px){
+    .founder{padding:20px;gap:18px}
+    .founder-clock{width:100%}
+    .clock-dials{justify-content:flex-start}
+    .dial{flex:1 1 0;min-width:0}
+    .clock-review{max-width:none;text-align:start}
+    .pm-list{grid-template-columns:minmax(0,1fr)}
+  }
+  @media(max-width:380px){
+    /* four dials will not sit on a 320px row at full size */
+    .dial{padding:8px 3px}
+    .dial b{font-size:19px}
+    .dial i{font-size:9px;letter-spacing:.06em}
+  }
+
+  /* ---------------- footer ---------------- */
+  .site-foot{background:var(--page-alt);border-top:1px solid var(--line);
+    padding:clamp(30px,4.5vh,46px) 0}
+  .foot-wrap{width:min(var(--wrap),100% - var(--gutter)*2);margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:clamp(16px,3vw,32px);flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:11px;flex-wrap:wrap;min-width:0}
+  .foot-mark svg{width:24px;height:24px;display:block;color:var(--ink)}
+  .foot-name{font-family:var(--f-head);font-weight:800;font-size:17px;
+    letter-spacing:.14em;color:var(--ink)}
+  .foot-line{font-size:14px;color:var(--ink-soft)}
+  .foot-legal{margin:0;font-size:12.5px;color:var(--ink-soft)}
+
+  .foot-social{display:flex;align-items:center;gap:6px}
+  .foot-social a{display:grid;place-items:center;width:44px;height:44px;
+    border-radius:12px;color:var(--ink-soft);
+    transition:color .2s ease,background .2s ease}
+  .foot-social a:hover{color:var(--accent);background:rgba(224,104,42,.1)}
+  .foot-social svg{width:20px;height:20px;display:block}
+
+  @media(max-width:760px){
+    .foot-wrap{justify-content:center;text-align:center;row-gap:14px}
+    .foot-brand{justify-content:center;width:100%}
+    .foot-line{flex:0 0 100%}
+    .foot-social{width:100%;justify-content:center}
+    .foot-legal{width:100%}
+  }
+
   /* ---------------- questions ---------------- */
   /* <details> rather than a script: it opens without javascript, it is
      keyboard operable for free, and a crawler reads the answer whether
@@ -623,8 +727,13 @@
     .qa p{padding-inline-end:0}
   }
 
+  /* stretch, not start. Sized to their own content the Showroom card came
+     out shorter than Starter, because Starter lists five things and
+     Showroom lists one and says the important part in a highlight instead
+     — and the card we want chosen was the smallest on the row. Equal
+     heights, and the scale below does the rest. */
   .pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,28px);
-    align-items:start;max-width:1160px;margin:0 auto}
+    align-items:stretch;max-width:1160px;margin:0 auto}
   @media(max-width:980px){.pr-grid{grid-template-columns:1fr;max-width:520px}}
 
   .pr-grid .plan{position:relative;display:flex;flex-direction:column;
@@ -1170,47 +1279,74 @@
       {
         "@type": "Offer",
         "name": "Starter",
-        "description": "10 products, built for you",
-        "price": "30",
+        "description": "10 AR products, built for you",
+        "price": "249",
         "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "30",
-          "priceCurrency": "USD",
-          "billingDuration": 1,
-          "billingIncrement": 1,
-          "unitCode": "MON"
-        }
+        "priceSpecification": [
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "One-time setup",
+            "price": "249",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "Monthly platform fee",
+            "price": "29",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        ]
       },
       {
         "@type": "Offer",
         "name": "Studio",
-        "description": "20 products, built for you",
-        "price": "50",
+        "description": "25 AR products, built for you",
+        "price": "549",
         "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "50",
-          "priceCurrency": "USD",
-          "billingDuration": 1,
-          "billingIncrement": 1,
-          "unitCode": "MON"
-        }
+        "priceSpecification": [
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "One-time setup",
+            "price": "549",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "Monthly platform fee",
+            "price": "59",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        ]
       },
       {
         "@type": "Offer",
         "name": "Showroom",
-        "description": "50 products, built for you",
-        "price": "100",
+        "description": "50 AR products, built for you",
+        "price": "999",
         "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "100",
-          "priceCurrency": "USD",
-          "billingDuration": 1,
-          "billingIncrement": 1,
-          "unitCode": "MON"
-        }
+        "priceSpecification": [
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "One-time setup",
+            "price": "999",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "Monthly platform fee",
+            "price": "99",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        ]
       }
     ]
   }
@@ -1233,7 +1369,7 @@
         "name": "How much does an AR catalog cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Three plans: $30 a month for 10 products, $50 a month for 20, and $100 a month for 50. Every plan includes your own branded page, your own QR code, hosting and updates. There is no setup fee and nothing to pay for each model we build. Above 50 products we quote for the range."
+          "text": "You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range."
         }
       },
       {
@@ -1249,7 +1385,7 @@
         "name": "How long does it take to get my catalog?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "About seven days from your photographs arriving. Send your best sellers first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits."
+          "text": "About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits."
         }
       },
       {
@@ -1342,7 +1478,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=67" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalog.svg?v=70" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalog first</strong>
@@ -1358,8 +1494,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=67"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=67"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=70"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=70"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1427,9 +1563,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=67" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=70" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=67" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=70" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1447,9 +1583,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=67" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=67" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=67" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=70" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=70" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=70" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1468,7 +1604,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=67" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=70" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1514,7 +1650,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=67" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=70" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1526,7 +1662,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=67" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=70" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1538,7 +1674,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=67" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=70" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1550,7 +1686,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=67" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=70" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1562,7 +1698,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=67" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=70" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1623,116 +1759,113 @@
 
     <div class="pr-head">
       <p class="sec-eyebrow rev">Pricing</p>
-      <h2 class="rev">One price a month. <em>Everything included.</em></h2>
-      <p class="pr-sub rev">No setup fee and nothing to pay per model. We build every product to its real size, host your catalog, and keep it current. Change plan or stop whenever you like.</p>
+      <h2 class="rev">Pay once to build it. <em>A little each month to keep it live.</em></h2>
+      <p class="pr-sub rev">ARQR builds your own true-to-size AR product catalog. You pay once to create it, then a simple monthly fee keeps it live, shareable and measurable.</p>
     </div>
+
+    <div class="founder rev">
+      <div class="founder-say">
+        <p class="founder-eyebrow">Founding catalog partner pricing</p>
+        <p class="founder-txt">We are opening a limited number of ARQR launch catalogs while we onboard our first merchant partners. Apply now to lock in founder pricing for your catalog.</p>
+      </div>
+      <div class="founder-clock">
+        <span class="clock-label">Founder pricing review in</span>
+        <div class="clock-dials" id="clockDials" role="timer" aria-live="off">
+          <span class="dial"><b data-d>--</b><i>days</i></span>
+          <span class="dial"><b data-h>--</b><i>hrs</i></span>
+          <span class="dial"><b data-m>--</b><i>min</i></span>
+          <span class="dial"><b data-s>--</b><i>sec</i></span>
+        </div>
+        <p class="clock-review" id="clockReview" hidden>Founder pricing is currently under review. Apply now to request the current launch rate.</p>
+      </div>
+    </div>
+    <p class="founder-terms rev">Launch terms are reviewed every 20 days as production capacity changes.</p>
 
     <div class="pr-grid">
 
       <div class="plan rev">
         <p class="plan-name">Starter</p>
-        <div class="plan-count">10<small>products, built for you</small></div>
-        <div class="plan-rows">
-          <div class="plan-row mo"><span>Every month</span><b>$30</b></div>
-          <div class="plan-row"><span>Per product</span><b>$3.00</b></div>
+        <div class="plan-count">10<small>AR products, built for you</small></div>
+        <div class="plan-price">
+          <span class="was"><s>$419</s></span>
+          <span class="now">$249</span>
+          <span class="save">Save $170</span>
         </div>
-        <p class="plan-rate">The dearest rate we charge</p>
+        <p class="plan-once">One-time setup, at founder pricing</p>
+        <p class="plan-mo">Then <b>$29</b> a month to keep it live</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded catalog page</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and one link</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Orders come to you on WhatsApp or your own site</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly report of opens and taps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR catalog</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and a shareable catalog link</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-size AR placement on iPhone and Android</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting and updates</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Basic analytics and support</li>
         </ul>
-        <a class="plan-go" href="#f-name">Start with 10</a>
+        <p class="plan-extra">Extra products <b>$20</b> each</p>
+        <a class="plan-go" href="#f-name">Apply for Starter</a>
       </div>
 
       <div class="plan rev">
         <p class="plan-name">Studio</p>
-        <div class="plan-count">20<small>products, built for you</small></div>
-        <div class="plan-rows">
-          <div class="plan-row mo"><span>Every month</span><b>$50</b></div>
-          <div class="plan-row"><span>Per product</span><b>$2.50</b></div>
+        <div class="plan-count">25<small>AR products, built for you</small></div>
+        <div class="plan-price">
+          <span class="was"><s>$919</s></span>
+          <span class="now">$549</span>
+          <span class="save">Save $370</span>
         </div>
-        <p class="plan-rate">17% less a product than Starter</p>
+        <p class="plan-once">One-time setup, at founder pricing</p>
+        <p class="plan-mo">Then <b>$59</b> a month to keep it live</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Categories, search and filters</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Colour and size options per product</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>See which products get opened most</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority catalog setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>More detailed analytics</li>
         </ul>
-        <a class="plan-go" href="#f-name">Start with 20</a>
+        <p class="plan-extra">Extra products <b>$20</b> each</p>
+        <a class="plan-go" href="#f-name">Apply for Studio</a>
       </div>
 
       <div class="plan best rev">
-        <span class="plan-flag">People&rsquo;s choice</span>
+        <span class="plan-flag">Most popular</span>
         <p class="plan-name">Showroom</p>
-        <div class="plan-count">50<small>products, built for you</small></div>
-        <div class="plan-rows">
-          <div class="plan-row mo"><span>Every month</span><b>$100</b></div>
-          <div class="plan-row"><span>Per product</span><b>$2.00</b></div>
+        <div class="plan-count">50<small>AR products, built for you</small></div>
+        <div class="plan-price">
+          <span class="was"><s>$1,679</s></span>
+          <span class="now">$999</span>
+          <span class="save">Save $680</span>
         </div>
-        <p class="plan-rate best-rate">33% less a product than Starter</p>
-        <p class="plan-value">The thirty products above Studio work out at <b>$1.67 each</b>, the cheapest they ever get.</p>
+        <p class="plan-once">One-time setup, at founder pricing</p>
+        <p class="plan-mo">Then <b>$99</b> a month to keep it live</p>
+        <p class="plan-value">50 products for <b>$999</b>: just <b>$19.98</b> per product.</p>
+        <p class="plan-rate best-rate">The best rate for stores ready to show their full collection.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Studio</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>The AR button on your own product pages</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>More than one shop or branch, each with its own code</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>We pull your products straight from your store</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>New products live within 48 hours</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Studio</li>
         </ul>
-        <a class="plan-go" href="#f-name">Start with 50</a>
+        <p class="plan-extra">Extra products <b>$20</b> each</p>
+        <a class="plan-go" href="#f-name">Apply for Showroom</a>
       </div>
 
     </div>
 
     <div class="plan-more rev">
       <div class="pm-say">
-        <p class="pm-title">More than 50 products?</p>
-        <p class="pm-sub">Large ranges, several branches, or a feed straight from your store. Tell us how big your catalog is and we will price it for you.</p>
+        <p class="pm-title">Custom catalog</p>
+        <ul class="pm-list">
+          <li>More than 50 products</li>
+          <li>Multiple product categories</li>
+          <li>Multi-store catalogs</li>
+          <li>Advanced branding or special requirements</li>
+        </ul>
       </div>
-      <a class="pm-go" href="#f-name">Get a custom quote
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a class="pm-go" href="#f-name">Request a custom quote
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
 
-    <p class="pr-foot rev">Every plan includes your own page, your own QR code and orders sent wherever you want them. <b>No setup fee</b>, and nothing to pay for each model we build. Move up a plan the month your range grows.</p>
+    <p class="pr-foot rev">Simple products are included at the listed price. Highly detailed, transparent, animated or configurable products may need a custom quote before production.</p>
 
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
-<section class="faq" id="faq">
-  <div class="faq-in">
-    <div class="faq-head">
-      <p class="sec-eyebrow rev">Questions</p>
-      <h2 class="rev">The things shopkeepers ask us first</h2>
-    </div>
-    <div class="faq-list">
-      <!-- faq:start -->
-        <details class="qa rev">
-          <summary><span>What is ARQR?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>ARQR turns your product photographs into 3D models your customers can place in their own room at true size, through one QR code or one link. There is no app to download. It opens in the phone’s own camera on both iPhone and Android.</p>
-        </details>
-        <details class="qa rev">
-          <summary><span>How much does an AR catalog cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>Three plans: $30 a month for 10 products, $50 a month for 20, and $100 a month for 50. Every plan includes your own branded page, your own QR code, hosting and updates. There is no setup fee and nothing to pay for each model we build. Above 50 products we quote for the range.</p>
-        </details>
-        <details class="qa rev">
-          <summary><span>Do my customers need to install an app?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>No. The catalog opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
-        </details>
-        <details class="qa rev">
-          <summary><span>How long does it take to get my catalog?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>About seven days from your photographs arriving. Send your best sellers first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits.</p>
-        </details>
-        <details class="qa rev">
-          <summary><span>What do you need from me to start?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>Photographs of each product and its real dimensions. If you already have 3D files we can use those instead. We do the modelling, the hosting and the QR code, and orders come to you on WhatsApp or through your own site.</p>
-        </details>
-      <!-- faq:end -->
-    </div>
-  </div>
-</section>
+
 
 <!-- ============ HANDOFF ============ -->
 <div class="divider">
@@ -1766,7 +1899,7 @@
         <p class="ct-eyebrow">Start with ten products</p>
 
         <div class="ct-pitch">
-          <h2>Send us your ten best sellers. <em>See them in a room this week.</em></h2>
+          <h2>Send us your ten best-selling products. <em>See them in a room this week.</em></h2>
 
           <div class="ct-stat">
             <span class="ct-stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 16.5 9.2 10.8l3.4 3.2 7.9-8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.4 6h5.1v5.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -1885,6 +2018,90 @@
     </div>
   </div>
 </section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="faq-in">
+    <div class="faq-head">
+      <p class="sec-eyebrow rev">Questions</p>
+      <h2 class="rev">The things shopkeepers ask us first</h2>
+    </div>
+    <div class="faq-list">
+      <!-- faq:start -->
+        <details class="qa rev">
+          <summary><span>What is ARQR?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>ARQR turns your product photographs into 3D models your customers can place in their own room at true size, through one QR code or one link. There is no app to download. It opens in the phone’s own camera on both iPhone and Android.</p>
+        </details>
+        <details class="qa rev">
+          <summary><span>How much does an AR catalog cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range.</p>
+        </details>
+        <details class="qa rev">
+          <summary><span>Do my customers need to install an app?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>No. The catalog opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
+        </details>
+        <details class="qa rev">
+          <summary><span>How long does it take to get my catalog?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits.</p>
+        </details>
+        <details class="qa rev">
+          <summary><span>What do you need from me to start?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>Photographs of each product and its real dimensions. If you already have 3D files we can use those instead. We do the modelling, the hosting and the QR code, and orders come to you on WhatsApp or through your own site.</p>
+        </details>
+      <!-- faq:end -->
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SOCIAL LINKS — the only place these are set.
+     Replace the four href values below with your real pages when they
+     exist. They point at the platforms themselves for now, so none of
+     them is a dead link in the meantime.
+     ===================================================================== -->
+<footer class="site-foot">
+  <div class="foot-wrap">
+    <div class="foot-brand">
+      <span class="foot-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="foot-name">ARQR</span>
+      <span class="foot-line">Your showroom, in their room.</span>
+    </div>
+
+    <nav class="foot-social" aria-label="ARQR on social media">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="ARQR on Instagram">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="17.2" cy="6.8" r="1.15" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="ARQR on Facebook">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M14.4 21.5v-8h2.7l.5-3.2h-3.2V8.2c0-.93.28-1.56 1.6-1.56h1.72V3.78A22 22 0 0 0 15.2 3.6c-2.5 0-4.2 1.53-4.2 4.34V10.3H8.3v3.2H11v8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="ARQR on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.6 20.4l1.2-4.3a8 8 0 1 1 3.1 3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M9.1 8.4c.25-.05.5 0 .64.27l.72 1.36c.13.25.08.55-.11.75l-.44.44a5.6 5.6 0 0 0 2.87 2.87l.44-.44c.2-.19.5-.24.75-.11l1.36.72c.27.14.32.39.27.64-.2.95-1.07 1.5-2 1.35a8.1 8.1 0 0 1-6.2-6.2c-.15-.93.4-1.8 1.35-2z" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://x.com/" target="_blank" rel="noopener" aria-label="ARQR on X">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 4l7.2 9.3L4.4 20h2l5.7-6 4.6 6H21l-7.5-9.7L20.3 4h-2l-5.3 5.6L8.7 4z" fill="currentColor"/>
+        </svg>
+      </a>
+    </nav>
+
+    <p class="foot-legal">&copy; 2026 ARQR. All rights reserved.</p>
+  </div>
+</footer>
+
 
 <script>ARQR_I18N.apply();</script>
 <script>
@@ -2422,6 +2639,55 @@
   if (document.readyState === 'loading') addEventListener('DOMContentLoaded', land);
   else land();
   addEventListener('hashchange', land);
+})();
+</script>
+<script>
+/* The founder-pricing clock.
+
+   One date for everybody. It counts to a fixed twenty-day grid measured
+   from a single anchor, so two people opening the page in different
+   countries see the same number, and reloading does not restart it. A
+   per-visitor countdown that resets on refresh is the oldest trick on the
+   internet and everyone can smell it.
+
+   When a boundary passes, the terms are genuinely being looked at, so for
+   the first day of each period the clock stands down and says so rather
+   than pretending to a deadline it does not have. */
+(function (){
+  var ANCHOR = Date.UTC(2026, 0, 1);          /* a fixed, global start */
+  var CYCLE  = 20 * 24 * 60 * 60 * 1000;      /* the review period */
+  var REVIEW = 24 * 60 * 60 * 1000;           /* how long a review is open */
+
+  var dials = document.getElementById('clockDials');
+  var note  = document.getElementById('clockReview');
+  if (!dials || !note) return;
+
+  var box = { d: dials.querySelector('[data-d]'), h: dials.querySelector('[data-h]'),
+              m: dials.querySelector('[data-m]'), s: dials.querySelector('[data-s]') };
+  var pad = function (n){ return (n < 10 ? '0' : '') + n; };
+
+  function tick(){
+    var now = Date.now();
+    var n = Math.floor((now - ANCHOR) / CYCLE);
+    var since = now - (ANCHOR + n * CYCLE);
+
+    if (since < REVIEW){
+      dials.hidden = true; note.hidden = false;
+      return;
+    }
+    dials.hidden = false; note.hidden = true;
+
+    var left = (ANCHOR + (n + 1) * CYCLE) - now;
+    var d = Math.floor(left / 86400000);
+    var h = Math.floor(left / 3600000) % 24;
+    var m = Math.floor(left / 60000) % 60;
+    var sec = Math.floor(left / 1000) % 60;
+    box.d.textContent = pad(d); box.h.textContent = pad(h);
+    box.m.textContent = pad(m); box.s.textContent = pad(sec);
+  }
+
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 </body>

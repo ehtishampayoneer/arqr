@@ -39,9 +39,10 @@ const FAQ = [
    'in the phone’s own camera on both iPhone and Android.'],
 
   ['How much does an AR catalog cost?',
-   'Three plans: $30 a month for 10 products, $50 a month for 20, and $100 a month for 50. ' +
-   'Every plan includes your own branded page, your own QR code, hosting and updates. There is ' +
-   'no setup fee and nothing to pay for each model we build. Above 50 products we quote for the range.'],
+   'You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing ' +
+   'that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 ' +
+   'for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple ' +
+   'stores and categories, we quote for the range.'],
 
   ['Do my customers need to install an app?',
    'No. The catalog opens in the browser, and the AR view uses what is already built into the ' +
@@ -49,7 +50,7 @@ const FAQ = [
    'taps a link and the product appears in the room in front of them.'],
 
   ['How long does it take to get my catalog?',
-   'About seven days from your photographs arriving. Send your best sellers first. Every product ' +
+   'About seven days from your photographs arriving. Send your best-selling products first. Every product ' +
    'is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the ' +
    'customer can see whether it fits.'],
 
@@ -59,10 +60,11 @@ const FAQ = [
    'WhatsApp or through your own site.']
 ];
 
+/* name, products, one-time setup at founder pricing, then monthly */
 const PLANS = [
-  ['Starter',  10,  30],
-  ['Studio',   20,  50],
-  ['Showroom', 50, 100]
+  ['Starter',  10, 249, 29],
+  ['Studio',   25, 549, 59],
+  ['Showroom', 50, 999, 99]
 ];
 
 const PAGES = [
@@ -135,16 +137,25 @@ function headBlock(page){
       '@context': 'https://schema.org', '@type': 'Service',
       name: 'AR product catalog', provider: { '@type': 'Organization', name: SITE.name },
       description: SITE.blurb,
-      offers: PLANS.map(([name, count, price]) => ({
+      /* two prices, and the markup says which is which. The setup fee is
+         the Offer's price because it is what is paid to start; the monthly
+         rides alongside it as its own specification rather than being
+         averaged into one misleading number. */
+      offers: PLANS.map(([name, count, setup, monthly]) => ({
         '@type': 'Offer', name: name,
-        description: count + ' products, built for you',
-        price: String(price), priceCurrency: 'USD',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: String(price), priceCurrency: 'USD',
-          billingDuration: 1, billingIncrement: 1,
-          unitCode: 'MON'
-        }
+        description: count + ' AR products, built for you',
+        price: String(setup), priceCurrency: 'USD',
+        priceSpecification: [
+          {
+            '@type': 'UnitPriceSpecification',
+            name: 'One-time setup', price: String(setup), priceCurrency: 'USD'
+          },
+          {
+            '@type': 'UnitPriceSpecification',
+            name: 'Monthly platform fee', price: String(monthly), priceCurrency: 'USD',
+            billingDuration: 1, billingIncrement: 1, unitCode: 'MON'
+          }
+        ]
       }))
     };
 
