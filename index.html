@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=70"></script>
+<script src="i18n.js?v=72"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -627,23 +627,39 @@
     font-size:12.5px;color:var(--ink-soft)}
 
   /* ---------------- what a plan costs ---------------- */
-  /* Two numbers, and they must not compete. The setup fee is what is being
-     bought today, so it is the one set in the display face; the monthly is
-     a quiet line under it. */
-  .plan-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;margin:2px 0 6px}
-  .plan-price .was{font-size:16px;color:var(--ink-soft)}
-  .plan-price .was s{text-decoration-thickness:1.5px;text-decoration-color:rgba(160,148,132,.9)}
-  .plan-price .now{font-family:var(--f-head);font-weight:900;
-    font-size:clamp(32px,3vw,42px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
-  .plan-price .save{flex:none;background:rgba(224,104,42,.12);color:var(--accent-ink,#A8481A);
-    border-radius:100px;padding:5px 11px;font-size:12px;font-weight:700;
-    letter-spacing:.02em;white-space:nowrap}
-  .plan-once{margin:0 0 12px;font-size:12.5px;font-weight:600;letter-spacing:.02em;
-    color:var(--ink-soft)}
-  .plan-mo{margin:0 0 18px;padding-top:12px;border-top:1px solid var(--line);
-    font-size:14px;color:var(--ink-soft)}
-  .plan-mo b{font-family:var(--f-head);font-weight:800;font-size:17px;color:var(--ink)}
-  .plan-extra{margin:0 0 18px;font-size:12.5px;color:var(--ink-soft)}
+  /* Order of impression, from the top: how many products, what it costs a
+     month, what that pays for, and then the build. The monthly is the
+     number a shopkeeper decides on, so it is the largest thing here and
+     the only one in the accent; the build fee is stated plainly under it
+     but never set larger, because "$999" as the first thing read is a
+     different conversation from "from $29 a month". */
+  .pr-lead{max-width:1160px;margin:0 auto clamp(16px,2.2vh,24px);
+    font-size:clamp(14.5px,1.15vw,16.5px);line-height:1.6;color:var(--ink-soft)}
+
+  .plan-count small{margin-top:6px}
+
+  .plan-mo{margin:10px 0 4px;font-family:var(--f-head);font-weight:700;
+    font-size:15px;color:var(--ink-soft);line-height:1.1;
+    display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .plan-mo b{font-weight:900;font-size:clamp(36px,3.4vw,46px);letter-spacing:-.02em;
+    color:var(--accent);line-height:1}
+  .plan-mo-note{margin:0 0 12px;font-size:13px;line-height:1.55;color:var(--ink-soft);
+    max-width:30ch}
+
+  /* the build fee: complete, legible, and quieter than the monthly */
+  .plan-build{margin:0 0 14px;padding:10px 12px;border-radius:12px;
+    background:var(--page-alt);border:1px solid var(--line)}
+  .build-label{margin:0 0 5px;font-size:11.5px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--ink-soft)}
+  .build-row{margin:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+    font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+  .build-now{color:var(--ink)}
+  .build-now b{font-family:var(--f-head);font-weight:800;font-size:18px;color:var(--ink)}
+  .build-was s{text-decoration-thickness:1.4px;text-decoration-color:rgba(160,148,132,.85)}
+  .save{flex:none;background:rgba(224,104,42,.1);color:#A8481A;
+    border-radius:100px;padding:3px 9px;font-size:11.5px;font-weight:700;white-space:nowrap}
+
+  .plan-extra{margin:0 0 14px;font-size:12.5px;color:var(--ink-soft)}
   .plan-extra b{color:var(--ink);font-weight:700}
 
   /* the custom block carries a list now, not a sentence */
@@ -802,7 +818,7 @@
 
   .plan-name{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
     color:var(--ink-soft);margin:0 0 14px}
-  .plan-count{font-family:var(--f-head);font-weight:900;font-size:clamp(34px,3vw,46px);
+  .plan-count{font-family:var(--f-head);font-weight:900;font-size:clamp(28px,2.4vw,36px);
     line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
   .plan-count small{display:block;margin-top:8px;font-family:var(--f-body);font-weight:500;
     font-size:14.5px;letter-spacing:0;color:var(--ink-soft)}
@@ -1478,7 +1494,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=70" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalog.svg?v=72" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalog first</strong>
@@ -1494,8 +1510,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=70"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=70"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=72"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=72"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1563,9 +1579,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=70" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=72" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=70" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=72" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1583,9 +1599,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=70" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=70" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=70" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=72" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=72" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=72" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1604,7 +1620,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=70" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=72" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1650,7 +1666,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=70" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=72" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1662,7 +1678,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=70" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=72" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1674,7 +1690,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=70" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=72" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1686,7 +1702,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=70" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=72" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1698,7 +1714,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=70" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=72" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1781,18 +1797,23 @@
     </div>
     <p class="founder-terms rev">Launch terms are reviewed every 20 days as production capacity changes.</p>
 
+    <p class="pr-lead rev">Start with a simple monthly plan. We build your AR catalog once, then keep it live for your customers.</p>
+
     <div class="pr-grid">
 
       <div class="plan rev">
         <p class="plan-name">Starter</p>
-        <div class="plan-count">10<small>AR products, built for you</small></div>
-        <div class="plan-price">
-          <span class="was"><s>$419</s></span>
-          <span class="now">$249</span>
-          <span class="save">Save $170</span>
+        <div class="plan-count">10<small>AR products</small></div>
+        <p class="plan-mo">From <b>$29</b>/month</p>
+        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <div class="plan-build">
+          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-row">
+            <span class="build-now">Founder build price: <b>$249</b></span>
+            <span class="build-was">Regularly <s>$349</s></span>
+            <span class="save">Save $100</span>
+          </p>
         </div>
-        <p class="plan-once">One-time setup, at founder pricing</p>
-        <p class="plan-mo">Then <b>$29</b> a month to keep it live</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR catalog</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and a shareable catalog link</li>
@@ -1806,14 +1827,17 @@
 
       <div class="plan rev">
         <p class="plan-name">Studio</p>
-        <div class="plan-count">25<small>AR products, built for you</small></div>
-        <div class="plan-price">
-          <span class="was"><s>$919</s></span>
-          <span class="now">$549</span>
-          <span class="save">Save $370</span>
+        <div class="plan-count">25<small>AR products</small></div>
+        <p class="plan-mo">From <b>$59</b>/month</p>
+        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <div class="plan-build">
+          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-row">
+            <span class="build-now">Founder build price: <b>$549</b></span>
+            <span class="build-was">Regularly <s>$749</s></span>
+            <span class="save">Save $200</span>
+          </p>
         </div>
-        <p class="plan-once">One-time setup, at founder pricing</p>
-        <p class="plan-mo">Then <b>$59</b> a month to keep it live</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority catalog setup</li>
@@ -1826,15 +1850,18 @@
       <div class="plan best rev">
         <span class="plan-flag">Most popular</span>
         <p class="plan-name">Showroom</p>
-        <div class="plan-count">50<small>AR products, built for you</small></div>
-        <div class="plan-price">
-          <span class="was"><s>$1,679</s></span>
-          <span class="now">$999</span>
-          <span class="save">Save $680</span>
+        <div class="plan-count">50<small>AR products</small></div>
+        <p class="plan-mo">From <b>$99</b>/month</p>
+        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <div class="plan-build">
+          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-row">
+            <span class="build-now">Founder build price: <b>$999</b></span>
+            <span class="build-was">Regularly <s>$1,399</s></span>
+            <span class="save">Save $400</span>
+          </p>
         </div>
-        <p class="plan-once">One-time setup, at founder pricing</p>
-        <p class="plan-mo">Then <b>$99</b> a month to keep it live</p>
-        <p class="plan-value">50 products for <b>$999</b>: just <b>$19.98</b> per product.</p>
+        <p class="plan-value">50 products, $999 one-time build, then $99/month. That is $19.98 a product.</p>
         <p class="plan-rate best-rate">The best rate for stores ready to show their full collection.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Studio</li>
