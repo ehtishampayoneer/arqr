@@ -2,7 +2,6 @@
 module.exports = { t: {
 
 /* ---------------- the bar ---------------- */
-'How it works': ['工作方式','使い方','Как это работает','Qanday ishlaydi','Nasıl çalışır','Cómo funciona','Comment ça marche','So funktioniert es','Come funziona','Como funciona','یہ کیسے کام کرتا ہے'],
 'Why it works': ['为什么有效','効果がある理由','Почему это работает','Nega samarali','Neden işe yarar','Por qué funciona','Pourquoi ça marche','Warum es funktioniert','Perché funziona','Porque funciona','یہ کیوں کارگر ہے'],
 'Pricing': ['价格','料金','Цены','Narxlar','Fiyatlar','Precios','Tarifs','Preise','Prezzi','Preços','قیمتیں'],
 'Contact': ['联系我们','お問い合わせ','Контакты','Aloqa','İletişim','Contacto','Contact','Kontakt','Contatti','Contacto','رابطہ'],
@@ -10,32 +9,6 @@ module.exports = { t: {
 'Back to ARQR': ['返回 ARQR','ARQR に戻る','Назад к ARQR','ARQR ga qaytish','ARQR\'ye dön','Volver a ARQR','Retour à ARQR','Zurück zu ARQR','Torna ad ARQR','Voltar ao ARQR','ARQR پر واپس'],
 
 /* ---------------- opening screen ---------------- */
-"80% of sales are lost <em>because customers</em> can't see it in their space.":
-  ['80% 的成交流失，<em>只因顾客</em>看不到它在自己家里的样子。',
-   '売上の80%が失われるのは、<em>お客様が</em>自分の部屋に置いた姿を見られないからです。',
-   '80% продаж теряется, <em>потому что клиент</em> не видит товар у себя дома.',
-   'Savdoning 80% yo‘qoladi, <em>chunki xaridor</em> uni o‘z xonasida ko‘ra olmaydi.',
-   'Satışların %80\'i kayboluyor, <em>çünkü müşteri</em> ürünü kendi evinde göremiyor.',
-   'El 80% de las ventas se pierde <em>porque el cliente</em> no puede verlo en su espacio.',
-   '80% des ventes sont perdues <em>parce que le client</em> ne peut pas le voir chez lui.',
-   '80% der Verkäufe gehen verloren, <em>weil Kunden</em> es nicht in ihrem Raum sehen.',
-   'L\'80% delle vendite si perde <em>perché il cliente</em> non lo vede in casa sua.',
-   '80% das vendas perdem-se <em>porque o cliente</em> não o vê no seu espaço.',
-   '‏80٪ فروخت ضائع ہو جاتی ہے <em>کیونکہ گاہک</em> اسے اپنی جگہ میں نہیں دیکھ پاتا۔'],
-'ARQR lets your customers place products in their own space, in real size and real time.':
-  ['ARQR 让顾客把产品放进自己的空间，真实尺寸，实时呈现。',
-   'ARQR なら、お客様が実寸の商品をその場で自分の部屋に置けます。',
-   'ARQR позволяет клиентам поставить товар у себя дома, в реальном размере и в реальном времени.',
-   'ARQR xaridorlarga mahsulotni o‘z xonasiga qo‘yish imkonini beradi, haqiqiy o‘lchamda, real vaqtda.',
-   'ARQR, müşterilerinizin ürünü kendi mekânına yerleştirmesini sağlar, gerçek boyutta, anında.',
-   'ARQR permite a tus clientes colocar los productos en su propio espacio, a tamaño real y al instante.',
-   'ARQR permet à vos clients de placer vos produits chez eux, à taille réelle et en direct.',
-   'Mit ARQR stellen Ihre Kunden Produkte in ihren eigenen Raum, in echter Größe, in Echtzeit.',
-   'ARQR permette ai tuoi clienti di posare i prodotti in casa loro, a grandezza reale e in tempo reale.',
-   'O ARQR permite aos seus clientes colocar os produtos no seu espaço, em tamanho real, na hora.',
-   'ARQR آپ کے گاہکوں کو مصنوعات اپنی جگہ میں رکھنے دیتا ہے، اصل سائز میں، اسی وقت۔'],
-'See it. Love it. Buy it.': ['看见它。爱上它。买下它。','見る。惚れる。買う。','Увидел. Понравилось. Купил.','Ko‘ring. Yoqtiring. Xarid qiling.','Gör. Beğen. Satın al.','Míralo. Enamórate. Cómpralo.','Voyez-le. Aimez-le. Achetez-le.','Sehen. Lieben. Kaufen.','Guardalo. Amalo. Compralo.','Veja. Adore. Compre.','دیکھیں۔ پسند کریں۔ خریدیں۔'],
-'From uncertainty to confidence in one scan.': ['一次扫码，从犹豫到确定。','スキャン一回で、迷いが確信に変わります。','Одно сканирование, и сомнения сменяются уверенностью.','Bitta skan, shubha o‘rniga ishonch.','Tek bir taramada tereddütten güvene.','De la duda a la confianza con un solo escaneo.','Du doute à la confiance en un seul scan.','Ein Scan, aus Unsicherheit wird Gewissheit.','Da dubbio a certezza con una sola scansione.','Da dúvida à confiança com um único scan.','ایک اسکین میں شک سے یقین تک۔'],
 'Apply for your AR catalog': ['申请你的 AR 目录','AR カタログを申し込む','Заказать AR-каталог','AR katalogingizga ariza bering','AR kataloğunuz için başvurun','Solicita tu catálogo AR','Demandez votre catalogue AR','AR-Katalog anfragen','Richiedi il tuo catalogo AR','Peça o seu catálogo AR','اپنے AR کیٹلاگ کے لیے درخواست دیں'],
 'See a live example': ['查看真实示例','実際の例を見る','Посмотреть живой пример','Jonli namunani ko‘ring','Canlı bir örnek görün','Ver un ejemplo real','Voir un exemple réel','Echtes Beispiel ansehen','Guarda un esempio reale','Ver um exemplo real','ایک حقیقی مثال دیکھیں'],
 'No app to download': ['无需下载应用','アプリ不要','Без приложений','Ilova kerak emas','Uygulama gerekmez','Sin descargar nada','Aucune application','Keine App nötig','Nessuna app da scaricare','Sem instalar nada','کوئی ایپ ڈاؤن لوڈ نہیں'],

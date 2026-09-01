@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=72"></script>
+<script src="i18n.js?v=74"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -105,6 +105,16 @@
   .logo{display:flex;align-items:center;gap:10px;margin-right:auto;padding:8px 0}
   .logo svg{width:26px;height:26px;color:var(--ink)}
   .logo b{font-family:var(--f-head);font-weight:800;font-size:18px;letter-spacing:.14em}
+  /* Desktop only, and only where the bar has room to spare. The hero
+     eyebrow says the same thing on a phone, so this never competes with
+     the buttons for the narrow bar. */
+  .logo-desc{display:none}
+  @media(min-width:1180px){
+    .logo-desc{display:inline-block;padding-inline-start:12px;margin-inline-start:12px;
+      border-inline-start:1px solid var(--line);
+      font-size:12.5px;font-weight:500;letter-spacing:.01em;color:var(--ink-soft);
+      white-space:nowrap}
+  }
   .bar nav{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft)}
   .bar nav a{position:relative;padding-bottom:9px}
   .bar nav a:hover{color:var(--ink)}
@@ -308,8 +318,19 @@
   .vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     opacity:0;transition:opacity .7s ease}
   .vbox video.on{opacity:1}
-  .vbox .vfallback{position:absolute;inset:0;display:grid;place-items:center;
-    color:#A79C8C;font-size:14px;letter-spacing:.04em;text-align:center;padding:24px;margin:0}
+  /* A poster, not a message. It is what the panel looks like for the
+     moment before the clip decodes, and the only thing it ever says to a
+     visitor is that a preview is coming. It used to carry the filenames
+     the developer needed, which is a fine note to leave yourself and a
+     poor thing to ship. */
+  .vbox .vfallback{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:12px;margin:0;
+    background:var(--page-alt);color:var(--ink-soft);
+    font-size:13.5px;font-weight:600;letter-spacing:.04em;text-align:center;padding:20px}
+  .vbox .vf-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;
+    background:var(--page-hi);border:1px solid var(--line);color:var(--accent)}
+  .vbox .vf-mark svg{width:24px;height:24px;display:block;animation:vfPulse 1.9s ease-in-out infinite}
+  @keyframes vfPulse{0%,100%{opacity:.45}50%{opacity:1}}
   .vbox.has-video .vfallback{display:none}
 
   .pill{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:9px;
@@ -713,6 +734,39 @@
     .foot-legal{width:100%}
   }
 
+  /* The one number worth putting on the first screen, with the sentence
+     that makes it mean something and the source underneath it. It sits
+     beside the buttons rather than in the headline, because a statistic is
+     evidence for a claim and not the claim itself. */
+  .proof{display:flex;align-items:flex-start;gap:clamp(12px,1.4vw,18px);
+    margin:0 0 clamp(16px,2.2vh,24px);padding:clamp(13px,1.5vw,17px) clamp(15px,1.7vw,19px);
+    border-radius:16px;background:var(--page-hi);border:1px solid var(--line);
+    max-width:520px}
+  .proof-num{flex:none;font-family:var(--f-head);font-weight:900;
+    font-size:clamp(34px,3.4vw,46px);line-height:.95;color:var(--accent);
+    letter-spacing:-.02em}
+  .proof-say{min-width:0;display:flex;flex-direction:column;gap:5px;padding-top:2px}
+  .proof-line{font-size:clamp(13.5px,1.05vw,15px);line-height:1.5;color:var(--ink)}
+  .proof-line sup{font-size:.7em;line-height:0}
+  .proof-src{font-size:11.5px;line-height:1.4;color:var(--ink-soft)}
+  @media(max-width:700px){
+    .proof{gap:12px;padding:12px 14px}
+    .proof-num{font-size:32px}
+    .proof-line{font-size:13px}
+  }
+
+  /* What the panel says now that the chart has gone. Four plain sentences
+     about what a customer gets to do, none of which needs a number nobody
+     has measured to stand behind it. */
+  .frm-note{margin:12px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink-soft);
+    text-align:center}
+
+  .ct-bens{list-style:none;margin:clamp(18px,2.4vh,26px) 0 0;padding:0;
+    display:flex;flex-direction:column;gap:12px;max-width:46ch}
+  .ct-bens li{display:flex;gap:11px;align-items:flex-start;
+    font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--sec-ink,#F6F1E9)}
+  .ct-bens svg{flex:none;width:17px;height:17px;margin-top:3px;color:var(--accent)}
+
   /* ---------------- questions ---------------- */
   /* <details> rather than a script: it opens without javascript, it is
      keyboard operable for free, and a crawler reads the answer whether
@@ -871,14 +925,6 @@
     repeating-linear-gradient(0deg, rgba(255,168,110,.26) 0 1px,transparent 1px 46px)}
   .ct-left .mesh-band{background:linear-gradient(90deg,rgba(255,190,140,0),rgba(255,190,140,.09),rgba(255,190,140,0))}
 
-  .ct-trust{list-style:none;margin:0 0 clamp(22px,2.4vw,32px);padding:0;
-    display:flex;flex-wrap:wrap;align-items:center;gap:10px clamp(14px,1.5vw,22px);
-    font-size:13.5px;color:rgba(246,241,233,.82)}
-  .ct-trust li{display:inline-flex;align-items:center;gap:9px;position:relative}
-  .ct-trust li+li{padding-left:clamp(14px,1.5vw,22px)}
-  .ct-trust li+li::before{content:"";position:absolute;left:0;top:50%;
-    width:1px;height:16px;margin-top:-8px;background:rgba(246,241,233,.2)}
-  .ct-trust svg{width:17px;height:17px;color:var(--accent);display:block;flex:none}
 
   .ct-eyebrow{margin:0 0 16px;font-size:11.5px;font-weight:700;letter-spacing:.2em;
     text-transform:uppercase;color:var(--accent)}
@@ -891,57 +937,12 @@
     font-size:clamp(26px,2.5vw,40px);line-height:1.14;letter-spacing:-.02em;color:#FFF9F1}
   .ct-left h2 em{font-style:normal;color:var(--accent)}
 
-  .ct-stat{flex:0 1 240px;display:flex;align-items:center;gap:15px;
-    background:rgba(246,241,233,.045);border:1px solid rgba(246,241,233,.12);
-    border-radius:14px;padding:16px 18px}
-  .ct-stat-ico{flex:none;width:52px;height:52px;border-radius:50%;
-    border:2px solid var(--accent);color:var(--accent);display:grid;place-items:center}
-  .ct-stat-ico svg{width:24px;height:24px;display:block}
-  .ct-stat-txt{min-width:0}
-  .bi-num{display:block;font-family:var(--f-head);font-weight:900;line-height:1;
-    font-size:clamp(26px,2.1vw,34px);color:var(--accent);font-variant-numeric:tabular-nums}
-  .bi-num i{font:inherit;font-style:normal}
-  .ct-stat-lab{display:block;margin-top:5px;font-size:14px;font-weight:700;color:#FFF9F1}
-  .ct-stat-src{display:block;margin-top:3px;font-size:12.5px;color:rgba(246,241,233,.6)}
 
   .ct-copy{margin:clamp(18px,2vw,26px) 0 0;font-size:clamp(14.5px,1vw,16.5px);
     line-height:1.68;color:rgba(246,241,233,.7);max-width:46ch}
 
   /* the chart, on dark */
-  .bi-chart{margin-top:auto;padding-top:clamp(22px,2.4vw,34px)}
-  .bi-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-    gap:10px;margin-bottom:14px}
-  .bi-top h4{margin:0;font-family:var(--f-head);font-weight:700;font-size:14.5px;color:#FFF9F1}
-  .bi-legend{display:flex;gap:18px;font-size:12.5px;color:rgba(246,241,233,.62)}
-  .bi-legend span{display:inline-flex;align-items:center;gap:8px}
-  .bi-legend i{width:20px;border-top:3px solid var(--accent);border-radius:2px;display:block}
-  .bi-legend .off i{border-top:3px dashed rgba(246,241,233,.45)}
-  .bi-chart svg{width:100%;height:auto;display:block}
 
-  .bi-grid-lines{stroke:rgba(246,241,233,.1);stroke-width:1;fill:none}
-  .bi-flat{stroke:rgba(246,241,233,.45);stroke-width:2.4;fill:none;stroke-linecap:round;
-    stroke-dasharray:7 6;opacity:0;transition:opacity .8s ease .2s}
-  .bi-chart.go .bi-flat{opacity:1}
-  .bi-flat-dot{fill:rgba(246,241,233,.45);opacity:0;transition:opacity .8s ease .4s}
-  .bi-chart.go .bi-flat-dot{opacity:1}
-  .bi-mask{y:330px;height:0px;
-    transition:y 1.7s cubic-bezier(.22,.92,.3,1),height 1.7s cubic-bezier(.22,.92,.3,1)}
-  .bi-chart.go .bi-mask{y:0px;height:330px}
-  .bi-line{stroke:var(--accent);stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .bi-dot{fill:#E0682A}
-  .bi-plot{transform-box:view-box;transform-origin:50% 330px}
-  .bi-chart.done .bi-plot{animation:biBeat 2.6s ease-in-out infinite}
-  @keyframes biBeat{
-    0%,58%,100%{transform:scale(1)}
-    8%{transform:scale(1.02)}
-    16%{transform:scale(1)}
-    26%{transform:scale(1.032)}
-    40%{transform:scale(1)}}
-  .bi-halo{fill:none;stroke:var(--accent);stroke-width:2;opacity:0;
-    transform-box:fill-box;transform-origin:center}
-  .bi-chart.done .bi-halo{animation:biHalo 2.6s ease-out infinite}
-  @keyframes biHalo{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(2.6);opacity:0}}
-  .bi-axis{font-family:var(--f-body);font-size:13px;fill:rgba(246,241,233,.55)}
 
   /* ---------- light half ---------- */
   .ct-right{background:#FFFDFA;padding:clamp(26px,2.6vw,44px);
@@ -1172,25 +1173,13 @@
     .cta{padding:24px 0 42px}
     .ct-panel{border-radius:18px}
     .ct-left,.ct-right{padding:26px 20px}
-    .ct-trust{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;
-      margin-bottom:22px;font-size:12.5px}
-    .ct-trust li+li{padding-left:0}
-    .ct-trust li+li::before{display:none}
-    .ct-trust li:last-child{grid-column:1 / -1}
     .ct-pitch{gap:20px}
     .ct-left h2{font-size:clamp(25px,7.2vw,31px);flex-basis:100%;
       line-height:1.22;letter-spacing:-.012em}
     .ct-title{line-height:1.25}
     .drop-t{font-size:12px;letter-spacing:.04em}
     .drop-d{font-size:12px}
-    .ct-stat{flex-basis:100%;padding:14px 16px;gap:13px}
-    .ct-stat-ico{width:46px;height:46px}
-    .bi-num{font-size:28px}
     .ct-copy{font-size:15px;max-width:none}
-    .bi-chart{padding-top:24px}
-    .bi-top h4{font-size:14px}
-    .bi-legend{gap:14px;font-size:12px}
-    .bi-axis{font-size:20px}
     .ct-title{font-size:21px;margin-bottom:22px}
     .frm{grid-template-columns:1fr;gap:18px}
     .fld input,.fld textarea{padding-left:42px}
@@ -1210,8 +1199,6 @@
     .scanline{animation:none;opacity:0}
 
     .wi{transform:none;opacity:1;transition:none}
-    .bi-plot,.bi-halo,.cmp-knob::after{animation:none}
-    .bi-mask{y:0px;height:330px}
     .mesh-band,.mesh-lit{animation:none}
     .mesh-band{display:none}
     .carou-track{transition:none}
@@ -1426,6 +1413,7 @@
         <path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
       </svg>
       <b>ARQR</b>
+      <span class="logo-desc">AR catalogs for retail</span>
     </a>
     <nav>
       <a href="#how">How it works</a>
@@ -1462,22 +1450,17 @@
   <div class="how-in">
 
     <div class="how-left">
-      <p class="sec-eyebrow rev">How it works</p>
-      <h1 class="rev">80% of sales are lost <em>because customers</em> can't see it in their space.</h1>
+      <p class="sec-eyebrow rev">AR catalogs for shops, showrooms &amp; online sellers</p>
+      <h1 class="rev">Let customers see your products in their space before they buy.</h1>
       <span class="rule rev" aria-hidden="true"></span>
-      <p class="how-sub rev">ARQR lets your customers place products in their own space, in real size and real time.</p>
+      <p class="how-sub rev">ARQR turns your catalog into a real-size virtual showroom.</p>
 
-      <div class="promise rev">
-        <span class="promise-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
+      <div class="proof rev">
+        <span class="proof-num">80%</span>
+        <span class="proof-say">
+          <span class="proof-line">of customers leave when they are not sure your product will fit their space.<sup>*</sup></span>
+          <span class="proof-src">*Source: Shopify AR shopping research.</span>
         </span>
-        <div>
-          <strong>See it. Love it. Buy it.</strong>
-          <span>From uncertainty to confidence in one scan.</span>
-        </div>
       </div>
 
       <div class="cat-cta rev">
@@ -1494,7 +1477,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=72" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalog.svg?v=74" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalog first</strong>
@@ -1509,9 +1492,9 @@
 
     <div class="how-right">
       <div class="vbox rev" id="vbox">
-        <p class="vfallback">Drop <code>how-1.mp4</code> and <code>how-2.mp4</code> into the assets folder</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=72"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=72"></video>
+        <p class="vfallback"><span class="vf-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>AR preview loading&hellip;</p>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=74"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=74"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1579,9 +1562,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=72" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=74" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=72" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=74" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1599,9 +1582,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=72" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=72" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=72" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=74" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=74" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=74" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1620,7 +1603,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=72" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=74" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1666,7 +1649,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=72" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=74" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1678,7 +1661,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=72" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=74" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1690,7 +1673,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=72" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=74" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1702,7 +1685,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=72" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=74" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1714,7 +1697,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=72" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=74" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1917,78 +1900,17 @@
           <div class="mesh-band"><div class="mesh-lit"></div></div>
         </div>
 
-        <ul class="ct-trust">
-          <li><svg viewBox="0 0 24 24" fill="none"><rect x="2.6" y="5" width="18.8" height="14" rx="2.6" stroke="currentColor" stroke-width="1.7"/><path d="M2.6 9.6h18.8" stroke="currentColor" stroke-width="1.7"/></svg>No card</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 2.8h7l5 5v13.4H6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 2.8v5h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>No contract</li>
-          <li><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>The models stay yours</li>
-        </ul>
-
-        <p class="ct-eyebrow">Start with ten products</p>
-
+        <p class="ct-eyebrow">Apply for your AR catalog</p>
         <div class="ct-pitch">
-          <h2>Send us your ten best-selling products. <em>See them in a room this week.</em></h2>
-
-          <div class="ct-stat">
-            <span class="ct-stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 16.5 9.2 10.8l3.4 3.2 7.9-8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.4 6h5.1v5.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="ct-stat-txt">
-              <span class="bi-num">+<i id="pctUp">0</i>%</span>
-              <span class="ct-stat-lab">more sales potential</span>
-              <span class="ct-stat-src">with AR (Shopify)</span>
-            </span>
-          </div>
+          <h2>Tell us what you sell. <em>We'll show you the showroom.</em></h2>
         </div>
-
-        <p class="ct-copy">We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.</p>
-
-        <div class="bi-chart" id="biChart">
-          <div class="bi-top">
-            <h4>Sales potential over time</h4>
-            <div class="bi-legend">
-              <span><i></i>With AR</span>
-              <span class="off"><i></i>Without AR</span>
-            </div>
-          </div>
-
-          <svg viewBox="0 0 660 330" role="img" aria-label="Sales potential over six months: a rising line for stores using AR against a much flatter line for those without">
-            <defs>
-              <clipPath id="biGrow"><rect class="bi-mask" x="0" width="660"/></clipPath>
-              <linearGradient id="biFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#E0682A" stop-opacity=".26"/>
-                <stop offset="1" stop-color="#E0682A" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-
-            <g class="bi-grid-lines">
-              <path d="M70 34h570M70 94h570M70 154h570M70 214h570M70 274h570"/>
-            </g>
-
-            <path class="bi-flat" d="M70 274 L165 267 L260 262 L355 255 L450 248 L545 236 L640 221"/>
-            <circle class="bi-flat-dot" cx="165" cy="267" r="5"/><circle class="bi-flat-dot" cx="260" cy="262" r="5"/><circle class="bi-flat-dot" cx="355" cy="255" r="5"/><circle class="bi-flat-dot" cx="450" cy="248" r="5"/><circle class="bi-flat-dot" cx="545" cy="236" r="5"/><circle class="bi-flat-dot" cx="640" cy="221" r="5"/>
-
-            <g class="bi-plot">
-              <g clip-path="url(#biGrow)">
-                <path fill="url(#biFill)" d="M70 274 L165 233 L260 200 L355 161 L450 123 L545 77 L640 34 L640 274 L70 274 Z"/>
-                <path class="bi-line" d="M70 274 L165 233 L260 200 L355 161 L450 123 L545 77 L640 34"/>
-                <circle class="bi-dot" cx="70" cy="274" r="5"/>
-                <circle class="bi-dot" cx="165" cy="233" r="6"/><circle class="bi-dot" cx="260" cy="200" r="6"/><circle class="bi-dot" cx="355" cy="161" r="6"/><circle class="bi-dot" cx="450" cy="123" r="6"/><circle class="bi-dot" cx="545" cy="77" r="6"/><circle class="bi-dot" cx="640" cy="34" r="6"/>
-              </g>
-            </g>
-            <circle class="bi-halo" cx="640" cy="34" r="7"/>
-
-            <g class="bi-axis">
-              <text x="56" y="39" text-anchor="end">100%</text>
-              <text x="56" y="99" text-anchor="end">75%</text>
-              <text x="56" y="159" text-anchor="end">50%</text>
-              <text x="56" y="219" text-anchor="end">25%</text>
-              <text x="56" y="279" text-anchor="end">0%</text>
-              <text x="165" y="308" text-anchor="middle">Month 1</text>
-              <text x="260" y="308" text-anchor="middle">Month 2</text>
-              <text x="355" y="308" text-anchor="middle">Month 3</text>
-              <text x="450" y="308" text-anchor="middle">Month 4</text>
-              <text x="545" y="308" text-anchor="middle">Month 5</text>
-              <text x="656" y="308" text-anchor="end">Month 6</text>
-            </g>
-          </svg>
+        <p class="ct-copy">Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.</p>
+        <ul class="ct-bens">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Help customers buy with more confidence.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Make product size, style and fit easier to understand before checkout.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Designed to reduce uncertainty before purchase.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Let customers see products in their own space before ordering.</li>
+        </ul>
         </div>
       </div>
 
@@ -2037,6 +1959,7 @@
           </div>
 
           <button class="frm-send" type="submit"><svg viewBox="0 0 24 24" fill="none"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Send it over</button>
+          <p class="frm-note">No obligation to apply. We'll reply within one working day with the right next step for your catalog.</p>
           <p class="frm-note" id="f-note">We reply within one working day. Your details go nowhere else.</p>
 
         </form>
@@ -2469,45 +2392,6 @@
   } else play();
 })();
 
-/* ---- the impact chart ---- */
-(function(){
-  var chart = document.getElementById("biChart");
-  if (!chart) return;
-  var out = document.getElementById("pctUp");
-  var reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var TARGET = 94, DRAW = 1700, timer = null;
-
-  function countUp(){
-    if (!out) return;
-    if (reduce){ out.textContent = TARGET; return; }
-    var t0 = null;
-    function step(now){
-      if (t0 === null) t0 = now;
-      var t = Math.min((now - t0) / DRAW, 1);
-      out.textContent = Math.round(TARGET * (1 - Math.pow(1 - t, 3)));
-      if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  function run(){
-    chart.classList.remove("done");
-    chart.classList.add("go");
-    countUp();
-    clearTimeout(timer);
-    timer = setTimeout(function(){ chart.classList.add("done"); }, reduce ? 0 : DRAW);
-  }
-  function rewind(){
-    clearTimeout(timer);
-    chart.classList.remove("go", "done");
-    if (out) out.textContent = "0";
-  }
-
-  if ("IntersectionObserver" in window){
-    new IntersectionObserver(function(en){
-      en.forEach(function(e){ e.isIntersecting ? run() : rewind(); });
-    }, {threshold:.35}).observe(chart);
-  } else run();
-})();
 
 /* ---- reveal on scroll ---- */
 (function(){
