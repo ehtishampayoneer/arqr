@@ -269,7 +269,6 @@ window.ARQR_LANG = {
     "ARQR turns your catalog into a real-size virtual showroom.": "ARQR は、あなたのカタログを実寸のバーチャルショールームに変えます。",
     "of customers leave when they are not sure your product will fit their space.<sup>*</sup>": "のお客様は、自分の空間に収まるか分からないと離脱します。<sup>*</sup>",
     "*Source: Shopify AR shopping research.": "*出典：Shopify の AR ショッピング調査。",
-    "AR catalogs for retail": "小売向け AR カタログ",
     "AR preview loading&hellip;": "AR プレビューを読み込み中…",
     "Tell us what you sell. <em>We'll show you the showroom.</em>": "何を売っているか教えてください。<em>ショールームをお見せします。</em>",
     "Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.": "商品について教えてください。カタログを拝見し、最適なプランをご確認のうえ、AR 体験がどのようになるかを具体的にお見せします。",
@@ -292,6 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "売れ筋の商品を10点お送りください。<em>今週中にお部屋に置けます。</em>"
   },
   a: {
+    "ARQR, AR catalogs for retail": "ARQR、小売向け AR カタログ",
     "ARQR on Instagram": "ARQR の Instagram",
     "ARQR on Facebook": "ARQR の Facebook",
     "ARQR on WhatsApp": "ARQR の WhatsApp",

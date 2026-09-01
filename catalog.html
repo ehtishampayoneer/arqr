@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=73"></script>
+<script src="i18n.js?v=75"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -19,7 +19,7 @@
     --accent:#E0682A;
     --f-head:"Archivo","Arial Black","Segoe UI",Impact,sans-serif;
     --f-body:"Inter","Segoe UI",-apple-system,Helvetica,Arial,sans-serif;
-    --bar-h:60px;
+    --bar-h:78px;
     --gutter:clamp(16px,3.4vw,54px);
     --wrap:min(1180px, calc(100% - 2 * var(--gutter)));
   }
@@ -33,9 +33,13 @@
   .bar{position:fixed;inset:0 0 auto;z-index:40;height:var(--bar-h);
     display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);
     background:rgba(250,247,242,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .logo{display:inline-flex;align-items:center;gap:10px;
-    font-family:var(--f-head);font-weight:800;font-size:19px;letter-spacing:.06em}
-  .logo svg{width:24px;height:24px;color:var(--accent);display:block}
+  /* height and width are both stated because the bar serves two crops
+     of one picture and they are not the same shape: see index.html */
+  .logo{display:inline-flex;align-items:center}
+  .logo picture{display:block}
+  .logo{min-width:0}
+  .logo img{display:block;height:50px;width:217px;
+    object-fit:contain;object-position:left center}
   /* this page already shows the samples, so the one thing worth offering
      from up here is what they lead to */
   .bar-cta{flex:none;display:inline-flex;align-items:center;background:var(--ink);
@@ -112,8 +116,17 @@
   .end-cta svg{width:16px;height:16px;display:block}
 
   @media(max-width:700px){
+    :root{--bar-h:66px}
     .bar{padding:0 16px}
-    .logo{font-size:17px;padding:9px 0}
+    .logo img{height:28px;width:168px}
+    /* The row here is the logo, the language, the way back and the
+       button, and 375px does not hold all four. It is the button that
+       goes: this page's whole job is the four samples underneath it, and
+       the same button is waiting at the end of them.
+
+       It has to stay below the rule above it, not above it, at equal
+       specificity the later rule wins whatever the media query says. */
+    @media(max-width:470px){ .bar-cta{display:none} }
     .back{padding:11px 14px;font-size:13px}
     .top{padding-top:calc(var(--bar-h) + 24px)}
     .top h1{font-size:27px}
@@ -157,11 +170,10 @@
 
 <header class="bar">
   <a class="logo" href="/">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    ARQR
+    <picture>
+      <source media="(max-width:700px)" srcset="assets/logo-word.png?v=75">
+      <img src="assets/logo-lockup.png?v=75" alt="ARQR, AR catalogs for retail">
+    </picture>
   </a>
   <a class="back" href="/">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -194,11 +206,11 @@
   </div>
 </main>
 
-<script src="stores.js?v=73"></script>
+<script src="stores.js?v=75"></script>
 <script>
 (function () {
   var host = location.host || 'arqr-two.vercel.app';
-  var V = '?v=73';
+  var V = '?v=75';
   /* the shop list is data, so it is translated on the way in — shop names
      stay as they are, because a brand name is not a word to translate */
   var t = function (x){ return window.ARQR_I18N ? ARQR_I18N.s(x) : x; };

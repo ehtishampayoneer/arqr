@@ -269,7 +269,6 @@ window.ARQR_LANG = {
     "ARQR turns your catalog into a real-size virtual showroom.": "ARQR آپ کے کیٹلاگ کو اصل سائز کے ورچوئل شو روم میں بدل دیتا ہے۔",
     "of customers leave when they are not sure your product will fit their space.<sup>*</sup>": "گاہک اُس وقت چلے جاتے ہیں جب انہیں یقین نہ ہو کہ پروڈکٹ اُن کی جگہ میں سما جائے گی۔<sup>*</sup>",
     "*Source: Shopify AR shopping research.": "*ماخذ: Shopify کی AR شاپنگ ریسرچ۔",
-    "AR catalogs for retail": "ریٹیل کے لیے AR کیٹلاگ",
     "AR preview loading&hellip;": "AR پیش منظر لوڈ ہو رہا ہے…",
     "Tell us what you sell. <em>We'll show you the showroom.</em>": "ہمیں بتائیں آپ کیا بیچتے ہیں۔ <em>ہم آپ کو شو روم دکھاتے ہیں۔</em>",
     "Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.": "ہمیں اپنی مصنوعات کے بارے میں بتائیں۔ ہم آپ کا کیٹلاگ دیکھیں گے، درست پلان کی تصدیق کریں گے اور آپ کو بالکل دکھائیں گے کہ آپ کا AR تجربہ کیسا ہو سکتا ہے۔",
@@ -292,6 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "اپنی دس سب سے زیادہ بکنے والی پروڈکٹس بھیجیں۔ <em>اسی ہفتے انہیں کمرے میں دیکھیں۔</em>"
   },
   a: {
+    "ARQR, AR catalogs for retail": "ARQR، ریٹیل کے لیے AR کیٹلاگ",
     "ARQR on Instagram": "ARQR Instagram پر",
     "ARQR on Facebook": "ARQR Facebook پر",
     "ARQR on WhatsApp": "ARQR WhatsApp پر",

@@ -269,7 +269,6 @@ window.ARQR_LANG = {
     "ARQR turns your catalog into a real-size virtual showroom.": "ARQR, kataloğunuzu gerçek boyutlu sanal bir showroom'a dönüştürür.",
     "of customers leave when they are not sure your product will fit their space.<sup>*</sup>": "müşteri, ürünün mekânına sığacağından emin olmadığında ayrılıyor.<sup>*</sup>",
     "*Source: Shopify AR shopping research.": "*Kaynak: Shopify AR alışveriş araştırması.",
-    "AR catalogs for retail": "Perakende için AR katalogları",
     "AR preview loading&hellip;": "AR önizlemesi yükleniyor…",
     "Tell us what you sell. <em>We'll show you the showroom.</em>": "Ne sattığınızı anlatın. <em>Size showroom'u gösterelim.</em>",
     "Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.": "Ürünlerinizi anlatın. Kataloğunuzu inceler, doğru planı onaylar ve AR deneyiminizin tam olarak nasıl görüneceğini gösteririz.",
@@ -292,6 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "En çok satan on ürününüzü gönderin. <em>Bu hafta bir odada görün.</em>"
   },
   a: {
+    "ARQR, AR catalogs for retail": "ARQR, Perakende için AR katalogları",
     "ARQR on Instagram": "ARQR Instagram'da",
     "ARQR on Facebook": "ARQR Facebook'da",
     "ARQR on WhatsApp": "ARQR WhatsApp'da",

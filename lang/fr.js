@@ -269,7 +269,6 @@ window.ARQR_LANG = {
     "ARQR turns your catalog into a real-size virtual showroom.": "ARQR transforme votre catalogue en showroom virtuel à taille réelle.",
     "of customers leave when they are not sure your product will fit their space.<sup>*</sup>": "des clients partent quand ils ne sont pas sûrs que le produit rentre.<sup>*</sup>",
     "*Source: Shopify AR shopping research.": "*Source : étude Shopify sur l'achat en RA.",
-    "AR catalogs for retail": "Catalogues RA pour le commerce",
     "AR preview loading&hellip;": "Chargement de l'aperçu RA…",
     "Tell us what you sell. <em>We'll show you the showroom.</em>": "Dites-nous ce que vous vendez. <em>Nous vous montrons le showroom.</em>",
     "Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.": "Parlez-nous de vos produits. Nous examinerons votre catalogue, confirmerons la bonne formule et vous montrerons exactement à quoi votre expérience RA peut ressembler.",
@@ -292,6 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "Envoyez-nous vos dix produits les plus vendus. <em>Cette semaine, vous les verrez dans une pièce.</em>"
   },
   a: {
+    "ARQR, AR catalogs for retail": "ARQR, Catalogues RA pour le commerce",
     "ARQR on Instagram": "ARQR sur Instagram",
     "ARQR on Facebook": "ARQR sur Facebook",
     "ARQR on WhatsApp": "ARQR sur WhatsApp",

@@ -121,7 +121,7 @@ function headBlock(page){
     const org = {
       '@context': 'https://schema.org', '@type': 'Organization',
       name: SITE.name, url: SITE.origin + '/',
-      logo: SITE.origin + '/assets/logo-mark.png',
+      logo: SITE.origin + '/assets/logo-lockup.png',
       description: SITE.blurb
     };
     if (SITE.sameAs.length) org.sameAs = SITE.sameAs;

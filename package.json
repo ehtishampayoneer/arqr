@@ -2,7 +2,7 @@
   "name": "arqr-site",
   "private": true,
   "version": "1.0.0",
-  "description": "ARQR marketing site — one static page, no build step.",
+  "description": "ARQR marketing site \u2014 one static page, no build step.",
   "scripts": {
     "images": "node build-images.js",
     "qr": "node qr-gen.js",
@@ -18,7 +18,8 @@
     "sizes": "npm run measure && npm run plan && python fix-usdz-scale.py && node fix-glb-scale.js && npm run cards",
     "cards": "node card-sizes.js && node write-stores.js",
     "seo": "node seo.js",
-    "brand": "node brand-images.js"
+    "brand": "node brand-images.js",
+    "logo": "node logo-images.js"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",

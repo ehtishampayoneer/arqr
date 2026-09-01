@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=73"></script>
+<script src="i18n.js?v=75"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -97,31 +97,58 @@
 
 
   /* ============ TOP BAR ============ */
+  /* the logo takes a different size in each band below, and without this
+     the bar would change height with it. 78px is what it always was */
   .bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:26px;
-    padding:18px clamp(20px,4vw,58px);
+    min-height:78px;padding:14px clamp(20px,4vw,58px);
     transition:background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease}
   .bar.solid{background:rgba(250,247,242,.86);backdrop-filter:blur(14px);
     box-shadow:0 1px 0 rgba(26,26,26,.07)}
-  .logo{display:flex;align-items:center;gap:10px;margin-right:auto;padding:8px 0}
-  .logo svg{width:26px;height:26px;color:var(--ink)}
-  .logo b{font-family:var(--f-head);font-weight:800;font-size:18px;letter-spacing:.14em}
-  /* Desktop only, and only where the bar has room to spare. The hero
-     eyebrow says the same thing on a phone, so this never competes with
-     the buttons for the narrow bar. */
-  .logo-desc{display:none}
-  @media(min-width:1180px){
-    .logo-desc{display:inline-block;padding-inline-start:12px;margin-inline-start:12px;
-      border-inline-start:1px solid var(--line);
-      font-size:12.5px;font-weight:500;letter-spacing:.01em;color:var(--ink-soft);
-      white-space:nowrap}
-  }
+  /* The lockup carries the brand now, at roughly twice the height the
+     drawn cube had, and the bar keeps the 78px it always was: the logo
+     grew into the padding rather than pushing the page down.
+
+     Height and width are both stated at every size. The bar shows two
+     different crops of the same artwork, 4.34:1 with the descriptor line
+     and 5.99:1 without it, so leaving the width to the intrinsic ratio
+     would size one of them wrongly until the file arrived and then jog
+     the whole row sideways when it did. */
+  /* inline-end, not right: in Arabic the row runs the other way and a
+     margin-right:auto pushed the logo off the edge it starts at,
+     leaving 280px of empty bar beside it */
+  .logo{display:flex;align-items:center;margin-inline-end:auto;padding:0}
+  .logo picture{display:block}
+  .logo{min-width:0}
+  .logo img{display:block;height:50px;width:217px;
+    object-fit:contain;object-position:left center}
   .bar nav{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--ink-soft)}
   .bar nav a{position:relative;padding-bottom:9px}
   .bar nav a:hover{color:var(--ink)}
   .bar nav a.active{color:var(--accent)}
   .bar nav a.active::after{content:"";position:absolute;left:50%;bottom:0;
     width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--accent)}
-  @media(max-width:1080px){.bar nav{display:none}}
+  /* Between about 1080 and 1240 the row is holding the nav, both
+     buttons, the switcher and the logo at once, and it is the one width
+     where nothing can be dropped. So everything gives a little: the gaps
+     close up, the samples button uses the short label it already has in
+     all twelve languages, and the logo takes the smaller of its sizes. */
+  @media(max-width:1240px){
+    .bar{gap:20px}
+    .bar nav{gap:20px}
+    .logo img{height:38px;width:165px}
+    .see-full{display:none}
+    .see-brief{display:inline}
+  }
+  /* the nav leaves here, and the logo takes back most of what it lent */
+  @media(max-width:1080px){
+    .bar nav{display:none}
+    .logo img{height:44px;width:191px}
+  }
+  /* and here the samples button leaves, for the same reason it leaves on
+     a phone: the menu is carrying it, and the row is out of width */
+  @media(max-width:780px){
+    .bar .see{display:none}
+  }
 
   /* ---- mobile menu ---- */
   .burger{display:none;width:44px;height:44px;padding:0;margin-left:4px;
@@ -158,7 +185,7 @@
   .bar .see svg{width:15px;height:15px;display:block;flex:none}
   .see-brief{display:none}
 
-  .bar .cta{font-weight:600;font-size:14px;background:var(--ink);color:#fff;
+  .bar .cta{font-weight:600;font-size:14px;white-space:nowrap;background:var(--ink);color:#fff;
     padding:10px 19px;border-radius:100px;box-shadow:0 8px 20px -8px rgba(11,18,32,.55);
     transition:transform .2s ease}
   .bar .cta:hover{transform:translateY(-1px)}
@@ -240,7 +267,7 @@
 
   /* ================= HOW IT WORKS ================= */
   /* icons sit dead centre in their circles: block kills the inline baseline gap */
-  .promise-ico svg,.st-ico svg,.pill svg,.logo svg{display:block}
+  .promise-ico svg,.st-ico svg,.pill svg{display:block}
 
   /* The opening screen lands inside one viewport. The clip takes whatever
      height is left over, but the copy column has a floor it cannot go under,
@@ -726,10 +753,8 @@
   .foot-wrap{width:min(var(--wrap),100% - var(--gutter)*2);margin:0 auto;
     display:flex;align-items:center;justify-content:space-between;
     gap:clamp(16px,3vw,32px);flex-wrap:wrap}
-  .foot-brand{display:flex;align-items:center;gap:11px;flex-wrap:wrap;min-width:0}
-  .foot-mark svg{width:24px;height:24px;display:block;color:var(--ink)}
-  .foot-name{font-family:var(--f-head);font-weight:800;font-size:17px;
-    letter-spacing:.14em;color:var(--ink)}
+  .foot-brand{display:flex;align-items:center;gap:16px;flex-wrap:wrap;min-width:0}
+  .foot-brand img{display:block;height:42px;width:182px}
   .foot-line{font-size:14px;color:var(--ink-soft)}
   .foot-legal{margin:0;font-size:12.5px;color:var(--ink-soft)}
 
@@ -743,6 +768,7 @@
   @media(max-width:760px){
     .foot-wrap{justify-content:center;text-align:center;row-gap:14px}
     .foot-brand{justify-content:center;width:100%}
+    .foot-brand img{height:36px;width:156px}
     .foot-line{flex:0 0 100%}
     .foot-social{width:100%;justify-content:center}
     .foot-legal{width:100%}
@@ -1079,6 +1105,9 @@
        gives the seat up: scroll, and the globe becomes the way into the
        sample catalogs. The label steps aside with it — at this width the
        glyph is the button, the same way the globe was. */
+    .bar{min-height:78px;padding:14px 16px}
+    .logo img{height:34px;width:204px}
+
     .bar .see{display:none}
     .bar.solid .lang{display:none}
     /* A button with a word on it, not a glyph. The short label is used
@@ -1090,7 +1119,12 @@
        and it is only gone while you are scrolled. */
     .see-full{display:none}
     .see-brief{display:inline}
-    .bar.solid .logo b{display:none}
+    /* the button that appears on scroll is paid for out of the
+       logo and out of "Get your catalog", which is on its own line
+       in the menu and repeated at the pricing table and the foot of
+       every page. It used to be paid for by hiding the wordmark. */
+    .bar.solid .cta{display:none}
+    .bar.solid .logo img{height:30px;width:180px}
     .bar.solid .see{display:inline-flex;min-height:44px;padding:9px 15px;
       font-size:13.5px;white-space:nowrap}
     /* the burger was being squeezed to 27px to make the row fit, which is
@@ -1105,8 +1139,6 @@
      menu, and it appears again at the pricing table and at the foot of
      every page. The samples had nowhere else to be. */
   @media(max-width:480px){
-    .bar.solid .cta{display:none}
-
     /* The switcher is not lost, only parked. Opening the menu hands the
        seat back to it, so somebody who has scrolled and then wants to
        read in their own language has one press to it rather than a scroll
@@ -1114,10 +1146,13 @@
        line of their own, so nothing is out of reach either way. */
     body.locked .bar.solid .lang{display:block}
     body.locked .bar.solid .see{display:none}
-    .bar{padding:12px 16px;gap:10px}
-    .logo{padding:9px 0}
-    .logo svg{width:24px;height:24px}
-    .logo b{font-size:16px}
+    .bar{min-height:68px;padding:12px 16px;gap:10px}
+    /* not just while scrolled: at the top of a phone screen this
+       button sits a thumb above the hero's own, which says the same
+       thing at twice the size. It has never been the only way in. */
+    .bar .cta{display:none}
+    .logo img{height:28px;width:168px}
+    .bar.solid .logo img{height:24px;width:144px}
     /* line-height is pinned here so the Urdu face, which is set much
        looser for reading, does not make this one button taller than
        everything beside it in the bar */
@@ -1126,7 +1161,18 @@
     /* Only if a longer translation genuinely crowds the bar does the
        wordmark go, leaving the cube to carry the brand. The button keeps
        its width either way — a two-line button is the worse outcome. */
-    @media(max-width:412px){ .logo b{display:none} }
+    /* At this width the row is genuinely full once the samples button
+       has arrived, so the logo gives up a little of its height rather
+       than the whole of its second line, which is what used to happen. */
+    @media(max-width:412px){
+      .logo img{height:26px;width:156px}
+      /* scrolled, the row is the logo, the samples button and the
+         burger, and 360px will not hold all three at full size. The
+         icon goes first: the button has a word on it and does not need
+         a picture as well, and 23px of it is 23px of wordmark. */
+      .bar .see svg{display:none}
+      .bar.solid .logo img{height:20px;width:120px}
+    }
 
     .btn{flex:1 1 auto;justify-content:center;padding:15px 20px;font-size:15px}
     .trust{font-size:12.5px;gap:6px 16px}
@@ -1259,7 +1305,6 @@
 
   /* very narrow phones */
   @media(max-width:400px){
-    .bar .cta{display:none}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -1326,7 +1371,7 @@
     "@type": "Organization",
     "name": "ARQR",
     "url": "https://arqr-two.vercel.app/",
-    "logo": "https://arqr-two.vercel.app/assets/logo-mark.png",
+    "logo": "https://arqr-two.vercel.app/assets/logo-lockup.png",
     "description": "ARQR turns your products into an AR catalog. One QR code and your customers see every piece at true size in their own room. No app to download."
   }
   </script>
@@ -1479,12 +1524,17 @@
 
 <header class="bar" id="bar">
     <a class="logo" href="#">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      </svg>
-      <b>ARQR</b>
-      <span class="logo-desc">AR catalogs for retail</span>
+      <!-- Below 700px the descriptor line would be four pixels tall and
+           unreadable, and it is the thing making the lockup twice as wide
+           as it needs to be. So the phone gets the wordmark on its own,
+           and gets it bigger. <source> rather than a hidden second image:
+           only the one that matches is ever fetched. The breakpoint here
+           is the same 700px the CSS sizes them at, and has to stay that
+           way, or one crop is drawn at the other one's proportions. -->
+      <picture>
+        <source media="(max-width:700px)" srcset="assets/logo-word.png?v=75">
+        <img src="assets/logo-lockup.png?v=75" alt="ARQR, AR catalogs for retail">
+      </picture>
     </a>
     <nav>
       <a href="#how">How it works</a>
@@ -1548,7 +1598,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=73" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalog.svg?v=75" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalog first</strong>
@@ -1564,8 +1614,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback"><span class="vf-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>AR preview loading&hellip;</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=73"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=73"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=75"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=75"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1633,9 +1683,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=73" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=75" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=73" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=75" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1653,9 +1703,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=73" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=73" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=73" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=75" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=75" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=75" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1674,7 +1724,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=73" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=75" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1720,7 +1770,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=73" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=75" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1732,7 +1782,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=73" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=75" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1744,7 +1794,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=73" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=75" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1756,7 +1806,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=73" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=75" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1768,7 +1818,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=73" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=75" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -2143,13 +2193,7 @@
 <footer class="site-foot">
   <div class="foot-wrap">
     <div class="foot-brand">
-      <span class="foot-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="foot-name">ARQR</span>
+      <img src="assets/logo-lockup.png?v=75" alt="ARQR, AR catalogs for retail" decoding="async">
       <span class="foot-line">Your showroom, in their room.</span>
     </div>
 

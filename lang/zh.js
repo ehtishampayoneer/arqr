@@ -269,7 +269,6 @@ window.ARQR_LANG = {
     "ARQR turns your catalog into a real-size virtual showroom.": "ARQR 把你的商品目录变成真实尺寸的虚拟展厅。",
     "of customers leave when they are not sure your product will fit their space.<sup>*</sup>": "的顾客会在不确定产品是否放得下时离开。<sup>*</sup>",
     "*Source: Shopify AR shopping research.": "*来源：Shopify AR 购物研究。",
-    "AR catalogs for retail": "面向零售的 AR 目录",
     "AR preview loading&hellip;": "AR 预览加载中…",
     "Tell us what you sell. <em>We'll show you the showroom.</em>": "告诉我们你卖什么，<em>我们把展厅做给你看。</em>",
     "Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.": "告诉我们你的产品。我们会审阅你的目录，确认合适的方案，并让你确切看到你的 AR 体验会是什么样子。",
@@ -292,6 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "把你最畅销的十件产品发给我们，<em>这一周就能放进真实房间。</em>"
   },
   a: {
+    "ARQR, AR catalogs for retail": "ARQR，面向零售的 AR 目录",
     "ARQR on Instagram": "ARQR 的 Instagram",
     "ARQR on Facebook": "ARQR 的 Facebook",
     "ARQR on WhatsApp": "ARQR 的 WhatsApp",

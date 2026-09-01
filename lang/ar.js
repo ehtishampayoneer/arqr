@@ -274,7 +274,6 @@ window.ARQR_LANG = {
     'ARQR turns your catalog into a real-size virtual showroom.': 'يحوّل ARQR كتالوجك إلى صالة عرض افتراضية بالحجم الحقيقي.',
     'of customers leave when they are not sure your product will fit their space.<sup>*</sup>': 'من العملاء ينصرفون عندما لا يتأكدون من أن المنتج سيناسب مساحتهم.<sup>*</sup>',
     '*Source: Shopify AR shopping research.': '*المصدر: أبحاث Shopify حول التسوق بالواقع المعزز.',
-    'AR catalogs for retail': 'كتالوجات الواقع المعزز للتجزئة',
     'AR preview loading&hellip;': 'جارٍ تحميل معاينة الواقع المعزز…',
     'Tell us what you sell. <em>We\'ll show you the showroom.</em>': 'أخبرنا بما تبيعه. <em>وسنريك صالة العرض.</em>',
     'Tell us about your products. We\'ll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.': 'أخبرنا عن منتجاتك. سنراجع كتالوجك، ونؤكد الباقة المناسبة، ونريك بالضبط كيف يمكن أن تبدو تجربتك بالواقع المعزز.',
@@ -317,6 +316,7 @@ window.ARQR_LANG = {
     'ARQR on Instagram': 'ARQR على إنستغرام',
     'ARQR on Facebook': 'ARQR على فيسبوك',
     'ARQR on WhatsApp': 'ARQR على واتساب',
-    'ARQR on X': 'ARQR على إكس'
+    'ARQR on X': 'ARQR على إكس',
+    'ARQR, AR catalogs for retail': 'ARQR، كتالوجات الواقع المعزز للتجزئة'
   }
 };
