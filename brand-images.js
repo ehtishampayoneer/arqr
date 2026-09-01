@@ -1,28 +1,56 @@
-/* Favicon, touch icon, logo mark and the two share cards, built from the
-   mark that is already in the header and the photography already on the
-   site. Nothing new is invented and nothing is downloaded. */
+/* ------------------------------------------------------------------
+   Favicon, touch icon, schema logo and the two share cards, all cut from
+   the same artwork the header uses. Nothing is drawn by hand any more
+   and nothing is downloaded.
+
+   What the artwork is, and which of its blobs are dirt, lives in
+   logo-art.js. Two things are decided here.
+
+   Which part of it an icon gets. A tab is 16 pixels wide: the wordmark
+   is unreadable there and the descriptor line is not even a pixel tall.
+   So the icon is the A on its own, which is the one glyph with a shape
+   of its own and carries the orange triangle.
+
+   And how to put a black logo on a dark ground. Both share cards and
+   all three tiles knock the black out to paper and leave the orange
+   alone, which is the ordinary treatment for a one-colour logo, done off
+   the alpha channel so the antialiasing survives it. This is also why
+   the specks matter: black dirt on a cream page is invisible, the same
+   dirt knocked out white on a dark card reads as grime.
+
+   Run:  npm run brand
+   ------------------------------------------------------------------ */
 'use strict';
 const fs = require('fs');
 const sharp = require('sharp');
-process.chdir('C:/Users/Ehtisham/Documents/arqr');
+const art = require('./logo-art');
 
-const ACCENT = '#E0682A';
 const INK = '#1C1917';
 const PAPER = '#FDFBF7';
+const PAPER_RGB = [0xFD, 0xFB, 0xF7];
 
-/* the same cube that sits in the header, drawn at icon weight */
-const mark = (bg, stroke, pad) => `
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="${bg}"/>
-  <g transform="translate(${pad},${pad}) scale(${(512 - pad * 2) / 24})"
-     fill="none" stroke="${stroke}" stroke-width="1.7"
-     stroke-linejoin="round" stroke-linecap="round">
-    <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z"/>
-    <path d="M4 8.5 12 13l8-4.5M12 13v7"/>
-  </g>
-</svg>`;
+/* ---------------------------------------------------------------- tiles */
+/* The A is 1.65:1, so it is fitted to the width of the square and
+   centred vertically. 76% leaves the rounded corners something to do. */
+async function tile(markPng, markW, markH, size) {
+  const w = Math.round(size * 0.76);
+  const h = Math.round(w * markH / markW);
+  const mark = await sharp(markPng).resize(w, h).png().toBuffer();
+  const plate = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size +
+    '"><rect width="' + size + '" height="' + size + '" rx="' +
+    Math.round(size * 0.22) + '" fill="' + INK + '"/></svg>';
+  return sharp(Buffer.from(plate))
+    .composite([{ input: mark, left: Math.round((size - w) / 2), top: Math.round((size - h) / 2) }])
+    .png({ compressionLevel: 9 }).toBuffer();
+}
 
-/* a share card: the room photograph, darkened, with the name over it */
+/* ---------------------------------------------------------------- cards */
+/* The logo sits above the headline rather than beside it, so the two
+   numbers that matter are its height and the gap under it. At 300px wide
+   it is 69 tall and ends at 419; the headline's ascenders reach about
+   460, which leaves 40px between them. */
+const LOGO_W = 300, LOGO_TOP = 350;
+
 const card = (title, sub) => `
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
   <defs>
@@ -33,15 +61,6 @@ const card = (title, sub) => `
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#g)"/>
-  <g transform="translate(72,392)">
-    <g transform="scale(2.1)" fill="none" stroke="${ACCENT}" stroke-width="1.7"
-       stroke-linejoin="round" stroke-linecap="round">
-      <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z"/>
-      <path d="M4 8.5 12 13l8-4.5M12 13v7"/>
-    </g>
-    <text x="66" y="38" font-family="Archivo, Segoe UI, Arial, sans-serif"
-          font-size="34" font-weight="800" fill="#FFFFFF" letter-spacing="1">ARQR</text>
-  </g>
   <text x="72" y="500" font-family="Archivo, Segoe UI, Arial, sans-serif"
         font-size="54" font-weight="800" fill="#FFFFFF">${title}</text>
   <text x="72" y="548" font-family="Inter, Segoe UI, Arial, sans-serif"
@@ -50,19 +69,27 @@ const card = (title, sub) => `
 
 (async () => {
   const out = [];
+  const lockup = await art.lockup();
+  const A = await art.letterA();
+  console.log('  lockup ' + lockup.w + '×' + lockup.h + ', ' + lockup.dirt +
+              ' specks dropped; A ' + A.w + '×' + A.h +
+              ' from parts of ' + A.parts.join(', ') + ' px');
 
-  /* --- favicon: the mark in brand orange, legible at 16px --- */
-  fs.writeFileSync('favicon.svg', mark(ACCENT, '#FFFFFF', 118).trim() + '\n');
-  out.push(['favicon.svg', fs.statSync('favicon.svg').size]);
+  /* --- the A, knocked out to paper, on an ink tile --- */
+  const mark = await art.image(art.reverse(A, PAPER_RGB)).png().toBuffer();
 
-  const png = size => sharp(Buffer.from(mark(ACCENT, '#FFFFFF', 118)))
-    .resize(size, size).png({ compressionLevel: 9 }).toBuffer();
+  /* A png, not an svg. The artwork is a raster and the three parts of the
+     A are not convex, so a convex hull traces them at 79%, 84% and 94% of
+     their real area: there is no honest vector in here, and an .svg that
+     is really a base64 png inside a rect is a 26 KB lie about what it is.
+     192 covers everywhere a favicon is asked for above 32. */
+  for (const [file, size] of [['favicon.png', 192], ['apple-touch-icon.png', 180]]) {
+    fs.writeFileSync(file, await tile(mark, A.w, A.h, size));
+    out.push([file, fs.statSync(file).size]);
+  }
 
-  fs.writeFileSync('apple-touch-icon.png', await png(180));
-  out.push(['apple-touch-icon.png', fs.statSync('apple-touch-icon.png').size]);
-
-  /* a real .ico, because some crawlers and older browsers still ask for one */
-  const ico = await png(32);
+  /* a real .ico, because some crawlers and older browsers still ask */
+  const ico = await tile(mark, A.w, A.h, 32);
   const head = Buffer.alloc(22);
   head.writeUInt16LE(0, 0); head.writeUInt16LE(1, 2); head.writeUInt16LE(1, 4);
   head[6] = 32; head[7] = 32; head[8] = 0; head[9] = 0;
@@ -71,12 +98,23 @@ const card = (title, sub) => `
   fs.writeFileSync('favicon.ico', Buffer.concat([head, ico]));
   out.push(['favicon.ico', fs.statSync('favicon.ico').size]);
 
-  /* --- the logo schema.org points at --- */
-  fs.writeFileSync('assets/logo-mark.png', await sharp(Buffer.from(mark(PAPER, ACCENT, 118)))
-    .resize(512, 512).png({ compressionLevel: 9 }).toBuffer());
+  /* --- the logo schema.org points at: the whole lockup, on paper --- */
+  const onPaper = await art.image(lockup).resize(880).png().toBuffer();
+  fs.writeFileSync('assets/logo-mark.png', await sharp({
+    create: { width: 1000, height: 320, channels: 4, background: PAPER }
+  }).composite([{
+    input: onPaper, left: 60,
+    top: Math.round((320 - 880 / art.RATIO.lockup) / 2)
+  }]).png({ compressionLevel: 9, palette: true }).toBuffer());
   out.push(['assets/logo-mark.png', fs.statSync('assets/logo-mark.png').size]);
 
-  /* --- share cards over the room photograph --- */
+  /* --- share cards: the reversed lockup over the room photograph --- */
+  const small = await art.image(lockup).resize(LOGO_W).ensureAlpha()
+    .raw().toBuffer({ resolveWithObject: true });
+  const onDark = await art.image(
+    art.reverse({ d: small.data, w: small.info.width, h: small.info.height }, [255, 255, 255])
+  ).png().toBuffer();
+
   const base = fs.existsSync('assets/room.webp') ? 'assets/room.webp' : 'assets/hero-novara.webp';
   /* jpeg, not png: these are photographs, and a 767 KB share card is a
      slow preview on every platform that fetches it */
@@ -84,10 +122,13 @@ const card = (title, sub) => `
     ['assets/og-home.jpg',    'Your showroom, in their room', 'One QR code. Every product at true size.'],
     ['assets/og-catalog.jpg', 'Four sample AR catalogs',      'Furniture, footwear, decor and rugs.']
   ];
-  for (const [file, title, sub] of shots){
+  for (const [file, title, sub] of shots) {
     const bg = await sharp(base).resize(1200, 630, { fit: 'cover', position: 'centre' }).toBuffer();
     const buf = await sharp(bg)
-      .composite([{ input: Buffer.from(card(title, sub)), top: 0, left: 0 }])
+      .composite([
+        { input: Buffer.from(card(title, sub)), top: 0, left: 0 },
+        { input: onDark, left: 72, top: LOGO_TOP }
+      ])
       .jpeg({ quality: 86, mozjpeg: true }).toBuffer();
     fs.writeFileSync(file, buf);
     out.push([file, buf.length]);
