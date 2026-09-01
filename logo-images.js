@@ -7,12 +7,9 @@
    and sits off-centre, because the padding is doing the spacing instead
    of the CSS. So it is trimmed to its ink first, then cut twice:
 
-     logo-lockup  the whole thing, wordmark over the descriptor line.
-                  4.34:1, so it needs real width. Desktop and tablet.
-     logo-word    the wordmark on its own, 5.99:1. Below 760px the
-                  descriptor line would be four pixels tall and
-                  unreadable, and dropping it is what pays for the
-                  wordmark itself staying big.
+   It writes one file, logo-lockup.png at 4.339:1. The pages crop the
+   descriptor line off it with CSS where a row is too narrow to read it,
+   so there is no second file to keep in step with this one.
 
    Written at 2.5x so they hold up on a retina phone, and as palette PNG
    rather than webp: the artwork is two flat colours on transparency, so
@@ -32,9 +29,14 @@ const SRC = 'assets/Logo.png';
    the wordmark runs y 41..213 and the descriptor line y 247..279 */
 const INK = { left: 49, top: 41, width: 1037 };
 const DPR = 2.5;
+
+/* One cut, not two. The wordmark sits in the top 173 of the artwork's
+   239 rows, so a box 72.4% as tall, filled with object-fit: cover and
+   anchored to the top, shows the wordmark and crops the descriptor away.
+   The page does that wherever a row is too narrow for the second line to
+   be worth reading, and it does it from this same file. */
 const CUTS = [
-  { out: 'assets/logo-lockup.png', height: 239, css: 48 },
-  { out: 'assets/logo-word.png',   height: 173, css: 32 }
+  { out: 'assets/logo-lockup.png', height: 239, css: 50 }
 ];
 
 (async () => {
