@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "Делает размер, стиль и посадку понятнее до оформления заказа.",
     "Designed to reduce uncertainty before purchase.": "Создан, чтобы уменьшить сомнения перед покупкой.",
     "Let customers see products in their own space before ordering.": "Позволяет клиентам увидеть товар у себя дома до заказа.",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Заявка ни к чему не обязывает. Ответим в течение одного рабочего дня и предложим следующий шаг для вашего каталога."
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Заявка ни к чему не обязывает. Ответим в течение одного рабочего дня и предложим следующий шаг для вашего каталога.",
+    "How it works": "Как это работает",
+    "Start with ten products": "Начните с десяти товаров",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "Мы за свой счёт сделаем из них рабочий AR-каталог и пришлём код. Откройте его на телефоне, поставьте самый ходовой товар в своей гостиной, и тогда решайте.",
+    "No card": "Без карты",
+    "No contract": "Без договора",
+    "The models stay yours": "Модели остаются вашими",
+    "more sales potential": "больше потенциала продаж",
+    "with AR (Shopify)": "с AR (Shopify)",
+    "Sales potential over time": "Потенциал продаж во времени",
+    "With AR": "С AR",
+    "Without AR": "Без AR",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "Пришлите десять самых продаваемых товаров. <em>На этой неделе увидите их в комнате.</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR в Instagram",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "Поместится ли?",
     "Will it look right?": "Будет ли смотреться?",
     "Will I regret buying it?": "Не пожалею ли я?",
-    "Open the four sample AR catalogs": "Открыть четыре примера AR-каталогов"
+    "Open the four sample AR catalogs": "Открыть четыре примера AR-каталогов",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "Потенциал продаж за шесть месяцев: растущая линия для магазинов с AR против почти плоской без него"
   }
 };

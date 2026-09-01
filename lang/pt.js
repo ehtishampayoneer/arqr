@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "Torna o tamanho, o estilo e o encaixe mais fáceis de perceber antes de pagar.",
     "Designed to reduce uncertainty before purchase.": "Feito para reduzir a incerteza antes da compra.",
     "Let customers see products in their own space before ordering.": "Permite aos clientes ver os produtos no espaço deles antes de encomendar.",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Candidatar-se não obriga a nada. Respondemos no prazo de um dia útil com o próximo passo certo para o seu catálogo."
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Candidatar-se não obriga a nada. Respondemos no prazo de um dia útil com o próximo passo certo para o seu catálogo.",
+    "How it works": "Como funciona",
+    "Start with ten products": "Comece com dez produtos",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "Transformamo-los num catálogo RA a funcionar, por nossa conta, e enviamos-lhe o código. Abra no telemóvel, ponha a sua peça mais vendida na sua sala e só depois decida.",
+    "No card": "Sem cartão",
+    "No contract": "Sem contrato",
+    "The models stay yours": "Os modelos ficam seus",
+    "more sales potential": "mais potencial de vendas",
+    "with AR (Shopify)": "com RA (Shopify)",
+    "Sales potential over time": "Potencial de vendas ao longo do tempo",
+    "With AR": "Com RA",
+    "Without AR": "Sem RA",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "Envie-nos os seus dez produtos mais vendidos. <em>Esta semana vê-os numa sala.</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR no Instagram",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "Vai caber?",
     "Will it look right?": "Vai ficar bem?",
     "Will I regret buying it?": "Vou arrepender-me?",
-    "Open the four sample AR catalogs": "Abrir os quatro catálogos RA de exemplo"
+    "Open the four sample AR catalogs": "Abrir os quatro catálogos RA de exemplo",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "Potencial de vendas ao longo de seis meses: uma linha a subir para lojas com RA face a outra bem mais plana sem ela"
   }
 };

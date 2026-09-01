@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "Ödeme öncesinde ürünün ölçüsünü, tarzını ve uyumunu anlamayı kolaylaştırır.",
     "Designed to reduce uncertainty before purchase.": "Satın alma öncesi belirsizliği azaltmak için tasarlandı.",
     "Let customers see products in their own space before ordering.": "Müşteriler sipariş vermeden önce ürünleri kendi mekânlarında görsün.",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Başvurmak sizi hiçbir şeye bağlamaz. Bir iş günü içinde kataloğunuz için doğru adımla döneriz."
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Başvurmak sizi hiçbir şeye bağlamaz. Bir iş günü içinde kataloğunuz için doğru adımla döneriz.",
+    "How it works": "Nasıl çalışır",
+    "Start with ten products": "On ürünle başlayın",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "Onları kendi masrafımızla çalışan bir AR kataloğuna dönüştürüp kodu size gönderelim. Telefonunuzda açın, en çok satan ürününüzü kendi salonunuza koyun, sonra karar verin.",
+    "No card": "Kart yok",
+    "No contract": "Sözleşme yok",
+    "The models stay yours": "Modeller sizin kalır",
+    "more sales potential": "daha fazla satış potansiyeli",
+    "with AR (Shopify)": "AR ile (Shopify)",
+    "Sales potential over time": "Zaman içinde satış potansiyeli",
+    "With AR": "AR ile",
+    "Without AR": "AR olmadan",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "En çok satan on ürününüzü gönderin. <em>Bu hafta bir odada görün.</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR Instagram'da",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "Sığar mı?",
     "Will it look right?": "Yakışır mı?",
     "Will I regret buying it?": "Pişman olur muyum?",
-    "Open the four sample AR catalogs": "Dört örnek AR kataloğunu aç"
+    "Open the four sample AR catalogs": "Dört örnek AR kataloğunu aç",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "Altı aylık satış potansiyeli: AR kullanan mağazalar için yükselen bir çizgi, kullanmayanlar için çok daha düz bir çizgi"
   }
 };

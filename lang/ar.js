@@ -282,7 +282,20 @@ window.ARQR_LANG = {
     'Make product size, style and fit easier to understand before checkout.': 'اجعل حجم المنتج وشكله ومدى ملاءمته أوضح قبل إتمام الشراء.',
     'Designed to reduce uncertainty before purchase.': 'مصمم لتقليل التردد قبل الشراء.',
     'Let customers see products in their own space before ordering.': 'دع العملاء يرون المنتجات في مساحتهم قبل الطلب.',
-    'No obligation to apply. We\'ll reply within one working day with the right next step for your catalog.': 'لا التزام عند التقديم. سنرد خلال يوم عمل واحد بالخطوة التالية المناسبة لكتالوجك.'
+    'No obligation to apply. We\'ll reply within one working day with the right next step for your catalog.': 'لا التزام عند التقديم. سنرد خلال يوم عمل واحد بالخطوة التالية المناسبة لكتالوجك.',
+    'How it works': 'كيف يعمل',
+    'No card': 'بدون بطاقة',
+    'No contract': 'بدون عقد',
+    'The models stay yours': 'النماذج تبقى ملكك',
+    'Start with ten products': 'ابدأ بعشرة منتجات',
+    'Send us your ten best-selling products. <em>See them in a room this week.</em>': 'أرسل لنا أكثر عشرة منتجات مبيعًا. <em>وسترى هذا الأسبوع كيف تبدو داخل غرفة.</em>',
+    'We\'ll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.': 'سنحوّلها إلى كتالوج واقع معزز فعّال على نفقتنا ونرسل لك الرمز. افتحه على هاتفك، وضع أكثر قطعك مبيعاً في صالتك، ثم قرّر.',
+    'more sales potential': 'إمكانية مبيعات أعلى',
+    'with AR (Shopify)': 'مع الواقع المعزز (Shopify)',
+    'Sales potential over time': 'إمكانية المبيعات عبر الوقت',
+    'With AR': 'مع الواقع المعزز',
+    'Without AR': 'بدون الواقع المعزز',
+    'Sales potential over six months: a rising line for stores using AR against a much flatter line for those without': 'إمكانية المبيعات على مدى ستة أشهر: خط صاعد للمتاجر التي تستخدم الواقع المعزز مقابل خط أكثر استواءً لمن لا تستخدمه'
   },
   a: {
     'Sarah Mitchell': 'سارة ميتشل',

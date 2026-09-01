@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "چیک آؤٹ سے پہلے سائز، انداز اور فٹ سمجھنا آسان بناتا ہے۔",
     "Designed to reduce uncertainty before purchase.": "خریداری سے پہلے بےیقینی کم کرنے کے لیے بنایا گیا۔",
     "Let customers see products in their own space before ordering.": "گاہک آرڈر سے پہلے مصنوعات اپنی جگہ میں دیکھ سکیں۔",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "درخواست دینے کی کوئی پابندی نہیں۔ ہم ایک کاروباری دن میں آپ کے کیٹلاگ کے لیے درست اگلا قدم بتا دیں گے۔"
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "درخواست دینے کی کوئی پابندی نہیں۔ ہم ایک کاروباری دن میں آپ کے کیٹلاگ کے لیے درست اگلا قدم بتا دیں گے۔",
+    "How it works": "یہ کیسے کام کرتا ہے",
+    "Start with ten products": "دس مصنوعات سے شروع کریں",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "ہم انہیں اپنے خرچ پر ایک چلتا ہوا AR کیٹلاگ بنا کر آپ کو کوڈ بھیجیں گے۔ اسے اپنے فون پر کھولیں، اپنی سب سے زیادہ بکنے والی چیز اپنے ڈرائنگ روم میں رکھیں، اور پھر فیصلہ کریں۔",
+    "No card": "کوئی کارڈ نہیں",
+    "No contract": "کوئی معاہدہ نہیں",
+    "The models stay yours": "ماڈلز آپ کے ہی رہتے ہیں",
+    "more sales potential": "زیادہ فروخت کا امکان",
+    "with AR (Shopify)": "AR کے ساتھ (Shopify)",
+    "Sales potential over time": "وقت کے ساتھ فروخت کا امکان",
+    "With AR": "AR کے ساتھ",
+    "Without AR": "AR کے بغیر",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "اپنی دس سب سے زیادہ بکنے والی پروڈکٹس بھیجیں۔ <em>اسی ہفتے انہیں کمرے میں دیکھیں۔</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR Instagram پر",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "کیا یہ سما جائے گا؟",
     "Will it look right?": "کیا یہ جچے گا؟",
     "Will I regret buying it?": "کیا مجھے پچھتاوا ہوگا؟",
-    "Open the four sample AR catalogs": "چاروں نمونہ AR کیٹلاگ کھولیں"
+    "Open the four sample AR catalogs": "چاروں نمونہ AR کیٹلاگ کھولیں",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "چھ ماہ میں فروخت کا امکان: AR استعمال کرنے والی دکانوں کے لیے بڑھتی ہوئی لکیر، اور بغیر AR کے کہیں زیادہ ہموار لکیر"
   }
 };

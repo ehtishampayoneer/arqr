@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "在结账前，让尺寸、风格与是否合适更容易理解。",
     "Designed to reduce uncertainty before purchase.": "旨在减少购买前的不确定感。",
     "Let customers see products in their own space before ordering.": "让顾客在下单前先在自己的空间里看到产品。",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "申请没有任何义务。我们会在一个工作日内回复，并给出适合你目录的下一步。"
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "申请没有任何义务。我们会在一个工作日内回复，并给出适合你目录的下一步。",
+    "How it works": "工作方式",
+    "Start with ten products": "先从十件产品开始",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "我们自费把它们做成可用的 AR 目录并把码发给你。用手机打开，把最畅销的那件立在你自己的客厅里，然后再决定。",
+    "No card": "无需银行卡",
+    "No contract": "无需合同",
+    "The models stay yours": "模型归你所有",
+    "more sales potential": "更多销售潜力",
+    "with AR (Shopify)": "使用 AR (Shopify)",
+    "Sales potential over time": "销售潜力随时间变化",
+    "With AR": "使用 AR",
+    "Without AR": "未使用 AR",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "把你最畅销的十件产品发给我们，<em>这一周就能放进真实房间。</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR 的 Instagram",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "放得下吗？",
     "Will it look right?": "好看吗？",
     "Will I regret buying it?": "会后悔吗？",
-    "Open the four sample AR catalogs": "打开四个示例 AR 目录"
+    "Open the four sample AR catalogs": "打开四个示例 AR 目录",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "六个月的销售潜力：使用 AR 的店铺呈上升曲线，未使用的则平缓得多"
   }
 };

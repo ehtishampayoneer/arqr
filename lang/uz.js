@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "To‘lovdan oldin o‘lcham, uslub va moslikni tushunarli qiladi.",
     "Designed to reduce uncertainty before purchase.": "Xariddan oldingi shubhani kamaytirish uchun ishlangan.",
     "Let customers see products in their own space before ordering.": "Xaridorlar buyurtmadan oldin mahsulotni o‘z xonasida ko‘rsin.",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Ariza hech narsaga majbur qilmaydi. Bir ish kuni ichida katalogingiz uchun keyingi qadam bilan javob beramiz."
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "Ariza hech narsaga majbur qilmaydi. Bir ish kuni ichida katalogingiz uchun keyingi qadam bilan javob beramiz.",
+    "How it works": "Qanday ishlaydi",
+    "Start with ten products": "O‘nta mahsuldan boshlang",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "Biz ularni o‘z hisobimizdan ishlaydigan AR katalogga aylantiramiz va kodni yuboramiz. Uni telefoningizda oching, eng ko‘p sotiladigan buyumni mehmonxonangizga qo‘ying va shundan keyin qaror qiling.",
+    "No card": "Karta kerak emas",
+    "No contract": "Shartnomasiz",
+    "The models stay yours": "Modellar sizniki bo‘lib qoladi",
+    "more sales potential": "ko‘proq savdo salohiyati",
+    "with AR (Shopify)": "AR bilan (Shopify)",
+    "Sales potential over time": "Vaqt o‘tishi bilan savdo salohiyati",
+    "With AR": "AR bilan",
+    "Without AR": "ARsiz",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "Eng ko‘p sotiladigan o‘nta mahsulotingizni yuboring. <em>Shu hafta ularni xonada ko‘rasiz.</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR Instagram’da",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "Sig‘adimi?",
     "Will it look right?": "Yarashadimi?",
     "Will I regret buying it?": "Afsuslanamanmi?",
-    "Open the four sample AR catalogs": "To‘rtta namuna AR katalogni ochish"
+    "Open the four sample AR catalogs": "To‘rtta namuna AR katalogni ochish",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "Olti oylik savdo salohiyati: AR ishlatadigan do‘konlar uchun o‘suvchi chiziq, ishlatmaydiganlar uchun ancha tekis chiziq"
   }
 };

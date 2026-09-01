@@ -277,7 +277,19 @@ window.ARQR_LANG = {
     "Make product size, style and fit easier to understand before checkout.": "購入手続きの前に、サイズ・スタイル・収まり方を分かりやすく。",
     "Designed to reduce uncertainty before purchase.": "購入前の迷いを減らすために設計。",
     "Let customers see products in their own space before ordering.": "注文の前に、お客様が自分の空間で商品を見られるように。",
-    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "お申し込みに義務はありません。1営業日以内に、カタログに合った次のステップをご返信します。"
+    "No obligation to apply. We'll reply within one working day with the right next step for your catalog.": "お申し込みに義務はありません。1営業日以内に、カタログに合った次のステップをご返信します。",
+    "How it works": "使い方",
+    "Start with ten products": "まずは10点から",
+    "We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.": "こちらの費用で実際に動く AR カタログを作り、コードをお送りします。スマホで開き、いちばん売れている商品をご自宅のリビングに置いてから、判断してください。",
+    "No card": "カード不要",
+    "No contract": "契約なし",
+    "The models stay yours": "モデルはあなたのもの",
+    "more sales potential": "売上の伸びしろ",
+    "with AR (Shopify)": "AR 利用時 (Shopify)",
+    "Sales potential over time": "時間の経過による売上の伸びしろ",
+    "With AR": "AR あり",
+    "Without AR": "AR なし",
+    "Send us your ten best-selling products. <em>See them in a room this week.</em>": "売れ筋の商品を10点お送りください。<em>今週中にお部屋に置けます。</em>"
   },
   a: {
     "ARQR on Instagram": "ARQR の Instagram",
@@ -296,6 +308,7 @@ window.ARQR_LANG = {
     "Will it fit?": "入るかな？",
     "Will it look right?": "似合うかな？",
     "Will I regret buying it?": "後悔しないかな？",
-    "Open the four sample AR catalogs": "4つのサンプル AR カタログを開く"
+    "Open the four sample AR catalogs": "4つのサンプル AR カタログを開く",
+    "Sales potential over six months: a rising line for stores using AR against a much flatter line for those without": "6か月間の売上の伸びしろ：AR を使う店は上昇し、使わない店はほぼ横ばいです"
   }
 };

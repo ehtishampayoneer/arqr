@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=77"></script>
+<script src="i18n.js?v=73"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -269,8 +269,8 @@
      it does for their customer, what we build. So the line naming the
      product carries the weight, and the headline sits under it as the
      sentence rather than the sign. Uppercase and wide letter-spacing come
-     off with the size: they are right for a five-word kicker and wrong for
-     a phrase this long set this large. */
+     off with the size: right for a five-word kicker, wrong for a phrase
+     this long set this large. */
   .how .sec-eyebrow{font-family:var(--f-head);font-weight:800;
     font-size:clamp(23px,2.5vw,34px);line-height:1.15;letter-spacing:-.015em;
     text-transform:none;color:var(--accent);max-width:19ch;
@@ -283,9 +283,8 @@
   .how h1 em{font-style:normal;color:var(--accent)}
   .how .rule{display:block;width:34px;height:2.5px;border-radius:2px;
     background:var(--accent);opacity:.5;margin-bottom:clamp(12px,1.7vh,24px)}
-  /* This was 15px in the muted grey, which is a footnote weight for the
-     one line that says what ARQR actually makes. Up to reading size and
-     into the solid ink. */
+  /* This was 15px in the muted grey, a footnote weight for the one line
+     that says what ARQR actually makes. Reading size, and solid ink. */
   .how-sub{margin:0 0 clamp(15px,2.2vh,32px);font-size:clamp(17px,1.45vw,21px);
     font-weight:500;line-height:1.55;color:var(--sec-ink);max-width:34ch}
 
@@ -770,18 +769,6 @@
     .proof-line{font-size:13px}
   }
 
-  /* What the panel says now that the chart has gone. Four plain sentences
-     about what a customer gets to do, none of which needs a number nobody
-     has measured to stand behind it. */
-  .frm-note{margin:12px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink-soft);
-    text-align:center}
-
-  .ct-bens{list-style:none;margin:clamp(18px,2.4vh,26px) 0 0;padding:0;
-    display:flex;flex-direction:column;gap:12px;max-width:46ch}
-  .ct-bens li{display:flex;gap:11px;align-items:flex-start;
-    font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--sec-ink,#F6F1E9)}
-  .ct-bens svg{flex:none;width:17px;height:17px;margin-top:3px;color:var(--accent)}
-
   /* ---------------- questions ---------------- */
   /* <details> rather than a script: it opens without javascript, it is
      keyboard operable for free, and a crawler reads the answer whether
@@ -940,6 +927,14 @@
     repeating-linear-gradient(0deg, rgba(255,168,110,.26) 0 1px,transparent 1px 46px)}
   .ct-left .mesh-band{background:linear-gradient(90deg,rgba(255,190,140,0),rgba(255,190,140,.09),rgba(255,190,140,0))}
 
+  .ct-trust{list-style:none;margin:0 0 clamp(22px,2.4vw,32px);padding:0;
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px clamp(14px,1.5vw,22px);
+    font-size:13.5px;color:rgba(246,241,233,.82)}
+  .ct-trust li{display:inline-flex;align-items:center;gap:9px;position:relative}
+  .ct-trust li+li{padding-left:clamp(14px,1.5vw,22px)}
+  .ct-trust li+li::before{content:"";position:absolute;left:0;top:50%;
+    width:1px;height:16px;margin-top:-8px;background:rgba(246,241,233,.2)}
+  .ct-trust svg{width:17px;height:17px;color:var(--accent);display:block;flex:none}
 
   .ct-eyebrow{margin:0 0 16px;font-size:11.5px;font-weight:700;letter-spacing:.2em;
     text-transform:uppercase;color:var(--accent)}
@@ -952,14 +947,7 @@
     font-size:clamp(26px,2.5vw,40px);line-height:1.14;letter-spacing:-.02em;color:#FFF9F1}
   .ct-left h2 em{font-style:normal;color:var(--accent)}
 
-
-  .ct-copy{margin:clamp(18px,2vw,26px) 0 0;font-size:clamp(14.5px,1vw,16.5px);
-    line-height:1.68;color:rgba(246,241,233,.7);max-width:46ch}
-
-  /* the chart, on dark */
-
-
-    .ct-stat{flex:0 1 240px;display:flex;align-items:center;gap:15px;
+  .ct-stat{flex:0 1 240px;display:flex;align-items:center;gap:15px;
     background:rgba(246,241,233,.045);border:1px solid rgba(246,241,233,.12);
     border-radius:14px;padding:16px 18px}
   .ct-stat-ico{flex:none;width:52px;height:52px;border-radius:50%;
@@ -1154,13 +1142,7 @@
        the video box to nothing because its children are all absolute */
     .how-in{display:flex;flex-direction:column;align-items:stretch;gap:0}
     .how-left,.how-right{display:contents}
-    /* The hero reads in the order a shopkeeper needs it: what we sell, what
-     it does for their customer, what we build. So the line naming the
-     product carries the weight here, and the headline sits under it as the
-     sentence rather than the sign. Uppercase and letter-spacing come off:
-     they are right for a five-word kicker and wrong for a phrase this long
-     at this size. */
-  .how .sec-eyebrow{order:1;margin-bottom:12px}
+    .how .sec-eyebrow{order:1;margin-bottom:12px}
     .how h1{order:2}
     .how .rule{order:3}
     .how-sub{order:4}
@@ -1171,9 +1153,6 @@
     .how .promise{order:9;margin-top:18px}
     .how .steps4{order:10}
     .sec-eyebrow{margin-bottom:18px}
-    /* the same order as everywhere else: the product line leads, the
-       sentence follows it, and the line about the showroom stays at
-       reading size rather than dropping to a caption */
     .how .sec-eyebrow{font-size:22px;margin-bottom:10px}
     .how h1{font-size:18.5px;margin-bottom:12px}
     .how-sub{font-size:16.5px;margin-bottom:18px}
@@ -1250,16 +1229,21 @@
     .cta{padding:24px 0 42px}
     .ct-panel{border-radius:18px}
     .ct-left,.ct-right{padding:26px 20px}
+    .ct-trust{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;
+      margin-bottom:22px;font-size:12.5px}
+    .ct-trust li+li{padding-left:0}
+    .ct-trust li+li::before{display:none}
+    .ct-trust li:last-child{grid-column:1 / -1}
     .ct-pitch{gap:20px}
     .ct-left h2{font-size:clamp(25px,7.2vw,31px);flex-basis:100%;
       line-height:1.22;letter-spacing:-.012em}
     .ct-title{line-height:1.25}
     .drop-t{font-size:12px;letter-spacing:.04em}
     .drop-d{font-size:12px}
-    .ct-copy{font-size:15px;max-width:none}
     .ct-stat{flex-basis:100%;padding:14px 16px;gap:13px}
     .ct-stat-ico{width:46px;height:46px}
     .bi-num{font-size:28px}
+    .ct-copy{font-size:15px;max-width:none}
     .bi-chart{padding-top:24px}
     .bi-top h4{font-size:14px}
     .bi-legend{gap:14px;font-size:12px}
@@ -1564,7 +1548,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=77" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalog.svg?v=73" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalog first</strong>
@@ -1580,8 +1564,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback"><span class="vf-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>AR preview loading&hellip;</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=77"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=77"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=73"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=73"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1649,9 +1633,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=77" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=73" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=77" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=73" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1669,9 +1653,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=77" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=77" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=77" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=73" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=73" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=73" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1690,7 +1674,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=77" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=73" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1736,7 +1720,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=77" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=73" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1748,7 +1732,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=77" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=73" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1760,7 +1744,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalog</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=77" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=73" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1772,7 +1756,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=77" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=73" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1784,7 +1768,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=77" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=73" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1987,9 +1971,16 @@
           <div class="mesh-band"><div class="mesh-lit"></div></div>
         </div>
 
-        <p class="ct-eyebrow">Apply for your AR catalog</p>
+        <ul class="ct-trust">
+          <li><svg viewBox="0 0 24 24" fill="none"><rect x="2.6" y="5" width="18.8" height="14" rx="2.6" stroke="currentColor" stroke-width="1.7"/><path d="M2.6 9.6h18.8" stroke="currentColor" stroke-width="1.7"/></svg>No card</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6 2.8h7l5 5v13.4H6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 2.8v5h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>No contract</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v6.2c0 4.5-3.2 7.4-8 9-4.8-1.6-8-4.5-8-9V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.7 12.2 11 14.5l4.3-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>The models stay yours</li>
+        </ul>
+
+        <p class="ct-eyebrow">Start with ten products</p>
+
         <div class="ct-pitch">
-          <h2>Tell us what you sell. <em>We'll show you the showroom.</em></h2>
+          <h2>Send us your ten best-selling products. <em>See them in a room this week.</em></h2>
 
           <div class="ct-stat">
             <span class="ct-stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 16.5 9.2 10.8l3.4 3.2 7.9-8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.4 6h5.1v5.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -2000,13 +1991,8 @@
             </span>
           </div>
         </div>
-        <p class="ct-copy">Tell us about your products. We'll review your catalog, confirm the right plan and show you exactly what your AR experience can look like.</p>
-        <ul class="ct-bens">
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Help customers buy with more confidence.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Make product size, style and fit easier to understand before checkout.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Designed to reduce uncertainty before purchase.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Let customers see products in their own space before ordering.</li>
-        </ul>
+
+        <p class="ct-copy">We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.</p>
 
         <div class="bi-chart" id="biChart">
           <div class="bi-top">
@@ -2058,7 +2044,6 @@
             </g>
           </svg>
         </div>
-        </div>
       </div>
 
       <div class="ct-right">
@@ -2106,7 +2091,6 @@
           </div>
 
           <button class="frm-send" type="submit"><svg viewBox="0 0 24 24" fill="none"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Send it over</button>
-          <p class="frm-note">No obligation to apply. We'll reply within one working day with the right next step for your catalog.</p>
           <p class="frm-note" id="f-note">We reply within one working day. Your details go nowhere else.</p>
 
         </form>
@@ -2538,7 +2522,6 @@
     }, {threshold:.3}).observe(box);
   } else play();
 })();
-
 
 /* ---- the impact chart ---- */
 (function(){
