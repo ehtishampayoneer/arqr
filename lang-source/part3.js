@@ -238,7 +238,7 @@ t: {
 
 },
 a: {
-'ARQR, AR catalogs for retail': ['ARQR，面向零售的 AR 目录','ARQR、小売向け AR カタログ','ARQR, AR-каталоги для розницы','ARQR, Chakana savdo uchun AR kataloglar','ARQR, Perakende için AR katalogları','ARQR, Catálogos AR para retail','ARQR, Catalogues RA pour le commerce','ARQR, AR-Kataloge für den Handel','ARQR, Cataloghi AR per il retail','ARQR, Catálogos RA para retalho','ARQR، ریٹیل کے لیے AR کیٹلاگ'],
+'ARQR360360, AR catalogs for retail': ['ARQR360，面向零售的 AR 目录','ARQR360、小売向け AR カタログ','ARQR360, AR-каталоги для розницы','ARQR360, Chakana savdo uchun AR kataloglar','ARQR360, Perakende için AR katalogları','ARQR360, Catálogos AR para retail','ARQR360, Catalogues RA pour le commerce','ARQR360, AR-Kataloge für den Handel','ARQR360, Cataloghi AR per il retail','ARQR360, Catálogos RA para retalho','ARQR360، ریٹیل کے لیے AR کیٹلاگ'],
 /* social labels */
 'ARQR on Instagram': ['ARQR 的 Instagram','ARQR の Instagram','ARQR в Instagram','ARQR Instagram’da','ARQR Instagram\'da','ARQR en Instagram','ARQR sur Instagram','ARQR auf Instagram','ARQR su Instagram','ARQR no Instagram','ARQR Instagram پر'],
 'ARQR on Facebook': ['ARQR 的 Facebook','ARQR の Facebook','ARQR в Facebook','ARQR Facebook’da','ARQR Facebook\'da','ARQR en Facebook','ARQR sur Facebook','ARQR auf Facebook','ARQR su Facebook','ARQR no Facebook','ARQR Facebook پر'],

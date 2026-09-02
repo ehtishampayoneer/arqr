@@ -291,7 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "売れ筋の商品を10点お送りください。<em>今週中にお部屋に置けます。</em>"
   },
   a: {
-    "ARQR, AR catalogs for retail": "ARQR、小売向け AR カタログ",
+    "ARQR360360, AR catalogs for retail": "ARQR360、小売向け AR カタログ",
     "ARQR on Instagram": "ARQR の Instagram",
     "ARQR on Facebook": "ARQR の Facebook",
     "ARQR on WhatsApp": "ARQR の WhatsApp",

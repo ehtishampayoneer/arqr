@@ -291,7 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "把你最畅销的十件产品发给我们，<em>这一周就能放进真实房间。</em>"
   },
   a: {
-    "ARQR, AR catalogs for retail": "ARQR，面向零售的 AR 目录",
+    "ARQR360360, AR catalogs for retail": "ARQR360，面向零售的 AR 目录",
     "ARQR on Instagram": "ARQR 的 Instagram",
     "ARQR on Facebook": "ARQR 的 Facebook",
     "ARQR on WhatsApp": "ARQR 的 WhatsApp",

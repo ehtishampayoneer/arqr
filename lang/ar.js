@@ -317,6 +317,6 @@ window.ARQR_LANG = {
     'ARQR on Facebook': 'ARQR على فيسبوك',
     'ARQR on WhatsApp': 'ARQR على واتساب',
     'ARQR on X': 'ARQR على إكس',
-    'ARQR, AR catalogs for retail': 'ARQR، كتالوجات الواقع المعزز للتجزئة'
+    'ARQR360360, AR catalogs for retail': 'ARQR360، كتالوجات الواقع المعزز للتجزئة'
   }
 };

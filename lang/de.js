@@ -291,7 +291,7 @@ window.ARQR_LANG = {
     "Send us your ten best-selling products. <em>See them in a room this week.</em>": "Schicken Sie uns Ihre zehn meistverkauften Produkte. <em>Diese Woche stehen sie in einem Raum.</em>"
   },
   a: {
-    "ARQR, AR catalogs for retail": "ARQR, AR-Kataloge für den Handel",
+    "ARQR360360, AR catalogs for retail": "ARQR360, AR-Kataloge für den Handel",
     "ARQR on Instagram": "ARQR auf Instagram",
     "ARQR on Facebook": "ARQR auf Facebook",
     "ARQR on WhatsApp": "ARQR auf WhatsApp",

@@ -19,7 +19,7 @@
     "cards": "node card-sizes.js && node write-stores.js",
     "seo": "node seo.js",
     "brand": "node brand-images.js",
-    "logo": "node logo-images.js"
+    "logo": "node logo-write.js"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",
