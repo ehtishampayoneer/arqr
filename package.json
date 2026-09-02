@@ -2,7 +2,7 @@
   "name": "arqr-site",
   "private": true,
   "version": "1.0.0",
-  "description": "ARQR marketing site \u2014 one static page, no build step.",
+  "description": "ARQR marketing site — one static page, no build step.",
   "scripts": {
     "images": "node build-images.js",
     "qr": "node qr-gen.js",
@@ -30,5 +30,8 @@
     "meshoptimizer": "^1.2.0",
     "qrcode": "^1.5.4",
     "sharp": "^0.35.3"
+  },
+  "dependencies": {
+    "opentype.js": "^2.0.0"
   }
 }
