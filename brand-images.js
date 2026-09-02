@@ -3,13 +3,14 @@
    from the same geometry the pages draw. logo-design.js is the only
    place any of these shapes exist, so none of them can drift.
 
-   The icon is the A on its own. A tab is 16 pixels wide, the wordmark is
-   unreadable there, and the A is the one letter with a shape rather than
-   a spelling: an open chevron standing over an orange triangle, which
-   still reads at 16.
+   The icon is the cube on its own. A tab is 16 pixels wide: the wordmark
+   is unreadable there, and the ring, the floor line and the viewfinder
+   are all context around the cube, which at 16px is what turns into grey
+   mush. The cube is what the three marks have in common and what the
+   product is about, so it gets the whole tile, at a third more stroke.
 
-   Everything dark-backed is drawn light directly, not knocked out of a
-   dark version afterwards. That is the other thing vector buys.
+   Everything dark-backed is drawn light directly rather than knocked out
+   of a dark version afterwards. That is the other thing vector buys.
 
    Run:  npm run brand
    ------------------------------------------------------------------ */
@@ -21,9 +22,9 @@ const L = require('./logo-design');
 const png = (svg, w) => sharp(Buffer.from(svg)).resize(w).png({ compressionLevel: 9 }).toBuffer();
 
 /* ---------------------------------------------------------------- cards */
-/* The logo sits above the headline. At 300 wide it is 62 tall and ends
-   at 412; the headline's ascenders reach about 460, so 48 between them. */
-const LOGO_W = 300, LOGO_TOP = 350;
+/* The logo sits above the headline. At 340 wide it is 60 tall and ends
+   at 408; the headline's ascenders reach about 460, so 52 between them. */
+const LOGO_W = 340, LOGO_TOP = 348;
 
 const card = (title, sub) => `
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
@@ -44,7 +45,7 @@ const card = (title, sub) => `
 (async () => {
   const out = [];
 
-  /* --- the A on an ink tile --- */
+  /* --- the cube on an ink tile --- */
   const tile = L.tile({ size: 512 });
   for (const [file, size] of [['favicon.png', 192], ['apple-touch-icon.png', 180]]) {
     fs.writeFileSync(file, await png(tile, size));

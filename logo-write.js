@@ -22,7 +22,13 @@ const END = '<!-- logo:end -->';
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /* ink follows the parent's colour, the accent is the page's own token */
-const art = L.lockup({ ink: 'currentColor', hot: 'var(--accent)' });
+const skin = { ink: 'currentColor', hot: 'var(--accent)' };
+const art = L.lockup(skin);
+/* the mark on its own, for the one place the lockup genuinely will not
+   fit: a scrolled phone bar, where the samples button has arrived and
+   there are 155px left. Squeezing the whole lockup into that leaves 18px
+   capitals; the mark alone is square, so it fits at full height. */
+const compact = L.markOnly(skin);
 
 /* Named rather than hidden. It is the only thing in the header link and
    the only thing naming the brand in the footer, so it carries the name
@@ -30,14 +36,19 @@ const art = L.lockup({ ink: 'currentColor', hot: 'var(--accent)' });
    walks, so it is in all twelve languages like everything else. */
 const NAME = 'ARQR360, AR catalogs for retail';
 
-const block = (indent) => {
-  const svg = art.svg
-    .replace('<svg ', '<svg role="img" aria-label="' + NAME + '" focusable="false" ')
-    /* the width and height attributes would fight the CSS; the viewBox is
-       what carries the proportion */
-    .replace(/ width="\d+" height="\d+"/, '');
-  return indent + START + '\n' + indent + svg + '\n' + indent + END;
-};
+const dress = (svg, cls, label) => svg
+  .replace('<svg ', '<svg class="' + cls + '" ' +
+    (label ? 'role="img" aria-label="' + NAME + '" ' : 'aria-hidden="true" ') +
+    'focusable="false" ')
+  /* the width and height attributes would fight the CSS; the viewBox is
+     what carries the proportion */
+  .replace(/ width="[\d.]+" height="[\d.]+"/, '');
+
+const block = (indent) =>
+  indent + START + '\n' +
+  indent + dress(art.svg, 'logo-full', true) + '\n' +
+  indent + dress(compact.svg, 'logo-mark', false) + '\n' +
+  indent + END;
 
 const FILES = ['index.html', 'catalog.html'];
 let total = 0;
