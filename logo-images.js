@@ -41,8 +41,15 @@ const SRC = 'logo.png';
 const BANDS = {
   mono: { left: 267, top: 325, width: 680, height: 364 },   /* the AR monogram */
   word: { left: 195, top: 752, width: 854, height: 101 },   /* ARQR 360        */
+  /* monogram and wordmark, with the tagline left off */
+  lock: { left: 195, top: 325, width: 854, height: 528 },
   all:  { left: 195, top: 325, width: 854, height: 583 }    /* the lot         */
 };
+
+/* The tagline's own measurements, so the CSS that now sets it as live
+   text is answerable to the artwork rather than to taste. */
+const TAGLINE = { text: 'See it. Place it. Love it.', colour: '#68676A',
+                  cap: 29, width: 733, gapMedian: 15 };
 
 /* The lockup is written once, at the size the share card wants, which is
    larger than any bar draws it. One file, so the bar, the footer and the
@@ -83,8 +90,17 @@ const ratio = (b) => b.width / b.height;
     out.push([file, m.width + '×' + m.height, (buf.length / 1024).toFixed(1) + ' KB']);
   };
 
-  /* ---- the lockup, whole and unaltered: bar, footer, share card ---- */
+  /* ---- the bar and the footer: no tagline ----
+     29 artwork rows of tagline come out to 4.2px on screen at the size a
+     header can give the logo, which is a grey blur rather than a line of
+     type. It is set as live text under the picture instead, so it is
+     drawn at whatever resolution the screen has. */
   await write('assets/logo-bar.png',
+    (await knockout(BANDS.lock)).resize(Math.round(LOCKUP_H * ratio(BANDS.lock)), LOCKUP_H));
+
+  /* ---- the share card and the schema logo: the artwork entire ----
+     260px wide there, so the tagline lands at 13px and reads. */
+  await write('assets/logo-card.png',
     (await knockout(BANDS.all)).resize(Math.round(LOCKUP_H * ratio(BANDS.all)), LOCKUP_H));
 
   /* ---- the monogram alone: a scrolled phone bar, and every icon ---- */
@@ -93,11 +109,13 @@ const ratio = (b) => b.width / b.height;
 
   out.forEach(([f, d, k]) => console.log('  ' + f.padEnd(24) + d.padEnd(12) + k));
   console.log('');
-  console.log('  lockup ' + ratio(BANDS.all).toFixed(3) + ':1, monogram ' +
+  console.log('  bar lockup ' + ratio(BANDS.lock).toFixed(3) + ':1, whole ' +
+              ratio(BANDS.all).toFixed(3) + ':1, monogram ' +
               ratio(BANDS.mono).toFixed(3) + ':1');
-  for (const h of [76, 70, 60, 54, 50]) {
-    console.log('    at ' + h + 'px tall: ' + Math.round(h * ratio(BANDS.all)) +
-                'px wide, wordmark row ' + (h * BANDS.word.height / BANDS.all.height).toFixed(1) +
-                'px, tagline ' + (h * 29 / BANDS.all.height).toFixed(1) + 'px');
+  for (const h of [68, 62, 54, 48]) {
+    console.log('    bar at ' + h + 'px tall: ' + Math.round(h * ratio(BANDS.lock)) +
+                'px wide, wordmark row ' + (h * BANDS.word.height / BANDS.lock.height).toFixed(1) +
+                'px; the tagline it used to carry would have been ' +
+                (h * TAGLINE.cap / BANDS.lock.height).toFixed(1) + 'px');
   }
 })();

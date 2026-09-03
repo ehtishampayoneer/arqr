@@ -24,8 +24,9 @@ const INK = '#1C1917';
 const PAPER = '#FDFBF7';
 
 const MONO = 'assets/logo-mono.png';
-/* one file: the whole lockup, which the bar and the footer draw too */
-const STACK = 'assets/logo-bar.png';
+/* the artwork entire, tagline included: the card is 260px wide, where
+   those 29 rows land at 13px and read. The bar's copy has them cropped. */
+const STACK = 'assets/logo-card.png';
 
 /* grey to paper, orange left exactly as it is, alpha untouched. The
    client's orange is 253,69,2, so red minus blue tells them apart with
