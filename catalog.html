@@ -30,8 +30,11 @@
   img,svg{max-width:100%}
   a{color:inherit;text-decoration:none}
 
+  /* the page's grid, not the bar's own: see the note in index.html. This
+     page was the worse of the two, 308px out at 1920. */
   .bar{position:fixed;inset:0 0 auto;z-index:40;height:var(--bar-h);
-    display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);
+    display:flex;align-items:center;justify-content:space-between;
+    padding-inline:calc((100% - var(--wrap)) / 2);
     background:rgba(250,247,242,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   /* drawn markup with a viewBox, so a height is the whole declaration
      and the width follows: see the note beside this rule in index.html */
@@ -116,7 +119,7 @@
 
   @media(max-width:700px){
     :root{--bar-h:84px}
-    .bar{padding:0 16px}
+    .bar{padding-inline:calc((100% - var(--wrap)) / 2)}
     .logo img{height:60px}
     /* The row here is the logo, the language, the way back and the
        button, and 375px does not hold all four. It is the button that
