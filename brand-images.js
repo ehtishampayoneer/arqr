@@ -23,9 +23,9 @@ const sharp = require('sharp');
 const INK = '#1C1917';
 const PAPER = '#FDFBF7';
 
-const BAR = 'assets/logo-bar.png';
 const MONO = 'assets/logo-mono.png';
-const STACK = 'assets/logo-stack.png';
+/* one file: the whole lockup, which the bar and the footer draw too */
+const STACK = 'assets/logo-bar.png';
 
 /* grey to paper, orange left exactly as it is, alpha untouched. The
    client's orange is 253,69,2, so red minus blue tells them apart with
