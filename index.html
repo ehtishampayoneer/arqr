@@ -124,7 +124,7 @@
      under it is sized off it too, so the two cannot come apart: every
      breakpoint below sets this and nothing else. */
   .logo{--logo-h:64px;
-    display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
     margin-inline-end:auto;padding:0;flex:none}
   /* A height is the whole declaration. The picture carries its own width
      and height attributes, so the proportion is known before the file
@@ -148,17 +148,11 @@
      That fixes the alignment rather than papering over it: both are left
      aligned and both are the same width, so the block has one left edge
      and one right edge at every size, and the left edge is the page's. */
-  .logo-tag{font-family:var(--f-head);font-weight:600;
-    /* the picture is 1.6193 wide per unit of height, so this box is
-       exactly as wide as the picture above it, whatever height it is */
-    width:calc(var(--logo-h) * 1.6193);text-align:center;
-    /* and at .12em this line is 15.463 times its own font-size wide, so
-       0.100 of the logo's height fills 96% of that box: the same slightly
-       inset, centred relation the tagline has to the wordmark in the
-       artwork. The mark ends up centred over the line by construction
-       rather than by a number anyone has to check. */
-    font-size:calc(var(--logo-h) * 0.100);
-    letter-spacing:.12em;text-transform:uppercase;line-height:1;
+  /* The line keeps its own size. It is the wider of the two, so it is the
+     line that sets the block's width and sits on the page's left edge,
+     and the picture is centred over it. */
+  .logo-tag{font-family:var(--f-head);font-weight:600;font-size:8.5px;
+    letter-spacing:.24em;text-transform:uppercase;line-height:1;
     color:#68676A;white-space:nowrap}
   /* A phone bar is 84px and this line is 159px wide on its own, which
      is more than the row has once the language and the catalog button
