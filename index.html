@@ -120,13 +120,17 @@
      distributes off min-content and the nav's is wider than it measures.
      A logo that quietly loses 4% of its width is worse than a row that
      visibly does not fit, which is a thing a measurement can catch. */
-  .logo{display:flex;flex-direction:column;align-items:flex-start;gap:5px;
+  /* --logo-h is the one number. The picture is that tall, and the tagline
+     under it is sized off it too, so the two cannot come apart: every
+     breakpoint below sets this and nothing else. */
+  .logo{--logo-h:64px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:4px;
     margin-inline-end:auto;padding:0;flex:none}
   /* A height is the whole declaration. The picture carries its own width
      and height attributes, so the proportion is known before the file
      arrives and the width never has to be restated. */
   .logo{color:var(--ink)}
-  .logo img{display:block;height:64px;width:auto}
+  .logo img{display:block;height:var(--logo-h);width:auto}
   /* The tagline is live text, not the picture's bottom 29 rows. At the
      size a header can give this logo those rows came out 3.7px tall,
      which is a grey blur rather than a line of type; set here it is drawn
@@ -134,12 +138,27 @@
      tracking are read off the artwork: #68676A, and letters spaced about
      half their own cap height apart.
 
-     Left, not centred under the picture. Centred would make the block as
-     wide as the longer of the two, and since the text is the longer one
-     that would push the picture off the page's left edge, which is the
-     line the whole bar was just put back on. */
-  .logo-tag{font-family:var(--f-head);font-weight:600;font-size:8.5px;
-    letter-spacing:.24em;text-transform:uppercase;line-height:1;
+     The size is not a taste. The picture is 1.6193 times as wide as it is
+     tall, and this line at .12em tracking is 15.463 times as wide as its
+     own font-size, so 1.6193 / 15.463 = 0.1047 of the logo's height is
+     the size at which the line ends exactly where the picture ends. It
+     was set by eye at 8.5px before and ran 55px past the artwork, which
+     is not a tagline under a logo, it is two things near each other.
+
+     That fixes the alignment rather than papering over it: both are left
+     aligned and both are the same width, so the block has one left edge
+     and one right edge at every size, and the left edge is the page's. */
+  .logo-tag{font-family:var(--f-head);font-weight:600;
+    /* the picture is 1.6193 wide per unit of height, so this box is
+       exactly as wide as the picture above it, whatever height it is */
+    width:calc(var(--logo-h) * 1.6193);text-align:center;
+    /* and at .12em this line is 15.463 times its own font-size wide, so
+       0.100 of the logo's height fills 96% of that box: the same slightly
+       inset, centred relation the tagline has to the wordmark in the
+       artwork. The mark ends up centred over the line by construction
+       rather than by a number anyone has to check. */
+    font-size:calc(var(--logo-h) * 0.100);
+    letter-spacing:.12em;text-transform:uppercase;line-height:1;
     color:#68676A;white-space:nowrap}
   /* A phone bar is 84px and this line is 159px wide on its own, which
      is more than the row has once the language and the catalog button
@@ -1152,7 +1171,7 @@
        sample catalogs. The label steps aside with it — at this width the
        glyph is the button, the same way the globe was. */
     .bar{min-height:84px;padding-block:14px}
-    .logo img{height:56px}
+    .logo{--logo-h:56px}
     /* "Get your catalog" is back. It only left to pay for a logo 265px
        wide; this one is 88px, so the row can hold it again. */
 
@@ -1199,7 +1218,7 @@
     body.locked .bar.solid .lang{display:block}
     body.locked .bar.solid .see{display:none}
     .bar{min-height:78px;padding-block:12px;gap:10px}
-    .logo img{height:54px}
+    .logo{--logo-h:54px}
     .bar.solid .logo img{height:44px}
     /* line-height is pinned here so the Urdu face, which is set much
        looser for reading, does not make this one button taller than
@@ -1213,7 +1232,7 @@
        has arrived, so the logo gives up a little of its height rather
        than the whole of its second line, which is what used to happen. */
     @media(max-width:412px){
-      .logo img{height:50px}
+      .logo{--logo-h:50px}
       /* scrolled, the row is the logo, the samples button and the
          burger, and 360px will not hold all three at full size. The
          icon goes first: the button has a word on it and does not need

@@ -39,12 +39,22 @@
   /* drawn markup with a viewBox, so a height is the whole declaration
      and the width follows: see the note beside this rule in index.html */
   /* flex:none: see the note beside this rule in index.html */
-  .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:5px;
+  .logo{--logo-h:64px;
+    display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;
     flex:none;color:var(--ink)}
-  .logo img{display:block;height:64px;width:auto}
+  .logo img{display:block;height:var(--logo-h);width:auto}
   /* live text rather than the picture's bottom rows: see index.html */
-  .logo-tag{font-family:var(--f-head);font-weight:600;font-size:8.5px;
-    letter-spacing:.24em;text-transform:uppercase;line-height:1;
+  .logo-tag{font-family:var(--f-head);font-weight:600;
+    /* the picture is 1.6193 wide per unit of height, so this box is
+       exactly as wide as the picture above it, whatever height it is */
+    width:calc(var(--logo-h) * 1.6193);text-align:center;
+    /* and at .12em this line is 15.463 times its own font-size wide, so
+       0.100 of the logo's height fills 96% of that box: the same slightly
+       inset, centred relation the tagline has to the wordmark in the
+       artwork. The mark ends up centred over the line by construction
+       rather than by a number anyone has to check. */
+    font-size:calc(var(--logo-h) * 0.100);
+    letter-spacing:.12em;text-transform:uppercase;line-height:1;
     color:#68676A;white-space:nowrap}
   @media(max-width:700px){ .logo-tag{display:none} }
   .logo .logo-mark{display:none}
@@ -126,7 +136,7 @@
   @media(max-width:700px){
     :root{--bar-h:84px}
     .bar{padding-inline:calc((100% - var(--wrap)) / 2)}
-    .logo img{height:60px}
+    .logo{--logo-h:60px}
     /* The row here is the logo, the language, the way back and the
        button, and 375px does not hold all four. It is the button that
        goes: this page's whole job is the four samples underneath it, and
