@@ -2,3 +2,7 @@ node_modules/
 *.crdownload
 *.part
 *.tmp
+
+# Video production assets: the client works on these locally and two of
+# them are over GitHub 100MB limit. They are not part of the site.
+Commercial/

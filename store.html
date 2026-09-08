@@ -677,7 +677,7 @@ document.getElementById('shopTag').textContent = t(shop.tagline);
 document.getElementById('lead').textContent = t(shop.lead);
 document.getElementById('sub').textContent = t(shop.sub);
 document.getElementById('scanTitle').textContent = t('Scan to explore');
-document.getElementById('scanUrl').textContent = (location.host || 'arqr-two.vercel.app') + '/' + shop.slug;
+document.getElementById('scanUrl').textContent = (location.host || 'arqr360.com') + '/' + shop.slug;
 document.getElementById('scanQr').src = 'assets/qr-' + shop.slug + '.svg' + V;
 document.getElementById('scanQr').alt = shop.name + ' catalog code';
 document.getElementById('arQrImg').src = 'assets/qr-' + shop.slug + '.svg' + V;
@@ -936,7 +936,9 @@ addEventListener('resize', function(){
                        (location.hash || '').replace('#', '') || p);
   })[0];
   if (!s) return;
-  var url = 'https://arqr-two.vercel.app/' + s.slug;
+  /* the page's own origin, not a host written down here: this is what a
+     move to a real domain used to mean editing, and now does not */
+  var url = location.origin + '/' + s.slug;
   var set = function (sel, attr, val){
     var el = document.head.querySelector(sel);
     if (el) el.setAttribute(attr, val);
