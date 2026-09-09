@@ -29,7 +29,7 @@ const END = '<!-- logo:end -->';
    already walks, so it is in all twelve languages like everything else. */
 const NAME = 'ARQR360, AR catalogs for retail';
 
-const FILES = ['index.html', 'catalog.html'];
+const FILES = ['index.html', 'catalog.html', 'terms.html', 'privacy.html', 'refund.html'];
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 (async () => {

@@ -82,7 +82,24 @@ const PAGES = [
     desc: 'Four sample catalogs you can open on your phone. Every product at true size in your own room.',
     priority: '0.9' },
   { file: 'store.html',   path: '/store',   image: '/assets/og-catalog.jpg',
-    title: 'AR catalog', desc: null, perShop: true, priority: '0.7', noSitemap: true }
+    title: 'AR catalog', desc: null, perShop: true, priority: '0.7', noSitemap: true },
+
+  /* The legal three. Low priority because nobody searches for them, but in
+     the sitemap on purpose: a payment provider's reviewer and a business
+     verification both go looking for these, and a page a crawler has never
+     seen is a page they can decide is not really there. */
+  { file: 'terms.html',   path: '/terms',   image: '/assets/og-home.jpg',
+    title: 'Terms of Service | ARQR360',
+    desc: 'The agreement between you and ARQR360 when we build and host an AR catalog for your shop.',
+    priority: '0.3' },
+  { file: 'privacy.html', path: '/privacy', image: '/assets/og-home.jpg',
+    title: 'Privacy Policy | ARQR360',
+    desc: 'What this website collects, what it does not, and who else can see anything.',
+    priority: '0.3' },
+  { file: 'refund.html',  path: '/refund',  image: '/assets/og-home.jpg',
+    title: 'Refund Policy | ARQR360',
+    desc: 'When you get your money back, and when you do not. Written plainly.',
+    priority: '0.3' }
 ];
 
 const SHOPS = ['novara', 'corso', 'maison', 'terra'];
