@@ -27,9 +27,15 @@ const SITE = {
   tagline: 'Your showroom, in their room',
   blurb: 'ARQR turns your products into an AR catalog. One QR code and your ' +
          'customers see every piece at true size in their own room. No app to download.',
-  /* left empty on purpose: linking to social accounts that do not exist
-     yet is a broken signal, not a good one. Add them here when they are real. */
-  sameAs: []
+  /* These are real now. sameAs is how a search engine ties the site and
+     the profiles into one entity rather than four strangers, so it is
+     worth keeping in step with the footer. The Instagram link is the
+     plain profile, not the share URL: that one carries a session token. */
+  sameAs: [
+    'https://www.instagram.com/arqr360',
+    'https://x.com/arqr360',
+    'https://www.linkedin.com/company/arqr360/'
+  ]
 };
 
 const FAQ = [
