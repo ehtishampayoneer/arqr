@@ -84,6 +84,11 @@ const PAGES = [
   { file: 'store.html',   path: '/store',   image: '/assets/og-catalog.jpg',
     title: 'AR catalogue', desc: null, perShop: true, priority: '0.7', noSitemap: true },
 
+  { file: 'start.html',   path: '/start',   image: '/assets/og-home.jpg',
+    title: 'What we need from you | ARQR360',
+    desc: 'What happens after you order, exactly what to send us, and what makes a photograph we cannot use.',
+    priority: '0.6' },
+
   /* The legal three. Low priority because nobody searches for them, but in
      the sitemap on purpose: a payment provider's reviewer and a business
      verification both go looking for these, and a page a crawler has never

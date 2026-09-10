@@ -8,7 +8,7 @@
    of digits with no letter or digit after it is this file's to move. */
 const fs = require('fs');
 const files = ['index.html', 'catalogue.html', 'store.html',
-               'terms.html', 'privacy.html', 'refund.html'];
+               'start.html', 'terms.html', 'privacy.html', 'refund.html'];
 let s = fs.readFileSync(files[0], 'utf8');
 const current = Number((s.match(/\?v=(\d+)(?![0-9a-zA-Z])/) || [, 0])[1]);
 const next = current + 1;

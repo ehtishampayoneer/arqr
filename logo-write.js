@@ -32,7 +32,7 @@ const END = '<!-- logo:end -->';
    step with the markup. */
 const NAME = 'ARQR360';
 
-const FILES = ['index.html', 'catalogue.html', 'terms.html', 'privacy.html', 'refund.html'];
+const FILES = ['index.html', 'catalogue.html', 'start.html', 'terms.html', 'privacy.html', 'refund.html'];
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 (async () => {

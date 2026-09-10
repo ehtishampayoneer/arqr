@@ -26,7 +26,7 @@ const BIZ = {
   city: 'Lahore',
   country: 'Pakistan',
   email: 'info@arqr360.com',
-  updated: '9 September 2026'
+  updated: '11 September 2026'
 };
 
 /* ---------------------------------------------------------------- content */
@@ -34,6 +34,93 @@ const P = (t) => ({ p: t });
 const UL = (items) => ({ ul: items });
 
 const DOCS = [
+  {
+    file: 'start.html',
+    path: '/start',
+    slug: 'start',
+    group: 'guide',
+    title: 'What we need from you',
+    lead: 'What happens after you order, exactly what to send us, and what makes a photograph we cannot use.',
+    sections: [
+      ['How it goes, in order', [
+        UL([
+          '<strong>You order.</strong> You get an email straight away with a link back to this page.',
+          '<strong>You send photographs and measurements</strong> of the products you want built. Ten for Starter, twenty-five for Studio.',
+          '<strong>We check them within one working day</strong> and tell you if anything is unusable, before any modelling starts, so nothing goes quiet on you.',
+          '<strong>We build.</strong> About seven working days from the point we have photographs we can work from.',
+          '<strong>You get your catalogue</strong>, your QR code and your link. You check it, we fix anything wrong at no cost.',
+          '<strong>It goes live</strong>, and the monthly fee keeps it there.'
+        ]),
+        P('The seven days start when we have usable photographs, not when you order. If a photograph will not work we tell you the same day rather than letting the date slip quietly.')
+      ]],
+
+      ['Photographs', [
+        P('Six to eight per product. We are rebuilding the object in three dimensions, so we need to see every side of it: what the camera cannot see, we would be guessing at.'),
+        UL([
+          'front, back, and both sides, square on,',
+          'two more at roughly forty-five degrees, from the corners,',
+          'one from above,',
+          'and a close-up of the material, so the texture is right.'
+        ]),
+        P('A phone camera is fine. This does not need a studio.')
+      ]],
+
+      ['What makes a photograph unusable', [
+        P('These are the ones we have to send back, so they are worth knowing before you shoot rather than after:'),
+        UL([
+          '<strong>Part of the product is cut off.</strong> We cannot invent the missing part.',
+          '<strong>Two products in one photograph.</strong> One product per shot, or we cannot tell where one ends.',
+          '<strong>Hard shadow or one strong light from the side.</strong> Shade or an overcast day beats direct sun. Indoors, turn the main light off and use the window.',
+          '<strong>A busy background.</strong> A plain wall or floor. A patterned rug photographed on a patterned floor is two patterns we have to separate.',
+          '<strong>Filters, beauty mode, heavy editing.</strong> We need the real colour, because the customer is judging whether it matches their room.',
+          '<strong>Blur.</strong> Wipe the lens and brace your hands. Blur costs more than it looks like it does.',
+          '<strong>Screenshots, or images pulled from a supplier catalogue.</strong> Usually too small, and often not yours to use.'
+        ])
+      ]],
+
+      ['Measurements, and why they are the important half', [
+        P('This is the part that separates an AR catalogue from a photograph. Your customer is holding their phone up in their own room asking whether it fits. A sofa built to a guessed width answers that question wrongly, and confidently, which is worse than not answering it.'),
+        P('Centimetres, measured, not taken off a supplier sheet:'),
+        UL([
+          '<strong>Furniture:</strong> width, depth and height. For seating, seat height from the floor as well.',
+          '<strong>Rugs and carpets:</strong> length and width, and say whether it is rectangular, round or a runner. Photograph it flat, from directly above.',
+          '<strong>Footwear:</strong> the size you sell it as, plus the length of the sole in centimetres. Outer side, inner side, top, sole, front and back.',
+          '<strong>Lamps and decor:</strong> height and the widest point. If it hangs, the drop as well.'
+        ]),
+        P('If a product comes in several sizes, send the measurements for each one and we build them as separate items in the catalogue.')
+      ]],
+
+      ['If you already have 3D files', [
+        P('Send those instead and we skip the modelling. We can work from .glb, .gltf, .usdz, .fbx or .obj. Tell us the real size anyway: a file that arrives at the wrong scale looks correct until it is standing in someone\'s living room at twice its size.')
+      ]],
+
+      ['How to send it', [
+        P('Email <a href="mailto:' + BIZ.email + '">' + BIZ.email + '</a>, or use the form on the home page. For anything large, a Drive, Dropbox or WeTransfer link is easier than an attachment.'),
+        P('Name the files so we can tell them apart: the product name, then the angle. <code>oak-dining-chair-front.jpg</code> tells us what it is. <code>IMG_4471.jpg</code> does not.'),
+        P('Put the measurements in the email itself, next to the product name, rather than in a separate file. It is the thing we check first.')
+      ]],
+
+      ['What you get at the end', [
+        UL([
+          'Your own catalogue at your own address, ' + BIZ.name.toLowerCase() + '.com/yourshop, with nobody else\'s products in it.',
+          'A QR code to print, put in the window, or on packaging.',
+          'Every product at its real size, so a customer can stand it in their room before they buy.',
+          'Orders coming to you directly. We are not a shop and we never touch your customers\' money.'
+        ]),
+        P('The 3D models are yours. If you ever leave, ask and we will send you the files.')
+      ]],
+
+      ['Adding products later', [
+        P('Send them the same way. Extra products beyond your plan are charged per product at the rate on the pricing page, and go live in the same catalogue. You do not start again.')
+      ]],
+
+      ['If something is not right', [
+        P('Tell us. A model that is the wrong size, the wrong colour or not what you asked for gets fixed at no cost, and there is no time limit on a mistake that is ours. That is not a refund question, it is us finishing the job properly.'),
+        P('Email <a href="mailto:' + BIZ.email + '">' + BIZ.email + '</a> and a person answers.')
+      ]]
+    ]
+  },
+
   {
     file: 'terms.html',
     path: '/terms',
@@ -279,9 +366,17 @@ const CSS = `
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 `;
 
-const footerNav = (current) => DOCS.map((d) =>
+/* The legal three and the onboarding page are different kinds of thing,
+   so the footer keeps them apart rather than reading as a list of four
+   equal documents. */
+const link = (d, current) =>
   '<a href="' + d.path + '"' + (d.slug === current ? ' aria-current="page"' : '') + '>' +
-  d.title + '</a>').join('\n        ');
+  d.title + '</a>';
+
+const footerNav = (current) =>
+  DOCS.filter((d) => d.group !== 'guide').map((d) => link(d, current))
+    .concat(DOCS.filter((d) => d.group === 'guide').map((d) => link(d, current)))
+    .join('\n        ');
 
 function render(doc) {
   const body = doc.sections.map(([heading, blocks]) =>
