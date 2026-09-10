@@ -36,5 +36,10 @@
       "destination": "/catalogue",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/contact.js": {
+      "maxDuration": 30
+    }
+  }
 }

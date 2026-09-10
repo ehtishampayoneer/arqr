@@ -93,11 +93,22 @@ module.exports = async (req, res) => {
 
   try {
     const port = Number(process.env.SMTP_PORT);
+    /* Explicit timeouts, and all three of them. Left to itself nodemailer
+       waits on the socket far longer than the function is allowed to run,
+       so the platform kills the invocation before the library ever reports
+       what went wrong, and every failure looks the same. With these it
+       gives up first and says which stage it was on. */
     const transport = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port,
       secure: port === 465,          /* 465 is SSL from the first byte; 587 upgrades */
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 12000,
+      /* one connection, one message: pooling is for a process that stays
+         alive, and this one is gone after the request */
+      pool: false
     });
 
     await transport.sendMail({
@@ -120,6 +131,10 @@ module.exports = async (req, res) => {
        category is enough to tell a wrong password from a blocked port
        without publishing either. */
     const code = String((err && (err.code || err.responseCode)) || '');
+    /* which stage it died on, when nodemailer says */
+    const stage = /greeting/i.test(String(err && err.message)) ? 'greeting'
+      : /connection timeout|ETIMEDOUT/i.test(String(err && err.message)) ? 'connect'
+      : '';
     const reason =
       /EAUTH|^535|^534|^530/.test(code) ? 'auth' :
       /ECONNECTION|ECONNREFUSED|ENOTFOUND|EDNS/.test(code) ? 'connect' :
@@ -127,6 +142,6 @@ module.exports = async (req, res) => {
       /EENVELOPE|^55[0-9]/.test(code) ? 'rejected' : 'unknown';
     console.error('contact: send failed [' + reason + '] ' + code + ' ' +
       (err && err.message));
-    return res.status(502).json({ ok: false, error: 'That did not send.', reason });
+    return res.status(502).json({ ok: false, error: 'That did not send.', reason, stage });
   }
 };
