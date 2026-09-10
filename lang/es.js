@@ -329,9 +329,14 @@ window.ARQR_LANG = {
     "<b>Keep it live</b>Your catalogue stays active": "<b>Mantenlo activo</b>Tu catálogo sigue activo",
     "<b>More sales</b>Let customers see it before they buy": "<b>Más ventas</b>Deja que lo vean antes de comprar",
     "<b>Trusted by modern retailers</b>Simple. Affordable. Powerful.": "<b>La confianza del comercio moderno</b>Simple. Asequible. Potente.",
-    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>Solo 19,98 $ por producto en la creación inicial</b>50 productos, 999 $ de configuración única, luego 99 $/mes."
+    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>Solo 19,98 $ por producto en la creación inicial</b>50 productos, 999 $ de configuración única, luego 99 $/mes.",
+    "Recommended": "Recomendado",
+    "Attach photos or a price list": "Adjunta fotos o una lista de precios",
+    "JPG, PNG, PDF or ZIP. You can pick several.": "JPG, PNG, PDF o ZIP. Puedes elegir varios.",
+    "Those files are too large to send": "Esos archivos son demasiado grandes para enviar"
   },
   a: {
+    "Remove this file": "Quitar este archivo",
     "Sort by": "Ordenar por",
     "Pages": "Páginas",
     "QR code that opens the sample AR catalogues": "Código QR que abre los catálogos AR de ejemplo",

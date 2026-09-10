@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=95"></script>
+<script src="i18n.js?v=96"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -940,6 +940,41 @@
   .pr-grid .plan[data-tier="studio"]{--band:#ECF8F1;--setup:#F4F3F1}
   .pr-grid .plan[data-tier="showroom"]{--band:#F4EFFD;--setup:#FDF1EC}
 
+  /* The middle card carries the badge, not the dearest one. Showroom has
+     the rational pull already, the lowest cost per product, and putting
+     the social one on the same card leaves the other two with neither.
+     "Recommended" rather than "Most popular": there are no customers yet,
+     so popularity is a claim that cannot be supported, and a
+     recommendation is an opinion nobody can be wrong about. */
+  .pr-grid .plan.is-pick{border-color:rgba(224,104,42,.5);
+    box-shadow:0 26px 54px -30px rgba(70,50,30,.42);
+    transform:translateY(-10px)}
+  .pr-grid .plan.is-pick:hover{transform:translateY(-16px)}
+  @media(min-width:981px){
+    /* the middle column carries the badge, so it gets the extra width.
+       Equal columns plus a lift read as "moved"; wider reads as "bigger",
+       and nothing has to be scaled to say it. */
+    .pr-grid{grid-template-columns:1fr 1.09fr 1fr}
+  }
+  .pr-grid .plan.is-pick .plan-go{background:var(--accent);color:#fff}
+  .pr-grid .plan.is-pick .plan-go:hover{filter:brightness(1.1)}
+  .pr-grid .plan-flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    z-index:1;padding:5px 14px;border-radius:100px;background:var(--accent);color:#fff;
+    font-family:var(--f-head);font-weight:700;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;
+    white-space:nowrap;box-shadow:0 8px 18px -8px rgba(224,104,42,.9)}
+
+  /* 980px, not 900: that is where .pr-grid becomes one column, and for the
+     80px in between the card was still lifted 10px into a 19px gap, which
+     left the badge sitting 2px inside the card above it. The lift and the
+     stack have to change at the same width. */
+  @media(max-width:980px){
+    .pr-grid .plan.is-pick{transform:none}
+    .pr-grid .plan.is-pick:hover{transform:translateY(-6px)}
+    /* and the badge needs room of its own once the cards are in a column */
+    .pr-grid{row-gap:34px}
+  }
+
   .pr-grid .plan{padding:clamp(18px,1.7vw,24px)}
 
   .plan-top{display:flex;align-items:flex-start;gap:12px;margin:0 0 16px}
@@ -1228,6 +1263,19 @@
      rule below for one commit, which meant no desktop ever saw them: an
      svg with a viewBox and no width falls back to 300px, so the little
      cross rendered the height of the form. */
+  .drop-list{list-style:none;margin:10px 0 0;padding:0;display:flex;
+    flex-direction:column;gap:7px}
+  .drop-list:empty{display:none}
+  .drop-file{display:flex;align-items:center;gap:10px;padding:7px 8px 7px 7px;
+    border:1px solid var(--line);border-radius:12px;background:var(--page-hi)}
+  .drop-thumb{flex:none;width:38px;height:38px;border-radius:8px;overflow:hidden;
+    display:grid;place-items:center;background:var(--page-alt);color:var(--ink-soft)}
+  .drop-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .drop-thumb svg{width:17px;height:17px;display:block}
+  .drop-meta{min-width:0;flex:1 1 auto;font-size:12.5px;line-height:1.35}
+  .drop-meta b{display:block;font-weight:600;color:var(--ink);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .drop-meta span{color:var(--ink-soft);font-size:11.5px}
   .drop-clear{display:inline-flex;align-items:center;gap:7px;
     align-self:flex-start;width:auto;flex:none;margin-top:9px;
     padding:6px 12px 6px 10px;border:1px solid var(--line);border-radius:100px;
@@ -1236,6 +1284,13 @@
     transition:color .2s ease,border-color .2s ease,background .2s ease}
   .drop-clear:hover{color:#C2412A;border-color:#C2412A;background:rgba(194,65,42,.06)}
   .drop-clear svg{flex:none;width:14px;height:14px;display:block}
+  /* the per-row bin: a 34px target, which is the smallest a thumb can
+     reliably hit, sitting inside a 52px row */
+  .drop-drop{flex:none;display:grid;place-items:center;width:34px;height:34px;
+    padding:0;border:0;border-radius:9px;background:transparent;cursor:pointer;
+    color:var(--ink-soft);transition:color .2s ease,background .2s ease}
+  .drop-drop:hover{color:#C2412A;background:rgba(194,65,42,.08)}
+  .drop-drop svg{width:16px;height:16px;display:block}
   .drop-txt{min-width:0}
   .drop-t{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;
     text-transform:uppercase;color:var(--ink);line-height:1.35;overflow-wrap:anywhere}
@@ -1444,7 +1499,9 @@
     .pr-head{margin-bottom:26px}
     .pr h2{font-size:26px}
     .pr-sub{font-size:15px}
-    .pr-grid{gap:16px}
+    /* the columns are gone at this width, so the only gap that matters is
+       the vertical one, and the badge on the middle card lives in it */
+    .pr-grid{column-gap:16px;row-gap:30px}
     .pr-grid .plan{padding:28px 22px 22px}
     .plan-go{padding:16px 24px}
     .pr-foot{font-size:13.5px}
@@ -1710,8 +1767,8 @@
 <header class="bar" id="bar">
     <a class="logo" href="#">
 <!-- logo:start, generated by logo-write.js -->
-<img class="logo-full" src="assets/logo-bar.png?v=95" width="421" height="260" alt="ARQR360" decoding="async">
-<img class="logo-mark" src="assets/logo-mono.png?v=95" width="215" height="115" alt="" aria-hidden="true" decoding="async">
+<img class="logo-full" src="assets/logo-bar.png?v=96" width="421" height="260" alt="ARQR360" decoding="async">
+<img class="logo-mark" src="assets/logo-mono.png?v=96" width="215" height="115" alt="" aria-hidden="true" decoding="async">
 <!-- logo:end -->
       <span class="logo-tag">See it. Place it. Love it.</span>
     </a>
@@ -1777,7 +1834,7 @@
       </p>
       <div class="how-qr rev">
         <a class="qr-shot" href="catalogue" aria-label="Open the four sample AR catalogues">
-          <img src="assets/qr-catalogue.svg?v=95" alt="QR code that opens the sample AR catalogues" width="150" height="150" loading="lazy">
+          <img src="assets/qr-catalogue.svg?v=96" alt="QR code that opens the sample AR catalogues" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
           <strong>See a real catalogue first</strong>
@@ -1793,8 +1850,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback"><span class="vf-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>AR preview loading&hellip;</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=95"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=95"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=96"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=96"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1862,9 +1919,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=95" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=96" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=95" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=96" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1882,9 +1939,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=95" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=95" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=95" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=96" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=96" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=96" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1903,7 +1960,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=95" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=96" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1949,7 +2006,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=95" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=96" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1961,7 +2018,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=95" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=96" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1973,7 +2030,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>You get your own catalogue</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=95" alt="A phone showing the AR catalogue"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=96" alt="A phone showing the AR catalogue"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1985,7 +2042,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=95" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=96" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1997,7 +2054,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=95" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=96" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -2128,7 +2185,8 @@
         <a class="plan-go" href="#f-name">Get Started<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
-      <div class="plan rev" data-tier="studio">
+      <div class="plan rev is-pick" data-tier="studio">
+        <span class="plan-flag">Recommended</span>
 
         <div class="plan-top">
           <span class="plan-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2 21 7.6l-9 4.4-9-4.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 12.2l9 4.4 9-4.4M3 16.6l9 4.4 9-4.4" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
@@ -2395,21 +2453,16 @@
             <label class="drop" for="f-file">
               <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 17.4a4.2 4.2 0 0 1-.5-8.4 5.8 5.8 0 0 1 11.2-1 3.9 3.9 0 0 1 .3 7.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21v-8.6m0 0L9.2 15.2M12 12.4l2.8 2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <span class="drop-txt">
-                <span class="drop-t" id="f-fileName">Attach photos or a price list, up to 10 MB</span>
-                <span class="drop-d">JPG, PNG, PDF or ZIP</span>
+                <span class="drop-t" id="f-fileName">Attach photos or a price list</span>
+                <span class="drop-d">JPG, PNG, PDF or ZIP. You can pick several.</span>
               </span>
-              <input id="f-file" name="attachment" type="file" accept="image/*,.pdf,.zip,.csv,.xlsx">
+              <input id="f-file" name="attachment" type="file" multiple accept="image/*,.pdf,.zip,.csv,.xlsx">
             </label>
-            <!-- Outside the <label>, not inside it. A button inside a label
-                 for a file input is swallowed by the label: the click opens
-                 the file picker instead of removing anything. -->
-            <button class="drop-clear" id="f-fileClear" type="button" hidden>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 7h16M10 4h4M9.5 7v11M14.5 7v11M6.5 7l.8 12.2a1.6 1.6 0 0 0 1.6 1.5h6.2a1.6 1.6 0 0 0 1.6-1.5L17.5 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>Remove file</span>
-            </button>
-            <span class="err">That file is too large</span>
+            <!-- Filled in by the script. Outside the <label>: a control inside
+                 a label for a file input is swallowed by the label, so every
+                 click would reopen the picker instead of removing a row. -->
+            <ul class="drop-list" id="f-fileList"></ul>
+            <span class="err">Those files are too large to send</span>
           </div>
 
           <button class="frm-send" type="submit"><svg viewBox="0 0 24 24" fill="none"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Send it over</button>
@@ -2466,8 +2519,8 @@
   <div class="foot-wrap">
     <div class="foot-brand">
 <!-- logo:start, generated by logo-write.js -->
-<img class="logo-full" src="assets/logo-bar.png?v=95" width="421" height="260" alt="ARQR360" decoding="async">
-<img class="logo-mark" src="assets/logo-mono.png?v=95" width="215" height="115" alt="" aria-hidden="true" decoding="async">
+<img class="logo-full" src="assets/logo-bar.png?v=96" width="421" height="260" alt="ARQR360" decoding="async">
+<img class="logo-mark" src="assets/logo-mono.png?v=96" width="215" height="115" alt="" aria-hidden="true" decoding="async">
 <!-- logo:end -->
       <span class="foot-line">Your showroom, in their room.</span>
     </div>
@@ -2674,6 +2727,11 @@
   var note = document.getElementById('f-note');
   var noteDefault = note.textContent;
   var fileInput = document.getElementById('f-file');
+  /* A FileList cannot have one item taken out of it: it is read only, and
+     the only write a file input accepts is value = '', which drops them
+     all. So the picked files live here instead, and the input is emptied
+     after every pick so choosing the same file twice still fires. */
+  var picked = [];
   var fileName = document.getElementById('f-fileName');
   var fileDefault = fileName.textContent;
   /* what the picker will accept. A photograph is allowed to arrive at any
@@ -2687,26 +2745,73 @@
     msg.addEventListener("input", function(){ msgCount.textContent = msg.value.length; });
   }
 
-  var fileClear = document.getElementById('f-fileClear');
+  var fileList = document.getElementById('f-fileList');
 
-  function showFile(){
-    var f = fileInput.files[0];
-    fileName.textContent = f ? f.name + '  (' + (f.size / 1048576).toFixed(1) + ' MB)' : fileDefault;
-    if (fileClear) fileClear.hidden = !f;
+  var PAGE = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+    '<path d="M13.4 3.4H7.2A1.8 1.8 0 0 0 5.4 5.2v13.6a1.8 1.8 0 0 0 1.8 1.8h9.6a1.8 1.8 0 0 0 1.8-1.8V8.4z" ' +
+    'stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>' +
+    '<path d="M13.4 3.4v5h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>');
+  var BIN = ('<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+    '<path d="M4 7h16M10 4h4M9.5 7v11M14.5 7v11M6.5 7l.8 12.2a1.6 1.6 0 0 0 1.6 1.5h6.2a1.6 1.6 0 0 0 1.6-1.5L17.5 7" ' +
+    'stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+
+  var size = function (n){
+    return n < 1048576 ? Math.max(1, Math.round(n / 1024)) + ' KB'
+                       : (n / 1048576).toFixed(1) + ' MB';
+  };
+
+  function total(){
+    return picked.reduce(function (n, f){ return n + f.size; }, 0);
   }
 
-  fileInput.addEventListener('change', function(){ showFile(); clear(fileInput); });
-
-  if (fileClear) {
-    fileClear.addEventListener('click', function(){
-      /* value = '' is what actually empties a file input; removing the
-         name from the label only hides it and the file still sends */
-      fileInput.value = '';
-      showFile();
-      clear(fileInput);
-      fileInput.focus();
+  function paint(){
+    /* every thumbnail is an object URL, and the browser keeps the file
+       alive until each one is revoked. Rebuilding the list without this
+       leaks one image per repaint. */
+    [].forEach.call(fileList.querySelectorAll('img[src^="blob:"]'), function (img){
+      URL.revokeObjectURL(img.src);
     });
+    fileList.innerHTML = '';
+
+    picked.forEach(function (f, i){
+      var li = document.createElement('li');
+      li.className = 'drop-file';
+      var thumb = /^image\//.test(f.type) && f.type !== 'image/svg+xml'
+        ? '<img alt="" src="' + URL.createObjectURL(f) + '">'
+        : PAGE;
+      li.innerHTML =
+        '<span class="drop-thumb">' + thumb + '</span>' +
+        '<span class="drop-meta"><b></b><span>' + size(f.size) + '</span></span>' +
+        '<button class="drop-drop" type="button" aria-label="Remove this file">' + BIN + '</button>';
+      /* the name comes off a stranger's machine, so it is set as text and
+         never as markup */
+      li.querySelector('.drop-meta b').textContent = f.name;
+      li.querySelector('.drop-drop').addEventListener('click', function (){
+        picked.splice(i, 1);
+        paint();
+        clear(fileInput);
+        fileInput.focus();
+      });
+      fileList.appendChild(li);
+    });
+
+    fileName.textContent = picked.length
+      ? picked.length + (picked.length === 1 ? ' file' : ' files') + ', ' + size(total())
+      : fileDefault;
   }
+
+  fileInput.addEventListener('change', function (){
+    [].forEach.call(fileInput.files, function (f){
+      /* the same file picked twice is one file, not two */
+      var already = picked.some(function (p){
+        return p.name === f.name && p.size === f.size && p.lastModified === f.lastModified;
+      });
+      if (!already) picked.push(f);
+    });
+    fileInput.value = '';
+    paint();
+    clear(fileInput);
+  });
 
   function field(el){ return el.closest('.fld'); }
   function mark(el){ field(el).classList.add('bad'); }
@@ -2727,8 +2832,15 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())){ mark(mail); ok = false; } else clear(mail);
     if (msg.value.trim().length < 4){ mark(msg); ok = false; } else clear(msg);
 
-    var f = fileInput.files[0];
-    var tooBig = f && (/^image\//.test(f.type) ? f.size > MAX : f.size > MAX_SEND);
+    /* Photographs are allowed to arrive at any size because they are
+       resized before they are sent. Everything else has to already fit,
+       and the set as a whole has to fit too. */
+    var solid = picked.reduce(function (n, f){
+      return n + (/^image\//.test(f.type) ? 0 : f.size);
+    }, 0);
+    var tooBig = solid > MAX_SEND || picked.some(function (f){
+      return !/^image\//.test(f.type) && f.size > MAX_SEND;
+    });
     if (tooBig){ mark(fileInput); ok = false; } else clear(fileInput);
 
     return ok;
@@ -2754,16 +2866,17 @@
     btn.disabled = true;
     say('Sending…', '');
 
-    var picked = fileInput.files[0];
-    Promise.resolve(picked ? shrink(picked) : null)
-      .then(function(file){
-        if (!file) return null;
-        if (file.size > MAX_SEND) throw new Error('too-big');
-        return base64(file).then(function(data){
-          return { name: file.name, type: file.type, data: data };
-        });
+    Promise.all(picked.map(shrink))
+      .then(function (files){
+        var sum = files.reduce(function (n, f){ return n + f.size; }, 0);
+        if (sum > MAX_SEND) throw new Error('too-big');
+        return Promise.all(files.map(function (f){
+          return base64(f).then(function (data){
+            return { name: f.name, type: f.type, data: data };
+          });
+        }));
       })
-      .then(function(file){
+      .then(function(files){
         return fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2773,7 +2886,7 @@
             phone: document.getElementById('f-phone').value,
             website: document.getElementById('f-site').value,
             message: document.getElementById('f-msg').value,
-            file: file
+            files: files
           })
         });
       })
@@ -2783,13 +2896,14 @@
       .then(function(out){
         if (!out || !out.ok) throw new Error((out && out.error) || 'failed');
         form.reset();
-        showFile();
+        picked = [];
+        paint();
         if (msgCount) msgCount.textContent = '0';
         say('Got it. We will come back to you within one working day. Meanwhile, arqr360.com/start lists exactly what we need.', 'ok');
       })
       .catch(function(err){
         say(err && err.message === 'too-big'
-          ? 'That file is too large to send. Please keep it under 3MB.'
+          ? 'Those files come to more than 3MB together. Remove one, or send a link instead.'
           : 'That did not send. Email us at info@arqr360.com and we will pick it up.', 'no');
       })
       .then(function(){ btn.disabled = false; });

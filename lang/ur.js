@@ -329,9 +329,14 @@ window.ARQR_LANG = {
     "<b>Keep it live</b>Your catalogue stays active": "<b>لائیو رکھیں</b>آپ کا کیٹلاگ فعال رہتا ہے",
     "<b>More sales</b>Let customers see it before they buy": "<b>زیادہ فروخت</b>گاہک خریدنے سے پہلے دیکھ لیں",
     "<b>Trusted by modern retailers</b>Simple. Affordable. Powerful.": "<b>جدید ریٹیلرز کا اعتماد</b>سادہ۔ کفایتی۔ مؤثر۔",
-    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>ابتدائی تیاری میں فی پروڈکٹ صرف ‎$19.98</b>‏50 پروڈکٹس، ‎$999‎ ایک بار سیٹ اپ، پھر ‎$99‎ ماہانہ۔"
+    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>ابتدائی تیاری میں فی پروڈکٹ صرف ‎$19.98</b>‏50 پروڈکٹس، ‎$999‎ ایک بار سیٹ اپ، پھر ‎$99‎ ماہانہ۔",
+    "Recommended": "تجویز کردہ",
+    "Attach photos or a price list": "تصاویر یا قیمت کی فہرست منسلک کریں",
+    "JPG, PNG, PDF or ZIP. You can pick several.": "JPG، PNG، PDF یا ZIP۔ آپ کئی چن سکتے ہیں۔",
+    "Those files are too large to send": "یہ فائلیں بھیجنے کے لیے بہت بڑی ہیں"
   },
   a: {
+    "Remove this file": "یہ فائل ہٹائیں",
     "Sort by": "ترتیب دیں",
     "Pages": "صفحات",
     "QR code that opens the sample AR catalogues": "نمونہ AR کیٹلاگ کھولنے والا QR کوڈ",

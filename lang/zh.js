@@ -329,9 +329,14 @@ window.ARQR_LANG = {
     "<b>Keep it live</b>Your catalogue stays active": "<b>保持在线</b>你的目录始终有效",
     "<b>More sales</b>Let customers see it before they buy": "<b>更多成交</b>让顾客先看到再购买",
     "<b>Trusted by modern retailers</b>Simple. Affordable. Powerful.": "<b>现代零售商的选择</b>简单。实惠。强大。",
-    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>初次搭建每件产品仅 19.98 美元</b>50 件产品，999 美元一次性搭建，之后每月 99 美元。"
+    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>初次搭建每件产品仅 19.98 美元</b>50 件产品，999 美元一次性搭建，之后每月 99 美元。",
+    "Recommended": "推荐",
+    "Attach photos or a price list": "附上照片或价格表",
+    "JPG, PNG, PDF or ZIP. You can pick several.": "JPG、PNG、PDF 或 ZIP。可以选多个。",
+    "Those files are too large to send": "这些文件太大，无法发送"
   },
   a: {
+    "Remove this file": "移除此文件",
     "Sort by": "排序方式",
     "Pages": "页",
     "QR code that opens the sample AR catalogues": "打开示例 AR 目录的二维码",

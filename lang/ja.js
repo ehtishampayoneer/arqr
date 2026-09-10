@@ -329,9 +329,14 @@ window.ARQR_LANG = {
     "<b>Keep it live</b>Your catalogue stays active": "<b>公開し続ける</b>カタログは有効なまま",
     "<b>More sales</b>Let customers see it before they buy": "<b>売上アップ</b>買う前に見てもらえます",
     "<b>Trusted by modern retailers</b>Simple. Affordable. Powerful.": "<b>現代の小売業者に選ばれています</b>シンプル。手頃。強力。",
-    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>初回構築は 1 商品あたり 19.98 ドル</b>商品 50 点、初期構築 999 ドル、その後は月額 99 ドル。"
+    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>初回構築は 1 商品あたり 19.98 ドル</b>商品 50 点、初期構築 999 ドル、その後は月額 99 ドル。",
+    "Recommended": "おすすめ",
+    "Attach photos or a price list": "写真や価格表を添付",
+    "JPG, PNG, PDF or ZIP. You can pick several.": "JPG、PNG、PDF、ZIP。複数選べます。",
+    "Those files are too large to send": "ファイルが大きすぎて送れません"
   },
   a: {
+    "Remove this file": "このファイルを削除",
     "Sort by": "並べ替え",
     "Pages": "ページ",
     "QR code that opens the sample AR catalogues": "サンプル AR カタログを開く QR コード",

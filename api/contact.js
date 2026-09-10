@@ -88,17 +88,28 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'Name, a valid email and a message are needed.' });
   }
 
+  /* `files` is an array; `file` is the single-attachment shape this used
+     to take, kept so an older page cached in someone's browser still
+     sends rather than failing silently. */
+  const sent = Array.isArray(body.files) ? body.files : (body.file ? [body.file] : []);
   const attachments = [];
-  if (body.file && body.file.data) {
-    const buf = Buffer.from(String(body.file.data), 'base64');
-    if (buf.length > MAX_ATTACHMENT) {
-      return res.status(413).json({ ok: false, error: 'That file is too large. Please keep it under 3MB.' });
+  let bytes = 0;
+  for (const f of sent.slice(0, 12)) {
+    if (!f || !f.data) continue;
+    const buf = Buffer.from(String(f.data), 'base64');
+    bytes += buf.length;
+    /* the total is what matters, not the file */
+    if (bytes > MAX_ATTACHMENT) {
+      return res.status(413).json({
+        ok: false,
+        error: 'Those files come to more than 3MB together. Please send fewer, or a link.'
+      });
     }
     if (buf.length) {
       attachments.push({
-        /* the name comes from a stranger's machine, so it is stripped of
-           anything that could be read as a path */
-        filename: clean(body.file.name, 120).replace(/[\\/:*?"<>|]/g, '_') || 'attachment',
+        /* the name comes from a stranger's machine, so anything that could
+           be read as a path is stripped out of it */
+        filename: clean(f.name, 120).replace(/[\\/:*?"<>|]/g, '_') || 'attachment',
         content: buf
       });
     }
@@ -111,7 +122,10 @@ module.exports = async (req, res) => {
   const text = rows.map(([k, v]) => k + ': ' + v).join('\n') +
     '\n\n' + message +
     '\n\n---\nSent from the form at arqr360.com' +
-    (attachments.length ? '\nAttached: ' + attachments[0].filename : '');
+    (attachments.length
+      ? '\nAttached (' + attachments.length + '): ' +
+        attachments.map((a) => a.filename).join(', ')
+      : '');
 
   try {
     if (useResend) {

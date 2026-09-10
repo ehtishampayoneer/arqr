@@ -329,9 +329,14 @@ window.ARQR_LANG = {
     "<b>Keep it live</b>Your catalogue stays active": "<b>Yayında kalsın</b>Kataloğunuz aktif kalır",
     "<b>More sales</b>Let customers see it before they buy": "<b>Daha fazla satış</b>Müşteriler almadan önce görsün",
     "<b>Trusted by modern retailers</b>Simple. Affordable. Powerful.": "<b>Modern perakendecilerin tercihi</b>Basit. Uygun. Güçlü.",
-    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>İlk kurulumda ürün başına yalnızca 19,98 $</b>50 ürün, tek seferlik 999 $ kurulum, ardından ayda 99 $."
+    "<b>Just $19.98 per product for the initial build</b>50 products, $999 one-time setup, then $99/month.": "<b>İlk kurulumda ürün başına yalnızca 19,98 $</b>50 ürün, tek seferlik 999 $ kurulum, ardından ayda 99 $.",
+    "Recommended": "Öneriyoruz",
+    "Attach photos or a price list": "Fotoğraf veya fiyat listesi ekleyin",
+    "JPG, PNG, PDF or ZIP. You can pick several.": "JPG, PNG, PDF veya ZIP. Birden fazla seçebilirsiniz.",
+    "Those files are too large to send": "Bu dosyalar gönderilemeyecek kadar büyük"
   },
   a: {
+    "Remove this file": "Bu dosyayı kaldır",
     "Sort by": "Sırala",
     "Pages": "Sayfalar",
     "QR code that opens the sample AR catalogues": "Örnek AR kataloglarını açan QR kodu",
