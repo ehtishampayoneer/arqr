@@ -1349,10 +1349,12 @@
        state it is not the only way to anything: it is on its own line in
        the menu, and waiting again at the pricing table and the foot. */
     .bar.solid .cta{display:none}
-    /* and the lockup steps aside for the mark rather than shrink to fit */
-    .bar.solid .logo-full{display:none}
-    .bar.solid .logo-mark{display:block}
-    .bar.solid .logo-tag{display:none}
+    /* The scrolled bar keeps the real logo. It used to swap in the bare
+       AR monogram to buy room, which was true of the old lockup and is
+       not true of this one: measured at 414px scrolled, the mark is 82px
+       wide and the lockup at the same height is 71px, in a row with 49px
+       to spare. So the swap cost 11px and gave up the brand name to do
+       it - what a phone showed after one scroll was two letters. */
     .bar.solid .logo img{height:46px}
     .bar.solid .see{display:inline-flex;min-height:44px;padding:9px 15px;
       font-size:13.5px;white-space:nowrap}
