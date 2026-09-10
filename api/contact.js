@@ -8,14 +8,30 @@
    party's name is on the email, and the domain's mail is already set up,
    so it costs no new DNS records.
 
-   Nothing secret is written down here. The five values below are read
-   from the environment and are set in the Vercel dashboard:
+   Two ways to send, and it prefers the one that works from here.
 
-     SMTP_HOST   NamesLink's outgoing mail server
-     SMTP_PORT   465 for SSL, or 587 for STARTTLS
-     SMTP_USER   info@arqr360.com
-     SMTP_PASS   that mailbox's password
-     CONTACT_TO  where enquiries land, if not the same as SMTP_USER
+   SMTP to the NamesLink mailbox was the obvious route and it does not
+   work from a serverless function. The server is healthy: from an
+   ordinary connection port 465 answers with "220 smtp.aliyun-inc.com MX
+   AliMail Server" straight away. From Vercel the socket opens and then
+   the conversation never finishes, which is Aliyun declining datacenter
+   IP ranges, something a mail provider does on purpose and no setting on
+   this side changes. Port 587 is closed outright, so there is no second
+   port to try.
+
+   So the first choice is Resend, which is an ordinary HTTPS request and
+   cannot be blocked the way an SMTP port can. SMTP stays as the fallback
+   for the day the mailbox moves somewhere that accepts it.
+
+     RESEND_API_KEY  turns the HTTPS path on. If it is absent, SMTP.
+     MAIL_FROM       the From address. Resend will only send as a domain
+                     you have verified with it, so until arqr360.com is
+                     verified this stays at its default of onboarding@
+                     resend.dev. The customer is in Reply-To either way,
+                     so replying still reaches them.
+     CONTACT_TO      where enquiries land.
+
+     SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS   the fallback.
 
    JSON with the attachment base64'd, not multipart. Vercel's Node
    runtime parses JSON for you and leaves multipart as a stream you have
@@ -42,11 +58,17 @@ module.exports = async (req, res) => {
     return res.status(405).json({ ok: false, error: 'Use POST.' });
   }
 
-  const missing = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
-    .filter((k) => !process.env[k]);
+  const useResend = !!process.env.RESEND_API_KEY;
+  const missing = useResend ? []
+    : ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'].filter((k) => !process.env[k]);
   if (missing.length) {
     /* the browser is told the truth without being told the config */
     console.error('contact: missing env ' + missing.join(', '));
+    return res.status(500).json({ ok: false, error: 'The form is not configured yet.' });
+  }
+  const to = process.env.CONTACT_TO || process.env.SMTP_USER;
+  if (!to) {
+    console.error('contact: no CONTACT_TO and no SMTP_USER to fall back on');
     return res.status(500).json({ ok: false, error: 'The form is not configured yet.' });
   }
 
@@ -92,6 +114,36 @@ module.exports = async (req, res) => {
     (attachments.length ? '\nAttached: ' + attachments[0].filename : '');
 
   try {
+    if (useResend) {
+      const r = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + process.env.RESEND_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: process.env.MAIL_FROM || 'ARQR360 <onboarding@resend.dev>',
+          to: [to],
+          reply_to: name + ' <' + email + '>',
+          subject: 'AR catalogue enquiry from ' + name,
+          text,
+          attachments: attachments.map((a) => ({
+            filename: a.filename,
+            content: a.content.toString('base64')
+          }))
+        })
+      });
+      if (!r.ok) {
+        const detail = await r.text().catch(() => '');
+        console.error('contact: resend ' + r.status + ' ' + detail.slice(0, 300));
+        return res.status(502).json({
+          ok: false, error: 'That did not send.',
+          reason: r.status === 401 || r.status === 403 ? 'auth' : 'rejected'
+        });
+      }
+      return res.status(200).json({ ok: true });
+    }
+
     const port = Number(process.env.SMTP_PORT);
     /* Explicit timeouts, and all three of them. Left to itself nodemailer
        waits on the socket far longer than the function is allowed to run,
@@ -116,9 +168,9 @@ module.exports = async (req, res) => {
          fails and this lands in spam. The customer goes in Reply-To, so
          hitting reply still answers them. */
       from: 'ARQR360 <' + process.env.SMTP_USER + '>',
-      to: process.env.CONTACT_TO || process.env.SMTP_USER,
+      to,
       replyTo: name + ' <' + email + '>',
-      subject: 'AR catalog enquiry from ' + name,
+      subject: 'AR catalogue enquiry from ' + name,
       text,
       attachments
     });
