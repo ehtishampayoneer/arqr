@@ -114,7 +114,19 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error('contact: send failed', err && err.message);
-    return res.status(502).json({ ok: false, error: 'That did not send.' });
+    /* The visitor gets one sentence. What goes back alongside it is a
+       category, not a message: nodemailer's own text can quote the server
+       and occasionally the username, and this endpoint is public. The
+       category is enough to tell a wrong password from a blocked port
+       without publishing either. */
+    const code = String((err && (err.code || err.responseCode)) || '');
+    const reason =
+      /EAUTH|^535|^534|^530/.test(code) ? 'auth' :
+      /ECONNECTION|ECONNREFUSED|ENOTFOUND|EDNS/.test(code) ? 'connect' :
+      /ETIMEDOUT|ESOCKET/.test(code) ? 'timeout' :
+      /EENVELOPE|^55[0-9]/.test(code) ? 'rejected' : 'unknown';
+    console.error('contact: send failed [' + reason + '] ' + code + ' ' +
+      (err && err.message));
+    return res.status(502).json({ ok: false, error: 'That did not send.', reason });
   }
 };

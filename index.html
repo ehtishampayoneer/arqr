@@ -1372,6 +1372,13 @@
     .fld input,.fld textarea{padding-left:42px}
     .drop{padding:16px}
     .drop > svg{width:26px;height:26px}
+  .drop-clear{display:inline-flex;align-items:center;gap:6px;margin-top:8px;
+    padding:7px 12px;border:1px solid var(--line);border-radius:100px;
+    background:transparent;color:var(--sec-muted,#9A938A);cursor:pointer;
+    font:inherit;font-size:13px;font-weight:500;
+    transition:color .2s ease,border-color .2s ease}
+  .drop-clear:hover{color:#C2412A;border-color:#C2412A}
+  .drop-clear svg{width:14px;height:14px;display:block}
     .frm-send{justify-self:stretch;justify-content:center;padding:17px 24px}
     .frm-note{font-size:13px}
   }
@@ -2212,7 +2219,14 @@
               </span>
               <input id="f-file" name="attachment" type="file" accept="image/*,.pdf,.zip,.csv,.xlsx">
             </label>
-            <span class="err">That file is over 10 MB</span>
+            <!-- Outside the <label>, not inside it. A button inside a label
+                 for a file input is swallowed by the label: the click opens
+                 the file picker instead of removing anything. -->
+            <button class="drop-clear" id="f-fileClear" type="button" hidden>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span>Remove file</span>
+            </button>
+            <span class="err">That file is too large</span>
           </div>
 
           <button class="frm-send" type="submit"><svg viewBox="0 0 24 24" fill="none"><path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Send it over</button>
@@ -2489,11 +2503,26 @@
     msg.addEventListener("input", function(){ msgCount.textContent = msg.value.length; });
   }
 
-  fileInput.addEventListener('change', function(){
+  var fileClear = document.getElementById('f-fileClear');
+
+  function showFile(){
     var f = fileInput.files[0];
     fileName.textContent = f ? f.name + '  (' + (f.size / 1048576).toFixed(1) + ' MB)' : fileDefault;
-    clear(fileInput);
-  });
+    if (fileClear) fileClear.hidden = !f;
+  }
+
+  fileInput.addEventListener('change', function(){ showFile(); clear(fileInput); });
+
+  if (fileClear) {
+    fileClear.addEventListener('click', function(){
+      /* value = '' is what actually empties a file input; removing the
+         name from the label only hides it and the file still sends */
+      fileInput.value = '';
+      showFile();
+      clear(fileInput);
+      fileInput.focus();
+    });
+  }
 
   function field(el){ return el.closest('.fld'); }
   function mark(el){ field(el).classList.add('bad'); }
@@ -2570,7 +2599,7 @@
       .then(function(out){
         if (!out || !out.ok) throw new Error((out && out.error) || 'failed');
         form.reset();
-        fileName.textContent = fileDefault;
+        showFile();
         if (msgCount) msgCount.textContent = '0';
         say('Got it. We will come back to you within one working day.', 'ok');
       })
