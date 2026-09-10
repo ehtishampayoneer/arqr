@@ -39,7 +39,7 @@ const DOCS = [
     path: '/terms',
     slug: 'terms',
     title: 'Terms of Service',
-    lead: 'The agreement between you and ' + BIZ.name + ' when we build and host an AR catalog for your shop.',
+    lead: 'The agreement between you and ' + BIZ.name + ' when we build and host an AR catalogue for your shop.',
     sections: [
       ['Who you are dealing with', [
         P(BIZ.name + ' is a business based in ' + BIZ.city + ', ' + BIZ.country + '. You can reach a human at ' +
@@ -52,38 +52,38 @@ const DOCS = [
         P('For each product we build we need photographs and its real measurements. If you already have 3D files we can use those instead.'),
         UL([
           'We build the models and check them against the measurements you give us.',
-          'We host the catalog and give you the QR code and the link.',
+          'We host the catalogue and give you the QR code and the link.',
           'Orders reach you directly. We are not a shop and we do not take your customers’ money.'
         ])
       ]],
       ['What you are responsible for', [
         P('That you own the products you send us, or have the right to have them modelled and shown. That the measurements you give us are correct, since a model built to a wrong measurement will be wrong in your customer’s room. That your photographs do not infringe anyone else’s rights.'),
-        P('We will not build catalogs for counterfeit goods, for anything illegal where you or we are, or for content that infringes someone else’s rights.')
+        P('We will not build catalogues for counterfeit goods, for anything illegal where you or we are, or for content that infringes someone else’s rights.')
       ]],
       ['What it costs', [
-        P('The service is a one-time build fee and then a monthly fee that keeps the catalog live. The prices on our pricing page at the moment you order are the prices that apply, and founder pricing is time-limited and says so where it is shown.'),
+        P('The service is a one-time build fee and then a monthly fee that keeps the catalogue live. The prices on our pricing page at the moment you order are the prices that apply, and founder pricing is time-limited and says so where it is shown.'),
         P('Products beyond the number in your plan are charged per product at the rate shown. Above the largest plan, and for multiple stores or categories, we quote for the range before any work starts.'),
-        P('The monthly fee is what pays for hosting, for the catalog staying online, and for support. Stop paying it and the catalog stops being served.')
+        P('The monthly fee is what pays for hosting, for the catalogue staying online, and for support. Stop paying it and the catalogue stops being served.')
       ]],
       ['How long it takes', [
         P('About seven working days from the point where we have photographs we can actually work from. If a photograph is unusable, or a measurement is missing, that clock starts when the replacement arrives. We will tell you which one it is rather than letting the date slip quietly.')
       ]],
       ['Who owns what', [
         P('<strong>The 3D models of your products are yours.</strong> They are built from your goods, and if you leave you can ask us for the files and we will send them.'),
-        P('What stays ours is everything that is not your products: the platform, the viewer your customers open, the code, the design of the catalog pages and our own name and marks. Your subscription is permission to use those while it is running, not ownership of them.'),
-        P('We may show your catalog as an example of our work unless you email us and ask us not to. If you ask, we will stop.')
+        P('What stays ours is everything that is not your products: the platform, the viewer your customers open, the code, the design of the catalogue pages and our own name and marks. Your subscription is permission to use those while it is running, not ownership of them.'),
+        P('We may show your catalogue as an example of our work unless you email us and ask us not to. If you ask, we will stop.')
       ]],
       ['Hosting, and what we do not promise', [
-        P('We host your catalog on infrastructure we do not own, and neither we nor anyone else can honestly promise a website will never be unreachable. We aim to keep it up and to fix breakages quickly. We do not offer an uptime guarantee, and we do not offer service credits.'),
+        P('We host your catalogue on infrastructure we do not own, and neither we nor anyone else can honestly promise a website will never be unreachable. We aim to keep it up and to fix breakages quickly. We do not offer an uptime guarantee, and we do not offer service credits.'),
         P('We may change how the platform works, including the viewer, so long as the change does not take away what you are paying for.')
       ]],
       ['Ending it', [
-        P('You can cancel the monthly fee at any time. The catalog stays live until the end of the period you have already paid for, and is then taken offline. Ask us within thirty days of that and we will send you your model files.'),
+        P('You can cancel the monthly fee at any time. The catalogue stays live until the end of the period you have already paid for, and is then taken offline. Ask us within thirty days of that and we will send you your model files.'),
         P('We may end the agreement if a payment fails and stays unpaid, or if the service is used for something in the list above that we will not build. Where we can, we will tell you first.')
       ]],
       ['If something goes wrong', [
         P('Nothing here limits liability for death, personal injury, or fraud, because it cannot.'),
-        P('Beyond that, our liability to you is limited to the amount you have paid us in the twelve months before the problem. We are not liable for lost sales, lost profit or lost data, which are the things a business would most like to claim for and the things nobody building a catalog can control.')
+        P('Beyond that, our liability to you is limited to the amount you have paid us in the twelve months before the problem. We are not liable for lost sales, lost profit or lost data, which are the things a business would most like to claim for and the things nobody building a catalogue can control.')
       ]],
       ['Changes to these terms', [
         P('We may update this page. If a change materially affects what you are paying for, we will email the address on your account before it takes effect. The date at the top says when it was last changed.')
@@ -137,8 +137,8 @@ const DOCS = [
         P('The social icons in the footer are ordinary links. Nothing from Instagram, X or LinkedIn loads on this site unless you click through to them.')
       ]],
       ['If you become a customer', [
-        P('To build your catalog we hold the photographs, measurements and product details you send us, and we use them for that and nothing else. We do not use your products to train anything, and we do not pass them to anyone outside the work.'),
-        P('We may show a finished catalog as an example of our work. Email us and we will stop.')
+        P('To build your catalogue we hold the photographs, measurements and product details you send us, and we use them for that and nothing else. We do not use your products to train anything, and we do not pass them to anyone outside the work.'),
+        P('We may show a finished catalogue as an example of our work. Email us and we will stop.')
       ]],
       ['Your rights', [
         P('Ask us what we hold about you and we will tell you. Ask us to correct it and we will. Ask us to delete it and we will, unless we are required to keep a record of a transaction. One email to ' +
@@ -165,14 +165,14 @@ const DOCS = [
         UL([
           '<strong>Before we start modelling.</strong> A full refund, no reason needed. Email us and it is done.',
           '<strong>Once modelling has begun.</strong> Not refundable, because the work is bespoke and cannot be resold to anyone else. We will tell you when we start, so you always know which side of that line you are on.',
-          '<strong>If we cannot deliver.</strong> A full refund. If your photographs turn out not to be workable and we cannot get to a catalog we would be willing to put our name on, that is our problem, not yours, and you get everything back.'
+          '<strong>If we cannot deliver.</strong> A full refund. If your photographs turn out not to be workable and we cannot get to a catalogue we would be willing to put our name on, that is our problem, not yours, and you get everything back.'
         ])
       ]],
       ['The monthly fee', [
-        P('Cancel whenever you like. Your catalog stays live to the end of the period you have already paid for, and then comes down.'),
+        P('Cancel whenever you like. Your catalogue stays live to the end of the period you have already paid for, and then comes down.'),
         P('We do not refund part of a month. We also do not bill you again after you cancel, and we do not require notice.')
       ]],
-      ['If the catalog is not what we agreed', [
+      ['If the catalogue is not what we agreed', [
         P('Tell us. If a model is wrong, the wrong size, or not what you asked for, we fix it at no cost. That is not a refund question, it is us finishing the job properly, and there is no time limit on a mistake that is ours.')
       ]],
       ['How to ask', [

@@ -29,5 +29,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/catalog",
+      "destination": "/catalogue",
+      "permanent": true
+    }
   ]
 }

@@ -4,4 +4,4 @@ Allow: /
 # the models are large and there is nothing to index inside them
 Disallow: /assets/shops/
 
-Sitemap: https://arqr-two.vercel.app/sitemap.xml
+Sitemap: https://arqr360.com/sitemap.xml

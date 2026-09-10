@@ -291,7 +291,7 @@ function svg(grid, n, opts) {
    Run:  node qr-gen.js                       (uses the site below)
          node qr-gen.js https://yourdomain.com
    ------------------------------------------------------------------ */
-const SITE = (process.argv[2] || 'https://arqr-two.vercel.app').replace(/\/+$/, '');
+const SITE = (process.argv[2] || 'https://arqr360.com').replace(/\/+$/, '');
 
 const stores = (function () {
   const src = fs.readFileSync('stores.js', 'utf8');
@@ -301,7 +301,7 @@ const stores = (function () {
 })();
 
 const level = 'H';                       /* 30% recovery — the centre mark is safe */
-const targets = [['catalog', SITE + '/catalog']]
+const targets = [['catalogue', SITE + '/catalogue']]
   .concat(stores.map(slug => [slug, SITE + '/' + slug]));
 
 targets.forEach(([name, url]) => {

@@ -5,17 +5,17 @@ module.exports = { t: {
 'Why it works': ['为什么有效','効果がある理由','Почему это работает','Nega samarali','Neden işe yarar','Por qué funciona','Pourquoi ça marche','Warum es funktioniert','Perché funziona','Porque funciona','یہ کیوں کارگر ہے'],
 'Pricing': ['价格','料金','Цены','Narxlar','Fiyatlar','Precios','Tarifs','Preise','Prezzi','Preços','قیمتیں'],
 'Contact': ['联系我们','お問い合わせ','Контакты','Aloqa','İletişim','Contacto','Contact','Kontakt','Contatti','Contacto','رابطہ'],
-'Get your catalog': ['获取你的目录','カタログを作る','Получить каталог','Katalogingizni oling','Kataloğunuzu alın','Consigue tu catálogo','Obtenez votre catalogue','Ihren Katalog holen','Ottieni il tuo catalogo','Obtenha o seu catálogo','اپنا کیٹلاگ حاصل کریں'],
+'Get your catalogue': ['获取你的目录','カタログを作る','Получить каталог','Katalogingizni oling','Kataloğunuzu alın','Consigue tu catálogo','Obtenez votre catalogue','Ihren Katalog holen','Ottieni il tuo catalogo','Obtenha o seu catálogo','اپنا کیٹلاگ حاصل کریں'],
 'Back to ARQR': ['返回 ARQR','ARQR に戻る','Назад к ARQR','ARQR ga qaytish','ARQR\'ye dön','Volver a ARQR','Retour à ARQR','Zurück zu ARQR','Torna ad ARQR','Voltar ao ARQR','ARQR پر واپس'],
 
 /* ---------------- opening screen ---------------- */
-'Apply for your AR catalog': ['申请你的 AR 目录','AR カタログを申し込む','Заказать AR-каталог','AR katalogingizga ariza bering','AR kataloğunuz için başvurun','Solicita tu catálogo AR','Demandez votre catalogue AR','AR-Katalog anfragen','Richiedi il tuo catalogo AR','Peça o seu catálogo AR','اپنے AR کیٹلاگ کے لیے درخواست دیں'],
+'Apply for your AR catalogue': ['申请你的 AR 目录','AR カタログを申し込む','Заказать AR-каталог','AR katalogingizga ariza bering','AR kataloğunuz için başvurun','Solicita tu catálogo AR','Demandez votre catalogue AR','AR-Katalog anfragen','Richiedi il tuo catalogo AR','Peça o seu catálogo AR','اپنے AR کیٹلاگ کے لیے درخواست دیں'],
 'See a live example': ['查看真实示例','実際の例を見る','Посмотреть живой пример','Jonli namunani ko‘ring','Canlı bir örnek görün','Ver un ejemplo real','Voir un exemple réel','Echtes Beispiel ansehen','Guarda un esempio reale','Ver um exemplo real','ایک حقیقی مثال دیکھیں'],
 'No app to download': ['无需下载应用','アプリ不要','Без приложений','Ilova kerak emas','Uygulama gerekmez','Sin descargar nada','Aucune application','Keine App nötig','Nessuna app da scaricare','Sem instalar nada','کوئی ایپ ڈاؤن لوڈ نہیں'],
 'iPhone &amp; Android': ['iPhone 和 Android','iPhone と Android','iPhone и Android','iPhone va Android','iPhone ve Android','iPhone y Android','iPhone et Android','iPhone &amp; Android','iPhone e Android','iPhone e Android','آئی فون اور اینڈرائیڈ'],
 'Live in 7 days': ['7 天上线','7日で公開','Готово за 7 дней','7 kunda tayyor','7 günde hazır','Listo en 7 días','Prêt en 7 jours','In 7 Tagen live','Pronto in 7 giorni','Pronto em 7 dias','‏7 دن میں تیار'],
-'See a real catalog first': ['先看一个真实目录','まず本物のカタログを','Сначала посмотрите настоящий каталог','Avval haqiqiy katalogni ko‘ring','Önce gerçek bir katalog görün','Mira primero un catálogo real','Voyez d\'abord un vrai catalogue','Erst einen echten Katalog ansehen','Guarda prima un catalogo vero','Veja primeiro um catálogo real','پہلے ایک اصلی کیٹلاگ دیکھیں'],
-"Point your phone camera at this code. Four real catalogs: furniture, footwear, decor and carpets, each one a single shop's own.":
+'See a real catalogue first': ['先看一个真实目录','まず本物のカタログを','Сначала посмотрите настоящий каталог','Avval haqiqiy katalogni ko‘ring','Önce gerçek bir katalog görün','Mira primero un catálogo real','Voyez d\'abord un vrai catalogue','Erst einen echten Katalog ansehen','Guarda prima un catalogo vero','Veja primeiro um catálogo real','پہلے ایک اصلی کیٹلاگ دیکھیں'],
+"Point your phone camera at this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.":
   ['用手机相机对准这个二维码。四个真实目录：家具、鞋履、家饰、地毯，每个都属于一家店。',
    'スマホのカメラをこのコードに向けてください。家具・靴・インテリア・カーペットの4つのカタログは、それぞれ一つの店のものです。',
    'Наведите камеру телефона на этот код. Четыре настоящих каталога: мебель, обувь, декор, ковры, каждый принадлежит одному магазину.',
@@ -27,7 +27,7 @@ module.exports = { t: {
    'Punta la fotocamera del telefono su questo codice. Quattro cataloghi veri: mobili, scarpe, decoro, tappeti, ognuno di un solo negozio.',
    'Aponte a câmara do telemóvel para este código. Quatro catálogos reais: mobiliário, calçado, decoração, tapetes, cada um de uma só loja.',
    'اپنے فون کا کیمرہ اس کوڈ پر رکھیں۔ چار اصلی کیٹلاگ: فرنیچر، جوتے، ڈیکور، قالین، ہر ایک کسی ایک دکان کا اپنا۔'],
-"Tap this code. Four real catalogs: furniture, footwear, decor and carpets, each one a single shop's own.":
+"Tap this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.":
   ['点击这个二维码。四个真实目录：家具、鞋履、家饰、地毯，每个都属于一家店。',
    'このコードをタップしてください。家具・靴・インテリア・カーペットの4つのカタログは、それぞれ一つの店のものです。',
    'Нажмите на этот код. Четыре настоящих каталога: мебель, обувь, декор, ковры, каждый принадлежит одному магазину.',

@@ -22,10 +22,10 @@ const fs = require('fs');
 /* ---------------------------------------------------------------- config */
 const SITE = {
   /* the one line to change when the real domain lands */
-  origin: 'https://arqr-two.vercel.app',
+  origin: 'https://arqr360.com',
   name: 'ARQR',
   tagline: 'Your showroom, in their room',
-  blurb: 'ARQR turns your products into an AR catalog. One QR code and your ' +
+  blurb: 'ARQR turns your products into an AR catalogue. One QR code and your ' +
          'customers see every piece at true size in their own room. No app to download.',
   /* These are real now. sameAs is how a search engine ties the site and
      the profiles into one entity rather than four strangers, so it is
@@ -44,18 +44,18 @@ const FAQ = [
    'room at true size, through one QR code or one link. There is no app to download. It opens ' +
    'in the phone’s own camera on both iPhone and Android.'],
 
-  ['How much does an AR catalog cost?',
-   'You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing ' +
+  ['How much does an AR catalogue cost?',
+   'You pay once to have the catalogue built, then a monthly fee keeps it live. At founder pricing ' +
    'that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 ' +
    'for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple ' +
    'stores and categories, we quote for the range.'],
 
   ['Do my customers need to install an app?',
-   'No. The catalog opens in the browser, and the AR view uses what is already built into the ' +
+   'No. The catalogue opens in the browser, and the AR view uses what is already built into the ' +
    'phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or ' +
    'taps a link and the product appears in the room in front of them.'],
 
-  ['How long does it take to get my catalog?',
+  ['How long does it take to get my catalogue?',
    'About seven days from your photographs arriving. Send your best-selling products first. Every product ' +
    'is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the ' +
    'customer can see whether it fits.'],
@@ -77,12 +77,12 @@ const PAGES = [
   { file: 'index.html',   path: '/',        image: '/assets/og-home.jpg',
     title: 'ARQR | Your showroom, in their room',
     desc: SITE.blurb, schema: true, faq: true, priority: '1.0' },
-  { file: 'catalog.html', path: '/catalog', image: '/assets/og-catalog.jpg',
-    title: 'Sample AR catalogs: furniture, footwear, decor and rugs | ARQR',
-    desc: 'Four sample catalogs you can open on your phone. Every product at true size in your own room.',
+  { file: 'catalogue.html', path: '/catalogue', image: '/assets/og-catalog.jpg',
+    title: 'Sample AR catalogues: furniture, footwear, decor and rugs | ARQR',
+    desc: 'Four sample catalogues you can open on your phone. Every product at true size in your own room.',
     priority: '0.9' },
   { file: 'store.html',   path: '/store',   image: '/assets/og-catalog.jpg',
-    title: 'AR catalog', desc: null, perShop: true, priority: '0.7', noSitemap: true },
+    title: 'AR catalogue', desc: null, perShop: true, priority: '0.7', noSitemap: true },
 
   /* The legal three. Low priority because nobody searches for them, but in
      the sitemap on purpose: a payment provider's reviewer and a business
@@ -90,7 +90,7 @@ const PAGES = [
      seen is a page they can decide is not really there. */
   { file: 'terms.html',   path: '/terms',   image: '/assets/og-home.jpg',
     title: 'Terms of Service | ARQR360',
-    desc: 'The agreement between you and ARQR360 when we build and host an AR catalog for your shop.',
+    desc: 'The agreement between you and ARQR360 when we build and host an AR catalogue for your shop.',
     priority: '0.3' },
   { file: 'privacy.html', path: '/privacy', image: '/assets/og-home.jpg',
     title: 'Privacy Policy | ARQR360',
@@ -127,7 +127,7 @@ function stamp(file){
 function headBlock(page){
   const url = SITE.origin + page.path;
   const img = SITE.origin + page.image + stamp(page.image);
-  const desc = page.desc || 'An AR catalog. Every product at true size, in your own space.';
+  const desc = page.desc || 'An AR catalogue. Every product at true size, in your own space.';
   const L = [];
 
   L.push(START);
@@ -173,7 +173,7 @@ function headBlock(page){
 
     const service = {
       '@context': 'https://schema.org', '@type': 'Service',
-      name: 'AR product catalog', provider: { '@type': 'Organization', name: SITE.name },
+      name: 'AR product catalogue', provider: { '@type': 'Organization', name: SITE.name },
       description: SITE.blurb,
       /* two prices, and the markup says which is which. The setup fee is
          the Offer's price because it is what is paid to start; the monthly
@@ -243,8 +243,8 @@ const SHOP_SCRIPT = `<script>
   };
   set('link[rel="canonical"]', 'href', url);
   set('meta[property="og:url"]', 'content', url);
-  set('meta[property="og:title"]', 'content', s.name + ' | AR catalog');
-  set('meta[name="twitter:title"]', 'content', s.name + ' | AR catalog');
+  set('meta[property="og:title"]', 'content', s.name + ' | AR catalogue');
+  set('meta[name="twitter:title"]', 'content', s.name + ' | AR catalogue');
 })();
 </script>`;
 

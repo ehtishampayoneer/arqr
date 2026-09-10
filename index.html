@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FAF7F2">
-<meta name="description" content="ARQR turns your products into an AR catalog. Customers scan one code and see every item at true size in their own room, before they buy.">
+<meta name="description" content="ARQR turns your products into an AR catalogue. Customers scan one code and see every item at true size in their own room, before they buy.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=88"></script>
+<script src="i18n.js?v=90"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -155,7 +155,7 @@
     letter-spacing:.24em;text-transform:uppercase;line-height:1;
     color:#68676A;white-space:nowrap}
   /* A phone bar is 84px and this line is 159px wide on its own, which
-     is more than the row has once the language and the catalog button
+     is more than the row has once the language and the catalogue button
      are in it. It was 2.6px of grey inside the picture at that size
      anyway, so nothing legible is lost by leaving it to the desktop. */
   @media(max-width:700px){ .logo-tag{display:none} }
@@ -230,7 +230,7 @@
   .mnav .mnav-cta{margin-top:16px;background:var(--accent);color:#fff;border-bottom:0;
     text-align:center;border-radius:100px;padding:16px}
   @media(min-width:1081px){.mnav{display:none}}
-  /* the sample catalogs, reachable from the bar on every page. A quiet
+  /* the sample catalogues, reachable from the bar on every page. A quiet
      outline beside the solid one: it is the second thing we want pressed,
      not the first. */
   .bar .see{display:inline-flex;align-items:center;gap:8px;flex:none;
@@ -385,7 +385,7 @@
   .promise strong{display:block;font-size:17.5px;font-weight:600;margin-bottom:5px}
   .promise > div span{display:block;font-size:14.5px;line-height:1.5;color:var(--sec-muted)}
 
-  /* ---- the sample-catalog code ---- */
+  /* ---- the sample-catalogue code ---- */
   .how-qr{display:flex;align-items:center;gap:clamp(13px,1.2vw,18px);
     margin-top:clamp(14px,2vh,22px);padding:clamp(11px,1.3vh,15px);max-width:430px;
     background:var(--sec-card);border-radius:16px}
@@ -461,7 +461,7 @@
     .steps4 li+li::before,.steps4 li+li::after{display:none}
   }
 
-  /* ================= GET YOUR CATALOG ================= */
+  /* ================= GET YOUR CATALOGUE ================= */
   .cat{position:relative;overflow:hidden;background:var(--page);
     padding:clamp(38px,4.5vh,62px) 0 clamp(70px,9vh,120px)}
   .cat-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(15px,2.1vh,26px)}
@@ -708,7 +708,7 @@
   .pr h2 em{font-style:normal;color:var(--accent)}
   .pr-sub{margin:0;font-size:clamp(15px,1.1vw,17.5px);line-height:1.6;color:var(--ink-soft)}
 
-  /* Landing here from a catalog's apply button. Without this the browser
+  /* Landing here from a catalogue's apply button. Without this the browser
      puts the field flush against the top of the viewport, which on a phone
      means underneath the fixed bar with no sign of what it is asking for.
      The margin buys back the bar plus the heading above the field. */
@@ -1161,23 +1161,23 @@
        second line; it keeps its natural width now and the gap gives way */
     /* At the top of the page the bar has no room for a second button:
        logo, language, the button and the burger already fill it, so the
-       sample catalogs live in the menu.
+       sample catalogues live in the menu.
 
        Once the page has moved, that changes. Picking a language is a
        first-screen decision, made once and then remembered, and after
        that the switcher is holding the only spare seat in the bar. So it
        gives the seat up: scroll, and the globe becomes the way into the
-       sample catalogs. The label steps aside with it — at this width the
+       sample catalogues. The label steps aside with it — at this width the
        glyph is the button, the same way the globe was. */
     .bar{min-height:84px;padding-block:14px}
     .logo{--logo-h:56px}
-    /* "Get your catalog" is back. It only left to pay for a logo 265px
+    /* "Get your catalogue" is back. It only left to pay for a logo 265px
        wide; this one is 88px, so the row can hold it again. */
 
     .bar .see{display:none}
     .bar.solid .lang{display:none}
     /* A button with a word on it, not a glyph. The short label is used
-       here because the long one does not fit beside "Get your catalog" on
+       here because the long one does not fit beside "Get your catalogue" on
        a 414px phone, and both are already in all twelve languages.
 
        The wordmark comes off while the bar is solid to pay for it. Below
@@ -1186,7 +1186,7 @@
     .see-full{display:none}
     .see-brief{display:inline}
     /* Scrolled, the samples button arrives, and at 414 the row came to
-       485px of a 414px phone. So the catalog button goes here, in the one
+       485px of a 414px phone. So the catalogue button goes here, in the one
        state it is not the only way to anything: it is on its own line in
        the menu, and waiting again at the pricing table and the foot. */
     .bar.solid .cta{display:none}
@@ -1203,8 +1203,8 @@
   }
 
   /* Below this the row genuinely cannot hold both buttons: the samples
-     button, "Get your catalog", the mark and the burger come to 427px of a
-     414px phone, and something has to give. It is the catalog button that
+     button, "Get your catalogue", the mark and the burger come to 427px of a
+     414px phone, and something has to give. It is the catalogue button that
      goes, and only while you are scrolled — it is on its own line in the
      menu, and it appears again at the pricing table and at the foot of
      every page. The samples had nowhere else to be. */
@@ -1419,22 +1419,22 @@
 
 </style>
   <!-- seo:start | generated by seo.js, do not edit by hand -->
-  <link rel="canonical" href="https://arqr-two.vercel.app/">
+  <link rel="canonical" href="https://arqr360.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ARQR">
   <meta property="og:title" content="ARQR | Your showroom, in their room">
-  <meta property="og:description" content="ARQR turns your products into an AR catalog. One QR code and your customers see every piece at true size in their own room. No app to download.">
-  <meta property="og:url" content="https://arqr-two.vercel.app/">
-  <meta property="og:image" content="https://arqr-two.vercel.app/assets/og-home.jpg?v=8944e361">
+  <meta property="og:description" content="ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.">
+  <meta property="og:url" content="https://arqr360.com/">
+  <meta property="og:image" content="https://arqr360.com/assets/og-home.jpg?v=8944e361">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ARQR | Your showroom, in their room">
-  <meta name="twitter:description" content="ARQR turns your products into an AR catalog. One QR code and your customers see every piece at true size in their own room. No app to download.">
-  <meta name="twitter:image" content="https://arqr-two.vercel.app/assets/og-home.jpg?v=8944e361">
+  <meta name="twitter:description" content="ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.">
+  <meta name="twitter:image" content="https://arqr360.com/assets/og-home.jpg?v=8944e361">
 
   <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -1446,9 +1446,9 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ARQR",
-    "url": "https://arqr-two.vercel.app/",
-    "logo": "https://arqr-two.vercel.app/assets/logo-mark.png?v=f62dee9f",
-    "description": "ARQR turns your products into an AR catalog. One QR code and your customers see every piece at true size in their own room. No app to download.",
+    "url": "https://arqr360.com/",
+    "logo": "https://arqr360.com/assets/logo-mark.png?v=f62dee9f",
+    "description": "ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.",
     "sameAs": [
       "https://www.instagram.com/arqr360",
       "https://x.com/arqr360",
@@ -1461,7 +1461,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "ARQR",
-    "url": "https://arqr-two.vercel.app/",
+    "url": "https://arqr360.com/",
     "inLanguage": "en"
   }
   </script>
@@ -1469,12 +1469,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AR product catalog",
+    "name": "AR product catalogue",
     "provider": {
       "@type": "Organization",
       "name": "ARQR"
     },
-    "description": "ARQR turns your products into an AR catalog. One QR code and your customers see every piece at true size in their own room. No app to download.",
+    "description": "ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.",
     "offers": [
       {
         "@type": "Offer",
@@ -1566,10 +1566,10 @@
       },
       {
         "@type": "Question",
-        "name": "How much does an AR catalog cost?",
+        "name": "How much does an AR catalogue cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range."
+          "text": "You pay once to have the catalogue built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range."
         }
       },
       {
@@ -1577,12 +1577,12 @@
         "name": "Do my customers need to install an app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. The catalog opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them."
+          "text": "No. The catalogue opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does it take to get my catalog?",
+        "name": "How long does it take to get my catalogue?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits."
@@ -1606,8 +1606,8 @@
 <header class="bar" id="bar">
     <a class="logo" href="#">
 <!-- logo:start, generated by logo-write.js -->
-<img class="logo-full" src="assets/logo-bar.png?v=88" width="421" height="260" alt="ARQR360, AR catalogs for retail" decoding="async">
-<img class="logo-mark" src="assets/logo-mono.png?v=88" width="215" height="115" alt="" aria-hidden="true" decoding="async">
+<img class="logo-full" src="assets/logo-bar.png?v=90" width="421" height="260" alt="ARQR360" decoding="async">
+<img class="logo-mark" src="assets/logo-mono.png?v=90" width="215" height="115" alt="" aria-hidden="true" decoding="async">
 <!-- logo:end -->
       <span class="logo-tag">See it. Place it. Love it.</span>
     </a>
@@ -1617,8 +1617,8 @@
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="see" href="/catalog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zM17.5 17.5h3v3h-3z" fill="currentColor"/></svg><span class="see-full">See a live example</span><span class="see-brief">Sample catalogs</span></a>
-    <a class="cta" href="#contact">Get your catalog</a>
+    <a class="see" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zM17.5 17.5h3v3h-3z" fill="currentColor"/></svg><span class="see-full">See a live example</span><span class="see-brief">Sample catalogues</span></a>
+    <a class="cta" href="#contact">Get your catalogue</a>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
       <span></span><span></span><span></span>
     </button>
@@ -1629,8 +1629,8 @@
   <a href="#why">Why it works</a>
   <a href="#pricing">Pricing</a>
   <a href="#contact">Contact</a>
-  <a href="/catalog">See a live example</a>
-  <a class="mnav-cta" href="#contact">Get your catalog</a>
+  <a href="/catalogue">See a live example</a>
+  <a class="mnav-cta" href="#contact">Get your catalogue</a>
 </nav>
 
 <!-- ================= HOW IT WORKS ================= -->
@@ -1646,10 +1646,10 @@
   <div class="how-in">
 
     <div class="how-left">
-      <p class="sec-eyebrow rev">AR catalogs for shops, showrooms &amp; online sellers</p>
+      <p class="sec-eyebrow rev">AR catalogues for shops, showrooms &amp; online sellers</p>
       <h1 class="rev">Let customers see your products in their space before they buy.</h1>
       <span class="rule rev" aria-hidden="true"></span>
-      <p class="how-sub rev">ARQR turns your catalog into a real-size virtual showroom.</p>
+      <p class="how-sub rev">ARQR turns your catalogue into a real-size virtual showroom.</p>
 
       <div class="proof rev">
         <span class="proof-num">80%</span>
@@ -1660,10 +1660,10 @@
       </div>
 
       <div class="cat-cta rev">
-        <a class="btn btn-a" href="#contact">Apply for your AR catalog
+        <a class="btn btn-a" href="#contact">Apply for your AR catalogue
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="btn btn-b" href="catalog">See a live example</a>
+        <a class="btn btn-b" href="catalogue">See a live example</a>
       </div>
 
       <p class="trust rev">
@@ -1672,14 +1672,14 @@
         <span>Live in 7 days</span>
       </p>
       <div class="how-qr rev">
-        <a class="qr-shot" href="catalog" aria-label="Open the four sample AR catalogs">
-          <img src="assets/qr-catalog.svg?v=88" alt="QR code that opens the sample AR catalogs" width="150" height="150" loading="lazy">
+        <a class="qr-shot" href="catalogue" aria-label="Open the four sample AR catalogues">
+          <img src="assets/qr-catalogue.svg?v=90" alt="QR code that opens the sample AR catalogues" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
-          <strong>See a real catalog first</strong>
-          <span class="qr-scan">Point your phone camera at this code. Four real catalogs: furniture, footwear, decor and carpets, each one a single shop's own.</span>
-          <span class="qr-tap">Tap this code. Four real catalogs: furniture, footwear, decor and carpets, each one a single shop's own.</span>
-          <a class="qr-open" href="catalog">See the samples
+          <strong>See a real catalogue first</strong>
+          <span class="qr-scan">Point your phone camera at this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.</span>
+          <span class="qr-tap">Tap this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.</span>
+          <a class="qr-open" href="catalogue">See the samples
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1689,8 +1689,8 @@
     <div class="how-right">
       <div class="vbox rev" id="vbox">
         <p class="vfallback"><span class="vf-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8.5 12 13l8-4.5M12 13v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>AR preview loading&hellip;</p>
-        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=88"></video>
-        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=88"></video>
+        <video id="v1" muted autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-1.mp4?v=90"></video>
+        <video id="v2" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture src="assets/how-2.mp4?v=90"></video>
 
         <span class="pill pill-tl">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.4 15.6 10.5v4.2L12 16.8 8.4 14.7v-4.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1758,9 +1758,9 @@
       </div>
 
       <div class="cmp rev" id="cmp">
-        <img src="assets/why-ar.webp?v=88" alt="The product placed in the room through AR">
+        <img src="assets/why-ar.webp?v=90" alt="The product placed in the room through AR">
         <div class="cmp-top">
-          <img src="assets/why-photo.webp?v=88" alt="The same product shown only as a flat photo">
+          <img src="assets/why-photo.webp?v=90" alt="The same product shown only as a flat photo">
         </div>
         <canvas class="cmp-spark" aria-hidden="true"></canvas>
         <span class="cmp-line" aria-hidden="true"></span>
@@ -1778,9 +1778,9 @@
 
       <div class="carou rev" id="carou">
         <div class="carou-track" id="carouTrack">
-          <figure><img src="assets/why-size.webp?v=88" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
-          <figure><img src="assets/why-style.webp?v=88" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
-          <figure><img src="assets/why-confidence.webp?v=88" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
+          <figure><img src="assets/why-size.webp?v=90" alt="Will it fit? A chair measured against the room" decoding="async"></figure>
+          <figure><img src="assets/why-style.webp?v=90" alt="Will it look right? Two colours compared side by side" decoding="async"></figure>
+          <figure><img src="assets/why-confidence.webp?v=90" alt="Will I regret buying it? A chair with a question mark" decoding="async"></figure>
         </div>
         <button class="carou-arw carou-prev" id="carouPrev" type="button" aria-label="Previous question">
           <svg viewBox="0 0 24 24" fill="none"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1799,7 +1799,7 @@
         <p class="why-eyebrow">The solution</p>
         <h3>AR removes <em>the guesswork.</em></h3>
         <p class="why-lead">Instead of asking customers to imagine your product in their space, let them see it there.</p>
-        <div class="sol-phone"><img src="assets/why-phone.webp?v=88" alt="A phone showing the product placed in a real room"></div>
+        <div class="sol-phone"><img src="assets/why-phone.webp?v=90" alt="A phone showing the product placed in a real room"></div>
       </div>
     </div>
 
@@ -1815,12 +1815,12 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>03</em> &middot; <span class="dv-txt">Get your catalog</span>
+    <em>03</em> &middot; <span class="dv-txt">Get your catalogue</span>
   </span>
 </div>
 
-<!-- ================= GET YOUR CATALOG ================= -->
-<section class="cat" id="catalogs">
+<!-- ================= GET YOUR CATALOGUE ================= -->
+<section class="cat" id="catalogues">
 
   <div class="scanline" aria-hidden="true"></div>
 
@@ -1845,7 +1845,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
         <h3>You send us photos</h3>
         <p>The pictures you already have, plus sizes and prices. That is the only part you do.</p>
-        <div class="cat-shot"><img src="assets/step-1.webp?v=88" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
+        <div class="cat-shot"><img src="assets/step-1.webp?v=90" alt="A seller photographing products on a shelf"><div class="miss">step-1.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.6A2.1 2.1 0 0 1 5.1 6.5h1.8l1.2-2.1h7.8l1.2 2.1h1.8A2.1 2.1 0 0 1 21 8.6v8.8a2.1 2.1 0 0 1-2.1 2.1H5.1A2.1 2.1 0 0 1 3 17.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12.8" r="3.5" stroke="currentColor" stroke-width="1.7"/></svg>Takes about 10 minutes</span>
         </div>
@@ -1857,7 +1857,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
         <h3>We build every product</h3>
         <p>Each one is rebuilt at its real size, so a 240 cm rug shows up 240 cm wide on their floor.</p>
-        <div class="cat-shot"><img src="assets/step-2.webp?v=88" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
+        <div class="cat-shot"><img src="assets/step-2.webp?v=90" alt="A product and its 3D wireframe model"><div class="miss">step-2.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Measured to the centimetre</span>
         </div>
@@ -1867,9 +1867,9 @@
       <li class="cat-card rev">
         <span class="cat-num">03</span>
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-        <h3>You get your own catalog</h3>
+        <h3>You get your own catalogue</h3>
         <p>Your products, your prices, your brand, laid out as a shop customers can browse.</p>
-        <div class="cat-shot"><img src="assets/step-3.webp?v=88" alt="A phone showing the AR catalog"><div class="miss">step-3.png</div></div>
+        <div class="cat-shot"><img src="assets/step-3.webp?v=90" alt="A phone showing the AR catalogue"><div class="miss">step-3.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M2.8 5h6.4A2.8 2.8 0 0 1 12 7.8v11.4a2.4 2.4 0 0 0-2.4-2.4H2.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M21.2 5h-6.4A2.8 2.8 0 0 0 12 7.8v11.4a2.4 2.4 0 0 1 2.4-2.4h6.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Branded to you</span>
         </div>
@@ -1881,7 +1881,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="14.2" y="3.2" width="6.6" height="6.6" rx="1.2"/><rect x="3.2" y="14.2" width="6.6" height="6.6" rx="1.2"/></g><g fill="currentColor"><rect x="14.2" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="14.2" width="2.9" height="2.9" rx=".7"/><rect x="14.2" y="17.9" width="2.9" height="2.9" rx=".7"/><rect x="17.9" y="17.9" width="2.9" height="2.9" rx=".7"/></g></svg></span>
         <h3>One code for everything</h3>
         <p>Print it, post it, message it. Shop window, packaging, Instagram bio: one code covers all of it.</p>
-        <div class="cat-shot"><img src="assets/step-4.webp?v=88" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
+        <div class="cat-shot"><img src="assets/step-4.webp?v=90" alt="A QR code with sharing channels"><div class="miss">step-4.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5.6" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="6" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="18.4" r="2.7" stroke="currentColor" stroke-width="1.7"/><path d="M8.4 10.7 15.6 7M8.4 13.3l7.2 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Works online and in store</span>
         </div>
@@ -1893,7 +1893,7 @@
         <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="6.6" y="2.4" width="10.8" height="19.2" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9.4 18.6h5.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
         <h3>They see it in their room</h3>
         <p>Your customer scans, taps a product, and it appears on their floor. Then they order from you.</p>
-        <div class="cat-shot"><img src="assets/step-5.webp?v=88" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
+        <div class="cat-shot"><img src="assets/step-5.webp?v=90" alt="A customer viewing a product in their room through a phone"><div class="miss">step-5.png</div></div>
         <div class="cat-foot">
           <span class="cat-chip wide"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8.4V5.6A2.6 2.6 0 0 1 5.6 3H8.4M15.6 3h2.8A2.6 2.6 0 0 1 21 5.6v2.8M21 15.6v2.8a2.6 2.6 0 0 1-2.6 2.6h-2.8M8.4 21H5.6A2.6 2.6 0 0 1 3 18.4v-2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>No app to download</span>
         </div>
@@ -1955,13 +1955,13 @@
     <div class="pr-head">
       <p class="sec-eyebrow rev">Pricing</p>
       <h2 class="rev">Pay once to build it. <em>A little each month to keep it live.</em></h2>
-      <p class="pr-sub rev">ARQR builds your own true-to-size AR product catalog. You pay once to create it, then a simple monthly fee keeps it live, shareable and measurable.</p>
+      <p class="pr-sub rev">ARQR builds your own true-to-size AR product catalogue. You pay once to create it, then a simple monthly fee keeps it live, shareable and measurable.</p>
     </div>
 
     <div class="founder rev">
       <div class="founder-say">
-        <p class="founder-eyebrow">Founding catalog partner pricing</p>
-        <p class="founder-txt">We are opening a limited number of ARQR launch catalogs while we onboard our first merchant partners. Apply now to lock in founder pricing for your catalog.</p>
+        <p class="founder-eyebrow">Founding catalogue partner pricing</p>
+        <p class="founder-txt">We are opening a limited number of ARQR launch catalogues while we onboard our first merchant partners. Apply now to lock in founder pricing for your catalogue.</p>
       </div>
       <div class="founder-clock">
         <span class="clock-label">Founder pricing review in</span>
@@ -1976,7 +1976,7 @@
     </div>
     <p class="founder-terms rev">Launch terms are reviewed every 20 days as production capacity changes.</p>
 
-    <p class="pr-lead rev">Start with a simple monthly plan. We build your AR catalog once, then keep it live for your customers.</p>
+    <p class="pr-lead rev">Start with a simple monthly plan. We build your AR catalogue once, then keep it live for your customers.</p>
 
     <div class="pr-grid">
 
@@ -1984,9 +1984,9 @@
         <p class="plan-name">Starter</p>
         <div class="plan-count">10<small>AR products</small></div>
         <p class="plan-mo">From <b>$29</b>/month</p>
-        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <p class="plan-mo-note">Keeps your AR catalogue live, shareable, and updated.</p>
         <div class="plan-build">
-          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-label">One-time AR catalogue build</p>
           <p class="build-row">
             <span class="build-now">Founder build price: <b>$249</b></span>
             <span class="build-was">Regularly <s>$349</s></span>
@@ -1994,8 +1994,8 @@
           </p>
         </div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR catalog</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and a shareable catalog link</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR catalogue</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and a shareable catalogue link</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-size AR placement on iPhone and Android</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting and updates</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Basic analytics and support</li>
@@ -2008,9 +2008,9 @@
         <p class="plan-name">Studio</p>
         <div class="plan-count">25<small>AR products</small></div>
         <p class="plan-mo">From <b>$59</b>/month</p>
-        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <p class="plan-mo-note">Keeps your AR catalogue live, shareable, and updated.</p>
         <div class="plan-build">
-          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-label">One-time AR catalogue build</p>
           <p class="build-row">
             <span class="build-now">Founder build price: <b>$549</b></span>
             <span class="build-was">Regularly <s>$749</s></span>
@@ -2019,7 +2019,7 @@
         </div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority catalog setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority catalogue setup</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>More detailed analytics</li>
         </ul>
         <p class="plan-extra">Extra products <b>$20</b> each</p>
@@ -2031,9 +2031,9 @@
         <p class="plan-name">Showroom</p>
         <div class="plan-count">50<small>AR products</small></div>
         <p class="plan-mo">From <b>$99</b>/month</p>
-        <p class="plan-mo-note">Keeps your AR catalog live, shareable, and updated.</p>
+        <p class="plan-mo-note">Keeps your AR catalogue live, shareable, and updated.</p>
         <div class="plan-build">
-          <p class="build-label">One-time AR catalog build</p>
+          <p class="build-label">One-time AR catalogue build</p>
           <p class="build-row">
             <span class="build-now">Founder build price: <b>$999</b></span>
             <span class="build-was">Regularly <s>$1,399</s></span>
@@ -2053,11 +2053,11 @@
 
     <div class="plan-more rev">
       <div class="pm-say">
-        <p class="pm-title">Custom catalog</p>
+        <p class="pm-title">Custom catalogue</p>
         <ul class="pm-list">
           <li>More than 50 products</li>
           <li>Multiple product categories</li>
-          <li>Multi-store catalogs</li>
+          <li>Multi-store catalogues</li>
           <li>Advanced branding or special requirements</li>
         </ul>
       </div>
@@ -2117,7 +2117,7 @@
           </div>
         </div>
 
-        <p class="ct-copy">We'll turn them into a working AR catalog at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.</p>
+        <p class="ct-copy">We'll turn them into a working AR catalogue at our own cost and send you the code. Open it on your phone, stand your best-selling piece in your own living room, and decide then.</p>
 
         <div class="bi-chart" id="biChart">
           <div class="bi-top">
@@ -2239,15 +2239,15 @@
           <p>ARQR turns your product photographs into 3D models your customers can place in their own room at true size, through one QR code or one link. There is no app to download. It opens in the phone’s own camera on both iPhone and Android.</p>
         </details>
         <details class="qa rev">
-          <summary><span>How much does an AR catalog cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>You pay once to have the catalog built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range.</p>
+          <summary><span>How much does an AR catalogue cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>You pay once to have the catalogue built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range.</p>
         </details>
         <details class="qa rev">
           <summary><span>Do my customers need to install an app?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>No. The catalog opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
+          <p>No. The catalogue opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
         </details>
         <details class="qa rev">
-          <summary><span>How long does it take to get my catalog?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <summary><span>How long does it take to get my catalogue?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <p>About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits.</p>
         </details>
         <details class="qa rev">
@@ -2269,8 +2269,8 @@
   <div class="foot-wrap">
     <div class="foot-brand">
 <!-- logo:start, generated by logo-write.js -->
-<img class="logo-full" src="assets/logo-bar.png?v=88" width="421" height="260" alt="ARQR360, AR catalogs for retail" decoding="async">
-<img class="logo-mark" src="assets/logo-mono.png?v=88" width="215" height="115" alt="" aria-hidden="true" decoding="async">
+<img class="logo-full" src="assets/logo-bar.png?v=90" width="421" height="260" alt="ARQR360" decoding="async">
+<img class="logo-mark" src="assets/logo-mono.png?v=90" width="215" height="115" alt="" aria-hidden="true" decoding="async">
 <!-- logo:end -->
       <span class="foot-line">Your showroom, in their room.</span>
     </div>
@@ -2279,7 +2279,7 @@
          Neither belongs in a page's markup: the token identifies whoever
          copied the link, and the utm would tell Instagram its own traffic
          came from a QR code. The plain profile URL is what is here. -->
-    <nav class="foot-social" aria-label="ARQR on social media and by email">
+    <nav class="foot-social" aria-label="ARQR360 on social media and by email">
       <a href="https://www.instagram.com/arqr360" target="_blank" rel="noopener" aria-label="ARQR360 on Instagram">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" stroke="currentColor" stroke-width="1.7"/>
@@ -2903,7 +2903,7 @@
 
 </script>
 <script>
-/* Arriving from a catalog's "apply" button.
+/* Arriving from a catalogue's "apply" button.
 
    The scrolling is left to the browser, which does it natively for a
    fragment and does it before any script of ours can run — an earlier

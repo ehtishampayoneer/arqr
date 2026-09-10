@@ -1,13 +1,13 @@
 /* ------------------------------------------------------------------
    The four sample shops.
 
-   These are NOT a marketplace. Each one is a single shop's own catalog,
+   These are NOT a marketplace. Each one is a single shop's own catalogue,
    living at its own address, carrying its own name, its own colour and
    its own products — which is exactly what a seller gets when they come
    on board. Four of them exist only to show that the same thing works
    whatever you sell.
 
-   Shared by catalog.html (the sampler) and store.html (one shop).
+   Shared by catalogue.html (the sampler) and store.html (one shop).
    ------------------------------------------------------------------ */
 window.ARQR_STORES = [
   {
