@@ -101,6 +101,8 @@ window.ARQR_LANG = {
     'Product photos or a price list (optional)': 'صور المنتجات أو قائمة أسعار (اختياري)',
     'JPG, PNG, PDF or ZIP': 'JPG أو PNG أو PDF أو ZIP',
     'That file is over 10 MB': 'حجم الملف يتجاوز 10 ميغابايت',
+    'Not sure what to send?': 'لست متأكدًا مما ترسله؟',
+    'See exactly what we need': 'اطّلع على ما نحتاجه بالضبط',
     'Send it over': 'أرسِلها',
     'We reply within one working day. Your details go nowhere else.': 'نردّ خلال يوم عمل واحد. بياناتك لا تذهب إلى أي جهة أخرى.',
     'Tell us about your business': 'حدّثنا عن نشاطك التجاري',

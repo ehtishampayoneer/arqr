@@ -103,6 +103,8 @@ window.ARQR_LANG = {
     "Attach photos or a price list, up to 10 MB": "写真や価格表を添付、10 MB まで",
     "JPG, PNG, PDF or ZIP": "JPG・PNG・PDF・ZIP",
     "That file is over 10 MB": "ファイルが 10 MB を超えています",
+    "Not sure what to send?": "何を送ればいいか迷ったら",
+    "See exactly what we need": "必要なものを詳しく見る",
     "Send it over": "送信する",
     "We reply within one working day. Your details go nowhere else.": "1営業日以内にご返信します。お預かりした情報は他に渡しません。",
     "Tell us about your business": "あなたのビジネスについて",

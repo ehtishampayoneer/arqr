@@ -103,6 +103,8 @@ window.ARQR_LANG = {
     "Attach photos or a price list, up to 10 MB": "Прикрепите фото или прайс, до 10 МБ",
     "JPG, PNG, PDF or ZIP": "JPG, PNG, PDF или ZIP",
     "That file is over 10 MB": "Файл больше 10 МБ",
+    "Not sure what to send?": "Не знаете, что отправить?",
+    "See exactly what we need": "Посмотрите, что именно нам нужно",
     "Send it over": "Отправить",
     "We reply within one working day. Your details go nowhere else.": "Отвечаем в течение одного рабочего дня. Ваши данные никуда не уходят.",
     "Tell us about your business": "Расскажите о своём деле",

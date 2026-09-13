@@ -278,6 +278,7 @@ const DOCS = [
 
 /* ---------------------------------------------------------------- shell */
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 const CSS = `
   :root{
@@ -332,6 +333,7 @@ const CSS = `
     margin:clamp(30px,4vw,42px) 0 12px;padding-top:clamp(22px,3vw,30px);
     border-top:1px solid var(--line)}
   h2:first-of-type{border-top:0;padding-top:0}
+  h2[id]{scroll-margin-top:96px}
   p{margin:0 0 14px}
   ul{margin:0 0 16px;padding:0;list-style:none}
   li{position:relative;padding-left:22px;margin-bottom:9px}
@@ -380,7 +382,7 @@ const footerNav = (current) =>
 
 function render(doc) {
   const body = doc.sections.map(([heading, blocks]) =>
-    '  <h2>' + esc(heading) + '</h2>\n' +
+    '  <h2 id="' + slug(heading) + '">' + esc(heading) + '</h2>\n' +
     blocks.map((b) => b.ul
       ? '  <ul>\n' + b.ul.map((li) => '    <li>' + li + '</li>').join('\n') + '\n  </ul>'
       : '  <p>' + b.p + '</p>').join('\n')

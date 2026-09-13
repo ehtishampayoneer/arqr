@@ -103,6 +103,8 @@ window.ARQR_LANG = {
     "Attach photos or a price list, up to 10 MB": "Fotos oder Preisliste anhängen, bis 10 MB",
     "JPG, PNG, PDF or ZIP": "JPG, PNG, PDF oder ZIP",
     "That file is over 10 MB": "Diese Datei ist größer als 10 MB",
+    "Not sure what to send?": "Unsicher, was Sie schicken sollen?",
+    "See exactly what we need": "Genau sehen, was wir brauchen",
     "Send it over": "Absenden",
     "We reply within one working day. Your details go nowhere else.": "Wir antworten innerhalb eines Werktags. Ihre Daten gehen nirgendwo sonst hin.",
     "Tell us about your business": "Erzählen Sie von Ihrem Geschäft",

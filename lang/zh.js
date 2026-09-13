@@ -103,6 +103,8 @@ window.ARQR_LANG = {
     "Attach photos or a price list, up to 10 MB": "上传照片或价目表，最大 10 MB",
     "JPG, PNG, PDF or ZIP": "JPG、PNG、PDF 或 ZIP",
     "That file is over 10 MB": "文件超过 10 MB",
+    "Not sure what to send?": "不确定该发什么？",
+    "See exactly what we need": "查看我们具体需要什么",
     "Send it over": "发送",
     "We reply within one working day. Your details go nowhere else.": "我们在一个工作日内回复。你的信息不会外传。",
     "Tell us about your business": "说说你的生意",
