@@ -2201,7 +2201,7 @@
         </ul>
 
         <p class="plan-extra">Extra products <b>$20</b> each</p>
-        <a class="plan-go" href="#f-name">Get Started<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="plan-go" href="#f-name" data-plan="starter">Get Started<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
       <div class="plan rev is-pick" data-tier="studio">
@@ -2245,7 +2245,7 @@
         </ul>
 
         <p class="plan-extra">Extra products <b>$20</b> each</p>
-        <a class="plan-go" href="#f-name">Get Studio<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="plan-go" href="#f-name" data-plan="studio">Get Studio<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
       <div class="plan rev" data-tier="showroom">
@@ -3327,6 +3327,87 @@
   addEventListener('load', function (){ setTimeout(clean, 400); });
   /* a fragment typed into the bar, or pasted, on a page already open */
   addEventListener('hashchange', function (){ setTimeout(clean, 400); });
+})();
+</script>
+<script>
+/* Buying a plan: Paddle checkout on the Starter and Studio buttons.
+
+   One basket per plan, two items: the monthly price and the one-time
+   setup price. Paddle charges both on the first payment and only the
+   monthly one on every renewal after, so nobody pays the setup twice.
+
+   Off unless switched on. Until the live account is approved this points
+   at the sandbox, and a visitor must never land in a test checkout, so it
+   only runs after the page has been opened once with ?checkout=test (kept
+   for the tab). Everyone else keeps the old behaviour: the button goes to
+   the form. When live is approved: swap ENV, TOKEN and PRICES for the live
+   ones and set ON to true.
+
+   Paddle.js is fetched on the first press, not on page load, so nobody
+   who never buys downloads it. If it cannot load, the press falls through
+   to the form rather than doing nothing. */
+(function (){
+  var ON = false;
+  var ENV = 'sandbox';
+  var TOKEN = 'test_c0d067ee696423bfe7770e1e58b';
+  var PRICES = {
+    starter: ['pri_01m2ggeem9nna01dp7k88y6hy5', 'pri_01m2ggef8xvf07m69np4vbswvw'],
+    studio:  ['pri_01m2ggegtsnzftxjpq6avt00c0', 'pri_01m2ggehae757q2y9khx6t3vpz']
+  };
+
+  try {
+    if (/[?&]checkout=test\b/.test(location.search)) sessionStorage.setItem('arqr-checkout', 'test');
+    if (sessionStorage.getItem('arqr-checkout') === 'test') ON = true;
+  } catch (e) {}
+  if (!ON) return;
+
+  /* the languages Paddle's checkout is written in; the rest get English */
+  var LOCALES = { ar:'ar', zh:'zh-Hans', ja:'ja', ru:'ru', tr:'tr', es:'es', fr:'fr', de:'de', it:'it', pt:'pt' };
+
+  var ready = null;
+  function load(){
+    if (ready) return ready;
+    ready = new Promise(function (ok, no){
+      var s = document.createElement('script');
+      s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+      s.onload = function (){
+        try {
+          if (ENV === 'sandbox') Paddle.Environment.set('sandbox');
+          Paddle.Initialize({ token: TOKEN });
+          ok();
+        } catch (e) { no(e); }
+      };
+      s.onerror = no;
+      document.head.appendChild(s);
+    });
+    ready.catch(function (){ ready = null; });
+    return ready;
+  }
+
+  [].forEach.call(document.querySelectorAll('.plan-go[data-plan]'), function (a){
+    var plan = a.getAttribute('data-plan');
+    if (!PRICES[plan]) return;
+    a.addEventListener('click', function (e){
+      e.preventDefault();
+      var lang = (document.documentElement.lang || 'en').slice(0, 2);
+      load().then(function (){
+        Paddle.Checkout.open({
+          items: PRICES[plan].map(function (id){ return { priceId: id, quantity: 1 }; }),
+          customData: { plan: plan },
+          settings: {
+            displayMode: 'overlay',
+            theme: 'light',
+            locale: LOCALES[lang] || 'en',
+            successUrl: location.origin + '/start'
+          }
+        });
+      }).catch(function (){
+        /* no checkout to show: send them where the button used to go */
+        var f = document.getElementById('f-name');
+        if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  });
 })();
 </script>
 <script>
