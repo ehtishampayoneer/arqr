@@ -1,12 +1,12 @@
 /* ------------------------------------------------------------------
    Writes the logo into the pages.
 
-   Two pictures, because the header needs two shapes. The lockup is the
-   client's monogram and wordmark side by side at 5.52:1, which is what a
-   78px bar can show with the wordmark still readable. The monogram on
-   its own is 1.87:1 and is what the bar falls back to on a scrolled
-   phone, where the samples button has arrived and there is no room for a
-   name beside it.
+   One picture: the lockup, monogram over wordmark. There used to be a
+   second, the monogram alone, for a scrolled phone bar. That bar keeps
+   the lockup now (it is narrower at the same height), so the monogram
+   was hidden on every page and still downloaded on every page. It is
+   gone from the markup; assets/logo-mono.png stays on disk only as the
+   source brand-images.js draws the schema logo from.
 
    Both carry their pixel dimensions as attributes, and the CSS then only
    ever sets a height. The attributes give the browser the proportion
@@ -32,7 +32,7 @@ const END = '<!-- logo:end -->';
    step with the markup. */
 const NAME = 'ARQR360';
 
-const FILES = ['index.html', 'catalogue.html', 'start.html', 'terms.html', 'privacy.html', 'refund.html'];
+const FILES = ['index.html', 'catalogue.html', 'store.html', 'start.html', 'terms.html', 'privacy.html', 'refund.html'];
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 (async () => {
@@ -49,9 +49,8 @@ const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
 
   const full = await tag('assets/logo-bar.png', 'logo-full', true);
-  const mark = await tag('assets/logo-mono.png', 'logo-mark', false);
   const block = (indent) =>
-    indent + START + '\n' + indent + full + '\n' + indent + mark + '\n' + indent + END;
+    indent + START + '\n' + indent + full + '\n' + indent + END;
 
   let total = 0;
   for (const file of FILES) {
@@ -81,9 +80,7 @@ const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   const a = await sharp('assets/logo-bar.png').metadata();
-  const b = await sharp('assets/logo-mono.png').metadata();
   console.log('  lockup ' + a.width + '×' + a.height + ' (' + (a.width / a.height).toFixed(3) +
-    ':1), monogram ' + b.width + '×' + b.height + ' (' + (b.width / b.height).toFixed(3) +
     ':1), into ' + total + ' places at v=' + version);
   if (!total) throw new Error('nothing was written: no markers and no logo link');
 })();

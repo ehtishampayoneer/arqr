@@ -176,7 +176,7 @@ function body(BIZ) {
       <h2 class="w-title">Planning your AR catalogue?</h2>
       <p class="w-text">This page shows exactly what we need from you. Get it ready now, and we can start building the moment you are on board.</p>
     </div>
-    <a class="demo-btn w-demo" href="/catalogue"><span class="demo-live" aria-hidden="true"></span>${ICON.phone}<span>See a live example</span></a>
+    <a class="demo-btn w-demo" href="/catalogue">${ICON.phone}<span>See a live example</span></a>
   </section>
 
   <section class="g-hero">
@@ -324,7 +324,7 @@ function body(BIZ) {
         <h3>See what yours will look like</h3>
         <p>Open one of our sample catalogues on your phone and place a product in your own room.</p>
       </div>
-      <a class="demo-btn" href="/catalogue"><span class="demo-live" aria-hidden="true"></span>${ICON.phone}<span>See a live example</span></a>
+      <a class="demo-btn" href="/catalogue">${ICON.phone}<span>See a live example</span></a>
     </div>
     <p class="note">${ICON.store}<span>Orders go straight to you. We are not a shop and we never touch your customers' money.</span></p>
   </section>
@@ -543,19 +543,14 @@ const CSS = `
   .w-text + .w-text{margin-top:4px!important}
 
   /* ---- the sample catalogues, in the accent rather than beside it ---- */
-  /* the same pill as on the home page, so the samples look the same everywhere */
+  /* the same button as the home page's: solid accent, light shadow */
   .demo-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;
-    min-height:50px;padding:12px 22px 12px 16px;border-radius:100px;
-    background:#FFF1E6;border:1.5px solid var(--accent);color:#A94A17;font-weight:700;font-size:15.5px;
-    text-decoration:none;white-space:nowrap;box-shadow:0 10px 24px -14px rgba(224,104,42,.75);
-    transition:background .2s ease,color .2s ease,transform .2s ease}
-  .demo-btn:hover{background:var(--accent);color:#FFFFFF;transform:translateY(-2px)}
-  .demo-live{position:relative;flex:none;width:9px;height:9px;border-radius:50%;background:#1F9D55}
-  .demo-live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #1F9D55;opacity:0;animation:demoLive 2.2s ease-out infinite}
-  @keyframes demoLive{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.6);opacity:0}}
-  @media(prefers-reduced-motion:reduce){.demo-live::after{animation:none}}
+    min-height:48px;padding:12px 22px;border-radius:100px;border:0;
+    background:var(--accent);color:#FFFFFF;font-weight:600;font-size:15px;
+    text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px -6px rgba(224,104,42,.55);
+    transition:background .2s ease,transform .2s ease}
+  .demo-btn:hover{background:#C9571E;color:#FFFFFF;transform:translateY(-1px)}
   .demo-btn svg{width:19px;height:19px}
-  .demo-band .demo-btn:not(:hover){background:#FFFFFF}
   .demo-band{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;
     padding:clamp(18px,2.4vw,26px);border-radius:18px;
     background:linear-gradient(100deg,#FDEBDD 0%,#FFF7F1 70%);border:1px solid rgba(224,104,42,.28)}

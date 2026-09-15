@@ -254,7 +254,6 @@ const CSS = `
     display:inline-flex;flex-direction:column;align-items:center;gap:4px;
     flex:none;color:var(--ink);text-decoration:none}
   .logo img{display:block;height:var(--logo-h);width:auto}
-  .logo .logo-mark{display:none}
   .logo-tag{font-family:var(--f-head);font-weight:600;font-size:7.5px;
     letter-spacing:.24em;text-transform:uppercase;line-height:1;
     color:#68676A;white-space:nowrap}

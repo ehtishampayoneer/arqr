@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=98"></script>
+<script src="i18n.js?v=99"></script>
 <style>
   :root{
     --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
@@ -42,43 +42,43 @@
   a{color:inherit;text-decoration:none}
   button,select{font:inherit;color:inherit}
 
-  /* ---- the only ARQR chrome, and it says what it is ---- */
-  .demo{flex:none;background:#1C1A17;color:#F6F1E9;font-size:12.5px}
-  .demo-in{width:var(--wrap);margin:0 auto;padding:9px 0;
-    display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  /* the way back to the other three. The arrow comes first, because
-     somebody who opened one shop from the sample page is looking for the
-     way out of it, not for a line of explanation. */
-  .demo-back{display:inline-flex;align-items:center;gap:7px;flex:none;
-    color:#F6F1E9;font-weight:600;border:1px solid rgba(246,241,233,.3);
-    border-radius:100px;padding:5px 12px 5px 9px;
+  /* ---- the only ARQR chrome, and it says what it is ----
+     Light, like every other ARQR page, so the logo can sit in it: the old
+     strip was near-black and the lockup is black ink. Logo, then the line
+     saying this is a sample, then the way out, the language and the one
+     call to action, grouped at the end rather than spread across. */
+  .sbar{flex:none;position:relative;z-index:30;background:rgba(250,247,242,.96);
+    border-bottom:1px solid var(--line)}
+  .sbar-in{width:var(--wrap);margin:0 auto;min-height:64px;padding:8px 0;
+    display:flex;align-items:center;gap:10px 16px}
+  .sbar .logo{flex:none;display:block;line-height:0}
+  .sbar .logo img{display:block;height:40px;width:auto}
+  .sbar-note{flex:1 1 auto;min-width:0;margin:0;padding-inline-start:16px;
+    border-inline-start:1px solid var(--line);font-size:13px;line-height:1.4;color:var(--ink-soft)}
+  .sbar-note b{color:var(--ink);font-weight:600}
+  .sbar-act{flex:none;display:flex;align-items:center;gap:10px;margin-inline-start:auto}
+  .sbar-back,.sbar-cta{display:inline-flex;align-items:center;gap:7px;min-height:40px;
+    border-radius:100px;font-size:13.5px;font-weight:600;white-space:nowrap;
     transition:border-color .2s ease,background .2s ease}
-  .demo-back:hover{border-color:rgba(246,241,233,.65);background:rgba(246,241,233,.08);
-    text-decoration:none}
-  .demo-back svg{width:15px;height:15px;color:#F0A87E;flex:none}
-  [dir="rtl"] .demo-back svg{transform:scaleX(-1)}
-  @media(max-width:620px){
-    /* The arrow carries the meaning without its label here. And the strip
-       is laid out rather than left to wrap: left to itself it broke into
-       four lines, 114px of a phone screen, and took the product
-       photograph down from 93px to the 72px floor. Two rows: the way out
-       and the language on one, the sentence explaining what this is
-       underneath. */
-    .demo-back span{display:none}
-    .demo-back{padding:5px 9px}
-    .demo-in{row-gap:6px;padding:8px 0}
-    .demo-in > span:not([data-lang-slot]){flex:0 0 100%;order:2;font-size:11.5px;line-height:1.45}
-    .demo-in > svg{display:none}
+  .sbar-back{padding:8px 14px 8px 11px;border:1px solid var(--line);background:#FFFDFA;color:var(--ink)}
+  .sbar-back:hover{border-color:var(--ink-soft)}
+  .sbar-back svg{width:15px;height:15px;flex:none}
+  [dir="rtl"] .sbar-back svg{transform:scaleX(-1)}
+  .sbar-cta{padding:8px 16px;background:var(--ink);color:#fff}
+  .sbar-cta:hover{background:#000}
+  .sbar [data-lang-slot] .lang{margin:0}
+  @media(max-width:1000px){
+    /* the sentence takes its own line under the controls */
+    .sbar-in{flex-wrap:wrap;min-height:0;padding:8px 0 7px}
+    .sbar-note{order:3;flex:0 0 100%;padding:0;border:0;font-size:12px}
   }
-
-  .demo b{font-weight:600}
-  .demo > .demo-in > a{color:#F0A87E;font-weight:600;white-space:nowrap}
-  .demo a:hover{text-decoration:underline}
-  .demo svg{width:14px;height:14px;display:block;color:#F0A87E;flex:none}
-  .demo-in [data-lang-slot]{margin-inline-start:auto}
-  /* the switcher sits on a dark bar here */
-  .demo-in .lang-btn{border-color:rgba(246,241,233,.28);color:#F6F1E9}
-  .demo-in .lang-btn:hover{border-color:rgba(246,241,233,.55)}
+  @media(max-width:620px){
+    .sbar .logo img{height:32px}
+    .sbar-cta{display:none}
+    .sbar-back span{display:none}
+    .sbar-back{padding:8px 11px}
+    .sbar-note{font-size:11.5px}
+  }
 
   /* ================= the two columns ================= */
   .shell{flex:1;min-height:0;width:var(--wrap);margin:0 auto;
@@ -354,11 +354,6 @@
 
   /* ---------------- phone ---------------- */
   @media(max-width:700px){
-    .demo-in{padding:5px 0;font-size:11px;gap:2px;line-height:1.35}
-    .demo-in > svg{display:none}
-    .demo > .demo-in > a{padding:13px 15px;border:1px solid rgba(240,168,126,.4);
-      border-radius:100px;margin-top:2px;line-height:1}
-    .demo-in [data-lang-slot]{margin-inline-start:auto}
 
     .brand{border-radius:15px}
 
@@ -432,8 +427,6 @@
      absence of a mouse rather than to a breakpoint — the width rules above
      were leaving it a 19px target on anything wider than a phone. */
   @media(hover:none){
-    .demo > .demo-in > a{padding:12px 15px;border:1px solid rgba(240,168,126,.4);
-      border-radius:100px;line-height:1}
   }
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -463,19 +456,26 @@
   <!-- seo:end -->
 </head>
 <body>
-<script src="sprite.js?v=98"></script>
+<script src="sprite.js?v=99"></script>
 
-<div class="demo">
-  <div class="demo-in">
-    <a class="demo-back" href="catalogue">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Sample catalogues</span>
+<header class="sbar">
+  <div class="sbar-in">
+    <a class="logo" href="/">
+      <!-- logo:start, generated by logo-write.js -->
+      <img class="logo-full" src="assets/logo-bar.png?v=99" width="421" height="260" alt="ARQR360" decoding="async">
+      <!-- logo:end -->
     </a>
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    <span><b>Sample catalogue.</b> This is one shop's own catalogue, built by ARQR.</span>
-    <span data-lang-slot></span>
+    <p class="sbar-note"><b>Sample catalogue.</b> This is one shop's own catalogue, built by ARQR.</p>
+    <div class="sbar-act">
+      <a class="sbar-back" href="catalogue">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Sample catalogues</span>
+      </a>
+      <span data-lang-slot></span>
+      <a class="sbar-cta" href="/#f-name">Get your catalogue</a>
+    </div>
   </div>
-</div>
+</header>
 
 <main class="shell">
 
@@ -510,7 +510,7 @@
     </div>
 
     <div class="brand-scan">
-      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=98" alt=""></span>
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-novara.svg?v=99" alt=""></span>
       <div>
         <strong id="scanTitle">Scan to explore</strong>
         <span id="scanUrl"></span>
@@ -542,7 +542,7 @@
     <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-sofa"></use></svg></div>
     <h3 id="arTitle"></h3>
     <p id="arText"></p>
-    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=98" alt=""></div>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-novara.svg?v=99" alt=""></div>
   </div>
 </div>
 
@@ -617,9 +617,9 @@
   </div>
 </div>
 
-<script src="stores.js?v=98"></script>
+<script src="stores.js?v=99"></script>
 <script>
-var V = '?v=98';
+var V = '?v=99';
 var STORES = window.ARQR_STORES;
 /* A page of the catalogue: six on a desktop, three across and two down, and
    four on a phone, two by two. Two at a time was too few to browse and the
