@@ -30,7 +30,7 @@ const TITLES = {
   ur: 'ARQR | آپ کا شو روم، اُن کے کمرے میں'
 };
 
-const parts = ['part1','part2','part3'].map(f =>
+const parts = ['part1','part2','part3','part4'].map(f =>
   require(path.join(__dirname, 'lang-source', f + '.js')));
 
 /* ---- merge and check ---- */

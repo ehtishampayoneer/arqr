@@ -23,6 +23,18 @@ const fs = require('fs');
 const { execFileSync } = require('child_process');
 const START = require('./start-page.js');
 
+/* the asset version the rest of the site is on, read rather than copied,
+   so a bump-assets run can never leave this page asking for a stale file */
+const V = (fs.readFileSync('index.html', 'utf8').match(/i18n\.js\?v=(\d+)/) || [])[1] || '1';
+
+/* Only /start is translated. It is instructions, and someone reading it in
+   their own language gets the photos right. The terms, privacy and refund
+   pages stay in English: a translated legal page is a second legal text,
+   and nobody has checked those translations against the law. */
+const HEAD_START = '<script src="i18n.js?v=' + V + '"></script>\n' +
+  '<script>if(/^\\/welcome(\\/|$)/.test(location.pathname)||/[?&]welcome\\b/.test(location.search))' +
+  'document.documentElement.className+=" is-welcome";</script>\n';
+
 const BIZ = {
   name: 'ARQR360',
   city: 'Lahore',
@@ -330,7 +342,7 @@ function render(doc) {
 <meta name="theme-color" content="#FAF7F2">
 <meta name="description" content="${esc(doc.lead)}">
 <title>${esc(doc.title)} | ${BIZ.name}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+${doc.slug === 'start' ? HEAD_START : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>${CSS}${doc.slug === 'start' ? START.CSS : ''}</style>
@@ -372,7 +384,7 @@ ${body}
   </div>
 </footer>
 
-</body>
+${doc.slug === 'start' ? '<script>ARQR_I18N.apply();</script>\n' : ''}</body>
 </html>
 `;
 }

@@ -216,7 +216,9 @@
       }
     });
 
-    if (T.title) document.title = T.title;
+    var ownTitle = norm(document.title);
+    if (Object.prototype.hasOwnProperty.call(text, ownTitle)) document.title = text[ownTitle];
+    else if (T.title && /^ARQR \| Your showroom/.test(ownTitle)) document.title = T.title;
   }
 
   /* A picture with English baked into it stays English unless a

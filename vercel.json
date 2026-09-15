@@ -17,6 +17,10 @@
     {
       "source": "/terra",
       "destination": "/store"
+    },
+    {
+      "source": "/welcome",
+      "destination": "/start"
     }
   ],
   "headers": [

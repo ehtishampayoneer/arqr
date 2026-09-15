@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#FAF7F2">
 <meta name="description" content="Everything to send us for your AR catalogue: photos, measurements and how to send them.">
 <title>What we need from you | ARQR360</title>
+<script src="i18n.js?v=98"></script>
+<script>if(/^\/welcome(\/|$)/.test(location.pathname)||/[?&]welcome\b/.test(location.search))document.documentElement.className+=" is-welcome";</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -106,6 +108,8 @@
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
   body.is-guide{--wrap:min(1140px, calc(100% - 2 * var(--gutter)))}
+  /* the switcher sits beside Back, not floating in the middle of the bar */
+  body.is-guide .bar .lang{margin-inline-start:auto;margin-inline-end:10px}
   .guide{width:var(--wrap);margin:0 auto;padding:clamp(34px,5vw,64px) 0 clamp(40px,6vw,72px)}
   .guide h1,.guide h2{text-wrap:balance}
   .guide h1{font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0 0 16px}
@@ -139,8 +143,8 @@
   .g-short li:first-child{border-top:0;padding-top:0}
   .g-num{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;
     background:#FCE7D8;color:var(--accent);font-family:var(--f-head);font-weight:800;font-size:22px}
-  .g-short b{display:block;font-size:16px;color:var(--ink)}
-  .g-short li span:last-child{font-size:14px;color:var(--ink-soft);line-height:1.45}
+  .g-t b{display:block;font-size:16px;color:var(--ink)}
+  .g-t small{display:block;font-size:14px;color:var(--ink-soft);line-height:1.45}
 
   /* sections */
   .g-sec{margin-bottom:clamp(48px,7vw,92px);scroll-margin-top:110px}
@@ -188,15 +192,15 @@
   .rule-ico svg{width:14px;height:14px}
   .do .rule-ico,.name-good .rule-ico{background:#DDF1E4;color:#23633F}
   .dont .rule-ico,.name-bad .rule-ico{background:#FBE1DA;color:#C2412A}
-  .rule-card li b{display:block;font-size:15.5px;font-weight:600;line-height:1.35}
-  .rule-card li span:last-child{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+  .r-txt b{display:block;font-size:15.5px;font-weight:600;line-height:1.35}
+  .r-txt small{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.5}
 
   /* measurements */
   .measure{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:16px;align-items:stretch}
   .measure-art{padding:22px;display:flex;flex-direction:column;gap:10px;justify-content:center}
   .dims-art{width:100%;max-width:260px;height:auto;margin:0 auto 6px}
   .measure-art p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
-  .measure-art b{color:var(--ink)}
+  .measure-art .m-lead{color:var(--ink);font-weight:600}
   .measure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .m-card{padding:20px}
   .m-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
@@ -226,8 +230,11 @@
   .name-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);margin-top:8px}
   .name-row code{background:none;border:0;padding:0;font-size:14.5px;overflow-wrap:anywhere}
   .name-bad code{text-decoration:line-through;text-decoration-color:rgba(194,65,42,.6);color:var(--ink-soft)}
-  .email-eg{margin:0;padding:14px 16px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;white-space:pre-wrap;color:var(--ink)}
+  .email-eg{padding:14px 16px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;color:var(--ink)}
+  .email-eg span{display:block}
+  .email-eg .eg-name{font-weight:700}
+  .email-eg .eg-name + span + .eg-name{margin-top:12px}
 
   .g-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 
@@ -256,6 +263,54 @@
 
   .guide a:focus-visible,.g-jump a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
+  /* ---- the opening message: one of two, chosen in <head> ---- */
+  .welcome{display:flex;align-items:center;gap:clamp(14px,2vw,22px);
+    margin-bottom:clamp(30px,4.4vw,52px);padding:clamp(18px,2.6vw,28px);
+    border-radius:20px;background:#FFFFFF;border:1px solid var(--line);
+    box-shadow:0 18px 40px -30px rgba(70,50,30,.45)}
+  .w-order{display:none;border-color:rgba(35,99,63,.25);
+    background:linear-gradient(100deg,#F1F8F3 0%,#FFFFFF 62%)}
+  html.is-welcome .w-order{display:flex}
+  html.is-welcome .w-guest{display:none}
+  .w-ico{flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:16px;
+    background:#FCE7D8;color:var(--accent)}
+  .w-order .w-ico{background:#DDF1E4;color:#23633F}
+  .w-ico svg{width:28px;height:28px}
+  .w-copy{flex:1 1 auto;min-width:0}
+  .w-chip{display:inline-block;margin-bottom:8px!important;padding:4px 11px;border-radius:100px;
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:#FCE7D8;color:#A94A17}
+  .w-order .w-chip{background:#DDF1E4;color:#23633F}
+  .welcome .w-title{font-size:clamp(21px,2.4vw,28px);margin-bottom:6px}
+  .w-text{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:70ch}
+  .w-text + .w-text{margin-top:4px!important}
+
+  /* ---- the sample catalogues, in the accent rather than beside it ---- */
+  /* the same pill as on the home page, so the samples look the same everywhere */
+  .demo-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    min-height:50px;padding:12px 22px 12px 16px;border-radius:100px;
+    background:#FFF1E6;border:1.5px solid var(--accent);color:#A94A17;font-weight:700;font-size:15.5px;
+    text-decoration:none;white-space:nowrap;box-shadow:0 10px 24px -14px rgba(224,104,42,.75);
+    transition:background .2s ease,color .2s ease,transform .2s ease}
+  .demo-btn:hover{background:var(--accent);color:#FFFFFF;transform:translateY(-2px)}
+  .demo-live{position:relative;flex:none;width:9px;height:9px;border-radius:50%;background:#1F9D55}
+  .demo-live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #1F9D55;opacity:0;animation:demoLive 2.2s ease-out infinite}
+  @keyframes demoLive{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+  @media(prefers-reduced-motion:reduce){.demo-live::after{animation:none}}
+  .demo-btn svg{width:19px;height:19px}
+  .demo-band .demo-btn:not(:hover){background:#FFFFFF}
+  .demo-band{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;
+    padding:clamp(18px,2.4vw,26px);border-radius:18px;
+    background:linear-gradient(100deg,#FDEBDD 0%,#FFF7F1 70%);border:1px solid rgba(224,104,42,.28)}
+  .demo-ico{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;
+    background:#FFFFFF;color:var(--accent)}
+  .demo-ico svg{width:26px;height:26px}
+  .demo-copy{flex:1 1 260px;min-width:0}
+  .demo-copy p{margin-top:4px!important;font-size:15px;line-height:1.55;color:var(--ink-soft)}
+
+  [dir="rtl"] .ang-n{left:auto;right:10px}
+  [dir="rtl"] .cta-social span{margin-right:0;margin-left:4px}
+
   @media(max-width:1000px){
     .g-hero{grid-template-columns:1fr}
     .angles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -265,6 +320,9 @@
     .cta-actions{min-width:0}
   }
   @media(max-width:760px){
+    .welcome{flex-wrap:wrap;align-items:flex-start}
+    .w-demo{width:100%}
+    .demo-btn{width:100%;white-space:normal}
     .steps,.rules,.send,.naming,.g-pair{grid-template-columns:1fr}
     .measure-grid{grid-template-columns:1fr}
   }
@@ -304,8 +362,8 @@
 <header class="bar">
   <a class="logo" href="/">
 <!-- logo:start, generated by logo-write.js -->
-<img class="logo-full" src="assets/logo-bar.png?v=97" width="421" height="260" alt="ARQR360" decoding="async">
-<img class="logo-mark" src="assets/logo-mono.png?v=97" width="215" height="115" alt="" aria-hidden="true" decoding="async">
+<img class="logo-full" src="assets/logo-bar.png?v=98" width="421" height="260" alt="ARQR360" decoding="async">
+<img class="logo-mark" src="assets/logo-mono.png?v=98" width="215" height="115" alt="" aria-hidden="true" decoding="async">
 <!-- logo:end -->
     <span class="logo-tag">See it. Place it. Love it.</span>
   </a>
@@ -318,9 +376,33 @@
 
 <main class="guide">
 
+  <!-- Two openings, one page. Someone arriving from checkout, or from the
+       /welcome link in our emails, is thanked for an order. Anyone else
+       reading ahead is not, because thanking a visitor for an order they
+       never placed reads as a broken page. The class is set in <head>
+       before anything paints, so neither one flashes. -->
+  <section class="welcome w-order" aria-label="Order confirmed">
+    <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m8.3 12.3 2.5 2.5 5-5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="w-copy">
+      <p class="w-chip">Order confirmed</p>
+      <h2 class="w-title">Thank you, and welcome to ARQR360</h2>
+      <p class="w-text">We will be in touch within 1 to 2 business days to get started.</p>
+      <p class="w-text">In the meantime, please read through this page and get your photos and measurements ready, so we can begin building your catalogue as soon as they arrive.</p>
+    </div>
+  </section>
+  <section class="welcome w-guest" aria-label="Welcome">
+    <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="w-copy">
+      <p class="w-chip">Welcome to ARQR360</p>
+      <h2 class="w-title">Planning your AR catalogue?</h2>
+      <p class="w-text">This page shows exactly what we need from you. Get it ready now, and we can start building the moment you are on board.</p>
+    </div>
+    <a class="demo-btn w-demo" href="/catalogue"><span class="demo-live" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>See a live example</span></a>
+  </section>
+
   <section class="g-hero">
     <div class="g-hero-copy">
-      <p class="eyebrow">Getting started</p>
+      <p class="eyebrow">Your checklist</p>
       <h1>What we need from you</h1>
       <p class="lead">Everything to send us for your AR catalogue, in one page. Most shops have it ready in an afternoon with just a phone.</p>
       <nav class="g-jump" aria-label="On this page">
@@ -334,9 +416,9 @@
     <aside class="g-short" aria-label="In short">
       <p class="g-short-t">In short, for each product</p>
       <ul>
-        <li><span class="g-num">8</span><span><b>Photos</b>from every side, taken on a phone</span></li>
-        <li><span class="g-num">cm</span><span><b>Real measurements</b>measured, not from a supplier sheet</span></li>
-        <li><span class="g-num">1</span><span><b>Email</b>with everything, named clearly</span></li>
+        <li><span class="g-num">8</span><span class="g-t"><b>Photos</b><small>from every side, taken on a phone</small></span></li>
+        <li><span class="g-num">cm</span><span class="g-t"><b>Real measurements</b><small>measured, not from a supplier sheet</small></span></li>
+        <li><span class="g-num">1</span><span class="g-t"><b>Email</b><small>with everything, named clearly</small></span></li>
       </ul>
     </aside>
   </section>
@@ -403,7 +485,7 @@
       <li class="ang"><span class="ang-n">7</span><svg class="ang-art" viewBox="0 0 132 96" aria-hidden="true"><rect x="42" y="33" width="48" height="30" rx="7" fill="#FFFFFF" stroke="#191919" stroke-width="1.8"/><path d="M42 55h48" stroke="#191919" stroke-width="1.2" opacity=".35"/><circle cx="66" cy="48" r="36" fill="none" stroke="#E0682A" stroke-width="1.6" stroke-dasharray="4 4" opacity=".7"/><circle cx="66" cy="48" r="7.5" fill="#E0682A"/><circle cx="66" cy="48" r="2.6" fill="#FFFFFF"/></svg><b>From above</b></li>
       <li class="ang"><span class="ang-n">8</span><svg class="ang-art" viewBox="0 0 132 96" aria-hidden="true"><defs><pattern id="weave" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v5" stroke="#191919" stroke-width="1" opacity=".22"/></pattern></defs><rect x="42" y="33" width="48" height="30" rx="7" fill="#FFFFFF" stroke="#191919" stroke-width="1.8"/><path d="M42 55h48" stroke="#191919" stroke-width="1.2" opacity=".35"/><rect x="42" y="33" width="48" height="30" rx="7" fill="url(#weave)"/><circle cx="80" cy="42" r="15" fill="#FFFFFF" fill-opacity=".55" stroke="#E0682A" stroke-width="2.4"/><path d="m91 53 11 11" stroke="#E0682A" stroke-width="3.4" stroke-linecap="round"/></svg><b>Material close-up</b></li>
     </ul>
-    <p class="legend"><span class="dot"></span>Where you stand with the phone, looking down at the product from above.</p>
+    <p class="legend"><span class="dot"></span><span>Where you stand with the phone, looking down at the product from above.</span></p>
   </section>
 
   <section class="g-sec" id="what-makes-a-photograph-unusable">
@@ -415,23 +497,23 @@
       <div class="rule-card rule-do">
         <p class="rule-t"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Do</p>
         <ul>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>The whole product in frame</b>Nothing cut off at the edges.</span></li>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>One product per photo</b>So we can see where it starts and ends.</span></li>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Soft, even light</b>A window or an overcast day. No hard shadows.</span></li>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>A plain background</b>A bare wall or floor behind it.</span></li>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>True colour</b>No filters, beauty mode or heavy editing.</span></li>
-          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Sharp and steady</b>Wipe the lens, brace your hands.</span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>The whole product in frame</b><small>Nothing cut off at the edges.</small></span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>One product per photo</b><small>So we can see where it starts and ends.</small></span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>Soft, even light</b><small>A window or an overcast day. No hard shadows.</small></span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>A plain background</b><small>A bare wall or floor behind it.</small></span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>True colour</b><small>No filters, beauty mode or heavy editing.</small></span></li>
+          <li class="do"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="r-txt"><b>Sharp and steady</b><small>Wipe the lens, brace your hands.</small></span></li>
         </ul>
       </div>
       <div class="rule-card rule-dont">
         <p class="rule-t"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Avoid</p>
         <ul>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Part of the product cut off</b>We cannot invent what the camera did not see.</span></li>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Two products in one shot</b>We cannot tell where one ends.</span></li>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Strong sun or one side light</b>Hard shadows hide the shape.</span></li>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Busy or patterned backgrounds</b>A patterned rug on a patterned floor.</span></li>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Filters or edited colour</b>Customers are matching it to their room.</span></li>
-          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span><b>Screenshots or supplier images</b>Too small, and often not yours to use.</span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Part of the product cut off</b><small>We cannot invent what the camera did not see.</small></span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Two products in one shot</b><small>We cannot tell where one ends.</small></span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Strong sun or one side light</b><small>Hard shadows hide the shape.</small></span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Busy or patterned backgrounds</b><small>A patterned rug on a patterned floor.</small></span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Filters or edited colour</b><small>Customers are matching it to their room.</small></span></li>
+          <li class="dont"><span class="rule-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="r-txt"><b>Screenshots or supplier images</b><small>Too small, and often not yours to use.</small></span></li>
         </ul>
       </div>
     </div>
@@ -446,7 +528,8 @@
     <div class="measure">
       <div class="measure-art">
         <svg class="dims-art" viewBox="0 0 220 170" aria-hidden="true"><path d="M60 70 130 42l62 26-70 30z" fill="#FDFBF7" stroke="#191919" stroke-width="1.8" stroke-linejoin="round"/><path d="M60 70v62l62 30V98z" fill="#F4EFE5" stroke="#191919" stroke-width="1.8" stroke-linejoin="round"/><path d="M122 98v64l70-32V68z" fill="#FFFFFF" stroke="#191919" stroke-width="1.8" stroke-linejoin="round"/><path d="M52 142 114 172" stroke="#E0682A" stroke-width="2" stroke-linecap="round"/><path d="M49 136v12M117 166v12" stroke="#E0682A" stroke-width="2" stroke-linecap="round"/><text x="18" y="160" font-size="12" font-weight="700" fill="#E0682A" font-family="Inter,Arial,sans-serif">Width</text><path d="M128 168 198 136" stroke="#E0682A" stroke-width="2" stroke-linecap="round"/><text x="170" y="164" font-size="12" font-weight="700" fill="#E0682A" font-family="Inter,Arial,sans-serif">Depth</text><path d="M204 64v66" stroke="#E0682A" stroke-width="2" stroke-linecap="round"/><path d="M198 64h12M198 130h12" stroke="#E0682A" stroke-width="2" stroke-linecap="round"/><text x="162" y="30" font-size="12" font-weight="700" fill="#E0682A" font-family="Inter,Arial,sans-serif">Height</text><path d="M190 34 204 58" stroke="#E0682A" stroke-width="1.4" stroke-dasharray="3 3"/></svg>
-        <p><b>Measure it yourself.</b> Supplier sheets are often rounded or wrong.</p>
+        <p class="m-lead">Measure it yourself.</p>
+        <p>Supplier sheets are often rounded or wrong.</p>
         <p>Several sizes of one product? Send each one. They become separate items.</p>
       </div>
       <ul class="measure-grid">
@@ -489,7 +572,7 @@
     </div>
     <ul class="send">
       <li class="send-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.2" y="5.2" width="17.6" height="13.6" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m4 6.6 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Email</h3><p><a href="mailto:info@arqr360.com">info@arqr360.com</a></p></li>
-      <li class="send-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3.4" width="16" height="17.2" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8.2h8M8 12h8M8 15.8h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>The form</h3><p><a href="/#f-name">On our home page</a>, with attachments</p></li>
+      <li class="send-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3.4" width="16" height="17.2" rx="2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8.2h8M8 12h8M8 15.8h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>The form</h3><p><a href="/#f-name">Attach files on our home page</a></p></li>
       <li class="send-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Large files</h3><p>A Google Drive, Dropbox or WeTransfer link</p></li>
     </ul>
     <div class="naming">
@@ -500,11 +583,12 @@
       </div>
       <div class="name-card">
         <p class="rule-t"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 15.8 15.8 3.5l4.7 4.7L8.2 20.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m7.4 12 1.8 1.8M10 9.4l2.6 2.6M12.6 6.8l1.8 1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Put the sizes in the email itself</p>
-        <pre class="email-eg">Oak dining chair
-W 46 x D 52 x H 88 cm, seat 45 cm
-
-Round jute rug
-Diameter 160 cm</pre>
+        <div class="email-eg">
+          <span class="eg-name">Oak dining chair</span>
+          <span>W 46 x D 52 x H 88 cm, seat 45 cm</span>
+          <span class="eg-name">Round jute rug</span>
+          <span>Diameter 160 cm</span>
+        </div>
       </div>
     </div>
   </section>
@@ -515,11 +599,19 @@ Diameter 160 cm</pre>
       <h2>What you get at the end</h2>
     </div>
     <ul class="get">
-      <li class="get-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.6V20h16V9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9.6 5 4h14l2 5.6a3 3 0 0 1-5.6 1.6 3 3 0 0 1-5.6 0A3 3 0 0 1 3 9.6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5.2h4V20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Your own catalogue</h3><p>At arqr360.com/yourshop, with only your products in it.</p></li>
+      <li class="get-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.6V20h16V9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9.6 5 4h14l2 5.6a3 3 0 0 1-5.6 1.6 3 3 0 0 1-5.6 0A3 3 0 0 1 3 9.6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5.2h4V20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Your own catalogue</h3><p>At your own address, with only your products in it.</p></li>
       <li class="get-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM14 18.5h1.5M18.5 14h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>A QR code</h3><p>For your window, counter, packaging or ads.</p></li>
       <li class="get-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>True-size AR</h3><p>Every product at its real size, on iPhone and Android.</p></li>
       <li class="get-card"><span class="s-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8 20.2 7.4v9.2L12 21.2l-8.2-4.6V7.4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.8 7.4 12 12l8.2-4.6M12 12v9.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Your 3D models</h3><p>They are yours. Leave any time and we send you the files.</p></li>
     </ul>
+    <div class="demo-band">
+      <span class="demo-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="demo-copy">
+        <h3>See what yours will look like</h3>
+        <p>Open one of our sample catalogues on your phone and place a product in your own room.</p>
+      </div>
+      <a class="demo-btn" href="/catalogue"><span class="demo-live" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>See a live example</span></a>
+    </div>
     <p class="note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9.6V20h16V9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9.6 5 4h14l2 5.6a3 3 0 0 1-5.6 1.6 3 3 0 0 1-5.6 0A3 3 0 0 1 3 9.6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5.2h4V20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Orders go straight to you. We are not a shop and we never touch your customers' money.</span></p>
   </section>
 
@@ -569,5 +661,6 @@ Diameter 160 cm</pre>
   </div>
 </footer>
 
+<script>ARQR_I18N.apply();</script>
 </body>
 </html>

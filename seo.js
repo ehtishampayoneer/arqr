@@ -78,7 +78,7 @@ const PAGES = [
     title: 'ARQR | Your showroom, in their room',
     desc: SITE.blurb, schema: true, faq: true, priority: '1.0' },
   { file: 'catalogue.html', path: '/catalogue', image: '/assets/og-catalog.jpg',
-    title: 'Sample AR catalogues: furniture, footwear, decor and rugs | ARQR',
+    title: 'Sample AR catalogues: furniture, footwear, decor and rugs | ARQR360',
     desc: 'Four sample catalogues you can open on your phone. Every product at true size in your own room.',
     priority: '0.9' },
   { file: 'store.html',   path: '/store',   image: '/assets/og-catalog.jpg',

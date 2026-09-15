@@ -95,7 +95,11 @@ const DIMS = '<svg class="dims-art" viewBox="0 0 220 170" aria-hidden="true">' +
   '<path d="M190 34 204 58" stroke="#E0682A" stroke-width="1.4" stroke-dasharray="3 3"/>' +
   '</svg>';
 
-/* ------------------------------------------------------------------ copy */
+/* ------------------------------------------------------------------ copy
+   Every sentence sits in an element of its own, with no markup inside it.
+   The translation layer matches whole elements against their English
+   text, so "<b>Photos</b>from every side" would be one key nobody writes
+   and two words that never translate. */
 function body(BIZ) {
   const mail = '<a href="mailto:' + BIZ.email + '">' + BIZ.email + '</a>';
 
@@ -138,7 +142,7 @@ function body(BIZ) {
   ];
 
   const GET = [
-    [ICON.store, 'Your own catalogue', 'At ' + BIZ.name.toLowerCase() + '.com/yourshop, with only your products in it.'],
+    [ICON.store, 'Your own catalogue', 'At your own address, with only your products in it.'],
     [ICON.qr, 'A QR code', 'For your window, counter, packaging or ads.'],
     [ICON.phone, 'True-size AR', 'Every product at its real size, on iPhone and Android.'],
     [ICON.cube, 'Your 3D models', 'They are yours. Leave any time and we send you the files.']
@@ -146,14 +150,38 @@ function body(BIZ) {
 
   const li = (arr, cls) => arr.map(([t, d]) =>
     '<li class="' + cls + '"><span class="rule-ico">' + (cls === 'do' ? ICON.tick : ICON.cross) + '</span>' +
-    '<span><b>' + t + '</b>' + d + '</span></li>').join('\n          ');
+    '<span class="r-txt"><b>' + t + '</b><small>' + d + '</small></span></li>').join('\n          ');
 
   return `
 <main class="guide">
 
+  <!-- Two openings, one page. Someone arriving from checkout, or from the
+       /welcome link in our emails, is thanked for an order. Anyone else
+       reading ahead is not, because thanking a visitor for an order they
+       never placed reads as a broken page. The class is set in <head>
+       before anything paints, so neither one flashes. -->
+  <section class="welcome w-order" aria-label="Order confirmed">
+    <span class="w-ico">${ICON.check}</span>
+    <div class="w-copy">
+      <p class="w-chip">Order confirmed</p>
+      <h2 class="w-title">Thank you, and welcome to ARQR360</h2>
+      <p class="w-text">We will be in touch within 1 to 2 business days to get started.</p>
+      <p class="w-text">In the meantime, please read through this page and get your photos and measurements ready, so we can begin building your catalogue as soon as they arrive.</p>
+    </div>
+  </section>
+  <section class="welcome w-guest" aria-label="Welcome">
+    <span class="w-ico">${ICON.cube}</span>
+    <div class="w-copy">
+      <p class="w-chip">Welcome to ARQR360</p>
+      <h2 class="w-title">Planning your AR catalogue?</h2>
+      <p class="w-text">This page shows exactly what we need from you. Get it ready now, and we can start building the moment you are on board.</p>
+    </div>
+    <a class="demo-btn w-demo" href="/catalogue"><span class="demo-live" aria-hidden="true"></span>${ICON.phone}<span>See a live example</span></a>
+  </section>
+
   <section class="g-hero">
     <div class="g-hero-copy">
-      <p class="eyebrow">Getting started</p>
+      <p class="eyebrow">Your checklist</p>
       <h1>What we need from you</h1>
       <p class="lead">Everything to send us for your AR catalogue, in one page. Most shops have it ready in an afternoon with just a phone.</p>
       <nav class="g-jump" aria-label="On this page">
@@ -167,9 +195,9 @@ function body(BIZ) {
     <aside class="g-short" aria-label="In short">
       <p class="g-short-t">In short, for each product</p>
       <ul>
-        <li><span class="g-num">8</span><span><b>Photos</b>from every side, taken on a phone</span></li>
-        <li><span class="g-num">cm</span><span><b>Real measurements</b>measured, not from a supplier sheet</span></li>
-        <li><span class="g-num">1</span><span><b>Email</b>with everything, named clearly</span></li>
+        <li><span class="g-num">8</span><span class="g-t"><b>Photos</b><small>from every side, taken on a phone</small></span></li>
+        <li><span class="g-num">cm</span><span class="g-t"><b>Real measurements</b><small>measured, not from a supplier sheet</small></span></li>
+        <li><span class="g-num">1</span><span class="g-t"><b>Email</b><small>with everything, named clearly</small></span></li>
       </ul>
     </aside>
   </section>
@@ -199,7 +227,7 @@ function body(BIZ) {
     <ul class="angles">
       ${ANGLES.map(([k, t], i) => `<li class="ang"><span class="ang-n">${i + 1}</span>${angle(k)}<b>${t}</b></li>`).join('\n      ')}
     </ul>
-    <p class="legend"><span class="dot"></span>Where you stand with the phone, looking down at the product from above.</p>
+    <p class="legend"><span class="dot"></span><span>Where you stand with the phone, looking down at the product from above.</span></p>
   </section>
 
   <section class="g-sec" id="what-makes-a-photograph-unusable">
@@ -232,7 +260,8 @@ function body(BIZ) {
     <div class="measure">
       <div class="measure-art">
         ${DIMS}
-        <p><b>Measure it yourself.</b> Supplier sheets are often rounded or wrong.</p>
+        <p class="m-lead">Measure it yourself.</p>
+        <p>Supplier sheets are often rounded or wrong.</p>
         <p>Several sizes of one product? Send each one. They become separate items.</p>
       </div>
       <ul class="measure-grid">
@@ -260,7 +289,7 @@ function body(BIZ) {
     </div>
     <ul class="send">
       <li class="send-card"><span class="s-ico">${ICON.mail}</span><h3>Email</h3><p>${mail}</p></li>
-      <li class="send-card"><span class="s-ico">${ICON.form}</span><h3>The form</h3><p><a href="/#f-name">On our home page</a>, with attachments</p></li>
+      <li class="send-card"><span class="s-ico">${ICON.form}</span><h3>The form</h3><p><a href="/#f-name">Attach files on our home page</a></p></li>
       <li class="send-card"><span class="s-ico">${ICON.link}</span><h3>Large files</h3><p>A Google Drive, Dropbox or WeTransfer link</p></li>
     </ul>
     <div class="naming">
@@ -271,11 +300,12 @@ function body(BIZ) {
       </div>
       <div class="name-card">
         <p class="rule-t">${ICON.ruler}Put the sizes in the email itself</p>
-        <pre class="email-eg">Oak dining chair
-W 46 x D 52 x H 88 cm, seat 45 cm
-
-Round jute rug
-Diameter 160 cm</pre>
+        <div class="email-eg">
+          <span class="eg-name">Oak dining chair</span>
+          <span>W 46 x D 52 x H 88 cm, seat 45 cm</span>
+          <span class="eg-name">Round jute rug</span>
+          <span>Diameter 160 cm</span>
+        </div>
       </div>
     </div>
   </section>
@@ -288,6 +318,14 @@ Diameter 160 cm</pre>
     <ul class="get">
       ${GET.map(([ico, t, d]) => `<li class="get-card"><span class="s-ico">${ico}</span><h3>${t}</h3><p>${d}</p></li>`).join('\n      ')}
     </ul>
+    <div class="demo-band">
+      <span class="demo-ico">${ICON.phone}</span>
+      <div class="demo-copy">
+        <h3>See what yours will look like</h3>
+        <p>Open one of our sample catalogues on your phone and place a product in your own room.</p>
+      </div>
+      <a class="demo-btn" href="/catalogue"><span class="demo-live" aria-hidden="true"></span>${ICON.phone}<span>See a live example</span></a>
+    </div>
     <p class="note">${ICON.store}<span>Orders go straight to you. We are not a shop and we never touch your customers' money.</span></p>
   </section>
 
@@ -327,6 +365,8 @@ Diameter 160 cm</pre>
 
 const CSS = `
   body.is-guide{--wrap:min(1140px, calc(100% - 2 * var(--gutter)))}
+  /* the switcher sits beside Back, not floating in the middle of the bar */
+  body.is-guide .bar .lang{margin-inline-start:auto;margin-inline-end:10px}
   .guide{width:var(--wrap);margin:0 auto;padding:clamp(34px,5vw,64px) 0 clamp(40px,6vw,72px)}
   .guide h1,.guide h2{text-wrap:balance}
   .guide h1{font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0 0 16px}
@@ -360,8 +400,8 @@ const CSS = `
   .g-short li:first-child{border-top:0;padding-top:0}
   .g-num{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;
     background:#FCE7D8;color:var(--accent);font-family:var(--f-head);font-weight:800;font-size:22px}
-  .g-short b{display:block;font-size:16px;color:var(--ink)}
-  .g-short li span:last-child{font-size:14px;color:var(--ink-soft);line-height:1.45}
+  .g-t b{display:block;font-size:16px;color:var(--ink)}
+  .g-t small{display:block;font-size:14px;color:var(--ink-soft);line-height:1.45}
 
   /* sections */
   .g-sec{margin-bottom:clamp(48px,7vw,92px);scroll-margin-top:110px}
@@ -409,15 +449,15 @@ const CSS = `
   .rule-ico svg{width:14px;height:14px}
   .do .rule-ico,.name-good .rule-ico{background:#DDF1E4;color:#23633F}
   .dont .rule-ico,.name-bad .rule-ico{background:#FBE1DA;color:#C2412A}
-  .rule-card li b{display:block;font-size:15.5px;font-weight:600;line-height:1.35}
-  .rule-card li span:last-child{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+  .r-txt b{display:block;font-size:15.5px;font-weight:600;line-height:1.35}
+  .r-txt small{display:block;font-size:14.5px;color:var(--ink-soft);line-height:1.5}
 
   /* measurements */
   .measure{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:16px;align-items:stretch}
   .measure-art{padding:22px;display:flex;flex-direction:column;gap:10px;justify-content:center}
   .dims-art{width:100%;max-width:260px;height:auto;margin:0 auto 6px}
   .measure-art p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
-  .measure-art b{color:var(--ink)}
+  .measure-art .m-lead{color:var(--ink);font-weight:600}
   .measure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .m-card{padding:20px}
   .m-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
@@ -447,8 +487,11 @@ const CSS = `
   .name-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);margin-top:8px}
   .name-row code{background:none;border:0;padding:0;font-size:14.5px;overflow-wrap:anywhere}
   .name-bad code{text-decoration:line-through;text-decoration-color:rgba(194,65,42,.6);color:var(--ink-soft)}
-  .email-eg{margin:0;padding:14px 16px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;white-space:pre-wrap;color:var(--ink)}
+  .email-eg{padding:14px 16px;border-radius:12px;background:var(--page-hi);border:1px solid var(--line);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;color:var(--ink)}
+  .email-eg span{display:block}
+  .email-eg .eg-name{font-weight:700}
+  .email-eg .eg-name + span + .eg-name{margin-top:12px}
 
   .g-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 
@@ -477,6 +520,54 @@ const CSS = `
 
   .guide a:focus-visible,.g-jump a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
+  /* ---- the opening message: one of two, chosen in <head> ---- */
+  .welcome{display:flex;align-items:center;gap:clamp(14px,2vw,22px);
+    margin-bottom:clamp(30px,4.4vw,52px);padding:clamp(18px,2.6vw,28px);
+    border-radius:20px;background:#FFFFFF;border:1px solid var(--line);
+    box-shadow:0 18px 40px -30px rgba(70,50,30,.45)}
+  .w-order{display:none;border-color:rgba(35,99,63,.25);
+    background:linear-gradient(100deg,#F1F8F3 0%,#FFFFFF 62%)}
+  html.is-welcome .w-order{display:flex}
+  html.is-welcome .w-guest{display:none}
+  .w-ico{flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:16px;
+    background:#FCE7D8;color:var(--accent)}
+  .w-order .w-ico{background:#DDF1E4;color:#23633F}
+  .w-ico svg{width:28px;height:28px}
+  .w-copy{flex:1 1 auto;min-width:0}
+  .w-chip{display:inline-block;margin-bottom:8px!important;padding:4px 11px;border-radius:100px;
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:#FCE7D8;color:#A94A17}
+  .w-order .w-chip{background:#DDF1E4;color:#23633F}
+  .welcome .w-title{font-size:clamp(21px,2.4vw,28px);margin-bottom:6px}
+  .w-text{font-size:16px;line-height:1.6;color:var(--ink-soft);max-width:70ch}
+  .w-text + .w-text{margin-top:4px!important}
+
+  /* ---- the sample catalogues, in the accent rather than beside it ---- */
+  /* the same pill as on the home page, so the samples look the same everywhere */
+  .demo-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    min-height:50px;padding:12px 22px 12px 16px;border-radius:100px;
+    background:#FFF1E6;border:1.5px solid var(--accent);color:#A94A17;font-weight:700;font-size:15.5px;
+    text-decoration:none;white-space:nowrap;box-shadow:0 10px 24px -14px rgba(224,104,42,.75);
+    transition:background .2s ease,color .2s ease,transform .2s ease}
+  .demo-btn:hover{background:var(--accent);color:#FFFFFF;transform:translateY(-2px)}
+  .demo-live{position:relative;flex:none;width:9px;height:9px;border-radius:50%;background:#1F9D55}
+  .demo-live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #1F9D55;opacity:0;animation:demoLive 2.2s ease-out infinite}
+  @keyframes demoLive{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+  @media(prefers-reduced-motion:reduce){.demo-live::after{animation:none}}
+  .demo-btn svg{width:19px;height:19px}
+  .demo-band .demo-btn:not(:hover){background:#FFFFFF}
+  .demo-band{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;
+    padding:clamp(18px,2.4vw,26px);border-radius:18px;
+    background:linear-gradient(100deg,#FDEBDD 0%,#FFF7F1 70%);border:1px solid rgba(224,104,42,.28)}
+  .demo-ico{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;
+    background:#FFFFFF;color:var(--accent)}
+  .demo-ico svg{width:26px;height:26px}
+  .demo-copy{flex:1 1 260px;min-width:0}
+  .demo-copy p{margin-top:4px!important;font-size:15px;line-height:1.55;color:var(--ink-soft)}
+
+  [dir="rtl"] .ang-n{left:auto;right:10px}
+  [dir="rtl"] .cta-social span{margin-right:0;margin-left:4px}
+
   @media(max-width:1000px){
     .g-hero{grid-template-columns:1fr}
     .angles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -486,6 +577,9 @@ const CSS = `
     .cta-actions{min-width:0}
   }
   @media(max-width:760px){
+    .welcome{flex-wrap:wrap;align-items:flex-start}
+    .w-demo{width:100%}
+    .demo-btn{width:100%;white-space:normal}
     .steps,.rules,.send,.naming,.g-pair{grid-template-columns:1fr}
     .measure-grid{grid-template-columns:1fr}
   }
