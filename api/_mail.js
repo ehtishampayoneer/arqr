@@ -7,7 +7,7 @@
    it.
 
    Email HTML is its own dialect: tables for layout, every style inline,
-   no web fonts, no background images, no SVG. Gmail strips <style>
+   no web fonts, no SVG, and pictures baked flat rather than layered. Gmail strips <style>
    blocks in some views and Outlook renders with Word, so anything
    cleverer than this breaks in one of them. The logo is a hosted PNG on
    an explicit light cell, because a transparent black logo on a client's
@@ -20,6 +20,12 @@ const BRAND = {
   name: 'ARQR360',
   email: 'info@arqr360.com',
   logo: SITE + '/assets/logo-bar.png',
+  /* a room from the Novara sample, washed into the page colour with the
+     site's grid and the logo baked in. Baked, not layered: email clients
+     do not agree on background images or opacity, and a picture looks the
+     same in all of them. Built by email-images.js. */
+  header: SITE + '/assets/email/header.jpg',
+  grid: SITE + '/assets/email/grid.png',
   accent: '#E0682A',
   ink: '#191919',
   soft: '#6E6A64',
@@ -96,10 +102,11 @@ function render({ preheader, greeting, blocks }) {
 '<title>' + BRAND.name + '</title></head>' +
 '<body style="margin:0;padding:0;background:' + BRAND.page + '">' +
 '<div style="display:none;max-height:0;overflow:hidden;opacity:0">' + esc(preheader || '') + '</div>' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="' + BRAND.page + '" style="background:' + BRAND.page + '">' +
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="' + BRAND.page + '" background="' + BRAND.grid + '" style="background:' + BRAND.page + ' url(' + BRAND.grid + ') repeat">' +
   '<tr><td align="center" style="padding:28px 14px">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#FFFFFF;border:1px solid ' + BRAND.line + ';border-radius:16px;border-collapse:separate" bgcolor="#FFFFFF">' +
-      '<tr><td style="padding:30px 32px 8px">' +
+      '<tr><td style="padding:0;line-height:0;font-size:0"><a href="' + SITE + '"><img src="' + BRAND.header + '" width="560" alt="ARQR360" style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:16px 16px 0 0"></a></td></tr>' +
+      '<tr><td style="padding:26px 32px 8px">' +
         '<p style="margin:0 0 18px;font-family:' + FONT + ';font-size:15px;line-height:24px;color:' + BRAND.ink + '">' + esc(greeting) + '</p>' +
         parts +
       '</td></tr>' +
