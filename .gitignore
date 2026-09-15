@@ -6,3 +6,12 @@ node_modules/
 # Video production assets: the client works on these locally and two of
 # them are over GitHub 100MB limit. They are not part of the site.
 Commercial/
+
+# Secrets never belong in this folder: everything under assets/ is served
+# publicly by the site. A Hugging Face token was committed here once and
+# was downloadable from arqr360.com until it was moved out.
+*TOKEN*
+*token*
+*.key
+.env*
+*.env
