@@ -20,6 +20,8 @@
    ------------------------------------------------------------------ */
 'use strict';
 const fs = require('fs');
+const { execFileSync } = require('child_process');
+const START = require('./start-page.js');
 
 const BIZ = {
   name: 'ARQR360',
@@ -40,85 +42,8 @@ const DOCS = [
     slug: 'start',
     group: 'guide',
     title: 'What we need from you',
-    lead: 'What happens after you order, exactly what to send us, and what makes a photograph we cannot use.',
-    sections: [
-      ['How it goes, in order', [
-        UL([
-          '<strong>You order.</strong> You get an email straight away with a link back to this page.',
-          '<strong>You send photographs and measurements</strong> of the products you want built. Ten for Starter, twenty-five for Studio.',
-          '<strong>We check them within one working day</strong> and tell you if anything is unusable, before any modelling starts, so nothing goes quiet on you.',
-          '<strong>We build.</strong> About seven working days from the point we have photographs we can work from.',
-          '<strong>You get your catalogue</strong>, your QR code and your link. You check it, we fix anything wrong at no cost.',
-          '<strong>It goes live</strong>, and the monthly fee keeps it there.'
-        ]),
-        P('The seven days start when we have usable photographs, not when you order. If a photograph will not work we tell you the same day rather than letting the date slip quietly.')
-      ]],
-
-      ['Photographs', [
-        P('Six to eight per product. We are rebuilding the object in three dimensions, so we need to see every side of it: what the camera cannot see, we would be guessing at.'),
-        UL([
-          'front, back, and both sides, square on,',
-          'two more at roughly forty-five degrees, from the corners,',
-          'one from above,',
-          'and a close-up of the material, so the texture is right.'
-        ]),
-        P('A phone camera is fine. This does not need a studio.')
-      ]],
-
-      ['What makes a photograph unusable', [
-        P('These are the ones we have to send back, so they are worth knowing before you shoot rather than after:'),
-        UL([
-          '<strong>Part of the product is cut off.</strong> We cannot invent the missing part.',
-          '<strong>Two products in one photograph.</strong> One product per shot, or we cannot tell where one ends.',
-          '<strong>Hard shadow or one strong light from the side.</strong> Shade or an overcast day beats direct sun. Indoors, turn the main light off and use the window.',
-          '<strong>A busy background.</strong> A plain wall or floor. A patterned rug photographed on a patterned floor is two patterns we have to separate.',
-          '<strong>Filters, beauty mode, heavy editing.</strong> We need the real colour, because the customer is judging whether it matches their room.',
-          '<strong>Blur.</strong> Wipe the lens and brace your hands. Blur costs more than it looks like it does.',
-          '<strong>Screenshots, or images pulled from a supplier catalogue.</strong> Usually too small, and often not yours to use.'
-        ])
-      ]],
-
-      ['Measurements, and why they are the important half', [
-        P('This is the part that separates an AR catalogue from a photograph. Your customer is holding their phone up in their own room asking whether it fits. A sofa built to a guessed width answers that question wrongly, and confidently, which is worse than not answering it.'),
-        P('Centimetres, measured, not taken off a supplier sheet:'),
-        UL([
-          '<strong>Furniture:</strong> width, depth and height. For seating, seat height from the floor as well.',
-          '<strong>Rugs and carpets:</strong> length and width, and say whether it is rectangular, round or a runner. Photograph it flat, from directly above.',
-          '<strong>Footwear:</strong> the size you sell it as, plus the length of the sole in centimetres. Outer side, inner side, top, sole, front and back.',
-          '<strong>Lamps and decor:</strong> height and the widest point. If it hangs, the drop as well.'
-        ]),
-        P('If a product comes in several sizes, send the measurements for each one and we build them as separate items in the catalogue.')
-      ]],
-
-      ['If you already have 3D files', [
-        P('Send those instead and we skip the modelling. We can work from .glb, .gltf, .usdz, .fbx or .obj. Tell us the real size anyway: a file that arrives at the wrong scale looks correct until it is standing in someone\'s living room at twice its size.')
-      ]],
-
-      ['How to send it', [
-        P('Email <a href="mailto:' + BIZ.email + '">' + BIZ.email + '</a>, or use the form on the home page. For anything large, a Drive, Dropbox or WeTransfer link is easier than an attachment.'),
-        P('Name the files so we can tell them apart: the product name, then the angle. <code>oak-dining-chair-front.jpg</code> tells us what it is. <code>IMG_4471.jpg</code> does not.'),
-        P('Put the measurements in the email itself, next to the product name, rather than in a separate file. It is the thing we check first.')
-      ]],
-
-      ['What you get at the end', [
-        UL([
-          'Your own catalogue at your own address, ' + BIZ.name.toLowerCase() + '.com/yourshop, with nobody else\'s products in it.',
-          'A QR code to print, put in the window, or on packaging.',
-          'Every product at its real size, so a customer can stand it in their room before they buy.',
-          'Orders coming to you directly. We are not a shop and we never touch your customers\' money.'
-        ]),
-        P('The 3D models are yours. If you ever leave, ask and we will send you the files.')
-      ]],
-
-      ['Adding products later', [
-        P('Send them the same way. Extra products beyond your plan are charged per product at the rate on the pricing page, and go live in the same catalogue. You do not start again.')
-      ]],
-
-      ['If something is not right', [
-        P('Tell us. A model that is the wrong size, the wrong colour or not what you asked for gets fixed at no cost, and there is no time limit on a mistake that is ours. That is not a refund question, it is us finishing the job properly.'),
-        P('Email <a href="mailto:' + BIZ.email + '">' + BIZ.email + '</a> and a person answers.')
-      ]]
-    ]
+    lead: 'Everything to send us for your AR catalogue: photos, measurements and how to send them.',
+    sections: [] /* built by start-page.js */
   },
 
   {
@@ -295,6 +220,15 @@ const CSS = `
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--page);color:var(--ink);font-family:var(--f-body);
     font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  /* a faint drafting grid, the same idea as the home page's hero. Fixed
+     behind everything so it does not scroll with the text, and faded
+     toward the bottom so long pages do not read as graph paper. */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(25,25,25,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(25,25,25,.05) 1px,transparent 1px);
+    background-size:44px 44px;background-position:center top;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.3) 100%);
+            mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.3) 100%)}
   img{max-width:100%}
   a{color:inherit}
   a:hover{color:var(--accent)}
@@ -399,9 +333,9 @@ function render(doc) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>${CSS}</style>
+<style>${CSS}${doc.slug === 'start' ? START.CSS : ''}</style>
 </head>
-<body>
+<body${doc.slug === 'start' ? ' class="is-guide"' : ''}>
 
 <header class="bar">
   <a class="logo" href="/">
@@ -415,7 +349,7 @@ function render(doc) {
   </a>
 </header>
 
-<main>
+${doc.slug === 'start' ? START.body(BIZ) : `<main>
   <p class="eyebrow">${BIZ.name}</p>
   <h1>${esc(doc.title)}</h1>
   <p class="lead">${esc(doc.lead)}</p>
@@ -426,7 +360,7 @@ ${body}
   <div class="ask">
     <p>Anything here you want explained, or disagree with? Email <a href="mailto:${BIZ.email}">${BIZ.email}</a> and a person will answer.</p>
   </div>
-</main>
+</main>`}
 
 <footer class="site-foot">
   <div class="foot-wrap">
@@ -446,21 +380,23 @@ ${body}
 /* No em dashes. They were stripped from every page months ago because
    they read as machine-written, and legal copy is exactly where a
    stray one would sit unread for a year. Checked, not remembered. */
-const strayDashes = DOCS.reduce((acc, d) => acc
-  .concat(d.title, d.lead)
-  .concat(d.sections.reduce((a, [h, bs]) => a.concat(h,
-    bs.map((b) => (b.ul ? b.ul.join(' ') : b.p))), [])), [])
-  .filter((t) => t.indexOf('—') > -1);
-if (strayDashes.length) {
-  throw new Error(strayDashes.length + ' em dash(es) in the copy, first in: ' +
-    strayDashes[0].slice(0, 70));
-}
-
 DOCS.forEach((doc) => {
-  fs.writeFileSync(doc.file, render(doc), 'utf8');
+  const html = render(doc);
+  /* No em dashes: stripped from every page months ago because they read
+     as machine-written. Checked on the written page, not remembered. */
+  const dash = html.replace(/<style>[\s\S]*?<\/style>/g, '').indexOf('\u2014');
+  if (dash > -1) throw new Error('em dash in ' + doc.file + ' near: ' + html.slice(dash - 40, dash + 20));
+  fs.writeFileSync(doc.file, html, 'utf8');
   const words = doc.sections.reduce((n, [, bs]) => n + bs.reduce((m, b) =>
     m + (b.ul ? b.ul.join(' ') : b.p).split(/\s+/).length, 0), 0);
   console.log('  ' + doc.file.padEnd(14) + doc.path.padEnd(10) +
               doc.sections.length + ' sections, ' + words + ' words');
 });
 console.log('\n  ' + BIZ.name + ', ' + BIZ.city + ', last updated ' + BIZ.updated);
+
+/* These pages are written with an empty logo slot and no SEO head, and two
+   other scripts fill both in. Running this file alone once shipped all
+   four pages with no logo and no canonical, so it now runs them itself. */
+for (const step of ['logo-write.js', 'seo.js']) {
+  execFileSync(process.execPath, [step], { stdio: 'inherit' });
+}
