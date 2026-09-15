@@ -51,6 +51,18 @@ function rawBody(req) {
 }
 
 /* Paddle-Signature: ts=1671552777;h1=<hex hmac of "ts:body"> */
+/* Returns '' when the signature is good, otherwise a short reason. The
+   reason goes back in the response, which Paddle shows in its
+   notification log, so a failed delivery says why without anyone needing
+   the server logs. None of it is secret: which check failed and how many
+   bytes arrived. */
+function why(header, body, secret, now) {
+  if (!secret) return 'not-configured';
+  if (!header) return 'no-signature';
+  if (!body) return 'empty-body';
+  return verify(header, body, secret, now) ? '' : 'signature-mismatch';
+}
+
 function verify(header, body, secret, now) {
   if (!header || !secret) return false;
   const parts = Object.fromEntries(String(header).split(';').map((kv) => {
@@ -91,9 +103,11 @@ async function handler(req, res) {
   }
 
   const body = await rawBody(req);
-  if (!verify(req.headers['paddle-signature'], body, process.env.PADDLE_WEBHOOK_SECRET)) {
-    console.error('paddle-webhook: bad or missing signature');
-    return res.status(401).json({ ok: false });
+  const refused = why(req.headers['paddle-signature'], body, process.env.PADDLE_WEBHOOK_SECRET);
+  if (refused) {
+    console.error('paddle-webhook: refused, ' + refused + ', ' + Buffer.byteLength(body) + ' bytes');
+    return res.status(401).json({ ok: false, reason: refused, bytes: Buffer.byteLength(body),
+      apiKey: !!process.env.PADDLE_API_KEY, resend: !!process.env.RESEND_API_KEY });
   }
 
   let event;
@@ -166,7 +180,9 @@ async function handler(req, res) {
     /* a 5xx makes Paddle retry later, and the idempotency keys stop a
        retry from sending twice what already went */
     console.error('paddle-webhook: ' + e.message);
-    return res.status(500).json({ ok: false });
+    /* the message names the step that failed (customer lookup, Resend) and
+       its status code; it never contains a key */
+    return res.status(500).json({ ok: false, reason: String(e.message).slice(0, 240) });
   }
 }
 
