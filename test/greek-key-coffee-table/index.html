@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="arqr-build" content="20260917014205">
+<meta name="arqr-build" content="20260917014426">
 <title>Greek key coffee table | ARQR360 test</title>
 <link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
   .bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(250,247,242,.94)}
   .bar img{height:30px;width:auto;display:block}
   .tag{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A94A17;background:#FCE7D8;padding:4px 10px;border-radius:100px}
-  main{max-width:1040px;margin:0 auto;padding:20px 16px 48px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px}
+  main{max-width:1040px;margin:0 auto;padding:20px 16px 48px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
   .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
   model-viewer{width:100%;height:min(62vh,560px);background:var(--alt);border-radius:14px;--poster-color:var(--alt)}
   h1{font:800 24px/1.2 "Archivo","Segoe UI",Arial,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
@@ -39,7 +39,7 @@
 <div class="bar"><a href="/"><img src="/assets/logo-bar.png" alt="ARQR360"></a><span class="tag">Test page</span></div>
 <main>
   <div class="card">
-    <model-viewer src="model.glb?v=20260917014205" ios-src="model.usdz?v=20260917014205" poster="thumbnail.jpg?v=20260917014205" alt="Greek key coffee table"
+    <model-viewer src="/test/greek-key-coffee-table/model.glb?v=20260917014426" ios-src="/test/greek-key-coffee-table/model.usdz?v=20260917014426" poster="/test/greek-key-coffee-table/thumbnail.jpg?v=20260917014426" alt="Greek key coffee table"
       camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="2000" shadow-intensity="1" exposure="1" camera-orbit="-30deg 68deg auto"></model-viewer>
   </div>
   <div class="card">
@@ -54,8 +54,8 @@
       <li>Stand next to it: is the size right?</li>
       <li>Colours and patterns: do they match the real product?</li>
     </ul>
-    <div class="files"><a href="model.glb?v=20260917014205" download>GLB (Android)</a><a href="model.usdz?v=20260917014205" download>USDZ (iPhone)</a></div>
-    <p class="note">Built 17 Sep 2026, 01:42.</p>
+    <div class="files"><a href="/test/greek-key-coffee-table/model.glb?v=20260917014426" download>GLB (Android)</a><a href="/test/greek-key-coffee-table/model.usdz?v=20260917014426" download>USDZ (iPhone)</a></div>
+    <p class="note">Built 17 Sep 2026, 01:44.</p>
   </div>
 </main>
 <script>
@@ -68,11 +68,11 @@ document.getElementById('ar').addEventListener('click', function () {
   if (isIOS) {
     var a = document.createElement('a');
     a.setAttribute('rel', 'ar');
-    a.href = new URL('model.usdz?v=20260917014205', location.href).href + '#allowsContentScaling=0';
+    a.href = new URL('/test/greek-key-coffee-table/model.usdz?v=20260917014426', location.href).href + '#allowsContentScaling=0';
     a.appendChild(document.createElement('img'));
     document.body.appendChild(a); a.click(); a.remove();
   } else if (isAndroid) {
-    var abs = new URL('model.glb?v=20260917014205', location.href).href;
+    var abs = new URL('/test/greek-key-coffee-table/model.glb?v=20260917014426', location.href).href;
     location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs) +
       '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(name) +
       '#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;' +
