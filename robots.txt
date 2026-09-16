@@ -4,4 +4,7 @@ Allow: /
 # the models are large and there is nothing to index inside them
 Disallow: /assets/shops/
 
+# model test pages from ARQR Studio: for checking on a phone, not for search
+Disallow: /test/
+
 Sitemap: https://arqr360.com/sitemap.xml
