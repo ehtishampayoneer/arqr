@@ -3,6 +3,14 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/admin",
+      "destination": "/api/admin?p="
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/api/admin?p=:path*"
+    },
+    {
       "source": "/novara",
       "destination": "/store"
     },
@@ -60,6 +68,9 @@
     },
     "api/paddle-webhook.js": {
       "maxDuration": 15
+    },
+    "api/admin.js": {
+      "maxDuration": 30
     }
   }
 }

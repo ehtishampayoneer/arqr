@@ -6,5 +6,6 @@ Disallow: /assets/shops/
 
 # model test pages from ARQR Studio: for checking on a phone, not for search
 Disallow: /test/
+Disallow: /admin
 
 Sitemap: https://arqr360.com/sitemap.xml
