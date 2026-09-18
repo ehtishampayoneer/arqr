@@ -3,6 +3,14 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/blog",
+      "destination": "https://thegenieofmarketing.vercel.app/b/arqr360.com"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://thegenieofmarketing.vercel.app/b/arqr360.com/:path*"
+    },
+    {
       "source": "/admin",
       "destination": "/api/admin?p="
     },

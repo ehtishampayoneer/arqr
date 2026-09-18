@@ -9,3 +9,4 @@ Disallow: /test/
 Disallow: /admin
 
 Sitemap: https://arqr360.com/sitemap.xml
+Sitemap: https://arqr360.com/blog/sitemap.xml
