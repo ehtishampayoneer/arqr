@@ -31,6 +31,9 @@ const V = (fs.readFileSync('index.html', 'utf8').match(/i18n\.js\?v=(\d+)/) || [
    their own language gets the photos right. The terms, privacy and refund
    pages stay in English: a translated legal page is a second legal text,
    and nobody has checked those translations against the law. */
+/* Marketing Genie's on-site layer: visit counts and leads, on every page. */
+const ANALYTICS = '<script src="https://thegenieofmarketing.vercel.app/api/embed?k=ZjQwMGEzM2ItNWUzNC00YjAxLWIwOTYtN2RjMTVhNzdjNDZl.ca7a6f7fc248e2e874dd" async></script>';
+
 const HEAD_START = '<script src="i18n.js?v=' + V + '"></script>\n' +
   '<script>if(/^\\/welcome(\\/|$)/.test(location.pathname)||/[?&]welcome\\b/.test(location.search))' +
   'document.documentElement.className+=" is-welcome";</script>\n';
@@ -345,6 +348,7 @@ ${doc.slug === 'start' ? HEAD_START : ''}<link rel="preconnect" href="https://fo
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>${CSS}${doc.slug === 'start' ? START.CSS : ''}</style>
+${ANALYTICS}
 </head>
 <body${doc.slug === 'start' ? ' class="is-guide"' : ''}>
 

@@ -307,7 +307,13 @@ fs.writeFileSync('robots.txt',
   '# the models are large and there is nothing to index inside them\n' +
   'Disallow: /assets/shops/\n' +
   '\n' +
-  'Sitemap: ' + SITE.origin + '/sitemap.xml\n', 'utf8');
+  '# ARQR Studio: the admin page, and the model test pages for checking on a phone\n' +
+  'Disallow: /test/\n' +
+  'Disallow: /admin\n' +
+  '\n' +
+  'Sitemap: ' + SITE.origin + '/sitemap.xml\n' +
+  // the blog is served from Marketing Genie and keeps a sitemap of its own
+  'Sitemap: ' + SITE.origin + '/blog/sitemap.xml\n', 'utf8');
 
 /* ---- sitemap.xml ---- */
 const today = new Date().toISOString().slice(0, 10);
