@@ -237,7 +237,7 @@
   .demo-btn svg,.bar .see svg{width:16px;height:16px;display:block;flex:none}
   .ct-left .demo-btn{box-shadow:none;margin-top:clamp(16px,1.8vw,22px);align-self:flex-start}
   @media(max-width:480px){.ct-left .demo-btn{align-self:stretch}}
-  .pr-try{margin:18px 0 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  .pr-try{margin:18px 0 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
     gap:10px 14px;font-size:15px;color:var(--ink-soft)}
   .bar .see svg{width:15px;height:15px;display:block;flex:none}
   .see-brief{display:none}
@@ -1619,7 +1619,7 @@
   .sample-meta span{color:var(--ink-soft);font-size:13.5px}
   @media(max-width:900px){.samples-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-      /* ---------------- questions + promise, side by side ---------------- */
+  /* ---------------- questions + promise, side by side ---------------- */
   /* The promise used to be its own section; the questions sat alone on
      the left with the whole right side empty. They now share one grid:
      promise on the left, questions filling the right. */
@@ -2135,12 +2135,10 @@
       <p class="sec-eyebrow rev">Pricing</p>
       <h2 class="rev">Choose a plan. Start growing today.</h2>
       <p class="pr-sub rev">Affordable monthly plans to keep your AR catalogue live, shareable, and always up to date.</p>
-      <p class="pr-try rev"><span>Want to see it working first?</span><a class="demo-btn" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See a live example</span></a></p>
+      <p class="pr-try rev"><a class="demo-btn" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See a live example</span></a></p>
     </div>
 
     <p class="pr-note rev">Launch pricing. One setup fee, one monthly fee, nothing hidden.</p>
-
-    <p class="pr-lead rev">Start with a simple monthly plan. We build your AR catalogue once, then keep it live for your customers.</p>
 
     <div class="pr-grid">
 
@@ -2348,6 +2346,42 @@
         <p class="ct-eyebrow">Get your catalogue</p>
         <h2>Let&apos;s build yours.</h2>
         <p class="ct-copy">Tell us what you sell. We reply within one working day with the next steps.</p>
+
+        <div class="bi-chart" id="salesChart">
+          <div class="bi-top">
+            <h4>Monthly sales</h4>
+            <div class="bi-legend">
+              <span><i></i>With ARQR360</span>
+              <span class="off"><i></i>Without ARQR360</span>
+            </div>
+          </div>
+          <svg viewBox="0 0 560 330" role="img" aria-label="Sales growth comparison">
+            <g class="bi-grid-lines" aria-hidden="true">
+              <line x1="40" y1="70" x2="540" y2="70"/>
+              <line x1="40" y1="130" x2="540" y2="130"/>
+              <line x1="40" y1="190" x2="540" y2="190"/>
+              <line x1="40" y1="250" x2="540" y2="250"/>
+            </g>
+            <path class="bi-flat" d="M40 252 L140 248 L240 253 L340 249 L440 252 L540 250"/>
+            <circle class="bi-flat-dot" cx="540" cy="250" r="5"/>
+            <g class="bi-plot">
+              <mask id="biMask"><rect class="bi-mask" x="0" width="560" fill="#ffffff"/></mask>
+              <g mask="url(#biMask)">
+                <path class="bi-line" d="M40 250 C100 244 120 236 150 228 C180 220 200 210 230 198 C260 186 290 168 320 152 C350 136 380 112 410 96 C440 80 480 52 510 34 C520 27 530 24 540 22"/>
+                <circle class="bi-dot" cx="540" cy="22" r="7"/>
+              </g>
+              <circle class="bi-halo" cx="540" cy="22" r="10"/>
+            </g>
+            <g class="bi-axis" aria-hidden="true">
+              <text x="40" y="288" text-anchor="middle">1</text>
+              <text x="140" y="288" text-anchor="middle">2</text>
+              <text x="240" y="288" text-anchor="middle">3</text>
+              <text x="340" y="288" text-anchor="middle">4</text>
+              <text x="440" y="288" text-anchor="middle">5</text>
+              <text x="536" y="288" text-anchor="middle">6</text>
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div class="ct-right">
@@ -2636,6 +2670,24 @@
     }, {threshold:t[2]});
     io.observe(watch);
   });
+})();
+
+/* ---- sales chart: draw on scroll, then heartbeat at the top ---- */
+(function(){
+  var chart = document.getElementById('salesChart');
+  if (!chart) return;
+  if (!('IntersectionObserver' in window)){ chart.classList.add('go','done'); return; }
+  var startBeat = function(){ chart.classList.add('done'); };
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      chart.classList.add('go');
+      /* the mask draw runs ~1.7s; the beat starts once the line is up */
+      setTimeout(startBeat, 2500);
+    });
+  }, {threshold:0.35});
+  io.observe(chart);
 })();
 
 /* ---- contact form ----
