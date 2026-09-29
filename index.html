@@ -705,9 +705,12 @@
   .pr-head .sec-eyebrow{display:inline-block}
   .pr-head .sec-eyebrow::after{margin:12px auto 0}
   .pr h2{font-family:var(--f-head);font-weight:800;
-    font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.01em;margin:0 0 16px}
+    font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:-.01em;
+    /* balanced so "today." never sits alone on a last line */
+    text-wrap:balance;max-width:19ch;margin:0 auto 16px}
   .pr h2 em{font-style:normal;color:var(--accent)}
-  .pr-sub{margin:0;font-size:clamp(15px,1.4vw,18px);line-height:1.6;color:var(--ink-soft)}
+  .pr-sub{margin:0 auto;font-size:clamp(15px,1.4vw,18px);line-height:1.6;
+    color:var(--ink-soft);text-wrap:balance;max-width:56ch}
 
   /* Landing here from a catalogue's apply button. Without this the browser
      puts the field flush against the top of the viewport, which on a phone
@@ -755,8 +758,11 @@
      the only one in the accent; the build fee is stated plainly under it
      but never set larger, because "$999" as the first thing read is a
      different conversation from "from $29 a month". */
-  .pr-lead{max-width:1160px;margin:0 auto clamp(16px,2.2vh,24px);
-    font-size:clamp(14.5px,1.15vw,16.5px);line-height:1.6;color:var(--ink-soft)}
+  /* centred like the rest of the header, and given real clearance below:
+     the middle card's Recommended badge floats 13px above the grid, so a
+     tight margin lets the sentence slide underneath it. */
+  .pr-lead{max-width:62ch;margin:0 auto clamp(30px,4vh,46px);text-align:center;
+    text-wrap:balance;font-size:clamp(14.5px,1.15vw,16.5px);line-height:1.6;color:var(--ink-soft)}
 
   .plan-count small{margin-top:6px}
 
@@ -869,7 +875,7 @@
   .faq-head{max-width:720px;margin:0 0 clamp(22px,3vh,34px)}
   .faq h2{font-family:var(--f-head);font-weight:800;
     font-size:clamp(30px,3.4vw,46px);line-height:1.12;letter-spacing:-.01em;margin:0}
-  .faq-list{max-width:820px;border-top:1px solid var(--line)}
+  .faq-list{border-top:1px solid var(--line);min-width:0}
 
   .qa{border-bottom:1px solid var(--line)}
   .qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;
@@ -1613,15 +1619,26 @@
   .sample-meta span{color:var(--ink-soft);font-size:13.5px}
   @media(max-width:900px){.samples-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-  /* ---- guarantee: plain promise, no charts ---- */
-  .guarantee{padding:clamp(64px,8vw,120px) 0}
-  .guarantee-in{width:var(--wrap);margin-inline:auto;max-width:860px}
-  .guarantee .sec-eyebrow{margin-bottom:clamp(13px,1.8vh,26px)}
-  .guarantee h2{margin:0;font-family:var(--f-head);font-weight:800;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.01em}
-  .guarantee p{color:var(--ink-soft);font-size:clamp(15px,1.4vw,18px);max-width:60ch;margin:16px 0 0}
-  .guarantee .gr-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
-  .guarantee .gr-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
-  .guarantee .gr-list svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--accent,#E0682A)}
+      /* ---------------- questions + promise, side by side ---------------- */
+  /* The promise used to be its own section; the questions sat alone on
+     the left with the whole right side empty. They now share one grid:
+     promise on the left, questions filling the right. */
+  .faq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:clamp(30px,4.5vw,72px);align-items:start}
+  .faq-side .sec-eyebrow{margin-bottom:clamp(13px,1.8vh,22px)}
+  .faq-side h3{margin:0 0 14px;font-family:var(--f-head);font-weight:800;
+    font-size:clamp(24px,2.4vw,32px);line-height:1.15;letter-spacing:-.01em;
+    text-wrap:balance}
+  .faq-side>p{color:var(--ink-soft);font-size:clamp(15px,1.4vw,17px);
+    line-height:1.65;margin:0 0 20px;max-width:56ch}
+  .faq-side .gr-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .faq-side .gr-list li{display:flex;gap:12px;align-items:flex-start;
+    font-size:15.5px;line-height:1.55}
+  .faq-side .gr-list svg{flex:none;width:22px;height:22px;margin-top:2px;
+    color:var(--accent,#E0682A)}
+  @media(max-width:900px){
+    .faq-grid{grid-template-columns:minmax(0,1fr)}
+  }
 
   .pr-note{color:var(--ink-soft);font-size:15px;margin:0 auto 26px;max-width:640px;text-align:center}
 
@@ -2407,32 +2424,7 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>06</em> &middot; <span class="dv-txt">Our promise</span>
-  </span>
-</div>
-
-<!-- ================= GUARANTEE ================= -->
-<section class="guarantee" id="guarantee">
-  <div class="guarantee-in">
-    <p class="sec-eyebrow rev">Our promise</p>
-    <h2 class="rev">Love your catalogue, or we rebuild it.</h2>
-    <p class="rev">Send us your product photos, sizes and prices. In about 7 days you get your catalogue and your QR code — your products, your brand, every piece in true-size AR. Don't love the first version? We rebuild it free, up to three times.</p>
-    <ul class="gr-list">
-      <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No card, no contract. Cancel the monthly plan any time.</span></li>
-      <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The 3D models stay yours, whatever you decide.</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ HANDOFF ============ -->
-<div class="divider">
-  <span class="dv-rule" aria-hidden="true"></span>
-  <span class="dv-badge">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    <em>07</em> &middot; <span class="dv-txt">Questions</span>
+    <em>06</em> &middot; <span class="dv-txt">Questions</span>
   </span>
 </div>
 
@@ -2444,6 +2436,18 @@
       <p class="sec-eyebrow rev">Questions</p>
       <h2 class="rev">The things shopkeepers ask us first</h2>
     </div>
+    <div class="faq-grid">
+      <!-- the promise moved here from its own section, so it sits beside
+           the questions and the right side of the page is no longer empty -->
+      <aside class="faq-side">
+        <p class="sec-eyebrow rev">Our promise</p>
+        <h3 class="rev">Love your catalogue, or we rebuild it.</h3>
+        <p class="rev">Send us your product photos, sizes and prices. In about 7 days you get your catalogue and your QR code — your products, your brand, every piece in true-size AR. Don't love the first version? We rebuild it free, up to three times.</p>
+        <ul class="gr-list">
+          <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No card, no contract. Cancel the monthly plan any time.</span></li>
+          <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The 3D models stay yours, whatever you decide.</span></li>
+        </ul>
+      </aside>
     <div class="faq-list">
       <!-- faq:start -->
         <details class="qa rev">
@@ -2471,6 +2475,7 @@
                     <p>No. ARQR360 is a purely digital service — 3D models, catalogue hosting, and your QR code and link. We never sell, ship, or handle physical products. Your customers always order from you, through your own shop or website.</p>
                     </details>
       <!-- faq:end -->
+      </div>
     </div>
   </div>
 </section>
