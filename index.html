@@ -18,6 +18,7 @@
   :root{
     /* one warm palette for the whole site */
     --page:#FAF7F2;
+    
     --page-hi:#FDFBF7;
     --page-alt:#F4EFE5;   /* every other panel, a shade deeper */
 
@@ -1166,7 +1167,7 @@
     background:var(--accent);margin-top:10px}
 
   .ct-pitch{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(18px,2vw,30px)}
-  .ct-left h2{flex:1 1 15ch;min-width:0;margin:0;
+  .ct-left h2{flex:none;min-width:0;margin:0;
     font-family:var(--f-head);font-weight:800;
     font-size:clamp(30px,3.4vw,46px);line-height:1.14;letter-spacing:-.01em;color:#FFF9F1}
   .ct-left h2 em{font-style:normal;color:var(--accent)}
@@ -1188,15 +1189,15 @@
     line-height:1.68;color:rgba(246,241,233,.7);max-width:46ch}
 
   /* the chart, on dark */
-  .bi-chart{margin-top:auto;padding-top:clamp(22px,2.4vw,34px)}
+  .bi-chart{margin-top:clamp(20px,2.2vw,30px);flex:1 1 auto;min-height:0;     display:flex;flex-direction:column}
   .bi-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
-    gap:10px;margin-bottom:14px}
+    gap:10px;margin-bottom:14px;flex:none}
   .bi-top h4{margin:0;font-family:var(--f-head);font-weight:700;font-size:14.5px;color:#FFF9F1}
   .bi-legend{display:flex;gap:18px;font-size:12.5px;color:rgba(246,241,233,.62)}
   .bi-legend span{display:inline-flex;align-items:center;gap:8px}
   .bi-legend i{width:20px;border-top:3px solid var(--accent);border-radius:2px;display:block}
   .bi-legend .off i{border-top:3px dashed rgba(246,241,233,.45)}
-  .bi-chart svg{width:100%;height:auto;display:block}
+  .bi-chart svg{flex:1 1 auto;width:100%;height:100%;min-height:0;display:block}
 
   .bi-grid-lines{stroke:rgba(246,241,233,.1);stroke-width:1;fill:none}
   .bi-flat{stroke:rgba(246,241,233,.45);stroke-width:2.4;fill:none;stroke-linecap:round;
@@ -1537,7 +1538,7 @@
     .ct-trust li+li::before{display:none}
     .ct-trust li:last-child{grid-column:1 / -1}
     .ct-pitch{gap:20px}
-    .ct-left h2{font-size:clamp(25px,7.2vw,31px);flex-basis:100%;
+    .ct-left h2{font-size:clamp(25px,7.2vw,31px);
       line-height:1.22;letter-spacing:-.012em}
     .ct-title{line-height:1.25}
     .drop-t{font-size:12px;letter-spacing:.04em}
@@ -1546,7 +1547,7 @@
     .ct-stat-ico{width:46px;height:46px}
     .bi-num{font-size:28px}
     .ct-copy{font-size:15px;max-width:none}
-    .bi-chart{padding-top:24px}
+    .bi-chart{padding-top:24px;flex:none}     .bi-chart svg{flex:none;height:auto}
     .bi-top h4{font-size:14px}
     .bi-legend{gap:14px;font-size:12px}
     .bi-axis{font-size:20px}
