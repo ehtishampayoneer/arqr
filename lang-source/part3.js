@@ -3,6 +3,10 @@ module.exports = {
 t: {
 
 /* ---------------- contact ---------------- */
+/* ---- sales comparison chart, contact panel ---- */
+'Monthly sales': ['每月销售额','月間売上','Продажи по месяцам','Oylik savdo','Aylık satışlar','Ventas mensuales','Ventes mensuelles','Monatliche Verkäufe','Vendite mensili','Vendas mensais','ماہانہ فروخت'],
+'With ARQR360': ['使用 ARQR360','ARQR360あり','С ARQR360','ARQR360 bilan','ARQR360 ile','Con ARQR360','Avec ARQR360','Mit ARQR360','Con ARQR360','Com ARQR360','ARQR360 کے ساتھ'],
+'Without ARQR360': ['未使用 ARQR360','ARQR360なし','Без ARQR360','ARQR360 siz','ARQR360 olmadan','Sin ARQR360','Sans ARQR360','Ohne ARQR360','Senza ARQR360','Sem ARQR360','ARQR360 کے بغیر'],
 'Get in touch': ['联系我们','お問い合わせ','Связаться','Bog‘laning','Bize ulaşın','Hablemos','Contactez-nous','Kontakt aufnehmen','Contattaci','Fale connosco','رابطہ کریں'],
 'the models we built stay yours': ['我们制作的模型归你所有','制作したモデルはあなたのものです','созданные нами модели остаются вашими','biz qurgan modellar sizniki bo‘lib qoladi','yaptığımız modeller sizin kalır','los modelos que creamos son tuyos','les modèles que nous créons vous appartiennent','die von uns gebauten Modelle gehören Ihnen','i modelli che costruiamo restano tuoi','os modelos que criámos ficam seus','ہمارے بنائے ہوئے ماڈلز آپ کے ہی رہتے ہیں'],
 'Month 1': ['第 1 月','1か月目','Месяц 1','1-oy','1. ay','Mes 1','Mois 1','Monat 1','Mese 1','Mês 1','مہینہ 1'],
