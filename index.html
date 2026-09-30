@@ -487,6 +487,7 @@
   /* .cat-steps .cat-card outranks .rev.in, so the hover lift is not cancelled
      by the reveal's `transform:none` */
   .cat-steps .cat-card{position:relative;display:flex;flex-direction:column;
+    min-width:0;
     background:#FFFDFA;border:1px solid var(--line);border-radius:18px;
     padding:28px 24px 22px;
     box-shadow:0 18px 34px -26px rgba(70,50,30,.42);
@@ -526,7 +527,10 @@
 
   .cat-shot{position:relative;border-radius:12px;overflow:hidden;background:var(--sec-card);
     aspect-ratio:1/1;margin-bottom:16px}
-  .cat-shot img{width:100%;height:100%;object-fit:cover;display:block;
+    /* iOS Safari resolves the aspect-ratio vs height:100% cycle with the img's
+     intrinsic size (1500px), blowing the 1fr grid track off-screen. Out of
+     flow it contributes no intrinsic width — same pattern as .vbox video. */
+  .cat-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
     transition:transform .65s cubic-bezier(.2,.8,.3,1)}
   /* a scan passes over the shot when you hover the card */
   .cat-shot::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
