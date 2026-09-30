@@ -25,7 +25,7 @@
    same shape as /admin. The box refuses anything without that secret, so
    its address alone opens nothing.
 
-   The session is a signed cookie: HttpOnly, Secure, SameSite=Strict,
+   The session is a signed cookie: HttpOnly, Secure, SameSite=Lax,
    Path=/factory, 30 days. Login links live 15 minutes and are signed too,
    so no database is needed anywhere.
    ------------------------------------------------------------------ */
@@ -497,10 +497,12 @@ async function requestLink(req, res, e) {
 function verifyLink(req, res, e, url) {
   const d = readSigned(e, url.searchParams.get('t'));
   if (!d || !d.e || !allowed(d.e, e)) return html(res, 401, loginPage('That link is expired or invalid. Ask for a new one.'));
+  // Render the app directly on this response instead of a 303 redirect: some
+  // mobile in-app browsers drop the session cookie across the redirect hop,
+  // which caused an endless sign-in loop. SameSite=Lax for the same reason.
   const cookie = `${COOKIE}=${signPayload(e, { e: d.e, x: Math.floor(Date.now() / 1000) + SESSION_DAYS * 86400 })}` +
-    `; Path=/factory; Max-Age=${SESSION_DAYS * 86400}; HttpOnly; Secure; SameSite=Strict`;
-  res.writeHead(303, { Location: '/factory', 'Set-Cookie': cookie, 'Cache-Control': 'no-store' });
-  res.end();
+    `; Path=/factory; Max-Age=${SESSION_DAYS * 86400}; HttpOnly; Secure; SameSite=Lax`;
+  return html(res, 200, appPage(!!(e.gpu && e.gpuSecret)), { 'Set-Cookie': cookie });
 }
 
 /* ---------------- GPU proxy ---------------- */
@@ -554,7 +556,7 @@ async function handler(req, res) {
   if (p === 'verify') return verifyLink(req, res, e, url);
   if (p === 'logout') {
     res.writeHead(303, { Location: '/factory',
-      'Set-Cookie': `${COOKIE}=; Path=/factory; Max-Age=0; HttpOnly; Secure; SameSite=Strict`,
+      'Set-Cookie': `${COOKIE}=; Path=/factory; Max-Age=0; HttpOnly; Secure; SameSite=Lax`,
       'Cache-Control': 'no-store' });
     return res.end();
   }
