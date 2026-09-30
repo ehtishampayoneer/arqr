@@ -19,6 +19,14 @@
       "destination": "/api/admin?p=:path*"
     },
     {
+      "source": "/factory",
+      "destination": "/api/factory?p="
+    },
+    {
+      "source": "/factory/:path*",
+      "destination": "/api/factory?p=:path*"
+    },
+    {
       "source": "/novara",
       "destination": "/store"
     },
@@ -78,6 +86,9 @@
       "maxDuration": 15
     },
     "api/admin.js": {
+      "maxDuration": 30
+    },
+    "api/factory.js": {
       "maxDuration": 30
     }
   }
