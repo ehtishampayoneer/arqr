@@ -3045,25 +3045,69 @@
   } else { visible = true; resize(); requestAnimationFrame(frame); }
 })();
 
-/* ---- reveal on scroll ---- */
+/* ---- reveal on scroll ----
+   The observer gives the staggered scan-in. The sweep after it is the
+   safety net: iOS Safari throttles IntersectionObserver while the page
+   is moving, so a card flung past before the observer wakes up would
+   otherwise sit at opacity:0 forever, leaving a blank gap where the
+   cards should be. Anything actually on screen always gets .in. */
 (function(){
   var items = document.querySelectorAll('.rev');
+  function stagger(el){
+    var sibs = Array.prototype.slice.call(el.parentNode.children).filter(function(n){
+      return n.classList && n.classList.contains('rev');
+    });
+    el.style.transitionDelay = (Math.max(0, sibs.indexOf(el)) * 90) + 'ms';
+  }
+  function show(el){
+    if (el.classList.contains('in')) return;
+    stagger(el);
+    el.classList.add('in');
+  }
   if (!('IntersectionObserver' in window)){
-    items.forEach(function(el){ el.classList.add('in'); });
+    items.forEach(show);
     return;
   }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (!e.isIntersecting) return;
-      var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function(n){
-        return n.classList && n.classList.contains('rev');
-      });
-      e.target.style.transitionDelay = (Math.max(0, sibs.indexOf(e.target)) * 90) + 'ms';
-      e.target.classList.add('in');
+      show(e.target);
       io.unobserve(e.target);
     });
   }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
   items.forEach(function(el){ io.observe(el); });
+
+  var pending = Array.prototype.slice.call(items);
+  function sweep(){
+    if (!pending.length) return false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    pending = pending.filter(function(el){
+      if (el.classList.contains('in')){ io.unobserve(el); return false; }
+      var r = el.getBoundingClientRect();
+      if (r.bottom > -vh * 0.12 && r.top < vh * 1.12){
+        show(el);
+        io.unobserve(el);
+        return false;
+      }
+      return true;
+    });
+    return pending.length > 0;
+  }
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; sweep(); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  var guard = setInterval(function(){
+    if (!sweep()){
+      clearInterval(guard);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    }
+  }, 700);
 })();
 
 /* ---- bar goes solid once you leave the hero top ---- */
