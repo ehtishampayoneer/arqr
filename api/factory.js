@@ -218,7 +218,7 @@ function appPage(gpuOnline) {
 ${gpuNote}
 <div class="card" id="cardBuild">
   <h1>Build a 3D model</h1>
-  <p>Upload product photos. One clear front photo is enough, extra angles help the result.</p>
+  <p>Upload up to four product photos. Use the clearest front or three-quarter view first. Extra angles are saved with the job for review.</p>
   <label for="pname">Product name</label>
   <input type="text" id="pname" placeholder="e.g. Novara accent chair" maxlength="80">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
