@@ -818,6 +818,12 @@ var isAndroid = /Android/.test(ua);
    Android it is Scene Viewer's resizable. Without them a sofa can be
    thumbed down to the size of a cushion and the catalogue has said nothing
    true about it. */
+/* AR engagement tracking: Vercel custom events so we can see taps on
+   "View in AR" and real AR launches. Read in the Vercel dashboard under
+   Analytics > Events. */
+function arqrTrack(n){
+  try { if (window.va) window.va('event', { name: n }); } catch (e) {}
+}
 function launch(it){
   if (isIOS && it.usdz){
     var a = document.createElement('a');
@@ -825,6 +831,7 @@ function launch(it){
     a.href = it.usdz + '#allowsContentScaling=0';
     a.appendChild(document.createElement('img'));
     document.body.appendChild(a); a.click(); a.remove();
+    arqrTrack('arqr_ar_launch');
     return true;
   }
   if (isAndroid && it.glb){
@@ -833,6 +840,7 @@ function launch(it){
       '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(it.n) +
       '#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;' +
       'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+    arqrTrack('arqr_ar_launch');
     return true;
   }
   return false;
@@ -852,6 +860,7 @@ var pending = null;
 
 function place(it){
   var canAr = (isIOS && it.usdz) || (isAndroid && it.glb);
+  if (canAr) arqrTrack('arqr_ar_tap');
   if (canAr && !seen()){ showGuide(it); return; }
   if (canAr){ launch(it); return; }
   showSheet(it);

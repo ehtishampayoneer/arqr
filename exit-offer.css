@@ -1,0 +1,53 @@
+/* ARQR360 exit-intent offer — one shared stylesheet for every page.
+   Cream card, terracotta accent, ink text: matches arqr360.com exactly. */
+#arqr-offer-veil{
+  position:fixed;inset:0;z-index:200;display:none;
+  align-items:center;justify-content:center;padding:20px;
+  background:rgba(25,25,25,.48);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+}
+#arqr-offer-veil.open{display:flex}
+#arqr-offer-card{
+  position:relative;width:min(440px,100%);
+  background:#FAF7F2;color:#191919;border-radius:18px;
+  border-top:5px solid #E0682A;
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+  padding:30px 30px 26px;
+  font-family:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  animation:arqr-pop .28s ease-out;
+}
+@keyframes arqr-pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+#arqr-offer-close{
+  position:absolute;top:10px;right:12px;border:0;background:none;
+  font-size:22px;line-height:1;color:#8a8a8a;cursor:pointer;padding:6px;
+}
+#arqr-offer-close:hover{color:#191919}
+#arqr-offer-eyebrow{
+  margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.22em;
+  color:#E0682A;
+}
+#arqr-offer-card h3{
+  margin:0 0 10px;font-size:24px;line-height:1.25;font-weight:800;color:#191919;
+}
+#arqr-offer-card p{
+  margin:0 0 20px;font-size:15px;line-height:1.55;color:#4c4c4c;
+}
+#arqr-offer-cta{
+  display:block;width:100%;border:0;border-radius:12px;cursor:pointer;
+  background:#E0682A;color:#fff;
+  font-size:16px;font-weight:800;padding:15px 18px;
+  font-family:inherit;
+}
+#arqr-offer-cta:hover{filter:brightness(1.07)}
+#arqr-offer-no{
+  display:block;width:100%;margin-top:10px;border:0;background:none;cursor:pointer;
+  color:#8a8a8a;font-size:13.5px;padding:8px;font-family:inherit;
+}
+#arqr-offer-no:hover{color:#191919}
+#arqr-offer-fine{
+  margin:14px 0 0;text-align:center;font-size:12px;color:#9a9a9a;
+}
+@media (max-width:480px){
+  #arqr-offer-card{padding:26px 22px 22px}
+  #arqr-offer-card h3{font-size:21px}
+}
