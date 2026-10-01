@@ -3,6 +3,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/r/:slug",
+      "destination": "/r.html"
+    },
+    {
       "source": "/admin",
       "destination": "/api/admin?p="
     },
@@ -64,11 +68,6 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/r/:slug",
-      "destination": "/?r=:slug",
-      "permanent": false
-    },
     {
       "source": "/catalog",
       "destination": "/catalogue",
