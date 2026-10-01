@@ -1,0 +1,48 @@
+# ARQR360
+
+> ARQR360 turns a store's product photos into true-to-size 3D AR catalogues. Shoppers scan one QR code and see furniture, rugs, decor, or footwear at real size in their own room, with no app to download.
+
+## What it does
+
+- Builds 3D models from product photographs, made to the product's real measurements.
+- Each catalogue lives at a short link (for example arqr360.com/novara) and a QR code the store prints or puts online.
+- Shoppers open it on their phone camera: iPhone uses Quick Look, Android uses Scene Viewer. Nothing to install.
+- The store gets fewer returns, because customers see true size before buying.
+- The ARQR360 team does the modelling, hosting, and QR codes. The store only sends photos and dimensions.
+
+## Who it is for
+
+Furniture, rug, home decor, and footwear retailers in the USA, Canada, UK, Europe, UAE and Gulf, Australia, New Zealand, and selected APAC markets who sell online or from a showroom.
+
+## Pricing (USD)
+
+- Starter: $249 one-time setup + $29/month, 10 products.
+- Studio: $549 one-time setup + $59/month, 25 products.
+- Showroom: $999 one-time setup + $99/month, 50 products.
+- Extra products: $20 each. Larger or multi-store catalogues: custom quote.
+- Founding stores (first 50): $199 setup + $19/month, locked for life.
+- One free true-to-size AR model of a bestseller, no commitment, to try on your own phone.
+
+## How a store starts
+
+1. The store sends photos and real dimensions of its products.
+2. ARQR360 builds the 3D models and the catalogue in about seven days.
+3. The store shares the QR code or link; customers view products in AR.
+
+## Key pages
+
+- [ARQR360 home](https://arqr360.com/): what the product is and how it works.
+- [Live furniture sample](https://arqr360.com/novara): a real AR catalogue to try on your phone.
+- [Live rug sample](https://arqr360.com/terra): AR rug catalogue sample.
+- [Live decor sample](https://arqr360.com/maison): AR decor catalogue sample.
+- [Live footwear sample](https://arqr360.com/corso): AR footwear catalogue sample.
+- [Articles and guides](https://arqr360.com/blog): practical guides for retailers on AR, 3D, and reducing returns.
+- [Terms](https://arqr360.com/terms), [Privacy](https://arqr360.com/privacy), [Refunds](https://arqr360.com/refund).
+
+## Contact
+
+- Website: https://arqr360.com
+- Email: info@arqr360.com
+- Instagram: https://www.instagram.com/arqr360
+- TikTok: https://www.tiktok.com/@arqr36o
+- LinkedIn: https://www.linkedin.com/company/arqr360/
