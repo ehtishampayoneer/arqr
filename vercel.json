@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/r/:slug",
-      "destination": "/r.html"
+      "destination": "/api/r?slug=:slug"
     },
     {
       "source": "/admin",
