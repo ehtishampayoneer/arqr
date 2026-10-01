@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="i18n.js?v=99"></script>
+<link rel="stylesheet" href="exit-offer.css?v=1">
+  <script src="i18n.js?v=99"></script>
 <style>
   :root{
     /* one warm palette for the whole site */
@@ -2930,8 +2931,11 @@
         paint();
         if (msgCount) msgCount.textContent = '0';
         say('Got it. We will come back to you within one working day. Meanwhile, arqr360.com/start lists exactly what we need.', 'ok');
+        try { sessionStorage.setItem('arqr-converted', '1'); } catch (e) {}
       })
       .catch(function(err){
+      
+      
         say(err && err.message === 'too-big'
           ? 'Those files come to more than 3MB together. Remove one, or send a link instead.'
           : 'That did not send. Email us at info@arqr360.com and we will pick it up.', 'no');
@@ -2945,6 +2949,8 @@
   document.querySelectorAll('.cat-shot img, .cmp img, .carou-track img, .sol-phone img').forEach(function(img){
     function fail(){ (img.closest('.cmp, .carou-track figure, .cat-shot, .sol-phone') || img.parentNode).classList.add('broken'); }
     img.addEventListener('error', fail);
+      
+        
     if (img.complete && img.naturalWidth === 0) fail();
   });
 })();
@@ -3388,5 +3394,7 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script src="exit-offer.js?v=1" defer></script>
 </body>
+
 </html>
