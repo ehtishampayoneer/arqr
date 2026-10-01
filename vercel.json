@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/r/:slug",
+      "destination": "/?r=:slug",
+      "permanent": false
+    },
+    {
       "source": "/catalog",
       "destination": "/catalogue",
       "permanent": true
