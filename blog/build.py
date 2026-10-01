@@ -334,6 +334,48 @@ POSTS += [
 </div>
 """,
 },
+{
+"slug": "arqr360-vs-plattar-furniture-stores",
+"title": "ARQR360 vs Plattar: Which Is the Better Fit for a Furniture Store?",
+"date": "October 1, 2026",
+"description": "Furniture store comparing ARQR360 and Plattar? Plattar is Australia's established 3D and AR platform. Here is an honest look at pricing, setup, modelling, and which store each one suits.",
+"body": """
+<p>Picture a small furniture store in Brisbane. They sell solid timber dining tables. Shoppers keep asking for more photos, exact measurements, close-ups of the grain. Then they buy nothing. The owner has heard AR can fix this. She has no 3D team, no developer, and no enterprise budget.</p>
+<p>Two names come up when she searches: Plattar and ARQR360. Here is an honest comparison, so she can pick the right one.</p>
+<h2>What Plattar is</h2>
+<p>Plattar is an Australian 3D and AR company, founded in 2015 in Melbourne. In 2026 it was acquired by Blippar, the UK AR platform. Plattar is well known in Australia and New Zealand for 3D product configuration and AR commerce. Its retail clients have included furniture and bedding brands such as BedShed and Hommey.</p>
+<p>Plattar is a platform. It gives you no-code tools to build 3D viewers, AR scenes, virtual try-on, and product configurators yourself. Its AR is browser-based, so shoppers do not need an app. It integrates with Shopify, WooCommerce, BigCommerce, and Square POS. The company also offers end-to-end support and 3D content services.</p>
+<h2>Pricing: published vs quote-based</h2>
+<p>This is the biggest practical difference. Plattar does not publish its pricing. Software directories list no price information for it, and its own site points you to a sales conversation. You can request a free trial and a demo, but you will not know the cost until you talk to them.</p>
+<p>ARQR360 publishes its price: $199 setup and $19 per month, locked for life for the first 50 stores. You know the total cost before you send a single email.</p>
+<h2>Setup effort: platform vs done-for-you</h2>
+<p>Plattar hands you the tools. That is powerful if you have staff who can learn a platform, build scenes, and manage content. It is work, even with no-code tools.</p>
+<p>ARQR360 is done for you. You send photos and real dimensions of your products, bestsellers first. We build the true-to-scale 3D models and your AR catalogue in about seven days. There is nothing to learn and nothing to configure.</p>
+<h2>Who builds the 3D models?</h2>
+<p>The model is the whole game. Bad models look like toys and shoppers do not trust them.</p>
+<p>Plattar offers 3D content services, so they can help you produce models, or your team can import assets and build them in the platform.</p>
+<p>With ARQR360, model building is the service. Every model is built for you from your product photos and real measurements, included in the price. You never touch modelling software.</p>
+<h2>True-to-size accuracy</h2>
+<p>Plattar's AR shows products to scale in the shopper's space. ARQR360's models are built to your exact dimensions, so a 96-inch sofa appears 96 inches long next to the shopper's real wall. On accuracy, both aim for the same thing. The difference is who guarantees it: you manage it inside Plattar's platform, or we deliver it finished.</p>
+<h2>When Plattar is the better pick</h2>
+<p>Be honest about your needs. Plattar fits better if you want customer-facing product configurators (fabric options, colours, modular layouts), if you have a team that will run and maintain a platform, or if you are a larger brand or agency with ongoing content needs across channels.</p>
+<h2>When ARQR360 is the better pick</h2>
+<p>ARQR360 fits better if you run one store or a small chain, if you want AR live this month without hiring anyone, and if you would rather pay a flat monthly price than negotiate enterprise quotes. If you just want shoppers to see your exact products at real size in their own rooms, with zero work on your side, that is what ARQR360 does.</p>
+<p>For more on why size uncertainty drives furniture returns, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with AR</a>.</p>
+<p>Want to see the experience first? Open our <a href="/novara">live furniture catalogue demo</a> on your phone and place a piece in your own room.</p>
+<h2>The cheapest way to start</h2>
+<p>Send a photo of your bestselling product and we will build you one true-to-size AR model free. Try it on your own phone, walk around it, check the scale against your own furniture. If it does not impress you, you have lost nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How much does Plattar cost?</h3>
+<p>Plattar does not publish pricing. Public software directories show no price information, so you need to request a demo and a quote from their sales team. ARQR360's pricing is public: $199 setup and $19 per month.</p>
+<h3>Do I need a 3D team for either option?</h3>
+<p>Plattar offers 3D content services and no-code tools, so you can have them build models or train your team to do it. With ARQR360 you need no 3D skills at all; every model is built for you from photos and dimensions.</p>
+<h3>Can I try ARQR360 on my own product before paying?</h3>
+<p>Yes. Reply with a photo of your bestselling product and we will build you one true-to-size AR model free, to try on your own phone. No commitment.</p>
+</div>
+""",
+},
 ]
 
 def jsonld_for(post):
