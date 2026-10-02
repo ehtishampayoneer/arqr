@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """Build the ARQR360 blog: index + article pages. Run: python3 blog/build.py"""
+
+# USED TOPICS (keep rotating, no repeats; exactly 2 of every 4 consecutive = comparison)
+# 2026-09-27 decor non-comparison: increase online sales home decor
+# 2026-09-28 furniture comparison: vs Threekit
+# 2026-09-29 rugs non-comparison: virtual try-on rugs Philippines
+# 2026-09-30 furniture non-comparison: reduce returns India
+# 2026-10-01 furniture non-comparison: US stores cut returns with AR
+# 2026-10-01 furniture comparison: vs Plattar
+# 2026-10-02 furniture comparison: vs IKEA Kreativ
+# 2026-10-02 rugs non-comparison: AR cost pricing breakdown for rug stores
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -414,6 +424,50 @@ POSTS += [
 <p>Yes. It is free inside the IKEA app and on IKEA.com. The full room scan needs a phone with LiDAR. Otherwise the web version has a room builder where you enter the room dimensions by hand.</p>
 <h3>Do shoppers need an app to see ARQR360 products?</h3>
 <p>No app needed. Each product gets a link and a QR code that opens the true-to-size AR view in the phone browser. Reply with a photo of your bestselling product and we will build you one true-to-size AR model free, to try on your own phone. No commitment.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "ar-cost-small-rug-store-pricing",
+"title": "What Does AR Really Cost a Small Rug Store? An Honest Pricing Breakdown",
+"date": "October 2, 2026",
+"description": "A plain breakdown of what AR actually costs a small rug store: free viewers, per-model services, agency builds, enterprise platforms, and ARQR360's flat $199 setup + $19/month. No hype, just the numbers that matter.",
+"body": """
+<p>Picture a rug shop owner in Dallas. She stocks 400 rugs, from budget flatweaves to handmade Persians. Online orders are climbing, but so are returns. A customer orders an 8x10 rug for the living room, lays it out, and finds it swallows the room. Back it comes, freight both ways, at her expense.</p>
+<p>She hears about AR. Customers point their phone at the floor and see the rug at true size before they buy. It sounds perfect for rugs. Then she asks the obvious question: what does this actually cost a store my size?</p>
+<p>The answers she finds online are all over the place, from free to tens of thousands. Here is a plain breakdown of every way a small rug store can get AR, and what each one really costs. No sales talk, just the trade-offs.</p>
+<h2>Option 1: Free 3D viewers</h2>
+<p>There are free tools that render a 3D model on a product page or in a phone browser. They cost nothing to use. That is the whole good news.</p>
+<p>The problem is what goes into them: the 3D models. A viewer is just an empty frame. Every rug needs a true-to-size 3D model built by someone who knows what they are doing. For a rug store with 400 SKUs, "free" quietly becomes the cost of 400 models, and model building is the expensive part, not the viewer.</p>
+<p>Verdict: free viewers make sense only if you already have 3D models of everything. Almost no small rug store does.</p>
+<h2>Option 2: Pay per 3D model</h2>
+<p>There are services that build 3D models of your products for a fee per model. You send photos and dimensions, they send back the file. This works well for testing: you can model your 20 bestsellers and see how they sell.</p>
+<p>The math gets harder at scale. A rug store does not have 20 products, it has hundreds, and the catalogue changes every season. Per-model fees that feel fine for a test become a real budget line when you need 300 more rugs modelled. Ask what happens when you add new stock: the cost per season repeats.</p>
+<p>Verdict: good for a pilot, painful for a whole catalogue.</p>
+<h2>Option 3: Hire it done by an agency or in-house team</h2>
+<p>The big route: hire a 3D artist, or pay an agency to build you a full AR experience. The upside is total control. The downside is the bill. One full-time 3D modeller costs a full-time salary, and a single store usually cannot keep that person busy year-round. Agency projects start in five figures and run for months before anything goes live.</p>
+<p>Verdict: built for brands with big budgets and constant new drops, not for independent rug stores.</p>
+<h2>Option 4: Enterprise AR platforms</h2>
+<p>Platforms built for large retailers offer AR as part of a bigger package: configurators, visual search, analytics. They are powerful and well documented. They are also priced for enterprise teams, usually per SKU or per seat, with contracts and quotes that vary. For a small rug shop, this is like buying a delivery truck to carry groceries.</p>
+<p>Verdict: serious tools, serious contracts, wrong size for independents.</p>
+<h2>What ARQR360 charges: $199 setup, $19 a month</h2>
+<p>ARQR360 was built for the store in the first paragraph, not for a brand with a 3D department. The price is flat and public: $199 one-time setup and $19 per month, locked for life for the first 50 stores. No per-model fees, no per-view fees, no contracts.</p>
+<p>Model building is included. You send photos and real dimensions of your rugs, bestsellers first, and we build the true-to-size 3D models as part of the service. No modelling software on your side, no 3D hire, nothing to learn. Your AR catalogue goes live in about seven days.</p>
+<p>The price covers your whole catalogue, not a set number of models, because per-model pricing is exactly what keeps small stores out of AR. If your stock turns over every season, new rugs get modelled the same way.</p>
+<p>See what your rugs would look like as AR. Open our <a href="/terra">live rug demo</a> on your phone and place a rug on your own floor at true size. For the returns angle, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with true-to-size AR</a>.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to take any pricing page at its word. Send a photo of your bestselling rug and we will build you one true-to-size AR model free. Try it on your own phone, check the size against your own floor, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How many rug models do I get for $19 a month?</h3>
+<p>Your whole catalogue. ARQR360 does not charge per model. We build true-to-size 3D models of your rugs from your photos and dimensions as part of the service, and new stock gets modelled the same way when your range changes.</p>
+<h3>Do my customers need to download an app?</h3>
+<p>No. Each rug gets a link and a QR code that opens the true-to-size AR view in the phone browser. Try it yourself on the <a href="/terra">live rug demo</a>: point your phone at the floor and the rug appears at real size.</p>
+<h3>What if AR does not move the needle for my store?</h3>
+<p>Start with the free test model. Send a photo of your bestselling rug, and we build one true-to-size AR model free, no commitment. If your customers do not use it and your returns do not budge, you have learned that for the cost of one photo.</p>
 </div>
 """,
 },
