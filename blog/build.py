@@ -10,6 +10,7 @@
 # 2026-10-01 furniture comparison: vs Plattar
 # 2026-10-02 furniture comparison: vs IKEA Kreativ
 # 2026-10-02 rugs non-comparison: AR cost pricing breakdown for rug stores
+# 2026-10-02 footwear non-comparison: cut size-and-fit returns with phone AR
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -468,6 +469,40 @@ POSTS += [
 <p>No. Each rug gets a link and a QR code that opens the true-to-size AR view in the phone browser. Try it yourself on the <a href="/terra">live rug demo</a>: point your phone at the floor and the rug appears at real size.</p>
 <h3>What if AR does not move the needle for my store?</h3>
 <p>Start with the free test model. Send a photo of your bestselling rug, and we build one true-to-size AR model free, no commitment. If your customers do not use it and your returns do not budge, you have learned that for the cost of one photo.</p>
+</div>
+""",
+},
+{
+"slug": "how-footwear-stores-cut-returns-with-ar",
+"title": "How Shoe Stores Can Cut Size-and-Fit Returns With Phone AR",
+"date": "October 2, 2026",
+"description": "A plain-English guide for footwear retailers: why shoe returns cost more than they look, what phone AR can and cannot fix, and how a small shoe store can offer true-to-size virtual try-on without an app or a 3D team.",
+"body": """
+<p>Picture a shoe store owner in Melbourne. She sells good leather boots online and from one small shop. Her return shelf is never empty. A customer orders a size 8, it pinches at the toe, back it comes. Another buys sneakers in the wrong width because the photos looked right. Every return costs her the shipping both ways, plus an opened box she now has to resell at a discount.</p>
+<p>Footwear is one of the hardest things to buy sight unseen. A sofa either fits the room or it does not. A shoe has to fit a foot that nobody measured properly. So shoe retailers watch AR try-on with real interest: if a customer can see the shoe on their own foot, in their own size, before they buy, fewer boxes come back.</p>
+<p>Here is what phone AR can actually do for a shoe store, and what it cannot. No hype, just the practical version.</p>
+<h2>What customers get</h2>
+<p>The idea is simple. A customer taps a link or scans a QR code on the product page, points the phone at their feet, and the shoe appears at true size. They can check the colour against their jeans, see how a chunky sneaker looks next to slim trousers, and pick a size with more confidence. The whole thing runs in the phone browser. No app download.</p>
+<p>This matters for shoes more than for furniture, because fit is visual and personal. A customer can tell in seconds whether a boot looks right on their foot. That is a decision they no longer have to guess from photos.</p>
+<h2>What AR cannot fix</h2>
+<p>Be honest about this. AR cannot tell a customer whether the shoe is comfortable. It cannot measure an arch or predict blisters. Anyone who tells you AR ends fit returns entirely is selling you something.</p>
+<p>What AR does fix is the look and the size confidence. Plenty of shoe returns are "wrong look" returns: the colour is off, the style does not work with the wardrobe, the shoe is bulkier than expected. Those are exactly the returns a true-to-size visual takes away.</p>
+<h2>The 3D model problem, and who solves it</h2>
+<p>Every shoe needs a true-to-size 3D model. This is the part that stops most stores. Building shoe models takes a 3D artist, real dimensions, and material work so the leather looks like leather. One model per shoe, per colourway, done properly.</p>
+<p>The honest options: build them yourself (slow and expensive), pay per model (fine for a test, painful across a whole catalogue), or use a service that builds them as part of the package. ARQR360 is the third option. You send photos and real dimensions of your shoes, bestsellers first, and we build the true-to-size models as part of the service. No 3D hire on your side, nothing to learn.</p>
+<h2>What it costs and how fast it goes live</h2>
+<p>ARQR360 is flat and public: $199 one-time setup, $19 a month, locked for life for the first 50 stores. No per-model fees, no per-view fees. Your catalogue goes live in about seven days. Each shoe gets a link and a QR code that opens the true-to-size try-on in the phone browser.</p>
+<p>Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels. For the returns angle in more detail, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with true-to-size AR</a>. The returns logic is the same, the product is just smaller.</p>
+<h2>The safest way to test it</h2>
+<p>You do not have to believe any pricing page. Send a photo of your bestselling shoe and we will build you one true-to-size AR model free. Put it on your own foot, check it against the real shoe, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need an app to try on shoes?</h3>
+<p>No. Each shoe gets a link and a QR code that opens the try-on in the phone browser. Try the <a href="/corso">live footwear demo</a> yourself and point your phone at your feet.</p>
+<h3>How accurate is the sizing?</h3>
+<p>Models are built true to size from your photos and real dimensions. The free test model is the way to check: try it on your own foot and compare it against the real shoe before you commit to anything.</p>
+<h3>How many shoe models do I get?</h3>
+<p>Your whole catalogue. ARQR360 does not charge per model. We build true-to-size 3D models of your shoes from your photos and dimensions as part of the service, and new stock gets modelled the same way when your range changes.</p>
 </div>
 """,
 },
