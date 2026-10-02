@@ -376,6 +376,47 @@ POSTS += [
 </div>
 """,
 },
+{
+"slug": "arqr360-vs-ikea-kreativ-furniture-stores",
+"title": "ARQR360 vs IKEA Kreativ: Why Your Furniture Store Needs Its Own AR",
+"date": "October 2, 2026",
+"description": "IKEA Kreativ is free and impressive, but it only shows IKEA products. A fair comparison for independent furniture stores that need AR for their own catalogue: price, setup, modelling, and true-to-size accuracy.",
+"body": """
+<p>Picture a furniture store owner in Manchester. She sells handmade oak sideboards. A customer tells her, "I planned my whole living room in the IKEA app before I bought my last sofa. Can I do that with your pieces?" The owner goes quiet. She has no answer.</p>
+<p>That question is the IKEA Kreativ effect. In 2022, IKEA launched Kreativ, a free virtual room designer inside the IKEA app and on IKEA.com. Shoppers scan their room with a LiDAR phone, erase their old furniture, and drop IKEA sofas and bookcases into the space, sized to scale. There are also more than 50 ready-made virtual showrooms to play with. It is genuinely impressive, and it is free.</p>
+<p>Here is the catch for every other furniture store: IKEA Kreativ only shows IKEA products. Your catalogue cannot go in there. It is IKEA's tool for IKEA's shoppers, not a platform any retailer can use.</p>
+<h2>What IKEA Kreativ actually is</h2>
+<p>Kreativ is a shopping feature built for one catalogue. A shopper captures their room, removes what is there, and arranges IKEA furniture and decor in the space to see what fits before ordering. Items are sized to scale, so there is no measuring. It also works on the web, with a manual room builder for phones without LiDAR.</p>
+<p>There are limits even for IKEA shoppers. Textiles like curtains, pillows, blankets and tablecloths are not supported yet. Neither are ceiling-mounted items or full kitchen design. And the biggest one for independent stores: there is no way to add your own products. No retailer version exists.</p>
+<h2>Pricing: free, but not for you</h2>
+<p>IKEA Kreativ costs nothing. But that "free" only applies to IKEA's shoppers. As a store owner, you cannot buy it, license it, or join it. There is no store plan and no onboarding.</p>
+<p>ARQR360 publishes its price: $199 setup and $19 per month, locked for life for the first 50 stores. You know the total cost before you commit to anything.</p>
+<h2>Setup effort: no setup path vs done for you</h2>
+<p>With IKEA Kreativ, there is simply no setup path for a retailer. Your products do not appear in it, and no amount of configuration changes that.</p>
+<p>ARQR360 is done for you. Send photos and real dimensions of your products, bestsellers first. We build the true-to-size 3D models and your AR catalogue in about seven days. There is nothing to learn, nothing to configure, and no app your shoppers must download.</p>
+<h2>Who builds the 3D models?</h2>
+<p>IKEA built Kreativ for its own catalogue, backed by its own product data and modelling pipeline. Every visual in there exists because IKEA made it.</p>
+<p>With ARQR360, model building is the service. Every model is built for you from your product photos and real measurements, included in the price. You never touch modelling software and you never hire a 3D team.</p>
+<h2>True-to-size accuracy</h2>
+<p>Kreativ sizes IKEA items to scale inside the scanned room, and reviewers say the fit is convincing. ARQR360 models are built to your exact dimensions, so a 72-inch sideboard appears 72 inches wide next to the shopper's real wall. On accuracy, both aim for the same thing. The difference is whose products get it: only IKEA's in Kreativ, yours in ARQR360.</p>
+<h2>When IKEA Kreativ is enough</h2>
+<p>Be fair to it. Kreativ is free, polished, and a great demo of what AR shopping feels like. It has also trained your customers to expect this kind of shopping. If your shoppers want inspiration, point them at it. But it will never sell your stock.</p>
+<h2>When ARQR360 is the better pick</h2>
+<p>ARQR360 fits if you sell your own products and want shoppers to see them at real size in their own rooms, right on your product pages, with zero work on your side. If you want AR live this month without hiring anyone, at a flat monthly price you can see in advance, that is what ARQR360 does.</p>
+<p>Seeing your own catalogue this way is the whole point. Open our <a href="/novara">live furniture catalogue demo</a> on your phone and place a piece in your own room. For the returns angle, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with AR</a>.</p>
+<h2>The cheapest way to start</h2>
+<p>Send a photo of your bestselling product and we will build you one true-to-size AR model free. Try it on your own phone, walk around it, check the scale against your own furniture. If it does not impress you, you have lost nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Can I add my store's products to IKEA Kreativ?</h3>
+<p>No. IKEA Kreativ works only with the IKEA catalogue. There is no retailer version, no way to upload your own products, and no store plan. It is built for IKEA's shoppers.</p>
+<h3>Is IKEA Kreativ really free?</h3>
+<p>Yes. It is free inside the IKEA app and on IKEA.com. The full room scan needs a phone with LiDAR. Otherwise the web version has a room builder where you enter the room dimensions by hand.</p>
+<h3>Do shoppers need an app to see ARQR360 products?</h3>
+<p>No app needed. Each product gets a link and a QR code that opens the true-to-size AR view in the phone browser. Reply with a photo of your bestselling product and we will build you one true-to-size AR model free, to try on your own phone. No commitment.</p>
+</div>
+""",
+},
 ]
 
 def jsonld_for(post):
