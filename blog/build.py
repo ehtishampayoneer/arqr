@@ -11,6 +11,9 @@
 # 2026-10-02 furniture comparison: vs IKEA Kreativ
 # 2026-10-02 rugs non-comparison: AR cost pricing breakdown for rug stores
 # 2026-10-02 footwear non-comparison: cut size-and-fit returns with phone AR
+# 2026-10-02 decor comparison: vs Augment
+# 2026-10-03 rugs comparison: vs Shopify AR apps
+# 2026-10-03 furniture non-comparison: AR cost pricing breakdown for furniture stores
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -503,6 +506,137 @@ POSTS += [
 <p>Models are built true to size from your photos and real dimensions. The free test model is the way to check: try it on your own foot and compare it against the real shoe before you commit to anything.</p>
 <h3>How many shoe models do I get?</h3>
 <p>Your whole catalogue. ARQR360 does not charge per model. We build true-to-size 3D models of your shoes from your photos and dimensions as part of the service, and new stock gets modelled the same way when your range changes.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "arqr360-vs-augment-decor-stores",
+"title": "ARQR360 vs Augment: Which Is Better for a Small Decor Store?",
+"date": "October 2, 2026",
+"description": "A fair comparison of ARQR360 and Augment for home decor retailers: price, setup effort, true-to-size accuracy, and who builds the 3D models.",
+"body": """
+<p>Picture a decor shop owner in Austin. She sells wall art, mirrors, and sculptural vases online. Her reviews are good, but her returns keep arriving with the same complaint: the mirror looked smaller in the photos, the vase overwhelmed the side table, the art got swallowed by the wall. Every return costs her shipping both ways and a piece she now has to sell at a discount.</p>
+<p>AR is the obvious fix. Her customers point their phone at their wall or shelf and see the piece at true size before they buy. Two names keep coming up in her research: Augment and ARQR360. Here is a fair look at both, written for a decor store owner, not a developer.</p>
+<h2>What Augment is</h2>
+<p>Augment is a French AR company founded in 2011. Their model is straightforward: you upload 2D images and product specs, and their community of 3D designers turns them into AR-ready 3D models. They have been around a long time, and the platform is flexible. Public listings show plans starting around 9 euros a month, with a free version and free trial, and the models you get back are built by real designers from your specs.</p>
+<p>Augment leans toward business buyers. Their materials talk about field sales reps, trade shows, and point-of-sale materials, and retail viewing runs through mobile apps, including the retailer's own eCommerce apps. If you have an app, a dev team, or a sales force on the road, that is a natural fit.</p>
+<h2>Where the two differ</h2>
+<h3>Price</h3>
+<p>Augment's entry monthly price is low, around 9 euros a month. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores. But the monthly number is not the whole bill on either side. With Augment, the 3D modelling is done by their designer community as a separate service, so ask what each model costs and how fast the turnaround is for your full catalogue. With ARQR360, model building is included in the flat price, no per-model fees, no per-view fees.</p>
+<p>For a decor store with a few hundred SKUs that change seasonally, total cost means the monthly fee plus every model you will ever need, times every season. Compare that number, not the headline price. For a plain look at what each route really costs, see our <a href="/blog/ar-cost-small-rug-store-pricing">pricing breakdown for a small rug store</a>. The maths works the same way for decor.</p>
+<h3>Who does the 3D modelling</h3>
+<p>This is the part that stops most stores. With Augment, you supply the images and specs, and designers in their network build the models. That is real human work, and it is priced accordingly. With ARQR360, we build the true-to-size models as part of the service. You send photos and real dimensions of your pieces, bestsellers first, and we handle the rest. When your range turns over every season, new pieces get modelled the same way.</p>
+<h3>Setup effort</h3>
+<p>Augment is a self-serve platform. You run the pipeline: upload, brief, integrate the viewer into your store or app, test it. ARQR360 is done for you. Send your photos and dimensions, and your AR catalogue goes live in about seven days, with a link and QR code per product that you drop into Shopify or WooCommerce. One is a tool you run, the other is a service that runs for you.</p>
+<h3>True-to-size accuracy</h3>
+<p>Both platforms promise real-size AR, and the honest check is the same on both: place the model on your own phone next to the real piece and check the fit. With wall art and mirrors, a few centimetres off is the difference between a confident buyer and a return, so check before you launch your whole range.</p>
+<h3>What your customers have to do</h3>
+<p>Augment's retail viewing happens inside mobile apps: the retailer's eCommerce app, or Augment's own viewer apps on iPhone and Android. That is fine if your customers already use your app. ARQR360 opens in the phone browser. The customer taps a link or scans a QR code, points the phone at their wall, and the piece appears at true size. No install. Try the <a href="/maison">live decor demo</a> on your own phone to feel the difference that makes.</p>
+<h2>Which one fits your decor store</h2>
+<p><strong>Augment makes sense if:</strong></p>
+<ul>
+<li>You already have a mobile app and a team to integrate with it</li>
+<li>You have field sales reps or a trade show calendar</li>
+<li>You want to run the platform yourself and manage designers per model</li>
+<li>You plan to use AR beyond your storefront: training, sales kits, catalogues</li>
+</ul>
+<p><strong>ARQR360 makes sense if:</strong></p>
+<ul>
+<li>You sell on Shopify, BigCommerce, or WooCommerce with no app and no dev team</li>
+<li>You want the modelling done for you, included in one flat price</li>
+<li>Your catalogue changes seasonally and new pieces need models without a new project</li>
+<li>Your customers shop on mobile and will not install anything to buy</li>
+</ul>
+<h2>The returns angle for decor</h2>
+<p>Decor returns are a size problem wearing a style complaint. The vase was too big. The art was lost on the wall. A customer who places the true-size piece on their actual shelf before buying has already answered those questions. That is the whole pitch for AR in decor: fewer surprises, fewer boxes coming back. For how this plays out in practice, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with true-to-size AR</a>.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to take any comparison page at its word. Send a photo of your bestselling piece and we will build you one true-to-size AR model free. Place it on your own wall next to the real thing, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Is Augment cheaper than ARQR360?</h3>
+<p>On monthly price alone, yes: their listings start around 9 euros a month. But compare the total cost of a live catalogue: the monthly fee plus model building for every product, across every season. ARQR360 is $199 setup plus $19 a month with all modelling included and no per-model fees. Do the maths for your catalogue size before you decide.</p>
+<h3>Do my customers need an app to use Augment?</h3>
+<p>Augment's retail viewing runs through mobile apps: the retailer's eCommerce app, or their viewer apps on iPhone and Android. With ARQR360, the AR view opens in the phone browser from a link or QR code. Nothing to install.</p>
+<h3>How long does each one take to go live?</h3>
+<p>With ARQR360, about seven days from your photos arriving, with modelling and setup done for you. With Augment, it depends on the designer community's turnaround on your models plus your own integration work. Ask them for a realistic timeline for your catalogue size before you commit.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "arqr360-vs-shopify-ar-apps-rug-stores",
+"title": "ARQR360 vs Shopify AR Apps: What a Rug Store Really Pays for AR",
+"date": "October 3, 2026",
+"description": "A fair comparison for rug retailers: Shopify AR viewer apps versus ARQR360. What each one really costs, who builds the 3D models, and what true-to-size means for a rug.",
+"body": """
+<p>Picture a rug store owner in Manchester. She sells handwoven rugs online, and her reviews are warm. But every week a few rugs come back with the same complaint. The rug looked bigger in the photos. Or smaller. Or the pattern swallowed the room. For a rug, size is the whole product, and a photo cannot carry it.</p>
+<p>AR fixes this. Her customer points a phone at their living room floor and sees the rug at true size before they buy. Two routes come up in every search: Shopify AR apps, and ARQR360. Here is a fair look at both, written for a rug store owner, not a developer.</p>
+<h2>What Shopify AR apps actually are</h2>
+<p>Shopify themes have supported 3D models for years. Modern themes show a 3D model in the product gallery, and phones open it in AR with one tap. The AR viewer apps on the Shopify App Store add a nicer viewer, layout controls, and analytics. Public listings put their pricing around free to roughly $36 a month, depending on how many products you publish.</p>
+<p>That part is cheap. The part that matters is what the apps do not do. They are viewers. You have to bring your own 3D models. Nobody in that chain makes them for you.</p>
+<h2>The hidden bill: who makes the models</h2>
+<p>This is where the comparison turns. A rug store with eighty rugs needs eighty true-to-size 3D models. Third-party roundups of Shopify 3D apps put commissioned models at $100 to $500 per product when made by a 3D artist. Even at the low end, eighty rugs means thousands of dollars and weeks of briefs, revisions, and follow-ups before the first AR view ever loads.</p>
+<p>It is honest work to hire it out. It is also a real cost line that never appears on the app pricing page. Compare the total, not the headline. We did the same maths for a small rug store in our <a href="/blog/ar-cost-small-rug-store-pricing">pricing breakdown</a>, and the models were the biggest number on the page.</p>
+<h2>Where the two differ</h2>
+<h3>Price</h3>
+<p>With Shopify AR apps, you pay a small monthly subscription, plus the cost of every 3D model, which you commission separately. ARQR360 is one flat number: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with model building included. No per-model fees, no per-view fees. The first test model is free, so you can see your own rug in AR before you spend anything.</p>
+<h3>Who does the 3D modelling</h3>
+<p>This is the deciding question. With Shopify apps, you do it, or you hire someone who does. With ARQR360, we build the true-to-size models from your photos and real dimensions, bestsellers first, and new stock gets modelled the same way when your range changes. You never touch a 3D file.</p>
+<h3>True-to-size accuracy</h3>
+<p>A rug is a flat rectangle. If the model is 10% too big, it covers the wrong floor, and the customer learns to distrust the tool. Accuracy depends on whoever made the model. Ask any route how they verify scale against real dimensions. We measure each finished model against the official listed size before it goes live.</p>
+<h3>Setup effort</h3>
+<p>With Shopify apps, you install the app, add the viewer block to your theme, and upload the models you made. With ARQR360, the AR view opens in the phone browser from a link or QR code. Nothing for the customer to install. You can print that QR code on a swing tag or a packing slip.</p>
+<h2>Which one fits your store</h2>
+<p>If you already have a catalogue of 3D models, or a designer on staff who makes them, a Shopify viewer app is a sensible buy. The subscription is small and the tooling is mature.</p>
+<p>If you have no 3D models and no designer, the app subscription is not your project. Your project is getting eighty rugs modelled true to size. That is the part ARQR360 takes off your desk.</p>
+<h2>FAQ</h2>
+<div class="faq">
+<h3>Do Shopify AR apps include 3D model creation?</h3>
+<p>Mostly no. They are viewers and display tools. You supply the models, usually as .glb or .gltf files, which you commission from 3D artists or build with other software. A few apps bundle model creation as a separate paid service, so check the listing carefully.</p>
+<h3>Can I use ARQR360 with my Shopify store?</h3>
+<p>Yes. The AR view is a link, so it works anywhere: your product pages, Instagram, emails, or a QR code on the product tag.</p>
+<h3>How many rug models do I get?</h3>
+<p>Your whole catalogue. ARQR360 does not charge per model. We build true-to-size 3D models of your rugs from your photos and dimensions as part of the service, and new stock gets modelled the same way when your range changes.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "ar-cost-small-furniture-store-pricing",
+"title": "What Does AR Really Cost a Small Furniture Store? An Honest Pricing Breakdown",
+"date": "October 3, 2026",
+"description": "An honest look at what AR actually costs a small furniture retailer: the 3D models, the platform fee, setup, and the running costs nobody mentions on the pricing page.",
+"body": """
+<p>Picture a furniture store owner in Leeds. Two showrooms, a website, and about two hundred SKUs that change every season. A customer asks if they can see a sofa in their own living room before buying, and the owner thinks: how much would that even cost? The answers online are vague. "Custom quote." "Contact sales." Here is the honest version.</p>
+<p>AR for a furniture store is not one bill. It is four. When you see them listed, the pricing pages start making sense, and you can compare routes fairly. Try our <a href="/novara">live furniture catalogue demo</a> on your phone first if you want to see what the end result feels like.</p>
+<h2>Bill 1: the 3D models</h2>
+<p>This is the big one. Every chair, sofa, and table you want in AR needs a true-to-size 3D model. A store with two hundred SKUs needs two hundred models, and they go out of date every time the range changes.</p>
+<p>If you commission models from 3D artists, third-party roundups put the going rate at roughly $100 to $500 per product. Even at the low end, two hundred pieces means tens of thousands of dollars before a single customer ever opens the AR view. We ran the same maths for a smaller rug catalogue in our <a href="/blog/ar-cost-small-rug-store-pricing">pricing breakdown for a small rug store</a>, and the models were the biggest number on the page. For furniture, with bigger and more detailed pieces, the number only grows.</p>
+<h2>Bill 2: the platform fee</h2>
+<p>This is the monthly subscription for the AR service itself. Viewer apps and plugins are often cheap, sometimes under fifty dollars a month. Enterprise platforms sit at the other end, with annual contracts and custom quotes. The fee itself is rarely the problem. The problem is that most platforms are viewers only. You bring your own 3D models, which sends you straight back to bill 1.</p>
+<h2>Bill 3: setup and integration</h2>
+<p>Someone has to connect the AR views to your product pages, add the buttons, and make the mobile experience work. On platforms you run yourself, that is either your developer's time or an agency quote. On managed services, setup is part of the package. Ask every provider what day-one looks like: who uploads what, who tests it on real phones, and what happens when a product page changes.</p>
+<h2>Bill 4: the running costs</h2>
+<p>New stock arrives every season. Each new SKU needs a model, a link, and a check that it opens correctly on current phones. Ask how new models are made and what they cost, because this is where a cheap platform fee can quietly turn expensive. A per-model fee that looked small at launch becomes a standing tax on every season's new range.</p>
+<h2>What ARQR360 actually costs</h2>
+<p>Our pricing is one flat number because the model question is answered up front. The first 50 stores pay $199 one-time setup and $19 a month, locked for life. Model building is included: we build the true-to-size models from your photos and real dimensions, bestsellers first, and new stock gets modelled the same way when your range changes. No per-model fees, no per-view fees. And the first test model is free, so you see your own sofa in AR on your own phone before you spend anything.</p>
+<h2>How to compare any quote</h2>
+<p>Add the four bills together for your SKU count, not just the monthly fee. Ask who makes the models, what new-season stock costs, and whether the AR view needs an app install. The cheapest headline price usually loses this comparison, because it hides bill 1.</p>
+<h2>FAQ</h2>
+<div class="faq">
+<h3>What is the biggest cost in furniture store AR?</h3>
+<p>The 3D models. A store with a couple of hundred SKUs needs a couple of hundred true-to-size models, and commissioned models run roughly $100 to $500 per product. This line dwarfs the monthly platform fee on most routes.</p>
+<h3>Do I need an app for customers to use it?</h3>
+<p>With ARQR360, no. Each product gets a link and a QR code that opens the AR view in the phone browser. Nothing to install. Try the <a href="/novara">live furniture demo</a> on your own phone to see it.</p>
+<h3>What about new stock each season?</h3>
+<p>Ask every provider this before you sign. With ARQR360, new stock gets modelled the same way as the launch range, included in the flat monthly fee. On per-model routes, every season's new range starts a new bill.</p>
 </div>
 """,
 },
