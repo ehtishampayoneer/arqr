@@ -15,6 +15,7 @@
 # 2026-10-03 rugs comparison: vs Shopify AR apps
 # 2026-10-03 furniture non-comparison: AR cost pricing breakdown for furniture stores
 # 2026-10-03 footwear non-comparison: turn browsers into buyers with AR try-on
+# 2026-10-03 footwear comparison: vs Seek
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -683,6 +684,46 @@ POSTS += [
 <p>About seven days from your photos arriving. We build the models and set up the links. You drop them into your product pages.</p>
 <h3>What does it cost?</h3>
 <p>ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free, no commitment.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "arqr360-vs-seek-footwear-stores",
+"title": "ARQR360 vs Seek: What a U.S. Shoe Store Really Pays for AR",
+"date": "October 3, 2026",
+"description": "A fair comparison for shoe retailers: Seek versus ARQR360. Per-model creation costs plus platform fees against flat pricing with models included, and what true-to-size means for footwear.",
+"body": """
+<p>Picture a shoe store owner in Austin. Her website sells well, but returns eat the margin. Size 8 in her shop pinches in another, so customers guess, guess wrong, and ship the shoes back. She starts searching for AR try-on and two names keep coming up: Seek, and ARQR360. Here is a fair look at both, written for a shoe store owner, not a developer.</p>
+<p>Both turn a phone into a fitting room. The difference is what you pay for and who does the work.</p>
+<h2>What Seek is</h2>
+<p>Seek is a 3D and AR company for retailers. You send them your products, they create the 3D models, host them, and give you links and embeds for your product pages. In a podcast interview, their CEO described the pricing plainly. You pay per model for creation, roughly a couple hundred dollars a model depending on complexity, and then a SaaS fee for hosting and distribution that scales with the size of your business. A store with a handful of products pays less than a brand with thousands. Everything is hosted by Seek, and the AR view opens from your own website.</p>
+<p>The honest good news: Seek takes the 3D work off your desk. The honest bad news for a small store: the per-model bill is the biggest number in the project, and it comes before anything earns a dollar.</p>
+<h2>The shoe-store maths</h2>
+<p>Take a small U.S. shoe store with fifty styles. At a couple hundred dollars a model, fifty styles means roughly ten thousand dollars in model creation before the first AR view opens. That number comes from their CEO's own description, not a published pricing page, because Seek does not publish fixed prices. The SaaS fee sits on top of it, and it grows as your catalogue grows.</p>
+<p>For a big brand with hundreds of styles and real budgets, per-model pricing at volume makes sense. For a small store, the creation bill is the whole project. Your shoes are the product. Getting fifty of them modelled is the cost, not the monthly fee.</p>
+<h2>Where the two differ</h2>
+<h3>Price</h3>
+<p>Seek: per-model creation (a couple hundred dollars each, per their CEO) plus a SaaS fee for hosting and distribution that scales with your catalogue size. ARQR360: one flat number, $199 one-time setup and $19 a month, locked for life for the first 50 stores, with model building included. No per-model fees, no per-view fees. The first test model is free.</p>
+<h3>Who does the 3D modelling</h3>
+<p>Both take this off your desk. Seek builds your models from your products. ARQR360 also builds them: we make true-to-size 3D models from your photos and real dimensions, bestsellers first. On both routes you never touch a 3D file. The difference is only what each model costs you.</p>
+<h3>True-to-size accuracy</h3>
+<p>For footwear, this is the whole game. A shoe that is even slightly off in the try-on teaches the shopper that the tool cannot be trusted. On any route, ask how scale is verified against the real product. We measure each finished model against the official listed dimensions before it goes live. Ask every provider what their check is.</p>
+<h3>Setup effort</h3>
+<p>With Seek, you send products or files, they model and host, and you place their embeds on your product pages. With ARQR360, the AR view opens in the phone browser from a link or QR code, which you can drop into product pages, Instagram, or print on a box. Nothing for the shopper to install on either route.</p>
+<h2>Which one fits your store</h2>
+<p>If you run a brand with hundreds of styles and the budget for per-model creation plus platform fees, Seek is a solid, serious option. They have been in this space for years and their pipeline is built for volume.</p>
+<p>If you run a small shoe store with fifty styles and no appetite for a five-figure modelling bill, the per-model route prices you out before you start. That is the gap ARQR360 was built for: flat pricing, models included, and a free first test on your bestselling shoe. Feel it first on the <a href="/corso">live footwear demo</a> with your own feet, and for the conversion side of the story read <a href="/blog/how-shoe-stores-turn-browsers-into-buyers-ar">how shoe stores turn browsers into buyers with AR try-on</a>.</p>
+<h2>FAQ</h2>
+<div class="faq">
+<h3>Does Seek publish pricing?</h3>
+<p>Not as fixed prices. Their CEO has described it as per-model creation fees plus a SaaS hosting fee that scales with the size of your catalogue, so the total depends on your SKU count. Get a written quote for your own catalogue before comparing.</p>
+<h3>Who makes the 3D models?</h3>
+<p>Seek builds them for you as part of their service. ARQR360 also builds them for you from your photos and real dimensions, included in the flat fee. On both routes, you do not need a 3D team.</p>
+<h3>Do my shoppers need an app?</h3>
+<p>No. Seek delivers the AR view through your website, and ARQR360 opens in the phone browser from a link or QR code. Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels.</p>
 </div>
 """,
 },
