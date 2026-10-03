@@ -14,6 +14,7 @@
 # 2026-10-02 decor comparison: vs Augment
 # 2026-10-03 rugs comparison: vs Shopify AR apps
 # 2026-10-03 furniture non-comparison: AR cost pricing breakdown for furniture stores
+# 2026-10-03 footwear non-comparison: turn browsers into buyers with AR try-on
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -637,6 +638,51 @@ POSTS += [
 <p>With ARQR360, no. Each product gets a link and a QR code that opens the AR view in the phone browser. Nothing to install. Try the <a href="/novara">live furniture demo</a> on your own phone to see it.</p>
 <h3>What about new stock each season?</h3>
 <p>Ask every provider this before you sign. With ARQR360, new stock gets modelled the same way as the launch range, included in the flat monthly fee. On per-model routes, every season's new range starts a new bill.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "how-shoe-stores-turn-browsers-into-buyers-ar",
+"title": "How UK Shoe Stores Turn Online Browsers Into Buyers With AR Try-On",
+"date": "October 3, 2026",
+"description": "Shoe shoppers hesitate online because photos cannot show fit and look. A plain guide for UK footwear retailers on using phone AR try-on to build buyer confidence and lift conversion, with no app or 3D team.",
+"body": """
+<p>Picture a shoe shop owner in Bristol. She sells well-made leather boots, mostly online. Her product pages get visitors every day. They zoom in on the photos, read the size guide twice, then close the tab. The boots sit unsold.</p>
+<p>Footwear is a hard sell online, and it is not usually the price that kills the sale. It is the unknowns. Will they fit? Does the colour match the photos? Will the style work with my wardrobe? Photos answer none of this well, so browsers stay browsers.</p>
+<p>AR try-on answers those questions in the shopper's own home. The customer taps a link or scans a QR code on the product page, points the phone at their feet, and sees the boots at true size on their own feet. The moment of doubt becomes a moment of decision.</p>
+<h2>Why shoe browsers hesitate</h2>
+<ul>
+<li><strong>Fit is a guess:</strong> size charts vary between brands, and shoppers know it. A size 8 in one shop pinches in another.</li>
+<li><strong>Look is personal:</strong> a chunky sneaker can look wrong next to slim trousers, and no studio photo shows that pairing.</li>
+<li><strong>Colour lies on screen:</strong> lighting and editing shift colours. Shoppers who have been burned once hesitate twice.</li>
+<li><strong>Returns feel like work:</strong> printing a label, repacking the box, waiting for a refund. Many shoppers decide the purchase is not worth the risk of the return.</li>
+</ul>
+<h2>What try-on changes, concretely</h2>
+<p>Try-on does not replace the size chart. It sits beside it. The shopper sees the shoe on their own foot, at real size, in the light of their own room. Colour reads honestly. Bulk reads honestly. The shopper is no longer guessing from someone else's photoshoot.</p>
+<p>This is where conversion comes from. A hesitant browser becomes a buyer at the exact moment the unknowns disappear. You do not need new traffic. You need the traffic you already have to feel sure.</p>
+<h2>The one thing that must be true</h2>
+<p>Not all try-on earns that trust. If the model is a rough approximation, shoppers learn to distrust it fast. For footwear, true-to-size is the whole point. A model that is even slightly off teaches the customer that the tool cannot be trusted, and you are back to photos.</p>
+<p>The check is simple: place the finished model on your own phone next to the real shoe and compare. We do this before any model goes live, because your shoppers' trust is worth more than any feature list.</p>
+<h2>What it takes to offer this</h2>
+<ol>
+<li>You send photos and real dimensions of your shoes, bestsellers first.</li>
+<li>We build the true-to-size 3D models and your AR try-on links in about seven days.</li>
+<li>Each shoe gets a link and a QR code. Shoppers open it in their phone browser. No app to install, nothing for your team to learn.</li>
+</ol>
+<p>Feel it yourself first. Open our <a href="/corso">live footwear demo</a> on your phone and point it at your feet. For the returns side of the same story, read <a href="/blog/how-footwear-stores-cut-returns-with-ar">how shoe stores can cut size-and-fit returns with phone AR</a>.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling shoe and we will build you one true-to-size AR model free. Try it on your own foot, compare it with the real shoe, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my shoppers need to download an app?</h3>
+<p>No. Each shoe gets a link and a QR code that opens the try-on in the phone browser. Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels.</p>
+<h3>How long before my shoes are live?</h3>
+<p>About seven days from your photos arriving. We build the models and set up the links. You drop them into your product pages.</p>
+<h3>What does it cost?</h3>
+<p>ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free, no commitment.</p>
 </div>
 """,
 },
