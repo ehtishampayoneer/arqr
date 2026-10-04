@@ -18,6 +18,7 @@
 # 2026-10-03 footwear comparison: vs Seek
 # 2026-10-04 furniture comparison: vs Marxent (3D Cloud)
 # 2026-10-04 decor non-comparison: best AR options for decor stores
+# 2026-10-04 furniture non-comparison: how to photograph furniture for true-to-size AR
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -809,6 +810,51 @@ POSTS += [
 <p>It depends on who builds the models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free.</p>
 <h3>How long before my decor is live?</h3>
 <p>With ARQR360, about seven days from your photos arriving. On self-serve platforms it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "how-to-photograph-furniture-for-true-to-size-ar",
+"title": "How to Photograph Your Furniture for True-to-Size AR",
+"date": "October 4, 2026",
+"description": "A store owner's guide to the photos that make true-to-size AR models: which angles, what light, and the one measurement that matters more than anything else.",
+"body": """
+<p>Picture a furniture store owner in Manchester. He is ready to try AR on his bestselling sofa. Someone tells him the models get built from product photos. He opens his phone, takes one snap from across the showroom, and wonders if that is enough. It is not, but what is enough is simpler than most owners expect.</p>
+<p>True-to-size AR stands or falls on the photos the model is built from. A great model can make a shopper confident enough to buy without visiting your showroom. A bad one teaches them the tool is a toy. This is the guide we give every store before they send us a single photo.</p>
+<h2>Start with real dimensions</h2>
+<p>Photos show the shape. Dimensions set the size. Before anything else, measure your piece with a tape, or use the official listed specs if you have them. Width, depth, and height, nothing fancy. We measure every finished model against those numbers before it goes live, and if the check fails we rebuild. If you are working with any AR provider, ask what their size check is. The answer tells you more than their demo does.</p>
+<h2>Which photos to send</h2>
+<ul>
+<li><strong>Front, straight on:</strong> square to the piece, camera at the middle of its height, whole thing in frame. This is the anchor photo.</li>
+<li><strong>One or two sides:</strong> straight-on views of each side, same framing. Arm profiles and leg positions live here.</li>
+<li><strong>Back and top if the design shows:</strong> sectionals, open shelving, anything with a distinctive back. Skip if it is a flat upholstered back nobody sees.</li>
+<li><strong>Two close-ups of materials:</strong> the upholstery weave, the wood grain, the stitching on the arm. These decide how real the model looks up close.</li>
+</ul>
+<p>One to four photos is the range. A simple side chair may only need two. A sectional with a corner unit deserves four or five. Read more about what the whole setup costs a small store in our <a href="/blog/ar-cost-small-furniture-store-pricing">pricing breakdown for small furniture stores</a>.</p>
+<h2>Light and background</h2>
+<p>Shoot in daylight or bright even showroom light. Avoid a single lamp in a dark room, which paints one side white and the other black. Do not use flash on leather or gloss. Clear the space around the piece: the model builder needs to see every edge, and a plant overlapping the armrest becomes part of the problem. A plain background is best, but an empty showroom corner works fine.</p>
+<h2>Common mistakes to avoid</h2>
+<ul>
+<li><strong>Shooting from above:</strong> the piece looks shorter and the legs disappear. Get the camera down to the middle of the piece.</li>
+<li><strong>Cutting off a leg or corner:</strong> if it is not in the photo, the builder has to guess. Frame the whole piece with a little space around it.</li>
+<li><strong>Lifestyle clutter on the seat:</strong> throw pillows and blankets hide the shape. Photograph the piece as it is sold.</li>
+<li><strong>One dark phone snap:</strong> grainy photos mean grainy textures. If the photo looks bad on your phone screen, it will look worse as a 3D model.</li>
+</ul>
+<h2>Phone photos are enough</h2>
+<p>You do not need a studio or a photographer. Modern phone cameras in decent light are more than enough, and most stores already have a folder of good photos from their listings. The rule of thumb: if the photo looks sharp and honest on your screen, it works.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any guide. Send a photo of your bestselling piece and we will build you one true-to-size AR model free. Place it on your own floor next to the real thing, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing. Feel the result on a live demo first: our <a href="/novara">furniture sample</a> opens in your phone browser, no app.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How many photos do you need?</h3>
+<p>One to four, depending on the piece. A straight-on front, one or two sides, plus close-ups of the material. A simple chair needs two, a sectional deserves more.</p>
+<h3>Do phone photos really work?</h3>
+<p>Yes, in decent light. Shoot at the middle of the piece's height, frame the whole thing, and skip the flash on glossy surfaces. If the photo looks sharp on your phone, it works.</p>
+<h3>What if I do not have exact dimensions?</h3>
+<p>Measure with a tape, or check the brand's listed specs. Dimensions matter more than photo quality for getting the size right, because every finished model is measured against them before it goes live.</p>
 </div>
 """,
 },
