@@ -19,6 +19,7 @@
 # 2026-10-04 furniture comparison: vs Marxent (3D Cloud)
 # 2026-10-04 decor non-comparison: best AR options for decor stores
 # 2026-10-04 furniture non-comparison: how to photograph furniture for true-to-size AR
+# 2026-10-04 rugs comparison: vs Vertebrae
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -855,6 +856,57 @@ POSTS += [
 <p>Yes, in decent light. Shoot at the middle of the piece's height, frame the whole thing, and skip the flash on glossy surfaces. If the photo looks sharp on your phone, it works.</p>
 <h3>What if I do not have exact dimensions?</h3>
 <p>Measure with a tape, or check the brand's listed specs. Dimensions matter more than photo quality for getting the size right, because every finished model is measured against them before it goes live.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "arqr360-vs-vertebrae-rug-stores",
+"title": "ARQR360 vs Vertebrae: The Honest Answer for a Small Rug Store",
+"date": "October 4, 2026",
+"description": "A fair comparison for rug retailers: Vertebrae, the 3D and AR commerce company Snap acquired in 2021, versus ARQR360. Price, setup effort, who builds the 3D models, and true-to-size accuracy.",
+"body": """
+<p>Picture a rug store owner in Chicago. She sells handwoven rugs online and from one small shop. Her returns shelf is familiar: a rug that looked right in the photos arrives and swallows the living room, while another gets lost under the coffee table. Every return costs her freight both ways and a piece she now resells at a discount.</p>
+<p>AR is the fix she keeps hearing about. A customer points their phone at the floor and sees the rug at true size before buying. She starts researching, and a name keeps appearing: Vertebrae. It sounds like exactly what she wants. Here is the honest story.</p>
+<h2>What Vertebrae was</h2>
+<p>Vertebrae was a 3D and AR commerce company with offices in Los Angeles and Austin. Its business was creating and managing 3D versions of products for brands, and running AR shopping experiences on the web. The client list told you who it was for: Toyota, Adidas, and other large brands. It worked with Facebook on AR shopping tech in 2019, and it had raised about $10 million in venture funding.</p>
+<p>In July 2021, Snap, the parent company of Snapchat, acquired Vertebrae for an undisclosed sum. The whole 50-person team joined Snap. CEO Vince Cacace said at the time that the team would keep developing the platform for existing and new clients. That was five years ago.</p>
+<p>Since the acquisition, Vertebrae's team has been building Snap's AR shopping tools: the 3D asset pipeline behind Snapchat's AR lenses and shopping features. The old standalone platform is not something a small rug store can sign up for. There is no pricing page and no self-serve signup for retailers.</p>
+<h2>Why Vertebrae's research still matters for your store</h2>
+<p>One thing from Vertebrae is worth quoting, because it explains why you are reading this. Their consumer research found that 76% of respondents said AR increased their purchase confidence, and 68% were likely or very likely to purchase from brands that offer an AR experience. That research is a few years old and it was about big brands, but the human point holds: shoppers who can place a product in their own space buy with more confidence.</p>
+<p>For a rug store, confidence is the whole sale. A rug is bought for one specific floor. A customer who sees your exact rug on their actual floor has answered the only question that matters.</p>
+<h2>What a rug store can actually buy today</h2>
+<p>This is where the comparison gets short and honest. There are two kinds of buyers here.</p>
+<p>If you are a brand with a marketing team and a budget for AR campaigns, Snap's AR commerce is a real channel. It reaches millions of people who use AR lenses every day, and Vertebrae's team helped build the 3D platform behind it. That is a fair place for a big brand to spend.</p>
+<p>If you are a rug store with eighty rugs and no dev team, there is nothing to buy on that route. No plan, no quote, no signup. Your project is getting AR onto your own product pages, with your own rugs, at a price a small store can carry. That is what the rest of this article compares.</p>
+<h2>Where the two differ</h2>
+<h3>Price</h3>
+<p>Vertebrae never published pricing as a standalone product, and today there is no public plan a small store can buy. So there is no number to put on that side of the table. ARQR360 is one flat number: $199 one-time setup and $19 a month, locked for life for the first 50 stores. Model building is included. No per-model fees, no per-view fees. The first test model is free.</p>
+<p>When you compare quotes, get the written quote for your own catalogue. For the full maths on what each route really costs a rug store, read our <a href="/blog/ar-cost-small-rug-store-pricing">pricing breakdown for a small rug store</a>.</p>
+<h3>Who does the 3D modelling</h3>
+<p>This is the deciding question, and it is where the two were closest. Vertebrae's whole business was 3D asset creation and management for brands. They had a 50-person team doing exactly that work, for clients like Toyota and Adidas. If you had the budget, the models got made.</p>
+<p>Today there is no desk to send your rugs to. With ARQR360, there is. You send photos and real dimensions of your rugs, bestsellers first, and we build the true-to-size 3D models as part of the service. New stock gets modelled the same way when your range changes. You never touch a 3D file.</p>
+<h3>Setup effort</h3>
+<p>Getting onto Snap's AR commerce is a project. It runs through Lens Studio and brand campaigns, which means agency time or an internal team, measured in weeks and months.</p>
+<p>ARQR360 is done for you. Send your photos and dimensions, and your AR catalogue goes live in about seven days. Each rug gets a link and a QR code that opens the AR view in the phone browser. You drop the link on your product page, on Instagram, or on a swing tag.</p>
+<h3>True-to-size accuracy</h3>
+<p>For rugs this decides everything. A rug is a flat rectangle. If the model is off by ten percent, it covers the wrong floor, and the customer learns to distrust the tool. Accuracy depends on whoever made the model and how they checked it.</p>
+<p>Ask every provider how they verify scale against real dimensions. We measure each finished model against the official listed size before it goes live, and if the check fails we rebuild. Try it yourself first: open our <a href="/terra">live rug demo</a> on your phone, point it at your floor, and see whether the size reads true.</p>
+<h2>Which one fits your store</h2>
+<p>If you run a brand with a marketing budget and an audience on Snapchat, Snap's AR commerce is worth a serious look. Vertebrae's team helped build it, and the audience is real.</p>
+<p>If you run an independent rug store and want shoppers to see your exact rugs at true size on their own floors, with no project and no per-model bills, that is what ARQR360 does. The name you found in your research built technology for someone else's scale. We built ours for yours.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any comparison. Send a photo of your bestselling rug and we will build you one true-to-size AR model free. Point your phone at your own floor, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Can a small rug store sign up for Vertebrae?</h3>
+<p>No. Vertebrae was acquired by Snap in July 2021, and its team works on Snap's AR commerce for brands. There is no public plan or self-serve signup for small retailers.</p>
+<h3>What does ARQR360 cost a rug store?</h3>
+<p>Flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free, no commitment.</p>
+<h3>Do my shoppers need Snapchat or any app?</h3>
+<p>No. Each rug gets a link and a QR code that opens the true-to-size AR view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone and point it at your floor.</p>
 </div>
 """,
 },
