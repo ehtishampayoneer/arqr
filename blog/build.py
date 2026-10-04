@@ -17,6 +17,7 @@
 # 2026-10-03 footwear non-comparison: turn browsers into buyers with AR try-on
 # 2026-10-03 footwear comparison: vs Seek
 # 2026-10-04 furniture comparison: vs Marxent (3D Cloud)
+# 2026-10-04 decor non-comparison: best AR options for decor stores
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -763,6 +764,51 @@ POSTS += [
 <p>Their announced bundles run six to twelve weeks with pre-built project plans. The Quick Start bundle starts with fewer than 300 SKUs and launches the first app in six to eight weeks.</p>
 <h3>Do shoppers need an app on either route?</h3>
 <p>No. Marxent's WebAR apps run in the mobile browser, and ARQR360 opens from a link or QR code in the phone browser too. Try the <a href="/novara">live furniture demo</a> to see how it feels.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "best-ar-options-home-decor-stores",
+"title": "The Best AR Options for a Home Decor Store in 2026",
+"date": "October 4, 2026",
+"description": "An honest look at every way a home decor store can offer AR: self-serve platforms, Shopify viewer apps, and done-for-you services. Compared on cost, who builds the 3D models, and whether shoppers need an app.",
+"body": """
+<p>Picture a decor store owner in Sydney. She sells framed prints, mirrors, and table lamps. Her site looks good. Her photos are sharp. Yet her inbox is full of the same questions. "How big is the frame, really?" "Will this mirror fit over my mantel?" "Is the lamp too tall for a bedside table?"</p>
+<p>Decor is hard to buy online. A chair is at least a known shape. A vase or a mirror lives or dies on how it sits in one specific corner of one specific room. Photos cannot carry that. AR can. The customer points their phone at the wall, and the piece appears at true size, right where it would hang.</p>
+<p>So what are your actual options for adding AR to a decor store? Here is the honest list, written for a store owner, not a developer.</p>
+<h2>Option 1: self-serve AR platforms</h2>
+<p>These are tools you run yourself. You upload product images and dimensions, someone makes the 3D models (a designer network, or an in-house artist), and you place the AR viewer on your product pages. Augment is the long-standing example: founded in 2011, it has you work with its designer community, and its retail AR runs through mobile apps, including the retailer's own app.</p>
+<p><strong>Good when:</strong> you already have a mobile app and a team to run a platform. You get control. <strong>Bad when:</strong> you have neither. You are managing a project, not buying a result.</p>
+<h2>Option 2: Shopify AR viewer apps</h2>
+<p>If you sell on Shopify, there are AR viewer apps on the app store that drop a 3D viewer into your theme. Subscriptions are small. The catch is the models. The apps are viewers only. You supply every 3D model yourself, usually commissioned from 3D artists at roughly $100 to $500 per product. A decor catalogue of two hundred pieces turns a small monthly fee into a large modelling bill. We did the same maths on furniture in our <a href="/blog/ar-cost-small-furniture-store-pricing">cost breakdown for small furniture stores</a>. It works the same way for decor.</p>
+<p><strong>Good when:</strong> you already have 3D models of everything. <strong>Bad when:</strong> you do not, which is almost every small decor store.</p>
+<h2>Option 3: done-for-you AR services</h2>
+<p>You send photos and real dimensions of your products. Someone else builds the true-to-size 3D models and hands you links and QR codes that open AR in the phone browser. ARQR360 works this way. No app for your customers. No modelling work on your side. About seven days from photos to a live catalogue.</p>
+<p><strong>Good when:</strong> you want AR live this month with no new hires. <strong>Bad when:</strong> you need deep custom work like product configurators. That is a platform job, not a service job.</p>
+<h2>What to check before you choose</h2>
+<ul>
+<li><strong>True-to-size proof:</strong> for decor, a mirror a few centimetres off is the difference between a confident buyer and a return. Ask how the provider verifies scale against real dimensions.</li>
+<li><strong>The app question:</strong> if your customers must install an app, most of them will not. Browser AR gets used. App AR gets skipped.</li>
+<li><strong>Total cost, not the monthly fee:</strong> add the models, the setup, and the new-season stock. Per-model fees quietly dwarf subscriptions on catalogues that change.</li>
+<li><strong>Who models new stock:</strong> decor ranges turn over every season. Ask what each new batch costs and how fast it goes live.</li>
+</ul>
+<h2>Where each option lands</h2>
+<p>If you have a mobile app and a team, a self-serve platform gives you control. If you already have 3D models and a Shopify store, a viewer app is a cheap add. If you have neither, the done-for-you route is the one that ends with AR actually live on your site.</p>
+<p>We ran the full comparison on one popular platform in <a href="/blog/arqr360-vs-augment-decor-stores">ARQR360 vs Augment for decor stores</a>. It shows the real difference between a platform you run and a service that runs for you.</p>
+<p>Feel the result on your own phone first. Open our <a href="/maison">live decor demo</a> and place a piece on your own wall at true size.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling piece and we will build you one true-to-size AR model free. Place it on your own wall next to the real thing, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need an app to see AR?</h3>
+<p>With ARQR360, no. Each piece gets a link and a QR code that opens the true-to-size view in the phone browser. Try the <a href="/maison">live decor demo</a> yourself. On some platforms the AR view runs inside mobile apps, so ask before you sign.</p>
+<h3>What does AR cost a small decor store?</h3>
+<p>It depends on who builds the models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free.</p>
+<h3>How long before my decor is live?</h3>
+<p>With ARQR360, about seven days from your photos arriving. On self-serve platforms it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p>
 </div>
 """,
 },
