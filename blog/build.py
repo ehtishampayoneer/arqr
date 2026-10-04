@@ -16,6 +16,7 @@
 # 2026-10-03 furniture non-comparison: AR cost pricing breakdown for furniture stores
 # 2026-10-03 footwear non-comparison: turn browsers into buyers with AR try-on
 # 2026-10-03 footwear comparison: vs Seek
+# 2026-10-04 furniture comparison: vs Marxent (3D Cloud)
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -724,6 +725,44 @@ POSTS += [
 <p>Seek builds them for you as part of their service. ARQR360 also builds them for you from your photos and real dimensions, included in the flat fee. On both routes, you do not need a 3D team.</p>
 <h3>Do my shoppers need an app?</h3>
 <p>No. Seek delivers the AR view through your website, and ARQR360 opens in the phone browser from a link or QR code. Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels.</p>
+</div>
+""",
+},
+]
+POSTS += [
+{
+"slug": "arqr360-vs-marxent-furniture-stores",
+"title": "ARQR360 vs Marxent (3D Cloud): What a Furniture Store Actually Signs Up For",
+"date": "October 4, 2026",
+"description": "A fair comparison for furniture retailers: Marxent's 3D Cloud versus ARQR360. Enterprise platform with six to twelve week launches against flat pricing with true-to-size models built from your photos.",
+"body": """
+<p>Picture a furniture store owner in Manchester. She wants shoppers to see her sofas in their own living rooms before they buy. She searches for 3D furniture AR and two serious names come up: Marxent's 3D Cloud, and ARQR360. Here is a fair look at both, written for a furniture store owner, not a software buyer.</p>
+<p>Both end with AR on your product pages. The difference is what you sign up for: an enterprise platform project, or a done-for-you service.</p>
+<h2>What Marxent (3D Cloud) is</h2>
+<p>Marxent is the enterprise 3D commerce platform for furniture and home improvement retail, rebranded a while back as 3D Cloud by Marxent. Its client list reads like a trade show floor: La-Z-Boy, Joybird, Jerome's Furniture, American Furniture Warehouse, Macy's, Lowe's, John Lewis. These are big catalogues with big budgets. The platform covers 3D configurators, room planners, and WebAR views, sold in bundles like Quick Start (WebAR plus Room Visualiser, fewer than 300 SKUs to start, six to eight weeks to launch) and Sofa Expert (ten to twelve weeks). Launches typically run six to twelve weeks, and their own announcement says no dedicated team is required.</p>
+<p>The honest good news: if you run a chain with hundreds of SKUs and configurable products like sectionals, this platform was built exactly for you, and the client list proves it works at that scale.</p>
+<h2>What ARQR360 is</h2>
+<p>ARQR360 is the done-for-you route for small and mid-size stores. You send photos of your bestsellers with real dimensions. We build true-to-size 3D models from them and hand you links and QR codes that open AR in the phone browser. No app. The first test model is free, setup is $199 one-time, and the monthly fee is $19, locked for life for the first 50 stores.</p>
+<h2>Where the two differ</h2>
+<h3>Price</h3>
+<p>Marxent does not publish prices. 3D Cloud is sold on custom enterprise quotes, so the number follows your catalogue size and the apps you choose. Anyone who has been through enterprise software buying knows how that goes. ARQR360 is one flat number: $199 setup, $19 a month, model building included, first model free. No per-model fees, no per-view fees.</p>
+<h3>Who does the 3D modelling</h3>
+<p>On the enterprise route you bring the catalogue: product data, dimensions, and 3D assets that the platform turns into configurators and AR views. Marxent's own launch materials talk about retailers repurposing their 3D assets across the apps, which tells you the working assumption: the content side is yours to supply. ARQR360 takes the other approach. You send photos and real dimensions, and we build each true-to-size model for you, bestsellers first. You never touch a 3D file on either route. The difference is whether the modelling work lands on your side or ours.</p>
+<h3>True-to-size accuracy</h3>
+<p>For furniture this decides everything. A sofa that shows even slightly too small in AR teaches the shopper that the tool is a toy. On any route, ask how scale is verified against the real product. We measure every finished model against the official listed dimensions before it goes live, and if the check fails we rebuild. Ask every provider what their check is.</p>
+<h3>Setup effort</h3>
+<p>Marxent's bundles launch in six to twelve weeks with pre-built project plans, which is fast for enterprise software and slow compared to sending photos. ARQR360 launches in about seven days from your photos arriving. On both routes the AR opens in the phone browser, so shoppers install nothing.</p>
+<h2>Which one fits your store</h2>
+<p>If you run a chain with three hundred SKUs, configurable sectionals, and a budget that treats 3D as a platform decision, Marxent is the name the big players already chose. The client list speaks for itself.</p>
+<p>If you run a store with thirty to a hundred pieces and no enterprise software budget, the enterprise route was never built for you. That is the gap ARQR360 fills: flat pricing, models built from your photos, and a free first test on your bestseller. Feel it on the <a href="/novara">live furniture demo</a> with your own phone, and read the <a href="/blog/ar-cost-small-furniture-store-pricing">cost breakdown for small furniture stores</a> for the full maths.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Does Marxent publish pricing?</h3>
+<p>No. 3D Cloud by Marxent is sold on custom enterprise quotes, so the total depends on your catalogue size and which apps you choose. Get a written quote for your own catalogue before comparing.</p>
+<h3>How long does a Marxent launch take?</h3>
+<p>Their announced bundles run six to twelve weeks with pre-built project plans. The Quick Start bundle starts with fewer than 300 SKUs and launches the first app in six to eight weeks.</p>
+<h3>Do shoppers need an app on either route?</h3>
+<p>No. Marxent's WebAR apps run in the mobile browser, and ARQR360 opens from a link or QR code in the phone browser too. Try the <a href="/novara">live furniture demo</a> to see how it feels.</p>
 </div>
 """,
 },
