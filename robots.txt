@@ -7,6 +7,8 @@ Disallow: /assets/shops/
 # ARQR Studio: the admin page, and the model test pages for checking on a phone
 Disallow: /test/
 Disallow: /admin
+# product samples made for a client, reached from their QR card
+Disallow: /sample/
 
 Sitemap: https://arqr360.com/sitemap.xml
 Sitemap: https://arqr360.com/blog/sitemap.xml
