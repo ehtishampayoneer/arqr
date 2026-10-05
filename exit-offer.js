@@ -9,7 +9,7 @@
 
   var COOLDOWN_MS = 14 * 24 * 3600 * 1000; /* show at most once per 14 days */
   var ARM_MS = 12000;                     /* ignore exits in the first 12s */
-  var MOBILE_MIN_MS = 45000;              /* mobile: 45s on page minimum */
+  var MOBILE_MIN_MS = 30000;              /* mobile: 30s on page minimum */
   var MOBILE_MIN_DEPTH = 0.35;            /* mobile: scrolled 35% minimum */
   var MAX_SLOTS = 4;
   var MAX_DIM = 1600;                     /* photos are resized before upload */
