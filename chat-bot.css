@@ -182,7 +182,7 @@
   border: 1.5px solid #E7E2D8;
   border-radius: 999px;
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px; /* 16px stops iOS Safari auto-zoom on focus (was 14px, caused the zoom-out-of-screen bug) */
   font-family: inherit;
   color: #191919;
   outline: 0;
