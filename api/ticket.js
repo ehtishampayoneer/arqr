@@ -107,8 +107,13 @@ module.exports = async (req, res) => {
   const attachments = [];
   let bytes = 0;
   for (const f of sent.slice(0, 4)) {
-    if (!f || !f.data) continue;
-    const buf = Buffer.from(String(f.data), 'base64');
+    if (!f) continue;
+    /* accept raw base64 (data) or a full data URL (dataUrl) */
+    let b64 = String(f.data || f.dataUrl || '');
+    const comma = b64.indexOf(',');
+    if (b64.indexOf('data:') === 0 && comma !== -1) b64 = b64.slice(comma + 1);
+    if (!b64) continue;
+    const buf = Buffer.from(b64, 'base64');
     bytes += buf.length;
     if (bytes > MAX_ATTACHMENT) {
       return res.status(413).json({
