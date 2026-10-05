@@ -1,0 +1,234 @@
+/* ARQR360 website chat bot "Ari" — floating launcher + chat panel.
+   Brand palette: orange #EE5A0D, ink #191919, cream #F0EBE2, font Archivo. */
+
+#arqr-chat-launcher {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #EE5A0D;
+  border: 0;
+  cursor: pointer;
+  z-index: 999990;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(238, 90, 13, 0.45);
+  transition: transform 0.2s ease;
+  padding: 0;
+}
+#arqr-chat-launcher.arqr-show { display: flex; }
+#arqr-chat-launcher:hover { transform: scale(1.06); }
+#arqr-chat-launcher:focus-visible { outline: 3px solid #191919; outline-offset: 2px; }
+#arqr-chat-launcher svg { width: 30px; height: 30px; fill: #fff; }
+#arqr-chat-launcher .arqr-chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1faa53;
+  border: 3px solid #fff;
+}
+@keyframes arqr-pulse {
+  0% { box-shadow: 0 8px 28px rgba(238, 90, 13, 0.45), 0 0 0 0 rgba(238, 90, 13, 0.5); }
+  70% { box-shadow: 0 8px 28px rgba(238, 90, 13, 0.45), 0 0 0 14px rgba(238, 90, 13, 0); }
+  100% { box-shadow: 0 8px 28px rgba(238, 90, 13, 0.45), 0 0 0 0 rgba(238, 90, 13, 0); }
+}
+#arqr-chat-launcher.arqr-attention { animation: arqr-pulse 1.8s ease-out 3; }
+
+#arqr-chat-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 92px;
+  width: 372px;
+  max-width: calc(100vw - 32px);
+  height: 540px;
+  max-height: calc(100dvh - 130px);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 18px 60px rgba(20, 20, 20, 0.28);
+  z-index: 999991;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+#arqr-chat-panel.arqr-open { display: flex; }
+
+.arqr-chat-head {
+  background: #191919;
+  color: #fff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+.arqr-chat-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #EE5A0D;
+  color: #fff;
+  font-weight: 800;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.arqr-chat-who { flex: 1; min-width: 0; }
+.arqr-chat-who b { display: block; font-size: 15px; }
+.arqr-chat-who span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #cfc9bd; }
+.arqr-chat-who .dot { width: 8px; height: 8px; border-radius: 50%; background: #1faa53; display: inline-block; }
+.arqr-chat-close {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+}
+.arqr-chat-close:focus-visible { outline: 2px solid #EE5A0D; }
+
+#arqr-chat-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  background: #FFF7F0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.arqr-msg {
+  max-width: 82%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  word-wrap: break-word;
+}
+.arqr-msg.bot {
+  background: #fff;
+  color: #191919;
+  border: 1px solid #E7E2D8;
+  border-bottom-left-radius: 5px;
+  align-self: flex-start;
+}
+.arqr-msg.user {
+  background: #EE5A0D;
+  color: #fff;
+  border-bottom-right-radius: 5px;
+  align-self: flex-end;
+}
+.arqr-msg.ticket {
+  background: #191919;
+  color: #fff;
+  align-self: flex-start;
+  border-radius: 16px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+}
+.arqr-msg.ticket b { color: #EE5A0D; font-size: 20px; letter-spacing: 1px; display: block; margin: 6px 0; }
+.arqr-typing { display: flex; gap: 5px; padding: 13px 15px; }
+.arqr-typing i {
+  width: 8px; height: 8px; border-radius: 50%; background: #B9B3A8;
+  animation: arqr-blink 1.1s infinite;
+}
+.arqr-typing i:nth-child(2) { animation-delay: 0.18s; }
+.arqr-typing i:nth-child(3) { animation-delay: 0.36s; }
+@keyframes arqr-blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+#arqr-chat-chips {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px 4px;
+  background: #FFF7F0;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+}
+#arqr-chat-chips:empty { display: none; }
+.arqr-chip {
+  border: 1.5px solid #EE5A0D;
+  background: #fff;
+  color: #EE5A0D;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.arqr-chip:hover { background: #EE5A0D; color: #fff; }
+.arqr-chip:focus-visible { outline: 2px solid #191919; outline-offset: 1px; }
+
+.arqr-chat-inputrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: #fff;
+  border-top: 1px solid #E7E2D8;
+  flex: 0 0 auto;
+}
+#arqr-chat-input {
+  flex: 1;
+  border: 1.5px solid #E7E2D8;
+  border-radius: 999px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #191919;
+  outline: 0;
+  min-width: 0;
+}
+#arqr-chat-input:focus { border-color: #EE5A0D; }
+.arqr-chat-iconbtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.arqr-chat-iconbtn:focus-visible { outline: 2px solid #191919; outline-offset: 1px; }
+#arqr-chat-attach { background: #F0EBE2; }
+#arqr-chat-attach svg { width: 20px; height: 20px; fill: #6E6A64; }
+#arqr-chat-send { background: #EE5A0D; }
+#arqr-chat-send svg { width: 20px; height: 20px; fill: #fff; }
+#arqr-chat-send:disabled { opacity: 0.45; cursor: default; }
+#arqr-chat-file { display: none; }
+.arqr-chat-powered {
+  text-align: center;
+  font-size: 10.5px;
+  color: #B9B3A8;
+  padding: 0 0 8px;
+  background: #fff;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  #arqr-chat-launcher { right: 14px; bottom: 14px; width: 56px; height: 56px; }
+  #arqr-chat-panel {
+    right: 8px;
+    left: 8px;
+    bottom: 82px;
+    width: auto;
+    max-width: none;
+    height: 62dvh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #arqr-chat-launcher.arqr-attention { animation: none; }
+  .arqr-typing i { animation: none; opacity: 1; }
+}
