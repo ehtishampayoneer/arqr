@@ -170,14 +170,14 @@ var BASE = 'https://arqr360.com/sample/brown-bear-moccasin/';
 /* The same hand-off as every ARQR360 catalogue, size locked so the boot can't
    be pinched bigger or smaller. Each phone's AR screen also carries the
    ARQR360 name, in the one place it allows:
-     iPhone   a custom banner page along the bottom (banner.html)
+     iPhone   a custom banner page along the bottom (banner.html, served at /banner)
      Android  the title shown along the top, which links to arqr360.com */
 function launch(){
   if (isIOS) {
     var a = document.createElement('a');
     a.setAttribute('rel', 'ar');
     a.href = BASE + 'moccasin-boot.usdz#allowsContentScaling=0&custom=' +
-      encodeURIComponent(BASE + 'banner.html') + '&customHeight=small';
+      encodeURIComponent(BASE + 'banner') + '&customHeight=small';
     a.appendChild(document.createElement('img'));
     document.body.appendChild(a); a.click(); a.remove();
     return true;
