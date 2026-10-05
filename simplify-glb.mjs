@@ -1,6 +1,9 @@
 /* Thin a heavy GLB for phones without breaking its texture seams.
 
-     node simplify-glb.mjs <in.glb> <out.glb> <target_tris> [max_texture_px]
+     node simplify-glb.mjs <in.glb> <out.glb> <target_tris> [max_texture_px] [basecolor.jpg]
+
+   basecolor.jpg, if given, replaces the colour texture (e.g. after a colour
+   correction), keeping everything else.
 
    Blender's decimate moved vertices along texture seams, and the texture's
    empty background then showed through as white hairlines. meshoptimizer's
@@ -14,7 +17,7 @@ import { MeshoptSimplifier } from 'meshoptimizer';
 import draco3d from 'draco3dgltf';
 import sharp from 'sharp';
 
-const [, , src, dst, targetArg, texArg] = process.argv;
+const [, , src, dst, targetArg, texArg, baseArg] = process.argv;
 const target = Number(targetArg || 50000);
 const maxTex = Number(texArg || 2048);
 
@@ -22,6 +25,11 @@ const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies(
   'draco3d.decoder': await draco3d.createDecoderModule(),
 });
 const doc = await io.read(src);
+if (baseArg) {
+  const { readFileSync } = await import('fs');
+  const tex = doc.getRoot().listMaterials()[0].getBaseColorTexture();
+  tex.setImage(new Uint8Array(readFileSync(baseArg))).setMimeType(baseArg.endsWith('.png') ? 'image/png' : 'image/jpeg');
+}
 
 const tris = () => doc.getRoot().listMeshes().flatMap((m) => m.listPrimitives())
   .reduce((n, p) => n + (p.getIndices() ? p.getIndices().getCount() : p.getAttribute('POSITION').getCount()) / 3, 0);
