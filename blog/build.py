@@ -20,7 +20,7 @@
 # 2026-10-04 decor non-comparison: best AR options for decor stores
 # 2026-10-04 furniture non-comparison: how to photograph furniture for true-to-size AR
 # 2026-10-04 rugs comparison: vs Vertebrae
-# 2026-10-05 decor comparison: vs Zakeke
+# 2026-10-05 footwear non-comparison: AR cost pricing breakdown for footwear stores
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -994,6 +994,50 @@ POSTS += [
 <p>With tiered SaaS tools, check two numbers: the monthly fee and the product cap. A 300-SKU catalogue sits above Zakeke's biggest published tier, so price the custom plan and add model creation costs. ARQR360 is $199 setup plus $19 a month with no product cap and models included. Either way, price the models, not just the software.</p>
 <h3>Do my customers need to download an app?</h3>
 <p>No. With ARQR360, each product gets a link and a QR code that opens the true-to-size AR view in the phone browser. Try it yourself on the <a href="/maison">live decor demo</a>: point your phone at your room and place an item at real size.</p>
+</div>
+""",
+},
+{
+"slug": "ar-cost-small-footwear-store-pricing",
+"title": "What AR Really Costs a Footwear Store in 2026",
+"date": "October 5, 2026",
+"description": "Footwear store owner pricing guide to AR try-on: the three places the money goes, the hidden cost most quotes leave out, and what ARQR360's flat pricing covers.",
+"body": """
+
+<p>Picture a shoe store owner in Manchester. Her sneakers sell well in store, but online it is a different story. Customers read the size chart twice, still order two sizes, and return one of them. She has seen AR try-on. Point your phone at your foot, see the shoe on it. It looks like the answer. Then she starts collecting prices and every quote says something different. A monthly fee here, a setup fee there, something called per-model costs, and nobody explains what the final bill looks like.</p>
+<p>Here is the honest breakdown. AR for a footwear store is made of three separate things, and most price confusion comes from quotes that only mention one or two of them.</p>
+<h2>1. The 3D models: the part every quote hides</h2>
+<p>An AR viewer cannot show a shoe that does not exist as a 3D model. Each style in your catalogue needs its own model, built to the real size and shape, and usually one per colourway too. Someone has to make those models: from your product photos and real dimensions, or from scans, one by one.</p>
+<p>This is the cost that decides everything, and it is the one most software pricing pages never mention. A monthly subscription buys you the viewer. It does not buy the models. If you do not already have 3D files of your shoes, you still have to get them built, by a 3D artist or a modelling service, before a single customer can try anything on.</p>
+<p>For a store with forty styles and three colours each, that is over a hundred models. Ask any modelling service for a per-model quote and multiply. That is why a $49-a-month app can turn into a five-figure project before it goes live.</p>
+<h2>2. The viewer software: the number you see first</h2>
+<p>This is the monthly fee on the pricing page. It covers the try-on viewer your customers use and the dashboard where you manage your models. Prices run from modest to steep, but the number on the page is rarely the whole story. Read the fine print for three things.</p>
+<p>First, the product cap. Many tiers limit how many models you can publish. A growing catalogue will outgrow the cheap tier fast. Second, the per-view charge. Some tools add a fee each time a customer uses the try-on. Busy months get expensive. Third, the app question. Does your customer try shoes on in their phone browser, or do they have to download an app first? Downloads kill usage. Browser-based try-on gets used.</p>
+<h2>3. The setup and the storefront plumbing</h2>
+<p>Someone has to connect the viewer to your store: buttons on product pages, QR codes for your window display, links for your Instagram. With software tools, this is your job or your developer's. With a done-for-you service, it is theirs. Either way it has a cost, in hours or in money. Price it.</p>
+<h2>The two ways to buy AR</h2>
+<p>Almost every option falls into one of two arrangements.</p>
+<p><strong>Piece it together yourself.</strong> You rent the try-on software and you commission the 3D models separately. You get full control and you carry full responsibility: the model quality, the catalogue size, the storefront links, all on you. It suits stores with a tech person on staff and a small, stable range of shoes.</p>
+<p><strong>Done for you.</strong> One provider builds the models, hosts the try-on, and hands you working links and QR codes. ARQR360 works this way. The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores. Models included, no product cap, no per-view fees, no app for your customers to download. Try the <a href="/corso">live footwear demo</a> on your own phone: point it at your foot and see how the shoe sits at true size.</p>
+<h2>The checklist before you sign anything</h2>
+<p>Whichever route you take, get answers to these four questions in writing before you commit:</p>
+<ul>
+<li>Does the price include building the 3D models, or do I supply them?</li>
+<li>Is there a cap on published models, and what happens when my catalogue grows past it?</li>
+<li>Are there per-view or per-scan fees that rise with traffic?</li>
+<li>Does the customer need to download an app, or does try-on open in the phone browser?</li>
+</ul>
+<p>If a vendor cannot answer these clearly, keep looking. And if you want to see how AR fits a shoe store beyond the pricing, read <a href="/blog/how-footwear-stores-cut-returns-with-ar">how footwear stores cut size-and-fit returns with AR</a>.</p>
+<h2>The cheapest way to check if AR works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling shoe and we will build you one true-to-size AR try-on model free. Put it on your own foot, check the size and shape against the real shoe, and see if your customers would use it. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Why do AR quotes for footwear vary so much?</h3>
+<p>Because most quotes cover only the software. The 3D models, which every shoe needs and which are built one per style and colourway, are usually a separate cost. A quote that includes models will always look bigger than one that does not. Compare like with like: ask every vendor whether models are included.</p>
+<h3>How many models does a footwear store actually need?</h3>
+<p>One per style per colourway that you want customers to try on. A store with 40 styles in 3 colours needs around 120 models for full coverage. Start with your bestsellers: five to ten models is enough to test whether customers use it.</p>
+<h3>Do my customers need to download an app to try shoes on?</h3>
+<p>Not with ARQR360. Each shoe gets a link and a QR code that opens the true-to-size try-on in the phone browser. Try it yourself on the <a href="/corso">live footwear demo</a>: point your phone at your foot and the shoe appears at real size, no install.</p>
 </div>
 """,
 },
