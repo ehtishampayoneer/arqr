@@ -152,9 +152,9 @@
 
 @media (max-width:560px){
   #arqr-offer-veil{padding:14px 10px}
-  .arqr-offer-head{aspect-ratio:3/1;background-position:center;padding:14px 20px}
-  .arqr-offer-head h2{font-size:24px;max-width:190px}
-  .arqr-offer-head p{display:none}
+  .arqr-offer-head{aspect-ratio:3/1;background-position:center;padding:10px 18px;justify-content:flex-start}
+  .arqr-offer-head h2{font-size:20px;max-width:175px}
+  .arqr-offer-head p{display:block;font-size:10.5px;line-height:1.45;max-width:175px;margin-top:6px}
   .arqr-offer-body{padding:24px 20px 22px;margin-top:0}
   .arqr-offer-slots{grid-template-columns:repeat(2,1fr)}
   .arqr-offer-grid{grid-template-columns:1fr}
