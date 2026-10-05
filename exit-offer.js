@@ -278,6 +278,15 @@
     });
   });
 
+  /* ---- preview mode: ?offer=preview opens the popup directly.
+     Handy for checking the design without faking an exit. ---- */
+  try {
+    if (/(?:\?|&)offer=preview(?:&|$)/.test(location.search)) {
+      veil.classList.add('open');
+      track('arqr_offer_preview');
+    }
+  } catch (e) {}
+
   /* ---- desktop: mouse leaves through the top ---- */
   document.addEventListener('mouseout', function(e){
     if (!e.relatedTarget && e.clientY <= 8) maybe();
