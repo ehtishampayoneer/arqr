@@ -22,6 +22,7 @@
 # 2026-10-04 rugs comparison: vs Vertebrae
 # 2026-10-05 footwear non-comparison: AR cost pricing breakdown for footwear stores
 # 2026-10-05 rugs non-comparison: how rug stores cut size returns with AR
+# 2026-10-05 furniture comparison: vs Cylindo
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -221,6 +222,7 @@ POSTS = [
 """,
 },
 ]
+
 POSTS += [
 {
 "slug": "how-to-increase-online-sales-for-home-decor-india",
@@ -1072,6 +1074,63 @@ POSTS += [
 <p>The model is built to the rug's real listed dimensions, so what the customer sees on their floor matches the real rug's footprint. The phone camera handles the room scale. It is not a replacement for a tape measure in an unusual layout, but it is far closer than guessing from a photo.</p>
 <h3>How many rugs should I start with?</h3>
 <p>Start with the five to ten sizes behind most of your returns. Large pieces and runners are the usual suspects. If the return rate on those drops, expand to the rest. ARQR360 has no product cap and flat pricing: $199 one-time setup and $19 a month, locked for life for the first 50 stores.</p>
+</div>
+""",
+},
+]
+
+POSTS += [
+{
+"slug": "arqr360-vs-cylindo-furniture-stores",
+"title": "ARQR360 vs Cylindo: What a Furniture Store Actually Gets from Each",
+"date": "October 5, 2026",
+"description": "Comparing Cylindo and ARQR360 for your furniture store? An honest look at price, setup effort, true-to-size accuracy, and who builds the 3D models, written for independent retailers.",
+"body": """
+<p>Picture a furniture store owner in Columbus. She sells mid-priced sofas and dining sets, a few showroom pieces and a simple online store. Lately customers keep asking the same question. Can I see how this fits in my room. She starts looking into AR and two names keep coming up. Cylindo, the big Danish platform behind the 3D viewers of major furniture brands, and ARQR360. She reads both websites and still cannot tell which one is meant for a store like hers.</p>
+<p>This is the honest version.</p>
+<h2>What Cylindo is</h2>
+<p>Cylindo has been building 3D product visualization for the furniture industry since 2012. Big furniture brands use its platform for 360-degree product spins, room planners, configurators where shoppers change fabrics and finishes, and an AR viewer that needs no app. Its render quality is the industry reference. When brands want cinema-grade product visuals at catalogue scale, Cylindo is usually on the shortlist.</p>
+<p>Models are built by Cylindo's own team from your product data: photos, dimensions, specifications, swatches. They reproduce the product with high realism. That pipeline is built for manufacturers and brands with large catalogues, product data systems, and teams who can manage an enterprise platform.</p>
+<h2>What ARQR360 is</h2>
+<p>ARQR360 is a done-for-you AR catalogue for independent furniture retailers. You send photos of your bestselling products and we build true-to-size 3D models from them, host them, and hand you links and QR codes that open the AR view in your customer's phone browser. No app. No platform to learn. No 3D team.</p>
+<p>The audience is different. ARQR360 is built for stores that sell other brands' furniture, not manufacturers with product data departments.</p>
+<h2>Price: public flat rate vs quote-based</h2>
+<p>Cylindo does not publish pricing. You request a quote and the price depends on your catalogue size and which platform modules you take. It is enterprise software, so expect an annual subscription sized to a manufacturer's budget. Cylindo's own blog notes that content creation fees historically ran about 30 to 40 percent of the annual subscription cost, and that their newer AI Master Assets remove that fee for eligible products on a 12-month subscription. The platform itself still prices like enterprise software.</p>
+<p>ARQR360 publishes its price: $199 one-time setup and $19 a month, locked for life for the first 50 stores. Models are included. There is no product cap, no per-view fee, and no content creation surcharge sitting on top.</p>
+<h2>Setup effort: onboarding vs sending photos</h2>
+<p>A Cylindo project is a real implementation. There is 3D asset production per SKU, platform onboarding, and typically integration with your product data systems. It is the right shape for a brand that has someone to own it. It is a heavy shape for a retailer with four staff and no developers.</p>
+<p>With ARQR360 the project is: send photos, get a working AR catalogue back in about seven days. The links go on your product pages. The QR codes go in the showroom. There is nothing to integrate and nothing to maintain.</p>
+<h2>True-to-size accuracy</h2>
+<p>Both platforms show products at real dimensions. Cylindo's visual fidelity is the benchmark the industry judges itself against. The honest difference is not which one draws a prettier sofa. It is what you have to go through to get that sofa live, and what you pay every year to keep it there. For a store whose problem is customers guessing at size, a true-to-size AR view that ships this month beats a perfect pipeline that ships next quarter.</p>
+<h2>Who each one fits</h2>
+<p><strong>Cylindo makes sense if:</strong></p>
+<ul>
+<li>You are a manufacturer or a large brand with a big catalogue</li>
+<li>You want configurators, room planners, and 360 spins, not just AR</li>
+<li>You have product data systems and a team to run a platform</li>
+<li>Your budget is sized for enterprise software</li>
+</ul>
+<p><strong>ARQR360 is designed for stores like yours if:</strong></p>
+<ul>
+<li>You are an independent furniture retailer or showroom</li>
+<li>You sell other brands' products and hold no CAD files</li>
+<li>You use Shopify, WooCommerce, or a simple website</li>
+<li>You want customers to check size in their own rooms, fast</li>
+<li>You need one public price with no surprises</li>
+</ul>
+<h2>The question to ask both vendors</h2>
+<p>Before you sign anything, ask both of us the same four questions in writing: what is the full annual cost including model creation, who builds the 3D models and from what source material, what happens to the models if you end the contract, and does the customer need to download an app. The answers will tell you which tool fits your store faster than any feature list.</p>
+<p>For the full breakdown of where AR money actually goes, read <a href="/blog/ar-cost-small-furniture-store-pricing">what AR really costs a small furniture store</a>.</p>
+<h2>The cheapest way to check if AR works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling sofa and we will build you one true-to-size AR model free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/novara">live furniture demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How much does Cylindo cost?</h3>
+<p>Cylindo does not publish pricing. You request a quote and the cost depends on your catalogue size and which platform modules you use. It is enterprise software priced on an annual subscription. ARQR360 publishes its full price: $199 one-time setup and $19 a month, models included.</p>
+<h3>Who builds the 3D models?</h3>
+<p>With Cylindo, their team builds the models from your product data: photos, dimensions, specifications, and swatches. With ARQR360, we build the models from your product photos and the real listed dimensions. Your first model is free so you can check the quality before spending anything.</p>
+<h3>Do my customers need to download an app?</h3>
+<p>No, not with either platform. Both Cylindo and ARQR360 open the AR view in the phone browser. The difference is what it takes your store to get there: an enterprise platform implementation, or a photo you email us. Try the <a href="/novara">live furniture demo</a> on your own phone and see.</p>
 </div>
 """,
 },
