@@ -26,28 +26,33 @@
 }
 #arqr-offer-close:hover{background:#f1f1f1}
 
-/* ---- header: full-bleed banner artwork ---- */
+/* ---- header: full-bleed banner artwork, kept at the artwork's exact 3:1
+   ratio so nothing is cropped; the image's own white curve is the
+   transition into the form below ---- */
 .arqr-offer-head{
-  position:relative;overflow:hidden;min-height:238px;
-  background:#E85A0C url("assets/offer-header.jpg") center 25%/cover no-repeat;
-  padding:38px 34px 70px;color:#fff;
+  position:relative;overflow:hidden;
+  aspect-ratio:3/1;
+  background:#E85A0C url("assets/offer-header.jpg") center/cover no-repeat;
+  color:#fff;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:22px 38px;
 }
 .arqr-offer-head h2{
-  position:relative;z-index:1;margin:0;max-width:300px;
-  font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-.01em;
-  text-shadow:0 2px 14px rgba(120,30,0,.28);
+  position:relative;z-index:1;margin:0;max-width:310px;
+  font-size:38px;line-height:1.08;font-weight:800;letter-spacing:-.01em;
+  text-shadow:0 2px 14px rgba(120,30,0,.30);
 }
 .arqr-offer-head h2 .peach{color:#FFD9AE}
 .arqr-offer-head p{
-  position:relative;z-index:1;margin:16px 0 0;max-width:290px;
-  font-size:16px;line-height:1.55;color:#FFE7D2;
-  text-shadow:0 1px 10px rgba(120,30,0,.28);
+  position:relative;z-index:1;margin:12px 0 0;max-width:300px;
+  font-size:15px;line-height:1.5;color:#FFE7D2;
+  text-shadow:0 1px 10px rgba(120,30,0,.30);
 }
 
-/* ---- body overlaps the header with the curved edge ---- */
+/* ---- body starts right where the banner's white curve ends ---- */
 .arqr-offer-body{
-  position:relative;background:#fff;border-radius:38px 38px 0 0;
-  margin-top:-46px;padding:30px 34px 28px;
+  position:relative;background:#fff;
+  padding:26px 34px 28px;
 }
 .arqr-offer-body h3{
   margin:0 0 6px;font-size:23px;font-weight:800;color:#141414;
@@ -147,9 +152,9 @@
 
 @media (max-width:560px){
   #arqr-offer-veil{padding:14px 10px}
-  .arqr-offer-head{min-height:168px;padding:26px 20px 56px;background-position:68% 25%}
-  .arqr-offer-head h2{font-size:30px;max-width:210px}
-  .arqr-offer-head p{font-size:13px;max-width:210px;margin-top:10px}
+  .arqr-offer-head{aspect-ratio:2.4/1;background-position:60% center;padding:16px 22px}
+  .arqr-offer-head h2{font-size:26px;max-width:185px}
+  .arqr-offer-head p{font-size:12px;max-width:185px;margin-top:8px}
   .arqr-offer-body{padding:24px 20px 22px;margin-top:-38px}
   .arqr-offer-slots{grid-template-columns:repeat(2,1fr)}
   .arqr-offer-grid{grid-template-columns:1fr}
