@@ -1,6 +1,8 @@
 /* ARQR360 website chat bot "Ari".
-   Scroll/time-triggered panel, rule-based answers about ARQR360,
-   and a free-model signup flow that posts to /api/ticket (same as the exit offer).
+   Scroll/time-triggered panel. Talks through /api/chat (Gemini-powered,
+   human-style answers); if the AI is ever down it falls back to the
+   built-in rule-based answers below, so the chat never goes silent.
+   Free-model signup flow posts to /api/ticket (same as the exit offer).
    Human callback requests go to /api/contact. Speaks as "we", never "I". */
 (function () {
   if (window.__arqrChatInit) return;
@@ -107,6 +109,9 @@
   var opened = false, greeted = false;
   var flow = null;              // null | 'name' | 'email' | 'shop' | 'photo' | 'humanEmail'
   var lead = { name: '', email: '', shop: '' };
+  var aiMode = true;            // use /api/chat until it fails, then legacy rules
+  var leadCaptured = false;     // true once the AI emitted a valid [LEAD:...]
+  var hist = [];                // last exchanges sent to the AI
   var photos = [];              // dataURLs
   var humanContext = '';
 
@@ -280,19 +285,69 @@
     });
   }
 
-  /* ---------- main handler ---------- */
-  function handleUser(raw) {
-    var text = String(raw || '').trim();
-    if (!text) return;
-    addMsg(text, 'user');
-    setChips([]);
-    var low = text.toLowerCase();
+  /* ---------- AI brain (/api/chat) with rule fallback ---------- */
+  function aiTurn(userText) {
+    hist.push({ role: 'user', text: String(userText).slice(0, 2000) });
+    while (hist.length > 20) hist.shift();
+    var ctrl = null, to = null;
+    try {
+      ctrl = new AbortController();
+      to = setTimeout(function () { try { ctrl.abort(); } catch (e) {} }, 25000);
+    } catch (e) {}
+    var opts = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: hist })
+    };
+    if (ctrl) opts.signal = ctrl.signal;
+    fetch('/api/chat', opts)
+      .then(function (r) {
+        if (to) clearTimeout(to);
+        return r.json().then(function (j) { return { s: r.status, b: j }; });
+      })
+      .then(function (res) {
+        if (!res.b || !res.b.reply) throw new Error('no_reply');
+        var reply = String(res.b.reply);
+        var leadM = reply.match(/\[LEAD:([^\]]+)\]/);
+        var humanM = /\[HUMAN\]/.test(reply);
+        reply = reply.replace(/\[LEAD:[^\]]+\]/, '').replace(/\[HUMAN\]/g, '').trim();
+        if (leadM) {
+          var parts = leadM[1].split('|');
+          var cand = {
+            name: (parts[0] || '').trim().slice(0, 60),
+            email: (parts[1] || '').trim().slice(0, 120),
+            shop: (parts[2] || '').trim().slice(0, 120)
+          };
+          if (cand.name && isEmail(cand.email) && cand.shop) {
+            lead = cand;
+            leadCaptured = true;
+          }
+        }
+        hist.push({ role: 'assistant', text: reply.slice(0, 2000) });
+        if (leadCaptured && leadM) {
+          if (reply) botSay(reply, []);
+          setTimeout(function () {
+            if (photos.length) { submitTicket(); return; }
+            flow = 'photo';
+            botSay('Last step: send 1 to 4 photos of the product (phone photos are fine). Tap the paperclip below.',
+              ['Send photos', 'Skip for now']);
+          }, reply ? 1000 : 100);
+        } else if (humanM) {
+          startHuman('');
+        } else {
+          botSay(reply, []);
+        }
+      })
+      .catch(function () {
+        if (to) clearTimeout(to);
+        aiMode = false;          /* AI down: legacy rules take over from here */
+        legacyBrain(userText);
+      });
+  }
 
-    if (/^(cancel|stop|never mind|nevermind)$/.test(low)) {
-      flow = null;
-      botSay('No problem. I am here if you change your mind.', ['How does it work?', 'How much?']);
-      return;
-    }
+  /* legacy rule-based brain: used when /api/chat is unreachable */
+  function legacyBrain(text) {
+    var low = text.toLowerCase();
 
     /* lead flow has priority */
     if (flow === 'name') {
@@ -319,6 +374,33 @@
         ['Skip for now']);
       return;
     }
+
+    /* brain */
+    var it = matchIntent(text);
+    if (it && it.action === 'startLead') { startLead(); return; }
+    if (it && it.action === 'human') { startHuman(text); return; }
+    if (it && it.reply) { botSay(it.reply, it.chips || []); return; }
+    if (isEmail(text)) { lead.email = text; humanContext = ''; submitHumanCallback(); return; }
+    botSay(FALLBACK, []);
+    flow = 'humanEmail';
+  }
+
+  /* ---------- main handler ---------- */
+  function handleUser(raw) {
+    var text = String(raw || '').trim();
+    if (!text) return;
+    addMsg(text, 'user');
+    setChips([]);
+    var low = text.toLowerCase();
+
+    if (/^(cancel|stop|never mind|nevermind)$/.test(low)) {
+      flow = null;
+      leadCaptured = false;
+      botSay('No problem. I am here if you change your mind.', ['How does it work?', 'How much?']);
+      return;
+    }
+
+    /* structured states keep priority in both modes */
     if (flow === 'photo') {
       if (/^send photos$/i.test(text) && photos.length) { submitTicket(); return; }
       if (/skip/.test(low)) {
@@ -340,14 +422,8 @@
       return;
     }
 
-    /* brain */
-    var it = matchIntent(text);
-    if (it && it.action === 'startLead') { startLead(); return; }
-    if (it && it.action === 'human') { startHuman(text); return; }
-    if (it && it.reply) { botSay(it.reply, it.chips || []); return; }
-    if (isEmail(text)) { lead.email = text; humanContext = ''; submitHumanCallback(); return; }
-    botSay(FALLBACK, []);
-    flow = 'humanEmail';
+    if (aiMode) { aiTurn(text); return; }
+    legacyBrain(text);
   }
 
   function submitTicketSkip() {
@@ -390,9 +466,15 @@
         photos.push(String(rd.result));
         addMsg('Photo ' + photos.length + ' attached (' + f.name + ')', 'user');
         if (--pending === 0) {
-          flow = 'photo';
-          botSay(photos.length >= 4 ? 'Got all 4. Tap "Send photos" and we will start building.' : 'Got it. Add more or tap "Send photos" when ready.',
-            ['Send photos', 'Skip for now']);
+          if (leadCaptured || !aiMode) {
+            flow = 'photo';
+            botSay(photos.length >= 4 ? 'Got all 4. Tap "Send photos" and we will start building.' : 'Got it. Add more or tap "Send photos" when ready.',
+              ['Send photos', 'Skip for now']);
+          } else {
+            /* AI mode, details not collected yet: let Ari react naturally */
+            setChips([]);
+            aiTurn('[System note: the visitor just attached ' + photos.length + ' product photo(s). Acknowledge briefly and keep the conversation going.]');
+          }
         }
       };
       rd.readAsDataURL(f);
@@ -404,7 +486,7 @@
   function sendInput() {
     var v = input.value;
     input.value = '';
-    if (/^send photos$/i.test(v.trim()) && photos.length) { addMsg(v.trim(), 'user'); setChips([]); submitTicket(); return; }
+    if (/^send photos$/i.test(v.trim()) && photos.length && (leadCaptured || !aiMode)) { addMsg(v.trim(), 'user'); setChips([]); submitTicket(); return; }
     handleUser(v);
   }
   sendBtn.addEventListener('click', sendInput);
