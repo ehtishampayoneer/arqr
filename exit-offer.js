@@ -73,9 +73,6 @@
       '<div class="arqr-offer-head">' +
         '<h2>Get Your<br>First Product <span class="peach">Free</span></h2>' +
         '<p>Try ARQR360 with one of your products, on us. No cost, no commitment.</p>' +
-        '<div class="arqr-offer-phone"><div class="scr"><div class="notch"></div></div>' +
-          '<div class="arqr-offer-cube">' + ICON_CUBE + '</div>' +
-        '</div>' +
       '</div>' +
       '<div class="arqr-offer-body" id="arqr-offer-form-wrap">' +
         '<h3>Upload Product Photos</h3>' +
