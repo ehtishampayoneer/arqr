@@ -71,8 +71,11 @@
     '<div id="arqr-offer-card">' +
       '<button id="arqr-offer-close" type="button" aria-label="Close">&times;</button>' +
       '<div class="arqr-offer-head">' +
-        '<h2>Get Your<br>First Product <span class="peach">Free</span></h2>' +
-        '<p>Try ARQR360 with one of your products, on us. No cost, no commitment.</p>' +
+        '<img class="arqr-offer-art" src="assets/offer-header.jpg" alt="">' +
+        '<div class="arqr-offer-headtext">' +
+          '<h2>Get Your<br>First Product <span class="peach">Free</span></h2>' +
+          '<p>Try ARQR360 with one of your products, on us. No cost, no commitment.</p>' +
+        '</div>' +
       '</div>' +
       '<div class="arqr-offer-body" id="arqr-offer-form-wrap">' +
         '<h3>Upload Product Photos</h3>' +

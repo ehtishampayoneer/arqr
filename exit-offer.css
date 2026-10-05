@@ -17,6 +17,7 @@
   box-shadow:0 24px 70px rgba(0,0,0,.30);
   font-family:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   animation:arqr-pop .28s ease-out;
+  container-type:inline-size;
 }
 @keyframes arqr-pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
 #arqr-offer-close{
@@ -28,24 +29,28 @@
 
 /* ---- header: full-bleed banner artwork, kept at the artwork's exact 3:1
    ratio so nothing is cropped; the image's own white curve is the
-   transition into the form below ---- */
+   transition into the form below.
+   Text sizes use cqw (card-width) units so the headline block always ends
+   above the artwork's white curve (~68% height) at every card width. ---- */
 .arqr-offer-head{
   position:relative;overflow:hidden;
   aspect-ratio:3/1;
   background:#E85A0C url("assets/offer-header.jpg") center/cover no-repeat;
   color:#fff;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:22px 38px;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:2.2cqw 5cqw 0;
 }
+.arqr-offer-head .arqr-offer-art{display:none}
+.arqr-offer-headtext{position:relative;z-index:1}
 .arqr-offer-head h2{
-  position:relative;z-index:1;margin:0;max-width:310px;
-  font-size:38px;line-height:1.08;font-weight:800;letter-spacing:-.01em;
+  position:relative;z-index:1;margin:0;max-width:46cqw;
+  font-size:4.6cqw;line-height:1.08;font-weight:800;letter-spacing:-.01em;
   text-shadow:0 2px 14px rgba(120,30,0,.30);
 }
 .arqr-offer-head h2 .peach{color:#FFD9AE}
 .arqr-offer-head p{
-  position:relative;z-index:1;margin:12px 0 0;max-width:300px;
-  font-size:15px;line-height:1.5;color:#FFE7D2;
+  position:relative;z-index:1;margin:1cqw 0 0;max-width:44cqw;
+  font-size:2cqw;line-height:1.5;color:#FFE7D2;
   text-shadow:0 1px 10px rgba(120,30,0,.30);
 }
 
@@ -152,9 +157,18 @@
 
 @media (max-width:560px){
   #arqr-offer-veil{padding:14px 10px}
-  .arqr-offer-head{aspect-ratio:3/1;background-position:center;padding:10px 18px;justify-content:flex-start}
-  .arqr-offer-head h2{font-size:20px;max-width:175px}
-  .arqr-offer-head p{display:block;font-size:10.5px;line-height:1.45;max-width:175px;margin-top:6px}
+  /* mobile: headline block on orange above the full artwork (nothing cropped,
+     nothing overlaid on the white curve); the artwork's own curve still
+     forms the transition into the white form below, like desktop. */
+  .arqr-offer-head{
+    aspect-ratio:auto;background:#E85A0C;background-image:none;
+    display:flex;flex-direction:column;justify-content:flex-start;
+    padding:0;
+  }
+  .arqr-offer-headtext{order:1;padding:18px 22px 10px}
+  .arqr-offer-head .arqr-offer-art{order:2;display:block;width:100%;height:auto}
+  .arqr-offer-head h2{font-size:27px;max-width:none}
+  .arqr-offer-head p{display:block;font-size:13.5px;line-height:1.5;max-width:none;margin-top:8px}
   .arqr-offer-body{padding:24px 20px 22px;margin-top:0}
   .arqr-offer-slots{grid-template-columns:repeat(2,1fr)}
   .arqr-offer-grid{grid-template-columns:1fr}
