@@ -78,6 +78,9 @@
     "api/contact.js": {
       "maxDuration": 30
     },
+    "api/ticket.js": {
+      "maxDuration": 30
+    },
     "api/paddle-webhook.js": {
       "maxDuration": 15
     },

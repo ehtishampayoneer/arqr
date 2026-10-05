@@ -1,53 +1,178 @@
-/* ARQR360 exit-intent offer — one shared stylesheet for every page.
-   Cream card, terracotta accent, ink text: matches arqr360.com exactly. */
+/* ARQR360 exit-intent offer — "Get Your First Product Free" ticket popup.
+   One shared stylesheet for every page. Matches the approved design:
+   orange header with phone visual, photo upload slots, details form,
+   big CTA, and the 3-step strip (Upload / Get a Ticket / Check Email). */
 #arqr-offer-veil{
   position:fixed;inset:0;z-index:200;display:none;
-  align-items:center;justify-content:center;padding:20px;
-  background:rgba(25,25,25,.48);
+  padding:22px 14px;overflow-y:auto;
+  background:rgba(25,25,25,.55);
   -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
 }
-#arqr-offer-veil.open{display:flex}
+#arqr-offer-veil.open{display:block}
 #arqr-offer-card{
-  position:relative;width:min(440px,100%);
-  background:#FAF7F2;color:#191919;border-radius:18px;
-  border-top:5px solid #E0682A;
-  box-shadow:0 24px 70px rgba(0,0,0,.28);
-  padding:30px 30px 26px;
+  position:relative;width:min(680px,100%);margin:0 auto;
+  background:#fff;color:#191919;border-radius:26px;overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.30);
   font-family:Archivo,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   animation:arqr-pop .28s ease-out;
 }
 @keyframes arqr-pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
 #arqr-offer-close{
-  position:absolute;top:10px;right:12px;border:0;background:none;
-  font-size:22px;line-height:1;color:#8a8a8a;cursor:pointer;padding:6px;
+  position:absolute;top:12px;right:12px;z-index:3;border:0;cursor:pointer;
+  width:38px;height:38px;border-radius:50%;background:#fff;color:#191919;
+  font-size:20px;line-height:1;box-shadow:0 2px 10px rgba(0,0,0,.18);
 }
-#arqr-offer-close:hover{color:#191919}
-#arqr-offer-eyebrow{
-  margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.22em;
-  color:#E0682A;
+#arqr-offer-close:hover{background:#f1f1f1}
+
+/* ---- header ---- */
+.arqr-offer-head{
+  position:relative;overflow:hidden;
+  background:linear-gradient(115deg,#F96A1B 0%,#EE5A0D 55%,#DE4A05 100%);
+  padding:40px 34px 74px;color:#fff;
 }
-#arqr-offer-card h3{
-  margin:0 0 10px;font-size:24px;line-height:1.25;font-weight:800;color:#191919;
+.arqr-offer-head h2{
+  margin:0;max-width:330px;
+  font-size:44px;line-height:1.08;font-weight:800;letter-spacing:-.01em;
 }
-#arqr-offer-card p{
-  margin:0 0 20px;font-size:15px;line-height:1.55;color:#4c4c4c;
+.arqr-offer-head h2 .peach{color:#FFD9AE}
+.arqr-offer-head p{
+  margin:16px 0 0;max-width:330px;
+  font-size:16px;line-height:1.55;color:#FFE7D2;
 }
-#arqr-offer-cta{
-  display:block;width:100%;border:0;border-radius:12px;cursor:pointer;
-  background:#E0682A;color:#fff;
-  font-size:16px;font-weight:800;padding:15px 18px;
-  font-family:inherit;
+/* CSS phone mockup with a real room photo inside */
+.arqr-offer-phone{
+  position:absolute;right:56px;top:26px;width:150px;height:302px;
+  background:#111;border-radius:26px;padding:9px;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+  transform:rotate(2deg);
 }
-#arqr-offer-cta:hover{filter:brightness(1.07)}
-#arqr-offer-no{
-  display:block;width:100%;margin-top:10px;border:0;background:none;cursor:pointer;
-  color:#8a8a8a;font-size:13.5px;padding:8px;font-family:inherit;
+.arqr-offer-phone .scr{
+  width:100%;height:100%;border-radius:18px;overflow:hidden;position:relative;
+  background:#222 url("assets/hero-novara.webp") center/cover no-repeat;
 }
-#arqr-offer-no:hover{color:#191919}
-#arqr-offer-fine{
-  margin:14px 0 0;text-align:center;font-size:12px;color:#9a9a9a;
+.arqr-offer-phone .notch{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:56px;height:14px;border-radius:8px;background:#111;
 }
-@media (max-width:480px){
-  #arqr-offer-card{padding:26px 22px 22px}
-  #arqr-offer-card h3{font-size:21px}
+.arqr-offer-cube{
+  position:absolute;left:-24px;bottom:44px;width:52px;height:52px;border-radius:50%;
+  background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.25);
+  display:flex;align-items:center;justify-content:center;
+}
+.arqr-offer-cube svg{width:28px;height:28px}
+
+/* ---- body overlaps the header with the curved edge ---- */
+.arqr-offer-body{
+  position:relative;background:#fff;border-radius:38px 38px 0 0;
+  margin-top:-46px;padding:30px 34px 28px;
+}
+.arqr-offer-body h3{
+  margin:0 0 6px;font-size:23px;font-weight:800;color:#141414;
+}
+.arqr-offer-sub{margin:0 0 18px;font-size:14.5px;color:#8a8a8a}
+
+/* upload slots */
+.arqr-offer-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+.arqr-offer-slot{
+  position:relative;aspect-ratio:1/1;border:2px dashed #D8D2C8;border-radius:16px;
+  background:#fff;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;overflow:hidden;
+  font-size:13.5px;color:#6E6A64;font-weight:500;padding:6px;text-align:center;
+}
+.arqr-offer-slot:hover{border-color:#EE5A0D;background:#FFF7F0}
+.arqr-offer-slot svg{width:44px;height:44px}
+.arqr-offer-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arqr-offer-slot .rm{
+  position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;
+  border:0;background:rgba(20,20,20,.65);color:#fff;font-size:15px;line-height:1;
+  cursor:pointer;display:none;
+}
+.arqr-offer-slot.filled .rm{display:block}
+.arqr-offer-slot.filled{border-style:solid}
+
+/* form */
+.arqr-offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.arqr-offer-field label{display:block;font-size:14.5px;font-weight:600;color:#2b2b2b;margin-bottom:7px}
+.arqr-offer-field label .req{color:#E03131}
+.arqr-offer-in{
+  display:flex;align-items:center;gap:10px;
+  border:1.5px solid #E7E2D8;border-radius:12px;padding:0 14px;background:#fff;
+}
+.arqr-offer-in:focus-within{border-color:#EE5A0D}
+.arqr-offer-in svg{width:20px;height:20px;flex:none}
+.arqr-offer-in input{
+  border:0;outline:0;background:none;width:100%;
+  font-size:15px;padding:13px 0;color:#191919;font-family:inherit;
+}
+.arqr-offer-in input::placeholder{color:#B9B3A8}
+.arqr-offer-field.full{grid-column:1/-1}
+.arqr-offer-field textarea{
+  width:100%;box-sizing:border-box;min-height:96px;resize:vertical;
+  border:1.5px solid #E7E2D8;border-radius:12px;padding:13px 14px;
+  font-size:15px;font-family:inherit;color:#191919;background:#fff;outline:0;
+}
+.arqr-offer-field textarea:focus{border-color:#EE5A0D}
+.arqr-offer-field textarea::placeholder{color:#B9B3A8}
+.arqr-offer-err{
+  display:none;margin:2px 0 12px;font-size:13.5px;color:#C92A2A;font-weight:600;
+}
+
+/* CTA */
+#arqr-offer-submit{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;border:0;border-radius:16px;cursor:pointer;margin-top:8px;
+  background:linear-gradient(180deg,#F96A1B,#E8550A);color:#fff;
+  font-size:18px;font-weight:800;padding:17px 18px;font-family:inherit;
+  box-shadow:0 10px 26px rgba(238,90,13,.35);
+}
+#arqr-offer-submit:hover{filter:brightness(1.06)}
+#arqr-offer-submit:disabled{opacity:.6;cursor:wait;filter:none}
+#arqr-offer-submit svg{width:22px;height:22px}
+.arqr-offer-fine{
+  margin:12px 0 0;text-align:center;font-size:12.5px;color:#9a9a9a;
+}
+
+/* 3 steps */
+.arqr-offer-steps{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;
+  margin:22px 0 0;padding:20px 0 4px;border-top:1px solid #F0EBE2;
+}
+.arqr-offer-step{display:flex;gap:12px;align-items:flex-start}
+.arqr-offer-step + .arqr-offer-step{border-left:1px solid #F0EBE2;padding-left:14px}
+.arqr-offer-ico{
+  flex:none;width:46px;height:46px;border-radius:50%;
+  background:#FFF1E4;display:flex;align-items:center;justify-content:center;
+}
+.arqr-offer-ico svg{width:24px;height:24px}
+.arqr-offer-step b{display:block;font-size:14.5px;color:#141414;margin-bottom:3px}
+.arqr-offer-step span{font-size:12.5px;line-height:1.45;color:#8a8a8a}
+
+/* success state */
+.arqr-offer-done{text-align:center;padding:26px 6px 10px}
+.arqr-offer-done .tick{
+  width:76px;height:76px;border-radius:50%;background:#E9F9EF;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+}
+.arqr-offer-done .tick svg{width:40px;height:40px}
+.arqr-offer-done h3{margin:0 0 8px;font-size:24px}
+.arqr-offer-done .ticket{
+  display:inline-block;margin:6px 0 14px;padding:10px 22px;border-radius:12px;
+  background:#FFF4E8;border:1.5px dashed #EE5A0D;
+  font-size:20px;font-weight:800;letter-spacing:.06em;color:#C24A06;
+}
+.arqr-offer-done p{margin:0 auto 8px;max-width:420px;font-size:15px;line-height:1.6;color:#6E6A64}
+
+@media (max-width:560px){
+  .arqr-offer-head{padding:30px 22px 64px}
+  .arqr-offer-head h2{font-size:32px;max-width:230px}
+  .arqr-offer-head p{font-size:14px;max-width:230px}
+  .arqr-offer-phone{right:14px;top:20px;width:104px;height:212px;border-radius:20px;padding:6px}
+  .arqr-offer-phone .scr{border-radius:14px}
+  .arqr-offer-cube{left:-18px;bottom:30px;width:40px;height:40px}
+  .arqr-offer-cube svg{width:22px;height:22px}
+  .arqr-offer-body{padding:24px 20px 22px;margin-top:-38px}
+  .arqr-offer-slots{grid-template-columns:repeat(2,1fr)}
+  .arqr-offer-grid{grid-template-columns:1fr}
+  .arqr-offer-steps{grid-template-columns:1fr;gap:14px}
+  .arqr-offer-step + .arqr-offer-step{border-left:0;padding-left:0;border-top:1px solid #F0EBE2;padding-top:14px}
 }
