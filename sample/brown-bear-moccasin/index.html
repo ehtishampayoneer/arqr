@@ -11,8 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- the 3D file starts downloading while the guide is read, so AR opens fast on the tap -->
-<link rel="prefetch" href="/sample/brown-bear-moccasin/moccasin-boot.usdz">
 <style>
   :root{--page-hi:#FDFBF7;--page-alt:#F1E9DD;--ink:#2B1D14;--ink-soft:#6F5E50;--line:#E2D7C8;
     --tone:#E0682A;--tone-soft:rgba(224,104,42,.1);--f-head:"Archivo","Segoe UI",Arial,sans-serif}
@@ -153,7 +151,7 @@ function launch(){
     location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + 'moccasin-boot.glb') +
       '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(NAME + ' · Powered by ARQR360') +
       '&link=' + encodeURIComponent('https://arqr360.com/?utm_source=sample&utm_medium=scene-viewer') +
-      '#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;' +
+      '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
       'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
   }
 }
@@ -170,6 +168,9 @@ if (isIOS) {
 // on a computer there is no AR to open: the same guide offers the QR code instead
 if (!isIOS && !isAndroid) document.documentElement.classList.add('is-desk');
 document.getElementById('guideGo').addEventListener('click', launch);
+// Safari ignores <link rel=prefetch>: fetch the iPhone file while the guide is
+// read, so the tap opens AR from the browser's cache instead of the network.
+if (isIOS) { try { fetch(BASE + 'moccasin-boot.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} }
 </script>
 </body>
 </html>
