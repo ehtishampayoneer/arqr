@@ -21,6 +21,7 @@
 # 2026-10-04 furniture non-comparison: how to photograph furniture for true-to-size AR
 # 2026-10-04 rugs comparison: vs Vertebrae
 # 2026-10-05 footwear non-comparison: AR cost pricing breakdown for footwear stores
+# 2026-10-05 rugs non-comparison: how rug stores cut size returns with AR
 import html, json, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -1038,6 +1039,39 @@ POSTS += [
 <p>One per style per colourway that you want customers to try on. A store with 40 styles in 3 colours needs around 120 models for full coverage. Start with your bestsellers: five to ten models is enough to test whether customers use it.</p>
 <h3>Do my customers need to download an app to try shoes on?</h3>
 <p>Not with ARQR360. Each shoe gets a link and a QR code that opens the true-to-size try-on in the phone browser. Try it yourself on the <a href="/corso">live footwear demo</a>: point your phone at your foot and the shoe appears at real size, no install.</p>
+</div>
+""",
+},
+{
+"slug": "how-rug-stores-cut-size-returns-with-ar",
+"title": "How Rug Stores Cut Size-Related Returns with True-to-Size AR",
+"date": "October 5, 2026",
+"description": "Rug retailers lose real money on size returns: the rug that swallows the living room or gets lost under the coffee table. How true-to-size phone AR lets customers see the rug on their own floor before they buy.",
+"body": """
+<p>Picture a rug store owner in London. She sells handwoven rugs from one shop and a simple online store. Her returns shelf tells the same story every month. A rug arrives and swallows the customer's living room. Another gets lost under the coffee table. The customer is not angry at the rug. They just could not judge its size from the photos. Every return costs her freight both ways, and a rug she now resells at a discount.</p>
+<p>Size is the whole game with rugs. A sofa is forgiving. A rug is not. 200 by 300 centimetres sounds precise on a product page and means almost nothing to most buyers standing in their living room. They guess. Guessing is what your returns shelf is made of.</p>
+<h2>Why rug photos cannot sell size</h2>
+<p>Every rug photo is shot to make the rug look good, not to make its size clear. A wide shot makes a large rug look generous. A detail shot makes a small rug look rich. Neither tells the customer what the rug will do to their room.</p>
+<p>Measurements help, but only for the few customers who reach for a tape measure. Most people buy on feel. They imagine the rug in the room, and the picture in their head is usually off by a foot in each direction. With rugs, a foot in each direction is the difference between perfect and a return.</p>
+<h2>What true-to-size AR changes</h2>
+<p>True-to-size AR lets the customer see the rug on their own floor before they buy. They open a link on their phone, point it at the spot where the rug will go, and the rug appears at its real dimensions. They can walk around it. They can see whether it slides far enough under the sofa and whether it leaves enough bare floor around the edges.</p>
+<p>Nothing about this needs an app. With ARQR360 each rug gets a link and a QR code that opens the true-size view in the phone browser. Put the QR code on the product page next to the size selector. Put the link in the email you send the customer who is still deciding between two sizes. Try the <a href="/terra">live rug demo</a> on your own floor: it opens in your phone browser with no install, and the rug you see is the size the real one would be.</p>
+<h2>Start with the rugs that cause the returns</h2>
+<p>You do not need AR on your whole catalogue to move the return number. In most rug stores a handful of sizes cause most of the trouble: the large living room pieces, the long runners, anything where the customer is choosing between two sizes. Put AR on those first. If returns on those drop, roll it out to the rest.</p>
+<p>This keeps the cost down too. Every rug needs a 3D model built to its real size and pattern, and the models are the part of AR that costs real money. Starting with ten problem rugs instead of two hundred SKUs is the sane way to test. For the full breakdown of where the money goes, read <a href="/blog/ar-cost-small-rug-store-pricing">what AR really costs a rug store</a>.</p>
+<h2>What AR will not do</h2>
+<p>Be honest about the limits. AR shows scale and placement. It does not show texture under fingertips, and a phone screen will not reproduce the exact dye of a handwoven wool rug the way daylight does. Your close-up photos still do that job. AR answers the question photos cannot answer: will it fit, and will it look right in the room.</p>
+<p>The stores that get the most out of AR treat the two as a pair. Detail photos sell the rug. The AR view sells the size. Returns fall when both questions are answered before the order button.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling rug and we will build you one true-to-size AR model free. Point your phone at your own floor, walk around it, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need to download an app to see the rug?</h3>
+<p>No. Each rug gets a link and a QR code that opens the true-to-size view in the phone browser. Most customers use it standing in the room where the rug will go, which is exactly where the size decision gets made.</p>
+<h3>How accurate is the size in the AR view?</h3>
+<p>The model is built to the rug's real listed dimensions, so what the customer sees on their floor matches the real rug's footprint. The phone camera handles the room scale. It is not a replacement for a tape measure in an unusual layout, but it is far closer than guessing from a photo.</p>
+<h3>How many rugs should I start with?</h3>
+<p>Start with the five to ten sizes behind most of your returns. Large pieces and runners are the usual suspects. If the return rate on those drops, expand to the rest. ARQR360 has no product cap and flat pricing: $199 one-time setup and $19 a month, locked for life for the first 50 stores.</p>
 </div>
 """,
 },
