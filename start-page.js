@@ -145,7 +145,7 @@ function body(BIZ) {
     [ICON.store, 'Your own catalogue', 'At your own address, with only your products in it.'],
     [ICON.qr, 'A QR code', 'For your window, counter, packaging or ads.'],
     [ICON.phone, 'True-size AR', 'Every product at its real size, on iPhone and Android.'],
-    [ICON.cube, 'Your 3D models', 'They are yours. Leave any time and we send you the files.']
+    [ICON.cube, 'Your AR (Augmented Reality) views', 'They are yours. Leave any time and we send you the files.']
   ];
 
   const li = (arr, cls) => arr.map(([t, d]) =>

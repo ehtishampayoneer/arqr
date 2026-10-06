@@ -2,7 +2,7 @@
    arqr360.com/factory: the private model factory.
 
    One page where the founder uploads product photos and gets back a
-   real-world-scale 3D model as GLB (Android) and USDZ (iPhone).
+   real-world-scale AR (Augmented Reality) view as GLB (Android) and USDZ (iPhone).
 
    Sign-in is an email magic link, and only allowlisted addresses can get
    one. No passwords to remember, no accounts to manage: if you can read
@@ -217,7 +217,7 @@ function appPage(gpuOnline) {
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 ${gpuNote}
 <div class="card" id="cardBuild">
-  <h1>Build a 3D model</h1>
+  <h1>Build an AR view</h1>
   <p>Upload up to four product photos. Use the clearest front or three-quarter view first. Extra angles are saved with the job for review.</p>
   <label for="pname">Product name</label>
   <input type="text" id="pname" placeholder="e.g. Novara accent chair" maxlength="80">
@@ -237,7 +237,7 @@ ${gpuNote}
   <div class="drop" id="drop">Tap to choose photos or drop them here<br><small>JPG or PNG, first photo should be the front view</small></div>
   <input type="file" id="file" accept="image/*" multiple class="hidden">
   <div class="thumbs" id="thumbs"></div>
-  <div class="btnrow"><button id="go" ${gpuOnline ? '' : 'disabled'}>Build 3D model</button></div>
+  <div class="btnrow"><button id="go" ${gpuOnline ? '' : 'disabled'}>Build AR view</button></div>
   <p class="err hidden" id="err"></p>
 </div>
 
@@ -260,7 +260,7 @@ ${gpuNote}
   <div class="viewer"><model-viewer id="mv" camera-controls auto-rotate
     ar ar-modes="scene-viewer quick-look webxr"
     shadow-intensity="1" exposure="1.1"
-    alt="3D model preview"></model-viewer></div>
+    alt="AR view preview"></model-viewer></div>
   <div class="meta" id="doneMeta"></div>
   <p>Tap the <b>AR button</b> on the preview to place it in your room. Android uses the GLB file, iPhone uses the USDZ file.</p>
   <div class="btnrow">
