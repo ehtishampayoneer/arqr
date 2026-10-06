@@ -26,7 +26,7 @@ Furniture, rug, home decor, and footwear retailers in the USA, Canada, UK, Europ
 ## How a store starts
 
 1. The store sends photos and real dimensions of its products.
-2. ARQR360 builds the AR views and the catalogue in about seven days.
+2. ARQR360 builds the AR (Augmented Reality) views and the catalogue in about seven days.
 3. The store shares the QR code or link; customers view products in AR.
 
 ## Key pages
