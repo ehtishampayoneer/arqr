@@ -28,7 +28,7 @@
       reply: null, action: 'startLead',
       chips: ['Not now'] },
     { keys: ['how does it work', 'how it works', 'how do you', 'process', 'steps', 'explain'],
-      reply: 'Simple. 1: you send us photos of your product. 2: we build an exact true-to-size 3D model. 3: your shoppers point their phone at their room and see it life-size before buying. Fewer returns, faster yeses. Want your first one free?',
+      reply: 'Simple. 1: you send us photos of your product. 2: we build an exact true-to-size AR (Augmented Reality) view. 3: your shoppers point their phone at their room and see it life-size before buying. Fewer returns, faster yeses. Want your first one free?',
       chips: ['Yes, free model please', 'How much?'] },
     { keys: ['price', 'pricing', 'cost', 'how much', 'plan', 'subscription', 'monthly', 'fee', 'charge'],
       reply: 'Our starter plan is $249 one-time for your first 10 products, then $29 a month. And your very first product model is free, no card needed. Want us to build it?',

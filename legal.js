@@ -75,7 +75,7 @@ const DOCS = [
         P('Using this website, or ordering from us, means you accept what is written here.')
       ]],
       ['What we do for you', [
-        P('We turn your products into 3D models your customers can place in their own room at true size, through a link or a QR code. There is no app for them to install: it opens in the phone’s own camera.'),
+        P('We build true-to-size AR (Augmented Reality) views from your products, so your customers can place each one in their own room at true size, through a link or a QR code. There is no app for them to install: it opens in the phone’s own camera.'),
         P('For each product we build we need photographs and its real measurements. If you already have 3D files we can use those instead.'),
         UL([
           'We build the models and check them against the measurements you give us.',
@@ -96,7 +96,7 @@ const DOCS = [
         P('About seven working days from the point where we have photographs we can actually work from. If a photograph is unusable, or a measurement is missing, that clock starts when the replacement arrives. We will tell you which one it is rather than letting the date slip quietly.')
       ]],
       ['Who owns what', [
-        P('<strong>The 3D models of your products are yours.</strong> They are built from your goods, and if you leave you can ask us for the files and we will send them.'),
+        P('<strong>The AR (Augmented Reality) views of your products are yours.</strong> They are built from your goods, and if you leave you can ask us for the files and we will send them.'),
         P('What stays ours is everything that is not your products: the platform, the viewer your customers open, the code, the design of the catalogue pages and our own name and marks. Your subscription is permission to use those while it is running, not ownership of them.'),
         P('We may show your catalogue as an example of our work unless you email us and ask us not to. If you ask, we will stop.')
       ]],

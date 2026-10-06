@@ -40,7 +40,7 @@ const SITE = {
 
 const FAQ = [
   ['What is ARQR?',
-   'ARQR turns your product photographs into 3D models your customers can place in their own ' +
+   'ARQR360 builds true-to-size AR (Augmented Reality) views from your product photographs, so your customers can place each product in their own ' +
    'room at true size, through one QR code or one link. There is no app to download. It opens ' +
    'in the phone’s own camera on both iPhone and Android.'],
 

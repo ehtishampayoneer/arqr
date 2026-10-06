@@ -154,7 +154,7 @@ module.exports = async (req, res) => {
         ['Photos received', String(attachments.length)],
         ['Shop', shop || '(not given)']
       ]},
-      { p: 'What happens next: we build your bestselling product as a true-to-size 3D model, then we email you a link to try it on your own phone. No cost, no commitment.' },
+      { p: 'What happens next: we build your bestselling product as a true-to-size AR (Augmented Reality) view, then we email you a link to try it on your own phone. No cost, no commitment.' },
       { p: 'If you want to add anything, just reply to this email and quote your ticket number.' }
     ]
   });
