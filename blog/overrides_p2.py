@@ -1,0 +1,326 @@
+"""Positioning-rule overrides for blog posts.
+Applied by blog/apply_overrides.py at build time (see that file).
+Do not edit bodies in blog/build.py directly; edit here and rebuild.
+"""
+
+BODY_OVERRIDES = {
+"arqr360-vs-zakeke-decor-stores": """
+
+<p>Picture a decor shop owner in Austin. She sells wall art, table lamps, mirrors, and vases. Her website looks good, but her customers keep asking the same question: "Will this lamp look right on my side table?" She knows the answer is AR. Let the customer point their phone at their own room and see the item in place. Then she starts shopping for AR tools and hits two names that look similar but are not: Zakeke and ARQR360.</p>
+<p>Both put your products in the customer's room. That is where the similarity ends. Here is a fair look at what each one actually is, what it costs, and which store each one fits.</p>
+<h2>What Zakeke is</h2>
+<p>Zakeke is a visual product customizer first. It lets customers personalize products in 2D and 3D: swap colors, change fabrics, add prints, configure options. It has an AR (Augmented Reality) viewer built in, so a customer can preview a configured product in their space. It runs as an app on Shopify, Wix, and PrestaShop, and it is best known in the customization world.</p>
+<p>Think of it this way. If your decor line has a lamp that comes in six finishes and three shade colors, Zakeke lets the customer build their version and drop it in their room. AR is one feature inside a bigger customization package.</p>
+<h2>What Zakeke costs</h2>
+<p>Zakeke charges a monthly subscription, and the plans are capped by the number of published products. On Shopify the tiers run about $19.90 a month for up to 10 products, $49.90 for up to 50, and $129.90 for up to 100. Every tier includes the 2D and 3D configurators plus the AR (Augmented Reality) viewer. Pricing differs by platform (Wix plans start higher), and there is a 14-day free trial. Figures are from the public app listings, checked October 2026. They can change, so check the listing before you decide.</p>
+<p>Two things to notice. First, the cap is on products. A decor store with 300 SKUs sits above the biggest published tier and needs a custom plan. Second, the subscription buys the software. Read on for the part it does not buy.</p>
+<h2>The part the price does not cover: the 3D models</h2>
+<p>Zakeke's AR (Augmented Reality) viewer needs a true-to-size 3D model of each product. Someone has to build those models: from your photos and real dimensions, one model per product. The plans cover the customizer and the viewer. They do not cover model creation. If you do not already have 3D models of your stock, you still have to get them made, either by a 3D artist or a modelling service, before anything appears in AR.</p>
+<p>This is the honest math for a decor store owner: the monthly fee is only half the cost. The models are the other half, and for a catalogue of hundreds of items, the other half is the big one.</p>
+<h2>Where ARQR360 differs</h2>
+<p>ARQR360 is the opposite arrangement. It is a done-for-you AR service, not software you configure. You send photos and real dimensions of your products, bestsellers first, and we build the true-to-size AR (Augmented Reality) views as part of the service. No 3D artist on your side. No model files to manage.</p>
+<p>The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores. No per-product caps, no per-model fees, no per-view fees. Your whole catalogue gets modelled, and new stock gets modelled the same way when your range changes. Your AR links and QR codes go live in about seven days.</p>
+<p>ARQR360 does not do live customization. Your customer cannot recolor a lamp in the viewer. What they get is the product, exactly as it is, placed true to size in their own room. Try the <a href="/maison">live decor demo</a> on your phone and place a lamp on your own table.</p>
+<h2>True-to-size accuracy</h2>
+<p>Both tools render whatever the 3D model says. Accuracy lives in the model, not the viewer. A model built from real dimensions places a 45cm lamp at 45cm on the table. A model that guessed will look close but sit wrong, and customers notice wrong.</p>
+<p>With Zakeke, the accuracy of your AR is the accuracy of the models you supply. With ARQR360, the models are built from your photos and dimensions by our team, and the free test model exists so you can check the size against the real item on your own phone before you pay for anything.</p>
+<h2>Which one fits your store</h2>
+<p>Pick Zakeke if customization is the point. If your decor products come in many variants and your customers choose finishes and colors online, the configurator earns its keep, and the AR (Augmented Reality) view is a strong bonus. Budget for model creation on top of the subscription, and check the product cap against your catalogue size.</p>
+<p>Pick ARQR360 if you want simple, honest AR: your customer sees your actual product at true size in their room, and you never touch a 3D file. It suits stores that sell fixed products and want the whole thing handled.</p>
+<p>For a broader survey of the options, read <a href="/blog/best-ar-options-home-decor-stores">the best AR options for home decor stores</a>.</p>
+<h2>The safest way to decide</h2>
+<p>You do not have to take any pricing page at its word. Send a photo of your bestselling decor item and we will build you one true-to-size AR model free. Place it in your own room, check it against the real item, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do I need 3D models before using Zakeke?</h3>
+<p>Yes. Zakeke's AR (Augmented Reality) viewer and configurator work from 3D models of your products, which you supply or commission separately. The subscription covers the software, not model creation. With ARQR360, the AR (Augmented Reality) build from your photos and dimensions is part of the service.</p>
+<h3>How much does AR really cost a decor store with hundreds of items?</h3>
+<p>With tiered SaaS tools, check two numbers: the monthly fee and the product cap. A 300-SKU catalogue sits above Zakeke's biggest published tier, so price the custom plan and add model creation costs. ARQR360 is $199 setup plus $19 a month with no product cap and models included. Either way, price the models, not just the software.</p>
+<h3>Do my customers need to download an app?</h3>
+<p>No. With ARQR360, each product gets a link and a QR code that opens the true-to-size AR (Augmented Reality) view in the phone browser. Try it yourself on the <a href="/maison">live decor demo</a>: point your phone at your room and place an item at real size.</p>
+</div>
+""",
+"best-ar-options-home-decor-stores": """
+<p>Picture a decor store owner in Sydney. She sells framed prints, mirrors, and table lamps. Her site looks good. Her photos are sharp. Yet her inbox is full of the same questions. "How big is the frame, really?" "Will this mirror fit over my mantel?" "Is the lamp too tall for a bedside table?"</p>
+<p>Decor is hard to buy online. A chair is at least a known shape. A vase or a mirror lives or dies on how it sits in one specific corner of one specific room. Photos cannot carry that. AR can. The customer points their phone at the wall, and the piece appears at true size, right where it would hang.</p>
+<p>So what are your actual options for adding AR to a decor store? Here is the honest list, written for a store owner, not a developer.</p>
+<h2>Option 1: self-serve AR platforms</h2>
+<p>These are tools you run yourself. You upload product images and dimensions, someone makes the 3D models (a designer network, or an in-house artist), and you place the AR (Augmented Reality) viewer on your product pages. Augment is the long-standing example: founded in 2011, it has you work with its designer community, and its retail AR runs through mobile apps, including the retailer's own app.</p>
+<p><strong>Good when:</strong> you already have a mobile app and a team to run a platform. You get control. <strong>Bad when:</strong> you have neither. You are managing a project, not buying a result.</p>
+<h2>Option 2: Shopify AR (Augmented Reality) viewer apps</h2>
+<p>If you sell on Shopify, there are AR (Augmented Reality) viewer apps on the app store that drop a 3D viewer into your theme. Subscriptions are small. The catch is the models. The apps are viewers only. You supply every 3D model yourself, usually commissioned from 3D artists at roughly $100 to $500 per product. A decor catalogue of two hundred pieces turns a small monthly fee into a large modelling bill. We did the same maths on furniture in our <a href="/blog/ar-cost-small-furniture-store-pricing">cost breakdown for small furniture stores</a>. It works the same way for decor.</p>
+<p><strong>Good when:</strong> you already have 3D models of everything. <strong>Bad when:</strong> you do not, which is almost every small decor store.</p>
+<h2>Option 3: done-for-you AR services</h2>
+<p>You send photos and real dimensions of your products. Someone else builds the true-to-size AR (Augmented Reality) views and hands you links and QR codes that open AR in the phone browser. ARQR360 works this way. No app for your customers. No modelling work on your side. About seven days from photos to a live catalogue.</p>
+<p><strong>Good when:</strong> you want AR live this month with no new hires. <strong>Bad when:</strong> you need deep custom work like product configurators. That is a platform job, not a service job.</p>
+<h2>What to check before you choose</h2>
+<ul>
+<li><strong>True-to-size proof:</strong> for decor, a mirror a few centimetres off is the difference between a confident buyer and a return. Ask how the provider verifies scale against real dimensions.</li>
+<li><strong>The app question:</strong> if your customers must install an app, most of them will not. Browser AR gets used. App AR gets skipped.</li>
+<li><strong>Total cost, not the monthly fee:</strong> add the models, the setup, and the new-season stock. Per-model fees quietly dwarf subscriptions on catalogues that change.</li>
+<li><strong>Who models new stock:</strong> decor ranges turn over every season. Ask what each new batch costs and how fast it goes live.</li>
+</ul>
+<h2>Where each option lands</h2>
+<p>If you have a mobile app and a team, a self-serve platform gives you control. If you already have 3D models and a Shopify store, a viewer app is a cheap add. If you have neither, the done-for-you route is the one that ends with AR actually live on your site.</p>
+<p>We ran the full comparison on one popular platform in <a href="/blog/arqr360-vs-augment-decor-stores">ARQR360 vs Augment for decor stores</a>. It shows the real difference between a platform you run and a service that runs for you.</p>
+<p>Feel the result on your own phone first. Open our <a href="/maison">live decor demo</a> and place a piece on your own wall at true size.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling piece and we will build you one true-to-size AR model free. Place it on your own wall next to the real thing, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need an app to see AR?</h3>
+<p>With ARQR360, no. Each piece gets a link and a QR code that opens the true-to-size view in the phone browser. Try the <a href="/maison">live decor demo</a> yourself. On some platforms the AR (Augmented Reality) view runs inside mobile apps, so ask before you sign.</p>
+<h3>What does AR cost a small decor store?</h3>
+<p>It depends on who builds the models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free.</p>
+<h3>How long before my decor is live?</h3>
+<p>With ARQR360, about seven days from your photos arriving. On self-serve platforms it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p>
+</div>
+""",
+"best-ar-tools-footwear-stores-2026": """<p>Picture a shoe store owner in Toronto. She sells leather boots online and from one small shop. Her product pages get steady traffic. Visitors zoom in on the photos, read the size guide, then close the tab. The boots sit unsold.</p><p>Footwear is the hardest category to sell sight unseen. Fit and look are personal. AR try-on answers both at once: the customer points their phone at their feet and sees the shoe on their own foot, at true size, in the light of their own room. Here are the real options a footwear store can buy in 2026, written for a store owner, not a developer.</p><h2>Option 1: WANNA (Perfect Corp)</h2><p>WANNA is the company behind the Wanna Kicks sneaker try-on, now part of Perfect Corp., the beauty and fashion tech company behind the widely used YouCam apps. Perfect acquired Wannaby from Farfetch in late 2024, and the platform now covers sneakers, heels, boots, and sandals, running across web and mobile apps. Its try-on technology has served more than 30 luxury brands.</p><p><strong>Good when:</strong> you are a brand or a large retailer with a digital team and a budget sized for enterprise software. You get serious foot-tracking tech with multiple viewing angles. <strong>Bad when:</strong> you are a small store. This is sold as a platform to brands, not a plug-and-play product for a 40-style catalogue. Pricing is quote-based, so get a written quote for your own range before you compare.</p><h2>Option 2: Shopify AR (Augmented Reality) viewer apps</h2><p>If you sell on Shopify, AR (Augmented Reality) viewer apps on the app store add a 3D viewer to your product pages for a small monthly subscription. Public listings put pricing around free to roughly $36 a month, depending on how many products you publish.</p><p>The catch is the same one every viewer app has. The apps are viewers only. You supply every 3D model yourself, usually commissioned from 3D artists at roughly $100 to $500 per product. A shoe store with 40 styles in three colours needs around 120 models for full coverage. The subscription is small. The modelling bill is the project. We worked the same maths in our <a href="/blog/ar-cost-small-footwear-store-pricing">pricing breakdown for footwear stores</a>.</p><p><strong>Good when:</strong> you already have 3D models of your shoes, or a designer on staff who makes them. <strong>Bad when:</strong> you do not, which is almost every small shoe store.</p><h2>Option 3: 3D and AR creation services</h2><p>Some companies build the 3D models and host the AR for you. Seek is the well-known example in footwear. In a podcast interview, their CEO described the pricing plainly: you pay per model for creation, roughly a couple hundred dollars a model depending on complexity, plus a SaaS fee for hosting and distribution that scales with your catalogue size. We compared that route in detail in <a href="/blog/arqr360-vs-seek-footwear-stores">ARQR360 vs Seek for footwear stores</a>.</p><p><strong>Good when:</strong> you run a brand with hundreds of styles and the budget for per-model creation plus platform fees. <strong>Bad when:</strong> you run a small store, where the creation bill is the whole project before anything earns a dollar.</p><h2>Option 4: done-for-you AR services</h2><p>You send photos and real dimensions of your shoes, bestsellers first. Someone else builds the true-to-size AR (Augmented Reality) views and hands you links and QR codes that open try-on in the phone browser. ARQR360 works this way. No app for your customers. No modelling work on your side. About seven days from photos to a live catalogue.</p><p>The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. No product cap, no per-view fees.</p><p><strong>Good when:</strong> you want AR live this month with no new hires. <strong>Bad when:</strong> you need deep custom work like a full product configurator. That is a platform job, not a service job.</p><h2>What to check before you choose</h2><ul><li><strong>True-to-size proof:</strong> for shoes, a model even slightly off teaches the customer the tool cannot be trusted. Ask every provider how they verify scale against the real shoe.</li><li><strong>The app question:</strong> if your customer must install an app, most of them will not. Browser try-on gets used. App try-on gets skipped.</li><li><strong>Who makes the models:</strong> the biggest cost on most routes is model creation, not the software. Ask whether models are included and what new-season stock costs.</li><li><strong>Total cost, not the monthly fee:</strong> add the models, the setup, and the new range. Per-model fees quietly dwarf subscriptions on catalogues that change.</li></ul><h2>Where each option lands</h2><p>If you are a brand with a digital team and an enterprise budget, WANNA's try-on tech is a serious option with the foot-tracking to show for it. If you already have 3D models and a Shopify store, a viewer app is a cheap add. If you have neither, a done-for-you service is the route that ends with AR actually live on your site.</p><p>One more number, and it is Shopify's own data, not ours: products with 3D or AR (Augmented Reality) views convert about 94% better than products without. Whichever route you take, giving shoppers a true-to-size try-on beats a flat photo.</p><p>Feel the result on your own phone first. Open our <a href="/corso">live footwear demo</a> and point it at your feet. For the conversion side of the story, read <a href="/blog/how-shoe-stores-turn-browsers-into-buyers-ar">how shoe stores turn browsers into buyers with AR try-on</a>.</p><h2>The cheapest way to start</h2><p>You do not have to believe any article. Send a photo of your bestselling shoe and we will build you one true-to-size AR model free. Put it on your own foot, check it against the real shoe, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p><div class="faq"><h2>FAQ</h2><h3>Do my customers need an app to try shoes on?</h3><p>Not with ARQR360. Each shoe gets a link and a QR code that opens the try-on in the phone browser. Try the <a href="/corso">live footwear demo</a> yourself. Some platforms run their try-on inside mobile apps, so ask before you sign.</p><h3>What does AR cost a small footwear store?</h3><p>It depends on who builds the 3D models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free.</p><h3>How long before my shoes are live?</h3><p>With ARQR360, about seven days from your photos arriving. On self-serve routes it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p></div>""",
+"how-footwear-stores-cut-returns-with-ar": """
+<p>Picture a shoe store owner in Melbourne. She sells good leather boots online and from one small shop. Her return shelf is never empty. A customer orders a size 8, it pinches at the toe, back it comes. Another buys sneakers in the wrong width because the photos looked right. Every return costs her the shipping both ways, plus an opened box she now has to resell at a discount.</p>
+<p>Footwear is one of the hardest things to buy sight unseen. A sofa either fits the room or it does not. A shoe has to fit a foot that nobody measured properly. So shoe retailers watch AR try-on with real interest: if a customer can see the shoe on their own foot, in their own size, before they buy, fewer boxes come back.</p>
+<p>Here is what phone AR can actually do for a shoe store, and what it cannot. No hype, just the practical version.</p>
+<h2>What customers get</h2>
+<p>The idea is simple. A customer taps a link or scans a QR code on the product page, points the phone at their feet, and the shoe appears at true size. They can check the colour against their jeans, see how a chunky sneaker looks next to slim trousers, and pick a size with more confidence. The whole thing runs in the phone browser. No app download.</p>
+<p>This matters for shoes more than for furniture, because fit is visual and personal. A customer can tell in seconds whether a boot looks right on their foot. That is a decision they no longer have to guess from photos.</p>
+<h2>What AR cannot fix</h2>
+<p>Be honest about this. AR cannot tell a customer whether the shoe is comfortable. It cannot measure an arch or predict blisters. Anyone who tells you AR ends fit returns entirely is selling you something.</p>
+<p>What AR does fix is the look and the size confidence. Plenty of shoe returns are "wrong look" returns: the colour is off, the style does not work with the wardrobe, the shoe is bulkier than expected. Those are exactly the returns a true-to-size visual takes away.</p>
+<h2>The 3D model problem, and who solves it</h2>
+<p>Every shoe needs a true-to-size 3D model. This is the part that stops most stores. Building shoe models takes a 3D artist, real dimensions, and material work so the leather looks like leather. One model per shoe, per colourway, done properly.</p>
+<p>The honest options: build them yourself (slow and expensive), pay per model (fine for a test, painful across a whole catalogue), or use a service that builds them as part of the package. ARQR360 is the third option. You send photos and real dimensions of your shoes, bestsellers first, and we build the true-to-size models as part of the service. No 3D hire on your side, nothing to learn.</p>
+<h2>What it costs and how fast it goes live</h2>
+<p>ARQR360 is flat and public: $199 one-time setup, $19 a month, locked for life for the first 50 stores. No per-model fees, no per-view fees. Your catalogue goes live in about seven days. Each shoe gets a link and a QR code that opens the true-to-size try-on in the phone browser.</p>
+<p>Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels. For the returns angle in more detail, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how U.S. furniture stores cut expensive returns with true-to-size AR</a>. The returns logic is the same, the product is just smaller.</p>
+<h2>The safest way to test it</h2>
+<p>You do not have to believe any pricing page. Send a photo of your bestselling shoe and we will build you one true-to-size AR model free. Put it on your own foot, check it against the real shoe, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need an app to try on shoes?</h3>
+<p>No. Each shoe gets a link and a QR code that opens the try-on in the phone browser. Try the <a href="/corso">live footwear demo</a> yourself and point your phone at your feet.</p>
+<h3>How accurate is the sizing?</h3>
+<p>Models are built true to size from your photos and real dimensions. The free test model is the way to check: try it on your own foot and compare it against the real shoe before you commit to anything.</p>
+<h3>How many shoe models do I get?</h3>
+<p>Your whole catalogue. ARQR360 does not charge per model. We build true-to-size AR (Augmented Reality) views of your shoes from your photos and dimensions as part of the service, and new stock gets the same treatment when your range changes.</p>
+</div>
+""",
+"how-furniture-stores-build-virtual-showrooms-with-ar": """<p>Picture a furniture store owner in Leeds. Her showroom holds about 40 sofas, but she sells over 300 pieces online. Most of her website visitors live nowhere near the shop. They browse the photos, wonder if the sofa will fit their living room, and leave. She cannot fit every piece on the floor, and she cannot fly every customer to Leeds. A virtual showroom solves exactly this problem, and it no longer needs a developer to build.</p><p>This is the plain-English version.</p><h2>What a virtual showroom actually is</h2><p>A virtual showroom is not a 3D tour of your shop, and it is not a floor plan app. It is simpler than both. Every product in your catalogue gets a link. The customer taps the link on their phone, scans their floor, and the piece appears in their own room at its true size. They walk around it. They check it against their wall. They see if the armchair blocks the doorway before they buy it.</p><p>That is the whole thing. Your catalogue, placed in the customer's home, through a link. No app to download.</p><h2>Why small stores feel it first</h2><p>Big chains already solve the visit problem with dozens of locations. A small store cannot. The virtual showroom is how a one-shop retailer gives a customer in Newcastle the same confidence as a customer who walked in. It also works after hours. Browsing peaks in the evening, when your shop is closed and your website is open. A shopper who can check the size at 10pm is a shopper who can buy at 10pm.</p><p>Shopify reports that products with 3D or AR (Augmented Reality) views convert about 94% better than products without. That is Shopify's own data, not ours. Whatever number you get, the mechanism is simple: shoppers who can see the true size hesitate less.</p><h2>What it takes to get one live</h2><p>Everything starts with true-to-size 3D models of your products. There are two routes.</p><p>Route one is do it yourself with a Shopify AR (Augmented Reality) viewer app. The apps cost a small monthly fee, often under $40, and they put a 3D viewer on your product pages. But they are viewers only. You supply every model yourself, usually commissioned from 3D artists at roughly $100 to $500 per product. We worked the same maths in our <a href="/blog/ar-cost-small-furniture-store-pricing">pricing breakdown for furniture stores</a>. The software is cheap. The models are the project.</p><p>Route two is done for you. You send photos of your bestselling pieces and their real listed dimensions. Someone builds the AR (Augmented Reality) views, hosts them, and hands you links and QR codes. ARQR360 works this way. The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. About seven days from photos to a live catalogue.</p><h2>The app question</h2><p>Ask every provider this before you sign: does the customer need to download an app? If the answer is yes, most of your customers will never use it. People do not install apps to look at a sofa. Browser-based AR opens from a link or a QR code in seconds. That is the version that actually gets used. Test this on your own phone first: our <a href="/novara">live furniture demo</a> opens in the browser with no install.</p><h2>What makes a virtual showroom work</h2><ul><li><strong>True-to-size proof:</strong> a sofa that is even a few inches off teaches the customer the tool cannot be trusted. Ask how the provider verifies models against the real dimensions.</li><li><strong>Put it on every product page:</strong> a virtual showroom buried in a menu nobody opens does nothing. The link belongs next to the price, where the buying decision happens.</li><li><strong>QR codes in the shop:</strong> a tag on the floor model that opens the same piece in AR lets browsing customers check the fabric at home and come back decided.</li><li><strong>Bestsellers first:</strong> you do not need the whole catalogue on day one. Twenty proven pieces covering most of your revenue teach you what customers actually do with it.</li></ul><p>For the returns side of the same story, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how US furniture stores cut returns with AR</a>.</p><h2>The cheapest way to check if it works for your store</h2><p>You do not have to commit to anything to find out. Send a photo of your bestselling sofa or armchair and we will build you one true-to-size AR model free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/novara">live furniture demo</a> first: it opens in your phone browser, no install.</p><div class="faq"><h2>FAQ</h2><h3>Do my customers need an app for a virtual showroom?</h3><p>Not with ARQR360. Each piece gets a link and a QR code that opens the AR (Augmented Reality) view in the phone browser. Try the <a href="/novara">live furniture demo</a> on your own phone. Some platforms need their app installed, so ask before you sign.</p><h3>How long before my showroom is live?</h3><p>With ARQR360, about seven days from your photos arriving. On the do-it-yourself route it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p><h3>What does a virtual showroom cost a small furniture store?</h3><p>It depends on who builds the 3D models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free.</p></div>""",
+"how-rug-stores-cut-size-returns-with-ar": """
+<p>Picture a rug store owner in London. She sells handwoven rugs from one shop and a simple online store. Her returns shelf tells the same story every month. A rug arrives and swallows the customer's living room. Another gets lost under the coffee table. The customer is not angry at the rug. They just could not judge its size from the photos. Every return costs her freight both ways, and a rug she now resells at a discount.</p>
+<p>Size is the whole game with rugs. A sofa is forgiving. A rug is not. 200 by 300 centimetres sounds precise on a product page and means almost nothing to most buyers standing in their living room. They guess. Guessing is what your returns shelf is made of.</p>
+<h2>Why rug photos cannot sell size</h2>
+<p>Every rug photo is shot to make the rug look good, not to make its size clear. A wide shot makes a large rug look generous. A detail shot makes a small rug look rich. Neither tells the customer what the rug will do to their room.</p>
+<p>Measurements help, but only for the few customers who reach for a tape measure. Most people buy on feel. They imagine the rug in the room, and the picture in their head is usually off by a foot in each direction. With rugs, a foot in each direction is the difference between perfect and a return.</p>
+<h2>What true-to-size AR changes</h2>
+<p>True-to-size AR lets the customer see the rug on their own floor before they buy. They open a link on their phone, point it at the spot where the rug will go, and the rug appears at its real dimensions. They can walk around it. They can see whether it slides far enough under the sofa and whether it leaves enough bare floor around the edges.</p>
+<p>Nothing about this needs an app. With ARQR360 each rug gets a link and a QR code that opens the true-size view in the phone browser. Put the QR code on the product page next to the size selector. Put the link in the email you send the customer who is still deciding between two sizes. Try the <a href="/terra">live rug demo</a> on your own floor: it opens in your phone browser with no install, and the rug you see is the size the real one would be.</p>
+<h2>Start with the rugs that cause the returns</h2>
+<p>You do not need AR on your whole catalogue to move the return number. In most rug stores a handful of sizes cause most of the trouble: the large living room pieces, the long runners, anything where the customer is choosing between two sizes. Put AR on those first. If returns on those drop, roll it out to the rest.</p>
+<p>This keeps the cost down too. Every rug needs a 3D model built to its real size and pattern, and the models are the part of AR that costs real money. Starting with ten problem rugs instead of two hundred SKUs is the sane way to test. For the full breakdown of where the money goes, read <a href="/blog/ar-cost-small-rug-store-pricing">what AR really costs a rug store</a>.</p>
+<h2>What AR will not do</h2>
+<p>Be honest about the limits. AR shows scale and placement. It does not show texture under fingertips, and a phone screen will not reproduce the exact dye of a handwoven wool rug the way daylight does. Your close-up photos still do that job. AR answers the question photos cannot answer: will it fit, and will it look right in the room.</p>
+<p>The stores that get the most out of AR treat the two as a pair. Detail photos sell the rug. The AR (Augmented Reality) view sells the size. Returns fall when both questions are answered before the order button.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling rug and we will build you one true-to-size AR model free. Point your phone at your own floor, walk around it, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need to download an app to see the rug?</h3>
+<p>No. Each rug gets a link and a QR code that opens the true-to-size view in the phone browser. Most customers use it standing in the room where the rug will go, which is exactly where the size decision gets made.</p>
+<h3>How accurate is the size in the AR (Augmented Reality) view?</h3>
+<p>The model is built to the rug's real listed dimensions, so what the customer sees on their floor matches the real rug's footprint. The phone camera handles the room scale. It is not a replacement for a tape measure in an unusual layout, but it is far closer than guessing from a photo.</p>
+<h3>How many rugs should I start with?</h3>
+<p>Start with the five to ten sizes behind most of your returns. Large pieces and runners are the usual suspects. If the return rate on those drops, expand to the rest. ARQR360 has no product cap and flat pricing: $199 one-time setup and $19 a month, locked for life for the first 50 stores.</p>
+</div>
+""",
+"how-shoe-stores-turn-browsers-into-buyers-ar": """
+<p>Picture a shoe shop owner in Bristol. She sells well-made leather boots, mostly online. Her product pages get visitors every day. They zoom in on the photos, read the size guide twice, then close the tab. The boots sit unsold.</p>
+<p>Footwear is a hard sell online, and it is not usually the price that kills the sale. It is the unknowns. Will they fit? Does the colour match the photos? Will the style work with my wardrobe? Photos answer none of this well, so browsers stay browsers.</p>
+<p>AR try-on answers those questions in the shopper's own home. The customer taps a link or scans a QR code on the product page, points the phone at their feet, and sees the boots at true size on their own feet. The moment of doubt becomes a moment of decision.</p>
+<h2>Why shoe browsers hesitate</h2>
+<ul>
+<li><strong>Fit is a guess:</strong> size charts vary between brands, and shoppers know it. A size 8 in one shop pinches in another.</li>
+<li><strong>Look is personal:</strong> a chunky sneaker can look wrong next to slim trousers, and no studio photo shows that pairing.</li>
+<li><strong>Colour lies on screen:</strong> lighting and editing shift colours. Shoppers who have been burned once hesitate twice.</li>
+<li><strong>Returns feel like work:</strong> printing a label, repacking the box, waiting for a refund. Many shoppers decide the purchase is not worth the risk of the return.</li>
+</ul>
+<h2>What try-on changes, concretely</h2>
+<p>Try-on does not replace the size chart. It sits beside it. The shopper sees the shoe on their own foot, at real size, in the light of their own room. Colour reads honestly. Bulk reads honestly. The shopper is no longer guessing from someone else's photoshoot.</p>
+<p>This is where conversion comes from. A hesitant browser becomes a buyer at the exact moment the unknowns disappear. You do not need new traffic. You need the traffic you already have to feel sure.</p>
+<h2>The one thing that must be true</h2>
+<p>Not all try-on earns that trust. If the model is a rough approximation, shoppers learn to distrust it fast. For footwear, true-to-size is the whole point. A model that is even slightly off teaches the customer that the tool cannot be trusted, and you are back to photos.</p>
+<p>The check is simple: place the finished model on your own phone next to the real shoe and compare. We do this before any model goes live, because your shoppers' trust is worth more than any feature list.</p>
+<h2>What it takes to offer this</h2>
+<ol>
+<li>You send photos and real dimensions of your shoes, bestsellers first.</li>
+<li>We build the true-to-size AR (Augmented Reality) views and your AR try-on links in about seven days.</li>
+<li>Each shoe gets a link and a QR code. Shoppers open it in their phone browser. No app to install, nothing for your team to learn.</li>
+</ol>
+<p>Feel it yourself first. Open our <a href="/corso">live footwear demo</a> on your phone and point it at your feet. For the returns side of the same story, read <a href="/blog/how-footwear-stores-cut-returns-with-ar">how shoe stores can cut size-and-fit returns with phone AR</a>.</p>
+<h2>The cheapest way to start</h2>
+<p>You do not have to believe any article. Send a photo of your bestselling shoe and we will build you one true-to-size AR model free. Try it on your own foot, compare it with the real shoe, and decide with the thing in front of you. If it does not convince you, you have spent nothing.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my shoppers need to download an app?</h3>
+<p>No. Each shoe gets a link and a QR code that opens the try-on in the phone browser. Try the <a href="/corso">live footwear demo</a> on your own phone to see how it feels.</p>
+<h3>How long before my shoes are live?</h3>
+<p>About seven days from your photos arriving. We build the models and set up the links. You drop them into your product pages.</p>
+<h3>What does it cost?</h3>
+<p>ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all model building included. The first test model is free, no commitment.</p>
+</div>
+""",
+"how-to-increase-online-sales-for-home-decor-india": """
+<p>Many home decor brands try to lift online sales with better photos or sharper prices. But price is rarely the real blocker. The blocker is uncertainty: a customer cannot tell if a sofa fits their living room in Bangalore or whether a rug matches the tone of their Jaipur home. That hesitation kills sales, especially on high-ticket items.</p>
+<p>The fix is not more pixels. It is presence. When buyers see a product in their own space at true scale, confidence goes up, and conversions follow.</p>
+<h2>Why static images limit home decor sales</h2>
+<p>Flat product photos do not show scale, texture, or fit. A 7-foot sofa can look compact in a studio shot yet refuse to pass a 30-inch doorway. A marble-top dining table can clash with existing interiors. Customers know this, which is why they hesitate, abandon carts, or call to ask, "Will this actually work in my home?"</p>
+<p>Uncertainty bites hardest above &#8377;25,000. Returns are costly, trust is fragile, and standing out is hard when every brand uses similar white-background photography.</p>
+<h2>How augmented reality builds purchase confidence</h2>
+<p>AR lets customers place true-to-scale 3D versions of your products in their own space using just a smartphone browser. No app download, no special tools. They open the product page, tap "View in Your Space," and the item appears in their room.</p>
+<p>When a customer in Hyderabad sees a console table exactly where they plan to put it, they stop guessing and start confirming. That is the moment a hesitant browser becomes a buyer.</p>
+<h2>How to add AR without hiring a 3D team</h2>
+<p>Most retailers assume AR needs modelling skills or app development. That was true five years ago. With a done-for-you service like ARQR360, the process is:</p>
+<ol>
+<li>You share your product catalogue (10 to 500+ items): photos plus real dimensions.</li>
+<li>ARQR360 builds true-scale AR (Augmented Reality) views from your existing photos.</li>
+<li>We integrate the AR (Augmented Reality) viewer into your Shopify or WooCommerce product pages.</li>
+<li>Customers use it instantly. No app, no login.</li>
+</ol>
+<p>The whole thing takes days, not months. No technical setup, no hiring. Just a live AR catalogue on any smartphone.</p>
+<h2>How this helps returns and engagement</h2>
+<p>Customers who check a product in AR are more confident in their choice. They see size, proportion, and style in context, which cuts mismatch-driven returns on rugs, sofas, and lighting. They also spend longer interacting with your products, which is good for engagement and for the social ads you already run.</p>
+<p>When shoppers answer the "will this suit my home?" question themselves, your team spends less time on pre-sales calls and more time closing orders.</p>
+<h2>Who benefits most</h2>
+<ul>
+<li>Sell medium-to-high-ticket visual products (&#8377;15,000 and up)</li>
+<li>Have 10 to 500+ SKUs online</li>
+<li>Use Shopify, WooCommerce, or similar platforms</li>
+<li>Rely only on static product photography today</li>
+<li>Run digital ads on Facebook, Instagram, or Google</li>
+</ul>
+<p>Launching a collection, running a promotion, or working with influencers? AR gives your audience a reason to stop scrolling and start interacting.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How do customers access AR without an app?</h3>
+<p>They tap a button on your product page and use their phone's browser camera. No download, works on any modern smartphone.</p>
+<h3>Can AR work with my current e-commerce platform?</h3>
+<p>Yes. ARQR360 integrates with Shopify, WooCommerce, and similar platforms. No code changes on your side.</p>
+<h3>Does this help my digital marketing?</h3>
+<p>AR-ready products perform better in social ads. Customers interact more, which improves ad relevance and can lower cost per conversion.</p>
+</div>
+""",
+"how-us-furniture-stores-cut-returns-with-ar": """
+<p>A $1,400 sofa comes back. You pay return shipping, warehouse inspection, possible damage repair, and then you sell it at a discount as open-box, if it sells at all. One return can erase the profit of three good orders.</p>
+<p>Most furniture returns have the same root cause, and it is not quality. It is size. The customer could not tell how the piece would sit in their room, so they guessed. AR exists to end the guessing.</p>
+<h2>Why furniture returns are a size problem</h2>
+<p>Online furniture return rates run far higher than apparel or electronics, and "doesn't fit / doesn't look right in my space" is consistently among the top reasons. Photos and dimension charts ask shoppers to do spatial math in their heads. Most cannot, so they order, hope, and return.</p>
+<p>Every step of that loop costs you: two-way freight on bulky goods, restocking labour, damaged-item write-offs, and a customer who now trusts you less.</p>
+<h2>What true-to-size AR changes</h2>
+<p>True-to-size AR puts an AR (Augmented Reality) view of your exact product, built to its real measurements, into the shopper's own room through their phone camera. A 96-inch sofa appears 96 inches long next to their actual wall. The "will it fit?" question gets answered on the product page instead of in the returns queue.</p>
+<p>This is different from generic 3D viewers that spin a model on a white background. If the model is not true to scale and not shown in the customer's space, it does not prevent size returns.</p>
+<h2>What to demand from an AR solution</h2>
+<ul>
+<li><strong>True scale, guaranteed:</strong> models built from your real dimensions, not approximations.</li>
+<li><strong>No app download:</strong> browser-based AR (iPhone Quick Look, Android Scene Viewer) so every shopper can use it, not just the motivated few.</li>
+<li><strong>Done for you:</strong> the provider builds the models and handles integration. You should not need a 3D team.</li>
+<li><strong>Fast to live:</strong> weeks of onboarding means weeks of preventable returns.</li>
+<li><strong>Honest pricing:</strong> a setup fee plus a flat monthly rate, no per-view surprises.</li>
+</ul>
+<h2>How ARQR360 works for a furniture store</h2>
+<ol>
+<li>You send photos and real dimensions of your products, bestsellers first.</li>
+<li>We build your true-to-scale AR (Augmented Reality) views and AR catalogue in about seven days.</li>
+<li>Shoppers tap "View in Your Space" on your product page or scan your QR code, and see each piece at real size in their room.</li>
+</ol>
+<p>Try a live sample on your phone right now: our <a href="/novara">furniture catalogue demo</a> shows exactly what your customers would see.</p>
+<h2>The cheapest way to start</h2>
+<p>Send a photo of your bestselling product and we will build you one true-to-size AR model free. Put it on your own phone, walk around it, check the scale against your own furniture. If it does not impress you, you have lost nothing. If it does, you know exactly what it will do for your return rate.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How much does furniture return shipping typically cost?</h3>
+<p>It varies by size and distance, but bulky furniture returns routinely cost $200 to $400+ in two-way freight alone, before inspection and restocking. Preventing even a few returns a month pays for AR many times over.</p>
+<h3>Will AR really reduce my return rate?</h3>
+<p>AR attacks the top cause of furniture returns: size and fit uncertainty. When shoppers confirm fit before buying, fewer orders come back for that reason. No tool eliminates all returns, but removing the guesswork removes the biggest driver.</p>
+<h3>Do I need to change my website?</h3>
+<p>No rebuild needed. ARQR360 adds a "View in Your Space" button to your existing product pages on Shopify, WooCommerce, and similar platforms.</p>
+</div>
+""",
+"reduce-returns-online-furniture-sales-india": """
+<p>A customer in Mumbai orders a beautiful sofa set online. When it finally arrives, the dimensions feel off: too big for the living room, or it barely fits through the doorway. The dream purchase turns into a logistical headache and a return. For online furniture retailers across India, this scenario is all too common, and every return eats margin.</p>
+<p>Reducing returns comes down to one thing: giving customers accurate product visualization and real confidence <em>before</em> they buy.</p>
+<h2>Why are online furniture returns so high?</h2>
+<ul>
+<li><strong>Size and fit misjudgements:</strong> static photos and written measurements do not translate to a real room. A wardrobe can look compact online and dominate a small bedroom.</li>
+<li><strong>Colour and texture surprises:</strong> screens shift how colours and finishes appear.</li>
+<li><strong>High-ticket uncertainty:</strong> furniture is a big purchase. Without truly "seeing" it at home, buyers return the moment expectations wobble.</li>
+<li><strong>Thin engagement:</strong> images and descriptions alone rarely build enough confidence for a large purchase.</li>
+</ul>
+<h2>How AR changes the picture</h2>
+<p>Augmented reality lets a customer place a true-to-scale 3D version of your product in their own room using just a smartphone browser. No app download. They open the product page, tap "View in Your Space," and see the item where it would actually stand.</p>
+<p>Picture a customer in Bengaluru placing a dining table virtually in their kitchen: checking the fit, the colour against their walls, how it sits with existing decor. That is confidence you cannot get from a photo gallery.</p>
+<p>Big brands have validated the principle: IKEA publicly reported strong sales uplifts after adding AR to its shopping experience.</p>
+<h2>What to look for in a visualization solution</h2>
+<ol>
+<li><strong>Ease of integration:</strong> it should drop into Shopify or WooCommerce without complex development.</li>
+<li><strong>No app required:</strong> browser-based AR reaches every customer, not just the ones willing to install something.</li>
+<li><strong>Done-for-you service:</strong> if you lack an in-house 3D team, the provider should handle modelling and setup.</li>
+<li><strong>Scalability:</strong> it should cover your full catalogue, from 10 to 500+ products, and grow with you.</li>
+</ol>
+<h2>Shopify apps for furniture visualization</h2>
+<p>AR visualization apps let your customers project 3D models of your furniture into their actual rooms from the product page. For a rug company in Jaipur, a shopper could see exactly how a pattern looks in their living room and whether the size works, preventing the two most common return reasons: wrong size and wrong look.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do customers need a special app to use AR?</h3>
+<p>No. With ARQR360, the AR experience opens directly in the smartphone's browser. Nothing to download.</p>
+<h3>Can AR really help with high-ticket furniture purchases?</h3>
+<p>That is exactly where it helps most. Seeing a sofa or dining set at true scale in your own space removes the uncertainty that causes hesitant purchases and later returns.</p>
+<h3>Is AR complex for retailers to implement?</h3>
+<p>Not as a done-for-you service. We handle the AR (Augmented Reality) build and catalogue setup. You send photos and dimensions; we do the rest.</p>
+</div>
+""",
+"virtual-try-on-rugs-online-philippines": """
+<p>A familiar scene for rug retailers: a customer loves a rug's design online, then the doubts creep in. "Will it really fit my living room?" "Is the colour true to life in my space?" "What if it looks tiny once it arrives?" That uncertainty ends in abandoned carts or, worse, returns.</p>
+<p>Virtual try-on, also called AR product visualization, lets customers "see" a rug in their own space at true scale, using just their smartphone. For retailers, it builds purchase confidence, lifts engagement, and sets you apart from competitors still showing flat photos.</p>
+<h2>What is virtual try-on for rugs, and why does it matter?</h2>
+<p>Your customer opens a rug on their phone and places a true-to-size AR (Augmented Reality) view of it into their real room through the camera. A shopper in Quezon City or Cebu can instantly see how a large shag rug sits under their actual coffee table, or whether a kilim complements their decor. It answers the question static photos never can: how does this look <em>here</em>?</p>
+<p>Companies like IKEA have integrated AR into their platforms, proving the principle at global scale.</p>
+<h2>What to look for in a virtual try-on solution</h2>
+<ul>
+<li><strong>Ease of use for customers:</strong> no app download, intuitive on a mobile browser.</li>
+<li><strong>Ease of implementation:</strong> no in-house 3D team required, minimal technical work.</li>
+<li><strong>Scalability:</strong> handles your full catalogue, from 10 to 500+ items.</li>
+<li><strong>Platform compatibility:</strong> works with Shopify, WooCommerce, and your existing stack.</li>
+<li><strong>Cost-effectiveness:</strong> clear upfront and ongoing costs with a visible return.</li>
+<li><strong>Visualization quality:</strong> realistic models, true scale, accurate texture.</li>
+</ul>
+<h2>Your options, honestly compared</h2>
+<h3>1. DIY 3D modelling and integration</h3>
+<p>Build your own 3D models and integrate them with open-source AR libraries or custom development.<br>
+<strong>Strengths:</strong> full control, bespoke integration.<br>
+<strong>Limits:</strong> needs 3D artists and developers, high upfront cost, slow to set up and maintain. Not practical for most small and mid-sized stores.</p>
+<h3>2. Self-service AR platforms</h3>
+<p>Upload product images to a platform that converts them to 3D and gives you embed codes, usually for a subscription fee.<br>
+<strong>Strengths:</strong> lower barrier than DIY, faster for a few products.<br>
+<strong>Limits:</strong> you still manage 3D assets or pay extra for them, integration can be fiddly, auto-conversion quality varies, and costs stack up.</p>
+<h3>3. ARQR360: the done-for-you AR catalogue</h3>
+<p>We take your product photos and return a complete AR catalogue: true-scale AR (Augmented Reality) views, hosted viewer, QR codes, and storefront integration. No app, no technical project on your side.</p>
+<p><strong>Strengths:</strong> fastest path to live AR, nothing to install for shoppers, works with Shopify and WooCommerce, built to reduce size-related returns.<br>
+<strong>Limits:</strong> as a managed service, deep custom 3D work is more streamlined than a fully bespoke build. The trade-off is speed, simplicity, and cost.</p>
+<h2>Making the right choice</h2>
+<p>For most small to mid-sized furniture, home decor, and rug retailers who want AR live quickly without hiring or building, a done-for-you service is the practical answer. The goal is simple: make online rug shopping feel as certain as seeing it in your store.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do customers need to download an app for virtual try-on?</h3>
+<p>No. Modern solutions including ARQR360 are web-based: the AR opens in the phone's browser.</p>
+<h3>How long does setup take?</h3>
+<p>With a done-for-you service like ARQR360, about seven days from your photos arriving. We handle all modelling and integration.</p>
+<h3>Is virtual try-on expensive for smaller businesses?</h3>
+<p>Custom builds are. Managed services are priced for regular retailers: ARQR360 starts at $249 setup plus $29/month for 10 products, and your first test model of a bestseller is free.</p>
+</div>
+""",
+}
+
+DESC_OVERRIDES = {
+}
+
+EXTRA_POSTS = [{"slug": 'arqr360-vs-intiaro-furniture-stores', "title": 'ARQR360 vs Intiaro: What a Furniture Store Actually Gets from Each', "date": 'October 6, 2026', "description": 'Comparing Intiaro and ARQR360 for your furniture store? An honest look at price, setup effort, true-to-size accuracy, and who does the 3D work, written for independent retailers.', "body": """<p>Picture a furniture store owner in Columbus, Ohio. She sells sofas and armchairs from two showrooms and a website. A customer asks if she can see a fabric swatch on the actual sofa shape before ordering. A friend mentions Intiaro, the furniture-industry 3D platform behind the configurators at big brands. Then she finds ARQR360. Two very different answers to what looks like one question. Here is the honest version.</p><h2>What Intiaro is</h2><p>Intiaro is a 3D platform built only for the furniture industry. Its main product is the interactive product configurator: shoppers pick fabrics, finishes, and layouts and watch the piece update live on the page. It also offers WebAR, room scenes, sales tools, and 3D asset creation for companies that need models built from scratch. Its launches with furniture brands like Rowe Furniture and Classic Home have been covered in the furniture trade press.</p><p>The platform starts with 3D assets. Your products arrive as models, supplied from your own CAD files or built by Intiaro's asset team, and the configurators, visualization, and sales tools are built on top. That stack is made for brands and large retailers with digital teams that manage ranges across dealers and online channels.</p><h2>What ARQR360 is</h2><p>ARQR360 is a done-for-you AR catalogue for independent furniture retailers. You send photos of your bestselling pieces and their real listed dimensions. We build true-to-size AR (Augmented Reality) views from them and hand you links and QR codes that open the view in your customer's phone browser. No app. No platform to learn. No 3D team on your side. About seven days from photos to a live catalogue.</p><p>The audience is different. ARQR360 is built for stores that sell finished pieces off the floor, not brands running configurator projects across a dealer network.</p><h2>Price: quote-based platform vs one public flat rate</h2><p>Intiaro does not publish pricing on its website. You talk to their team, describe your catalogue and which modules you want, and get a quote. That is normal for a platform built for brands, and the final figure depends on catalogue size and which tools you use. There is no reliable public number, so get the quote in writing before you compare.</p><p>ARQR360 publishes its price: $199 one-time setup and $19 a month, locked for life for the first 50 stores. The AR (Augmented Reality) views are included. No product cap, no per-view fee, no separate content creation charge on top.</p><h2>Setup effort: a platform project vs sending photos</h2><p>An Intiaro project starts with 3D assets. If you have CAD files, you move fast. If you hold nothing but product photos, their asset team builds the models first, then comes the platform work: configurators, embeds, integrations, maintenance. That is the right shape for a brand with a digital team. It is a heavy shape for a shop with six staff and a Shopify store.</p><p>With ARQR360 the project is: send photos, get a working AR catalogue back in about seven days. The links go on your product pages. The QR codes go on the floor tags. There is nothing to integrate and nothing to maintain.</p><h2>True-to-size accuracy</h2><p>Both routes put products in the customer's room at real dimensions. The honest difference is not polish. It is what you go through to get your sofa live, and what you pay every year to keep it there. For a store whose problem is customers guessing whether a chair fits their corner, a true-to-size AR view that ships this month beats a perfect platform that ships next quarter.</p><p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. Whichever route you take, giving shoppers a true-to-size view beats a flat photo.</p><h2>Who each one fits</h2><p><strong>Intiaro makes sense if:</strong></p><ul><li>You are a furniture brand or a large retailer with a digital team</li><li>You want product configurators, fabric switching, and sales tools, not just AR</li><li>You already have CAD files, or a budget for asset creation</li><li>You sell through dealers and need one system across channels</li></ul><p><strong>ARQR360 is designed for stores like yours if:</strong></p><ul><li>You are an independent furniture retailer or showroom</li><li>You sell finished pieces and hold no CAD files</li><li>You use Shopify, WooCommerce, or a simple website</li><li>You want shoppers to check size and fit in their own rooms, fast</li><li>You need one public price with no surprises</li></ul><h2>The question to ask both vendors</h2><p>Before you sign anything, ask both of us the same four questions in writing: what is the full annual cost including every 3D asset, who builds the models and from what source material, what happens to your models if you end the contract, and does the customer need to download an app. The answers will tell you which tool fits your store faster than any feature list.</p><p>For another comparison in the same aisle, read <a href="/blog/arqr360-vs-cylindo-furniture-stores">ARQR360 vs Cylindo</a>.</p><h2>The cheapest way to check if AR works for your store</h2><p>You do not have to commit to anything to find out. Send a photo of your bestselling sofa or armchair and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/novara">live furniture demo</a> first: it opens in your phone browser, no install.</p><div class="faq"><h2>FAQ</h2><h3>How much does Intiaro cost?</h3><p>Intiaro does not publish pricing. You request a quote and the cost depends on your catalogue and which platform modules you use. ARQR360 publishes its full price: $199 one-time setup and $19 a month, AR (Augmented Reality) views included.</p><h3>Who builds the 3D models?</h3><p>With Intiaro, your products arrive as 3D assets from your CAD files or are built by their asset team. With ARQR360, we build true-to-size AR (Augmented Reality) views from your product photos and the real listed dimensions. Your first view is free so you can check the quality before spending anything.</p><h3>Do my customers need to download an app?</h3><p>No, not with either platform. Intiaro offers WebAR that opens in the phone browser, and ARQR360 links and QR codes open the same way. Try the <a href="/novara">live furniture demo</a> on your own phone and see.</p></div>"""}]
