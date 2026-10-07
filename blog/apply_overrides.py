@@ -32,3 +32,13 @@ for _p in POSTS:
     if _s in _DESC:
         _p["description"] = _DESC[_s]
 POSTS.extend(_EXTRA)
+
+# BLOG-IMAGES RULE (founder order 2026-10-07): every article carries images.
+# build.py is too large to push via the API, so the figure CSS is injected
+# here into the article TEMPLATE at build time.
+_IMG_CSS = ".postimg{{margin:34px 0}}.postimg img{{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}}.postimg figcaption{{font-size:14px;color:var(--soft);margin-top:10px;text-align:center}}"
+try:
+    if "TEMPLATE" in dir() and "</style>" in TEMPLATE and "postimg" not in TEMPLATE:
+        TEMPLATE = TEMPLATE.replace("</style>", _IMG_CSS + "</style>", 1)
+except NameError:
+    pass
