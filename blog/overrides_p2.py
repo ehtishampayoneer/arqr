@@ -362,4 +362,31 @@ EXTRA_POSTS = [{"slug": 'arqr360-vs-intiaro-furniture-stores', "title": 'ARQR360
 <p>Roomvo shows how the rug looks in a photo of the customer's room: pattern, colour, and feel. ARQR360 shows the rug at its true listed size, live on the customer's actual floor. If most of your returns are size returns, the true-size view answers the exact question that costs you money.</p>
 </div>
 """},
+{"slug": 'how-home-decor-stores-cut-returns-with-ar', "title": 'How Home Decor Stores Cut Returns with AR', "date": 'October 7, 2026', "description": 'Decor returns come from one place: the customer could not tell if the piece would suit their room. Here is how a true-to-size AR view answers that question before the order ships, written for independent retailers.', "body": """<p>Picture a home decor store owner in Austin. She sells vases, table lamps, mirrors, wall art, and candles from one shop and a website. Online sales are growing. Returns are growing too. Every week brings back a lamp that looked bigger in the photos, a mirror that was perfect except it was six inches narrower than the customer pictured, a wall hanging whose colour shifted between the screen and the living room. None of the pieces are broken. Every one of them is a guess that went wrong.</p>
+<p>This is the main reason decor gets returned: the customer could not tell whether the piece would work in their room. Here is what changes when they can see it live in their own room before they buy.</p>
+<h2>Why decor comes back</h2>
+<p>Almost every decor return falls into one of three buckets. Size: the piece is smaller or larger than the customer imagined. Look: the colour, texture, or style clashes with the room it lands in. Scale: a 40cm vase looks grand in a studio photo next to a bookshelf and lost on a real sideboard.</p>
+<p>All three come from the same gap. Product photos show the piece. They do not show the piece in the customer's room. The customer fills that gap with imagination, orders, and sometimes guesses wrong. The store pays for the guess: return shipping, repackaging, restocking, and a customer who may never order again.</p>
+<h2>What the customer actually needs to know</h2>
+<p>For decor, the buying question is never about specs. It is: does this look right in my room. A tape measure answers size. Photos answer style. Neither answers both at once, in the customer's own space, before the order is placed.</p>
+<p>A true-to-size AR view does. The customer taps a link on the product page, scans their table or wall, and the lamp appears live in their own room at its real size. They move it next to the sofa. They check the mirror against the wall where it would hang. They see the colour in their own light. The guess is gone before the order is placed.</p>
+<h2>Where this hits the returns number</h2>
+<p>The returns that disappear first are the size and scale ones. When a customer has seen the 60cm mirror at its real width on their own wall, the too-small return does not happen. Look-based returns drop too: seeing the lamp's colour in your own room catches the clash that a studio photo hides.</p>
+<p>One number worth knowing, and it is Shopify's own data, not ours: Shopify reports that products with 3D or AR views convert about 94% better than products without. Fewer returns is the other side of the same coin. Customers who know what they are getting send less back.</p>
+<h2>What a store actually has to do</h2>
+<p>The setup is small. You send photos of your bestselling pieces and their real listed dimensions. We build true-to-size AR (Augmented Reality) views from them and hand you links and QR codes. The links go on your product pages, next to the price. The QR codes go on the shelf tags in the shop, so browsing customers check the piece at home and come back decided.</p>
+<p>Start with the pieces that come back most. Ten bestselling lamps, mirrors, and wall art pieces cover most of a decor store's returns. You do not need the whole catalogue on day one. And the price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with the AR (Augmented Reality) views included. About seven days from photos to live.</p>
+<p>For the comparison side of the decor aisle, read <a href="/blog/arqr360-vs-emersya-decor-stores">ARQR360 vs Emersya</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling lamp or mirror and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own table, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/maison">live decor demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Why do decor stores get so many returns?</h3>
+<p>Mostly because customers guess. Photos show the piece, not the piece in their room, so size, scale, and colour get imagined wrong. A true-to-size AR view lets the customer see the piece live in their own room before ordering, and that removes the guess. Try the <a href="/maison">live decor demo</a> and picture your own products there.</p>
+<h3>Do my customers need to download an app?</h3>
+<p>No. Each piece gets a link and a QR code that opens the AR view in the phone browser. The link goes on your product page and the QR code goes on the shelf tag.</p>
+<h3>How much does it cost to get started?</h3>
+<p>ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with the AR (Augmented Reality) views included. Your first view is free, so you can test it on your own products before spending anything.</p>
+</div>
+"""},
 ]
