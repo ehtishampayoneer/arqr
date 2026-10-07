@@ -43,7 +43,7 @@
     --ch:clamp(220px,34vh,360px);
     --cw:calc(var(--ch) * .667);
 
-    --bar-h:96px;
+    --ticker-h:40px;--bar-h:96px;
 
     /* "How it works" section palette */
     --sec-bg:#FAF7F2;
@@ -108,7 +108,7 @@
      under it at 142: the logo hung 84px to the left of the whole page.
      This is the same expression the content column resolves to, so the
      logo's left edge and the headline's are now one line at every width. */
-  .bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:26px;
+  .bar{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:100;display:flex;align-items:center;gap:26px;
     min-height:110px;padding-block:12px;
     padding-inline:calc((100% - var(--wrap)) / 2);
     transition:background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease}
@@ -210,7 +210,7 @@
   .burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   @media(max-width:1080px){.burger{display:flex}}
 
-  .mnav{position:fixed;top:var(--bar-h);left:0;right:0;z-index:99;
+  .mnav{position:fixed;top:calc(var(--ticker-h) + var(--bar-h));left:0;right:0;z-index:99;
     background:rgba(250,247,242,.97);backdrop-filter:blur(18px);
     border-bottom:1px solid var(--line);
     display:flex;flex-direction:column;padding:6px 22px 22px;
@@ -721,7 +721,7 @@
      puts the field flush against the top of the viewport, which on a phone
      means underneath the fixed bar with no sign of what it is asking for.
      The margin buys back the bar plus the heading above the field. */
-  #f-name{scroll-margin-top:calc(var(--bar-h) + 150px)}
+  #f-name{scroll-margin-top:calc(var(--ticker-h) + var(--bar-h) + 150px)}
 
   /* ---------------- founder pricing ---------------- */
   /* A dark band above the cards. It carries the offer and the clock, and
@@ -1849,7 +1849,7 @@
   </script>
   <!-- seo:end -->
 <script src="https://thegenieofmarketing.vercel.app/api/embed?k=ZjQwMGEzM2ItNWUzNC00YjAxLWIwOTYtN2RjMTVhNzdjNDZl.ca7a6f7fc248e2e874dd" async></script>
-<style>.arq-ticker{position:relative;z-index:60;overflow:hidden;background:#191919;color:#FAF7F2;font-family:Archivo,Inter,system-ui,sans-serif} .arq-ticker::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgba(224,104,42,.35) 50%,transparent 80%);background-size:200% 100%;animation:arqSheen 6s linear infinite} @keyframes arqSheen{from{background-position:200% 0}to{background-position:-200% 0}} .arq-ticker-track{display:flex;align-items:center;gap:0;white-space:nowrap;width:max-content;animation:arqSlide 28s linear infinite;padding:10px 0} .arq-ticker:hover .arq-ticker-track{animation-play-state:paused} @keyframes arqSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}} .arq-ticker-track span{padding:0 26px;font-size:14px;letter-spacing:.04em} .arq-ticker-track b{color:#E0682A;font-weight:800} .arq-ticker-pill{display:inline-block;background:#E0682A;color:#fff;border-radius:999px;padding:3px 12px;font-weight:700;font-size:13px;margin-left:8px} .arq-ticker-cta{display:inline-block;background:#FAF7F2;color:#191919;border-radius:999px;padding:4px 16px;font-weight:800;font-size:13px;text-decoration:none;margin-left:14px} .arq-promo{position:relative;overflow:hidden;border-radius:18px;margin:34px auto;max-width:1080px;font-family:Archivo,Inter,system-ui,sans-serif} .arq-promo img{display:block;width:100%;height:auto} .arq-promo-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15) 0%,rgba(10,10,10,.55) 78%)} .arq-promo-free{position:absolute;top:22px;left:22px;background:#E0682A;color:#fff;font-weight:900;font-size:30px;letter-spacing:.06em;padding:10px 22px;border-radius:14px;transform:rotate(-4deg);box-shadow:0 8px 24px rgba(0,0,0,.35)} .arq-promo-copy{position:absolute;left:26px;right:26px;bottom:26px;color:#FAF7F2} .arq-promo-copy h2{margin:0 0 8px;font-size:clamp(26px,4.5vw,44px);font-weight:900;letter-spacing:-.01em} .arq-promo-copy p{margin:0 0 16px;font-size:clamp(14px,2.2vw,18px);opacity:.94;max-width:640px} .arq-promo-btn{display:inline-block;background:#E0682A;color:#fff;font-weight:800;font-size:17px;padding:14px 30px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(224,104,42,.45)} .arq-promo-left{font-size:14px;opacity:.85;margin-top:12px} .arq-promo-left b{color:#FFB27A} @media(max-width:640px){.arq-promo-free{font-size:22px;top:14px;left:14px}.arq-promo-copy{left:16px;right:16px;bottom:16px}}</style></head>
+<style>.arq-ticker{position:static;height:var(--ticker-h);z-index:60;overflow:hidden;background:#191919;color:#FAF7F2;font-family:Archivo,Inter,system-ui,sans-serif} .arq-ticker::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgba(224,104,42,.35) 50%,transparent 80%);background-size:200% 100%;animation:arqSheen 6s linear infinite} @keyframes arqSheen{from{background-position:200% 0}to{background-position:-200% 0}} .arq-ticker-track{display:flex;align-items:center;gap:0;white-space:nowrap;width:max-content;animation:arqSlide 28s linear infinite;padding:10px 0} .arq-ticker:hover .arq-ticker-track{animation-play-state:paused} @keyframes arqSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}} .arq-ticker-track span{padding:0 26px;font-size:14px;letter-spacing:.04em} .arq-ticker-track b{color:#E0682A;font-weight:800} .arq-ticker-pill{display:inline-block;background:#E0682A;color:#fff;border-radius:999px;padding:3px 12px;font-weight:700;font-size:13px;margin-left:8px} .arq-ticker-cta{display:inline-block;background:#FAF7F2;color:#191919;border-radius:999px;padding:4px 16px;font-weight:800;font-size:13px;text-decoration:none;margin-left:14px} .arq-promo{position:relative;overflow:hidden;border-radius:18px;margin:34px auto;max-width:1080px;font-family:Archivo,Inter,system-ui,sans-serif} .arq-promo img{display:block;width:100%;height:auto} .arq-promo-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15) 0%,rgba(10,10,10,.55) 78%)} .arq-promo-free{position:absolute;top:22px;left:22px;background:#E0682A;color:#fff;font-weight:900;font-size:30px;letter-spacing:.06em;padding:10px 22px;border-radius:14px;transform:rotate(-4deg);box-shadow:0 8px 24px rgba(0,0,0,.35)} .arq-promo-copy{position:absolute;left:26px;right:26px;bottom:26px;color:#FAF7F2} .arq-promo-copy h2{margin:0 0 8px;font-size:clamp(26px,4.5vw,44px);font-weight:900;letter-spacing:-.01em} .arq-promo-copy p{margin:0 0 16px;font-size:clamp(14px,2.2vw,18px);opacity:.94;max-width:640px} .arq-promo-btn{display:inline-block;background:#E0682A;color:#fff;font-weight:800;font-size:17px;padding:14px 30px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(224,104,42,.45)} .arq-promo-left{font-size:14px;opacity:.85;margin-top:12px} .arq-promo-left b{color:#FFB27A} @media(max-width:640px){.arq-promo-free{font-size:22px;top:14px;left:14px}.arq-promo-copy{left:16px;right:16px;bottom:16px}}</style></head>
 <body><div class="arq-ticker" id="arqTicker" role="note" aria-label="Big AR Celebration offer"><div class="arq-ticker-track" id="arqTickerTrack"></div></div>
 
 <header class="bar" id="bar">
@@ -1973,7 +1973,7 @@
   </div>
 </section>
 
-<section class="arq-promo" aria-label="Big AR Celebration"><img src="/images/ar-celebration.jpg" alt="Happy shopper watching a true-to-size sofa appear in augmented reality in her living room, confetti in the air" loading="lazy"><div class="arq-promo-veil"></div><div class="arq-promo-free">FREE</div><div class="arq-promo-copy"><h2>The Big AR Celebration</h2><p>Join before November 30 and your first month of true-to-size AR is on us. Shoppers see your products live in their own room, you keep every sale.</p><a class="arq-promo-btn" href="/?offer=preview">Book your free catalogue now</a><div class="arq-promo-left"><b id="arqDaysLeft">27 days</b> left to claim it</div></div></section><!-- ============ HANDOFF ============ -->
+<!-- ============ HANDOFF ============ -->
 <div class="divider">
   <span class="dv-rule" aria-hidden="true"></span>
   <span class="dv-badge">
@@ -3411,6 +3411,6 @@
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="exit-offer.js?v=6" defer></script><script src="chat-bot.js?v=2" defer></script>
-<script>(function(){var end=new Date("2026-11-30T23:59:59+05:00").getTime();var now=Date.now();if(now>end){var t=document.getElementById("arqTicker");if(t)t.style.display="none";return;}var days=Math.max(1,Math.ceil((end-now)/86400000));var dl=document.getElementById("arqDaysLeft");if(dl)dl.textContent=days+(days===1?" day":" days");var msg='<span><b>THE BIG AR CELEBRATION</b> &nbsp; First month of true-to-size AR <b>FREE</b> for stores that join before Nov 30'+'<span class="arq-ticker-pill">'+days+(days===1?" day":" days")+' left</span>'+'<a class="arq-ticker-cta" href="/?offer=preview">Book your free catalogue now</a></span>';document.getElementById("arqTickerTrack").innerHTML=msg+msg;})();</script></body>
+<script>(function(){var end=new Date("2026-10-31T23:59:59+05:00").getTime();var now=Date.now();if(now>end){var t=document.getElementById("arqTicker");if(t)t.style.display="none";return;}var days=Math.max(1,Math.ceil((end-now)/86400000));var dl=document.getElementById("arqDaysLeft");if(dl)dl.textContent=days+(days===1?" day":" days");var msg='<span><b>THE BIG AR CELEBRATION</b> &nbsp; First month of true-to-size AR <b>FREE</b> for stores that join before Oct 31'+'<span class="arq-ticker-pill">'+days+(days===1?" day":" days")+' left</span>'+'<a class="arq-ticker-cta" href="/?offer=preview">Book your free catalogue now</a></span>';document.getElementById("arqTickerTrack").innerHTML=msg+msg;})();</script></body>
 
 </html>
