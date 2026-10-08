@@ -4,17 +4,22 @@
    Resend dashboard > Webhooks > https://arqr360.com/api/resend-webhook
    subscribed to the `email.opened` event ONLY.
 
-   On each open this appends { email_id, to, opened_at } to a per-day
-   detail file in the Vercel Blob store and rewrites a tiny PUBLIC
-   aggregate file resend-opens/YYYY-MM-DD.count.json
-   ({ date, opens, unique }) that opens-daily.py reads.
+   Storage: the project's Vercel Blob store "arqr-opens" is a PRIVATE
+   store, so every blob is written with access:'private' (the store
+   rejects public puts; @vercel/blob v1 could not do private puts at
+   all, hence v2). Nothing in the store is reachable without the
+   store token.
 
-   NOTE on @vercel/blob v1: client `put()` only supports
-   access:'public' (private puts throw 'access must be "public"').
-   So the detail file is public too, but lives at an UNGUESSABLE
-   pathname (fixed random suffix, private repo) — effectively
-   private. The aggregate at the known path carries counts only,
-   no recipient addresses.
+   - POST with a Resend event: on `email.opened`, appends
+     { email_id, to, opened_at } to the private per-day detail file
+     resend-opens/YYYY-MM-DD.json (PKT date) and rewrites the private
+     per-day aggregate resend-opens/YYYY-MM-DD.count.json
+     ({ date, opens, unique }). Responds 200 either way; other event
+     types are ignored.
+   - GET ?date=YYYY-MM-DD (defaults to today, PKT): returns the
+     aggregate { date, opens, unique } for that day — counts only, no
+     recipient addresses. This is what opens-daily.py reads. Missing
+     day -> { date, opens: 0, unique: 0 }.
 
    Environment
      BLOB_READ_WRITE_TOKEN   read/write token of the project's Blob
@@ -32,10 +37,6 @@
 'use strict';
 const { put, head } = require('@vercel/blob');
 
-// Unguessable suffix for the per-day detail file. The aggregate file
-// at the known path carries counts only.
-const DETAIL_SUFFIX = 'x7f3a9c2e1b4d8f6a0c5e7d9a1b3f4e2d';
-
 function pktDay(d) {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Karachi',
@@ -43,21 +44,43 @@ function pktDay(d) {
   }).format(d);
 }
 
-async function readJsonArray(path, token) {
+function validDay(s) {
+  return typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
+}
+
+async function readJson(path, token) {
   try {
     const meta = await head(path, { token });
     const r = await fetch(meta.url, {
       headers: { Authorization: 'Bearer ' + token }
     });
-    if (!r.ok) return [];
-    const j = await r.json();
-    return Array.isArray(j) ? j : [];
+    if (!r.ok) return null;
+    return await r.json();
   } catch (e) {
-    return []; // no file yet
+    return null; // no file yet
   }
 }
 
 module.exports = async (req, res) => {
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+
+  // GET: serve the counts-only aggregate for opens-daily.py.
+  if (req.method === 'GET') {
+    const day = validDay(req.query && req.query.date) || pktDay(new Date());
+    if (!token) {
+      res.status(200).json({ date: day, opens: 0, unique: 0 });
+      return;
+    }
+    const agg = await readJson('resend-opens/' + day + '.count.json', token);
+    if (agg && typeof agg.opens === 'number') {
+      res.status(200).json({ date: agg.date || day,
+        opens: agg.opens, unique: agg.unique || 0 });
+    } else {
+      res.status(200).json({ date: day, opens: 0, unique: 0 });
+    }
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.status(405).json({ ok: false });
     return;
@@ -83,7 +106,6 @@ module.exports = async (req, res) => {
     opened_at: String(event.created_at || new Date().toISOString())
   };
 
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
   if (!token) {
     console.log('resend-webhook: no BLOB_READ_WRITE_TOKEN, not stored: ' +
       JSON.stringify(record));
@@ -93,30 +115,29 @@ module.exports = async (req, res) => {
 
   try {
     const day = pktDay(new Date());
-    const detailPath = 'resend-opens/' + day + '-' + DETAIL_SUFFIX + '.json';
-    const arr = await readJsonArray(detailPath, token);
-    arr.push(record);
-    await put(detailPath, JSON.stringify(arr), {
-      access: 'public',
+    const detailPath = 'resend-opens/' + day + '.json';
+    const arr = (await readJson(detailPath, token)) || [];
+    const list = Array.isArray(arr) ? arr : [];
+    list.push(record);
+    await put(detailPath, JSON.stringify(list), {
+      access: 'private',
       contentType: 'application/json',
       allowOverwrite: true,
       token
     });
 
-    const unique = new Set(arr.map((r) => r.to).filter(Boolean)).size;
-    const countBody = JSON.stringify({ date: day, opens: arr.length, unique: unique });
-    const countRes = await put('resend-opens/' + day + '.count.json', countBody, {
-      access: 'public',
-      contentType: 'application/json',
-      allowOverwrite: true,
-      token
-    });
+    const unique = new Set(list.map((r) => r.to).filter(Boolean)).size;
+    await put('resend-opens/' + day + '.count.json',
+      JSON.stringify({ date: day, opens: list.length, unique: unique }), {
+        access: 'private',
+        contentType: 'application/json',
+        allowOverwrite: true,
+        token
+      });
 
-    res.status(200).json({ ok: true, stored: true, opens: arr.length,
-      count_url: countRes.url });
+    res.status(200).json({ ok: true, stored: true, opens: list.length });
   } catch (e) {
     console.log('resend-webhook store failed: ' + (e && e.message));
-    res.status(200).json({ ok: true, stored: false,
-      error: String((e && e.message) || e) });
+    res.status(200).json({ ok: true, stored: false });
   }
 };
