@@ -108,6 +108,13 @@ module.exports = async (req, res) => {
     res.status(200).json({ ok: true, stored: true, opens: arr.length });
   } catch (e) {
     console.log('resend-webhook store failed: ' + (e && e.message));
-    res.status(200).json({ ok: true, stored: false });
+    // TEMP DEBUG: surface the failure reason so we can diagnose why the
+    // env var is not reaching the function. Remove before final sign-off.
+    res.status(200).json({
+      ok: true, stored: false,
+      debug_has_token: !!token,
+      debug_token_len: token ? token.length : 0,
+      debug_error: String((e && e.message) || e)
+    });
   }
 };
