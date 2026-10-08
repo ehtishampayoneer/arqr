@@ -23,6 +23,8 @@
    payload is stats-only (no PII beyond business emails we already
    mailed), and a forged hit would only nudge an aggregate counter.
    Revisit if this ever gates money or access.
+   redeploy-note: force fresh production deployment so the newly added
+   BLOB_READ_WRITE_TOKEN env var is injected at runtime.
 ------------------------------------------------------------------- */
 'use strict';
 const { put, head } = require('@vercel/blob');
