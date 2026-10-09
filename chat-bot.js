@@ -28,7 +28,7 @@
       reply: null, action: 'startLead',
       chips: ['Not now'] },
     { keys: ['how does it work', 'how it works', 'how do you', 'process', 'steps', 'explain'],
-      reply: 'Simple. 1: you send us photos of your product. 2: we build an exact true-to-size AR (Augmented Reality) view. 3: your shoppers point their phone at their room and see it life-size before buying. Fewer returns, faster yeses. Want your first one free?',
+      reply: 'Simple. 1: you send us a link to one product. 2: we build an exact true-to-size AR (Augmented Reality) view. 3: your shoppers point their phone at their room and see it life-size before buying. Fewer returns, faster yeses. Want your first one free?',
       chips: ['Yes, free model please', 'How much?'] },
     { keys: ['price', 'pricing', 'cost', 'how much', 'plan', 'subscription', 'monthly', 'fee', 'charge'],
       reply: 'Our starter plan is $249 one-time for your first 10 products, then $29 a month. And your very first product model is free, no card needed. Want us to build it?',
@@ -37,7 +37,7 @@
       reply: 'Your free model is usually ready in a day or two. We email you the moment it is live, with a link you can open on any phone.',
       chips: ['Yes, free model please'] },
     { keys: ['photo', 'picture', 'image', 'what do you need', 'requirements', 'send you'],
-      reply: '1 to 4 clear photos work: front, back, and sides on a plain background. Phone photos are fine. If you have the listed dimensions, send those too and we match them exactly.',
+      reply: 'Easiest is a link to one product on your site, we pull the photos ourselves. Or send 1 to 4 clear photos, front, back, and sides. Phone photos are fine. If you have the listed dimensions, send those too and we match them exactly.',
       chips: ['Yes, free model please'] },
     { keys: ['accurate', 'true to size', 'true-to-size', 'size', 'dimensions', 'measurement', 'scale'],
       reply: 'That is the whole point. We build every model to your exact listed dimensions, so what your shopper sees in their room is the real size, not a guess.',
@@ -180,9 +180,13 @@
 
   function greet() {
     greeted = true;
+    var onCatalogue = /^\/(novara|terra|maison|corso|catalogue)(\/|$)/.test(location.pathname);
     if (converted()) {
       botSay('Hey, welcome back! Questions about ARQR360 or your free model? Ask me anything.',
         ['How does it work?', 'How much?', 'Talk to a human']);
+    } else if (onCatalogue) {
+      botSay('Like what you see? Send me one product link and I will build its AR view free. No commitment, no photo uploads needed.',
+        ['Yes, free model please', 'How does it work?', 'How much?']);
     } else {
       botSay('Hey! Quick question: want us to turn your bestselling product into a true-to-size AR model, free? No card, no commitment.',
         ['Yes, free model please', 'How does it work?', 'How much?']);
@@ -191,7 +195,7 @@
 
   function startLead() {
     flow = 'name';
-    lead = { name: '', email: '', shop: '' };
+    lead = { name: '', email: '', shop: '', productLink: '' };
     photos = [];
     botSay('Love it. Takes about a minute. What should we call you?', []);
   }
@@ -215,8 +219,9 @@
       total += Math.ceil(b64.length * 3 / 4);
       files.push({ name: 'product-photo-' + (i + 1) + '.jpg', data: b64 });
     });
-    if (!files.length) {
-      botSay('Looks like no photos came through. Tap the paperclip and pick at least one photo of your product, or tap "Skip for now" and we will email you for it.', ['Skip for now']);
+    var looksLikeLink = /(https?:\/\/|www\.)\S+\.\S+/.test(lead.productLink || '');
+    if (!files.length && !looksLikeLink) {
+      botSay('Almost done. Just paste a link to one product on your site and we will pull the photos ourselves. Or tap the paperclip to send photos instead.', ['Skip for now']);
       flow = 'photo';
       return;
     }
@@ -233,7 +238,8 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: lead.name, email: lead.email, shop: lead.shop,
-        phone: '', message: 'Signed up via website chat bot (Ari).',
+        phone: '', message: 'Signed up via website chat bot (Ari).' + (lead.productLink ? ' Product link: ' + lead.productLink : ''),
+        productLink: lead.productLink || '',
         files: files
       })
     }).then(function (r) { return r.json().then(function (j) { return { s: r.status, b: j }; }); })
@@ -329,8 +335,8 @@
           setTimeout(function () {
             if (photos.length) { submitTicket(); return; }
             flow = 'photo';
-            botSay('Last step: send 1 to 4 photos of the product (phone photos are fine). Tap the paperclip below.',
-              ['Send photos', 'Skip for now']);
+            botSay('Last step: paste a link to one product on your site and we will pull the photos ourselves. Or tap the paperclip to send photos instead.',
+              ['Skip for now']);
           }, reply ? 1000 : 100);
         } else if (humanM) {
           startHuman('');
@@ -370,7 +376,7 @@
       lead.shop = text.slice(0, 120);
       if (photos.length) { flow = null; submitTicket(); return; }
       flow = 'photo';
-      botSay('Last step: send 1 to 4 photos of the product (phone photos are fine). Tap the paperclip below.',
+      botSay('Last step: paste a link to one product on your site and we will pull the photos ourselves. Or tap the paperclip to send photos instead.',
         ['Skip for now']);
       return;
     }
@@ -403,13 +409,21 @@
     /* structured states keep priority in both modes */
     if (flow === 'photo') {
       if (/^send photos$/i.test(text) && photos.length) { submitTicket(); return; }
+      var linkM = text.match(/(https?:\/\/\S+|www\.\S+)/i);
+      if (linkM) {
+        lead.productLink = linkM[1].replace(/[.,;!?)]+$/, '');
+        flow = null;
+        botSay('Got it. Sending that in now, we will pull the photos from your link ourselves...', []);
+        submitTicket();
+        return;
+      }
       if (/skip/.test(low)) {
         flow = null;
-        botSay('No worries, we will email you for the photos. One moment...', []);
+        botSay('No worries, we will email you for the product link. One moment...', []);
         submitTicketSkip();
         return;
       }
-      botSay('Tap the paperclip below to attach your product photos, then tap "Send photos".', ['Skip for now', 'Send photos']);
+      botSay('Just paste a link to one product on your site, or tap the paperclip to send photos instead.', ['Skip for now', 'Send photos']);
       return;
     }
     if (flow === 'humanEmail') {
@@ -434,7 +448,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: lead.name, email: lead.email, phone: '', website: lead.shop,
-        message: 'Signed up for the free AR model via website chat bot (Ari). No photos attached yet, please email them for product photos. Shop: ' + lead.shop
+        message: 'Signed up for the free AR model via website chat bot (Ari). No product link yet, please email them for one product link. Shop: ' + lead.shop
       })
     }).then(function (r) { return r.json(); }).then(function (j) {
       sendBtn.disabled = false;
@@ -442,7 +456,7 @@
       ssSet('arqr-converted', '1');
       track('arqr_chat_ticket_done');
       if (j && j.ok && j.ticket) ticketCard(j.ticket, lead.email);
-      else addMsg('You are on the list! We will email ' + lead.email + ' for your product photos.', 'bot');
+      else addMsg('You are on the list! We will email ' + lead.email + ' for your product link.', 'bot');
       setTimeout(function () {
         botSay('Anything else you want to know about ARQR360?', ['How does it work?', 'How much?']);
       }, 1200);

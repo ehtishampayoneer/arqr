@@ -2,8 +2,9 @@
    Shows once per visitor (14-day cooldown). Desktop fires on mouse exit
    through the top of the viewport; mobile fires on a restrained signal
    (tab/app switch after real engagement), never an instant popup.
-   The visitor uploads up to 4 product photos plus their details, the
-   ticket endpoint mails us the photos and mails them a ticket number. */
+   The visitor pastes a product link (or uploads up to 4 product photos)
+   plus their details, the ticket endpoint mails us the ticket and mails
+   them a ticket number. */
 (function(){
   'use strict';
 
@@ -78,8 +79,10 @@
         '</div>' +
       '</div>' +
       '<div class="arqr-offer-body" id="arqr-offer-form-wrap">' +
-        '<h3>Upload Product Photos</h3>' +
-        '<p class="arqr-offer-sub">Add clear photos of your bestseller (up to 4 photos)</p>' +
+        '<h3>Your Product</h3>' +
+        '<p class="arqr-offer-sub">Paste a link to one product on your site, we will pull the photos ourselves</p>' +
+        '<div class="arqr-offer-field full"><div class="arqr-offer-in">' + ICON_LINK + '<input id="arqr-t-plink" type="url" autocomplete="url" placeholder="e.g. https://yourstore.com/products/bestseller"></div></div>' +
+        '<p class="arqr-offer-sub" style="margin-top:14px">Or upload photos instead (up to 4)</p>' +
         '<div class="arqr-offer-slots">' + slotsHtml + '</div>' +
         '<h3>Your Details</h3>' +
         '<p class="arqr-offer-sub">Where should we send your free product?</p>' +
@@ -100,7 +103,7 @@
         '<button id="arqr-offer-submit" type="button">' + ICON_SEND + '<span>Send &amp; Get My Free Product</span><span aria-hidden="true">&rarr;</span></button>' +
         '<p class="arqr-offer-fine">One free product per store.</p>' +
         '<div class="arqr-offer-steps">' +
-          '<div class="arqr-offer-step"><div class="arqr-offer-ico">' + ICON_IMG + '</div><div><b>1. Upload</b><span>Add your product photos</span></div></div>' +
+          '<div class="arqr-offer-step"><div class="arqr-offer-ico">' + ICON_LINK + '</div><div><b>1. Send a link</b><span>Paste one product link, or upload photos</span></div></div>' +
           '<div class="arqr-offer-step"><div class="arqr-offer-ico">' + ICON_TICKET + '</div><div><b>2. Get a Ticket</b><span>Receive your ticket number instantly</span></div></div>' +
           '<div class="arqr-offer-step"><div class="arqr-offer-ico">' + ICON_MAIL + '</div><div><b>3. Check Email</b><span>We will confirm and start your free AR product</span></div></div>' +
         '</div>' +
@@ -217,8 +220,10 @@
     if (val('arqr-t-hp')) { hide(); return; }
     var name = val('arqr-t-name');
     var email = val('arqr-t-email');
+    var plink = val('arqr-t-plink');
     var havePhoto = photos.some(function(p){ return !!p; });
-    if (!havePhoto) { showErr('Please add at least one photo of your product.'); return; }
+    var looksLikeLink = /(https?:\/\/|www\.)\S+\.\S+/.test(plink);
+    if (!havePhoto && !looksLikeLink) { showErr('Please paste a product link, or add at least one photo of your product.'); return; }
     if (!name) { showErr('Please tell us your name.'); return; }
     if (!looksLikeEmail(email)) { showErr('Please enter a valid email address.'); return; }
 
@@ -247,7 +252,8 @@
         email: email,
         shop: val('arqr-t-shop'),
         phone: val('arqr-t-phone'),
-        message: val('arqr-t-msg'),
+        message: val('arqr-t-msg') + (looksLikeLink ? '\n\nProduct link: ' + plink : ''),
+        productLink: looksLikeLink ? plink : '',
         files: files
       })
     }).then(function(r){ return r.json().then(function(j){ return { status: r.status, body: j }; }); })
@@ -266,7 +272,7 @@
           '<div class="tick">' + ICON_CHECK + '</div>' +
           '<h3>You are booked in.</h3>' +
           '<div class="ticket">' + esc(res.body.ticket) + '</div>' +
-          '<p>We have your photos. Check <b>' + esc(email) + '</b> for your ticket confirmation, we will start building your free AR product right away.</p>' +
+          '<p>We have ' + (looksLikeLink ? 'your product link' : 'your photos') + '. Check <b>' + esc(email) + '</b> for your ticket confirmation, we will start building your free AR product right away.</p>' +
           '<p style="margin-top:14px"><button id="arqr-offer-submit" type="button" style="max-width:280px;margin:0 auto"><span>Done</span></button></p>' +
         '</div>';
       wrap.querySelector('#arqr-offer-submit').addEventListener('click', function(){ hide('arqr_offer_ticket_done'); });

@@ -98,6 +98,7 @@ module.exports = async (req, res) => {
   const shop = clean(body.shop, 200);
   const phone = clean(body.phone, 60);
   const message = String(body.message == null ? '' : body.message).trim().slice(0, 4000);
+  const productLink = clean(body.productLink, 500);
 
   if (!name || !looksLikeEmail(email)) {
     return res.status(400).json({ ok: false, error: 'Name and a valid email are needed.' });
@@ -127,8 +128,8 @@ module.exports = async (req, res) => {
       });
     }
   }
-  if (!attachments.length) {
-    return res.status(400).json({ ok: false, error: 'Please add at least one photo of your product.' });
+  if (!attachments.length && !productLink) {
+    return res.status(400).json({ ok: false, error: 'Please add at least one photo of your product, or paste a product link.' });
   }
 
   const ticket = makeTicket();
@@ -137,10 +138,12 @@ module.exports = async (req, res) => {
   const internalText =
     'New free-sample ticket: ' + ticket + '\n\n' +
     [['Name', name], ['Email', email], ['Shop / website', shop || '(not given)'],
-     ['Phone', phone || '(not given)']].map(([k, v]) => k + ': ' + v).join('\n') +
+     ['Phone', phone || '(not given)'],
+     ['Product link', productLink || '(not given)']].map(([k, v]) => k + ': ' + v).join('\n') +
     (message ? '\n\nMessage:\n' + message : '') +
-    '\n\nAttached (' + attachments.length + '): ' +
-    attachments.map((a) => a.filename).join(', ') +
+    (attachments.length
+      ? '\n\nAttached (' + attachments.length + '): ' + attachments.map((a) => a.filename).join(', ')
+      : '\n\nNo photos attached — pull product photos from the product link above.') +
     '\n\n---\nFree-sample ticket from arqr360.com';
 
   /* 2. them: instant confirmation carrying the ticket number */
@@ -148,10 +151,10 @@ module.exports = async (req, res) => {
     preheader: 'Ticket ' + ticket + ' is booked. Your free AR product is on its way.',
     greeting: 'Hi ' + name.split(' ')[0] + ',',
     blocks: [
-      { p: 'Your photos are with us. Your free AR sample is booked under ticket ' + ticket + '.' },
+      { p: (productLink ? 'Your product link is with us' : 'Your photos are with us') + '. Your free AR sample is booked under ticket ' + ticket + '.' },
       { rows: [
         ['Ticket', ticket],
-        ['Photos received', String(attachments.length)],
+        [productLink ? 'Product link' : 'Photos received', productLink || String(attachments.length)],
         ['Shop', shop || '(not given)']
       ]},
       { p: 'What happens next: we build your bestselling product as a true-to-size AR (Augmented Reality) view, then we email you a link to try it on your own phone. No cost, no commitment.' },
