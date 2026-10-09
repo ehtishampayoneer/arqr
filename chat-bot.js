@@ -106,7 +106,8 @@
   var fileInput = panel.querySelector('#arqr-chat-file');
   var closeBtn = panel.querySelector('.arqr-chat-close');
 
-  var opened = false, greeted = false;
+  var opened = false, greeted = false, greetedCat = false;
+  function onCatalogue() { return /^\/(novara|terra|maison|corso|catalogue)(\/|$)/.test(location.pathname); }
   var flow = null;              // null | 'name' | 'email' | 'shop' | 'photo' | 'humanEmail'
   var lead = { name: '', email: '', shop: '' };
   var aiMode = true;            // use /api/chat until it fails, then legacy rules
@@ -178,15 +179,17 @@
 
   function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s); }
 
+  function greetCatalogue() {
+    greetedCat = true;
+    botSay('Like what you see? Send me one product link and I will build its AR view free. No commitment, no photo uploads needed.',
+      ['Yes, free model please', 'How does it work?', 'How much?']);
+  }
+
   function greet() {
     greeted = true;
-    var onCatalogue = /^\/(novara|terra|maison|corso|catalogue)(\/|$)/.test(location.pathname);
     if (converted()) {
       botSay('Hey, welcome back! Questions about ARQR360 or your free model? Ask me anything.',
         ['How does it work?', 'How much?', 'Talk to a human']);
-    } else if (onCatalogue) {
-      botSay('Like what you see? Send me one product link and I will build its AR view free. No commitment, no photo uploads needed.',
-        ['Yes, free model please', 'How does it work?', 'How much?']);
     } else {
       botSay('Hey! Quick question: want us to build an AR view of your bestselling product, free? Just send one product link, no photo uploads needed.',
         ['Yes, free model please', 'How does it work?', 'How much?']);
@@ -511,7 +514,7 @@
     opened = true;
     launcher.querySelector('.arqr-chat-badge').style.display = 'none';
     track('arqr_chat_open');
-    if (!greeted) greet();
+    if (onCatalogue() && !greetedCat) greetCatalogue(); else if (!greeted) greet();
     setTimeout(function () { input.focus(); }, 350);
   }
   function closePanel() {
@@ -525,10 +528,11 @@
   closeBtn.addEventListener('click', closePanel);
 
   /* ---------- trigger: scroll 35% or 25s, once per session ---------- */
+  var seenKey = onCatalogue() ? 'arqr-chat-seen-cat' : 'arqr-chat-seen';
   function showLauncher() {
     if (launcher.classList.contains('arqr-show')) return;
     launcher.classList.add('arqr-show');
-    ssSet('arqr-chat-seen', '1');
+    ssSet(seenKey, '1');
     setTimeout(function () {
       if (!opened) {
         launcher.classList.add('arqr-attention');
@@ -536,7 +540,7 @@
       }
     }, 1200);
   }
-  if (!ssGet('arqr-chat-seen')) {
+  if (!ssGet(seenKey)) {
     var scrolled = false;
     window.addEventListener('scroll', function () {
       if (scrolled) return;
