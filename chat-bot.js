@@ -188,7 +188,7 @@
       botSay('Like what you see? Send me one product link and I will build its AR view free. No commitment, no photo uploads needed.',
         ['Yes, free model please', 'How does it work?', 'How much?']);
     } else {
-      botSay('Hey! Quick question: want us to turn your bestselling product into a true-to-size AR model, free? No card, no commitment.',
+      botSay('Hey! Quick question: want us to build an AR view of your bestselling product, free? Just send one product link, no photo uploads needed.',
         ['Yes, free model please', 'How does it work?', 'How much?']);
     }
   }
