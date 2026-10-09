@@ -16,7 +16,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _BODY = {}
 _DESC = {}
 _EXTRA = []
-for _part in ("overrides_p1", "overrides_p2"):
+for _part in ("overrides_p1", "overrides_p2", "overrides_p3"):
     _spec_path = os.path.join(_HERE, _part + ".py")
     with open(_spec_path) as _f:
         _ns = {}
