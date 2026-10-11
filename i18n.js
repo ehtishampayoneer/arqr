@@ -362,7 +362,7 @@
     var wrap = document.querySelector('footer.site-foot .foot-wrap');
     if (!wrap || document.getElementById('tinyshelf-badge')) return;
     var st = document.createElement('style');
-    st.textContent = '.foot-badge{margin-top:16px;text-align:center}.foot-badge img{width:150px;height:auto;opacity:.9}';
+    st.textContent = '.foot-badge{margin-top:16px;text-align:center}.foot-badge img{width:150px;height:auto;opacity:.9}#tinyshelf-badge,#launchigniter-badge{display:inline-block;margin:0 10px;vertical-align:middle}';
     document.head.appendChild(st);
     var div = document.createElement('div');
     div.id = 'tinyshelf-badge';
