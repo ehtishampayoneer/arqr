@@ -376,3 +376,21 @@
     addBadge();
   }
 })();
+
+/* LaunchIgniter "Featured on" badge: required for the free launch listing verification. Added to the site footer for every visitor, unconditionally. */
+(function () {
+  function addBadge() {
+    var wrap = document.querySelector('footer.site-foot .foot-wrap');
+    if (!wrap || document.getElementById('launchigniter-badge')) return;
+    var div = document.createElement('div');
+    div.id = 'launchigniter-badge';
+    div.className = 'foot-badge';
+    div.innerHTML = '<a href="https://launchigniter.com/product/arqr360?ref=badge-arqr360" title="Featured on LaunchIgniter"><img src="https://launchigniter.com/api/badge/arqr360?theme=neutral" alt="Featured on LaunchIgniter" width="212" height="55"/></a>';
+    wrap.appendChild(div);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addBadge);
+  } else {
+    addBadge();
+  }
+})();
