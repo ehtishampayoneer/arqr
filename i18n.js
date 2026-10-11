@@ -362,7 +362,7 @@
     var wrap = document.querySelector('footer.site-foot .foot-wrap');
     if (!wrap || document.getElementById('tinyshelf-badge')) return;
     var st = document.createElement('style');
-    st.textContent = '.foot-badge{margin-top:16px;text-align:center}.foot-badge img{width:150px;height:auto;opacity:.9}#tinyshelf-badge,#launchigniter-badge{display:inline-block;margin:0 10px;vertical-align:middle}';
+    st.textContent = '.foot-badge{margin-top:16px;text-align:center}.foot-badge img{width:150px;height:auto;opacity:.9}#tinyshelf-badge,#launchigniter-badge,#sb-badge{display:inline-block;margin:0 10px;vertical-align:middle}';
     document.head.appendChild(st);
     var div = document.createElement('div');
     div.id = 'tinyshelf-badge';
@@ -386,6 +386,24 @@
     div.id = 'launchigniter-badge';
     div.className = 'foot-badge';
     div.innerHTML = '<a href="https://launchigniter.com/product/arqr360?ref=badge-arqr360" title="Featured on LaunchIgniter"><img src="https://launchigniter.com/api/badge/arqr360?theme=neutral" alt="Featured on LaunchIgniter" width="212" height="55"/></a>';
+    wrap.appendChild(div);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addBadge);
+  } else {
+    addBadge();
+  }
+})();
+
+/* Startup Benchmarks badge: required for the free listing verification. Added to the site footer for every visitor, unconditionally. */
+(function () {
+  function addBadge() {
+    var wrap = document.querySelector('footer.site-foot .foot-wrap');
+    if (!wrap || document.getElementById('sb-badge')) return;
+    var div = document.createElement('div');
+    div.id = 'sb-badge';
+    div.className = 'foot-badge';
+    div.innerHTML = '<a href="https://startupbenchmarks.com/product/arqr360" target="_blank" rel="noopener noreferrer" title="Startup Benchmarks"><img src="https://startupbenchmarks.com/assets/images/badge.png" alt="Startup Benchmarks" height="54"/></a>';
     wrap.appendChild(div);
   }
   if (document.readyState === 'loading') {
