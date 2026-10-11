@@ -355,3 +355,24 @@
     }
   };
 })();
+
+/* TinyShelf "Featured on" badge: added to the site footer for every visitor, unconditionally. */
+(function () {
+  function addBadge() {
+    var wrap = document.querySelector('footer.site-foot .foot-wrap');
+    if (!wrap || document.getElementById('tinyshelf-badge')) return;
+    var st = document.createElement('style');
+    st.textContent = '.foot-badge{margin-top:16px;text-align:center}.foot-badge img{width:150px;height:auto;opacity:.9}';
+    document.head.appendChild(st);
+    var div = document.createElement('div');
+    div.id = 'tinyshelf-badge';
+    div.className = 'foot-badge';
+    div.innerHTML = '<a href="https://www.tinyshelf.co/?ref=arqr360.com" title="Featured on TinyShelf"><img src="https://www.tinyshelf.co/badge/tinyshelf-badge-light-amber-1cdea1ce.svg" alt="Featured on TinyShelf" width="216" height="64"/></a>';
+    wrap.appendChild(div);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addBadge);
+  } else {
+    addBadge();
+  }
+})();
