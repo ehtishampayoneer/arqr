@@ -838,7 +838,9 @@ function launch(it){
   if (isAndroid && it.glb){
     var abs = new URL(it.glb, location.href).href;
     location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs) +
-      '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(it.n) +
+      // a wall piece goes on the wall: Scene Viewer places on the floor unless asked
+      '&mode=ar_preferred&resizable=false' + (it.wall ? '&enable_vertical_placement=true' : '') +
+      '&title=' + encodeURIComponent(it.n) +
       '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
       'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
     arqrTrack('arqr_ar_launch');
