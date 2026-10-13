@@ -1,6 +1,9 @@
 """Positioning-rule overrides for blog posts, part 3.
 Applied by blog/apply_overrides.py at build time (see that file).
 Do not edit bodies in blog/build.py directly; edit here and rebuild.
+
+USED TOPICS (do not repeat):
+# 2026-10-13 decor non-comparison: How UAE home decor stores cut returns with AR (no app needed)
 """
 
 BODY_OVERRIDES = {}
