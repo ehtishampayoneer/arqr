@@ -122,6 +122,8 @@ var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' &&
 var isAndroid = /Android/.test(ua);
 var NAME = "Crocodile Floral Wall Clock";
 var BASE = 'https://arqr360.com/sample/renmy-croc-clock/';
+// ?look=shadow: the test version with a soft built-in wall shadow, to compare on a real wall
+var FILE = /[?&]look=shadow/.test(location.search) ? 'croc-clock-shadow' : 'croc-clock';
 
 /* The same hand-off as every ARQR360 catalogue, size locked so the clock can't
    be pinched bigger or smaller. A browser only opens AR from a tap, so this
@@ -145,11 +147,11 @@ function launch(){
       }, false);
       document.body.appendChild(a);
     }
-    a.href = BASE + 'croc-clock.usdz#allowsContentScaling=0&custom=' +
+    a.href = BASE + FILE + '.usdz#allowsContentScaling=0&custom=' +
       encodeURIComponent(BASE + 'banner') + '&customHeight=small';
     a.click();
   } else if (isAndroid) {
-    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + 'croc-clock.glb') +
+    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + FILE + '.glb') +
       '&mode=ar_preferred&resizable=false&enable_vertical_placement=true&title=' + encodeURIComponent(NAME + ' · Powered by ARQR360') +
       '&link=' + encodeURIComponent('https://arqr360.com/?utm_source=sample&utm_medium=scene-viewer') +
       '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
@@ -170,7 +172,7 @@ if (!isIOS && !isAndroid) document.documentElement.classList.add('is-desk');
 document.getElementById('guideGo').addEventListener('click', launch);
 // Safari ignores <link rel=prefetch>: fetch the iPhone file while the guide is
 // read, so the tap opens AR from the browser's cache instead of the network.
-if (isIOS) { try { fetch(BASE + 'croc-clock.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} }
+if (isIOS) { try { fetch(BASE + FILE + '.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} }
 </script>
 </body>
 </html>
