@@ -51,6 +51,7 @@
 
 
 # 2026-10-13 rugs non-comparison: how to photograph rugs for true-to-size AR
+# 2026-10-13 furniture comparison: vs Nextech3D
 import html, json, os
 
 
