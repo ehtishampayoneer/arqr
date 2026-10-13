@@ -52,6 +52,7 @@
 
 # 2026-10-13 rugs non-comparison: how to photograph rugs for true-to-size AR
 # 2026-10-13 furniture comparison: vs Nextech3D
+# 2026-10-13 decor non-comparison: UAE home decor stores cut returns with AR
 import html, json, os
 
 
