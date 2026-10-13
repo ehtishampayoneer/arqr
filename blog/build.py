@@ -23,7 +23,37 @@
 # 2026-10-05 footwear non-comparison: AR cost pricing breakdown for footwear stores
 # 2026-10-05 rugs non-comparison: how rug stores cut size returns with AR
 # 2026-10-05 furniture comparison: vs Cylindo # 2026-10-06 decor comparison: vs Emersya # 2026-10-06 footwear non-comparison: best AR tools for footwear stores # 2026-10-06 furniture comparison: vs Intiaro
+# 2026-10-06 furniture non-comparison: virtual showroom with AR
+# 2026-10-07 rugs comparison: vs Roomvo
+# 2026-10-07 decor non-comparison: home decor stores cut returns with AR
+# 2026-10-07 decor non-comparison: AR cost small decor store pricing
+# 2026-10-07 footwear comparison: vs 8th Wall
+# 2026-10-08 furniture comparison: vs Hexa
+# 2026-10-08 rugs non-comparison: best AR tools for rug stores
+# 2026-10-08 decor non-comparison: wall art stores cut size returns
+# 2026-10-08 footwear comparison: vs WANNA
+# 2026-10-09 footwear non-comparison: UK shoe stores cut size returns
+# 2026-10-09 rugs comparison: vs Sayduck (rug)
+# 2026-10-09 furniture non-comparison: Australian furniture stores cut returns
+# 2026-10-09 footwear comparison: vs Snapchat AR
+# 2026-10-10 rugs non-comparison: Canadian rug stores cut size returns
+# 2026-10-10 decor comparison: vs Matterport
+# 2026-10-10 furniture non-comparison: UAE furniture stores cut returns
+# 2026-10-10 footwear comparison: vs Cappasity
+# 2026-10-11 decor non-comparison: payback maths small decor store
+# 2026-10-11 furniture comparison: vs Sayduck (furniture)
+# 2026-10-11 footwear comparison: vs Threekit (footwear)
+# 2026-10-11 rugs comparison: vs Threekit (rug)
+# 2026-10-12 footwear non-comparison: NZ shoe stores cut size returns
+# 2026-10-12 decor comparison: vs Obsess
+# 2026-10-12 furniture non-comparison: best AR tools for furniture stores
+# 2026-10-12 footwear comparison: vs WANNA
+
+
+# 2026-10-13 rugs non-comparison: how to photograph rugs for true-to-size AR
 import html, json, os
+
+
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
