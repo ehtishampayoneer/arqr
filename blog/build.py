@@ -56,6 +56,7 @@
 # 2026-10-14 footwear comparison: vs WEARFITS
 # 2026-10-14 furniture non-comparison: UK furniture stores cut returns with AR
 # 2026-10-14 rugs comparison: vs Zakeke
+# 2026-10-14 decor non-comparison: US home decor stores cut returns with AR
 import html, json, os
 
 
@@ -1297,4 +1298,41 @@ if __name__ == "__main__":
 <h3>Do my customers need to download an app?</h3>
 <p>Not with ARQR360. Each rug gets a link and a QR code that opens the view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone. Zakeke's AR viewer also runs through a link or QR code with no extra app, per their docs, so check which surfaces your integration route covers before you sign.</p>
 </div>"""}
+,
+{
+"slug": "how-us-decor-stores-cut-returns-with-ar",
+"title": "How US Home Decor Stores Cut Returns with AR",
+"date": "October 14, 2026",
+"description": "Decor returns are mostly size guesses: the lamp that looked right online but not on the table. How US home decor stores use true-to-size AR to cut returns, written for independent retailers.",
+"body": """<figure class="postimg"><img src="/blog/how-us-decor-stores-cut-returns-with-ar/images/hero.jpg" alt="Shopper holding a smartphone showing a ceramic table lamp in true-to-size AR in a warm living room" loading="lazy"><figcaption>The whole idea: the lamp at true size, in the shopper's own room, before they buy.</figcaption></figure>
+<p>Picture a home decor store owner in Denver. She sells table lamps, mirrors, vases, and wall art from one shop and a Shopify store. Her website traffic is fine. Her problem is the return pile. A customer buys a lamp that looked perfect online, sets it on their side table, decides it looks too big, and ships it back. She pays the return shipping. She loses the sale. Sometimes the piece comes back scratched.</p>
+<p>This is the most expensive line nobody talks about. Decor is sold on looks, and looks change from room to room. A product photo cannot show what the lamp does to your living room light at 8pm. A true-to-size AR view can.</p>
+<h2>Why decor returns happen</h2>
+<p>Most decor returns are not about quality. They are about wrong guesses. The customer guesses, and the room says no.</p>
+<p><strong>The scale illusion.</strong> A lamp shot against a white studio background looks modest. On your side table it dominates. The photo has no frame of reference. The customer's table does.</p>
+<p><strong>The proportion problem.</strong> A 24-inch mirror looks right in the photo. Against their 60-inch wall it looks lost. A piece of wall art sized for a sofa hangs over a chair and feels wrong. Customers cannot measure proportion from a product photo, so they guess.</p>
+<p><strong>The light shift.</strong> Brass looks warm and soft under the store lights. Under their kitchen bulbs it looks yellow and harsh. The product never changed. The light did.</p>
+<p>Each wrong guess costs real money: return shipping both ways, inspection time, and a piece that may never sell as new again.</p>
+<h2>What the shopper is really asking</h2>
+<p>Every decor product page gets the same unspoken question: will this fit my room? Text answers do not satisfy it. A dimensions table says the lamp is 18 inches tall. That tells the customer nothing about how 18 inches looks next to their armchair.</p>
+<p>AR answers the actual question. The customer points their phone at their side table and the lamp appears at its true size, in their light. They see it against their own furniture before they pay.</p>
+<figure class="postimg"><img src="/blog/how-us-decor-stores-cut-returns-with-ar/images/img1.jpg" alt="Shopper pointing a smartphone at a bare bedroom wall with a round mirror shown in true-to-size AR on the wall" loading="lazy"><figcaption>The customer points their phone at the wall and checks the true size in seconds.</figcaption></figure>
+<h2>How a store puts AR on its product pages</h2>
+<p>There are two practical routes.</p>
+<p>Route one is a Shopify AR viewer app. The apps add a 3D viewer to your product pages for a small monthly fee. They are viewers only. You supply every 3D model yourself, usually commissioned from 3D artists at roughly $100 to $500 per product. We worked the same maths in our <a href="/blog/ar-cost-small-decor-store-pricing">pricing breakdown for decor stores</a>. The software is cheap. The models are the project.</p>
+<p>Route two is done for you. You send photos of your bestselling pieces and their real listed dimensions. We produce the true-to-size AR (Augmented Reality) views from your photos and host them. No 3D team. No files to manage. ARQR360 works this way: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all the AR views included. About seven days from photos to a live catalogue.</p>
+<h2>Where to put the AR links</h2>
+<p>An AR view nobody opens does nothing. Put it where the buying decision happens.</p>
+<ul><li><strong>Next to the price.</strong> On every product page, a "see it in your room" link beside the add-to-cart button. That is where doubt lives.</li>
+<li><strong>On shelf tags in the shop.</strong> A QR code on the tag opens the same piece in AR. Browsing customers check it at home and come back decided.</li>
+<li><strong>In your emails and social posts.</strong> A lamp post with an AR link turns a like into a room check. That is the step before the sale.</li></ul>
+<figure class="postimg"><img src="/blog/how-us-decor-stores-cut-returns-with-ar/images/img2.jpg" alt="Real ceramic vase on a side table next to a phone showing the same vase in AR at identical true size" loading="lazy"><figcaption>AR against the real piece, same size, side by side.</figcaption></figure>
+<h2>What the first months look like</h2>
+<p>Picture the same Denver store, three months in. The "too big" returns slow down first, because those were pure size guesses and AR kills size guesses. Support emails asking "will it fit my wall" drop. Shoppers who open the AR view buy with the thing already seen in their room, so they come back less.</p>
+<p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. The mechanism is simple. Shoppers who can see the true size hesitate less, and confident shoppers return less.</p>
+<p>For the full menu of options, read <a href="/blog/best-ar-options-home-decor-stores">the best AR options for home decor stores</a>. For the money side, we worked the return maths in <a href="/blog/the-payback-maths-ar-small-decor-store">the payback maths for a small decor store</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling lamp or mirror and we will build you one true-to-size AR view free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/maison">live decor demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>Do my customers need an app?</h3><p>Not with ARQR360. Each product gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/maison">live decor demo</a> on your own phone.</p><h3>How long before my decor pieces are live in AR?</h3><p>About seven days from your photos arriving. On the do-it-yourself route it depends on model turnaround plus your own integration work. Ask for a written timeline before you commit.</p><h3>What does AR cost a small decor store?</h3><p>It depends on who produces the AR views, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. The first test piece is free.</p></div>""",
+},
 ]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
