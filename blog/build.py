@@ -55,6 +55,7 @@
 # 2026-10-13 decor non-comparison: UAE home decor stores cut returns with AR
 # 2026-10-14 footwear comparison: vs WEARFITS
 # 2026-10-14 furniture non-comparison: UK furniture stores cut returns with AR
+# 2026-10-14 rugs comparison: vs Zakeke
 import html, json, os
 
 
@@ -1265,5 +1266,35 @@ if __name__ == "__main__":
 <p>With ARQR360, about seven days from your photos arriving. On the do-it-yourself route it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p>
 <h3>What does it cost a small UK store?</h3>
 <p>It depends on who produces the 3D models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all view creation included. The first test view is free.</p>
+</div>"""},
+{"slug": "arqr360-vs-zakeke-rug-stores","title": "ARQR360 vs Zakeke: What a Rug Store Actually Gets from Each","date": "October 14, 2026","description": "Comparing Zakeke and ARQR360 for your rug store? An honest look at price, setup effort, true-to-size accuracy, and who handles the 3D assets, written for independent rug retailers.","body": """<figure class="postimg"><img src="/blog/arqr360-vs-zakeke-rug-stores/images/hero.jpg" alt="Shopper holding a smartphone showing a Persian-style rug at true size on a bare wooden living room floor" loading="lazy"><figcaption>The whole point: the rug at its true size, on the shopper's own floor, before they buy.</figcaption></figure>
+<p>Picture a rug store owner in Austin. She sells handmade wool rugs online and from one small showroom. A single 8x10 can cost the buyer two thousand dollars, and returns eat her margin alive. Shoppers ask the same question every time: will it fit my room. So she starts looking at AR. One name keeps coming up: Zakeke. Then a retailer friend mentions ARQR360. Two options, two websites, no clear answer on which one fits a store like hers.</p>
+<p>This is the honest version.</p>
+<h2>What Zakeke is</h2>
+<p>Zakeke is a visual commerce platform from Italy, founded in 2017. It gives online stores a 3D configurator, an AR viewer, virtual try-on, and a 3D digital asset manager, all in one cloud product. It plugs into Shopify, WooCommerce, BigCommerce, Magento, Etsy, and others. Customers can spin products around, change options, and view items in their own space through a link or QR code. It is a real, established product with over 10,000 customers across hundreds of sectors.</p>
+<figure class="postimg"><img src="/blog/arqr360-vs-zakeke-rug-stores/images/img1.jpg" alt="Rug shop owner at a desk with a laptop showing a rug in 3D preview, surrounded by product photos and a tape measure" loading="lazy"><figcaption>The platform route: your store brings the 3D files, runs the integration, and manages the catalogue.</figcaption></figure>
+<p>It is a platform, which means your store runs it. You sign up, connect it to your store, and upload your own 3D model for every product. Their own setup guides walk you through uploading one 3D model per product. If you do not have 3D files, you hire a 3D artist or a generation service. Some merchants run it well. But if you are a small rug shop with no 3D person on staff, that is your first project, not a detail.</p>
+<p>Pricing is a monthly subscription with tiered plans. Software review sites list plans in the tens of dollars per month, with a small transaction fee on customized orders. Get the current price list from their site before you commit, because tiers and limits change.</p>
+<h2>What ARQR360 is</h2>
+<p>ARQR360 is a done-for-you AR (Augmented Reality) catalogue for independent rug stores. You send photos of your bestselling rugs and their real listed dimensions. We turn them into true-to-size AR (Augmented Reality) views, host them, and hand you links and QR codes. No app, no integration, no changes to your website. Your buyer scans the code and sees the rug in their own room, real size.</p>
+<figure class="postimg"><img src="/blog/arqr360-vs-zakeke-rug-stores/images/img2.jpg" alt="Woman holding a smartphone horizontally, its screen showing the same living room with a true-to-size area rug on the floor" loading="lazy"><figcaption>A shopper points her phone at the floor and sees the rug at its real size.</figcaption></figure>
+<h2>The four things that actually matter</h2>
+<p><strong>Price.</strong> Zakeke charges a monthly subscription, tiered by plan, plus a small fee on customized orders. You also pay whatever it costs to get 3D models made for your catalogue, whether that is a freelancer or an in-house hire. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all view creation included. The first test view is free.</p>
+<p><strong>Setup effort.</strong> With Zakeke, your store does the integration, the product setup, and the ongoing catalogue management. It is straightforward software, but it is a project. With ARQR360 there is no project. You send photos, we build the views, you paste the QR codes on your product pages. A store can go live with its bestsellers in days.</p>
+<p><strong>True-to-size accuracy.</strong> Zakeke's AR viewer shows your 3D model at scale in the customer's room. The accuracy is only as good as the model you uploaded. Get the dimensions wrong in the file and the rug renders wrong. With ARQR360, true-to-size is the whole product: every view is calibrated to your rug's real listed size before it goes live.</p>
+<p><strong>Who does the modelling.</strong> With Zakeke, you do. You bring the 3D files or pay someone to make them. With ARQR360, we do. You bring photos and measurements. Claim your free AR product and check our work against the real rug before you spend anything.</p>
+<h2>Which store should pick which</h2>
+<p>If you sell customizable products and you already have 3D assets or a designer on retainer, Zakeke is a serious platform and worth a demo. If you are a rug store with no 3D person and no interest in becoming a software project manager, the done-for-you route gets you true-to-size AR in your customers' rooms this month instead of next quarter.</p>
+<p>One number that applies whichever route you take. Shopify reports that products with 3D or AR views convert about 94% better than products without. That is Shopify's own data, not ours. For the wider view of every rug option, read <a href="/blog/how-rug-stores-cut-size-returns-with-ar">how rug stores cut size-related returns with true-to-size AR</a>.</p>
+<h2>The cheapest way to check if AR works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling rug and claim your free AR product. Point it at your own floor, check it against the real rug, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/terra">live rug demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>How much does Zakeke cost?</h3>
+<p>Zakeke sells monthly subscription plans with tiers, plus a small transaction fee on customized orders. Third-party software listings put plans in the tens of dollars per month, but confirm the current list on their site. ARQR360 publishes its full price: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with view creation included.</p>
+<h3>Who handles the 3D assets?</h3>
+<p>With Zakeke, your store does. You upload one 3D model per product, made in-house or by a hired artist, and you manage the catalogue. With ARQR360 there is nothing to manage. We produce the true-to-size AR (Augmented Reality) views from your photos and host them. Claim your free AR product and see the result before you decide.</p>
+<h3>Do my customers need to download an app?</h3>
+<p>Not with ARQR360. Each rug gets a link and a QR code that opens the view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone. Zakeke's AR viewer also runs through a link or QR code with no extra app, per their docs, so check which surfaces your integration route covers before you sign.</p>
 </div>"""}
 ]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
