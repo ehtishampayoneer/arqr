@@ -54,6 +54,7 @@
 # 2026-10-13 furniture comparison: vs Nextech3D
 # 2026-10-13 decor non-comparison: UAE home decor stores cut returns with AR
 # 2026-10-14 footwear comparison: vs WEARFITS
+# 2026-10-14 furniture non-comparison: UK furniture stores cut returns with AR
 import html, json, os
 
 
@@ -1222,4 +1223,47 @@ if __name__ == "__main__":
 <p>With WEARFITS, the platform includes AI-assisted 3D generation from your 2D imagery, and you run the integration and the catalogue. With ARQR360, there is nothing for you to run: we produce the true-to-size AR (Augmented Reality) views from your photos and host them. Your first one is free.</p>
 <h3>Do my customers need to download an app?</h3>
 <p>Not with ARQR360. Each shoe gets a link and a QR code that opens the view in the phone browser. Try the <a href="/corso">live footwear demo</a> on your own phone. Ask WEARFITS which surfaces its try-on runs on for your integration route before you sign.</p>
-</div>"""}]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
+</div>"""},
+{
+"slug": "how-uk-furniture-stores-cut-returns-with-ar",
+"title": "How UK Furniture Stores Cut Costly Returns with True-to-Size AR",
+"date": "October 14, 2026",
+"description": "UK furniture comes back for one reason above all: wrong size. Here is how true-to-size AR (Augmented Reality) views cut those returns, what it costs a small store, and how to roll it out.",
+"body": """<figure class="postimg"><img src="/blog/how-uk-furniture-stores-cut-returns-with-ar/images/hero.jpg" alt="Smartphone showing a true-to-size AR sofa overlay in a warm UK living room" loading="lazy"><figcaption>The whole idea: the sofa at true size, in the customer's own room, before they buy.</figcaption></figure>
+<p>Picture a furniture store owner in Manchester. She sells solid oak beds, velvet armchairs, and extendable dining tables from one showroom and a website that ships across the UK. Her best month on record also set a record she never wanted. The highest returns pile of the year. Bed frames that would not fit up the stairs. Sofas that swallowed small sitting rooms. Almost every return had the same note. Wrong size.</p>
+<p>Size is the top reason UK furniture comes back. Not quality. Not style. A customer who loved the photo and misjudged the piece against their own room. And every return on a bed or a sofa is expensive. Two way freight, staff time to inspect and rewrap, and a scratched frame that only sells at clearance.</p>
+<p>This is the exact problem true-to-size AR (Augmented Reality) answers. The customer taps a link on your product page, points their phone at their own room, and the piece appears at its real dimensions. They see the bed frame against their wall before they pay. They check the dining table against their window before it ships. The guesswork that drives the return disappears before the order exists.</p>
+<h2>Why furniture returns are mostly a size problem</h2>
+<p>A product photo cannot tell you how big something is. A 190cm bed and a 150cm bed look identical on a white background. The tape measure icon on the product page means nothing when the customer has no reference point in their own room. Picture a couple in Leeds buying their first oak bed. They measured the bedroom. They read the dimensions twice. What they never saw was the bed inside that room, next to their wardrobe, with the door swinging open. It fits on paper. It does not fit in life.</p>
+<p>Stairs and doorways are the silent killers. The piece fits the room but never makes it there. A quick AR check at the doorframe would have caught it in ten seconds.</p>
+<h2>What the AR view does, step by step</h2>
+<p>It sits right where the buying decision happens. Next to the price on the product page, a link or a QR code. The customer taps it, scans the floor with their phone, and the piece drops into the room at true size. They walk around it. They check the gap between the armchair and the door. They show the sofa to a partner standing in the same room, looking at the same screen.</p>
+<p>No app to download. The view opens in the phone browser, so customers actually use it. The people who would never install an app to look at a sofa are the whole point.</p>
+<figure class="postimg"><img src="/blog/how-uk-furniture-stores-cut-returns-with-ar/images/img1.jpg" alt="Shopper pointing a smartphone at their living room with a true-to-size AR bookshelf overlay" loading="lazy"><figcaption>The customer points their phone at their room and checks the true size in seconds.</figcaption></figure>
+<h2>The maths that matters</h2>
+<p>Do this as a thought experiment with your own numbers. Take your average freight cost for one sofa return. Add the staff time to inspect and rewrap it, and the markdown when it sells as clearance. That is one return. Now imagine the AR view stops even one in five size returns. For most UK stores, that avoided pile pays for a year of the service many times over. This is not a traffic trick. It is money that stops walking out the door.</p>
+<p>There is a conversion angle too. Shopify reports that products with 3D or AR views convert about 94% better than products without. That is Shopify's own data, not ours. Returns down and orders up are the same mechanism. The shopper who can see the true size hesitates less and returns less.</p>
+<h2>What it costs a small UK store to start</h2>
+<p>There are two routes. Route one is a Shopify AR viewer app. The apps cost a small monthly fee, often under $40, and they add a viewer to your product pages. But they are viewers only. You supply every 3D model yourself, usually commissioned from 3D artists at roughly $100 to $500 per piece. We worked the same maths in our <a href="/blog/ar-cost-small-furniture-store-pricing">pricing breakdown for furniture stores</a>. The software is cheap. The models are the project.</p>
+<p>Route two is done for you. You send photos of your bestselling pieces and their real listed dimensions. Someone produces the true-to-size AR (Augmented Reality) views, hosts them, and hands you links and QR codes. ARQR360 works this way. The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all view creation included. About seven days from photos to a live catalogue.</p>
+<h2>Roll it out without a project</h2>
+<ul>
+<li><strong>Bestsellers first:</strong> you do not need the whole catalogue on day one. Twenty proven pieces cover most of your revenue and most of your returns.</li>
+<li><strong>Put the link next to the price:</strong> an AR view buried in a menu nobody opens does nothing. It belongs where the customer decides.</li>
+<li><strong>QR codes on floor tags:</strong> a tag on the showroom model that opens the same piece in AR lets browsing customers check it in their own home and come back decided.</li>
+<li><strong>Start with the returns list:</strong> your own records already tell you which pieces come back most. Put those live first.</li>
+</ul>
+<figure class="postimg"><img src="/blog/how-uk-furniture-stores-cut-returns-with-ar/images/img2.jpg" alt="Real oak dining table next to a phone showing the same table in AR at identical true size" loading="lazy"><figcaption>AR against the real piece, same size, side by side.</figcaption></figure>
+<p>For the same story from across the Atlantic, read <a href="/blog/how-us-furniture-stores-cut-returns-with-ar">how US furniture stores cut returns with AR</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of the piece that comes back most often and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/novara">live furniture demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq">
+<h2>FAQ</h2>
+<h3>Do my customers need an app to see the AR view?</h3>
+<p>No. With ARQR360 each piece gets a link and a QR code that opens the AR (Augmented Reality) view in the phone browser. Try the <a href="/novara">live furniture demo</a> on your own phone. Some platforms need their app installed, so ask before you sign.</p>
+<h3>How long before my products are live?</h3>
+<p>With ARQR360, about seven days from your photos arriving. On the do-it-yourself route it depends on model turnaround plus your own integration work. Ask for a written timeline for your catalogue size before you commit.</p>
+<h3>What does it cost a small UK store?</h3>
+<p>It depends on who produces the 3D models, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all view creation included. The first test view is free.</p>
+</div>"""}
+]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
