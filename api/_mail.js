@@ -124,7 +124,7 @@ function render({ preheader, greeting, blocks }) {
   return { html, text };
 }
 
-/* Resend over HTTPS. The idempotency key means a webhook Paddle retries
+/* Resend over HTTPS. The idempotency key means a retried webhook
    does not send the customer the same email twice. */
 async function send({ to, subject, html, text, replyTo, idempotencyKey }) {
   if (!process.env.RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set');
