@@ -1,5 +1,6 @@
 """EXTRA_POSTS for 2026-10-15 20:00 blog run (pushed via API; build.py too large for one push_files call).
-2026-10-15 ~21:05 PKT: Tangiblee comparison DELETED per founder order (never show competitors on the blog, never sell them). Replacement article: "Why Furniture Stores Need AR Now, and How ARQR360 Fills the Gap" (no competitor mentions, sells ARQR360 superiority)."""
+2026-10-15 ~21:05 PKT: Tangiblee comparison DELETED per founder order (never show competitors on the blog, never sell them). Replacement article: "Why Furniture Stores Need AR Now, and How ARQR360 Fills the Gap" (no competitor mentions, sells ARQR360 superiority).
+2026-10-16 08:46 run: "How Gulf Rug Stores Sell to Shoppers They Will Never Meet" (rugs non-comparison, Gulf market; written by 2026-10-15 23:00 run, never pushed, published by this run). NO-COMPETITOR RULE in force: no comparison articles, no competitor names."""
 
 BODY_OVERRIDES = {}
 DESC_OVERRIDES = {}
@@ -34,4 +35,35 @@ EXTRA_POSTS = [
 <div class="faq"><h2>FAQ</h2><h3>Why does my furniture store need AR?</h3><p>Because your most expensive returns come from shoppers guessing the size from photos. A true-to-size AR (Augmented Reality) view lets them check the piece in their own room before they buy, which cuts size returns and lifts conversions. Shopify's own data says products with 3D or AR views convert about 94% better.</p><h3>What does ARQR360 actually do for my store?</h3><p>We build true-to-size AR (Augmented Reality) views of your products from your photos and real dimensions, host them, and give you links and QR codes for every product page. Our designing department builds each view by hand, we follow up with new pieces and updates, and custom packages are built around your store. One public price: $199 setup and $19 a month, locked for life for the first 50 stores.</p><h3>Do my customers need to download an app?</h3><p>No. Each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/novara">live furniture demo</a> on your own phone and see.</p></div>
 """,
 },
+{"slug": "how-gulf-rug-stores-sell-to-distant-shoppers-ar",
+"title": "How Gulf Rug Stores Sell to Shoppers They Will Never Meet",
+"date": "October 16, 2026",
+"description": "Gulf rug stores lose sales to distance: expats, second-home buyers, and designers who buy without ever visiting the shop. Here is how true-to-size AR lets a shopper stand on the rug from their phone before they buy.",
+"body": """<figure class="postimg"><img src="/blog/how-gulf-rug-stores-sell-to-distant-shoppers-ar/images/hero.jpg" alt="Hand holding a smartphone showing a Persian rug in true-to-size AR above the same rug unrolled in a bright Gulf living room" loading="lazy"><figcaption>The rug at true size, on the shopper's own floor, before they buy.</figcaption></figure>
+<p>Picture a rug store owner in Sharjah. Her shop holds hand-knotted Persian rugs, modern Turkish pieces, and a few machine-made runners for quick sales. The walk-in trade is fine. The missed sales are the ones she never sees. An expat furnishing an apartment in Dubai orders everything from her phone. A family in Riyadh buys for a villa they visited once. An interior designer in Doha specs rugs for three client projects without stepping into a shop. These shoppers will never stand in her store.</p>
+<p>And a rug is the hardest home piece to sell sight unseen. Size decides everything. A 2 by 3 metre rug fills a small majlis nicely and disappears in a villa living room, but both look the same size in a product photo. Colour shifts between the photo and the real piece. The pattern looks different from a standing view than from floor level. Every doubt ends the same way: the shopper saves the listing and buys nothing, or buys and returns it at the store's expense.</p>
+<h2>Why distance kills the rug sale</h2>
+<p>Three costs land on the store. First, the lost sale. Most rug shoppers are not comparing your rug to a cheaper rug. They are comparing buying to not buying, and doubt keeps them on not buying. Second, the wrong rug shipped. Sending a heavy rug to Jeddah or Abu Dhabi costs real money, and a size return eats the margin twice: the outbound shipping and the return. Third, the shopper who drives to you for nothing but a size check. She comes, unrolls three rugs, finds the fit, then orders from whoever is cheapest online. Your floor did the work and someone else took the sale.</p>
+<h2>Let the shopper stand on the rug from their phone</h2>
+<p>True-to-size AR answers the exact problem. Every rug gets a link and a QR code. The shopper taps it, points the phone at their own floor, and the rug appears at its real dimensions. They walk around it. They check it against the sofa they already own. They see whether the pattern reads well from the doorway. No app to download. It opens in the phone browser.</p>
+<figure class="postimg"><img src="/blog/how-gulf-rug-stores-sell-to-distant-shoppers-ar/images/img1.jpg" alt="Shopper pointing a smartphone at an empty sunlit marble floor, the phone screen showing a large patterned rug appearing at true size in AR" loading="lazy"><figcaption>The shopper points the phone at the floor and checks the true size in seconds.</figcaption></figure>
+<h2>Where Gulf stores put the links</h2>
+<ul>
+<li><strong>Next to the price on every product page.</strong> That is where the sizing doubt lives. A see-it-in-your-room link beside the buy button answers the question before the shopper leaves.</li>
+<li><strong>In WhatsApp and Instagram chats.</strong> Across the Gulf, shoppers buy through chat as much as through the site. An AR link shared in the chat lets a buyer in another city check the rug on their own floor without a store visit.</li>
+<li><strong>With interior designers.</strong> Designers spec rugs for clients they meet in project meetings, not shops. A link they can open in the client's own room sells the rug without the client ever seeing the store.</li>
+<li><strong>On the price tags in the shop.</strong> Walk-in customers photograph the tag, check the rug at home, and come back decided. The sale survives the trip home.</li>
+</ul>
+<h2>What it costs to start</h2>
+<p>ARQR360 is a done-for-you AR catalogue for independent retailers. You send photos of your bestselling rugs and their real listed dimensions. We produce true-to-size AR (Augmented Reality) views from them, host them, and hand you links and QR codes that open the AR view in your customer's phone browser. No app. No 3D team. No files to manage on your side.</p>
+<p>The price is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. About seven days from photos to a live catalogue.</p>
+<figure class="postimg"><img src="/blog/how-gulf-rug-stores-sell-to-distant-shoppers-ar/images/img2.jpg" alt="Real Persian rug in a rug shop next to a smartphone showing the same rug in AR at identical true size" loading="lazy"><figcaption>AR against the real piece, same size, side by side.</figcaption></figure>
+<p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. The mechanism is simple. Shoppers who can see the true size hesitate less, and confident shoppers return less.</p>
+<p>We worked the money side in our <a href="/blog/ar-cost-small-rug-store-pricing">pricing breakdown for rug stores</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling rug and we will build you one true-to-size AR view free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/terra">live rug demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>Do my customers need an app?</h3><p>Not with ARQR360. Each rug gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone.</p>
+<h3>How long before my rugs are live in AR?</h3><p>About seven days from your photos arriving. Ask for a written timeline before you commit.</p>
+<h3>What does AR cost a rug store?</h3><p>It depends on who produces the AR views. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. The first test rug is free.</p></div>""",
+}
 ]
