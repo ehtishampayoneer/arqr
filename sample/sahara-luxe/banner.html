@@ -24,8 +24,13 @@
 </head>
 <body>
 <div class="row">
-  <div class="name"><b>Sahara Luxe · Caramel Stone</b><span>160 × 230 cm · wool blend</span></div>
+  <div class="name"><b>Sahara Luxe · Caramel Stone</b><span id="sz">160 × 230 cm · wool blend</span></div>
   <div class="by">Powered by <img src="https://arqr360.com/assets/logo-bar.png" alt="ARQR360"><span class="go">Shop ›</span></div>
 </div>
+<script>
+// the size chosen on the page that opened AR (banner?s=200x290)
+var s = (new URLSearchParams(location.search).get('s') || '').match(/^(\d{3})x(\d{3})$/);
+if (s) document.getElementById('sz').textContent = s[1] + ' × ' + s[2] + ' cm · wool blend';
+</script>
 </body>
 </html>
