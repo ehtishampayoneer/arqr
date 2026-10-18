@@ -59,6 +59,15 @@
 # 2026-10-14 decor non-comparison: US home decor stores cut returns with AR
 # 2026-10-15 decor comparison: vs Shopify AR apps (decor)
 # 2026-10-15 furniture non-comparison: UAE furniture stores sell large pieces without expanding showroom
+# 2026-10-16 rugs non-comparison: Gulf rug stores sell to distant shoppers (added by 2026-10-15 23:00 run, pushed 2026-10-16)
+# 2026-10-16 footwear non-comparison: US shoe stores cut size returns
+# 2026-10-17 decor non-comparison: Australian decor stores win Christmas sales
+# 2026-10-17 footwear non-comparison: how footwear stores photograph shoes for true-size AR
+# 2026-10-17 rugs non-comparison: what happens when a rug store sends its first photo for free AR
+# 2026-10-17 furniture non-comparison: US furniture stores add true-to-size AR before Christmas
+# 2026-10-18 footwear non-comparison: Canadian shoe stores cut January returns
+# 2026-10-18 decor/lighting non-comparison: UK lighting stores stop the guessing with AR
+# 2026-10-18 decor non-comparison: NZ decor stores sell to distant shoppers (NO-COMPETITOR RULE: no comparisons, ever)
 import html, json, os
 
 
