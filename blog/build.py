@@ -68,6 +68,7 @@
 # 2026-10-18 footwear non-comparison: Canadian shoe stores cut January returns
 # 2026-10-18 decor/lighting non-comparison: UK lighting stores stop the guessing with AR
 # 2026-10-18 decor non-comparison: NZ decor stores sell to distant shoppers (NO-COMPETITOR RULE: no comparisons, ever)
+# 2026-10-18 footwear non-comparison: Australian shoe stores sell summer stock with AR try-on (NO-COMPETITOR RULE: no comparisons, ever)
 import html, json, os
 
 
