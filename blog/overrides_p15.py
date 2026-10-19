@@ -1,0 +1,37 @@
+"""EXTRA_POSTS for 2026-10-19 14:00 blog run (pushed via API; build.py too large for one push_files call).
+2026-10-19 14:00 run: "How US Rug Stores Stop Paying for Wrong Size Returns with AR (Augmented Reality)" (rugs non-comparison, USA buyer market, money/returns angle: the real cost of a wrong-size rug return, true-to-size AR on the shopper's own floor).
+NO-COMPETITOR RULE in force (founder absolute order 2026-10-15 ~21:05 PKT, verified in memory/2026-10-15.md, memory/2026-10-17.md, memory/2026-10-18.md): no comparison articles, no competitor names, ever. The comparison-rotation text in the 14:00 cron body is stale and superseded; this run follows the founder order.
+POSITIONING RULE honored: AR written as "AR (Augmented Reality)", deliverable is "AR (Augmented Reality) views", never 3D models for what ARQR360 delivers.
+No price mentions (no requirement in the body; pricing stays on the site).
+Images: /blog/how-us-rug-stores-stop-wrong-size-returns-with-ar/images/hero.jpg, img1.jpg, img2.jpg (uploaded via GitHub web UI, verified 200 before reporting live).
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+EXTRA_POSTS = [
+{
+"slug": "how-us-rug-stores-stop-wrong-size-returns-with-ar",
+"title": "How US Rug Stores Stop Paying for Wrong Size Returns with AR (Augmented Reality)",
+"date": "October 19, 2026",
+"description": "A returned 9x12 rug is heavy freight both ways, plus inspection, cleaning, and a discounted re-listing. US rug stores are cutting wrong size returns by showing shoppers the rug at its true size on their own floor with AR (Augmented Reality) before they buy.",
+"body": """<figure class="postimg"><img src="/blog/how-us-rug-stores-stop-wrong-size-returns-with-ar/images/hero.jpg" alt="Woman holding a smartphone showing a terracotta patterned rug at true size in AR on a bright living room floor" loading="lazy"><figcaption>The whole idea: the rug at true size, on the shopper's own floor, before they buy.</figcaption></figure>
+<p>Picture a rug store owner in Dallas. She stocks hundreds of rugs, from 3x5 runners to 9x12 room pieces, and her best sellers ship all over the country. Her most expensive problem is not marketing. It is the rug that comes back.</p>
+<p>A rug that comes back costs more than most owners admit. Shipping a 9x12 both ways is heavy freight, not a parcel. The rug needs inspection, cleaning, repacking. Then it goes back on the shelf at a discount, because a returned rug is not new anymore. One wrong size guess can eat the profit of three good sales.</p>
+<h2>Why rugs come back more than almost anything else</h2>
+<p>A rug is the hardest product to buy from a photo. A sofa has arms and legs the eye can read. A rug is a flat rectangle. On screen, a 5x8 and a 9x12 look nearly identical. The dimensions sit in a table under the photo, but few shoppers can picture 274 by 366 centimeters against their own floor. So they guess. The most common guess fails in the same direction every time: the rug looks bigger online than it feels in the room. It arrives, it looks small, it goes back.</p>
+<h2>The question shoppers are really asking</h2>
+<p>Every rug listing gets the same question, in different words. Will this fit my room? Careful shoppers measure, tape out rectangles on the floor, fold paper to the size. Some do it. Most do not. They buy on hope and return on disappointment. The store that answers the size question on the product page, before the buy button, keeps the sale and skips the return.</p>
+<figure class="postimg"><img src="/blog/how-us-rug-stores-stop-wrong-size-returns-with-ar/images/img1.jpg" alt="Man pointing a smartphone at an empty sunlit wooden floor, the phone showing a large navy rug appearing true to size in AR" loading="lazy"><figcaption>The shopper points their phone at the floor and sees the true size in seconds.</figcaption></figure>
+<h2>What the AR view does</h2>
+<p>AR (Augmented Reality) puts the rug on the shopper's own floor at its true size. The customer opens the product page on their phone, taps the link, points the phone at the floor, and the rug appears. They walk around it. They see whether the front legs of the sofa will sit on it. They try the 8x10, then the 9x12, and buy the one that fits. Try the <a href="/terra">live rug demo</a> on your own phone. It opens in the browser. No app to install.</p>
+<p>This is a done-for-you service, not a software project. You send photos of your bestselling rugs and their real listed dimensions. Our designing department produces true-to-size AR (Augmented Reality) views from them and checks every one against the dimensions before it ships. A view that is even slightly off teaches the customer the tool cannot be trusted. Your first AR view is free, so you can check it against the real rug yourself.</p>
+<h2>Where the links and QR codes go</h2>
+<ul><li><strong>Next to the size selector on every product page.</strong> That is where the doubt lives. A see-it-on-your-floor link beside the buy button turns a sizing question into a two-minute answer.</li><li><strong>On the hang tags in the shop.</strong> A QR code on the tag opens the same rug in AR. A customer looking at a 5x8 in store can check the 9x12 at home and come back decided.</li><li><strong>In your chats and emails.</strong> Size questions arrive by message as much as they arrive by browsing. An AR link answers the question with the thing itself.</li></ul>
+<figure class="postimg"><img src="/blog/how-us-rug-stores-stop-wrong-size-returns-with-ar/images/img2.jpg" alt="Real patterned wool rug on a wooden floor beside a smartphone showing the same rug in AR at identical true size" loading="lazy"><figcaption>AR against the real rug, same size, side by side.</figcaption></figure>
+<h2>The maths that matters</h2>
+<p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. For a rug store the effect runs both ways. More confident buyers buy, and buyers who saw the true size return less. Fewer returns mean less freight paid both ways, less inspection and cleaning, fewer discounted re-listings.</p>
+<p>For the same idea in another market, read <a href="/blog/how-gulf-rug-stores-sell-to-distant-shoppers-ar">how Gulf rug stores sell to shoppers they will never meet</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling rug and we will build you one true-to-size AR view free. Put it on your own phone, hold it next to the real rug, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/terra">live rug demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>Do my customers need an app to see the AR views?</h3><p>No. Each rug gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone. Nothing to install.</p><h3>What do you need from my store to start?</h3><p>Photos of your bestselling rugs and their real listed dimensions. That is it. Our designing department produces the true-to-size AR (Augmented Reality) views and hands back links and QR codes. The first view is free.</p><h3>How long before my rugs are live in AR?</h3><p>About seven days from your photos arriving. When a new range arrives, you send its photos and our designing department adds the AR views to your catalogue. The follow-ups are part of the service.</p></div>""",
+},
+]
