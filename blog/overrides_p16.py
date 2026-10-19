@@ -1,0 +1,36 @@
+"""EXTRA_POSTS for 2026-10-19 20:00 blog run (pushed via API; build.py too large for one push_files call).
+2026-10-19 20:00 run: "How German Furniture Stores Sell to Small-Apartment Shoppers with AR (Augmented Reality)" (furniture non-comparison, Germany/Europe buyer market, buyer-intent angle: small rooms punish size guesses, AR answers the fit question on the product page).
+NO-COMPETITOR RULE in force (founder absolute order 2026-10-15 ~21:05 PKT): no comparison articles, no competitor names, ever. The comparison-rotation text in the 20:00 cron body is stale and superseded; this run follows the founder order.
+POSITIONING RULE honored: AR written as "AR (Augmented Reality)", deliverable is "AR (Augmented Reality) views", never 3D models for what ARQR360 delivers.
+No price mentions (founder NO-PRICE rule 2026-10-19: no prices in any outreach; pricing stays on the site).
+Images: /blog/how-german-furniture-stores-sell-small-apartments-with-ar/images/hero.jpg, img1.jpg, img2.jpg (uploaded via GitHub web UI, verified 200 before reporting live).
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+EXTRA_POSTS = [
+{
+"slug": "how-german-furniture-stores-sell-small-apartments-with-ar",
+"title": "How German Furniture Stores Sell to Small-Apartment Shoppers with AR (Augmented Reality)",
+"date": "October 19, 2026",
+"description": "Most German furniture shoppers live in apartments under 70 square meters, where a sofa that is 20 centimeters too deep blocks the balcony door. German furniture stores answer the size question on the product page with true-to-size AR (Augmented Reality) views shoppers open in their phone browser.",
+"body": """<figure class="postimg"><img src="/blog/how-german-furniture-stores-sell-small-apartments-with-ar/images/hero.jpg" alt="Bright apartment living room with a grey fabric armchair and a smartphone showing the same chair at true size in AR" loading="lazy"><figcaption>The whole idea: the piece at true size, in the shopper's own room, before they buy.</figcaption></figure>
+<p>Picture a furniture store owner in Munich. She sells sofas, armchairs, dining sets, and beds, mostly to people who live in apartments under 70 square meters. Her best sellers leave the warehouse every week. Her most returned pieces come right back.</p>
+<p>Small rooms punish bad guesses. In a large house, a sofa that is 20 centimeters too deep is a shrug. In a 55 square meter apartment, it blocks the balcony door. Shoppers measure twice and still get it wrong, because few people can picture 196 by 88 centimeters against their own living room wall.</p>
+<h2>The question every listing gets</h2>
+<p>Will this fit my room? That is the question hiding behind most bounces and most returns. Careful shoppers tape outlines on the floor. Most do not. They buy on hope and return on disappointment. The store that answers the size question on the product page, before the buy button, keeps the sale and skips the return.</p>
+<figure class="postimg"><img src="/blog/how-german-furniture-stores-sell-small-apartments-with-ar/images/img1.jpg" alt="Shopper holding a smartphone pointing it at a taped rectangle on an empty apartment floor, marking where a sofa would go" loading="lazy"><figcaption>Careful shoppers tape the floor. The AR view answers the same question in seconds.</figcaption></figure>
+<h2>What the AR view does</h2>
+<p>AR (Augmented Reality) puts the sofa in the shopper's own room at its true size. The customer opens the product page on their phone, taps the link, points the phone at the floor, and the sofa appears. They walk around it. They check whether the armchair clears the radiator. They try the two-seater, then the three-seater, and buy the one that fits. Try the <a href="/novara">live furniture demo</a> on your own phone. It opens in the browser. No app to install.</p>
+<p>This is a done-for-you service, not a software project. You send photos of your bestselling pieces and their real listed dimensions. Our designing department produces true-to-size AR (Augmented Reality) views from them and checks every one against the dimensions before it ships. A view that is even slightly off teaches the customer the tool cannot be trusted. Your first AR view is free, so you can check it against the real piece yourself.</p>
+<p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. For a store selling into small apartments, the effect runs both ways. Confident buyers buy, and buyers who saw the true size return less.</p>
+<h2>Where the links and QR codes go</h2>
+<ul><li><strong>Next to the size selector on every product page.</strong> That is where the doubt lives. A see-it-in-your-room link beside the buy button turns a sizing question into a two-minute answer.</li><li><strong>On the price tags in the showroom.</strong> A QR code on the tag opens the same piece in AR. A customer looking at a two-seater in store can check the three-seater at home and come back decided.</li><li><strong>In your chats and emails.</strong> Size questions arrive by message as much as they arrive by browsing. An AR link answers the question with the thing itself.</li></ul>
+<figure class="postimg"><img src="/blog/how-german-furniture-stores-sell-small-apartments-with-ar/images/img2.jpg" alt="Fabric sofa in a furniture showroom beside a smartphone displaying the same sofa in AR at identical true size" loading="lazy"><figcaption>Same piece, same true size: the AR view checked against the real thing.</figcaption></figure>
+<h2>The follow-up that keeps it selling</h2>
+<p>New ranges arrive through the year. When yours does, you send its photos and our designing department adds the AR views to your catalogue. The follow-ups are part of the service, not a new project each time. Every piece on your site, live at true size, as fast as you can photograph it.</p>
+<p>For the same idea from another market, read <a href="/blog/how-canadian-furniture-stores-add-ar-without-app-or-3d-team">how Canadian furniture stores add AR without an app or a 3D team</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling sofa and we will build you one true-to-size AR view free. Put it on your own phone, hold it next to the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href="/novara">live furniture demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>Do my customers need an app to see the AR views?</h3><p>No. Each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/novara">live furniture demo</a> on your own phone. Nothing to install.</p><h3>What do you need from my store to start?</h3><p>Photos of your bestselling pieces and their real listed dimensions. That is it. Our designing department produces the true-to-size AR (Augmented Reality) views and hands back links and QR codes. The first view is free.</p><h3>How long before my pieces are live in AR?</h3><p>About seven days from your photos arriving. When a new range arrives, you send its photos and our designing department adds the AR views to your catalogue. The follow-ups are part of the service.</p></div>""",
+},
+]
