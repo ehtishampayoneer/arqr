@@ -234,6 +234,8 @@
   .foot-cta svg{width:15px;height:15px;display:block}
   [dir="rtl"] .foot-cta svg,[dir="rtl"] .place svg{transform:scaleX(-1)}
   .foot-note{width:var(--wrap);margin:0 auto;padding:0 0 12px;font-size:12px;color:var(--ink-soft)}
+  .foot-guide{width:var(--wrap);margin:0 auto;padding:0 0 26px;font-size:13px;color:var(--ink-soft)}
+  .foot-guide a{color:inherit;font-weight:700}
 
   /* ---------------- AR sheet ---------------- */
   .ar{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:20px;
@@ -536,6 +538,7 @@
     </a>
   </div>
   <p class="foot-note">ARQR360 is a 100% digital service. No physical goods are sold or shipped.</p>
+  <p class="foot-guide" id="shopGuide" hidden>Running a rug store? Read <a href="/blog/how-rug-stores-cut-size-returns-with-ar">how rug stores cut size returns with AR</a> and what it takes to get views like these on your own rugs.</p>
 </footer>
 
 <div class="ar" id="ar" role="dialog" aria-modal="true" aria-labelledby="arTitle">
@@ -676,10 +679,12 @@ root.setProperty('--tone-lo', mix(shop.tone, '#FFFFFF', .18));
 root.setProperty('--tone-hi', mix(shop.tone, '#000000', .42));
 root.setProperty('--tone-hi-rgb', channels(mix(shop.tone, '#000000', .42)));
 
-document.title = shop.name + ' | AR catalogue';
+document.title = shop.seoTitle || (shop.name + ' | AR catalogue');
 document.querySelector('meta[name=theme-color]').setAttribute('content', shop.tone);
 document.querySelector('meta[name=description]')
-  .setAttribute('content', shop.name + '. ' + shop.tagline + '. Every product at true size, in your own space.');
+  .setAttribute('content', shop.seoDesc || (shop.name + '. ' + shop.tagline + '. Every product at true size, in your own space.'));
+var guideEl = document.getElementById('shopGuide');
+if (guideEl && shop.guide) guideEl.hidden = false;
 document.getElementById('shopMark').setAttribute('href', '#' + shop.mark);
 document.getElementById('shopName').textContent = shop.name;
 document.getElementById('shopTag').textContent = t(shop.tagline);
@@ -965,8 +970,12 @@ addEventListener('resize', function(){
   };
   set('link[rel="canonical"]', 'href', url);
   set('meta[property="og:url"]', 'content', url);
-  set('meta[property="og:title"]', 'content', s.name + ' | AR catalogue');
-  set('meta[name="twitter:title"]', 'content', s.name + ' | AR catalogue');
+  set('meta[property="og:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
+  set('meta[name="twitter:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
+  if (s.seoDesc){
+    set('meta[property="og:description"]', 'content', s.seoDesc);
+    set('meta[name="twitter:description"]', 'content', s.seoDesc);
+  }
 })();
 </script>
 <!-- Vercel Web Analytics (visitors, countries, referrers; enable in Vercel dashboard > Analytics) -->

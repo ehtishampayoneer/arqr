@@ -101,6 +101,9 @@ window.ARQR_STORES = [
     sub: 'Roll it out on your own floor and walk around it.',
     cta: 'See it on your floor',
     note: 'A rug is all about proportion. 240 × 170 means nothing until it is lying between your own sofa and wall.',
+    seoTitle: 'AR for Rug Stores | Terra & Weave Sample Rug Catalogue in True-to-Size AR',
+    seoDesc: 'Terra & Weave is a sample AR (Augmented Reality) catalogue of the kind ARQR360 builds for rug stores. Every rug at true size, live in their own room, from one link or a QR code. No app to download, no setup on your side.',
+    guide: true,
     cats: ['All', 'Flatweave', 'Hand-knotted', 'Runners'],
     items: [
       { n:'Antique Turkish Runner Carpet', p:'$1,410', d:'196 × 100 cm', c:'Runners', i:'ic-runner', f:'antique-turkish-runner-carpet', glb:'assets/shops/terra/antique-turkish-runner-carpet.glb', usdz:'assets/shops/terra/antique-turkish-runner-carpet.usdz' },
