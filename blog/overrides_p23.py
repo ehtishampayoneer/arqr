@@ -43,7 +43,7 @@ EXTRA_POSTS = [
 <h3>How long before my pieces are live?</h3>
 <p>About seven days from your photos arriving. We build the views, host them, and hand you the links and QR codes. Then we follow up and keep improving them as your range changes.</p>
 <h3>What does it cost a small decor store?</h3>
-<p>ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view creation included. No product cap, no per-view fees. Your first test view is free.</p>
+<p>ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR view creation included. No product cap, no per-view fees. Your first test view is free.</p>
 </div>""",
 },
 ]

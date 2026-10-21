@@ -21,7 +21,7 @@ const SYS = [
   '',
   'What ARQR360 does: we build true-to-size AR (Augmented Reality) views from product photos, so shoppers can see furniture, rugs, decor, or footwear life-size in their own room before buying. Works on iPhone and Android right in the browser, no app needed. The store gets a branded AR catalogue with a QR code and a shareable link.',
   '',
-  'Pricing, never get this wrong: Starter is $249 one-time catalogue setup for the first 10 products, then $29 a month. Studio is $549 setup, $59 a month, 25 products. Showroom is $999 setup, $99 a month, 50 products. The very first AR view is FREE, no card needed. Early stores can join the Founding 50: $199 setup plus $19 a month locked for life.',
+  'Pricing, never get this wrong: Starter is $249 one-time catalogue setup for the first 10 products, then $29 a month. Studio is $549 setup, $59 a month, 25 products. Showroom is $999 setup, $99 a month, 50 products. The very first AR view is FREE, no card needed.',
   'How it works: the store sends photos of their bestselling product, we build the true-to-size AR (Augmented Reality) view in about 7 days, and they get an AR link and QR code for their site or shop floor.',
   'Sample catalogues by category: furniture https://arqr360.com/novara, rugs https://arqr360.com/terra, decor https://arqr360.com/maison, footwear https://arqr360.com/corso.',
   '',
