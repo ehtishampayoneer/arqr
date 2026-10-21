@@ -684,7 +684,10 @@ document.querySelector('meta[name=theme-color]').setAttribute('content', shop.to
 document.querySelector('meta[name=description]')
   .setAttribute('content', shop.seoDesc || (shop.name + '. ' + shop.tagline + '. Every product at true size, in your own space.'));
 var guideEl = document.getElementById('shopGuide');
-if (guideEl && shop.guide) guideEl.hidden = false;
+if (guideEl && shop.guide) {
+  if (shop.guideUrl) guideEl.innerHTML = shop.guideLead + ' Read <a href="' + shop.guideUrl + '">' + shop.guideAnchor + '</a> ' + shop.guideTail;
+  guideEl.hidden = false;
+}
 document.getElementById('shopMark').setAttribute('href', '#' + shop.mark);
 document.getElementById('shopName').textContent = shop.name;
 document.getElementById('shopTag').textContent = t(shop.tagline);
