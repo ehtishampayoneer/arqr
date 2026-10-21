@@ -59,6 +59,7 @@
 # 2026-10-14 decor non-comparison: US home decor stores cut returns with AR
 # 2026-10-15 decor comparison: vs Shopify AR apps (decor)
 # 2026-10-21 footwear non-comparison: Australian shoe stores cut size returns
+# 2026-10-21 20:00 deploy trigger: ship images commit 0621dcc (Vercel skipped auto-deploy)
 # 2026-10-15 furniture non-comparison: UAE furniture stores sell large pieces without expanding showroom
 # 2026-10-16 rugs non-comparison: Gulf rug stores sell to distant shoppers (added by 2026-10-15 23:00 run, pushed 2026-10-16)
 # 2026-10-16 footwear non-comparison: US shoe stores cut size returns
