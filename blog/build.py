@@ -71,6 +71,7 @@
 # 2026-10-18 decor/lighting non-comparison: UK lighting stores stop the guessing with AR
 # 2026-10-18 decor non-comparison: NZ decor stores sell to distant shoppers (NO-COMPETITOR RULE: no comparisons, ever)
 # 2026-10-18 footwear non-comparison: Australian shoe stores sell summer stock with AR try-on (NO-COMPETITOR RULE: no comparisons, ever)
+# 2026-10-21 furniture comparison: vs Augment (UK furniture stores)
 import html, json, os
 
 
@@ -1409,5 +1410,40 @@ if __name__ == "__main__":
 <div class=\"faq\"><h2>FAQ</h2><h3>Do my customers need an app?</h3><p>Not with ARQR360. Each shoe gets a link and a QR code that opens the AR view in the phone browser. Try the <a href=\"/corso\">live footwear demo</a> on your own phone.</p><h3>Can AR tell a shopper how a shoe fits?</h3><p>Honestly, no. AR shows true size, not comfort, not feel, not arch support. What it does well is give the shopper a real size idea of the shoe against their own foot, which is what stops the two-size orders.</p><h3>What does AR cost a shoe store?</h3><p>It depends on who produces the AR views, which is the biggest cost on most routes. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. The first test piece is free.</p></div>
 """,
 },
-
+{
+"slug": "arqr360-vs-augment-furniture-stores",
+"title": "ARQR360 vs Augment: What a Furniture Store Actually Gets from Each",
+"date": "October 21, 2026",
+"description": "Comparing Augment and ARQR360 for your furniture store? An honest look at price, setup effort, true-to-size accuracy, and who produces the AR views, written for independent furniture retailers.",
+"body": """<figure class=\"postimg\"><img src=\"/blog/arqr360-vs-augment-furniture-stores/images/hero.jpg\" alt=\"Shopper holding a smartphone showing a grey fabric armchair in true-to-size AR in a bright UK living room\" loading=\"lazy\"><figcaption>The whole point: the chair at its true size, in the shopper's own room, before they buy.</figcaption></figure>
+<p>Picture a furniture store owner in London. She sells sofas, armchairs, dining sets and storage from two shops and a website. A sales rep friend shows her Augment on his phone: he opens a 3D armchair in a customer's living room and closes the sale on the spot. She wonders if the same tool works for her online store. It can, but the path is different from what she expects.</p>
+<p>This is the honest version.</p>
+<h2>What Augment is</h2>
+<p>Augment is a 3D and augmented reality visualization platform from France, running since 2011. Its home ground is field sales: reps carry a catalogue of 3D products on their phones and place them in real size in the customer's room during a visit. It also covers eCommerce use, where shoppers open the same views from your site or app.</p>
+<p>The views open through the Augment mobile app, which the customer downloads. Your product catalogue lives inside their ecosystem. You upload 3D files, or you have their community of 3D designers build the files from your 2D photos and specs. Either way, the catalogue only moves as fast as the 3D files arrive.</p>
+<h2>What ARQR360 is</h2>
+<p>ARQR360 is a done-for-you AR catalogue for independent retailers. You send photos of your bestselling pieces and their real listed dimensions. We produce true-to-size AR (Augmented Reality) views from them, host them, and hand you links and QR codes that open the AR view in your customer's phone browser. No app. No 3D team. No files to manage on your side.</p>
+<p>One is a visualization platform you feed with 3D assets. The other is a service that produces the finished views for you.</p>
+<h2>Price: the subscription and the file pipeline, vs one flat number</h2>
+<p>Augment's software subscription is modest. Third-party software listings put the entry plan around 9 euros a month with a free trial. Confirm the current number on their own site before you budget, because directory listings go stale. But the subscription is only half the bill. Every product needs a 3D file. You either make the files yourself or pay their designer community to build them from your photos and specs, per product. A store with 80 sofas and chairs is funding 80 file builds before the catalogue works.</p>
+<p>ARQR360 publishes one flat number: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. There is no per-product creation fee and no per-view fee.</p>
+<h2>Setup effort: a catalogue you run vs photos you send</h2>
+<p>The Augment route is a project you manage. You prepare or commission every 3D file, check each one against the real dimensions, upload them, and keep the catalogue updated as your range changes. The platform does its job well once the files are in, but getting the files in is the work, and it never ends.</p>
+<p>With ARQR360 the project is: send photos, get a working AR catalogue back in about seven days. The links go on your product pages. The QR codes go on your shelf tags. When a new range arrives, you send its photos.</p>
+<figure class=\"postimg\"><img src=\"/blog/arqr360-vs-augment-furniture-stores/images/img1.jpg\" alt=\"Shopper pointing a smartphone at an empty bright living room corner, phone showing an armchair in true-to-size AR\" loading=\"lazy\"><figcaption>The shopper points the phone at the corner and checks the true size in seconds.</figcaption></figure>
+<h2>True-to-size accuracy</h2>
+<p>AR only works if the piece appears at its real dimensions. An armchair even slightly off teaches the customer the tool cannot be trusted. On the Augment route, the size check is your job or your designer's: you verify every file against the real piece, one by one.</p>
+<p>With ARQR360, we produce the AR views from your product photos and the real listed dimensions, and we check scale before anything ships. The first view is free, so you can hold your phone next to the real piece and check it yourself.</p>
+<h2>Where the customer opens it</h2>
+<p>Augment views open through the Augment mobile app, which the customer installs. That is fine for a sales rep's own phone, and it is one more download for a casual online shopper. ARQR360 hands you links and QR codes that open in the phone browser, no install. They work on the product page, in chat, on shelf tags, on printed flyers.</p>
+<figure class=\"postimg\"><img src=\"/blog/arqr360-vs-augment-furniture-stores/images/img2.jpg\" alt=\"Real grey fabric armchair on a showroom floor next to a smartphone showing the same chair in AR at identical true size\" loading=\"lazy\"><figcaption>AR against the real piece, same size, side by side.</figcaption></figure>
+<h2>Which store should pick which</h2>
+<p>Augment is worth a serious look if you already run a sales team that visits customers, because that is its home ground: the rep's phone becomes a portable showroom. It also fits if you already hold true-to-size 3D files and just need a proven platform to show them.</p>
+<p>ARQR360 is designed for the independent furniture retailer with no 3D team and no interest in managing one. You send photos. The true-to-size views come back. The store that sells from photos alone needs the done-for-you route, not another platform to feed.</p>
+<p>One number that applies whichever route you take. Shopify reports that products with 3D or AR views convert about 94% better than products without. That is Shopify's own data, not ours. For the wider menu of options, read <a href=\"/blog/arqr360-vs-threekit\">ARQR360 vs Threekit</a>.</p>
+<h2>The cheapest way to check if AR works for your store</h2>
+<p>You do not have to commit to anything to find out. Send a photo of your bestselling armchair or dining set and we will build you one true-to-size AR view free. Put it on your own phone, check it against the real piece, and see if your customers would use it. If it does not convince you, you have spent nothing. Try the <a href=\"/novara\">live furniture demo</a> first: it opens in your phone browser, no install.</p>
+<div class=\"faq\"><h2>FAQ</h2><h3>Do I need 3D files to use Augment?</h3><p>Yes. Augment is a visualization platform: you upload the 3D files or have them built from your photos by their designer community. ARQR360 produces the AR (Augmented Reality) views for you from product photos, included in the flat price. The first view is free.</p><h3>Do my customers need to download an app?</h3><p>With Augment, yes: the views open through the Augment mobile app. With ARQR360, no: each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href=\"/novara\">live furniture demo</a> on your own phone.</p><h3>What does AR cost a small furniture store?</h3><p>It depends on who produces the AR views, which is the biggest cost on most routes. On the Augment route you pay the subscription plus per-product file builds. ARQR360 is flat and public: $199 one-time setup and $19 a month, locked for life for the first 50 stores, with all AR view production included. The first test piece is free.</p></div>
+""",
+}
 ]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
