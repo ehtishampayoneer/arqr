@@ -3,6 +3,7 @@
 NO-COMPETITOR RULE in force (founder absolute order 2026-10-15 ~21:05 PKT): no comparison articles, no competitor names, ever.
 POSITIONING RULE honored: AR written as "AR (Augmented Reality)", deliverable is "AR (Augmented Reality) views", never 3D models for what ARQR360 delivers. FOOTWEAR HONESTY honored: true size, never fit. HUMAN TEXT RULE honored: no em-dashes, en-dashes or spaced hyphens; no AI-tell words.
 Images: /blog/what-canadian-shoe-stores-should-ask-before-buying-ar/images/hero.jpg, img1.jpg, img2.jpg (each under 120KB, uploaded via GitHub web UI, verified 200 before reporting live).
+Deploy note: images shipped in a separate web-UI commit (push_files corrupts binary); this commit is the deploy trigger because Vercel skipped auto-deploy on the images commit (same as the 2026-10-22 20:00 run).
 """
 BODY_OVERRIDES = {}
 DESC_OVERRIDES = {}
