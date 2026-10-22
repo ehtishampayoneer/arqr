@@ -72,6 +72,7 @@
 # 2026-10-18 decor non-comparison: NZ decor stores sell to distant shoppers (NO-COMPETITOR RULE: no comparisons, ever)
 # 2026-10-18 footwear non-comparison: Australian shoe stores sell summer stock with AR try-on (NO-COMPETITOR RULE: no comparisons, ever)
 # 2026-10-21 furniture comparison: vs Augment (UK furniture stores)
+# 2026-10-22 footwear non-comparison: how a UK shoe store gets its first free AR view (NO-COMPETITOR RULE: comparison-rotation text in body is stale/superseded)
 import html, json, os
 
 
