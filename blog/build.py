@@ -48,6 +48,8 @@
 # 2026-10-12 decor comparison: vs Obsess
 # 2026-10-12 furniture non-comparison: best AR tools for furniture stores
 # 2026-10-12 footwear comparison: vs WANNA
+# 2026-10-23 furniture non-comparison: what to check before buying AR
+# 2026-10-23 decor non-comparison: European decor stores cut returns
 
 
 # 2026-10-13 rugs non-comparison: how to photograph rugs for true-to-size AR
@@ -1447,4 +1449,65 @@ if __name__ == "__main__":
 <div class=\"faq\"><h2>FAQ</h2><h3>Do I need 3D files to use Augment?</h3><p>Yes. Augment is a visualization platform: you upload the 3D files or have them built from your photos by their designer community. ARQR360 produces the AR (Augmented Reality) views for you from product photos, included in the flat price. The first view is free.</p><h3>Do my customers need to download an app?</h3><p>With Augment, yes: the views open through the Augment mobile app. With ARQR360, no: each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href=\"/novara\">live furniture demo</a> on your own phone.</p><h3>What does AR cost a small furniture store?</h3><p>It depends on who produces the AR views, which is the biggest cost on most routes. On the Augment route you pay the subscription plus per-product file builds. ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR view production included. The first test piece is free.</p></div>
 """,
 }
-]; exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
+];
+
+
+POSTS += [
+{
+"slug": "what-furniture-stores-check-before-buying-ar",
+"title": "What a Furniture Store Should Check Before Buying AR (Augmented Reality)",
+"date": "October 23, 2026",
+"description": "Buying AR for a furniture store means choosing who produces the views, how the price really works, and whether shoppers need an app. The plain checklist a store owner should run through before signing anything.",
+"body": """<figure class=\"postimg\"><img src=\"/blog/what-furniture-stores-check-before-buying-ar/images/hero.jpg\" alt=\"Furniture store owner holding a smartphone showing a grey fabric armchair in true-to-size AR beside the real armchair in the showroom\" loading=\"lazy\"><figcaption>The whole point: the chair at its true size, on the shopper's own floor, before they buy.</figcaption></figure>
+<p>Picture a furniture store owner in Chicago. She sells sofas, armchairs and dining sets from two shops and a website. She is ready to put AR (Augmented Reality) on her product pages, and three vendors have sent her quotes. The quotes do not look like they describe the same product. Here is the checklist that cuts through them.</p>
+<p>It comes down to four questions. Who produces the views. Whether the shopper needs an app. How true-to-size is proven. What the real price is for one year. Ask all four in writing before you sign anything.</p>
+<h2>1. Who produces the views, and from what</h2>
+<p>Start here, because everything else follows. Ask the vendor a plain question: who makes the AR views of my products, and what do they start from?</p>
+<p>On some routes, you supply the files yourself. The vendor sells a viewer, you commission the 3D files from artists at roughly $100 to $500 per product, and you manage the whole pipeline. For a 50-piece catalogue, that bill is the project, not the software.</p>
+<p>On the done-for-you route, you send photos and your real listed dimensions, and the vendor produces the true-to-size AR (Augmented Reality) views. ARQR360 works this way. When you compare quotes, compare the full job: files plus viewer plus hosting, not the monthly fee alone.</p>
+<figure class=\"postimg\"><img src=\"/blog/what-furniture-stores-check-before-buying-ar/images/img1.jpg\" alt=\"Shopper in a bright US living room pointing her smartphone at an empty corner, the screen showing a wooden dining table in true-to-size AR\" loading=\"lazy\"><figcaption>The shopper checks the dining table at true size in her own corner, before the order.</figcaption></figure>
+<h2>2. Does the shopper need an app</h2>
+<p>Ask before you sign: does the customer need to download an app to open the view? If the answer is yes, most of them will not use it. People do not install apps to check a dining table. A view that opens in the phone browser, from a link or a QR code, gets used. Test that on your own phone with our <a href=\"/novara\">live furniture demo</a>.</p>
+<h2>3. How is true-to-size proven</h2>
+<p>A sofa that is even a few inches off teaches the customer the tool cannot be trusted. Ask the vendor how they check every view against the real listed dimensions, and what happens when a piece is off. A serious answer names a process. A vague answer is the answer.</p>
+<figure class=\"postimg\"><img src=\"/blog/what-furniture-stores-check-before-buying-ar/images/img2.jpg\" alt=\"Customer in a US furniture showroom holding a smartphone beside a real beige sofa, the screen showing the same sofa in AR at identical true size\" loading=\"lazy\"><figcaption>The view against the real piece: same size, or it fails the test.</figcaption></figure>
+<h2>4. What does one year actually cost</h2>
+<p>Get the quote in writing for your full catalogue, for one year, with everything included. The monthly fee is usually the smallest line. The rest is per-product production fees, per-view charges that grow with your traffic, setup fees, and the cost of new-season stock. A quote that will not put that number in writing is a quote you cannot compare.</p>
+<p>For reference, ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. About seven days from photos to a live catalogue. No product cap, no per-view fees.</p>
+<h2>Where the links go</h2>
+<ul><li><strong>Next to the price on every product page.</strong> That is where sizing doubt lives. A see-it-in-your-room link beside the buy button answers the question at the moment it matters.</li><li><strong>On the price tags in the shop.</strong> A QR code on the tag opens the same piece in AR. Customers check it at home and come back decided.</li><li><strong>In Instagram posts and stories.</strong> The link opens on a phone, which is exactly where your shoppers browse.</li></ul>
+<p>One number worth knowing, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. Shoppers who can check the true size hesitate less.</p>
+<p>For how it plays out after launch, read <a href=\"/blog/how-furniture-stores-build-virtual-showrooms-with-ar\">how furniture stores build a virtual showroom with AR</a>.</p>
+<h2>The cheapest way to check before you buy</h2>
+<p>You do not have to sign anything to run the checklist. Send a photo of your bestselling sofa or armchair and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real piece, and test your four questions against the actual thing. If it does not convince you, you have spent nothing. Try the <a href=\"/novara\">live furniture demo</a> first: it opens in your phone browser, no install.</p>
+<div class=\"faq\"><h2>FAQ</h2><h3>What should a furniture store check before buying AR?</h3><p>Four things, in writing: who produces the AR views and from what source material, whether the shopper needs an app, how true-to-size accuracy is proven, and the full one-year price for your catalogue including production. The answers tell you more than any feature list.</p><h3>Do my customers need an app to see my furniture in AR?</h3><p>Not with ARQR360. Each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href=\"/novara\">live furniture demo</a> on your own phone.</p><h3>How much does AR cost a small furniture store?</h3><p>It depends on who produces the views, which is the biggest cost on most routes. ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. The first test piece is free.</p></div>""",
+},
+{
+"slug": "how-european-decor-stores-cut-returns-with-ar",
+"title": "How European Home Decor Stores Cut Returns with AR (Augmented Reality)",
+"date": "October 23, 2026",
+"description": "Wall art that looks lost, mirrors that swallow the hallway, vases that miss the shelf. Why European home decor stores lose money on size returns, and how true-to-size AR (Augmented Reality) views end the guessing.",
+"body": """<figure class=\"postimg\"><img src=\"/blog/how-european-decor-stores-cut-returns-with-ar/images/hero.jpg\" alt=\"Shopper in a bright European living room holding a smartphone showing a large round wall mirror in true-to-size augmented reality on the wall\" loading=\"lazy\"><figcaption>The mirror at its true size, on the shopper's own wall, before they buy.</figcaption></figure>
+<p>Picture a home decor store owner in Amsterdam. She sells wall art, mirrors, vases and lamps from one shop and a website. Her returns tell the same story every month. The pieces come back because of size. The canvas looked bigger online. The mirror swallowed the hallway. The vase did not fit the shelf.</p>
+<p>This is the quietest cost in home decor retail. Nobody talks about it at trade shows. A returned mirror costs shipping twice and sells used the second time. The fix is simple. Let the shopper see the piece at its true size before they order.</p>
+<h2>Where the guessing happens</h2>
+<p>Decor is the hardest category to judge online. A sofa has listed dimensions that a buyer can measure against a room. A wall art print has them too, but almost nobody measures. The buyer looks at a photo, feels the size, and hopes. Mirrors and lighting are worse. They interact with the room, and a photo of a product on white cannot show that.</p>
+<p>Picture a buyer in Lyon. She orders two framed prints for the wall above her sideboard. They arrive. They look lost. She packs them up and returns both. Nobody lied to her. The listing had the sizes. She just could not picture them. That gap between listed size and pictured size is where most decor returns come from.</p>
+<figure class=\"postimg\"><img src=\"/blog/how-european-decor-stores-cut-returns-with-ar/images/img1.jpg\" alt=\"Woman in a Scandinavian-style living room pointing her smartphone at an empty wall, the phone screen showing a large abstract canvas art in true-to-size augmented reality\" loading=\"lazy\"><figcaption>The prints at true size on her own wall, before the order is placed.</figcaption></figure>
+<h2>What the shopper actually checks</h2>
+<p>AR (Augmented Reality) answers one question. How does this look in my room, at its true size. The shopper points their phone at their wall or their shelf. The piece appears where it would really stand. Too big is obvious. Too small is obvious. The guessing ends.</p>
+<p>One number worth knowing, and it is Shopify's own data, not ours. Products with 3D or AR views convert about 94% better than products without. Shoppers who can check the true size hesitate less and return less.</p>
+<h2>The route that skips the hard part</h2>
+<p>Most decor stores stay away from AR for one reason. Somebody has to produce the views. The store owner has no 3D team and no wish to build one. This is where ARQR360 is built differently. You send product photos and your listed dimensions. Our designing department produces the true-to-size AR (Augmented Reality) views for you. Photos in, views out.</p>
+<p>The price is flat and public. $249 one-time setup, $29 a month, with all AR view production included. No product cap. No per-view fees. Each piece gets a link and a QR code that opens in the phone browser. No app for the shopper to install.</p>
+<figure class=\"postimg\"><img src=\"/blog/how-european-decor-stores-cut-returns-with-ar/images/img2.jpg\" alt=\"Shop owner in a European home decor shop holding a smartphone beside a real tall ceramic vase, the phone screen showing the same vase in true-to-size augmented reality at identical size\" loading=\"lazy\"><figcaption>The view against the real piece, same size, before it goes live.</figcaption></figure>
+<h2>Where the links go</h2>
+<p>Three places do the most work. Next to the price on every product page, where sizing doubt lives. On the price tags in the shop, so visitors check pieces at home and come back decided. In Instagram posts and stories, which shoppers open on the same phone that runs the AR view.</p>
+<p>For a wider look at the options, read <a href=\"/blog/best-ar-options-home-decor-stores\">the best AR options for home decor stores</a>.</p>
+<h2>The cheapest way to check if it works for your store</h2>
+<p>You do not have to commit to anything. Send a photo of your bestselling mirror or wall art piece and we will build you one true-to-size AR (Augmented Reality) view free. Try it against the real piece. Show it to your team. If it does not convince you, you have spent nothing. Start with the <a href=\"/maison\">live decor demo</a> on your own phone. It opens in the browser, no install.</p>
+<div class=\"faq\"><h2>FAQ</h2><h3>How does AR cut returns for a decor store?</h3><p>Most decor returns come from size, not defects or taste. The buyer could not picture the listed size. AR (Augmented Reality) shows the piece at its true size in the buyer's own room, so the size guessing that causes most returns disappears.</p><h3>Do my customers need an app to see my pieces in AR?</h3><p>No. Each piece gets a link and a QR code that opens the AR view in the phone browser. Try the <a href=\"/maison\">live decor demo</a> on your own phone.</p><h3>What does AR cost a small decor store?</h3><p>It depends on who produces the views, which is the biggest cost on most routes. ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. The first test piece is free.</p></div>""",
+}
+];
+
+exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
