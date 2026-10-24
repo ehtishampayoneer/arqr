@@ -1,0 +1,49 @@
+"""EXTRA_POSTS for 2026-10-24 08:46 blog run (pushed via API; build.py too large for one push_files call).
+2026-10-24 08:46 run: "What a New Zealand Rug Store Should Ask Before Buying AR (Augmented Reality)" (rugs non-comparison, NZ buyer market, buyer-intent angle: five plain questions to ask any AR provider before signing).
+NO-COMPETITOR RULE in force (founder absolute order 2026-10-15): no comparison articles, no competitor names, ever.
+POSITIONING RULE honored: AR written as "AR (Augmented Reality)", deliverable is "AR (Augmented Reality) views", never 3D models for what ARQR360 delivers.
+HUMAN TEXT RULE honored: no em-dashes, en-dashes or spaced hyphens; no AI-tell words.
+Images: /blog/what-nz-rug-stores-should-ask-before-buying-ar/images/hero.jpg, img1.jpg, img2.jpg (each under 120KB, uploaded via GitHub web UI, verified 200 before reporting live).
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+EXTRA_POSTS = [
+{
+"slug": "what-nz-rug-stores-should-ask-before-buying-ar",
+"title": "What a New Zealand Rug Store Should Ask Before Buying AR (Augmented Reality)",
+"date": "October 24, 2026",
+"description": "Buying AR for a New Zealand rug store means asking who produces the views, what the full cost is, and whether shoppers need an app. The five plain questions to ask any AR provider before you sign.",
+"body": """<figure class="postimg"><img src="/blog/what-nz-rug-stores-should-ask-before-buying-ar/images/hero.jpg" alt="New Zealand rug store owner holding a smartphone that shows a patterned rug at true size on a living room floor" loading="lazy"><figcaption>The right question is not which AR is cheapest. It is who proves the rug is true to size.</figcaption></figure>
+<p>Picture a rug store owner in Auckland. She stocks handmade rugs, runners and modern designs in two shops and a website. She has heard that AR (Augmented Reality) cuts size returns, and she is ready to try it. Then she starts reading providers and every one of them sounds the same.</p>
+<p>They are not the same. Here are five plain questions that separate a provider worth your money from one that costs you twice.</p>
+<h2>1. Who produces the views, and from what?</h2>
+<p>This is the question that decides the whole project. Some providers hand you software and expect you to supply the files that power the AR. A rug store holds product photos, not those files. Someone has to build every view, and that bill decides the real price.</p>
+<p>Ask it in plain words: if I send you photos of my rugs, who turns them into the AR views? At ARQR360, our designing department does that work. You send photos and the real listed size of each rug. We produce true-to-size AR (Augmented Reality) views, host them, and hand you the links and QR codes.</p>
+<h2>2. What is the full cost in writing?</h2>
+<p>Ask every provider for the total first-year cost in one email: setup, view production, hosting, and anything you pay when you add new rugs later. A small monthly fee means nothing if every view costs extra.</p>
+<p>ARQR360 publishes the full number: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. No product cap, no per-view fees, and no surprise bill when you add the next rug.</p>
+<h2>3. Does the shopper need an app?</h2>
+<p>If the customer must download an app to see your rug, most of them will not. People do not install apps to look at a rug. Browser AR opens from a link or a QR code in seconds. That is the version that actually gets used.</p>
+<figure class="postimg"><img src="/blog/what-nz-rug-stores-should-ask-before-buying-ar/images/img1.jpg" alt="Shopper in a bright rug showroom pointing a smartphone at a large rug laid out on the floor" loading="lazy"><figcaption>The check that matters: a customer pointing a phone at a rug, seconds, no install.</figcaption></figure>
+<p>Test this on your own phone before you sign. Our <a href="/terra">live rug demo</a> opens in the browser with no install. Show it to your staff and ask them: would a customer actually use this?</p>
+<h2>4. How do you prove true to size?</h2>
+<p>A rug view that is even slightly off teaches the customer the tool cannot be trusted. Ask the provider how they check each view against the real rug before it goes live.</p>
+<figure class="postimg"><img src="/blog/what-nz-rug-stores-should-ask-before-buying-ar/images/img2.jpg" alt="Smartphone in a living room showing the same room with a large rug appearing at true size on the floor" loading="lazy"><figcaption>True to size means the rug on the phone matches the rug in the room.</figcaption></figure>
+<p>At ARQR360, each view is built from your product photos matched to the rug's real listed dimensions, and you check it against the real rug yourself. The first test view is free, so you can verify the match with your own eyes before you spend anything.</p>
+<h2>5. Who looks after you after launch?</h2>
+<p>AR is not a one-day install. You will add rugs, change stock, and want every link to keep working. Ask who answers when something needs a fix, and whether that help costs extra.</p>
+<p>We look after our stores after launch the same way we do before it. Follow-ups, custom packages when your catalogue needs them, and a team that keeps your AR (Augmented Reality) views live. That is part of the service, not an add-on.</p>
+<p>One more number, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. The mechanism is plain. Shoppers who can see the true size hesitate less.</p>
+<p>For the cost side in detail, read <a href="/blog/payback-maths-ar-small-rug-store">the payback maths for a small rug store</a>.</p>
+<h2>The cheapest way to run your own test</h2>
+<p>You do not have to believe an article. Send a photo of your bestselling rug and we will build you one true-to-size AR (Augmented Reality) view free. Put it against the real rug. Show it to your staff. If it does not win, you have spent nothing. Start with the <a href="/terra">live rug demo</a> on your own phone. It opens in the browser, no install.</p>
+<div class="faq"><h2>FAQ</h2>
+<h3>Do my customers need an app to see my rugs in AR?</h3>
+<p>Not with ARQR360. Each rug gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone.</p>
+<h3>What does AR cost a small rug store?</h3>
+<p>ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. No product cap, no per-view fees. The first test view is free.</p>
+<h3>How long before my rugs are live?</h3>
+<p>With ARQR360, about seven days from your photos arriving. Ask any other provider for a written timeline for your catalogue size before you commit.</p>
+</div>""",
+},
+]
