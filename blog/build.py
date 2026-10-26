@@ -1538,4 +1538,37 @@ POSTS += [
 
 ];
 
+POSTS += [
+{
+"slug": "what-footwear-stores-check-before-buying-ar",
+"title": "What a Footwear Store Should Check Before Buying AR (Augmented Reality)",
+"date": "October 26, 2026",
+"description": "Buying AR for a footwear store means choosing who produces the views, how the price really works, and whether shoppers need an app. The plain checklist a shoe store owner should run through before signing anything.",
+"body": """<figure class="postimg"><img src="/blog/what-footwear-stores-check-before-buying-ar/images/hero.jpg" alt="Footwear store owner holding a smartphone showing a brown leather boot in true-to-size AR beside the real boot on a display shelf" loading="lazy"><figcaption>The whole point: the boot at its true size, on a phone screen, before the customer buys.</figcaption></figure>
+<p>Picture a shoe store owner in Manchester. She sells leather boots, trainers and suede shoes from one shop and a website. She is ready to put AR (Augmented Reality) on her product pages, and three vendors have sent her quotes. The quotes do not look like they describe the same product. Here is the checklist that cuts through them.</p>
+<p>It comes down to four questions. Who produces the views. Whether the shopper needs an app. How true size is proven. What the real price is for one year. Ask all four in writing before you sign anything.</p>
+<h2>1. Who produces the views, and from what</h2>
+<p>Start here, because everything else follows. Ask the vendor a plain question: who makes the AR views of my shoes, and what do they start from?</p>
+<p>On some routes, you supply the files yourself. The vendor sells a viewer, you commission the files from artists at roughly $100 to $500 per product, and you manage the whole pipeline. For a 40 style catalogue, that bill is the project, not the software.</p>
+<p>On the done-for-you route, you send photos and your real listed dimensions, and the vendor produces the true-to-size AR (Augmented Reality) views. ARQR360 works this way. Our designing department produces the views for you, from your photos, with new season stock handled the same way. When you compare quotes, compare the full job: views plus viewer plus hosting, not the monthly fee alone.</p>
+<h2>2. Does the shopper need an app</h2>
+<p>Ask before you sign: does the customer need to download an app to open the view? If the answer is yes, most of them will not use it. People do not install apps to check a pair of boots. A view that opens in the phone browser, from a link or a QR code, gets used. Test that on your own phone with our <a href="/corso">live footwear demo</a>.</p>
+<figure class="postimg"><img src="/blog/what-footwear-stores-check-before-buying-ar/images/img1.jpg" alt="Shopper in a bright living room pointing a smartphone at their own feet, the screen showing leather boots at true size" loading="lazy"><figcaption>The shopper checks the boots at true size against their own feet, before the order.</figcaption></figure>
+<h2>3. How is true size proven</h2>
+<p>For shoes, size is the whole question. A boot that is even a little off teaches the customer the tool cannot be trusted. Ask the vendor how they check every view against the real listed dimensions, and what happens when a pair is off. A serious answer names a process. A vague answer is the answer.</p>
+<p>Ask too what the shopper actually sees. The honest promise for footwear is size and look: the shoe at its true size, beside or against the shoppers own feet, so they can compare it with a pair they already own. AR cannot tell a shopper how a shoe will feel on their foot, and any vendor who promises that is overselling. What it can do, and do well, is end the size guessing that stops so many orders.</p>
+<figure class="postimg"><img src="/blog/what-footwear-stores-check-before-buying-ar/images/img2.jpg" alt="Customer in a shoe shop holding a smartphone beside a real pair of suede boots, the screen showing the same boots at identical true size" loading="lazy"><figcaption>The view against the real pair: same size, or it fails the test.</figcaption></figure>
+<h2>4. What does one year actually cost</h2>
+<p>Get the quote in writing for your full catalogue, for one year, with everything included. The monthly fee is usually the smallest line. The rest is per-product production fees, per-view charges that grow with your traffic, setup fees, and the cost of new season stock. A quote that will not put that number in writing is a quote you cannot compare.</p>
+<p>For reference, ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. About seven days from photos to a live catalogue. No product cap, no per-view fees. Custom packages are available if your store needs something beyond the standard catalogue, and our team follows up after launch to make sure the views are working where shoppers actually see them.</p>
+<h2>Where the links go</h2>
+<ul><li><strong>Next to the price on every product page.</strong> That is where size doubt lives. A see-it-at-true-size link beside the buy button answers the question at the moment it matters.</li><li><strong>On the price tags in the shop.</strong> A QR code on the tag opens the same pair in AR. Customers check it at home and come back decided.</li><li><strong>In Instagram posts and stories.</strong> The link opens on a phone, which is exactly where your shoppers browse.</li></ul>
+<p>One number worth knowing, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. Shoppers who can check the true size hesitate less.</p>
+<p>For the same checklist written for furniture stores, read <a href="/blog/what-furniture-stores-check-before-buying-ar">what a furniture store should check before buying AR</a>.</p>
+<h2>The cheapest way to check before you buy</h2>
+<p>You do not have to sign anything to run the checklist. Send a photo of your bestselling shoe and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real pair, and test your four questions against the actual thing. If it does not convince you, you have spent nothing. Try the <a href="/corso">live footwear demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>What should a footwear store check before buying AR?</h3><p>Four things, in writing: who produces the AR views and from what source material, whether the shopper needs an app, how true size is proven, and the full one-year price for your catalogue including production. The answers tell you more than any feature list.</p><h3>Do my customers need an app to see my shoes in AR?</h3><p>Not with ARQR360. Each pair gets a link and a QR code that opens the AR view in the phone browser. Try the <a href="/corso">live footwear demo</a> on your own phone.</p><h3>How much does AR cost a small footwear store?</h3><p>It depends on who produces the views, which is the biggest cost on most routes. ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. The first test view is free.</p></div>""",
+},
+];
+
 exec(open(os.path.join(ROOT,'apply_overrides.py')).read()); build()
