@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arqr360.com/blog</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -518,6 +518,16 @@
   <url>
     <loc>https://arqr360.com/blog/how-gulf-shoe-stores-check-true-size-with-ar</loc>
     <lastmod>2026-10-26</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/how-australian-rug-stores-pick-rug-size-open-plan-living-ar</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/what-canadian-decor-stores-look-for-in-ar-provider</loc>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>
