@@ -1,0 +1,42 @@
+"""EXTRA_POSTS for 2026-10-30 blog runs (pushed via API; build.py too large for one push_files call).
+2026-10-30 23:00 run: "How European Rug Stores Cut Size Returns with AR (Augmented Reality)" (rugs non-comparison, European buyer market, buyer-intent angle: reduce returns). Images: /blog/how-european-rug-stores-cut-size-returns-with-ar/images/hero.jpg, img1.jpg, img2.jpg (each under 120KB, uploaded via GitHub web UI, verified 200 before reporting live).
+NO-COMPETITOR RULE in force (founder absolute order 2026-10-15): no comparison articles, no competitor names, ever.
+POSITIONING RULE honored: AR written as "AR (Augmented Reality)", deliverable is "AR (Augmented Reality) views", never the other format for what ARQR360 delivers.
+HUMAN TEXT RULE honored: no em-dashes, en-dashes or spaced hyphens; no AI-tell words.
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+TITLE_OVERRIDES = {}
+LINK_INSERTS = {}
+EXTRA_POSTS = [
+{"slug": "how-european-rug-stores-cut-size-returns-with-ar","title": "How European Rug Stores Cut Size Returns with AR (Augmented Reality)","date": "October 30, 2026","description": "Most rug returns in Europe are not about quality. They are about size: the rug that looked right online and wrong on the floor. How European rug stores use true-to-size AR (Augmented Reality) views so shoppers check the size before they order.","body": """<figure class="postimg"><img src="/blog/how-european-rug-stores-cut-size-returns-with-ar/images/hero.jpg" alt="Large patterned rug at true size on a wooden floor in a bright European living room, a person holding a smartphone showing the same rug" loading="lazy"><figcaption>The rug at its true size, on the buyer's own floor, before the order.</figcaption></figure>
+<p>Picture a rug store owner in Lyon. She sells wool rugs online across France and to shoppers in nearby countries. Her rugs are well made. Her photos are sharp. Yet every week, rugs come back. Not damaged. Not the wrong colour. The wrong size. A runner that looked generous on screen swallows a narrow hallway. A rug that looked neat online dwarfs a small flat.</p>
+<p>Size is the hardest thing to sell in a photo. A rug has no fixed frame of reference on a screen. The shopper cannot stand on it, walk around it, or see where it ends against the sofa. So they guess. And when the guess is wrong, the rug goes back, and the store pays for shipping both ways.</p>
+<p>AR (Augmented Reality) changes the guess into a check. The shopper points their phone at their own floor and sees the rug at its true size, in their own room, before they order. That one check is what cuts size returns.</p>
+<h2>Why rug size returns happen</h2>
+<ul>
+<li><strong>Photos flatten scale.</strong> A 160 by 230 rug and a 200 by 300 rug can look identical in a product photo. The shopper has no way to tell them apart by eye.</li>
+<li><strong>Rooms differ wildly.</strong> A rug that fits a large house in the suburbs can overwhelm a city flat. The same product, two very different rooms.</li>
+<li><strong>Tape measures do not convince.</strong> Shoppers read the dimensions, then still cannot picture them on their own floor. Numbers are not a picture.</li>
+<li><strong>Returns cost twice.</strong> A returned rug ships out, ships back, arrives creased, and often sells at a discount. The store loses the sale and pays for the journey.</li>
+</ul>
+<h2>What the shopper sees instead</h2>
+<p>With a true-to-size AR (Augmented Reality) view, the shopper opens a link or scans a QR code on the product page. The rug appears on their own floor, at its real size, next to their own sofa and coffee table. They can see at once whether it reaches the sofa legs, whether it leaves a sensible border of bare floor, and whether the pattern suits the room.</p>
+<p>That check does two jobs at once. It stops the wrong order, and it gives the right order more confidence. A shopper who has seen the rug in their room is less likely to cancel, and less likely to send it back. Shopify reports that products with 3D/AR views convert about 94% better than products without. That is Shopify's own data, not ours, and it fits what rug stores see in practice: shoppers who check the size buy with more certainty.</p>
+<figure class="postimg"><img src="/blog/how-european-rug-stores-cut-size-returns-with-ar/images/img1.jpg" alt="Shopper in a bright European apartment pointing a smartphone at an empty wooden floor, the screen showing a large rug at true size" loading="lazy"><figcaption>The shopper checks the rug at true size on her own floor, before the order.</figcaption></figure>
+<h2>Where the view has to sit</h2>
+<p>A view hidden three clicks deep will not cut returns. Put it where size doubt lives.</p>
+<ul>
+<li><strong>Next to the size selector on every product page.</strong> That is the moment the shopper picks 160 by 230 or 200 by 300. A see-it-in-your-room link there answers the question at the exact moment it matters.</li>
+<li><strong>On the price tag in the shop.</strong> A QR code on the tag opens the same rug in AR (Augmented Reality). Customers check it at home and come back decided.</li>
+<li><strong>In Instagram posts and stories.</strong> The link opens on a phone, which is exactly where your shoppers browse.</li>
+</ul>
+<h2>What to check before you buy AR for a rug store</h2>
+<p>Not every AR view earns trust. For rugs, one check matters above all: is the size true? A rug that shows even a few centimetres off teaches the shopper the tool cannot be trusted, and you are back to photos. Ask any provider how they verify each view against the real listed dimensions, and what happens when a view is off. A serious answer names a process. A vague answer is the answer.</p>
+<p>Ask too whether the shopper needs an app. If the answer is yes, most of them will not use it. People do not install apps to check a rug. A view that opens in the phone browser, from a link or a QR code, gets used. Try our <a href="/terra">live rug demo</a> on your own phone to see how it feels.</p>
+<p>Ask what new stock costs. Rug ranges turn over every season. With ARQR360, new pieces are handled the same way as the launch range, included in the flat monthly fee. Our talented designing department produces the true-to-size AR (Augmented Reality) views from your photos and your real listed dimensions. You send photos, we produce the views, you paste the links and QR codes on your product pages. About seven days from photos to a live catalogue.</p>
+<figure class="postimg"><img src="/blog/how-european-rug-stores-cut-size-returns-with-ar/images/img2.jpg" alt="Rug store owner in a European rug shop holding a smartphone beside a real rug on display, the screen showing the same rug at true size" loading="lazy"><figcaption>The view against the real rug: same size, or it fails the test.</figcaption></figure>
+<h2>The cheapest way to check before you buy</h2>
+<p>You do not have to sign anything to find out if this works for your store. Send a photo of your bestselling rug and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own floor next to the real rug, check the size with your own eyes, and decide with the thing in front of you. If it does not convince you, you have spent nothing. For the wider returns story, read <a href="/blog/how-rug-stores-cut-size-returns-with-ar">how rug stores cut size-related returns with true-to-size AR</a>. Start with the <a href="/terra">live rug demo</a> on your own phone. It opens in the browser, no install. Claim your free AR product today, and let your shoppers check the size before they order, not after.</p>
+<div class="faq"><h2>FAQ</h2><h3>Why do European rug stores get so many size returns?</h3><p>Because photos flatten scale. Two rug sizes can look identical on screen, and shoppers in very different rooms guess from the same photo. A true-to-size AR (Augmented Reality) view lets the shopper see the rug on their own floor before ordering, so the guess becomes a check.</p><h3>Do my customers need an app to see my rugs in AR?</h3><p>Not with ARQR360. Each rug gets a link and a QR code that opens the AR (Augmented Reality) view in the phone browser. Try the <a href="/terra">live rug demo</a> on your own phone.</p><h3>How much does AR cost a small European rug store?</h3><p>ARQR360 is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. No product cap, no per-view fees. The first test view is free.</p></div>"""},
+];
