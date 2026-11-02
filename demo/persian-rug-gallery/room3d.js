@@ -13,7 +13,8 @@
   var ROOM = '/demo/persian-rug-gallery/img/room.jpg';
   var CAMERA_HEIGHT = '1.38m';
   var EYES = 1.6;                       // metres: where a standing person looks from
-  var FOV = 42;                         // degrees, top to bottom
+  var FOV = 42;                         // degrees, top to bottom: a tall frame
+  var FOV_WIDE = 34;                    // a wide frame shows more room either side, so it zooms in a little
   // the two sides of this room that look best, both with the window behind the rug
   // (model-viewer camera theta, the room's own directions, whatever the rug's yaw)
   var FACES = [160, -110];
@@ -51,7 +52,7 @@
 
   function wholeOrbit(mv) {
     var r = mv.rug, half = Math.hypot((r.L + 0.16) / 2, r.W / 2);     // with the fringe
-    var R = Math.max(2.8, 0.95 * half / Math.sin(FOV / 2 * Math.PI / 180));
+    var R = Math.max(2.8, 0.95 * half / Math.sin(FOV / 2 * Math.PI / 180));        // the same stand-off either way
     var phi = Math.acos(Math.min(1, EYES / R)) * 180 / Math.PI;
     return mv.face + 'deg ' + phi.toFixed(1) + 'deg ' + R.toFixed(2) + 'm';
   }
@@ -74,7 +75,7 @@
     mv.setAttribute('shadow-intensity', '1');
     mv.setAttribute('shadow-softness', '1');
     mv.setAttribute('exposure', '1');
-    mv.setAttribute('field-of-view', FOV + 'deg');
+    mv.setAttribute('field-of-view', (mv.wide ? FOV_WIDE : FOV) + 'deg');
     mv.setAttribute('min-camera-orbit', 'auto 0deg 0.45m');
     mv.setAttribute('max-camera-orbit', 'auto 82deg 6m');
     mv.setAttribute('camera-orbit', wholeOrbit(mv));
