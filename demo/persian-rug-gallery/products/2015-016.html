@@ -59,6 +59,19 @@
   .thumbs img{max-width:100%;max-height:100%;display:block;object-fit:contain}
   .main-img{position:relative;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;padding:28px;min-height:520px}
   .main-img img{display:block;max-height:640px;width:auto;object-fit:contain}
+  /* the 3D item of the gallery: the rug on a real floor */
+  .main-img.is3d{padding:0;height:660px;min-height:0;background:#E9E2D8;overflow:hidden}
+  .main-img.is3d > img,.main-img.is3d .zoom{display:none}
+  .mvbox{position:absolute;inset:0}
+  .mvbox[hidden]{display:none}
+  .mvbox model-viewer,.mv model-viewer{display:block;width:100%;height:100%;--poster-color:#E9E2D8;--progress-bar-color:var(--red)}
+  .m3-tag{position:absolute;top:12px;left:12px;right:12px;width:max-content;max-width:calc(100% - 24px);padding:6px 12px;border-radius:20px;background:rgba(255,255,255,.93);color:var(--ink);font:600 12.5px/1.35 "Inter",sans-serif;box-shadow:0 1px 5px rgba(0,0,0,.14);pointer-events:none}
+  .m3-views{position:absolute;left:10px;right:10px;bottom:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+  .m3-views button{min-height:40px;padding:0 14px;border:0;border-radius:20px;background:rgba(255,255,255,.93);color:var(--ink);font:600 13px "Inter",sans-serif;box-shadow:0 1px 5px rgba(0,0,0,.16)}
+  .m3-views button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .thumbs .t3d{position:relative;padding:0;overflow:hidden}
+  .thumbs .t3d img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover}
+  .thumbs .t3d span{position:absolute;right:4px;bottom:4px;padding:1px 6px;border-radius:10px;background:var(--ink);color:#fff;font:700 11px/1.5 "Inter",sans-serif}
   .zoom{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:50%;border:0;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.14);display:grid;place-items:center;color:var(--red-dk)}
   .zoom svg{width:22px;height:22px}
   .info h1{margin:0;color:var(--ink);font:400 30px/1.25 "Crimson Text",Georgia,serif}
@@ -126,9 +139,9 @@
   .modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(20,16,12,.55)}
   .modal[hidden]{display:none}
   .modal-box{position:relative;width:min(980px,100%);max-height:100%;overflow:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);background:#fff;border-radius:6px}
-  .mv{position:relative;min-height:480px;background:linear-gradient(#F4F1EC,#E6E0D6)}
-  .mv model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:transparent}
-  .mv-note{position:absolute;left:14px;bottom:12px;right:14px;margin:0;font:500 12.5px/1.4 "Inter",sans-serif;color:#5B5249;pointer-events:none}
+  .mv{position:relative;min-height:500px;background:#E9E2D8}
+  .mv model-viewer{position:absolute;inset:0}
+  .mv-note{position:absolute;left:12px;bottom:12px;right:12px;width:max-content;max-width:calc(100% - 24px);margin:0;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,.93);font:500 12.5px/1.4 "Inter",sans-serif;color:var(--ink);pointer-events:none}
   .qr{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px 28px;text-align:center}
   .qr img{width:200px;height:200px;border:1px solid var(--line);border-radius:6px;padding:6px}
   .qr b{color:var(--ink);font:400 24px/1.25 "Crimson Text",serif}
@@ -155,11 +168,13 @@
     .hd-mob-search button{width:58px;border:0;background:var(--red-dk);color:#fff;display:grid;place-items:center}
     .hd-mob-search svg{width:26px;height:26px}
     .pd{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}
-    .media{display:flex;flex-direction:column-reverse}
+    .media{display:flex;flex-direction:column-reverse;align-items:stretch}
     .thumbs{flex-direction:row;overflow-x:auto;gap:10px;margin:12px 0 28px;padding-bottom:4px}
     .thumbs button{flex:none;width:68px;height:68px}
     .main-img{min-height:0;padding:18px}
     .main-img img{max-height:480px}
+    .main-img.is3d{height:440px}
+    .m3-views button{min-height:40px;padding:0 11px;font-size:12.5px}
     .info h1{font-size:26px}
     .modal-box{grid-template-columns:1fr}
     .mv{min-height:360px}
@@ -215,6 +230,16 @@
     <div class="main-img">
       <img id="mainImg" src="" alt="Sirjan Rug - 228 cm x 150 cm">
       <button type="button" class="zoom show-only" aria-label="Zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
+      <!-- ARQR360: the 3D item of the gallery -->
+      <div class="mvbox" id="mvBox" hidden>
+        <span class="m3-tag">3D · 228 × 150 cm, real size · drag to turn it</span>
+        <div class="m3-views" role="group" aria-label="Look from">
+          <button type="button" data-v="whole" aria-pressed="true">Whole rug</button>
+          <button type="button" data-v="corner" aria-pressed="false">Corner</button>
+          <button type="button" data-v="close" aria-pressed="false">Close up</button>
+          <button type="button" data-v="low" aria-pressed="false">Floor level</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -301,7 +326,7 @@
 <div class="modal" id="deskModal" hidden role="dialog" aria-modal="true" aria-labelledby="qrTitle">
   <div class="modal-box">
     <button type="button" class="x" id="deskClose" aria-label="Close">×</button>
-    <div class="mv" id="mvWrap"><p class="mv-note">Drag to turn it round. This is the same model your phone puts on the floor, at 228 × 150 cm.</p></div>
+    <div class="mv" id="mvWrap"><p class="mv-note">Drag to turn it. The same model your phone puts on your floor, at 228 × 150 cm.</p></div>
     <div class="qr">
       <img src="/demo/persian-rug-gallery/img/qr-2015-016.png" width="200" height="200" alt="QR code for this page">
       <b id="qrTitle">See it on your floor</b>
@@ -312,6 +337,7 @@
 
 <div class="toast" id="toast" role="status" hidden></div>
 
+<script src="/demo/persian-rug-gallery/room3d.js"></script>
 <script>
 var ua = navigator.userAgent || '';
 var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -349,20 +375,48 @@ Array.prototype.forEach.call(document.querySelectorAll('.show-only'), function (
   });
 });
 
-// gallery: their own photos, from their store
+// gallery: their own photos, from their store, and second our 3D item (the rug on a real floor)
+var ROOM3D = { glb: BASE + FILE + '.glb', yaw: 64.5, L: 2.28, W: 1.50, name: NAME };
+var GALLERY = IMAGES.slice(0, 1).concat(['3d'], IMAGES.slice(1));
 var thumbs = document.getElementById('thumbs'), mainImg = document.getElementById('mainImg');
+var mainBox = mainImg.parentNode, mvBox = document.getElementById('mvBox'), mv3 = null;
 function show(i) {
-  mainImg.src = IMAGES[i] + '&width=1100';
+  var is3d = GALLERY[i] === '3d';
+  mainBox.classList.toggle('is3d', is3d);
+  mvBox.hidden = !is3d;
+  if (is3d && !mv3) {
+    mv3 = ARQRRoom.mount(mvBox, Object.assign({ poster: '/demo/persian-rug-gallery/img/room-2015-016-tall.jpg' }, ROOM3D));
+    logEvent({ kind: 'view3d' });
+  }
+  if (!is3d) mainImg.src = GALLERY[i] + '&width=1100';
   Array.prototype.forEach.call(thumbs.children, function (b, j) { b.setAttribute('aria-current', i === j ? 'true' : 'false'); });
 }
-IMAGES.forEach(function (src, i) {
+GALLERY.forEach(function (src, i) {
   var b = document.createElement('button');
-  b.type = 'button'; b.setAttribute('role', 'listitem'); b.setAttribute('aria-label', 'Photo ' + (i + 1));
-  var im = document.createElement('img'); im.src = src + '&width=160'; im.alt = ''; im.loading = 'lazy';
-  b.appendChild(im); b.addEventListener('click', function () { show(i); });
+  b.type = 'button'; b.setAttribute('role', 'listitem');
+  var im = document.createElement('img'); im.alt = ''; im.loading = 'lazy';
+  if (src === '3d') {
+    b.className = 't3d'; b.setAttribute('aria-label', 'See it in 3D on a floor');
+    im.src = '/demo/persian-rug-gallery/img/room-2015-016-thumb.jpg';
+    var tag = document.createElement('span'); tag.textContent = '3D';
+    b.appendChild(im); b.appendChild(tag);
+  } else {
+    b.setAttribute('aria-label', 'Photo ' + (i < 1 ? 1 : i));
+    im.src = src + '&width=160';
+    b.appendChild(im);
+  }
+  b.addEventListener('click', function () { show(i); });
   thumbs.appendChild(b);
 });
 show(0);
+ARQRRoom.load();
+Array.prototype.forEach.call(document.querySelectorAll('.m3-views button'), function (b, i, all) {
+  b.addEventListener('click', function () {
+    if (!mv3) return;
+    ARQRRoom.view(mv3, b.getAttribute('data-v'));
+    Array.prototype.forEach.call(all, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+  });
+});
 
 /* The room button: the same hand-off as every ARQR360 rug, size locked.
      iPhone    Quick Look, with the rug's name along the bottom
@@ -401,20 +455,7 @@ function openDesk() {
   modal.hidden = false;
   if (!mvLoaded) {
     mvLoaded = true;
-    var s = document.createElement('script');
-    s.type = 'module';
-    s.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';
-    document.head.appendChild(s);
-    var mv = document.createElement('model-viewer');
-    mv.setAttribute('src', BASE + FILE + '.glb');
-    mv.setAttribute('alt', NAME + ', ' + RUG.L + ' × ' + RUG.W + ' cm, in 3D');
-    mv.setAttribute('camera-controls', '');
-    mv.setAttribute('touch-action', 'pan-y');
-    mv.setAttribute('camera-orbit', '25deg 62deg auto');
-    mv.setAttribute('shadow-intensity', '0');
-    mv.setAttribute('exposure', '1');
-    mv.setAttribute('interaction-prompt', 'none');
-    document.getElementById('mvWrap').prepend(mv);
+    ARQRRoom.mount(document.getElementById('mvWrap'), Object.assign({ poster: '/demo/persian-rug-gallery/img/room-2015-016-mid.jpg' }, ROOM3D));
   }
   document.getElementById('deskClose').focus();
 }
