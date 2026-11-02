@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rug Room dashboard · ARQR360 demo for Persian Rug Gallery</title>
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAF7F2}
+*{box-sizing:border-box}
+a{color:#9C3F12}a:hover{color:#6E2A0A}
+button,input{font:inherit}
+button{cursor:pointer}
+.h{font-family:Archivo,"Arial Black","Segoe UI",sans-serif}
+.card{background:#FFFFFF;border:1px solid #E4DED4;border-radius:14px;padding:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:10px;border:1px solid #191919;background:#191919;color:#FFFFFF;font-size:14px;font-weight:600;white-space:nowrap}
+.btn:hover{background:#3A3733}
+.btn:disabled{background:#8F887E;border-color:#8F887E;cursor:not-allowed}
+.btn2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid #D6CFC3;background:#FFFFFF;color:#191919;font-size:14px;font-weight:600;white-space:nowrap}
+.btn2:hover{background:#F4EFE5}
+.nav{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;border:1px solid transparent;background:transparent;color:#3A3733;font-size:14px;font-weight:500;text-align:left}
+.nav:hover{background:#F0EADF}
+.link{border:0;background:none;padding:0;min-height:44px;color:#191919;font-size:14px;font-weight:600;text-align:left;text-decoration:underline;text-decoration-color:#D6CFC3;text-underline-offset:3px}
+.link:hover{text-decoration-color:#191919}
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #D6CFC3;background:#FFFFFF;color:#191919;font-size:13px;font-weight:600}
+.chip:hover{background:#F4EFE5}
+.field{width:100%;min-height:44px;padding:0 12px;border-radius:10px;border:1px solid #B9B1A5;background:#FFFFFF;color:#191919;font-size:14px}
+.row{display:grid;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid #EFEAE1}
+.sw{display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 0;border:0;border-bottom:1px solid #EFEAE1;background:transparent;color:#191919;text-align:left}
+:focus-visible{outline:3px solid #E0682A;outline-offset:2px}
+</style>
+<style>[v-cloak]{display:none}</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<!-- Made by make_demo.py from the Rug Room Design canvas (Main.dc.html): the same screens and
+     logic, run by petite-vue. Rugs, photos, sizes, prices and the fix list are Persian Rug
+     Gallery's real ones; visitor, sales and warm-list numbers are labelled samples. -->
+<div id="app" v-cloak>
+<div style="min-height: 100vh; background: #FAF7F2; color: #191919; font-family: Inter, 'Segoe UI', -apple-system, Helvetica, Arial, sans-serif">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px clamp(16px, 3vw, 28px); background: #FFFFFF; border-bottom: 1px solid #E4DED4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px">
+<span class="h" style="font-size: 21px; font-weight: 800; letter-spacing: -0.02em">ARQR<span :style="`color: ${accent}`">360</span></span>
+<span style="font-size: 15px; font-weight: 600">Rug Room</span>
+<span style="font-size: 13px; color: #6E6A64">Inside your Shopify admin · {{ storeName }}</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1ECE3; color: #5A554E">Demo · your real rugs · visitor and sales numbers are samples</span><a href="/demo/persian-rug-gallery" style="font-size: 13px; font-weight: 600">All demo pages</a></div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start">
+
+<nav aria-label="Rug Room" style="flex: 1 1 230px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px; padding: 20px 14px">
+<template v-for="n in nav">
+<button class="nav" :style="`flex: 1 1 200px; ${n.st}`" :aria-current="n.cur" @click="n.go">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="n.icon"></path></svg>
+<span style="flex: 1">{{ n.label }}</span>
+<template v-if="n.hasCount"><span :style="`font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; ${n.countSt}`">{{ n.count }}</span></template>
+</button>
+</template>
+<div style="flex: 1 1 200px; margin-top: 16px; padding: 14px; border-radius: 12px; background: #F1ECE3; font-size: 13px; line-height: 1.5; color: #4A4640">
+<div style="font-weight: 600; color: #191919; margin-bottom: 4px">Runs by itself</div>
+New rugs, changed photos and new sizes are picked up from Shopify automatically.
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 24px clamp(16px, 3vw, 32px) 72px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px">
+
+<!-- HOME -->
+<template v-if="isHome">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Your rugs at a glance</h1>
+<p style="margin: 6px 0 0; font-size: 15px; color: #6E6A64">What shoppers did with your rugs in the last 30 days.</p>
+</div>
+<button class="btn2" @click="toReports">See full report</button>
+</div>
+
+<div class="card" :style="`border: 2px solid ${accent}`">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Live: your own visits</h2>
+<span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #E4F0E2; color: #24592F">Real · from this phone</span>
+</div>
+<template v-if="noLive">
+<p style="margin: 6px 0 14px; font-size: 14px; line-height: 1.5; color: #6E6A64">Open one of your two rugs, tap “View in your room”, then come back here. Your visit shows up in this box, the way every shopper’s will.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><a class="btn2" style="text-decoration: none" href="/demo/persian-rug-gallery/products/2015-016">Open Sirjan #2015-016</a><a class="btn2" style="text-decoration: none" href="/demo/persian-rug-gallery/products/2015-070">Open Afshar #2015-070</a></div>
+</template>
+<template v-if="hasLive">
+<div style="margin-top: 6px">
+<template v-for="e in live">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 10px 0; border-bottom: 1px solid #EFEAE1; font-size: 14px; line-height: 1.45">
+<span style="flex: 0 0 90px; color: #6E6A64">{{ e.ago }}</span>
+<span style="flex: 1 1 300px">{{ e.x }}</span>
+</div>
+</template>
+</div>
+<p style="margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: #6E6A64">Only you see these: they are kept on this phone and not sent anywhere. Everything else on this page is a sample.</p>
+</template>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px">
+<template v-for="k in kpis">
+<div class="card">
+<div style="font-size: 13px; font-weight: 500; color: #6E6A64">{{ k.label }}</div>
+<div class="h" style="margin-top: 8px; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">{{ k.value }}</div>
+<div style="margin-top: 6px; font-size: 13px; line-height: 1.45; color: #6E6A64">{{ k.sub }}</div>
+</div>
+</template>
+</div>
+
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Today's focus</h2>
+<p style="margin: 4px 0 16px; font-size: 14px; color: #6E6A64">Four things worth your time today, picked from your numbers.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px">
+<template v-for="f in focus">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 12px; background: #FAF7F2; border: 1px solid #EFEAE1">
+<div style="font-size: 15px; font-weight: 600; line-height: 1.35">{{ f.title }}</div>
+<div style="flex: 1; font-size: 13px; line-height: 1.5; color: #6E6A64">{{ f.d }}</div>
+<div><button class="btn2" @click="f.go">{{ f.btn }}</button></div>
+</div>
+</template>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens per day</h2>
+<span style="font-size: 13px; color: #6E6A64" aria-live="polite">{{ readout }}</span>
+</div>
+<div style="position: relative; height: 190px; margin-top: 18px" role="img" :aria-label="chartLabel">
+<template v-for="g in grid">
+<div :style="`position: absolute; left: 40px; right: 0; bottom: ${g.pos}%; border-top: 1px solid #EFEAE1`"></div>
+<span :style="`position: absolute; left: 0; bottom: ${g.pos}%; transform: translateY(50%); font-size: 11px; color: #6E6A64; font-variant-numeric: tabular-nums`">{{ g.label }}</span>
+</template>
+<div style="position: absolute; left: 40px; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; gap: 3px">
+<template v-for="d in days">
+<div style="flex: 1; height: 100%; display: flex; align-items: flex-end" :title="d.tip" @mouseenter="d.enter" @mouseleave="leave">
+<div :style="`width: 100%; height: ${d.h}%; background: ${accent}; border-radius: 4px 4px 0 0; opacity: ${d.op}`"></div>
+</div>
+</template>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin: 8px 0 0 40px; font-size: 11px; color: #6E6A64">
+<span>{{ x0 }}</span><span>{{ x1 }}</span><span>{{ x2 }}</span>
+</div>
+</div>
+
+<div class="card">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Hot rugs</h2>
+<span style="font-size: 13px; color: #6E6A64">Most room opens, 30 days</span>
+</div>
+<div style="display: flex; flex-direction: column; margin-top: 8px">
+<template v-for="r in hot">
+<div style="display: flex; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px solid #EFEAE1">
+<div style="width: 44px; height: 56px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #F1ECE3">
+<img :src="r.img" alt="" style="display: block; max-width: 40px; max-height: 52px">
+</div>
+<div style="flex: 1; min-width: 0">
+<button class="link" @click="r.open">{{ r.name }}</button>
+<div style="font-size: 12px; color: #6E6A64">{{ r.backTxt }} came back · {{ r.ordersTxt }} orders</div>
+</div>
+<div style="text-align: right">
+<div class="h" style="font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums">{{ r.opensTxt }}</div>
+<div style="font-size: 12px; color: #6E6A64">room opens</div>
+</div>
+</div>
+</template>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Running by itself</h2>
+<p style="margin: 4px 0 8px; font-size: 14px; color: #6E6A64">You did not have to do anything for these.</p>
+<template v-for="a in activity">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 10px 0; border-bottom: 1px solid #EFEAE1; font-size: 14px; line-height: 1.45">
+<span style="flex: 0 0 110px; color: #6E6A64">{{ a.t }}</span>
+<span style="flex: 1 1 300px">{{ a.x }}</span>
+</div>
+</template>
+</div>
+</div>
+</template>
+
+<!-- RUGS -->
+<template v-if="isRugs">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div style="flex: 1 1 420px">
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Rugs</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Every rug in your store, made from the photos you already have. New rugs are added by themselves. This demo shows 12 of your 2,817.</p>
+</div>
+<button class="btn2" @click="qrAll">Download all QR codes</button>
+</div>
+<div class="card" style="padding: 0; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; padding: 16px">
+<div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 6px">
+<label for="rug-q" style="font-size: 13px; font-weight: 600">Search rugs</label>
+<input id="rug-q" class="field" type="search" placeholder="Rug name" :value="q" @change="onQ">
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template v-for="c in filters">
+<button class="chip" :style="`white-space: nowrap; ${c.st}`" :aria-pressed="c.on" @click="c.pick">{{ c.label }} · {{ c.n }}</button>
+</template>
+</div>
+</div>
+<div style="overflow-x: auto">
+<div style="min-width: 880px">
+<div class="row" style="grid-template-columns: minmax(250px, 2.4fr) 1.2fr 1.4fr 0.9fr 0.9fr 0.7fr 1fr; background: #FAF7F2; font-size: 12px; font-weight: 600; color: #6E6A64">
+<div>Rug</div><div>Sizes</div><div>Status</div><div style="text-align: right">Room opens</div><div style="text-align: right">Came back</div><div style="text-align: right">Orders</div><div style="text-align: right">Sales</div>
+</div>
+<template v-for="r in rugList">
+<div class="row" style="grid-template-columns: minmax(250px, 2.4fr) 1.2fr 1.4fr 0.9fr 0.9fr 0.7fr 1fr; font-size: 14px">
+<div style="display: flex; align-items: center; gap: 12px; min-width: 0">
+<div style="width: 44px; height: 56px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #F1ECE3">
+<img :src="r.img" alt="" style="display: block; max-width: 40px; max-height: 52px">
+</div>
+<div style="min-width: 0">
+<button class="link" @click="r.open">{{ r.name }}</button>
+<div style="font-size: 12px; color: #6E6A64">{{ r.style }}</div>
+</div>
+</div>
+<div>{{ r.sizesTxt }}</div>
+<div><span :style="`display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; ${r.stStyle}`"><span style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>{{ r.stLabel }}</span></div>
+<div style="text-align: right; font-variant-numeric: tabular-nums">{{ r.opensTxt }}</div>
+<div style="text-align: right; font-variant-numeric: tabular-nums">{{ r.backTxt }}</div>
+<div style="text-align: right; font-variant-numeric: tabular-nums">{{ r.ordersTxt }}</div>
+<div style="text-align: right; font-variant-numeric: tabular-nums; font-weight: 600">{{ r.salesTxt }}</div>
+</div>
+</template>
+<template v-if="noRugs">
+<div style="padding: 32px 16px; text-align: center; font-size: 14px; color: #6E6A64">No rugs match. Try another name or filter.</div>
+</template>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #6E6A64">Room opens, came back, orders and sales are for the last 30 days. Sales count only orders where the shopper opened that rug in their room first.</p>
+</div>
+</template>
+
+<!-- RUG DETAIL -->
+<template v-if="isRug">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div><button class="btn2" @click="toRugs"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>All rugs</button></div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">{{ rd.name }}</h1>
+<p style="margin: 6px 0 0; font-size: 15px; color: #6E6A64">{{ rd.style }} · {{ rd.sizesTxt }}</p>
+</div>
+<span :style="`display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; ${rd.stStyle}`"><span style="width: 7px; height: 7px; border-radius: 50%; background: currentColor"></span>{{ rd.stLabel }}</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 16px">
+<div class="card" style="display: flex; flex-direction: column; gap: 16px">
+<div style="height: 320px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #EDE6DA">
+<img :src="rd.img" :alt="rd.name" style="display: block; max-width: 90%; max-height: 290px">
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #6E6A64">What shoppers place on their floor: your own photo at its real size, with thickness, a bound edge and fringe.</div>
+<div style="padding: 10px 12px; border-radius: 10px; background: #F1ECE3; font-size: 13px; line-height: 1.5; color: #3A3733">{{ rd.note }}</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template v-if="rd.hasLink"><a class="btn" :href="rd.link" style="text-decoration: none">Open its product page</a></template>
+<template v-if="rd.noLink"><button class="btn" @click="tryPhone">Try it on my phone</button></template>
+<button class="btn2" @click="copyLink">Copy room link</button>
+<button class="btn2" @click="dlQr">Download QR</button>
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Quality check</h2>
+<p style="margin: 4px 0 16px; font-size: 14px; line-height: 1.5; color: #6E6A64">Every rug is checked before it goes live. A rug that fails is held back, never shown wrong.</p>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+<template v-for="c in rd.checks">
+<li style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.45">
+<span :style="`flex: none; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; ${c.st}`"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="c.d"></path></svg></span>
+<span>{{ c.t }}</span>
+</li>
+</template>
+</ul>
+<template v-if="rd.isFix">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: #FCEFCF; font-size: 14px; color: #5C3900">
+<span>This rug is waiting for you on the fix list.</span>
+<button class="btn2" @click="toFix">Open fix list</button>
+</div>
+</template>
+<template v-if="rd.isBuilding">
+<div style="margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: #E3EAF4; font-size: 14px; color: #1F3D63">Being made now. It usually goes live in about a minute.</div>
+</template>
+</div>
+</div>
+
+<template v-if="rd.live">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Last 30 days</h2>
+<template v-if="rd.hasMine"><p style="margin: 6px 0 0; padding: 8px 12px; border-radius: 10px; background: #E4F0E2; color: #1E4A27; font-size: 13px">{{ rd.mine }}</p></template>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 12px; margin-top: 14px">
+<template v-for="x in rd.stats">
+<div style="padding: 14px; border-radius: 12px; background: #FAF7F2">
+<div style="font-size: 12px; font-weight: 500; color: #6E6A64">{{ x.label }}</div>
+<div class="h" style="margin-top: 4px; font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums">{{ x.v }}</div>
+</div>
+</template>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Sizes people tried</h2>
+<p style="margin: 4px 0 16px; font-size: 14px; color: #6E6A64">Share of room opens by size.</p>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<template v-for="z in rd.tried">
+<div style="display: grid; grid-template-columns: 64px 1fr 44px; align-items: center; gap: 10px; font-size: 14px">
+<span>{{ z.size }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${z.w}%; border-radius: 999px; background: ${accent}`"></div></div>
+<span style="text-align: right; font-variant-numeric: tabular-nums">{{ z.pct }}%</span>
+</div>
+</template>
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Interested people</h2>
+<p style="margin: 4px 0 12px; font-size: 14px; line-height: 1.5; color: #6E6A64">{{ rd.backLine }}</p>
+<template v-for="l in rd.leads">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; border-top: 1px solid #EFEAE1">
+<div>
+<div style="font-size: 14px; font-weight: 600">{{ l.name }}</div>
+<div style="font-size: 12px; color: #6E6A64">Opened it {{ l.timesTxt }} · {{ l.last }}</div>
+</div>
+<template v-if="l.notSent"><button class="btn" @click="l.offer">Send offer</button></template>
+<template v-if="l.sent"><span style="padding: 6px 12px; border-radius: 999px; background: #E4F0E2; color: #24592F; font-size: 13px; font-weight: 600">Offer sent</span></template>
+</div>
+</template>
+<template v-if="rd.noLeads"><p style="margin: 0; padding: 10px 0; border-top: 1px solid #EFEAE1; font-size: 14px; color: #6E6A64">No one has shared their contact for this rug yet.</p></template>
+<button class="link" @click="toWarm">Open the full warm list</button>
+</div>
+</div>
+<template v-if="rd.canUpgrade">
+<div class="card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="flex: 1 1 360px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Make this rug Premium</h2>
+<p style="margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #6E6A64">Premium shows the real knots and pile when a shopper bends down to look. Our team makes it from 4 to 6 close-up photos of this rug.</p>
+</div>
+<button class="btn" @click="rd.upgrade">Choose for Premium</button>
+</div>
+</template>
+<template v-if="rd.isPremium">
+<div class="card" style="font-size: 14px; line-height: 1.5"><b>This rug is Premium.</b> Shoppers see the real knots and pile up close, made from your close-up photos.</div>
+</template>
+</div>
+</template>
+<template v-if="rd.notLive">
+<div class="card" style="font-size: 14px; color: #6E6A64">Numbers start as soon as this rug is live.</div>
+</template>
+</div>
+</template>
+
+<!-- FIX LIST -->
+<template v-if="isFix">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Needs your help</h1>
+<p style="margin: 6px 0 0; max-width: 760px; font-size: 15px; line-height: 1.5; color: #6E6A64">{{ fixLeft }} rugs are held back because something would make them look wrong. We never show a rug at the wrong size or with a bad photo. Fix it in Shopify and we check again by ourselves.</p>
+</div>
+<div style="padding: 12px 14px; border-radius: 12px; background: #E4F0E2; font-size: 14px; line-height: 1.5; color: #1E4A27"><b style="font-weight: 600">These are real.</b> We checked all 2,817 rugs in your public listings on 2 November 2026. A rug can have more than one problem, so the counts below add up to more than {{ fixBase }}.</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template v-for="g in groups">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid #E4DED4; background: #FFFFFF; font-size: 13px"><b style="font-weight: 700; font-variant-numeric: tabular-nums">{{ g.n }}</b>{{ g.label }}</span>
+</template>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<template v-for="f in fixes">
+<div class="card" :style="`display: flex; flex-wrap: wrap; align-items: center; gap: 16px; ${f.rowSt}`">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-size: 16px; font-weight: 600">{{ f.rug }}</span>
+<span style="font-size: 13px; color: #6E6A64">{{ f.size }}</span>
+<span style="padding: 3px 10px; border-radius: 999px; background: #FCEFCF; color: #7A4B00; font-size: 12px; font-weight: 600">{{ f.type }}</span>
+</div>
+<div style="font-size: 14px; line-height: 1.5; color: #3A3733">{{ f.what }}</div>
+<div style="font-size: 14px; line-height: 1.5"><b style="font-weight: 600">What to do:</b> {{ f.todo }}</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template v-if="f.isPlain">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button class="btn2" @click="f.shop">Open in Shopify</button><button class="btn" @click="f.resolve">I fixed it, check again</button></div>
+</template>
+<template v-if="f.isChoice">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button class="btn2" @click="f.resolve">{{ f.a }}</button><button class="btn2" @click="f.resolve">{{ f.b }}</button></div>
+</template>
+<template v-if="f.isApprove">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><button class="btn2" @click="f.shop">Upload photos instead</button><button class="btn" @click="f.resolve">Approve</button></div>
+</template>
+<template v-if="f.done">
+<span style="padding: 8px 14px; border-radius: 999px; background: #E4F0E2; color: #24592F; font-size: 13px; font-weight: 600">Passed · going live</span>
+</template>
+</div>
+</div>
+</template>
+</div>
+<p style="margin: 0; font-size: 13px; color: #6E6A64">Plus {{ moreFix }} more like these in your real list.</p>
+</div>
+</template>
+
+<!-- WARM LIST -->
+<template v-if="isWarm">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Warm list</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">People who keep coming back to the same rug. Send them an offer before they forget.</p>
+</div>
+<div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #F1ECE3; font-size: 14px; line-height: 1.5; color: #3A3733">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M6 11h12v10H6zM8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+<span>Names show only for shoppers who signed in to your store or gave their contact themselves, for example by asking for their room picture. Everyone else is counted, never named. This keeps you inside Shopify's rules and privacy laws.</span>
+</div>
+<div class="card" style="padding: 0; overflow: hidden">
+<div style="padding: 18px 16px 10px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">People you can contact</h2>
+<p style="margin: 4px 0 0; font-size: 14px; color: #6E6A64">{{ warmLine }}</p>
+</div>
+<div style="overflow-x: auto">
+<div style="min-width: 900px">
+<div class="row" style="grid-template-columns: 1fr 1.5fr 0.8fr 0.9fr 1.6fr 1.7fr; background: #FAF7F2; font-size: 12px; font-weight: 600; color: #6E6A64">
+<div>Person</div><div>Rug and size</div><div>Opened</div><div>Last seen</div><div>How you have their contact</div><div></div>
+</div>
+<template v-for="l in leads">
+<div class="row" style="grid-template-columns: 1fr 1.5fr 0.8fr 0.9fr 1.6fr 1.7fr; font-size: 14px">
+<div style="font-weight: 600; overflow-wrap: anywhere">{{ l.name }}<template v-if="l.real"><span style="display: block; width: max-content; margin-top: 4px; padding: 2px 8px; border-radius: 999px; background: #E4F0E2; color: #24592F; font-size: 11px">Real · this phone</span></template></div>
+<div><button class="link" @click="l.open">{{ l.rug }}</button><div style="font-size: 12px; color: #6E6A64">{{ l.size }}</div></div>
+<div style="font-variant-numeric: tabular-nums">{{ l.timesTxt }}</div>
+<div>{{ l.last }}</div>
+<div style="font-size: 13px; line-height: 1.4">{{ l.how }}<div style="font-size: 12px; color: #6E6A64">{{ l.via }}</div></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px">
+<template v-if="l.notSent">
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px"><button class="btn2" @click="l.direct">{{ l.directLabel }}</button><button class="btn" @click="l.offer">Send offer</button></div>
+</template>
+<template v-if="l.sent"><span style="padding: 8px 14px; border-radius: 999px; background: #E4F0E2; color: #24592F; font-size: 13px; font-weight: 600">Offer sent</span></template>
+</div>
+</div>
+</template>
+</div>
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Interest without names</h2>
+<p style="margin: 4px 0 16px; font-size: 14px; line-height: 1.5; color: #6E6A64">People who came back to the same rug 3 or more times this week but did not share their contact.</p>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<template v-for="x in anon">
+<div style="display: grid; grid-template-columns: minmax(150px, 220px) 1fr 80px; align-items: center; gap: 12px; font-size: 14px">
+<button class="link" @click="x.open">{{ x.rug }}</button>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${x.w}%; border-radius: 999px; background: ${accent}`"></div></div>
+<span style="text-align: right; font-variant-numeric: tabular-nums">{{ x.n }} people</span>
+</div>
+</template>
+</div>
+<p style="margin: 14px 0 0; font-size: 13px; color: #6E6A64">Tip: these rugs are good ones for your next sale or newsletter.</p>
+</div>
+</div>
+</template>
+
+<!-- REPORTS -->
+<template v-if="isReports">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Reports</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Last 30 days. These are sample numbers: your real ones fill in after about 30 days of orders.</p>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0 0 14px; font-size: 18px; font-weight: 700">From visitor to buyer</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<template v-for="x in funnel">
+<div style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 4px; padding: 16px; border-radius: 12px; background: #FAF7F2">
+<div style="font-size: 12px; font-weight: 600; color: #6E6A64">Step {{ x.n }}</div>
+<div class="h" style="font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums">{{ x.v }}</div>
+<div style="font-size: 14px; font-weight: 500">{{ x.label }}</div>
+<div style="font-size: 12px; color: #6E6A64">{{ x.pct }}</div>
+</div>
+</template>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Did it help sell?</h2>
+<p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Shoppers who saw the rug in their room, against everyone else.</p>
+<div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">Bought</div>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px">
+<template v-for="b in cmpBuy">
+<div style="display: grid; grid-template-columns: 140px 1fr 48px; align-items: center; gap: 10px; font-size: 13px">
+<span>{{ b.label }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${b.w}%; border-radius: 999px; background: ${b.c}`"></div></div>
+<span style="text-align: right; font-weight: 600; font-variant-numeric: tabular-nums">{{ b.v }}</span>
+</div>
+</template>
+</div>
+<div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">Sent it back</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<template v-for="b in cmpRet">
+<div style="display: grid; grid-template-columns: 140px 1fr 48px; align-items: center; gap: 10px; font-size: 13px">
+<span>{{ b.label }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${b.w}%; border-radius: 999px; background: ${b.c}`"></div></div>
+<span style="text-align: right; font-weight: 600; font-variant-numeric: tabular-nums">{{ b.v }}</span>
+</div>
+</template>
+</div>
+<p style="margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: #6E6A64">Room view: 142 orders from 6,840 people, 3 returned. Everyone else: 579 orders from 96,500 people, 49 returned.</p>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Where people open it</h2>
+<p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Share of room opens.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<template v-for="x in devices">
+<div style="display: grid; grid-template-columns: 150px 1fr 44px; align-items: center; gap: 10px; font-size: 13px">
+<span>{{ x.label }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${x.w}%; border-radius: 999px; background: ${accent}`"></div></div>
+<span style="text-align: right; font-variant-numeric: tabular-nums">{{ x.pct }}%</span>
+</div>
+</template>
+</div>
+<h3 style="margin: 20px 0 10px; font-size: 13px; font-weight: 600">Sizes people try most</h3>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<template v-for="x in sizesTop">
+<div style="display: grid; grid-template-columns: 150px 1fr 44px; align-items: center; gap: 10px; font-size: 13px">
+<span>{{ x.label }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${x.w}%; border-radius: 999px; background: ${accent}`"></div></div>
+<span style="text-align: right; font-variant-numeric: tabular-nums">{{ x.pct }}%</span>
+</div>
+</template>
+</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0 0 6px; font-size: 18px; font-weight: 700">Top rugs</h2>
+<template v-for="r in hot">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 4px 0; border-bottom: 1px solid #EFEAE1">
+<button class="link" @click="r.open">{{ r.name }}</button>
+<span style="font-size: 13px; color: #3A3733; font-variant-numeric: tabular-nums">{{ r.opensTxt }} opens · {{ r.ordersTxt }} orders · {{ r.salesTxt }}</span>
+</div>
+</template>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Lots of looks, few sales</h2>
+<p style="margin: 4px 0 8px; font-size: 14px; color: #6E6A64">People like these in their room but don't buy.</p>
+<template v-for="x in lowSell">
+<div style="padding: 10px 0; border-top: 1px solid #EFEAE1">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px">
+<button class="link" @click="x.open">{{ x.name }}</button>
+<span style="font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums">{{ x.line }}</span>
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #4A4640">{{ x.tip }}</div>
+</div>
+</template>
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Your weekly email</h2>
+<p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Arrives every Monday morning, so you don't have to open this page.</p>
+<div style="max-width: 560px; padding: 18px; border-radius: 12px; border: 1px solid #E4DED4; background: #FAF7F2; font-size: 14px; line-height: 1.55">
+<div style="font-size: 12px; color: #6E6A64">From ARQR360 Rug Room to {{ storeName }}</div>
+<div style="margin: 4px 0 10px; font-weight: 600">Your rugs this week: {{ warmLeft }} people to contact</div>
+<template v-for="w in weekly">
+<div style="display: flex; gap: 8px"><span aria-hidden="true" :style="`color: ${accent}`">•</span><span>{{ w.t }}</span></div>
+</template>
+</div>
+</div>
+</div>
+</template>
+
+<!-- PREMIUM -->
+<template v-if="isPremium">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Premium rugs</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">For your best rugs. Shoppers see the real knots and pile when they bend down to look.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+<template v-for="t in tiers">
+<div class="card" :style="t.st">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6A64">{{ t.tag }}</div>
+<h2 class="h" style="margin: 6px 0 12px; font-size: 22px; font-weight: 800">{{ t.name }}</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<template v-for="i in t.items">
+<li style="display: flex; gap: 8px; font-size: 14px; line-height: 1.45"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#24592F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>{{ i.t }}</span></li>
+</template>
+</ul>
+</div>
+</template>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Suggested for Premium</h2>
+<p style="margin: 4px 0 8px; font-size: 14px; color: #6E6A64">Your most-opened rugs that are still Standard.</p>
+<template v-for="p in suggest">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid #EFEAE1">
+<template v-if="p.open2"><input type="checkbox" :id="p.cid" :checked="p.on" @change="p.toggle" style="width: 22px; height: 22px; margin: 0; accent-color: #191919"></template>
+<div style="width: 44px; height: 56px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: #F1ECE3">
+<img :src="p.img" alt="" style="display: block; max-width: 40px; max-height: 52px">
+</div>
+<label :for="p.cid" style="flex: 1 1 200px; font-size: 14px; font-weight: 600; cursor: pointer">{{ p.name }}<span style="display: block; font-size: 12px; font-weight: 400; color: #6E6A64">{{ p.opensTxt }} room opens in 30 days</span></label>
+<template v-if="p.requested"><span style="padding: 6px 12px; border-radius: 999px; background: #E3EAF4; color: #284C7A; font-size: 12px; font-weight: 600">Requested · we'll ask for photos</span></template>
+</div>
+</template>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px">
+<button class="btn" :disabled="noPick" @click="upgrade">{{ upgradeLabel }}</button>
+<span style="font-size: 14px; color: #6E6A64">Ready in 1 to 2 days per rug</span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Already Premium</h2>
+<p style="margin: 4px 0 8px; font-size: 14px; line-height: 1.5; color: #6E6A64">None yet. Choose rugs above and we ask you for their close-up photos.</p>
+<template v-for="r in premiumNow">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 0; border-bottom: 1px solid #EFEAE1">
+<button class="link" @click="r.open">{{ r.name }}</button>
+<span style="font-size: 13px; color: #6E6A64; font-variant-numeric: tabular-nums">{{ r.opensTxt }} room opens</span>
+</div>
+</template>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">How to take the close-up photos</h2>
+<p style="margin: 4px 0 12px; font-size: 14px; color: #6E6A64">Any phone works. About 5 minutes per rug.</p>
+<ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.45">
+<li>Lay the rug flat in daylight. No flash.</li>
+<li>Hold the phone 20 to 30 cm above the pile, pointing straight down.</li>
+<li>Take 4 to 6 photos from different parts of the rug, including one of the border.</li>
+<li>Take one photo of the fringe at the end.</li>
+<li>Upload them here. We tell you if one needs a retake.</li>
+</ol>
+</div>
+</div>
+</div>
+</template>
+
+<!-- SETTINGS -->
+<template v-if="isSettings">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Button &amp; settings</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Everything here is optional. The defaults work for most stores.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px">
+<div class="card" style="display: flex; flex-direction: column; gap: 16px">
+<div>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">What shoppers see</h2>
+<p style="margin: 4px 0 0; font-size: 14px; color: #6E6A64">Your product page, with our button added by itself.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; border-radius: 12px; background: #FAF7F2; border: 1px solid #EFEAE1">
+<div style="flex: 0 0 150px; height: 190px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #EDE6DA">
+<img :src="pv.img" alt="" style="display: block; max-width: 130px; max-height: 175px">
+</div>
+<div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 16px; font-weight: 600">{{ pv.name }}</div>
+<div style="font-size: 14px; color: #3A3733">{{ pv.line }}</div>
+<span style="display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 10px; background: #191919; color: #FFFFFF; font-size: 14px; font-weight: 600">Add to cart</span>
+<template v-if="showBtn">
+<span :style="`display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: 10px; border: 2px solid ${accent}; background: #FFFFFF; color: #191919; font-size: 14px; font-weight: 600`"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 9l9 4-9 4-9-4zM3 13v2l9 4 9-4v-2"></path></svg>{{ btnLabel }}</span>
+</template>
+<template v-if="hideBtn"><span style="font-size: 13px; color: #6E6A64">The button is switched off.</span></template>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: #3A3733">
+<template v-if="showFit"><span style="text-decoration: underline">Will it fit my room?</span></template>
+<template v-if="showPhoto"><span style="text-decoration: underline">Use a photo of my room</span></template>
+<template v-if="showWa"><span style="text-decoration: underline">Ask on WhatsApp</span></template>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="btn-text" style="font-size: 13px; font-weight: 600">Button text</label>
+<input id="btn-text" class="field" type="text" :value="btnText" @change="onBtnText">
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Shopper features</h2>
+<p style="margin: 4px 0 4px; font-size: 14px; color: #6E6A64">Switch any of these on or off.</p>
+<template v-for="o in opts">
+<button class="sw" role="switch" :aria-checked="o.on" @click="o.toggle">
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 600">{{ o.label }}</span>
+<span style="font-size: 13px; line-height: 1.45; color: #6E6A64">{{ o.d }}</span>
+</span>
+<span :style="`flex: none; display: flex; width: 48px; height: 28px; padding: 3px; border-radius: 999px; ${o.track}`"><span :style="`width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; transition: transform 0.15s; ${o.knob}`"></span></span>
+</button>
+</template>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Connections</h2>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="wa-num" style="font-size: 13px; font-weight: 600">WhatsApp number for “Ask on WhatsApp”</label>
+<input id="wa-num" class="field" type="tel" :value="wa" @change="onWa">
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid #EFEAE1">
+<div><div style="font-size: 14px; font-weight: 600">Shopify Email</div><div style="font-size: 13px; color: #24592F">Connected</div></div>
+<span style="font-size: 13px; color: #6E6A64">Offers go out from your own store</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid #EFEAE1">
+<div><div style="font-size: 14px; font-weight: 600">Klaviyo</div><div :style="`font-size: 13px; ${klaviyoSt}`">{{ klaviyoState }}</div></div>
+<button class="btn2" @click="toggleKlaviyo">{{ klaviyoBtn }}</button>
+</div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">QR codes and showroom tags</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #6E6A64">Every rug has its own QR code. Print tags for your showroom, or add them to Instagram posts and packaging.</p>
+<div style="display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 12px; border: 1px dashed #B9B1A5; background: #FFFFFF">
+<svg width="92" height="92" viewBox="0 0 25 25" role="img" aria-label="Sample QR code"><path fill="#191919" fill-rule="evenodd" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM18 0h7v7h-7zM19 1v5h5V1zM20 2h3v3h-3zM0 18h7v7H0zM1 19v5h5v-5zM2 20h3v3H2zM9 0h2v1H9zM12 0h1v2h-1zM14 1h2v1h-2zM9 2h1v2H9zM11 3h3v1h-3zM15 3h1v3h-1zM9 5h2v1H9zM13 5h1v2h-1zM0 9h2v1H0zM3 9h3v1H3zM8 8h2v2H8zM11 8h1v1h-1zM13 9h3v1h-3zM18 9h2v1h-2zM21 8h1v3h-1zM23 9h2v1h-2zM1 11h1v2H1zM4 12h2v1H4zM9 11h1v3H9zM11 12h2v2h-2zM15 11h2v1h-2zM19 12h1v2h-1zM22 13h3v1h-3zM0 15h3v1H0zM5 14h1v2H5zM8 16h3v1H8zM13 15h1v2h-1zM16 14h2v2h-2zM20 16h2v1h-2zM24 15h1v2h-1zM9 19h1v2H9zM11 18h2v1h-2zM14 19h3v1h-3zM18 18h1v2h-1zM20 20h3v1h-3zM10 22h2v1h-2zM13 21h1v3h-1zM15 23h2v2h-2zM18 22h1v1h-1zM20 23h1v2h-1zM22 22h2v1h-2zM9 24h3v1H9zM24 24h1v1h-1z"></path></svg>
+<div>
+<div style="font-size: 12px; font-weight: 600; color: #6E6A64">{{ storeName }}</div>
+<div style="font-size: 16px; font-weight: 700">{{ pv.name }}</div>
+<div style="font-size: 13px; color: #3A3733">Scan to see it in your room</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button class="btn" @click="qrAll">Download all tags (PDF)</button>
+<button class="btn2" @click="toRugs">Pick one rug</button>
+</div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 10px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Your plan</h2>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEAE1; font-size: 14px"><span>Standard, every rug, automatic</span><b style="font-weight: 600">As in your quote</b></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEAE1; font-size: 14px"><span>Premium rugs</span><b style="font-weight: 600">As in your quote</b></div>
+<div style="font-size: 13px; color: #6E6A64">2,817 rugs in your store · no Premium rugs yet</div>
+<div><button class="btn2" @click="planMsg">Change plan</button></div>
+</div>
+</div>
+</div>
+</template>
+
+</div>
+</main>
+</div>
+
+<!-- OFFER COMPOSER -->
+<template v-if="hasComposer">
+<div style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(25, 25, 25, 0.45)">
+<div role="dialog" aria-modal="true" aria-labelledby="cmp-title" style="width: 100%; max-width: 540px; max-height: 100%; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; padding: 24px; border-radius: 16px; background: #FFFFFF">
+<div>
+<h2 id="cmp-title" class="h" style="margin: 0; font-size: 22px; font-weight: 800">Send an offer to {{ cmp.name }}</h2>
+<p style="margin: 6px 0 0; font-size: 14px; color: #6E6A64">{{ cmp.rug }} · {{ cmp.size }} · opened {{ cmp.timesTxt }} · by {{ cmp.via }}</p>
+</div>
+<div>
+<div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">What to offer</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<template v-for="o in offers">
+<button class="chip" :style="o.st" :aria-pressed="o.on" @click="o.pick">{{ o.label }}</button>
+</template>
+</div>
+</div>
+<div>
+<div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">Message</div>
+<div style="padding: 14px 16px; border-radius: 12px; background: #FAF7F2; border: 1px solid #EFEAE1; font-size: 14px; line-height: 1.55; white-space: pre-line">{{ cmp.msg }}</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px">
+<button class="btn2" @click="cancel">Cancel</button>
+<button class="btn" @click="cmp.send">{{ cmp.sendLabel }}</button>
+</div>
+</div>
+</div>
+</template>
+
+<template v-if="hasToast">
+<div role="status" style="position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translateX(-50%); max-width: calc(100% - 32px); padding: 12px 18px; border-radius: 12px; background: #191919; color: #FFFFFF; font-size: 14px; line-height: 1.4; box-shadow: 0 6px 20px rgba(25, 25, 25, 0.25)">{{ toast }}</div>
+</template>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js"></script>
+<script>
+class DCLogic {
+  constructor() { this.state = {}; this.props = {}; }
+  setState(patch) { Object.assign(this.state, patch); refresh(); }
+}
+class Component extends DCLogic {
+  base() {
+    return {
+      screen: ['home', 'rugs', 'fix', 'warm', 'reports', 'premium', 'settings'].indexOf(location.hash.slice(1)) > -1 ? location.hash.slice(1) : 'home', rugId: 'sirjan', filter: 'all', q: '', fixed: {}, sent: {}, composer: '', offer: '10',
+      hover: -1, toast: '', pick: { chobi: true, kazak: true, bokhara: true }, req: {},
+      opts: { button: true, photo: true, fit: true, picture: true, wa: true, weekly: true },
+      wa: '+1 555 0142', btnText: 'See it in your room', klaviyo: false
+    };
+  }
+
+  cur() { return Object.assign(this.base(), this.state || {}); }
+
+  go(screen, extra) {
+    this.setState(Object.assign({ screen: screen, composer: '', hover: -1 }, extra || {}));
+    try { window.scrollTo(0, 0); } catch (e) {}
+  }
+
+  flash(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 3500);
+  }
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  // Twelve of Persian Rug Gallery's real rugs (names, sizes, prices and photos from their
+  // public listings, 2 Nov 2026). Room opens, came back, carts and orders are samples.
+  rugData() {
+    const NOT_BUILT = 'Example: this rug has not been built yet. Its status and numbers show what you would see.';
+    return [
+      { id: 'sirjan', name: 'Sirjan #2015-016', style: 'Hand-knotted wool', sizes: '228 × 150 cm', status: 'live', opens: 742, back: 118, carts: 16, orders: 3, price: 1249, img: '/demo/persian-rug-gallery/img/m_2015-016.jpg', link: '/demo/persian-rug-gallery/products/2015-016',
+        note: 'Built for real from your product photo by the automatic Standard process, in about 20 seconds: straightened, sized to 228 × 150 cm, colours exactly as in your photo, with its own fringe.' },
+      { id: 'afshar', name: 'Afshar #2015-070', style: 'Hand-knotted wool', sizes: '185 × 110 cm', status: 'live', opens: 1104, back: 186, carts: 27, orders: 5, price: 1999, img: '/demo/persian-rug-gallery/img/m_2015-070.jpg', link: '/demo/persian-rug-gallery/products/2015-070',
+        note: 'Built for real from your product photo the same way, in about 20 seconds: colours exactly as in your photo, with its own fringe.' },
+      { id: 'chobi', name: 'Chobi #2515-374', style: 'Hand-knotted wool', sizes: '245 × 171 cm', status: 'live', opens: 968, back: 141, carts: 22, orders: 4, price: 1999, img: '/demo/persian-rug-gallery/img/m_2515-374.jpg', note: NOT_BUILT },
+      { id: 'kazak', name: 'Kazak runner #3008-459', style: 'Hand-knotted wool', sizes: '300 × 80 cm', status: 'live', opens: 611, back: 96, carts: 15, orders: 6, price: 1249, img: '/demo/persian-rug-gallery/img/m_3008-459.jpg', note: NOT_BUILT },
+      { id: 'bokhara', name: 'Bokhara runner #4008-135', style: 'Hand-knotted wool', sizes: '393 × 79 cm', status: 'live', opens: 520, back: 84, carts: 11, orders: 3, price: 1749, img: '/demo/persian-rug-gallery/img/m_4008-135.jpg', note: NOT_BUILT },
+      { id: 'mamina', name: 'Mamina Kilim #k1510-122', style: 'Hand-woven kilim', sizes: '157 × 103 cm', status: 'live', opens: 590, back: 102, carts: 6, orders: 2, price: 199, img: '/demo/persian-rug-gallery/img/m_k1510-122.jpg', note: NOT_BUILT },
+      { id: 'salsa', name: 'Salsa Hollow Medallion Navy', style: 'Machine-made', sizes: '290 × 200 cm', status: 'live', opens: 448, back: 51, carts: 5, orders: 1, price: 299, img: '/demo/persian-rug-gallery/img/m_salsa-20042-035.jpg', note: NOT_BUILT },
+      { id: 'bohemian', name: 'Bohemian Paradise Vintage Grey Multi', style: 'Machine-made', sizes: '290 × 200 cm', status: 'live', opens: 233, back: 22, carts: 4, orders: 2, price: 419, img: '/demo/persian-rug-gallery/img/m_bohemian-paradise-7-grey-multi.jpg', note: NOT_BUILT },
+      { id: 'maminaf', name: 'Mamina Kilim (fine) #k1510-111', style: 'Hand-woven kilim', sizes: '139 × 91 cm', status: 'building', opens: 0, back: 0, carts: 0, orders: 0, price: 299, img: '/demo/persian-rug-gallery/img/m_k1510-111.jpg', note: NOT_BUILT },
+      { id: 'sanandaj', name: 'Sanandaj #2515-022', style: 'Hand-knotted wool', sizes: '', fixedSizes: '247 × 165 cm', status: 'fix', fixId: 'f1', opens: 0, back: 0, carts: 0, orders: 0, price: 5999, img: '/demo/persian-rug-gallery/img/m_2515-022.jpg',
+        note: 'Real problem found in your listing: the title says 247 × 165 cm, the description says 270 × 165 cm.' },
+      { id: 'tribe', name: 'Tribe 18675 10 Red', style: 'Machine-made', sizes: '230 × 160, 290 × 200, 330 × 240 cm', status: 'fix', fixId: 'f3', opens: 0, back: 0, carts: 0, orders: 0, price: 149, img: '/demo/persian-rug-gallery/img/m_tribe-18675-10-red.jpg',
+        note: 'Real problem found in your listing: the main photo is only 425 × 617 pixels.' },
+      { id: 'bilbao', name: 'Bilbao 45 Beige', style: 'Machine-made', sizes: '230 × 160, 290 × 200, 330 × 240 cm', status: 'fix', fixId: 'f4', opens: 0, back: 0, carts: 0, orders: 0, price: 419, img: '/demo/persian-rug-gallery/img/m_bilbao-bilb45-beige-beige.jpg',
+        note: 'Real problem found in your listing: one photo is used for all three sizes.' }
+    ];
+  }
+
+  // Real findings from their public listings (2 Nov 2026), four shown of 255 rugs
+  fixData() {
+    return [
+      { id: 'f1', group: 'twosizes', rug: 'Sanandaj #2515-022', size: '247 or 270 × 165 cm?', type: 'Two different sizes listed', what: 'Your title says 247 × 165 cm but the description says 270 × 165 cm. Shown at the wrong one, it would be 23 cm off on the floor.', todo: 'Tell us which one is right, and we fix the other.', choice: ["It's 247 × 165", "It's 270 × 165"] },
+      { id: 'f2', group: 'twosizes', rug: 'Kashmiri #4030-026', size: '379 or 373 × 272 cm?', type: 'Two different sizes listed', what: 'Your title says 379 × 272 cm but the description says 373 × 272 cm.', todo: 'Tell us which one is right.', choice: ["It's 379 × 272", "It's 373 × 272"] },
+      { id: 'f3', group: 'small', rug: 'Tribe 18675 10 Red', size: '230 × 160 to 330 × 240 cm', type: 'Photo too small', what: 'The main photo is 425 × 617 pixels: under 3 pixels per centimetre of rug. It would look blurry as soon as a shopper walks close.', todo: 'Upload a photo at least 2,000 pixels on its long side.' },
+      { id: 'f4', group: 'oneph', rug: 'Bilbao 45 Beige', size: '230 × 160, 290 × 200, 330 × 240 cm', type: 'One photo for several sizes', what: 'The same photo is used for all three sizes. Stretched to each size, the border would grow with the rug. We lay out each size from this photo instead: the border keeps its real width and only the middle grows.', todo: 'Approve this once, or upload a photo for each size.', approve: true }
+    ];
+  }
+
+  leadData() {
+    return [
+      { id: 'l1', name: 'Sara K.', rug: 'Afshar #2015-070', rugId: 'afshar', times: 4, size: '185 × 110 cm', last: '2 hours ago', how: 'Asked for a picture of the rug in their room', via: 'Email' },
+      { id: 'l2', name: 'Mei L.', rug: 'Chobi #2515-374', rugId: 'chobi', times: 6, size: '245 × 171 cm', last: 'Today', how: 'Asked a question on WhatsApp', via: 'WhatsApp' },
+      { id: 'l3', name: 'Aisha R.', rug: 'Kazak runner #3008-459', rugId: 'kazak', times: 5, size: '300 × 80 cm', last: 'Today', how: 'Signed in to your store', via: 'Email' },
+      { id: 'l4', name: 'James M.', rug: 'Sirjan #2015-016', rugId: 'sirjan', times: 3, size: '228 × 150 cm', last: 'Yesterday', how: 'Asked for the room picture on WhatsApp', via: 'WhatsApp' },
+      { id: 'l5', name: 'Daniel P.', rug: 'Bokhara runner #4008-135', rugId: 'bokhara', times: 3, size: '393 × 79 cm', last: '3 days ago', how: 'Asked for a picture of the rug in their room', via: 'Email' }
+    ];
+  }
+
+  renderVals() {
+    const s = this.cur();
+    const accent = this.props.accent ?? '#E0682A';
+    const storeName = this.props.storeName ?? 'Persian Rug Gallery';
+    const fmt = (n) => n.toLocaleString('en-US');
+    const money = (n) => 'NZ$' + n.toLocaleString('en-US');
+    const ST = {
+      live: { label: 'Live', st: 'background: #E4F0E2; color: #24592F' },
+      premium: { label: 'Premium', st: 'background: #FBE3D3; color: #8A3510' },
+      fix: { label: 'Needs your help', st: 'background: #FCEFCF; color: #7A4B00' },
+      building: { label: 'Being made', st: 'background: #E3EAF4; color: #284C7A' }
+    };
+    const PRESSED = 'background: #191919; color: #FFFFFF; border-color: #191919';
+
+    // Real: what this phone did on the two preview product pages. The product pages keep it in
+    // this browser only (localStorage) and never send it; it shows here as "from this phone".
+    let log = [];
+    try { log = JSON.parse(localStorage.getItem('arqr.prg.demo.v1') || '[]'); } catch (e) {}
+    const RUGNAME = { sirjan: 'Sirjan #2015-016', afshar: 'Afshar #2015-070' };
+    const RUGSIZE = { sirjan: '228 × 150 cm', afshar: '185 × 110 cm' };
+    log = log.filter((e) => RUGNAME[e.rug]);
+    const ago = (t) => {
+      const m = Math.round((Date.now() - t) / 60000);
+      return m < 1 ? 'Just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : new Date(t).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
+    };
+    const WHAT = {
+      room: (e) => `${RUGNAME[e.rug]} opened in a room on ${e.dev === 'iPhone' ? 'an iPhone' : 'an Android phone'}`,
+      view3d: (e) => `${RUGNAME[e.rug]} turned round in 3D on a computer`,
+      fit: (e) => `“Will it fit?” checked for ${RUGNAME[e.rug]} in ${e.room}: ${e.fits ? 'it fits' : 'too big'}`,
+      details: (e) => `${e.email} asked for the details of ${RUGNAME[e.rug]} and joined your warm list`
+    };
+    const live = log.filter((e) => WHAT[e.kind]).slice(-8).reverse().map((e) => ({ ago: ago(e.t), x: WHAT[e.kind](e) }));
+    const byId = {};
+    log.forEach((e) => {
+      if (e.kind !== 'details') return;
+      const id = 'live-' + e.rug + '-' + e.email;
+      byId[id] = { id, name: e.email, rug: RUGNAME[e.rug], rugId: e.rug, size: RUGSIZE[e.rug], t: e.t, real: true,
+        how: 'Asked for the details on your product page', via: 'Email' };
+    });
+    const liveLeads = Object.keys(byId).map((k) => byId[k]).sort((a, b) => b.t - a.t).map((l) => Object.assign(l, {
+      times: Math.max(1, log.filter((e) => e.rug === l.rugId && (e.kind === 'room' || e.kind === 'view3d')).length),
+      last: ago(l.t)
+    }));
+
+
+    // Rugs
+    const rugs = this.rugData().map((r0) => {
+      const fixedNow = r0.fixId && s.fixed[r0.fixId];
+      const status = r0.status === 'fix' && fixedNow ? 'building' : r0.status;
+      const sizes = r0.sizes || (fixedNow && r0.fixedSizes) || '';
+      const live = status === 'live' || status === 'premium';
+      return Object.assign({}, r0, {
+        status, sizes, live, sales: r0.orders * r0.price,
+        stLabel: ST[status].label, stStyle: ST[status].st,
+        sizesTxt: sizes || 'Two sizes listed',
+        opensTxt: live ? fmt(r0.opens) : '–',
+        backTxt: live ? fmt(r0.back) : '–',
+        ordersTxt: live ? fmt(r0.orders) : '–',
+        salesTxt: live ? money(r0.orders * r0.price) : '–',
+        open: () => this.go('rug', { rugId: r0.id })
+      });
+    });
+    const liveRugs = rugs.filter((r) => r.live).sort((a, b) => b.opens - a.opens);
+    const hot = liveRugs.slice(0, 5);
+    const FL = [['all', 'All'], ['live', 'Live'], ['premium', 'Premium'], ['fix', 'Needs your help'], ['building', 'Being made']];
+    const filters = FL.map(([id, label]) => ({
+      label,
+      n: id === 'all' ? rugs.length : rugs.filter((r) => r.status === id).length,
+      on: s.filter === id,
+      st: s.filter === id ? PRESSED : '',
+      pick: () => this.setState({ filter: id })
+    }));
+    const q = (s.q || '').trim().toLowerCase();
+    const rugList = rugs.filter((r) => (s.filter === 'all' || r.status === s.filter) && (!q || r.name.toLowerCase().indexOf(q) !== -1));
+
+    // Fix list
+    const fixData = this.fixData();
+    const FIX_BASE = 255;                                         // rugs with at least one problem in their listings
+    const fixLeft = FIX_BASE - Object.keys(s.fixed).length;
+    const BUILDING = 3;
+    const GROUPS = [['oneph', 'One photo for several sizes', 233], ['small', 'Main photo under 1,200 pixels', 77], ['twosizes', 'Title and description give different sizes', 2]];
+    const groups = GROUPS.map(([k, label, n]) => ({ label, n: n - fixData.filter((f) => f.group === k && s.fixed[f.id]).length }));
+    const fixes = fixData.map((f) => {
+      const done = !!s.fixed[f.id];
+      return Object.assign({}, f, {
+        done,
+        isPlain: !done && !f.choice && !f.approve,
+        isChoice: !done && !!f.choice,
+        isApprove: !done && !!f.approve,
+        a: f.choice ? f.choice[0] : '',
+        b: f.choice ? f.choice[1] : '',
+        rowSt: done ? 'background: #F7FAF6' : '',
+        shop: () => this.flash('Demo: this opens the rug in your Shopify admin.'),
+        resolve: () => {
+          const fixed = Object.assign({}, this.cur().fixed);
+          fixed[f.id] = true;
+          this.setState({ fixed });
+          this.flash(`Checked again: ${f.rug} passed and goes live in about a minute.`);
+        }
+      });
+    });
+
+    // Warm list
+    const leads = liveLeads.concat(this.leadData()).map((l) => {
+      const sent = !!s.sent[l.id];
+      return Object.assign({}, l, {
+        sent, notSent: !sent,
+        timesTxt: `${l.times} time${l.times === 1 ? '' : 's'}`,
+        directLabel: l.via === 'WhatsApp' ? 'WhatsApp' : 'Email',
+        direct: () => this.flash(`Demo: opens ${l.via === 'WhatsApp' ? 'WhatsApp' : 'your email'} with a message to ${l.name}.`),
+        offer: () => this.setState({ composer: l.id, offer: '10' }),
+        open: () => this.go('rug', { rugId: l.rugId })
+      });
+    });
+    const warmLeft = leads.filter((l) => !l.sent).length;
+    const ANON = [['afshar', 'Afshar #2015-070', 38], ['chobi', 'Chobi #2515-374', 27], ['sirjan', 'Sirjan #2015-016', 24], ['kazak', 'Kazak runner #3008-459', 19], ['mamina', 'Mamina Kilim #k1510-122', 15]];
+    const anon = ANON.map(([id, rug, n]) => ({ rug, n, w: Math.round(n / 38 * 100), open: () => this.go('rug', { rugId: id }) }));
+
+    // Navigation
+    const NAV = [
+      ['home', 'Home', 'M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z', '', ''],
+      ['rugs', 'Rugs', 'M5 3h14v18H5zM9 7h6v10H9z', '2,817', 'background: #F1ECE3; color: #5A554E'],
+      ['fix', 'Needs your help', 'M12 3l9.5 17h-19zM12 10v4M12 17v.5', fixLeft > 0 ? String(fixLeft) : '', 'background: #FCEFCF; color: #7A4B00'],
+      ['warm', 'Warm list', 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 3.5a4 4 0 0 1 0 7M18 14a6 6 0 0 1 4 6v1', warmLeft > 0 ? String(warmLeft) : '', 'background: #FBE3D3; color: #8A3510'],
+      ['reports', 'Reports', 'M4 20V11M10 20V5M16 20v-6M3 20h18', '', ''],
+      ['premium', 'Premium rugs', 'M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 16.9l-5.4 2.9 1-6.1-4.4-4.3 6.1-.8z', '', ''],
+      ['settings', 'Button & settings', 'M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4', '', '']
+    ];
+    const navScreen = s.screen === 'rug' ? 'rugs' : s.screen;
+    const nav = NAV.map(([id, label, icon, count, countSt]) => ({
+      label, icon, count, countSt,
+      hasCount: count !== '',
+      cur: navScreen === id ? 'page' : 'false',
+      st: navScreen === id ? 'background: #FFFFFF; border-color: #E4DED4; color: #191919; font-weight: 600' : '',
+      go: () => this.go(id)
+    }));
+
+    // Home chart: room opens per day, last 30 days
+    const raw = [];
+    for (let i = 0; i < 30; i++) {
+      const dt = new Date(2026, 9, 3 + i);
+      const wd = dt.getDay();
+      raw.push({
+        v: Math.round(255 + i * 3 + 38 * Math.sin(i * 0.85) + (wd === 0 || wd === 6 ? 80 : 0)),
+        label: dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+        short: dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      });
+    }
+    const opensTotal = raw.reduce((a, d) => a + d.v, 0);
+    const maxV = Math.max.apply(null, raw.map((d) => d.v));
+    const top = Math.ceil(maxV / 100) * 100;
+    const busiest = raw.find((d) => d.v === maxV);
+    const days = raw.map((d, i) => ({
+      h: (d.v / top * 100).toFixed(1),
+      op: s.hover === -1 || s.hover === i ? 1 : 0.4,
+      tip: `${d.label}: ${d.v} room opens`,
+      enter: () => this.setState({ hover: i })
+    }));
+    const hovered = s.hover >= 0 ? raw[s.hover] : null;
+    const readout = hovered ? `${hovered.label}: ${hovered.v} room opens` : `Busiest day: ${busiest.label}, ${busiest.v} room opens`;
+    const grid = [0, top / 2, top].map((v) => ({ pos: v / top * 100, label: fmt(v) }));
+
+    const kpis = [
+      { label: 'Rugs ready to see in a room', value: fmt(2817 - fixLeft - BUILDING), sub: `of your 2,817 · ${fixLeft} need your help (real) · ${BUILDING} being made` },
+      { label: 'People who saw a rug in their room', value: '6,840', sub: `${fmt(opensTotal)} room opens in the last 30 days` },
+      { label: 'Came back to look again', value: '1,212', sub: 'Your warm list starts here' },
+      { label: 'Sales after a room view', value: '$171,400', sub: '142 orders in the last 30 days' }
+    ];
+    const focus = [
+      { title: warmLeft > 0 ? `${warmLeft} people are close to buying` : 'Everyone on your warm list has an offer', d: 'They opened the same rug 3 or more times and shared their contact.', btn: 'Open warm list', go: () => this.go('warm') },
+      { title: `${fixLeft} rugs need your help`, d: 'Found in your real listings: 233 multi-size rugs share one photo, 77 main photos are small, 2 rugs list two sizes.', btn: 'Open fix list', go: () => this.go('fix') },
+      { title: 'Sanandaj #2515-022 lists two sizes', d: 'Your title says 247 × 165 cm, your description 270 × 165 cm. One of them is 23 cm wrong.', btn: 'Fix it', go: () => this.go('fix') },
+      { title: 'Make your 5 most-viewed rugs Premium', d: 'Premium shows the real knots and pile up close.', btn: 'See Premium', go: () => this.go('premium') }
+    ];
+    const activity = [
+      { t: '2 Nov, 20:30', x: 'Sirjan #2015-016 made from your product photo in about 20 seconds: straightened, sized to 228 × 150 cm, colours exactly as in your photo. (Real.)' },
+      { t: '2 Nov, 20:31', x: 'Afshar #2015-070 made the same way, also in about 20 seconds. (Real.)' },
+      { t: '2 Nov, 20:35', x: 'All 2,817 rugs in your listings checked: 255 need your help. (Real.)' },
+      { t: 'Monday', x: 'Weekly summary emailed to you. (Example.)' }
+    ];
+
+    // Rug detail
+    const r = rugs.find((x) => x.id === s.rugId) || rugs[0];
+    const sizeList = r.sizes ? r.sizes.replace(' cm', '').split(', ') : [];
+    const fixItem = fixData.find((f) => f.rug === r.name);
+    const IC = {
+      ok: { d: 'M6 12.5l4 4 8-9', st: 'background: #E4F0E2; color: #24592F' },
+      fail: { d: 'M12 7v6M12 17v.5', st: 'background: #FCEFCF; color: #7A4B00' },
+      wait: { d: 'M12 7v5l3 2', st: 'background: #E3EAF4; color: #284C7A' }
+    };
+    const CK = [
+      ['size', r.sizes ? 'Size matches your listing: ' + r.sizes : 'Size matches your listing'],
+      ['layout', sizeList.length > 1 ? 'Each size laid out on its own: the border keeps its real width' : 'Laid out at exactly this size'],
+      ['sharp', 'Photo sharp enough to look good up close'],
+      ['edges', 'Clean edges, nothing left of the background'],
+      ['colour', 'Colour kept exactly as in your photo'],
+      ['build', 'Thickness, bound edge and fringe added']
+    ];
+    const failKey = fixItem ? ({ twosizes: 'size', small: 'sharp', oneph: 'layout' }[fixItem.group] || 'edges') : '';
+    const checks = CK.map(([k, t]) => {
+      let state = 'ok';
+      let text = t;
+      if (r.status === 'fix') {
+        if (k === failKey) { state = 'fail'; text = fixItem.type + '. ' + fixItem.todo; }
+        else if (k === 'build') state = 'wait';
+      }
+      if (r.status === 'building' && k === 'build') state = 'wait';
+      return { t: text, d: IC[state].d, st: IC[state].st };
+    });
+    if (r.status === 'premium') checks.push({ t: 'Premium: real knots and pile, made from your close-up photos', d: IC.ok.d, st: IC.ok.st });
+    const SPL = { 1: [100], 2: [61, 39], 3: [22, 48, 30] };
+    const spl = SPL[sizeList.length] || [];
+    const splMax = Math.max.apply(null, spl.concat([1]));
+    const rugLeads = leads.filter((l) => l.rugId === r.id);
+
+    const mineN = (k) => log.filter((e) => e.rug === r.id && e.kind === k).length;
+    const mineParts = [['room', 'room open'], ['view3d', '3D view'], ['fit', 'size check'], ['details', 'details request']]
+      .filter(([k]) => mineN(k) > 0).map(([k, w]) => `${mineN(k)} ${w}${mineN(k) === 1 ? '' : 's'}`);
+
+    const rd = {
+      name: r.name, style: r.style, sizesTxt: r.sizesTxt, stLabel: r.stLabel, stStyle: r.stStyle,
+      img: r.img, note: r.note,
+      link: r.link || '', hasLink: !!r.link, noLink: !r.link,
+      checks,
+      isFix: r.status === 'fix', isBuilding: r.status === 'building',
+      live: r.live, notLive: !r.live,
+      isPremium: r.status === 'premium', canUpgrade: r.status === 'live',
+      hasMine: mineParts.length > 0, mine: `From you on this phone (real): ${mineParts.join(', ')}.`,
+      stats: [
+        { label: 'Room opens', v: fmt(r.opens) },
+        { label: 'People who came back', v: fmt(r.back) },
+        { label: 'Added to cart', v: fmt(r.carts) },
+        { label: 'Orders', v: fmt(r.orders) },
+        { label: 'Sales', v: money(r.sales) }
+      ],
+      tried: sizeList.map((z, i) => ({ size: z, pct: spl[i], w: Math.round(spl[i] / splMax * 100) })),
+      leads: rugLeads,
+      noLeads: rugLeads.length === 0,
+      backLine: `${fmt(r.back)} people came back to look at this rug again. ${rugLeads.length} of them shared their contact.`,
+      upgrade: () => {
+        const pick = Object.assign({}, this.cur().pick);
+        pick[r.id] = true;
+        this.go('premium', { pick });
+      }
+    };
+
+    // Reports
+    const funnel = [
+      { n: 1, v: '103,340', label: 'Visited a rug page', pct: 'Everyone, last 30 days' },
+      { n: 2, v: '6,840', label: 'Saw a rug in their room', pct: '6.6% of visitors' },
+      { n: 3, v: '1,212', label: 'Came back to look again', pct: '17.7% of room viewers' },
+      { n: 4, v: '398', label: 'Added to cart', pct: '5.8% of room viewers' },
+      { n: 5, v: '142', label: 'Bought', pct: '2.1% of room viewers' }
+    ];
+    const GREY = '#8F887E';
+    const cmpBuy = [
+      { label: 'Saw it in their room', v: '2.1%', w: 100, c: accent },
+      { label: 'Everyone else', v: '0.6%', w: 29, c: GREY }
+    ];
+    const cmpRet = [
+      { label: 'Saw it in their room', v: '2.1%', w: 25, c: accent },
+      { label: 'Everyone else', v: '8.5%', w: 100, c: GREY }
+    ];
+    const devices = [['iPhone', 58], ['Android', 27], ['Computer, room photo', 15]].map(([label, pct]) => ({ label, pct, w: Math.round(pct / 58 * 100) }));
+    const sizesTop = [['230 × 160', 31], ['290 × 200', 24], ['170 × 120', 17], ['Runners', 16], ['Other sizes', 12]].map(([label, pct]) => ({ label, pct, w: Math.round(pct / 31 * 100) }));
+    const lowSell = [
+      { name: 'Mamina Kilim #k1510-122', line: '590 room opens · 2 sales', tip: '15 people keep coming back to it. A small offer to them is the quickest test.', open: () => this.go('rug', { rugId: 'mamina' }) },
+      { name: 'Salsa Hollow Medallion Navy', line: '448 room opens · 1 sale', tip: 'Shoppers look closely and leave. Check the price, and add a close-up photo of the pile.', open: () => this.go('rug', { rugId: 'salsa' }) }
+    ];
+    const weekly = [
+      { t: 'Hot this week: Afshar #2015-070, 258 room opens' },
+      { t: `${warmLeft} people to contact on your warm list` },
+      { t: 'Not selling: Mamina Kilim #k1510-122, 590 room opens and 2 sales' },
+      { t: `${fixLeft} rugs need your help` }
+    ];
+
+    // Premium
+    const tiers = [
+      { tag: 'Every rug, automatic', name: 'Standard', st: '', items: [{ t: 'Exact real size, checked against your listing' }, { t: 'Thickness, bound edge and fringe' }, { t: 'Colours exactly as in your photo' }, { t: 'Ready in about a minute per rug' }, { t: 'Included in your plan' }] },
+      { tag: 'Your best rugs, made by our team', name: 'Premium', st: `border: 2px solid ${accent}`, items: [{ t: 'Everything in Standard' }, { t: 'Real knots and pile up close, from your own close-up photos' }, { t: 'Checked by a person before it goes live' }, { t: 'Ready in 1 to 2 days' }, { t: 'Priced per rug' }] }
+    ];
+    const standard = rugs.filter((x) => x.status === 'live').sort((a, b) => b.opens - a.opens);
+    const suggest = standard.filter((x, i) => i < 5 || s.pick[x.id] || s.req[x.id]).map((x) => ({
+      id: x.id, cid: 'pk-' + x.id, name: x.name, img: x.img, opensTxt: x.opensTxt,
+      on: !!s.pick[x.id] && !s.req[x.id],
+      requested: !!s.req[x.id],
+      open2: !s.req[x.id],
+      toggle: () => {
+        const pick = Object.assign({}, this.cur().pick);
+        pick[x.id] = !pick[x.id];
+        this.setState({ pick });
+      }
+    }));
+    const pickIds = suggest.filter((x) => x.on).map((x) => x.id);
+    const pickN = pickIds.length;
+    const premiumNow = rugs.filter((x) => x.status === 'premium');
+
+    // Settings
+    const OPT = [
+      ['button', 'Button on every rug page', 'Added to all rug pages by itself, no theme editing.'],
+      ['photo', 'Room photo mode', 'Shoppers on a computer upload a photo of their room and swap rugs in it.'],
+      ['fit', 'Size helper: “Will it fit?”', 'Shoppers type their room size and see which sizes fit.'],
+      ['picture', '“Send me this picture”', 'Shoppers get their room picture by email. You get their contact for the warm list.'],
+      ['wa', '“Ask on WhatsApp”', 'Opens WhatsApp with the rug and size already written.'],
+      ['weekly', 'Weekly summary email', 'Every Monday: hot rugs, rugs not selling, people to contact.']
+    ];
+    const opts = OPT.map(([k, label, d]) => {
+      const on = !!s.opts[k];
+      return {
+        label, d, on,
+        track: on ? `background: ${accent}` : 'background: #8F887E',
+        knob: on ? 'transform: translateX(20px)' : 'transform: translateX(0px)',
+        toggle: () => {
+          const o = Object.assign({}, this.cur().opts);
+          o[k] = !o[k];
+          this.setState({ opts: o });
+        }
+      };
+    });
+
+    // Offer composer
+    const cl = leads.find((l) => l.id === s.composer);
+    const OFF = [['5', '5% off'], ['10', '10% off'], ['ship', 'Free delivery'], ['none', 'Just a reminder']];
+    const LINE = { '5': 'Here is 5% off if you order this week: code ROOM5.', '10': 'Here is 10% off if you order this week: code ROOM10.', ship: 'Delivery is free if you order this week.', none: 'It is still in stock in your size.' };
+    const offers = OFF.map(([id, label]) => ({ label, on: s.offer === id, st: s.offer === id ? PRESSED : '', pick: () => this.setState({ offer: id }) }));
+    const cmp = cl ? {
+      name: cl.name, rug: cl.rug, size: cl.size, times: cl.times, timesTxt: cl.timesTxt, via: cl.via,
+      msg: `Hi ${cl.name.indexOf('@') > -1 ? 'there' : cl.name.split(' ')[0]},\n\nThanks for trying the ${cl.rug} (${cl.size}) in your room. ${LINE[s.offer]}\n\nAny questions? Just reply to this message.\n\n${storeName}`,
+      sendLabel: 'Send by ' + cl.via,
+      send: () => {
+        const sent = Object.assign({}, this.cur().sent);
+        sent[cl.id] = true;
+        this.setState({ sent, composer: '' });
+        this.flash(`Demo: offer to ${cl.name} marked as sent by ${cl.via}.`);
+      }
+    } : { name: '', rug: '', size: '', times: 0, timesTxt: '', via: '', msg: '', sendLabel: '', send: () => {} };
+
+    return {
+      accent, storeName, live, hasLive: live.length > 0, noLive: live.length === 0,
+      isHome: s.screen === 'home', isRugs: s.screen === 'rugs', isRug: s.screen === 'rug', isFix: s.screen === 'fix',
+      isWarm: s.screen === 'warm', isReports: s.screen === 'reports', isPremium: s.screen === 'premium', isSettings: s.screen === 'settings',
+      nav,
+      toReports: () => this.go('reports'), toRugs: () => this.go('rugs'), toWarm: () => this.go('warm'), toFix: () => this.go('fix'),
+      kpis, focus, hot, activity,
+      days, grid, readout,
+      chartLabel: `Bar chart of room opens per day for the last 30 days, ${fmt(opensTotal)} in total. ${readout}.`,
+      leave: () => this.setState({ hover: -1 }),
+      x0: raw[0].short, x1: raw[15].short, x2: raw[29].short,
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      filters, rugList, noRugs: rugList.length === 0,
+      qrAll: () => this.flash('Demo: a PDF with a QR tag for every live rug downloads here.'),
+      rd,
+      tryPhone: () => this.flash('Demo: a QR code appears here. Scan it and the rug opens on your floor.'),
+      copyLink: () => this.flash('Demo: room link copied. Paste it in a post, an email or a chat.'),
+      dlQr: () => this.flash('Demo: this rug’s QR code downloads as an image.'),
+      fixLeft, groups, fixes, moreFix: FIX_BASE - fixData.length, fixBase: FIX_BASE,
+      leads, warmLeft, anon,
+      warmLine: warmLeft > 0 ? `${warmLeft} waiting for an offer` : 'Everyone here has an offer',
+      funnel, cmpBuy, cmpRet, devices, sizesTop, lowSell, weekly,
+      tiers, suggest, premiumNow,
+      noPick: pickN === 0,
+      upgradeLabel: pickN === 0 ? 'Choose rugs above' : `Upgrade ${pickN} rug${pickN === 1 ? '' : 's'}`,
+      upgrade: () => {
+        const req = Object.assign({}, this.cur().req);
+        pickIds.forEach((id) => { req[id] = true; });
+        this.setState({ req, pick: {} });
+        this.flash(`Demo: ${pickN} rug${pickN === 1 ? '' : 's'} sent to the ARQR team. We will ask you for close-up photos.`);
+      },
+      pv: { img: '/demo/persian-rug-gallery/img/m_2015-070.jpg', name: 'Afshar #2015-070', line: '185 × 110 cm · NZ$1,999' },
+      btnText: s.btnText, btnLabel: (s.btnText || '').trim() || 'See it in your room',
+      onBtnText: (e) => this.setState({ btnText: e.target.value }),
+      showBtn: !!s.opts.button, hideBtn: !s.opts.button,
+      showFit: !!s.opts.fit, showPhoto: !!s.opts.photo, showWa: !!s.opts.wa,
+      opts,
+      wa: s.wa, onWa: (e) => this.setState({ wa: e.target.value }),
+      klaviyoState: s.klaviyo ? 'Connected' : 'Not connected',
+      klaviyoSt: s.klaviyo ? 'color: #24592F' : 'color: #6E6A64',
+      klaviyoBtn: s.klaviyo ? 'Disconnect' : 'Connect',
+      toggleKlaviyo: () => {
+        const on = !this.cur().klaviyo;
+        this.setState({ klaviyo: on });
+        this.flash(on ? 'Demo: Klaviyo connected. Warm-list people can now get offers from your Klaviyo flows.' : 'Demo: Klaviyo disconnected.');
+      },
+      planMsg: () => this.flash('Demo: you can change your plan here at any time.'),
+      hasComposer: !!cl, cmp, offers,
+      cancel: () => this.setState({ composer: '' }),
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+const comp = new Component();
+const scope = PetiteVue.reactive(comp.renderVals());
+function refresh() { Object.assign(scope, comp.renderVals()); }
+PetiteVue.createApp(scope).mount('#app');
+// a visit made on a product page shows up as soon as the owner comes back here
+window.addEventListener('pageshow', refresh);
+window.addEventListener('storage', refresh);
+document.addEventListener('visibilitychange', function () { if (!document.hidden) refresh(); });
+setInterval(refresh, 60000);
+</script>
+</body>
+</html>

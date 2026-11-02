@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F1E9DD">
+<title>ARQR360 for Persian Rug Gallery</title>
+<meta name="description" content="Two of your rugs on your own product pages with ARQR360, and the dashboard you would get inside Shopify.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* The start page of the Persian Rug Gallery preview: the three things to open, how to try
+     them, and what on them is real. Made by make_demo.py (copied from demo/index.tpl.html). */
+  :root{--page:#F1E9DD;--page-hi:#FDFBF7;--ink:#2B1D14;--ink-soft:#6F5E50;--line:#E2D7C8;--tone:#E0682A;--tone-dk:#B4501B;
+    --tone-soft:rgba(224,104,42,.1);--ok:#24592F;--ok-bg:#E4F0E2;--f-head:"Archivo","Segoe UI",Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font:16px/1.6 "Inter","Segoe UI",Arial,sans-serif}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  :focus-visible{outline:3px solid var(--tone);outline-offset:2px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+  h1,h2,h3{font-family:var(--f-head);letter-spacing:-.02em;margin:0}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;padding-bottom:18px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 20px var(--f-head)}
+  .brand img{width:34px;height:34px;border-radius:8px}
+  .for{font-size:13.5px;font-weight:600;color:var(--ink-soft);text-align:right}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;padding-top:clamp(20px,5vw,48px);padding-bottom:32px}
+  .eyebrow{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tone-dk)}
+  .hero h1{font-size:clamp(30px,4.6vw,48px);font-weight:800;line-height:1.08;max-width:760px}
+  .hero p.lead{margin:16px 0 0;max-width:640px;font-size:17.5px;color:var(--ink-soft)}
+  .scan{display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:var(--page-hi);border:1px solid var(--line);max-width:330px}
+  .scan img{flex:none;width:112px;height:112px;border-radius:8px}
+  .scan b{display:block;font:700 16px var(--f-head);margin-bottom:2px}
+  .scan span{font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-bottom:20px}
+  .card{display:flex;flex-direction:column;background:var(--page-hi);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -24px rgba(43,29,20,.45)}
+  .pic{height:250px;display:flex;align-items:center;justify-content:center;background:#EDE4D7;padding:18px}
+  .pic img{max-height:100%;width:auto;filter:drop-shadow(0 10px 14px rgba(43,29,20,.22))}
+  .pic.dash{background:#FAF7F2;align-items:stretch;justify-content:stretch;padding:20px}
+  .mini{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mini div{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px;border-radius:12px;background:#fff;border:1px solid #E4DED4;font-size:12.5px;font-weight:600;line-height:1.3}
+  .mini svg{width:24px;height:24px;color:var(--tone)}
+  .body{flex:1;display:flex;flex-direction:column;gap:6px;padding:18px 20px 20px}
+  .body h3{font-size:20px;font-weight:800}
+  .body .sz{font-size:13.5px;color:var(--ink-soft)}
+  .body p{margin:2px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
+  .open{margin-top:auto;padding-top:12px;display:flex;align-items:center;gap:8px;font:700 15px var(--f-head);color:var(--tone-dk)}
+  .open svg{width:18px;height:18px}
+
+  section.block{padding-top:44px;padding-bottom:12px}
+  .block h2{font-size:clamp(24px,3vw,32px);font-weight:800;line-height:1.15}
+  .block > p{margin:10px 0 0;max-width:680px;color:var(--ink-soft)}
+  .steps{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:s}
+  .steps li{counter-increment:s;padding:20px;border-radius:16px;background:var(--page-hi);border:1px solid var(--line);font-size:15px;line-height:1.55;color:var(--ink-soft)}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;margin-bottom:12px;border-radius:50%;background:var(--tone);color:#fff;font:800 16px var(--f-head)}
+  .steps b{display:block;margin-bottom:4px;color:var(--ink);font:700 16.5px var(--f-head)}
+
+  .cmp{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+  .cmp figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+  .tabs{display:flex;gap:6px;padding:4px;border-radius:100px;background:#E6DCCD;width:max-content;max-width:100%}
+  .tabs button{border:0;border-radius:100px;padding:10px 16px;min-height:44px;background:transparent;color:var(--ink-soft);font:700 14px var(--f-head);cursor:pointer}
+  .tabs button[aria-selected="true"]{background:var(--page-hi);color:var(--ink);box-shadow:0 1px 4px rgba(43,29,20,.14)}
+  .cmp-note{display:flex;flex-direction:column;gap:14px;font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
+  .cmp-note b{color:var(--ink)}
+  .cmp-note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+
+  .real{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .real div{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--page-hi)}
+  .real h3{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;margin-bottom:10px}
+  .real h3 span{font:700 11.5px "Inter",sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .real ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14.5px;line-height:1.5;color:var(--ink-soft)}
+  .tag-ok{background:var(--ok-bg);color:var(--ok)}
+  .tag-s{background:#EDE4D7;color:var(--ink-soft)}
+
+  footer{margin-top:48px;padding:26px 0 34px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+  footer a{font-weight:600;color:var(--ink)}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .cards,.steps{grid-template-columns:1fr}
+    .cmp,.real{grid-template-columns:1fr}
+    .pic{height:220px}
+  }
+  /* on a phone the QR code has nothing to do */
+  @media (hover:none) and (pointer:coarse){ .scan{display:none} }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="https://arqr360.com"><img src="/logo.png" width="34" height="34" alt="">ARQR360</a>
+  <span class="for">Prepared for Persian Rug Gallery</span>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <p class="eyebrow">Your preview · November 2026</p>
+      <h1>Your rugs on your customers’ floors, and a dashboard that shows who is close to buying</h1>
+      <p class="lead">Two of your rugs on your own product pages, the way they would look with ARQR360, and the dashboard you would get inside Shopify. All of it made from your own photos and listings.</p>
+    </div>
+    <div class="scan">
+      <img src="/demo/persian-rug-gallery/img/qr-start.png" width="112" height="112" alt="QR code for this page">
+      <div><b>Best on your phone</b><span>Scan with your phone’s camera to open this page there, then tap a rug.</span></div>
+    </div>
+  </section>
+
+  <section class="wrap cards" aria-label="Open the preview">
+    <a class="card" href="/demo/persian-rug-gallery/products/2015-016">
+      <div class="pic"><img src="/demo/persian-rug-gallery/img/m_2015-016.jpg" width="267" height="400" alt="Sirjan #2015-016"></div>
+      <div class="body">
+        <h3>Sirjan #2015-016</h3>
+        <span class="sz">228 × 150 cm · hand-knotted wool</span>
+        <p>Your product page, with our “View in your room” button.</p>
+        <span class="open">Open the product page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+    <a class="card" href="/demo/persian-rug-gallery/products/2015-070">
+      <div class="pic"><img src="/demo/persian-rug-gallery/img/m_2015-070.jpg" width="230" height="400" alt="Afshar #2015-070"></div>
+      <div class="body">
+        <h3>Afshar #2015-070</h3>
+        <span class="sz">185 × 110 cm · hand-knotted wool</span>
+        <p>Your product page, with our “View in your room” button.</p>
+        <span class="open">Open the product page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+    <a class="card" href="/demo/persian-rug-gallery/dashboard">
+      <div class="pic dash" aria-hidden="true">
+        <div class="mini">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V11M10 20V5M16 20v-6M3 20h18"/></svg>Views and sales for every rug</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 3.5a4 4 0 0 1 0 7M18 14a6 6 0 0 1 4 6v1"/></svg>Warm list: who keeps coming back</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19zM12 10v4M12 17v.5"/></svg>Listings that need a fix</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Offers sent in one tap</div>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Your dashboard</h3>
+        <span class="sz">Inside your Shopify admin</span>
+        <p>What shoppers did with each rug, the people close to buying, and the listings to fix.</p>
+        <span class="open">Open the dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </section>
+
+  <section class="wrap block">
+    <h2>Try it the way a customer would</h2>
+    <ol class="steps">
+      <li><b>Open a rug on your phone</b>Sirjan or Afshar. It is your own product page, with our button added.</li>
+      <li><b>Tap “View in your room”</b>Point the phone at the floor. The rug appears at its real size: walk round it and crouch down to see the edge and fringe.</li>
+      <li><b>Open your dashboard</b>Your visit is already there, under “Live”. That is how you will see every shopper.</li>
+    </ol>
+  </section>
+
+  <section class="wrap block">
+    <h2>The same photo, made into a real rug</h2>
+    <p>Your page lays the photo flat today. We use the same photo, keep its colours exactly, and give the rug what a photo can’t: thickness, bound edges and its own fringe.</p>
+    <div class="cmp">
+      <figure>
+        <img id="cmpImg" src="/demo/persian-rug-gallery/img/compare-2015-070.jpg" width="1230" height="1292" alt="Afshar #2015-070: a flat photo on the left, ARQR360 on the right, seen whole, from the corner and close up" loading="lazy">
+      </figure>
+      <div class="cmp-note">
+        <div class="tabs" role="tablist" aria-label="Rug">
+          <button type="button" role="tab" aria-selected="true" data-h="2015-070" data-n="Afshar #2015-070">Afshar</button>
+          <button type="button" role="tab" aria-selected="false" data-h="2015-016" data-n="Sirjan #2015-016">Sirjan</button>
+        </div>
+        <span><b>Left:</b> a flat photo, the way rugs are shown in the room today. <b>Right:</b> ARQR360. Same photo, same cameras.</span>
+        <ul>
+          <li>Top: the whole rug. The colours are the same, because they are your photo.</li>
+          <li>Middle: from the corner. Ours has a real edge and thickness.</li>
+          <li>Bottom: close up, where a flat photo looks like paper.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block">
+    <h2>What is real on these pages</h2>
+    <div class="real">
+      <div>
+        <h3>Real <span class="tag-ok">Yours</span></h3>
+        <ul>
+          <li>Your rugs, photos, sizes and prices, from your store</li>
+          <li>The two rugs in your room: made from your product photos, automatically</li>
+          <li>The fix list: we checked all 2,817 of your listings and found 255 that would show wrong</li>
+          <li>Your own visits, under “Live” in the dashboard</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Samples <span class="tag-s">For now</span></h3>
+        <ul>
+          <li>Visitor, sales and warm-list numbers and names in the dashboard: your real ones fill in once the app runs on your store</li>
+          <li>Buttons on the product pages other than ours: they are a copy of your page, for show</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Made for Persian Rug Gallery by ARQR360</span><a href="https://arqr360.com">arqr360.com</a></div>
+</footer>
+
+<script>
+Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b, i, all) {
+  b.addEventListener('click', function () {
+    var img = document.getElementById('cmpImg');
+    img.src = '/demo/persian-rug-gallery/img/compare-' + b.getAttribute('data-h') + '.jpg';
+    img.alt = b.getAttribute('data-n') + ': a flat photo on the left, ARQR360 on the right, seen whole, from the corner and close up';
+    Array.prototype.forEach.call(all, function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+  });
+});
+</script>
+</body>
+</html>

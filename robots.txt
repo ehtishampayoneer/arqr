@@ -9,6 +9,8 @@ Disallow: /test/
 Disallow: /admin
 # product samples made for a client, reached from their QR card
 Disallow: /sample/
+# a client's private preview: their pages as they would look with ARQR360
+Disallow: /demo/
 
 Sitemap: https://arqr360.com/sitemap.xml
 Sitemap: https://arqr360.com/blog/sitemap.xml

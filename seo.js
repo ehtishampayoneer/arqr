@@ -316,6 +316,8 @@ fs.writeFileSync('robots.txt',
   'Disallow: /admin\n' +
   '# product samples made for a client, reached from their QR card\n' +
   'Disallow: /sample/\n' +
+  "# a client's private preview: their pages as they would look with ARQR360\n" +
+  'Disallow: /demo/\n' +
   '\n' +
   'Sitemap: ' + SITE.origin + '/sitemap.xml\n' +
   // the blog is served from Marketing Genie and keeps a sitemap of its own
