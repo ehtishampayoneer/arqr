@@ -469,12 +469,103 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 </template>
 
+<!-- ACTIVITY -->
+<template v-if="isActivity">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Activity</h1>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Every time someone opens one of your rugs: where they are, when, on what, and what they did.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px" role="group" aria-label="Period">
+<template v-for="g in ranges">
+<button class="chip" :style="g.st" :aria-pressed="g.on" @click="g.pick">{{ g.label }}</button>
+</template>
+</div>
+<template v-if="isCustomRange">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">From<input class="field" style="width: auto" type="date" :value="rFrom" :min="rMin" :max="rMax" @change="onFrom"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">To<input class="field" style="width: auto" type="date" :value="rTo" :min="rMin" :max="rMax" @change="onTo"></label>
+</div>
+</template>
+<p style="margin: 0; font-size: 13px; color: #6E6A64">Showing <b style="color: #191919; font-weight: 600">{{ rangeLabel }}</b> · sample numbers until the app runs on your store</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px">
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Where they are</h2>
+<p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Room opens by region, in this period. Your own visits are in the list below.</p>
+<div style="display: flex; flex-direction: column; gap: 9px">
+<template v-for="x in regions">
+<div style="display: grid; grid-template-columns: minmax(110px, 160px) 1fr 64px; align-items: center; gap: 10px; font-size: 13px">
+<span>{{ x.name }}</span>
+<div style="height: 12px; border-radius: 999px; background: #F1ECE3; overflow: hidden"><div :style="`height: 100%; width: ${x.w}%; border-radius: 999px; background: ${accent}`"></div></div>
+<span style="text-align: right; font-variant-numeric: tabular-nums">{{ x.n }}</span>
+</div>
+</template>
+</div>
+</div>
+<div class="card">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">When they look</h2>
+<p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Room opens by hour of the day.</p>
+<div style="position: relative; height: 150px" role="img" :aria-label="busiestTxt">
+<div style="position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 3px">
+<template v-for="b in hoursBars">
+<div style="flex: 1; height: 100%; display: flex; align-items: flex-end" :title="b.tip"><div :style="`width: 100%; height: ${b.h}%; background: ${accent}; opacity: 0.55; border-radius: 3px 3px 0 0`"></div></div>
+</template>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: #6E6A64"><span>12 am</span><span>6 am</span><span>12 pm</span><span>6 pm</span><span>11 pm</span></div>
+<p style="margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: #3A3733">{{ busiestTxt }}</p>
+</div>
+</div>
+<div class="card" style="padding: 0; overflow: hidden">
+<div style="padding: 18px 16px 10px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens, newest first</h2>
+<p style="margin: 4px 0 0; font-size: 14px; color: #6E6A64">{{ actCount }}</p>
+</div>
+<div style="overflow-x: auto">
+<div style="min-width: 860px">
+<div class="row" style="grid-template-columns: 1.1fr 1.4fr 1.5fr 0.8fr 1.4fr 1fr; background: #FAF7F2; font-size: 12px; font-weight: 600; color: #6E6A64">
+<div>When</div><div>Rug</div><div>Where</div><div>Device</div><div>What they did</div><div>Visit</div>
+</div>
+<template v-for="a in actRows">
+<div class="row" style="grid-template-columns: 1.1fr 1.4fr 1.5fr 0.8fr 1.4fr 1fr; font-size: 14px">
+<div style="font-variant-numeric: tabular-nums">{{ a.when }}</div>
+<div><button class="link" @click="a.open">{{ a.rug }}</button></div>
+<div>{{ a.place }}<template v-if="a.real"><span style="display: block; width: max-content; margin-top: 4px; padding: 2px 8px; border-radius: 999px; background: #E4F0E2; color: #24592F; font-size: 11px; font-weight: 600">Real · this phone</span></template></div>
+<div>{{ a.device }}</div>
+<div>{{ a.what }}</div>
+<div style="color: #6E6A64">{{ a.nth }}</div>
+</div>
+</template>
+<template v-if="noAct"><div style="padding: 28px 16px; text-align: center; font-size: 14px; color: #6E6A64">No room opens yet in this period.</div></template>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #6E6A64">Places are city level, worked out from the visitor’s internet connection: never an address, and never a name unless the person shared their contact. These visits are samples, except the ones marked “Real”.</p>
+</div>
+</template>
+
 <!-- REPORTS -->
 <template v-if="isReports">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <div>
 <h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Reports</h1>
-<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Last 30 days. These are sample numbers: your real ones fill in after about 30 days of orders.</p>
+<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">What shoppers did with your rugs, for any period you pick.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px" role="group" aria-label="Period">
+<template v-for="g in ranges">
+<button class="chip" :style="g.st" :aria-pressed="g.on" @click="g.pick">{{ g.label }}</button>
+</template>
+</div>
+<template v-if="isCustomRange">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">From<input class="field" style="width: auto" type="date" :value="rFrom" :min="rMin" :max="rMax" @change="onFrom"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">To<input class="field" style="width: auto" type="date" :value="rTo" :min="rMin" :max="rMax" @change="onTo"></label>
+</div>
+</template>
+<p style="margin: 0; font-size: 13px; color: #6E6A64">Showing <b style="color: #191919; font-weight: 600">{{ rangeLabel }}</b> · sample numbers until the app runs on your store</p>
 </div>
 <div class="card">
 <h2 class="h" style="margin: 0 0 14px; font-size: 18px; font-weight: 700">From visitor to buyer</h2>
@@ -488,6 +579,20 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 </template>
 </div>
+</div>
+<div class="card">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens</h2>
+<span style="font-size: 13px; color: #6E6A64">{{ rChartNote }}</span>
+</div>
+<div style="position: relative; height: 170px; margin-top: 16px" role="img" :aria-label="rChartLabel">
+<div style="position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 2px">
+<template v-for="b in rBars">
+<div style="flex: 1; height: 100%; display: flex; align-items: flex-end" :title="b.tip"><div :style="`width: 100%; height: ${b.h}%; min-height: 2px; background: ${accent}; border-radius: 3px 3px 0 0`"></div></div>
+</template>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: #6E6A64"><span>{{ rX0 }}</span><span>{{ rX1 }}</span></div>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
 <div class="card">
@@ -513,7 +618,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 </template>
 </div>
-<p style="margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: #6E6A64">Room view: 142 orders from 6,840 people, 3 returned. Everyone else: 579 orders from 96,500 people, 49 returned.</p>
+<p style="margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: #6E6A64">{{ cmpNote }}</p>
 </div>
 <div class="card">
 <h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Where people open it</h2>
@@ -542,7 +647,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px">
 <div class="card">
 <h2 class="h" style="margin: 0 0 6px; font-size: 18px; font-weight: 700">Top rugs</h2>
-<template v-for="r in hot">
+<template v-for="r in rHot">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 4px 0; border-bottom: 1px solid #EFEAE1">
 <button class="link" @click="r.open">{{ r.name }}</button>
 <span style="font-size: 13px; color: #3A3733; font-variant-numeric: tabular-nums">{{ r.opensTxt }} opens · {{ r.ordersTxt }} orders · {{ r.salesTxt }}</span>
@@ -754,6 +859,13 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <button class="chip" :style="o.st" :aria-pressed="o.on" @click="o.pick">{{ o.label }}</button>
 </template>
 </div>
+<template v-if="isCustomOffer">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 10px; margin-top: 12px">
+<label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">Your offer<input class="field" type="text" maxlength="90" placeholder="e.g. 15% off this rug, or NZ$200 off" @input="onCOffer"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">Discount code (optional)<input class="field" style="text-transform: uppercase" type="text" maxlength="24" placeholder="e.g. AFSHAR15" @input="onCCode"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">Valid until (optional)<input class="field" type="date" :min="todayIso" @change="onCUntil"></label>
+</div>
+</template>
 </div>
 <div>
 <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">Message</div>
@@ -761,7 +873,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px">
 <button class="btn2" @click="cancel">Cancel</button>
-<button class="btn" @click="cmp.send">{{ cmp.sendLabel }}</button>
+<button class="btn" :disabled="cmp.noSend" @click="cmp.send">{{ cmp.sendLabel }}</button>
 </div>
 </div>
 </div>
@@ -782,7 +894,7 @@ class DCLogic {
 class Component extends DCLogic {
   base() {
     return {
-      screen: ['home', 'rugs', 'fix', 'warm', 'reports', 'premium', 'settings'].indexOf(location.hash.slice(1)) > -1 ? location.hash.slice(1) : 'home', rugId: 'sirjan', filter: 'all', q: '', fixed: {}, sent: {}, composer: '', offer: '10',
+      screen: ['home', 'rugs', 'fix', 'warm', 'activity', 'reports', 'premium', 'settings'].indexOf(location.hash.slice(1)) > -1 ? location.hash.slice(1) : 'home', rugId: 'sirjan', filter: 'all', q: '', fixed: {}, sent: {}, composer: '', offer: '10', cOffer: '', cCode: '', cUntil: '', range: '30', rFrom: '', rTo: '',
       hover: -1, toast: '', pick: { chobi: true, kazak: true, bokhara: true }, req: {},
       opts: { button: true, photo: true, fit: true, picture: true, wa: true, weekly: true },
       wa: '+1 555 0142', btnText: 'See it in your room', klaviyo: false
@@ -959,7 +1071,7 @@ class Component extends DCLogic {
         timesTxt: `${l.times} time${l.times === 1 ? '' : 's'}`,
         directLabel: l.via === 'WhatsApp' ? 'WhatsApp' : 'Email',
         direct: () => this.flash(`Demo: opens ${l.via === 'WhatsApp' ? 'WhatsApp' : 'your email'} with a message to ${l.name}.`),
-        offer: () => this.setState({ composer: l.id, offer: '10' }),
+        offer: () => this.setState({ composer: l.id, offer: '10', cOffer: '', cCode: '', cUntil: '' }),
         open: () => this.go('rug', { rugId: l.rugId })
       });
     });
@@ -973,6 +1085,7 @@ class Component extends DCLogic {
       ['rugs', 'Rugs', 'M5 3h14v18H5zM9 7h6v10H9z', '2,817', 'background: #F1ECE3; color: #5A554E'],
       ['fix', 'Needs your help', 'M12 3l9.5 17h-19zM12 10v4M12 17v.5', fixLeft > 0 ? String(fixLeft) : '', 'background: #FCEFCF; color: #7A4B00'],
       ['warm', 'Warm list', 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 3.5a4 4 0 0 1 0 7M18 14a6 6 0 0 1 4 6v1', warmLeft > 0 ? String(warmLeft) : '', 'background: #FBE3D3; color: #8A3510'],
+      ['activity', 'Activity', 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 12.2a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2z', '', ''],
       ['reports', 'Reports', 'M4 20V11M10 20V5M16 20v-6M3 20h18', '', ''],
       ['premium', 'Premium rugs', 'M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 16.9l-5.4 2.9 1-6.1-4.4-4.3 6.1-.8z', '', ''],
       ['settings', 'Button & settings', 'M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4', '', '']
@@ -987,16 +1100,33 @@ class Component extends DCLogic {
     }));
 
     // Home chart: room opens per day, last 30 days
-    const raw = [];
-    for (let i = 0; i < 30; i++) {
-      const dt = new Date(2026, 9, 3 + i);
+    // Sample visitor numbers: one value per day for the 90 days up to today, the same every
+    // time the page opens, so Today, Yesterday, This week and any custom dates all have data.
+    // Today counts only the hours gone so far.
+    const now = new Date();
+    const today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const HOURS = [2, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 6, 7, 8, 10, 12, 13, 12, 8, 4];
+    const HSUM = HOURS.reduce((x, w) => x + w, 0);
+    const doneToday = HOURS.slice(0, now.getHours()).reduce((x, w) => x + w, 0) + HOURS[now.getHours()] * now.getMinutes() / 60;
+    const series = [];
+    for (let n = 0; n < 90; n++) {
+      const dt = new Date(today0.getFullYear(), today0.getMonth(), today0.getDate() - (89 - n));
       const wd = dt.getDay();
-      raw.push({
-        v: Math.round(255 + i * 3 + 38 * Math.sin(i * 0.85) + (wd === 0 || wd === 6 ? 80 : 0)),
-        label: dt.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-        short: dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-      });
+      let v = Math.round(290 + n * 0.25 + 38 * Math.sin(n * 0.85) + (wd === 0 || wd === 6 ? 80 : 0));
+      if (n === 89) v = Math.round(v * doneToday / HSUM);
+      series.push({ n, dt, v });
     }
+    const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const fromIso = (t) => { const [y, m, d] = String(t).split('-').map(Number); return new Date(y, (m || 1) - 1, d || 1); };
+    const dayIdx = (d) => Math.round((d - series[0].dt) / 86400000);
+    const shortD = (d) => d.toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
+    const people = (o) => Math.round(o * 0.70);                  // people per room open (some open more than once)
+    const AVG_ORDER = 1207;                                       // NZ$ per order after a room view
+    const raw = series.slice(60).map((d) => ({
+      v: d.v,
+      label: d.dt.toLocaleDateString('en-NZ', { weekday: 'short', day: 'numeric', month: 'short' }),
+      short: shortD(d.dt)
+    }));
     const opensTotal = raw.reduce((a, d) => a + d.v, 0);
     const maxV = Math.max.apply(null, raw.map((d) => d.v));
     const top = Math.ceil(maxV / 100) * 100;
@@ -1013,9 +1143,9 @@ class Component extends DCLogic {
 
     const kpis = [
       { label: 'Rugs ready to see in a room', value: fmt(2817 - fixLeft - BUILDING), sub: `of your 2,817 · ${fixLeft} need your help (real) · ${BUILDING} being made` },
-      { label: 'People who saw a rug in their room', value: '6,840', sub: `${fmt(opensTotal)} room opens in the last 30 days` },
-      { label: 'Came back to look again', value: '1,212', sub: 'Your warm list starts here' },
-      { label: 'Sales after a room view', value: '$171,400', sub: '142 orders in the last 30 days' }
+      { label: 'People who saw a rug in their room', value: fmt(people(opensTotal)), sub: `${fmt(opensTotal)} room opens in the last 30 days` },
+      { label: 'Came back to look again', value: fmt(Math.round(people(opensTotal) * 0.177)), sub: 'Your warm list starts here' },
+      { label: 'Sales after a room view', value: money(Math.round(people(opensTotal) * 0.0208) * AVG_ORDER), sub: `${fmt(Math.round(people(opensTotal) * 0.0208))} orders in the last 30 days` }
     ];
     const focus = [
       { title: warmLeft > 0 ? `${warmLeft} people are close to buying` : 'Everyone on your warm list has an offer', d: 'They opened the same rug 3 or more times and shared their contact.', btn: 'Open warm list', go: () => this.go('warm') },
@@ -1096,13 +1226,59 @@ class Component extends DCLogic {
     };
 
     // Reports
+    // The period: Today, Yesterday, This week (from Monday), Last 30 days, or two dates
+    const RANGES = [['today', 'Today'], ['yesterday', 'Yesterday'], ['week', 'This week'], ['30', 'Last 30 days'], ['custom', 'Custom']];
+    let ra = 89, rb = 89;
+    if (s.range === 'yesterday') { ra = rb = 88; }
+    else if (s.range === 'week') { ra = 89 - (today0.getDay() + 6) % 7; }
+    else if (s.range === '30') { ra = 60; }
+    else if (s.range === 'custom') {
+      let f = s.rFrom ? dayIdx(fromIso(s.rFrom)) : 83, t = s.rTo ? dayIdx(fromIso(s.rTo)) : 89;
+      if (isNaN(f)) f = 83;
+      if (isNaN(t)) t = 89;
+      ra = Math.max(0, Math.min(89, Math.min(f, t))); rb = Math.max(0, Math.min(89, Math.max(f, t)));
+    }
+    const inRange = series.slice(ra, rb + 1);
+    const opensR = inRange.reduce((x, d) => x + d.v, 0);
+    const kR = opensR / Math.max(1, opensTotal);                 // this period against the last 30 days
+    const rangeLabel = ra === rb
+      ? (rb === 89 ? `today, ${shortD(series[rb].dt)}` : rb === 88 ? `yesterday, ${shortD(series[rb].dt)}` : series[rb].dt.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'short' }))
+      : `${shortD(series[ra].dt)} to ${shortD(series[rb].dt)}`;
+    const ranges = RANGES.map(([id, label]) => ({
+      label, on: s.range === id, st: s.range === id ? PRESSED : '',
+      pick: () => this.setState(id === 'custom'
+        ? { range: 'custom', rFrom: this.cur().rFrom || iso(series[83].dt), rTo: this.cur().rTo || iso(series[89].dt) }
+        : { range: id })
+    }));
+    const pR = people(opensR), visR = Math.round(opensR * 10.6), backR = Math.round(pR * 0.177), cartR = Math.round(pR * 0.058), ordR = Math.round(pR * 0.0208);
+    const pct = (a, b) => (b ? (a / b * 100).toFixed(1) + '%' : '–');
     const funnel = [
-      { n: 1, v: '103,340', label: 'Visited a rug page', pct: 'Everyone, last 30 days' },
-      { n: 2, v: '6,840', label: 'Saw a rug in their room', pct: '6.6% of visitors' },
-      { n: 3, v: '1,212', label: 'Came back to look again', pct: '17.7% of room viewers' },
-      { n: 4, v: '398', label: 'Added to cart', pct: '5.8% of room viewers' },
-      { n: 5, v: '142', label: 'Bought', pct: '2.1% of room viewers' }
+      { n: 1, v: fmt(visR), label: 'Visited a rug page', pct: 'Everyone in this period' },
+      { n: 2, v: fmt(pR), label: 'Saw a rug in their room', pct: `${pct(pR, visR)} of visitors` },
+      { n: 3, v: fmt(backR), label: 'Came back to look again', pct: `${pct(backR, pR)} of room viewers` },
+      { n: 4, v: fmt(cartR), label: 'Added to cart', pct: `${pct(cartR, pR)} of room viewers` },
+      { n: 5, v: fmt(ordR), label: 'Bought', pct: `${pct(ordR, pR)} of room viewers · ${money(ordR * AVG_ORDER)}` }
     ];
+    const othersR = Math.max(0, visR - pR), othersOrd = Math.round(othersR * 0.006);
+    const cmpNote = `Room view: ${fmt(ordR)} orders from ${fmt(pR)} people, ${fmt(Math.round(ordR * 0.021))} returned. Everyone else: ${fmt(othersOrd)} orders from ${fmt(othersR)} people, ${fmt(Math.round(othersOrd * 0.085))} returned.`;
+    // the chart: by hour for one day, by day for longer
+    let rBars, rX0, rX1, rChartNote;
+    if (ra === rb) {
+      const d = series[rb];
+      const full = rb === 89 ? d.v * HSUM / Math.max(doneToday, 0.5) : d.v;
+      const hv = HOURS.map((w, h) => (rb === 89 && h > now.getHours()) ? 0 : Math.round(full * w / HSUM));
+      const mx = Math.max(1, ...hv);
+      rBars = hv.map((v, h) => ({ h: (v / mx * 100).toFixed(1), tip: `${String(h).padStart(2, '0')}:00 to ${String((h + 1) % 24).padStart(2, '0')}:00: ${v} room opens` }));
+      rX0 = 'Midnight'; rX1 = '11 pm'; rChartNote = 'By hour';
+    } else {
+      const mx = Math.max(1, ...inRange.map((d) => d.v));
+      rBars = inRange.map((d) => ({ h: (d.v / mx * 100).toFixed(1), tip: `${d.dt.toLocaleDateString('en-NZ', { weekday: 'short', day: 'numeric', month: 'short' })}: ${d.v} room opens` }));
+      rX0 = shortD(inRange[0].dt); rX1 = shortD(inRange[inRange.length - 1].dt); rChartNote = `By day · ${fmt(opensR)} room opens`;
+    }
+    const rHot = hot.map((r) => {
+      const o = Math.round(r.orders * kR);
+      return Object.assign({}, r, { opensTxt: fmt(Math.round(r.opens * kR)), ordersTxt: fmt(o), salesTxt: money(o * r.price) });
+    });
     const GREY = '#8F887E';
     const cmpBuy = [
       { label: 'Saw it in their room', v: '2.1%', w: 100, c: accent },
@@ -1115,8 +1291,8 @@ class Component extends DCLogic {
     const devices = [['iPhone', 58], ['Android', 27], ['Computer, room photo', 15]].map(([label, pct]) => ({ label, pct, w: Math.round(pct / 58 * 100) }));
     const sizesTop = [['230 × 160', 31], ['290 × 200', 24], ['170 × 120', 17], ['Runners', 16], ['Other sizes', 12]].map(([label, pct]) => ({ label, pct, w: Math.round(pct / 31 * 100) }));
     const lowSell = [
-      { name: 'Mamina Kilim #k1510-122', line: '590 room opens · 2 sales', tip: '15 people keep coming back to it. A small offer to them is the quickest test.', open: () => this.go('rug', { rugId: 'mamina' }) },
-      { name: 'Salsa Hollow Medallion Navy', line: '448 room opens · 1 sale', tip: 'Shoppers look closely and leave. Check the price, and add a close-up photo of the pile.', open: () => this.go('rug', { rugId: 'salsa' }) }
+      { name: 'Mamina Kilim #k1510-122', line: `${fmt(Math.round(590 * kR))} room opens · ${fmt(Math.round(2 * kR))} sale${Math.round(2 * kR) === 1 ? '' : 's'}`, tip: '15 people keep coming back to it. A small offer to them is the quickest test.', open: () => this.go('rug', { rugId: 'mamina' }) },
+      { name: 'Salsa Hollow Medallion Navy', line: `${fmt(Math.round(448 * kR))} room opens · ${fmt(Math.round(1 * kR))} sale${Math.round(1 * kR) === 1 ? '' : 's'}`, tip: 'Shoppers look closely and leave. Check the price, and add a close-up photo of the pile.', open: () => this.go('rug', { rugId: 'salsa' }) }
     ];
     const weekly = [
       { t: 'Hot this week: Afshar #2015-070, 258 room opens' },
@@ -1124,6 +1300,67 @@ class Component extends DCLogic {
       { t: 'Not selling: Mamina Kilim #k1510-122, 590 room opens and 2 sales' },
       { t: `${fixLeft} rugs need your help` }
     ];
+
+    // Activity: where and when each rug is opened. Sample visits (a seeded pattern, the same
+    // every time), plus the real ones from this phone. Places are city level, from the
+    // visitor's internet connection in the real app: no addresses, no names.
+    const rngFor = (seed) => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    const pickW = (r, items) => { let x = r() * items.reduce((q, it) => q + it[1], 0); for (const it of items) { x -= it[1]; if (x <= 0) return it[0]; } return items[items.length - 1][0]; };
+    const REGIONS = [['Auckland', 34, ['Remuera', 'Ponsonby', 'Takapuna', 'Mt Eden', 'Howick', 'Albany', 'Parnell']],
+      ['Canterbury', 18, ['Christchurch Central', 'Riccarton', 'Merivale', 'Sydenham', 'Rolleston']],
+      ['Wellington', 14, ['Thorndon', 'Karori', 'Lower Hutt', 'Petone', 'Kelburn']],
+      ['Waikato', 8, ['Hamilton', 'Cambridge']], ['Bay of Plenty', 6, ['Tauranga', 'Mount Maunganui', 'Rotorua']],
+      ['Otago', 5, ['Dunedin', 'Queenstown']], ['Manawatū-Whanganui', 4, ['Palmerston North', 'Whanganui']],
+      ['Hawke’s Bay', 3, ['Napier', 'Hastings']], ['Nelson Tasman', 3, ['Nelson', 'Richmond']],
+      ['Rest of New Zealand', 3, ['New Plymouth', 'Whangārei', 'Invercargill']], ['Australia', 2, ['Sydney', 'Melbourne', 'Brisbane']]];
+    const DEVICES = [['iPhone', 58], ['Android', 27], ['Computer', 15]];
+    const WHATS = [['Opened it in their room', 70], ['Turned it round in 3D', 15], ['Checked “Will it fit?”', 10], ['Asked for the details', 5]];
+    const NTH = [['First visit', 80], ['2nd visit', 13], ['3rd visit or more', 7]];
+    const rugW = rugs.filter((r) => r.live).map((r) => [r, r.opens]);
+    const timeTxt = (d) => d.toLocaleTimeString('en-NZ', { hour: 'numeric', minute: '2-digit' });
+    const dayTxt = (n) => (n === 89 ? 'Today' : n === 88 ? 'Yesterday' : series[n].dt.toLocaleDateString('en-NZ', { weekday: 'short', day: 'numeric', month: 'short' }));
+    // One set of visits feeds the list, the regions and the hours, so they always agree: each
+    // day has exactly its number of room opens (today: only those already made).
+    const actRows = [], realRows = [];
+    const tz = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { return ''; } })();
+    const KIND = { room: 'Opened it in their room', view3d: 'Turned it round in 3D', fit: 'Checked “Will it fit?”', details: 'Asked for the details' };
+    const fromT = series[ra].dt.getTime(), toT = series[rb].dt.getTime() + 86400000;
+    log.filter((e) => e.t >= fromT && e.t < toT && KIND[e.kind]).slice().reverse().forEach((e) => {
+      const d = new Date(e.t), n = dayIdx(new Date(d.getFullYear(), d.getMonth(), d.getDate()));
+      realRows.push({ when: `${dayTxt(n)}, ${timeTxt(d)}`, rug: RUGNAME[e.rug], rugId: e.rug, place: tz ? `This phone (${tz.replace(/_/g, ' ')} time)` : 'This phone',
+        device: e.dev, what: KIND[e.kind], nth: 'You', real: true, open: () => this.go('rug', { rugId: e.rug }) });
+    });
+    const regCount = {}, hrCount = HOURS.map(() => 0);
+    const hoursNow = HOURS.map((w, h) => [h, h < now.getHours() ? w : h === now.getHours() ? w * now.getMinutes() / 60 : 0]);
+    for (let n = rb; n >= ra; n--) {
+      const r = rngFor(7000 + n), evs = [];
+      for (let k = 0; k < series[n].v; k++) {
+        const h = n === 89 ? pickW(r, hoursNow) : pickW(r, HOURS.map((w, x) => [x, w]));
+        const m = Math.floor(r() * (n === 89 && h === now.getHours() ? now.getMinutes() + 1 : 60));
+        const reg = pickW(r, REGIONS.map((g) => [g, g[1]])), sub = reg[2][Math.floor(r() * reg[2].length)];
+        const rug = pickW(r, rugW);
+        regCount[reg[0]] = (regCount[reg[0]] || 0) + 1;
+        hrCount[h] += 1;
+        evs.push({ h, m, rug, place: reg[0] === 'Australia' ? `${sub}, Australia` : `${sub}, ${reg[0]}`, device: pickW(r, DEVICES), what: pickW(r, WHATS), nth: pickW(r, NTH) });
+      }
+      if (actRows.length + realRows.length >= 40) continue;
+      evs.sort((x, y) => (y.h * 60 + y.m) - (x.h * 60 + x.m));
+      for (const ev of evs) {
+        if (actRows.length + realRows.length >= 40) break;
+        const d = new Date(series[n].dt.getFullYear(), series[n].dt.getMonth(), series[n].dt.getDate(), ev.h, ev.m);
+        actRows.push({ t: d.getTime(), when: `${dayTxt(n)}, ${timeTxt(d)}`, rug: ev.rug.name, rugId: ev.rug.id, place: ev.place, device: ev.device, what: ev.what, nth: ev.nth, real: false,
+          open: () => this.go('rug', { rugId: ev.rug.id }) });
+      }
+    }
+    actRows.unshift(...realRows);
+    const regTop = Math.max(1, ...Object.values(regCount));
+    const regions = REGIONS.map(([name]) => ({ name, n: fmt(regCount[name] || 0), w: Math.round((regCount[name] || 0) / regTop * 100) }));
+    const hrTop = Math.max(1, ...hrCount);
+    const hoursBars = hrCount.map((c, h) => ({ h: Math.round(c / hrTop * 100), tip: `${String(h).padStart(2, '0')}:00 to ${String((h + 1) % 24).padStart(2, '0')}:00: ${fmt(c)} room opens` }));
+    const busyH = hrCount.indexOf(Math.max(...hrCount));
+    const ampm = (h) => `${h % 12 || 12} ${h < 12 ? 'am' : 'pm'}`;
+    const busiestTxt = opensR ? `Busiest hour: ${ampm(busyH)} to ${ampm((busyH + 1) % 24)}, with ${fmt(hrCount[busyH])} room opens.` : 'No room opens yet in this period.';
+    const realN = realRows.length;
 
     // Premium
     const tiers = [
@@ -1171,25 +1408,32 @@ class Component extends DCLogic {
 
     // Offer composer
     const cl = leads.find((l) => l.id === s.composer);
-    const OFF = [['5', '5% off'], ['10', '10% off'], ['ship', 'Free delivery'], ['none', 'Just a reminder']];
+    const OFF = [['5', '5% off'], ['10', '10% off'], ['ship', 'Free delivery'], ['none', 'Just a reminder'], ['custom', 'Custom offer']];
     const LINE = { '5': 'Here is 5% off if you order this week: code ROOM5.', '10': 'Here is 10% off if you order this week: code ROOM10.', ship: 'Delivery is free if you order this week.', none: 'It is still in stock in your size.' };
-    const offers = OFF.map(([id, label]) => ({ label, on: s.offer === id, st: s.offer === id ? PRESSED : '', pick: () => this.setState({ offer: id }) }));
+    // a custom offer: the owner's own words, an optional code and an optional last day
+    const cText = (s.cOffer || '').trim().replace(/[.\s]+$/, ''), cCode = (s.cCode || '').trim();
+    const cUntil = s.cUntil ? fromIso(s.cUntil).toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'long' }) : '';
+    LINE.custom = `Here is a special offer for you: ${cText || '[your offer]'}.` + (cCode ? ` Use code ${cCode} at checkout.` : '') + (cUntil ? ` It is yours until ${cUntil}.` : '');
+    const offers = OFF.map(([id, label]) => ({ label, on: s.offer === id, st: s.offer === id ? PRESSED : '',
+      pick: () => this.setState(id === 'custom' ? { offer: id, cOffer: '', cCode: '', cUntil: '' } : { offer: id }) }));
     const cmp = cl ? {
       name: cl.name, rug: cl.rug, size: cl.size, times: cl.times, timesTxt: cl.timesTxt, via: cl.via,
       msg: `Hi ${cl.name.indexOf('@') > -1 ? 'there' : cl.name.split(' ')[0]},\n\nThanks for trying the ${cl.rug} (${cl.size}) in your room. ${LINE[s.offer]}\n\nAny questions? Just reply to this message.\n\n${storeName}`,
       sendLabel: 'Send by ' + cl.via,
+      noSend: s.offer === 'custom' && !cText,
       send: () => {
+        if (this.cur().offer === 'custom' && !(this.cur().cOffer || '').trim()) return;
         const sent = Object.assign({}, this.cur().sent);
         sent[cl.id] = true;
         this.setState({ sent, composer: '' });
         this.flash(`Demo: offer to ${cl.name} marked as sent by ${cl.via}.`);
       }
-    } : { name: '', rug: '', size: '', times: 0, timesTxt: '', via: '', msg: '', sendLabel: '', send: () => {} };
+    } : { name: '', rug: '', size: '', times: 0, timesTxt: '', via: '', msg: '', sendLabel: '', noSend: true, send: () => {} };
 
     return {
       accent, storeName, live, hasLive: live.length > 0, noLive: live.length === 0,
       isHome: s.screen === 'home', isRugs: s.screen === 'rugs', isRug: s.screen === 'rug', isFix: s.screen === 'fix',
-      isWarm: s.screen === 'warm', isReports: s.screen === 'reports', isPremium: s.screen === 'premium', isSettings: s.screen === 'settings',
+      isWarm: s.screen === 'warm', isActivity: s.screen === 'activity', isReports: s.screen === 'reports', isPremium: s.screen === 'premium', isSettings: s.screen === 'settings',
       nav,
       toReports: () => this.go('reports'), toRugs: () => this.go('rugs'), toWarm: () => this.go('warm'), toFix: () => this.go('fix'),
       kpis, focus, hot, activity,
@@ -1234,6 +1478,16 @@ class Component extends DCLogic {
       },
       planMsg: () => this.flash('Demo: you can change your plan here at any time.'),
       hasComposer: !!cl, cmp, offers,
+      isCustomOffer: s.offer === 'custom',
+      onCOffer: (e) => this.setState({ cOffer: e.target.value }),
+      onCCode: (e) => this.setState({ cCode: e.target.value.toUpperCase().replace(/\s/g, '') }),
+      onCUntil: (e) => this.setState({ cUntil: e.target.value }),
+      ranges, isCustomRange: s.range === 'custom', rangeLabel,
+      rFrom: s.rFrom, rTo: s.rTo, rMin: iso(series[0].dt), rMax: iso(series[89].dt), todayIso: iso(series[89].dt),
+      onFrom: (e) => this.setState({ rFrom: e.target.value }), onTo: (e) => this.setState({ rTo: e.target.value }),
+      rBars, rX0, rX1, rChartNote, rChartLabel: `Bar chart of room opens, ${rangeLabel}: ${fmt(opensR)} in total`, rHot, cmpNote,
+      regions, hoursBars, busiestTxt, actRows, noAct: actRows.length === 0,
+      actCount: `${fmt(opensR + realN)} room opens in this period${realN ? ` (${realN} real, from this phone)` : ''}. ${opensR + realN > actRows.length ? `The newest ${actRows.length} are listed.` : 'All of them are listed.'}`,
       cancel: () => this.setState({ composer: '' }),
       hasToast: !!s.toast, toast: s.toast
     };
@@ -1246,6 +1500,8 @@ PetiteVue.createApp(scope).mount('#app');
 // a visit made on a product page shows up as soon as the owner comes back here
 window.addEventListener('pageshow', refresh);
 window.addEventListener('storage', refresh);
+// a link to another screen of this page (#warm, #activity...) switches to it
+window.addEventListener('hashchange', function () { var h = location.hash.slice(1); if (/^(home|rugs|fix|warm|activity|reports|premium|settings)$/.test(h)) comp.go(h); });
 document.addEventListener('visibilitychange', function () { if (!document.hidden) refresh(); });
 setInterval(refresh, 60000);
 </script>
