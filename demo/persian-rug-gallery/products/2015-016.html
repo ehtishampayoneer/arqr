@@ -151,6 +151,26 @@
   .toast{position:fixed;left:50%;bottom:22px;z-index:70;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:12px 18px;border-radius:8px;background:#2B1D14;color:#fff;font:500 14px/1.45 "Inter",sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25)}
   .toast[hidden]{display:none}
 
+  /* the guided demo: step 1 marked in the strip, the button drawing the eye, and after the
+     tap a bar that leads to step 2, the dashboard (where that tap shows up) */
+  .below{display:none}
+  @media (max-width:1000px){ .below{display:inline} }
+  .stepno{display:inline-block;margin-right:6px;padding:2px 8px;border-radius:20px;background:#E0682A;color:#fff;font-weight:600}
+  #roomBtn{position:relative}
+  #roomBtn::after{content:"";position:absolute;inset:0;border-radius:2px;box-shadow:0 0 0 0 rgba(202,65,65,.55);animation:pulse 2.2s ease-out infinite}
+  .tapped #roomBtn::after{animation:none}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(202,65,65,.55)}70%{box-shadow:0 0 0 14px rgba(202,65,65,0)}100%{box-shadow:0 0 0 0 rgba(202,65,65,0)}}
+  @media (prefers-reduced-motion:reduce){ #roomBtn::after{animation:none} }
+  .next{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#2B1D14;color:#F6EEE4;box-shadow:0 -8px 30px rgba(0,0,0,.25);font:500 14.5px/1.4 "Inter",system-ui,sans-serif;transform:translateY(110%);transition:transform .35s ease}
+  .next.show{transform:none}
+  .next .in{max-width:var(--wrap);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px}
+  .next b{color:#fff;font-weight:600}
+  .next a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;background:#E0682A;color:#fff;font-weight:600;text-decoration:none;white-space:nowrap}
+  .next a svg{width:17px;height:17px}
+  .next .x{width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:#BFAF9F;font:400 22px/1 "Inter",sans-serif}
+  .next-acts{display:flex;align-items:center;gap:6px}
+  @media (max-width:600px){ .next .in > span{flex:1 1 100%} .next-acts{flex:1 1 100%} .next a{flex:1} }
+
   /* their footer, shortened */
   .ft{background:var(--soft);padding:44px 0 36px;font-size:15.5px}
   .ft .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:26px}
@@ -196,11 +216,11 @@
 
 <div class="demo">
   <div class="wrap">
-    <span><b>ARQR360 preview of your page.</b> Our part is the “View in your room” button and the two links under it. The rest is a copy, for show.</span>
+    <span><b class="stepno">Step 1 of 2</b> Tap the red <b>“View in your room”</b> button to see this rug on your floor.<span class="below"> It’s just below the photos.</span></span>
     <nav aria-label="Demo pages">
-      <a href="/demo/persian-rug-gallery">All demo pages</a>
+      <a href="/demo/persian-rug-gallery">Back</a>
       <a class="other" href="/demo/persian-rug-gallery/products/2015-070">Afshar #2015-070</a>
-      <a href="/demo/persian-rug-gallery/dashboard">Your dashboard</a>
+      <a href="/demo/persian-rug-gallery/dashboard">Step 2: your dashboard</a>
     </nav>
   </div>
 </div>
@@ -337,6 +357,16 @@
 
 <div class="toast" id="toast" role="status" hidden></div>
 
+<div class="next" id="next" role="region" aria-label="Next step" aria-hidden="true">
+  <div class="in">
+    <span><b>Step 2 of 2.</b> Now see what you get behind it: this visit is already in your dashboard.</span>
+    <span class="next-acts">
+      <a href="/demo/persian-rug-gallery/dashboard" tabindex="-1">Open your dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button type="button" class="x" id="nextX" aria-label="Hide" tabindex="-1">×</button>
+    </span>
+  </div>
+</div>
+
 <script src="/demo/persian-rug-gallery/room3d.js"></script>
 <script>
 var ua = navigator.userAgent || '';
@@ -422,8 +452,22 @@ Array.prototype.forEach.call(document.querySelectorAll('.m3-views button'), func
      iPhone    Quick Look, with the rug's name along the bottom
      Android   Scene Viewer
      computer  the same model in 3D, and a QR code to open this page on a phone */
+// after the tap: lead on to step 2 (it is waiting when the shopper comes back from AR)
+function showNext() {
+  document.body.classList.add('tapped');
+  var n = document.getElementById('next');
+  setTimeout(function () {
+    n.classList.add('show'); n.setAttribute('aria-hidden', 'false');
+    Array.prototype.forEach.call(n.querySelectorAll('a, button'), function (e) { e.removeAttribute('tabindex'); });
+  }, 700);
+}
+document.getElementById('nextX').addEventListener('click', function () {
+  var n = document.getElementById('next'); n.classList.remove('show'); n.setAttribute('aria-hidden', 'true');
+});
+
 function launch() {
   logEvent({ kind: DEVICE === 'Computer' ? 'view3d' : 'room' });
+  showNext();
   if (isIOS) {
     var a = document.getElementById('qlLink');
     if (!a) {

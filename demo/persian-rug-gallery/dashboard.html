@@ -32,7 +32,14 @@ button{cursor:pointer}
 .sw{display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 0;border:0;border-bottom:1px solid #EFEAE1;background:transparent;color:#191919;text-align:left}
 :focus-visible{outline:3px solid #E0682A;outline-offset:2px}
 </style>
-<style>[v-cloak]{display:none}</style>
+<style>[v-cloak]{display:none}
+/* on a phone the menu is one row you swipe, so step 2 opens on the "Live" box, not on the menu */
+@media (max-width:700px){
+  nav[aria-label="Rug Room"]{flex:1 1 100%!important;flex-wrap:nowrap!important;overflow-x:auto;padding:10px 12px!important;gap:6px!important;scrollbar-width:none}
+  nav[aria-label="Rug Room"] .nav{flex:0 0 auto!important;white-space:nowrap;border-color:#E4DED4!important;background:#FFFFFF}
+  nav[aria-label="Rug Room"] > div:last-child{display:none}
+  main{padding-top:12px!important}
+}</style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -42,13 +49,14 @@ button{cursor:pointer}
 <div id="app" v-cloak>
 <div style="min-height: 100vh; background: #FAF7F2; color: #191919; font-family: Inter, 'Segoe UI', -apple-system, Helvetica, Arial, sans-serif">
 
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; padding: 9px clamp(16px, 3vw, 28px); background: #2B1D14; color: #F6EEE4; font-size: 13px; line-height: 1.45"><span><b style="display: inline-block; margin-right: 6px; padding: 2px 8px; border-radius: 20px; background: #E0682A; color: #FFFFFF; font-weight: 600">Step 2 of 2</b>Your dashboard, inside your Shopify admin. Your visit from step 1 is under “Live”.</span><span style="display: flex; gap: 16px"><a href="/demo/persian-rug-gallery/products/2015-070" style="color: #FFC9A8; font-weight: 600">Back to step 1</a><a href="/demo/persian-rug-gallery" style="color: #FFC9A8; font-weight: 600">Start page</a></span></div>
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px clamp(16px, 3vw, 28px); background: #FFFFFF; border-bottom: 1px solid #E4DED4">
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px">
 <span class="h" style="font-size: 21px; font-weight: 800; letter-spacing: -0.02em">ARQR<span :style="`color: ${accent}`">360</span></span>
 <span style="font-size: 15px; font-weight: 600">Rug Room</span>
 <span style="font-size: 13px; color: #6E6A64">Inside your Shopify admin · {{ storeName }}</span>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1ECE3; color: #5A554E">Demo · your real rugs · visitor and sales numbers are samples</span><a href="/demo/persian-rug-gallery" style="font-size: 13px; font-weight: 600">All demo pages</a></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1ECE3; color: #5A554E">Demo · your real rugs · visitor and sales numbers are samples</span></div>
 </header>
 
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start">
