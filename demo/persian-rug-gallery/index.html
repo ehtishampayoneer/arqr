@@ -45,21 +45,23 @@
   .num b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--surface);font:800 13px/1 var(--f-head);letter-spacing:0}
   .step h2{font-size:clamp(24px,2.6vw,30px);font-weight:800;line-height:1.12}
   .step p{margin-top:10px;color:var(--ink2)}
-  .step ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-  .step li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:var(--ink2)}
-  .step li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--accent)}
+  .step-body ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+  .step-body li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:var(--ink2)}
+  .step-body li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--accent)}
 
-  /* step 1: pick a rug */
-  .rugs{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:22px clamp(22px,3vw,32px) clamp(22px,3vw,32px);margin-top:auto}
-  .rug{display:flex;flex-direction:column;border-radius:16px;border:1px solid var(--line);background:#F4EEE6;text-decoration:none;overflow:hidden;transition:transform .15s,box-shadow .15s}
-  .rug:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(30,22,17,.5)}
-  .rug .pic{height:180px;display:grid;place-items:center;padding:14px}
-  .rug .pic img{max-height:100%;width:auto;filter:drop-shadow(0 8px 12px rgba(30,22,17,.25))}
-  .rug .cap{display:flex;flex-direction:column;gap:2px;padding:12px 14px 14px;background:var(--surface);border-top:1px solid var(--line)}
-  .rug b{font:700 15px/1.3 var(--f-head)}
-  .rug span{font-size:13px;color:var(--ink3)}
-  .rug .go{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:4px;background:var(--red);color:#fff;font:600 14.5px/1 var(--f-body)}
-  .rug .go svg{width:17px;height:17px}
+  /* step 1: the two rugs, as a short list */
+  .rug-list{display:grid;gap:10px;padding:22px clamp(22px,3vw,32px) clamp(18px,2.4vw,24px)}
+  .rug-row{display:flex;align-items:center;gap:14px;padding:10px 12px 10px 10px;border-radius:14px;border:1px solid var(--line);background:#FBF8F3;text-decoration:none;transition:background .15s,border-color .15s}
+  .rug-row:hover{background:#fff;border-color:var(--line2)}
+  .rthumb{flex:none;width:54px;height:74px;border-radius:9px;background:#EFE6D9;display:grid;place-items:center}
+  .rthumb img{width:auto;height:auto;max-width:44px;max-height:66px;filter:drop-shadow(0 3px 4px rgba(30,22,17,.25))}
+  .rtxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .rtxt b{font:700 15.5px/1.3 var(--f-head)}
+  .rtxt span{font-size:13px;color:var(--ink3)}
+  .rtxt em{font-style:normal}
+  .rtxt b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rgo{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:4px;background:var(--red);color:#fff;font:600 14px/1 var(--f-body)}
+  .rgo svg{width:16px;height:16px}
 
   /* step 2: the dashboard */
   .dash{display:block;margin:22px clamp(22px,3vw,32px) 0;border-radius:14px 14px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;text-decoration:none}
@@ -73,18 +75,66 @@
   .step-foot .btn{width:100%}
 
   /* on a computer: AR needs a phone, so the QR code for this page */
-  .phone-note{display:flex;align-items:center;gap:14px;margin:0 clamp(22px,3vw,32px) clamp(22px,3vw,32px);padding:12px 14px;border-radius:14px;background:#F1E9DD}
+  .phone-note{display:flex;align-items:center;gap:14px;margin:auto clamp(22px,3vw,32px) clamp(22px,3vw,32px);padding:12px 14px;border-radius:14px;background:#F1E9DD}
   .phone-note img{flex:none;width:76px;height:76px;border-radius:8px;background:#fff;padding:4px}
   .phone-note span{font-size:13.5px;line-height:1.5;color:var(--ink2)}
   .phone-note b{color:var(--ink)}
   @media (hover:none) and (pointer:coarse){ .phone-note{display:none} }
 
+  /* step 3: how the Shopify app goes on, drawn as three small screens */
+  .install{grid-column:1/-1}
+  .inst-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);padding:24px clamp(22px,3vw,32px) 0}
+  .inst{display:flex;flex-direction:column;gap:14px}
+  .inst .cap{display:flex;gap:12px;align-items:flex-start}
+  .inst .cap i{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#F1E9DD;color:var(--accent-ink);font:800 13px/1 var(--f-head);font-style:normal}
+  .inst .cap b{display:block;margin-bottom:2px;font:700 16px/1.3 var(--f-head)}
+  .inst .cap span{font-size:14px;line-height:1.5;color:var(--ink2)}
+  .mock{display:flex;flex-direction:column;height:236px;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;font:500 12px/1.4 var(--f-body);color:var(--ink);box-shadow:0 12px 26px -20px rgba(30,22,17,.55)}
+  .mock-bar{flex:none;display:flex;align-items:center;gap:5px;height:30px;padding:0 10px;background:#F3F1EE;border-bottom:1px solid #ECE7E0;font-size:11px;color:var(--ink3);white-space:nowrap;overflow:hidden}
+  .mock-bar i{flex:none;width:7px;height:7px;border-radius:50%;background:#D9CCBC}
+  .mock-bar span{margin-left:6px;overflow:hidden;text-overflow:ellipsis}
+  .mock-body{flex:1;min-height:0;padding:14px}
+  .m-app{display:flex;align-items:center;gap:10px}
+  .m-app img{width:34px;height:34px;border-radius:8px;border:1px solid var(--line)}
+  .m-app b{display:block;font-size:13px}
+  .m-app span{font-size:11px;color:var(--ink3)}
+  .m-label{margin:12px 0 6px;font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em}
+  .m-perm{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+  .m-perm li{display:flex;gap:7px;font-size:12px}
+  .m-perm li::before{content:"";flex:none;width:13px;height:13px;margin-top:1px;border-radius:50%;background:#E3EFE1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6A39' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/9px no-repeat}
+  .m-btn{display:inline-flex;align-items:center;margin-top:12px;padding:7px 14px;border-radius:8px;background:#1E1611;color:#fff;font-size:12px;font-weight:600}
+  .m-title{display:block;font-size:13px;margin-bottom:8px}
+  .m-prog{height:6px;border-radius:6px;background:#EFE6D9;overflow:hidden;margin-bottom:10px}
+  .m-prog i{display:block;width:62%;height:100%;border-radius:6px;background:var(--accent)}
+  .m-rows{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+  .m-rows li{display:flex;justify-content:space-between;gap:8px;padding-bottom:6px;border-bottom:1px solid #F1ECE5;font-size:11.5px}
+  .m-rows li:last-child{border-bottom:0}
+  .m-rows em{flex:none;font-style:normal;font-weight:600;font-size:10.5px;padding:1px 7px;border-radius:999px}
+  .m-rows .done em{background:#E3EFE1;color:#2E6A39}
+  .m-rows .run em{background:#E3EAF4;color:#284C7A}
+  .m-rows .wait em{background:#FCEFCF;color:#7A4B00}
+  .m-theme{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+  .m-side{display:flex;flex-direction:column;gap:5px}
+  .m-side .m-label{margin:0 0 2px}
+  .m-blk{padding:5px 8px;border-radius:6px;border:1px solid #ECE7E0;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .m-blk.on{border-color:var(--accent);background:#FBEDE4;font-weight:600}
+  .m-add{font-size:11px;font-weight:600;color:#2C6ECB}
+  .m-prev{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:8px;background:#FAFAF8;border:1px solid #F0ECE6}
+  .m-ph{height:62px;border-radius:5px;background:#E9E2D8 url(/demo/persian-rug-gallery/img/m_2015-070.jpg) center/auto 90% no-repeat}
+  .m-l{height:6px;border-radius:4px;background:#ECE6DE}
+  .m-red{display:flex;align-items:center;justify-content:center;height:22px;padding:0 4px;border-radius:2px;background:var(--red);color:#fff;font-size:8.5px;white-space:nowrap;overflow:hidden;font-weight:600;box-shadow:0 0 0 3px rgba(214,95,36,.25)}
+  .inst-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:24px clamp(22px,3vw,32px) clamp(22px,3vw,32px);padding:14px 16px;border-radius:14px;background:#F1E9DD;font-size:14px;line-height:1.5;color:var(--ink2)}
+  .inst-foot svg{flex:none;width:22px;height:22px;color:var(--accent-ink)}
+  .inst-foot b{color:var(--ink)}
+  .inst-foot span{flex:1 1 300px}
+
   footer{padding:24px 0 36px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink3)}
   footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   footer a{color:var(--ink);font-weight:600;text-decoration:none}
 
-  @media (max-width:860px){ .steps{grid-template-columns:1fr} }
-  @media (max-width:420px){ .rug .pic{height:150px} .for{max-width:150px} }
+  @media (max-width:860px){ .steps{grid-template-columns:1fr} .inst-grid{grid-template-columns:1fr} .mock{height:auto;min-height:188px} }
+  @media (max-width:440px){ .rtxt em{display:none} .rug-row{gap:12px} .rgo{padding:0 12px} .for{max-width:150px} }
+  @media (max-width:370px){ .rgo-t{display:none} .rgo{padding:0 11px} }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -98,7 +148,7 @@
 <main class="wrap">
   <section class="intro">
     <h1>See ARQR360 on your own store</h1>
-    <p>Two steps: what your customers see when they tap “View in your room”, and what you see behind it.</p>
+    <p>What your customers see when they tap “View in your room”, what you see behind it, and how it goes on your store.</p>
   </section>
 
   <div class="steps">
@@ -109,16 +159,16 @@
         <h2 id="s1">Your product page, with our “View in your room” button</h2>
         <p>Open one of your rugs and tap the button. The rug appears on the floor at its real size, built from your own product photo.</p>
       </div>
-      <div class="rugs">
-        <a class="rug" href="/demo/persian-rug-gallery/products/2015-070">
-          <span class="pic"><img src="/demo/persian-rug-gallery/img/m_2015-070.jpg" width="230" height="400" alt=""></span>
-          <span class="cap"><b>Afshar #2015-070</b><span>185 × 110 cm</span>
-            <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 4l8.5 4.2v7.6L12 20l-8.5-4.2V8.2z"/><path d="M3.5 8.2L12 12.4l8.5-4.2M12 12.4V20"/></svg>Open this rug</span></span>
+      <div class="rug-list">
+        <a class="rug-row" href="/demo/persian-rug-gallery/products/2015-070">
+          <span class="rthumb"><img src="/demo/persian-rug-gallery/img/m_2015-070.jpg" width="230" height="400" alt=""></span>
+          <span class="rtxt"><b>Afshar #2015-070</b><span>185 × 110 cm<em> · hand-knotted wool</em></span></span>
+          <span class="rgo"><span class="rgo-t">Open</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a class="rug" href="/demo/persian-rug-gallery/products/2015-016">
-          <span class="pic"><img src="/demo/persian-rug-gallery/img/m_2015-016.jpg" width="267" height="400" alt=""></span>
-          <span class="cap"><b>Sirjan #2015-016</b><span>228 × 150 cm</span>
-            <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 4l8.5 4.2v7.6L12 20l-8.5-4.2V8.2z"/><path d="M3.5 8.2L12 12.4l8.5-4.2M12 12.4V20"/></svg>Open this rug</span></span>
+        <a class="rug-row" href="/demo/persian-rug-gallery/products/2015-016">
+          <span class="rthumb"><img src="/demo/persian-rug-gallery/img/m_2015-016.jpg" width="267" height="400" alt=""></span>
+          <span class="rtxt"><b>Sirjan #2015-016</b><span>228 × 150 cm<em> · hand-knotted wool</em></span></span>
+          <span class="rgo"><span class="rgo-t">Open</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
       <div class="phone-note">
@@ -146,6 +196,64 @@
       <div class="step-foot">
         <a class="btn" href="/demo/persian-rug-gallery/dashboard">Open your dashboard <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+    </section>
+
+    <!-- step 3: how it goes on his store -->
+    <section class="step install" aria-labelledby="s3">
+      <div class="step-body">
+        <p class="num"><b>3</b>How you install it</p>
+        <h2 id="s3">On your Shopify store in about five minutes</h2>
+        <p>A Shopify app, installed like any other. Your theme, products and prices stay exactly as they are.</p>
+      </div>
+      <div class="inst-grid">
+        <div class="inst">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Shopify admin · Install app</span></div>
+            <div class="mock-body">
+              <div class="m-app"><img src="/logo.png" width="34" height="34" alt=""><div><b>ARQR360 Rug Room</b><span>by ARQR360</span></div></div>
+              <p class="m-label">This app will be able to</p>
+              <ul class="m-perm"><li>See your products and their photos</li><li>Add a “View in your room” block to your theme</li></ul>
+              <span class="m-btn">Install app</span>
+            </div>
+          </div>
+          <p class="cap"><i>1</i><span><b>Approve the app</b>One click in your Shopify admin. It only reads your products and adds our button.</span></p>
+        </div>
+        <div class="inst">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Apps · ARQR360 Rug Room</span></div>
+            <div class="mock-body">
+              <b class="m-title">Building your rugs</b>
+              <div class="m-prog"><i></i></div>
+              <ul class="m-rows">
+                <li class="done">Afshar #2015-070 <em>Live</em></li>
+                <li class="done">Sirjan #2015-016 <em>Live</em></li>
+                <li class="run">Kazak runner #3008-459 <em>Building</em></li>
+                <li class="wait">Sanandaj #2515-022 <em>Two sizes listed</em></li>
+              </ul>
+            </div>
+          </div>
+          <p class="cap"><i>2</i><span><b>Every rug is built for you</b>About 20 seconds each, from the photos already on your pages. Anything that doesn’t add up waits on your fix list.</span></p>
+        </div>
+        <div class="inst">
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Online Store · Themes · Customize</span></div>
+            <div class="mock-body m-theme">
+              <div class="m-side">
+                <p class="m-label">Product information</p>
+                <span class="m-blk">Title</span><span class="m-blk">Price</span>
+                <span class="m-blk on">ARQR360 · View in your room</span>
+                <span class="m-blk">Buy buttons</span><span class="m-add">+ Add block</span>
+              </div>
+              <div class="m-prev"><span class="m-ph"></span><span class="m-l" style="width:80%"></span><span class="m-l" style="width:45%"></span><span class="m-red">View in your room</span><span class="m-l"></span></div>
+            </div>
+          </div>
+          <p class="cap"><i>3</i><span><b>Place the button</b>Drag the block where you want it on your product page. No code to edit.</span></p>
+        </div>
+      </div>
+      <p class="inst-foot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M17 11l2 2 4-4"/></svg>
+        <span><b>Rather we do it all?</b> Accept our collaborator request in Shopify and we set everything up, matched to your theme. Your current AR provider keeps running until your contract ends.</span>
+      </p>
     </section>
   </div>
 </main>
