@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F1EA">
+<title>Plans · ARQR360 for Persian Rug Gallery</title>
+<meta name="description" content="Three plans for Persian Rug Gallery: monthly, 6 months and 1 year, with everything each one includes.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* The plans offered to Persian Rug Gallery: three cards, then every feature in one table.
+     Made by make_demo.py from demo/plans.tpl.html; the rows come from PLAN_ROWS there, so the
+     table and the dashboard's crowns describe the same plans. */
+  :root{--bg:#F6F1EA;--surface:#FFFDF9;--ink:#1E1611;--ink2:#5B4D43;--ink3:#857669;--line:#E5DACC;--line2:#D9CCBC;
+    --accent:#D65F24;--accent-ink:#A8441A;--ok:#2E6A39;--ok-bg:#E3EFE1;--gold:#B7791F;--gold-bg:#FFF1CC;
+    --f-head:"Archivo","Segoe UI",Arial,sans-serif;--f-body:"Inter","Segoe UI",Arial,sans-serif;
+    --shadow:0 2px 6px rgba(30,22,17,.05),0 30px 60px -30px rgba(30,22,17,.4)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+  h1,h2,h3{margin:0;font-family:var(--f-head);letter-spacing:-.03em}
+  p{margin:0}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  .crown{display:inline-flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold-bg);color:var(--gold);vertical-align:middle}
+  .crown svg{width:13px;height:13px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:20px;padding-bottom:20px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 19px var(--f-head);letter-spacing:-.02em}
+  .brand img{width:32px;height:32px;border-radius:8px}
+  .back{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none}
+  .back:hover{color:var(--ink)}
+
+  .intro{padding-top:clamp(16px,4vw,44px);padding-bottom:clamp(24px,3vw,36px)}
+  .intro h1,.intro > p{max-width:760px}
+  .eyebrow{margin:0 0 14px;font:700 12.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+  .intro h1{font-size:clamp(34px,5.2vw,56px);font-weight:800;line-height:1.02}
+  .intro p{margin-top:14px;font-size:clamp(17px,1.6vw,19px);color:var(--ink2)}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding:0;list-style:none}
+  .facts li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14px;font-weight:500}
+  .facts svg{width:16px;height:16px;color:var(--ok)}
+
+  /* the three cards */
+  .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px);align-items:stretch;padding-bottom:clamp(48px,6vw,72px)}
+  .plan{position:relative;display:flex;flex-direction:column;padding:28px 26px 26px;border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .plan.best{background:var(--ink);color:#F4ECE2;border-color:var(--ink)}
+  .ribbon{position:absolute;top:-13px;left:26px;display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 6px;border-radius:999px;background:var(--gold-bg);color:#7A4B00;font:700 12px/1 var(--f-body);letter-spacing:.02em;box-shadow:0 4px 12px -4px rgba(122,75,0,.4)}
+  .ribbon .crown{width:20px;height:20px;background:#FFE19A}
+  .plan h2{font-size:21px;font-weight:800}
+  .plan .for{margin-top:4px;font-size:14px;color:var(--ink3)}
+  .plan.best .for{color:#BCAC9E}
+  .price{display:flex;align-items:baseline;gap:6px;margin-top:20px}
+  .price b{font:800 46px/1 var(--f-head);letter-spacing:-.04em}
+  .price span{font-size:15px;color:var(--ink3)}
+  .plan.best .price span{color:#BCAC9E}
+  .per{margin-top:6px;min-height:22px;font-size:14px;font-weight:600;color:var(--accent-ink)}
+  .plan.best .per{color:#F0A57D}
+  .plan ul{list-style:none;margin:22px 0 26px;padding:22px 0 0;border-top:1px solid var(--line);display:grid;gap:10px;flex:1}
+  .plan.best ul{border-color:#3A2E26}
+  .plan li{display:flex;gap:10px;font-size:14.5px;line-height:1.45}
+  .plan li svg{flex:none;width:18px;height:18px;margin-top:1px;color:var(--ok)}
+  .plan.best li svg{color:#9BD49C}
+  .plan li.off{color:var(--ink3)}
+  .plan li.off svg{color:var(--line2)}
+  .plan li b{font-weight:600}
+  .cta{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:1px solid var(--line2);font:700 15px/1 var(--f-head);text-decoration:none;color:var(--ink);background:transparent}
+  .cta:hover{background:#fff}
+  .plan.best .cta{background:#F0A57D;border-color:#F0A57D;color:var(--ink)}
+  .plan.best .cta:hover{background:#F6B995}
+
+  /* every feature, in one table */
+  .all{padding-bottom:clamp(56px,7vw,88px)}
+  .all h2{font-size:clamp(26px,3.2vw,36px);font-weight:800;line-height:1.1}
+  .all > p{margin-top:10px;color:var(--ink2)}
+  .table{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  thead th{position:sticky;top:0;z-index:2;background:var(--surface);padding:16px 14px;border-bottom:1px solid var(--line);font:700 14px/1.3 var(--f-head);text-align:center}
+  thead th:first-child{text-align:left}
+  thead th small{display:block;margin-top:2px;font:500 12.5px var(--f-body);color:var(--ink3)}
+  thead th.best{background:#FBF4E6}
+  tbody th{padding:13px 14px;text-align:left;font-weight:500;font-size:14.5px;line-height:1.45;border-bottom:1px solid #F0E9DF}
+  tbody td{padding:13px 10px;text-align:center;font-size:13.5px;color:var(--ink2);border-bottom:1px solid #F0E9DF;width:16%}
+  tbody td.best{background:#FDF8EE}
+  tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+  tr.group th{padding:20px 14px 10px;font:700 12px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);background:#F8F3EC;border-bottom:1px solid var(--line)}
+  tr.group td{background:#F8F3EC;border-bottom:1px solid var(--line)}
+  tbody th .crown{width:20px;height:20px;margin-left:8px}
+  .yes{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ok-bg);color:var(--ok)}
+  .yes svg{width:14px;height:14px}
+  .no{color:var(--line2);font-size:18px;line-height:1}
+  .key{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:14px;font-size:13.5px;color:var(--ink3)}
+  .key span{display:inline-flex;align-items:center;gap:6px}
+
+  .notes{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-bottom:clamp(48px,6vw,72px)}
+  .note{padding:22px 24px;border-radius:18px;background:#F1E9DD;font-size:15px;line-height:1.55;color:var(--ink2)}
+  .note b{display:block;margin-bottom:4px;font:700 16px var(--f-head);color:var(--ink)}
+  footer{padding:24px 0 36px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink3)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+  footer a{color:var(--ink);font-weight:600;text-decoration:none}
+
+  @media (max-width:900px){ .plans{grid-template-columns:1fr;gap:26px} .notes{grid-template-columns:1fr} }
+  @media (max-width:640px){
+    thead th{padding:12px 4px;font-size:12.5px}
+    thead th small{font-size:11px}
+    tbody th{padding:12px 10px;font-size:13.5px}
+    tbody td{padding:12px 4px;font-size:12px;width:19%}
+    tr.group th{padding:16px 10px 8px}
+    .yes{width:22px;height:22px}
+  }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="https://arqr360.com"><img src="/logo.png" width="32" height="32" alt="">ARQR360</a>
+  <a class="back" href="/demo/persian-rug-gallery">← Back to the preview</a>
+</header>
+
+<main>
+  <section class="wrap intro">
+    <p class="eyebrow">Plans for Persian Rug Gallery</p>
+    <h1>Pick the plan that fits</h1>
+    <p>Every plan puts all your rugs in AR, built from the photos already on your site. The longer the plan, the more of your report you unlock.</p>
+    <ul class="facts">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg>Up to 10,000 AR rugs on every plan</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg>Free setup on every plan</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg>No overlap: billing starts when your current AR subscription ends</li>
+    </ul>
+  </section>
+
+  <section class="wrap plans" aria-label="The three plans">
+    <article class="plan">
+      <h2>Monthly</h2>
+      <p class="for">Your rugs in AR, month by month</p>
+      <p class="price"><b>$350</b><span>US / month</span></p>
+      <p class="per">Cancel anytime</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>Every rug in AR</b>, built from your product photos</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>3D view on a real floor in your photo gallery</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>“Will it fit?” and “Send me the details”</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Fix list and Google Analytics connection</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Free setup, email support</span></li>
+        <li class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 12h10"/></svg><span>No report in your dashboard</span></li>
+      </ul>
+      <a class="cta" href="mailto:info@arqr360.com?subject=Monthly%20plan%20for%20Persian%20Rug%20Gallery">Choose monthly</a>
+    </article>
+    <article class="plan">
+      <h2>6 months</h2>
+      <p class="for">AR, plus which rugs people look at</p>
+      <p class="price"><b>$1,800</b><span>US / 6 months</span></p>
+      <p class="per">US$300 a month</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>Everything in Monthly</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>Views for every rug</b>: your most and least viewed</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Today, yesterday, this week, last 30 days</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Any dates you pick on the calendar</span></li>
+        <li class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 12h10"/></svg><span>Sales, places, warm list and offers come with the 1-year plan</span></li>
+      </ul>
+      <a class="cta" href="mailto:info@arqr360.com?subject=6-month%20plan%20for%20Persian%20Rug%20Gallery">Choose 6 months</a>
+    </article>
+    <article class="plan best">
+      <span class="ribbon"><span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span>Everything included</span>
+      <h2>1 year</h2>
+      <p class="for">AR, the full report, and your best rugs in Premium</p>
+      <p class="price"><b>$3,600</b><span>US / year</span></p>
+      <p class="per">US$300 a month, price locked for 2 years</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>Everything in 6 months</b></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>The full report</b>: room opens, people, sales for every rug</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Where viewers are, down to city and suburb, and when they look</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Activity: every view, with time, place and device</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span><b>Warm list</b> and one-tap offers to people who keep coming back</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Premium 3D for your 20 most-viewed rugs, free</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg><span>Weekly summary email, and free priority support all year</span></li>
+      </ul>
+      <a class="cta" href="mailto:info@arqr360.com?subject=1-year%20plan%20for%20Persian%20Rug%20Gallery">Choose 1 year</a>
+    </article>
+  </section>
+
+  <section class="wrap all" aria-labelledby="allTitle">
+    <h2 id="allTitle">Everything in each plan</h2>
+    <p>The complete list. Features with a crown come with the 1-year plan.</p>
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th scope="col">Feature</th><th scope="col">Monthly<small>$350 / mo</small></th><th scope="col">6 months<small>$1,800</small></th><th scope="col" class="best">1 year<small>$3,600</small></th></tr>
+        </thead>
+        <tbody>
+          <tr class="group"><th scope="rowgroup">Your rugs in AR</th><td></td><td></td><td class="best"></td></tr>
+          <tr><th scope="row">Every rug built from your product photos, automatically</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">New and changed rugs picked up by themselves</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">“View in your room” on iPhone and Android, no app</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">3D view on a real floor, in your photo gallery</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">“Will it fit my room?” and “Send me the details”</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">QR code for shoppers on a computer</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Fix list: listings that would show wrong</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Google Analytics connection</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr class="group"><th scope="rowgroup">Setup and support</th><td></td><td></td><td class="best"></td></tr>
+          <tr><th scope="row">Free setup: every rug built, button placed and matched to your theme</th><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Commitment</th><td>Cancel anytime</td><td>6 months</td><td class="best">12 months</td></tr>
+          <tr><th scope="row">Support<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td>Email</td><td>Email</td><td class="best">Free all year, priority</td></tr>
+          <tr><th scope="row">Price locked for 2 years<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr class="group"><th scope="rowgroup">Your report</th><td></td><td></td><td class="best"></td></tr>
+          <tr><th scope="row">Views for every rug, most and least viewed</th><td><span class="no" aria-label="Not included">—</span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Today, yesterday, this week, last 30 days</th><td><span class="no" aria-label="Not included">—</span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Any dates on the calendar</th><td><span class="no" aria-label="Not included">—</span></td><td><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Total room opens, and people who viewed in AR<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Where viewers are: country and region<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Where viewers are: city and suburb<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">When they look (by hour), and on which device<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Activity: every view with time, place, device and what they did<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Add-to-carts, orders and sales for each rug<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">“Did it help sell?”: room viewers against everyone else<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">From visitor to buyer, step by step<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Warm list: customers who are signed in or left their email, and the rugs they viewed<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">One-tap offers: 5%, 10%, free delivery, a reminder or your own<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Repeat interest without names, per rug<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">“Lots of looks, few sales”: rugs to promote or re-price<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Live feed of new views<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr><th scope="row">Weekly summary email, every Monday<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+          <tr class="group"><th scope="rowgroup">Extras</th><td></td><td></td><td class="best"></td></tr>
+          <tr><th scope="row">Premium 3D for your 20 most-viewed rugs, free after 2 months<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></th><td><span class="no" aria-label="Not included">—</span></td><td><span class="no" aria-label="Not included">—</span></td><td class="best"><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="key"><span><span class="yes" aria-label="Included"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 12.5l4.2 4.2 8.8-9.4"/></svg></span> Included</span><span><span class="no">—</span> Not included</span><span><span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span> 1-year plan</span></p>
+  </section>
+
+  <section class="wrap notes">
+    <div class="note"><b>No overlap with your current provider</b>Test it now at no cost. Billing starts only when your current AR subscription ends, and your current AR stays on until then, so you’re never without it.</div>
+    <div class="note"><b>Your report, as it grows</b>Start on any plan and move up whenever you like. Your rugs, your fix list and your numbers carry over.</div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Prices in US dollars. Plans cover up to 10,000 AR-enabled rugs.</span><a href="mailto:info@arqr360.com?subject=ARQR360%20plans%20for%20Persian%20Rug%20Gallery">info@arqr360.com</a></div>
+</footer>
+</body>
+</html>

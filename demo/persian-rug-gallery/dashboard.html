@@ -25,6 +25,10 @@ button{cursor:pointer}
 .nav:hover{background:#F0EADF}
 .link{border:0;background:none;padding:0;min-height:44px;color:#191919;font-size:14px;font-weight:600;text-align:left;text-decoration:underline;text-decoration-color:#D6CFC3;text-underline-offset:3px}
 .link:hover{text-decoration-color:#191919}
+/* the 1-year plan's features carry a crown */
+.crown{display:inline-flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;margin-left:8px;border-radius:50%;background:#FFF1CC;color:#B7791F;vertical-align:middle}
+.crown svg{width:13px;height:13px}
+.crown.sm{width:18px;height:18px;margin-left:5px}.crown.sm svg{width:11px;height:11px}
 .chip{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #D6CFC3;background:#FFFFFF;color:#191919;font-size:13px;font-weight:600}
 .chip:hover{background:#F4EFE5}
 .field{width:100%;min-height:44px;padding:0 12px;border-radius:10px;border:1px solid #B9B1A5;background:#FFFFFF;color:#191919;font-size:14px}
@@ -56,7 +60,7 @@ button{cursor:pointer}
 <span style="font-size: 15px; font-weight: 600">Rug Room</span>
 <span style="font-size: 13px; color: #6E6A64">Inside your Shopify admin · {{ storeName }}</span>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1ECE3; color: #5A554E">Demo · your real rugs · visitor and sales numbers are samples</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px"><span style="font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1ECE3; color: #5A554E">Demo · your real rugs · visitor and sales numbers are samples</span><a href="/demo/persian-rug-gallery/plans" style="display: inline-flex; align-items: center; gap: 2px; font-size: 12.5px; font-weight: 600; color: #7A4B00; text-decoration: none; padding: 4px 12px 4px 4px; border-radius: 999px; background: #FFF8E6; border: 1px solid #F3DDA6"><span class="crown" style="margin-left: 0; margin-right: 6px" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span>= 1-year plan · See plans</a></div>
 </header>
 
 <div style="display: flex; flex-wrap: wrap; align-items: flex-start">
@@ -65,7 +69,7 @@ button{cursor:pointer}
 <template v-for="n in nav">
 <button class="nav" :style="`flex: 1 1 200px; ${n.st}`" :aria-current="n.cur" @click="n.go">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="n.icon"></path></svg>
-<span style="flex: 1">{{ n.label }}</span>
+<span style="flex: 1">{{ n.label }}<template v-if="n.crown"><span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></template></span>
 <template v-if="n.hasCount"><span :style="`font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; ${n.countSt}`">{{ n.count }}</span></template>
 </button>
 </template>
@@ -91,7 +95,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 
 <div class="card" :style="`border: 2px solid ${accent}`">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Live: your own visits</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Live: your own visits<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #E4F0E2; color: #24592F">Real · from this phone</span>
 </div>
 <template v-if="noLive">
@@ -114,7 +118,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px">
 <template v-for="k in kpis">
 <div class="card">
-<div style="font-size: 13px; font-weight: 500; color: #6E6A64">{{ k.label }}</div>
+<div style="font-size: 13px; font-weight: 500; color: #6E6A64">{{ k.label }}<template v-if="k.crown"><span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></template></div>
 <div class="h" style="margin-top: 8px; font-size: 32px; font-weight: 800; letter-spacing: -0.02em">{{ k.value }}</div>
 <div style="margin-top: 6px; font-size: 13px; line-height: 1.45; color: #6E6A64">{{ k.sub }}</div>
 </div>
@@ -138,7 +142,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 16px">
 <div class="card">
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens per day</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens per day<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <span style="font-size: 13px; color: #6E6A64" aria-live="polite">{{ readout }}</span>
 </div>
 <div style="position: relative; height: 190px; margin-top: 18px" role="img" :aria-label="chartLabel">
@@ -222,7 +226,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <div style="overflow-x: auto">
 <div style="min-width: 880px">
 <div class="row" style="grid-template-columns: minmax(250px, 2.4fr) 1.2fr 1.4fr 0.9fr 0.9fr 0.7fr 1fr; background: #FAF7F2; font-size: 12px; font-weight: 600; color: #6E6A64">
-<div>Rug</div><div>Sizes</div><div>Status</div><div style="text-align: right">Room opens</div><div style="text-align: right">Came back</div><div style="text-align: right">Orders</div><div style="text-align: right">Sales</div>
+<div>Rug</div><div>Sizes</div><div>Status</div><div style="text-align: right">Room opens</div><div style="text-align: right">Came back<span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></div><div style="text-align: right">Orders<span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></div><div style="text-align: right">Sales<span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></div>
 </div>
 <template v-for="r in rugList">
 <div class="row" style="grid-template-columns: minmax(250px, 2.4fr) 1.2fr 1.4fr 0.9fr 0.9fr 0.7fr 1fr; font-size: 14px">
@@ -318,7 +322,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 16px">
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Sizes people tried</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Sizes people tried<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 16px; font-size: 14px; color: #6E6A64">Share of room opens by size.</p>
 <div style="display: flex; flex-direction: column; gap: 12px">
 <template v-for="z in rd.tried">
@@ -331,7 +335,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 </div>
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Interested people</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Interested people<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 12px; font-size: 14px; line-height: 1.5; color: #6E6A64">{{ rd.backLine }}</p>
 <template v-for="l in rd.leads">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; border-top: 1px solid #EFEAE1">
@@ -417,7 +421,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <template v-if="isWarm">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <div>
-<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Warm list</h1>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Warm list<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h1>
 <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">People who keep coming back to the same rug. Send them an offer before they forget.</p>
 </div>
 <div style="display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 12px; background: #F1ECE3; font-size: 14px; line-height: 1.5; color: #3A3733">
@@ -473,7 +477,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <template v-if="isActivity">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <div>
-<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Activity</h1>
+<h1 class="h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Activity<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h1>
 <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: #6E6A64">Every time someone opens one of your rugs: where they are, when, on what, and what they did.</p>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px">
@@ -568,7 +572,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <p style="margin: 0; font-size: 13px; color: #6E6A64">Showing <b style="color: #191919; font-weight: 600">{{ rangeLabel }}</b> · sample numbers until the app runs on your store</p>
 </div>
 <div class="card">
-<h2 class="h" style="margin: 0 0 14px; font-size: 18px; font-weight: 700">From visitor to buyer</h2>
+<h2 class="h" style="margin: 0 0 14px; font-size: 18px; font-weight: 700">From visitor to buyer<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
 <template v-for="x in funnel">
 <div style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 4px; padding: 16px; border-radius: 12px; background: #FAF7F2">
@@ -582,7 +586,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 <div class="card">
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Room opens<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <span style="font-size: 13px; color: #6E6A64">{{ rChartNote }}</span>
 </div>
 <div style="position: relative; height: 170px; margin-top: 16px" role="img" :aria-label="rChartLabel">
@@ -596,7 +600,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Did it help sell?</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Did it help sell?<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Shoppers who saw the rug in their room, against everyone else.</p>
 <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px">Bought</div>
 <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px">
@@ -621,7 +625,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <p style="margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: #6E6A64">{{ cmpNote }}</p>
 </div>
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Where people open it</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Where people open it<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Share of room opens.</p>
 <div style="display: flex; flex-direction: column; gap: 10px">
 <template v-for="x in devices">
@@ -655,7 +659,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </template>
 </div>
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Lots of looks, few sales</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Lots of looks, few sales<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 8px; font-size: 14px; color: #6E6A64">People like these in their room but don't buy.</p>
 <template v-for="x in lowSell">
 <div style="padding: 10px 0; border-top: 1px solid #EFEAE1">
@@ -669,7 +673,7 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 </div>
 </div>
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Your weekly email</h2>
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Your weekly email<span class="crown" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></h2>
 <p style="margin: 4px 0 14px; font-size: 14px; color: #6E6A64">Arrives every Monday morning, so you don't have to open this page.</p>
 <div style="max-width: 560px; padding: 18px; border-radius: 12px; border: 1px solid #E4DED4; background: #FAF7F2; font-size: 14px; line-height: 1.55">
 <div style="font-size: 12px; color: #6E6A64">From ARQR360 Rug Room to {{ storeName }}</div>
@@ -1092,7 +1096,7 @@ class Component extends DCLogic {
     ];
     const navScreen = s.screen === 'rug' ? 'rugs' : s.screen;
     const nav = NAV.map(([id, label, icon, count, countSt]) => ({
-      label, icon, count, countSt,
+      label, icon, count, countSt, crown: id === 'warm' || id === 'activity',
       hasCount: count !== '',
       cur: navScreen === id ? 'page' : 'false',
       st: navScreen === id ? 'background: #FFFFFF; border-color: #E4DED4; color: #191919; font-weight: 600' : '',
@@ -1143,9 +1147,9 @@ class Component extends DCLogic {
 
     const kpis = [
       { label: 'Rugs ready to see in a room', value: fmt(2817 - fixLeft - BUILDING), sub: `of your 2,817 · ${fixLeft} need your help (real) · ${BUILDING} being made` },
-      { label: 'People who saw a rug in their room', value: fmt(people(opensTotal)), sub: `${fmt(opensTotal)} room opens in the last 30 days` },
-      { label: 'Came back to look again', value: fmt(Math.round(people(opensTotal) * 0.177)), sub: 'Your warm list starts here' },
-      { label: 'Sales after a room view', value: money(Math.round(people(opensTotal) * 0.0208) * AVG_ORDER), sub: `${fmt(Math.round(people(opensTotal) * 0.0208))} orders in the last 30 days` }
+      { crown: true, label: 'People who saw a rug in their room', value: fmt(people(opensTotal)), sub: `${fmt(opensTotal)} room opens in the last 30 days` },
+      { crown: true, label: 'Came back to look again', value: fmt(Math.round(people(opensTotal) * 0.177)), sub: 'Your warm list starts here' },
+      { crown: true, label: 'Sales after a room view', value: money(Math.round(people(opensTotal) * 0.0208) * AVG_ORDER), sub: `${fmt(Math.round(people(opensTotal) * 0.0208))} orders in the last 30 days` }
     ];
     const focus = [
       { title: warmLeft > 0 ? `${warmLeft} people are close to buying` : 'Everyone on your warm list has an offer', d: 'They opened the same rug 3 or more times and shared their contact.', btn: 'Open warm list', go: () => this.go('warm') },
