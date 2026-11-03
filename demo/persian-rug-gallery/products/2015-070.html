@@ -211,6 +211,7 @@
   }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/demo/persian-rug-gallery/notify.js" data-page="afshar"></script>
 </head>
 <body>
 
@@ -467,6 +468,7 @@ document.getElementById('nextX').addEventListener('click', function () {
 
 function launch() {
   logEvent({ kind: DEVICE === 'Computer' ? 'view3d' : 'room' });
+  if (window.ARQRNotify) ARQRNotify((DEVICE === 'Computer' ? '3d-' : 'ar-') + RUG.key);   // a personal link's "View in your room" tap
   showNext();
   if (isIOS) {
     var a = document.getElementById('qlLink');
