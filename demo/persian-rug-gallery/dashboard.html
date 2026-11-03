@@ -310,12 +310,26 @@ New rugs, changed photos and new sizes are picked up from Shopify automatically.
 <template v-if="rd.live">
 <div style="display: flex; flex-direction: column; gap: 16px">
 <div class="card">
-<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">Last 30 days</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+<h2 class="h" style="margin: 0; font-size: 18px; font-weight: 700">How this rug is doing</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 6px" role="group" aria-label="Period for this rug">
+<template v-for="g in rd.periods">
+<button class="chip" :style="g.st" :aria-pressed="g.on" @click="g.pick">{{ g.label }}</button>
+</template>
+</div>
+</div>
+<template v-if="rd.isCustom">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-top: 12px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">From<input class="field" style="width: auto" type="date" :value="rd.from" :min="rMin" :max="rMax" @change="rd.onFrom"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600">To<input class="field" style="width: auto" type="date" :value="rd.to" :min="rMin" :max="rMax" @change="rd.onTo"></label>
+</div>
+</template>
+<p style="margin: 10px 0 0; font-size: 13px; color: #6E6A64">Showing <b style="color: #191919; font-weight: 600">{{ rd.periodLabel }}</b></p>
 <template v-if="rd.hasMine"><p style="margin: 6px 0 0; padding: 8px 12px; border-radius: 10px; background: #E4F0E2; color: #1E4A27; font-size: 13px">{{ rd.mine }}</p></template>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 12px; margin-top: 14px">
 <template v-for="x in rd.stats">
 <div style="padding: 14px; border-radius: 12px; background: #FAF7F2">
-<div style="font-size: 12px; font-weight: 500; color: #6E6A64">{{ x.label }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #6E6A64">{{ x.label }}<template v-if="x.crown"><span class="crown sm" title="Included in the 1-year plan" aria-label="1-year plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 17l1.4-9.4 4.8 4.2L12 4.5l2.8 7.3 4.8-4.2L21 17z"/><path fill="currentColor" d="M3.6 18.6h16.8v1.9H3.6z"/></svg></span></template></div>
 <div class="h" style="margin-top: 4px; font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums">{{ x.v }}</div>
 </div>
 </template>
@@ -899,7 +913,7 @@ class DCLogic {
 class Component extends DCLogic {
   base() {
     return {
-      screen: ['home', 'rugs', 'fix', 'warm', 'activity', 'reports', 'premium', 'settings'].indexOf(location.hash.slice(1)) > -1 ? location.hash.slice(1) : 'home', rugId: 'sirjan', filter: 'all', q: '', fixed: {}, sent: {}, composer: '', offer: '10', cOffer: '', cCode: '', cUntil: '', range: '30', rFrom: '', rTo: '',
+      screen: ['home', 'rugs', 'fix', 'warm', 'activity', 'reports', 'premium', 'settings'].indexOf(location.hash.slice(1)) > -1 ? location.hash.slice(1) : 'home', rugId: 'sirjan', filter: 'all', q: '', fixed: {}, sent: {}, composer: '', offer: '10', cOffer: '', cCode: '', cUntil: '', range: '30', rFrom: '', rTo: '', pr: '30', prFrom: '', prTo: '',
       hover: -1, toast: '', pick: { chobi: true, kazak: true, bokhara: true }, req: {},
       opts: { button: true, photo: true, fit: true, picture: true, wa: true, weekly: true },
       wa: '+1 555 0142', btnText: 'See it in your room', klaviyo: false
@@ -1199,10 +1213,32 @@ class Component extends DCLogic {
     const splMax = Math.max.apply(null, spl.concat([1]));
     const rugLeads = leads.filter((l) => l.rugId === r.id);
 
-    const mineN = (k) => log.filter((e) => e.rug === r.id && e.kind === k).length;
-    const mineParts = [['room', 'room open'], ['view3d', '3D view'], ['fit', 'size check'], ['details', 'details request']]
-      .filter(([k]) => mineN(k) > 0).map(([k, w]) => `${mineN(k)} ${w}${mineN(k) === 1 ? '' : 's'}`);
+    // this phone's own visits to this rug, between two days (the rug card's chosen period)
+    const minePart = (a, b) => {
+      const from = a.getTime(), to = b.getTime() + 86400000;
+      const n = (k) => log.filter((e) => e.rug === r.id && e.kind === k && e.t >= from && e.t < to).length;
+      return [['room', 'room open'], ['view3d', '3D view'], ['fit', 'size check'], ['details', 'details request']]
+        .filter(([k]) => n(k) > 0).map(([k, w]) => `${n(k)} ${w}${n(k) === 1 ? '' : 's'}`);
+    };
 
+    // This rug's own period: Today, Yesterday, Last 7 days, Last 30 days, or two dates
+    const PERIODS = [['today', 'Today'], ['yesterday', 'Yesterday'], ['7', 'Last 7 days'], ['30', 'Last 30 days'], ['custom', 'Custom']];
+    const prd = s.pr || '30';
+    let pa = 60, pb = 89;
+    if (prd === 'today') { pa = 89; }
+    else if (prd === 'yesterday') { pa = 88; pb = 88; }
+    else if (prd === '7') { pa = 83; }
+    else if (prd === 'custom') {
+      let f = s.prFrom ? dayIdx(fromIso(s.prFrom)) : 83, t = s.prTo ? dayIdx(fromIso(s.prTo)) : 89;
+      if (isNaN(f)) f = 83;
+      if (isNaN(t)) t = 89;
+      pa = Math.max(0, Math.min(89, Math.min(f, t))); pb = Math.max(0, Math.min(89, Math.max(f, t)));
+    }
+    const kP = series.slice(pa, pb + 1).reduce((x, d) => x + d.v, 0) / Math.max(1, opensTotal);
+    const sc = (n) => Math.round(n * kP);
+    const periodLabel = pa === pb
+      ? (pb === 89 ? `today, ${shortD(series[pb].dt)}` : pb === 88 ? `yesterday, ${shortD(series[pb].dt)}` : series[pb].dt.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'short' }))
+      : `${shortD(series[pa].dt)} to ${shortD(series[pb].dt)}`;
     const rd = {
       name: r.name, style: r.style, sizesTxt: r.sizesTxt, stLabel: r.stLabel, stStyle: r.stStyle,
       img: r.img, note: r.note,
@@ -1211,18 +1247,26 @@ class Component extends DCLogic {
       isFix: r.status === 'fix', isBuilding: r.status === 'building',
       live: r.live, notLive: !r.live,
       isPremium: r.status === 'premium', canUpgrade: r.status === 'live',
-      hasMine: mineParts.length > 0, mine: `From you on this phone (real): ${mineParts.join(', ')}.`,
+      hasMine: minePart(series[pa].dt, series[pb].dt).length > 0, mine: `From you on this phone (real), in this period: ${minePart(series[pa].dt, series[pb].dt).join(', ')}.`,
       stats: [
-        { label: 'Room opens', v: fmt(r.opens) },
-        { label: 'People who came back', v: fmt(r.back) },
-        { label: 'Added to cart', v: fmt(r.carts) },
-        { label: 'Orders', v: fmt(r.orders) },
-        { label: 'Sales', v: money(r.sales) }
+        { label: 'Room opens', v: fmt(sc(r.opens)) },
+        { label: 'People who came back', v: fmt(sc(r.back)), crown: true },
+        { label: 'Added to cart', v: fmt(sc(r.carts)), crown: true },
+        { label: 'Orders', v: fmt(sc(r.orders)), crown: true },
+        { label: 'Sales', v: money(sc(r.orders) * r.price), crown: true }
       ],
+      periods: PERIODS.map(([id, label]) => ({
+        label, on: prd === id, st: prd === id ? PRESSED : '',
+        pick: () => this.setState(id === 'custom'
+          ? { pr: 'custom', prFrom: this.cur().prFrom || iso(series[83].dt), prTo: this.cur().prTo || iso(series[89].dt) }
+          : { pr: id })
+      })),
+      isCustom: prd === 'custom', from: s.prFrom || '', to: s.prTo || '', periodLabel,
+      onFrom: (e) => this.setState({ prFrom: e.target.value }), onTo: (e) => this.setState({ prTo: e.target.value }),
       tried: sizeList.map((z, i) => ({ size: z, pct: spl[i], w: Math.round(spl[i] / splMax * 100) })),
       leads: rugLeads,
       noLeads: rugLeads.length === 0,
-      backLine: `${fmt(r.back)} people came back to look at this rug again. ${rugLeads.length} of them shared their contact.`,
+      backLine: `In the last 30 days, ${fmt(r.back)} people came back to look at this rug again. ${rugLeads.length} of them shared their contact.`,
       upgrade: () => {
         const pick = Object.assign({}, this.cur().pick);
         pick[r.id] = true;
