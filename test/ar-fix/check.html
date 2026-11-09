@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ARQR360 · Android AR check</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  body{font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;padding:18px;background:#f6f3ee;color:#1d1b19}
+  h1{font-size:20px;margin:0 0 6px}
+  p.s{margin:0 0 16px;color:#5a544d;font-size:14px}
+  .t{display:block;background:#fff;border:1px solid #ddd5ca;border-radius:12px;padding:14px 16px;margin:0 0 12px;text-decoration:none;color:inherit}
+  .t b{display:block;font-size:17px;margin-bottom:2px}
+  .t span{font-size:13px;color:#5a544d}
+  .n{display:inline-block;background:#c94141;color:#fff;border-radius:6px;padding:0 8px;margin-right:6px;font-weight:700}
+  #dev{font:12px/1.4 ui-monospace,Menlo,monospace;background:#fff;border:1px dashed #c9bfb2;border-radius:10px;padding:10px;word-break:break-all}
+  model-viewer{width:100%;height:240px;background:#fff;border:1px solid #ddd5ca;border-radius:12px;margin:0 0 12px}
+</style>
+</head>
+<body>
+<h1>Android AR check</h1>
+<p class="s">Tap each test in turn. After each one, note what happened: AR opened, a 3D viewer opened, or nothing. Then send a screenshot of this page including the grey box at the bottom.</p>
+
+<a class="t" id="t1"><b><span class="n">1</span>Google's own sample, through the Google app</b><span>An avocado from Google's docs. Tests if the phone can open Google's AR viewer at all.</span></a>
+<a class="t" id="t2"><b><span class="n">2</span>Google's own sample, through Google Play Services for AR</b><span>Same avocado, the other route.</span></a>
+<a class="t" id="t3"><b><span class="n">3</span>Our Afshar rug, 3D viewer only</b><span>Opens our rug without AR. Tests our file and the Google app.</span></a>
+<a class="t" id="t4"><b><span class="n">4</span>Our Afshar rug, AR through the Google app</b><span>The old route.</span></a>
+<a class="t" id="t5"><b><span class="n">5</span>Our Afshar rug, AR through Google Play Services for AR</b><span>The new first route.</span></a>
+
+<p class="s" style="margin-top:18px"><b><span class="n">6</span>Google's model-viewer</b>: tap the small AR icon in the bottom corner of the rug below (if it shows one).</p>
+<model-viewer src="https://arqr360.com/sample/afshar-2015-070/afshar-2015-070.glb" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" camera-controls alt="Afshar rug"></model-viewer>
+
+<div id="dev">Checking this phone…</div>
+
+<script>
+var here = location.href.split('#')[0];
+function intent(file, mode, pkg, tag, title) {
+  return 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(file) +
+    '&mode=' + mode + '&title=' + encodeURIComponent(title) +
+    '#Intent;scheme=https;package=' + pkg + ';action=android.intent.action.VIEW;' +
+    'S.browser_fallback_url=' + encodeURIComponent(here + '#back-' + tag) + ';end;';
+}
+var AVO = 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf';
+var RUG = 'https://arqr360.com/sample/afshar-2015-070/afshar-2015-070.glb';
+var G = 'com.google.android.googlequicksearchbox', A = 'com.google.ar.core';
+document.getElementById('t1').href = intent(AVO, 'ar_preferred', G, 1, 'Avocado');
+document.getElementById('t2').href = intent(AVO, 'ar_only', A, 2, 'Avocado');
+document.getElementById('t3').href = intent(RUG, '3d_only', G, 3, 'Afshar rug');
+document.getElementById('t4').href = intent(RUG, 'ar_preferred', G, 4, 'Afshar rug');
+document.getElementById('t5').href = intent(RUG, 'ar_only', A, 5, 'Afshar rug');
+
+var results = {};
+function show() {
+  var mv = document.querySelector('model-viewer');
+  var lines = [
+    'Phone: ' + (window.__model || '?') + ' · Android ' + (window.__ver || '?'),
+    'Browser: ' + navigator.userAgent,
+    'WebXR AR: ' + (window.__xr === undefined ? 'checking' : window.__xr),
+    'model-viewer can AR: ' + (mv && 'canActivateAR' in mv ? mv.canActivateAR : '?'),
+    'Came back from test (phone could not open it): ' + (Object.keys(results).join(', ') || 'none')
+  ];
+  document.getElementById('dev').textContent = lines.join('\n');
+  document.getElementById('dev').style.whiteSpace = 'pre-wrap';
+}
+window.addEventListener('hashchange', function () {
+  var m = /^#back-(\d)/.exec(location.hash);
+  if (m) { results['test ' + m[1]] = 1; show(); }
+});
+if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+  navigator.userAgentData.getHighEntropyValues(['model', 'platformVersion']).then(function (v) {
+    window.__model = v.model; window.__ver = v.platformVersion; show();
+  }).catch(show);
+}
+if (navigator.xr && navigator.xr.isSessionSupported) {
+  navigator.xr.isSessionSupported('immersive-ar').then(function (ok) { window.__xr = ok ? 'yes' : 'no'; show(); })
+    .catch(function () { window.__xr = 'error'; show(); });
+} else { window.__xr = 'not in this browser'; }
+setTimeout(show, 1500); show();
+</script>
+</body>
+</html>
