@@ -459,6 +459,7 @@
   <!-- seo:end -->
 <script src="https://thegenieofmarketing.vercel.app/api/embed?k=ZjQwMGEzM2ItNWUzNC00YjAxLWIwOTYtN2RjMTVhNzdjNDZl.ca7a6f7fc248e2e874dd" async></script>
 <link rel="stylesheet" href="exit-offer.css?v=7">
+<script src="/assets/ar-android.js"></script>
 </head>
 <body>
 <script src="sprite.js?v=99"></script>
@@ -845,12 +846,12 @@ function launch(it){
   }
   if (isAndroid && it.glb){
     var abs = new URL(it.glb, location.href).href;
-    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs) +
+    ARQRAndroidAR('intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs) +
       // a wall piece goes on the wall: Scene Viewer places on the floor unless asked
       '&mode=ar_preferred&resizable=false' + (it.wall ? '&enable_vertical_placement=true' : '') +
       '&title=' + encodeURIComponent(it.n) +
       '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
-      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;');
     arqrTrack('arqr_ar_launch');
     return true;
   }

@@ -212,6 +212,7 @@
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/demo/persian-rug-gallery/notify.js" data-page="afshar"></script>
+<script src="/assets/ar-android.js"></script>
 </head>
 <body>
 
@@ -483,11 +484,11 @@ function launch() {
     a.href = BASE + FILE + '.usdz#allowsContentScaling=0&custom=' + encodeURIComponent(BASE + 'banner') + '&customHeight=small';
     a.click();
   } else if (isAndroid) {
-    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + FILE + '.glb') +
+    ARQRAndroidAR('intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + FILE + '.glb') +
       '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(NAME) +
       '&link=' + encodeURIComponent(PAGE) +
       '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
-      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;');
   } else {
     openDesk();
   }
