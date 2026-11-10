@@ -28,7 +28,7 @@
   .demo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding-top:9px;padding-bottom:9px}
   .demo b{font-weight:600;color:#fff}
   .demo nav{display:flex;flex-wrap:wrap;gap:4px 14px}
-  .demo a{color:#FFC9A8;font-weight:600;text-underline-offset:3px}
+  .demo a{color:#FFC9A8;font-weight:600;text-underline-offset:3px;display:inline-block;padding:10px 6px;margin:-10px -6px}   /* ~40px tap area, layout unchanged */
 
   /* their header */
   .hd{background:var(--soft)}
@@ -159,15 +159,18 @@
   #roomBtn{position:relative}
   #roomBtn::after{content:"";position:absolute;inset:0;border-radius:2px;box-shadow:0 0 0 0 rgba(202,65,65,.55);animation:pulse 2.2s ease-out infinite}
   .tapped #roomBtn::after{animation:none}
+  #cartBtn.flash{animation:pulse 1.4s ease-out 2}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(202,65,65,.55)}70%{box-shadow:0 0 0 14px rgba(202,65,65,0)}100%{box-shadow:0 0 0 0 rgba(202,65,65,0)}}
   @media (prefers-reduced-motion:reduce){ #roomBtn::after{animation:none} }
-  .next{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#2B1D14;color:#F6EEE4;box-shadow:0 -8px 30px rgba(0,0,0,.25);font:500 14.5px/1.4 "Inter",system-ui,sans-serif;transform:translateY(110%);transition:transform .35s ease}
-  .next.show{transform:none}
+  .next{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#2B1D14;color:#F6EEE4;box-shadow:0 -8px 30px rgba(0,0,0,.25);font:500 14.5px/1.4 "Inter",system-ui,sans-serif;transform:translateY(110%);visibility:hidden;transition:transform .35s ease,visibility 0s linear .35s}
+  .next.show{transform:none;visibility:visible;transition:transform .35s ease}
+  /* while the Android room-view message is up (ar-android.js), step 2 waits below it */
+  .arqr-ar-bar-on .next.show{transform:translateY(110%);visibility:hidden;transition:transform .35s ease,visibility 0s linear .35s}
   .next .in{max-width:var(--wrap);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px}
   .next b{color:#fff;font-weight:600}
   .next a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;background:#E0682A;color:#fff;font-weight:600;text-decoration:none;white-space:nowrap}
   .next a svg{width:17px;height:17px}
-  .next .x{width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:#BFAF9F;font:400 22px/1 "Inter",sans-serif}
+  .next .x{position:static;flex:none;box-shadow:none;width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:#BFAF9F;font:400 22px/1 "Inter",sans-serif}   /* beside the button, not the modal's corner .x */
   .next-acts{display:flex;align-items:center;gap:6px}
   @media (max-width:600px){ .next .in > span{flex:1 1 100%} .next-acts{flex:1 1 100%} .next a{flex:1} }
 
@@ -480,6 +483,13 @@ function launch() {
       a.setAttribute('rel', 'ar');
       a.style.display = 'none';
       a.appendChild(document.createElement('img'));
+      // "Shop ›" on the banner under the rug: Apple closes the room view and tells this link
+      a.addEventListener('message', function (e) {
+        if (e.data !== '_apple_ar_quicklook_button_tapped') return;
+        var c = document.getElementById('cartBtn');
+        c.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+      }, false);
       document.body.appendChild(a);
     }
     a.href = BASE + FILE + '.usdz#allowsContentScaling=0&custom=' + encodeURIComponent(BASE + 'banner') + '&customHeight=small';
@@ -493,8 +503,12 @@ function launch() {
 document.getElementById('roomBtn').addEventListener('click', launch);
 // Android: load the rug while the page is read, so the tap finds it ready
 if (isAndroid && window.ARQRAndroidAR) ARQRAndroidAR.prepare(BASE + FILE + '.glb', { title: NAME, link: PAGE });
-// Safari ignores <link rel=prefetch>: fetch the iPhone file now, so the tap opens AR from cache
-if (isIOS) { try { fetch(BASE + FILE + '.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} }
+// Safari ignores <link rel=prefetch>: fetch the iPhone file early, so the tap opens AR from cache.
+// Only once the page's photos are in, so on slow data the rug never holds up his product photos.
+if (isIOS) {
+  var prefetchUsdz = function () { try { fetch(BASE + FILE + '.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} };
+  if (document.readyState === 'complete') prefetchUsdz(); else window.addEventListener('load', prefetchUsdz);
+}
 
 var modal = document.getElementById('deskModal'), mvLoaded = false;
 function openDesk() {

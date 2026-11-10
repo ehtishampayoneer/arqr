@@ -148,9 +148,14 @@
     btn.textContent = label || 'Try again';
     barAction = action || function () { go(2); };
     b.style.display = 'flex';
+    // pages with their own bottom bar (the demo's "Step 2") hide it while this one shows
+    document.documentElement.classList.add('arqr-ar-bar-on');
   }
 
-  function hideBar() { if (bar) bar.style.display = 'none'; }
+  function hideBar() {
+    if (bar) bar.style.display = 'none';
+    document.documentElement.classList.remove('arqr-ar-bar-on');
+  }
 
   function missed(how) {
     clearTimeout(timer); timer = null;
@@ -294,9 +299,19 @@
     });
   }
 
+  // Start the rug's download only once the page's own photos are in: on slow phone data an
+  // 8 MB rug fetched at once would hold up the product photos. A tap before then still works
+  // (openModel loads it straight away).
+  function afterPageLoad(fn) {
+    if (document.readyState === 'complete') { setTimeout(fn, 0); return; }
+    window.addEventListener('load', function () { setTimeout(fn, 0); });
+  }
+
   function prepare(glb, o) {
     o = o || {};
-    hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(glb, o); }); });
+    afterPageLoad(function () {
+      hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(glb, o); }); });
+    });
   }
 
   function openModel(glb, o) {
