@@ -34,6 +34,7 @@
   .files a{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:9px}
   @media(max-width:860px){main{grid-template-columns:1fr}model-viewer{height:52vh}}
 </style>
+<script src="/assets/ar-android.js"></script>
 </head>
 <body>
 <div class="bar"><a href="/"><img src="/assets/logo-bar.png" alt="ARQR360"></a><span class="tag">Test page</span></div>
@@ -73,10 +74,7 @@ document.getElementById('ar').addEventListener('click', function () {
     document.body.appendChild(a); a.click(); a.remove();
   } else if (isAndroid) {
     var abs = new URL('/test/greek-key-coffee-table/model.glb?v=20260917014426', location.href).href;
-    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs) +
-      '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(name) +
-      '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
-      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+    ARQRAndroidAR.open(abs, { title: name });
   } else {
     document.getElementById('qr').style.display = 'block';
     document.getElementById('arNote').textContent = 'AR runs on a phone. Scan the code below with your phone camera.';

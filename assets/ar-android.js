@@ -5,6 +5,12 @@
    failed the shopper tapped and nothing seemed to happen.
 
    Now a tap goes:
+     0. AR inside the browser itself (WebXR), through Google's <model-viewer>,
+        when the phone and browser have it. No hand-off to any app at all: the
+        way other AR providers open it, and the route that works on a Samsung
+        Galaxy S25 where step 1 showed nothing (Chrome and Samsung Internet,
+        10 Nov 2026). The model starts loading when the page or product opens
+        (ARQRAndroidAR.prepare), so the tap finds it ready.
      1. Scene Viewer through the Google app, built exactly the way Google's own
         <model-viewer> (v4.4) builds it: intent version 1.2, mode=ar_preferred,
         disable_occlusion=true, file last, opened by clicking a link (not by
@@ -27,11 +33,17 @@
    On a personal preview link (?v=name, see notify.js) each outcome is reported
    through ARQRNotify, so we learn what happened on the visitor's own phone.
 
-   Pages call ARQRAndroidAR(intentUrl) with the intent URL they always built;
-   the file, title, link and size lock are read from it. */
+   Two ways in:
+     ARQRAndroidAR(intentUrl)              steps 1 to 3, from the intent URL a page
+                                           always built (file, title, link and size
+                                           lock are read from it)
+     ARQRAndroidAR.prepare(glbUrl, opts)   load the model for step 0 early
+     ARQRAndroidAR.open(glbUrl, opts)      steps 0 to 3 from the tap
+       opts: { title, link, wall }         Scene Viewer's title and link; wall placement */
 (function () {
   var WAIT = 5000;            // ms the page may stay in front before we call it a miss (slow phones open Scene Viewer slowly)
   var timer = null, step = 0, lastUrl = '', bar = null;
+  var barAction = function () { go(2); };   // what the bar's button does: "Try again" by default
 
   function base() { return location.href.split('#')[0]; }
 
@@ -115,7 +127,7 @@
     btn.className = 'arqr-ar-retry';
     btn.textContent = 'Try again';
     btn.style.cssText = 'background:#c94141;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer';
-    btn.addEventListener('click', function () { go(2); });
+    btn.addEventListener('click', function () { barAction(); });
     var x = document.createElement('button');
     x.type = 'button';
     x.setAttribute('aria-label', 'Close');
@@ -127,10 +139,14 @@
     return bar;
   }
 
-  function showBar(text, retry) {
+  // label and action are for step 0's "it's ready" bar; by default the button is "Try again"
+  function showBar(text, retry, label, action) {
     var b = ensureBar();
     b.querySelector('.arqr-ar-msg').textContent = text;
-    b.querySelector('.arqr-ar-retry').style.display = retry ? '' : 'none';
+    var btn = b.querySelector('.arqr-ar-retry');
+    btn.style.display = retry ? '' : 'none';
+    btn.textContent = label || 'Try again';
+    barAction = action || function () { go(2); };
     b.style.display = 'flex';
   }
 
@@ -182,9 +198,120 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', resume); else resume();
   }
 
-  window.ARQRAndroidAR = function (intentUrl) {
+  function handOff(intentUrl) {
     lastUrl = intentUrl;
     try { sessionStorage.setItem('arqr.ar.last', intentUrl); } catch (e) {}
     go(1);
-  };
+  }
+
+  /* ---- Step 0: AR inside the browser (WebXR) through model-viewer ---- */
+  var MV = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';  // the version the 3D views use
+  var TAP_WINDOW = 4000;      // ms a browser still counts as "just tapped" for starting AR
+  var mvLoading = null, xrCheck = null, viewers = {};
+
+  function abs(u) { return new URL(u, location.href).href; }
+
+  function hasWebXR() {
+    if (!xrCheck) {
+      xrCheck = (navigator.xr && navigator.xr.isSessionSupported)
+        ? navigator.xr.isSessionSupported('immersive-ar').then(function (ok) { return !!ok; }, function () { return false; })
+        : Promise.resolve(false);
+    }
+    return xrCheck;
+  }
+
+  function loadViewer() {
+    if (!mvLoading) {
+      mvLoading = new Promise(function (done) {
+        if (window.customElements && customElements.get('model-viewer')) { done(); return; }
+        var s = document.createElement('script');
+        s.type = 'module'; s.src = MV; s.onload = done; s.onerror = done;
+        document.head.appendChild(s);
+        setTimeout(done, 20000);
+      }).then(function () {
+        if (!window.customElements) return;
+        return Promise.race([customElements.whenDefined('model-viewer'), new Promise(function (r) { setTimeout(r, 20000); })]);
+      });
+    }
+    return mvLoading;
+  }
+
+  function viewer(glb, o) {
+    var key = abs(glb);
+    if (viewers[key]) return viewers[key];
+    var mv = document.createElement('model-viewer');
+    mv.setAttribute('src', key);
+    mv.setAttribute('ar', '');
+    mv.setAttribute('ar-modes', 'webxr');
+    mv.setAttribute('ar-scale', 'fixed');                       // the size stays locked
+    mv.setAttribute('ar-placement', o.wall ? 'wall' : 'floor');
+    mv.setAttribute('loading', 'eager');
+    mv.setAttribute('shadow-intensity', '1');
+    mv.setAttribute('alt', o.title || '3D model');
+    mv.setAttribute('aria-hidden', 'true');
+    // off screen until AR starts; the browser then shows it full screen by itself
+    mv.style.cssText = 'position:fixed;left:-300vw;top:0;width:100vw;height:100vh;';
+    mv.addEventListener('ar-status', function (e) {
+      var st = e.detail && e.detail.status;
+      if (st === 'session-started') report('t0-opened');
+      if (st === 'failed') {
+        report('t0-failed');
+        lastUrl = intentFor(glb, o);
+        showBar('The room view didn’t open. Tap “Try again” to open it another way.', true, 'Try again', function () { go(1); });
+      }
+    });
+    document.body.appendChild(mv);
+    viewers[key] = mv;
+    return mv;
+  }
+
+  // the intent URL the pages used to build, for steps 1 to 3
+  function intentFor(glb, o) {
+    return 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs(glb)) +
+      '&mode=ar_preferred&resizable=false' + (o.wall ? '&enable_vertical_placement=true' : '') +
+      (o.title ? '&title=' + encodeURIComponent(o.title) : '') + (o.link ? '&link=' + encodeURIComponent(abs(o.link)) : '') +
+      '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
+      'S.browser_fallback_url=' + encodeURIComponent(base()) + ';end;';
+  }
+
+  function waitFor(test, ms) {
+    return new Promise(function (done) {
+      var t0 = Date.now();
+      (function poll() {
+        if (test()) { done(true); return; }
+        if (Date.now() - t0 > ms) { done(false); return; }
+        setTimeout(poll, 100);
+      })();
+    });
+  }
+
+  function prepare(glb, o) {
+    o = o || {};
+    hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(glb, o); }); });
+  }
+
+  function openModel(glb, o) {
+    o = o || {};
+    var tapped = Date.now();
+    hasWebXR().then(function (ok) {
+      if (!ok) { handOff(intentFor(glb, o)); return; }          // no WebXR here: steps 1 to 3
+      report('t0-tap');
+      loadViewer().then(function () {
+        var mv = viewer(glb, o);
+        return waitFor(function () { return mv.canActivateAR; }, 3000).then(function (can) {
+          if (!can) {                                             // WebXR said yes but can't start: the app route, from a fresh tap
+            lastUrl = intentFor(glb, o);
+            showBar('Tap below to open the room view.', true, 'Open the room view', function () { hideBar(); go(1); });
+            return;
+          }
+          if (Date.now() - tapped < TAP_WINDOW) mv.activateAR();
+          else showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', function () { hideBar(); mv.activateAR(); });
+        });
+      });
+    });
+  }
+
+  window.ARQRAndroidAR = handOff;
+  window.ARQRAndroidAR.prepare = prepare;
+  window.ARQRAndroidAR.open = openModel;
 })();

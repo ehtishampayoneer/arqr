@@ -54,6 +54,7 @@
 </style>
 <script src="https://thegenieofmarketing.vercel.app/api/embed?k=ZjQwMGEzM2ItNWUzNC00YjAxLWIwOTYtN2RjMTVhNzdjNDZl.ca7a6f7fc248e2e874dd" async></script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script src="/assets/ar-android.js"></script>
 </head>
 <body>
 <div class="guide-box" role="dialog" aria-labelledby="guideTitle">
@@ -151,11 +152,7 @@ function launch(){
       encodeURIComponent(BASE + 'banner') + '&customHeight=small';
     a.click();
   } else if (isAndroid) {
-    location.href = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(BASE + 'keshan-rohdan.glb') +
-      '&mode=ar_preferred&resizable=false&title=' + encodeURIComponent(NAME + ' · Powered by ARQR360') +
-      '&link=' + encodeURIComponent(PRODUCT) +
-      '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
-      'S.browser_fallback_url=' + encodeURIComponent(location.href) + ';end;';
+    ARQRAndroidAR.open(BASE + 'keshan-rohdan.glb', { title: NAME + ' · Powered by ARQR360', link: PRODUCT });
   }
 }
 
@@ -174,6 +171,8 @@ document.getElementById('guideGo').addEventListener('click', launch);
 // Safari ignores <link rel=prefetch>: fetch the iPhone file while the guide is
 // read, so the tap opens AR from the browser's cache instead of the network.
 if (isIOS) { try { fetch(BASE + 'keshan-rohdan.usdz', { credentials: 'omit' }).catch(function () {}); } catch (e) {} }
+// Android: AR opens through /assets/ar-android.js; load the model while the guide is read
+if (isAndroid && window.ARQRAndroidAR) ARQRAndroidAR.prepare(BASE + 'keshan-rohdan.glb', { title: NAME + ' · Powered by ARQR360', link: PRODUCT });
 </script>
 </body>
 </html>

@@ -258,7 +258,7 @@ ${gpuNote}
 <div class="card hidden" id="cardDone">
   <h1 id="doneName"></h1>
   <div class="viewer"><model-viewer id="mv" camera-controls auto-rotate
-    ar ar-modes="scene-viewer quick-look webxr"
+    ar ar-modes="webxr scene-viewer quick-look"
     shadow-intensity="1" exposure="1.1"
     alt="AR view preview"></model-viewer></div>
   <div class="meta" id="doneMeta"></div>
