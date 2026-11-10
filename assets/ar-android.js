@@ -1,57 +1,102 @@
 /* ARQR360 · Android AR hand-off, with a way back when it fails.
 
    Every "View in your room" button used to send Android phones to Scene Viewer
-   through the Google app only. When the Google app could not take it (disabled,
-   out of date, or a Samsung default getting in the way) the phone fell back to
-   this same page, so the shopper tapped and nothing seemed to happen.
+   with location.href and the fallback set to this same page, so when the hand-off
+   failed the shopper tapped and nothing seemed to happen.
 
    Now a tap goes:
-     1. Google Play Services for AR (com.google.ar.core), AR only.
-        Built into every ARCore phone, and what Google's own model-viewer uses.
-     2. If AR has not opened, a bar offers "Try again", which goes through the
-        Google app (the old route). A browser only hands off to an app from a
-        tap, so the second try needs the shopper's tap.
-     3. If that fails too, the bar says AR is not available on this phone.
+     1. Scene Viewer through the Google app, built exactly the way Google's own
+        <model-viewer> (v4.4) builds it: intent version 1.2, mode=ar_preferred,
+        disable_occlusion=true, file last, opened by clicking a link (not by
+        setting location.href), and a fallback that only changes the hash.
+        ar_preferred opens AR where the phone has it, and the 3D viewer where
+        it doesn't, so a phone without AR still sees the rug.
+     2. If nothing opened, a bar offers "Try again", which goes straight to
+        Google Play Services for AR (com.google.ar.core, ar_only), the route
+        Google documents for AR-only hand-offs. A browser only hands off to an
+        app from a tap, so this needs the shopper's tap.
+     3. If that fails too, the bar says the room view is not available here.
 
    How "it failed" is known:
-     - the intent's fallback is this page plus #arqr-ar-1 / #arqr-ar-2, which
-       changes only the hash (no reload) and fires hashchange; or
-     - the page is still visible a few seconds after the tap (AR opening hides
-       the page), which covers a hand-off that is taken and then dropped.
+     - the fallback is this page + #arqr-ar-N, which changes only the hash (no
+       reload) and fires hashchange; or
+     - the page is still in front several seconds after the tap (an app opening
+       sends the page to the background), which covers a hand-off that was taken
+       and then dropped.
 
-   Pages call ARQRAndroidAR(intentUrl) with the same intent URL they built
-   before (Google app package, mode=ar_preferred). Nothing else changes. */
+   On a personal preview link (?v=name, see notify.js) each outcome is reported
+   through ARQRNotify, so we learn what happened on the visitor's own phone.
+
+   Pages call ARQRAndroidAR(intentUrl) with the intent URL they always built;
+   the file, title, link and size lock are read from it. */
 (function () {
-  var WAIT = 3500;            // ms the page may stay visible before we call it a miss
+  var WAIT = 5000;            // ms the page may stay in front before we call it a miss (slow phones open Scene Viewer slowly)
   var timer = null, step = 0, lastUrl = '', bar = null;
 
   function base() { return location.href.split('#')[0]; }
 
-  function withFallback(url, tag) {
-    return url.replace(/S\.browser_fallback_url=[^;]*;/,
-      'S.browser_fallback_url=' + encodeURIComponent(base() + '#' + tag) + ';');
+  // Pull the Scene Viewer parameters out of the page's intent URL.
+  function parts(url) {
+    var q = url.split('?')[1] || '';
+    q = q.split('#')[0];
+    var p = {};
+    q.split('&').forEach(function (kv) {
+      if (!kv) return;
+      var i = kv.indexOf('=');
+      var k = i < 0 ? kv : kv.slice(0, i), v = i < 0 ? '' : kv.slice(i + 1);
+      try { p[k] = decodeURIComponent(v.replace(/\+/g, ' ')); } catch (e) { p[k] = v; }
+    });
+    return p;
   }
 
-  // Route 1: Google Play Services for AR. Google's docs pair this package with ar_only.
-  function arCoreRoute(url) {
-    return url.replace('package=com.google.android.googlequicksearchbox', 'package=com.google.ar.core')
-              .replace('mode=ar_preferred', 'mode=ar_only');
+  function build(p, n) {
+    var q = [], file = p.file;
+    function add(k, v) { if (v != null && v !== '') q.push(k + '=' + encodeURIComponent(v)); }
+    var fb = encodeURIComponent(base() + '#arqr-ar-' + n);
+    if (n === 1) {
+      // Google app, exactly as model-viewer 4.4
+      add('mode', 'ar_preferred');
+      add('disable_occlusion', 'true');
+      add('resizable', p.resizable || 'false');
+      if (p.enable_vertical_placement) add('enable_vertical_placement', p.enable_vertical_placement);
+      add('title', p.title); add('link', p.link);
+      return 'intent://arvr.google.com/scene-viewer/1.2?' + q.join('&') + '&file=' + encodeURIComponent(file) +
+        '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
+        'S.browser_fallback_url=' + fb + ';end;';
+    }
+    // Google Play Services for AR, AR only (as Google documents for this package)
+    add('file', file);
+    add('mode', 'ar_only');
+    add('resizable', p.resizable || 'false');
+    if (p.enable_vertical_placement) add('enable_vertical_placement', p.enable_vertical_placement);
+    add('title', p.title); add('link', p.link);
+    return 'intent://arvr.google.com/scene-viewer/1.0?' + q.join('&') +
+      '#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;' +
+      'S.browser_fallback_url=' + fb + ';end;';
   }
 
-  // Route 2: the Google app, as before (ar_preferred; never ar_only with this package).
-  function googleAppRoute(url) {
-    return url.replace('package=com.google.ar.core', 'package=com.google.android.googlequicksearchbox')
-              .replace('mode=ar_only', 'mode=ar_preferred');
+  // Open the intent the way model-viewer does: a real link, clicked.
+  function open(href) {
+    var a = document.getElementById('arqrArLink');
+    if (!a) {
+      a = document.createElement('a');
+      a.id = 'arqrArLink';
+      a.style.display = 'none';
+      (document.body || document.documentElement).appendChild(a);
+    }
+    a.setAttribute('href', href);
+    a.click();
+  }
+
+  function report(what) {
+    try { if (window.ARQRNotify) window.ARQRNotify('ardroid-' + what); } catch (e) {}
+    try { if (window.va) window.va('event', { name: 'arqr_ar_android_' + what }); } catch (e) {}
   }
 
   function clearHash() {
     if (/^#arqr-ar-/.test(location.hash)) {
       try { history.replaceState(null, '', base()); } catch (e) {}
     }
-  }
-
-  function track(name) {
-    try { if (window.va) window.va('event', { name: name }); } catch (e) {}
   }
 
   function ensureBar() {
@@ -70,7 +115,7 @@
     btn.className = 'arqr-ar-retry';
     btn.textContent = 'Try again';
     btn.style.cssText = 'background:#c94141;color:#fff;border:0;border-radius:8px;padding:10px 16px;font:600 15px system-ui,sans-serif;cursor:pointer';
-    btn.addEventListener('click', function () { go(googleAppRoute(lastUrl), 2); });
+    btn.addEventListener('click', function () { go(2); });
     var x = document.createElement('button');
     x.type = 'button';
     x.setAttribute('aria-label', 'Close');
@@ -91,44 +136,48 @@
 
   function hideBar() { if (bar) bar.style.display = 'none'; }
 
-  function missed() {
+  function missed(how) {
     clearTimeout(timer); timer = null;
     clearHash();
+    report('t' + step + '-' + how);
     if (step === 1) {
-      track('arqr_ar_android_retry_offered');
       showBar('The room view didn’t open. Tap “Try again” to open it another way.', true);
     } else if (step === 2) {
-      track('arqr_ar_android_unavailable');
       showBar('Sorry, the room view isn’t available on this phone. It needs Google Play Services for AR, which most recent Android phones have.', false);
     }
     step = 0;
   }
 
-  function go(url, n) {
+  function go(n) {
     hideBar();
     step = n;
     clearTimeout(timer);
-    timer = setTimeout(function () { if (document.visibilityState === 'visible') missed(); }, WAIT);
-    track(n === 1 ? 'arqr_ar_android_try1' : 'arqr_ar_android_try2');
-    location.href = withFallback(url, 'arqr-ar-' + n);
+    timer = setTimeout(function () { if (document.visibilityState === 'visible') missed('stayed'); }, WAIT);
+    report('t' + n + '-tap');
+    open(build(parts(lastUrl), n));
   }
 
-  // AR opened: the page went to the background. Stop the clock.
+  // An app opened: the page went to the background. Stop the clock.
   document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden' && timer) { clearTimeout(timer); timer = null; step = 0; }
+    if (document.visibilityState === 'hidden' && timer) {
+      clearTimeout(timer); timer = null;
+      report('t' + step + '-opened');
+      step = 0;
+    }
   });
   // The phone could not take the hand-off and came back to #arqr-ar-N.
   window.addEventListener('hashchange', function () {
-    if (/^#arqr-ar-\d/.test(location.hash) && step) missed();
+    var m = /^#arqr-ar-(\d)/.exec(location.hash);
+    if (m && step) missed('back');
     else clearHash();
   });
-  // A fallback that reloaded the page instead of just changing the hash (some
-  // browsers): pick up where the tap left off, from this tab's session storage.
+  // A fallback that reloaded the page instead of only changing the hash
+  // (some browsers): pick up where the tap left off.
   var m = /^#arqr-ar-(\d)/.exec(location.hash);
   if (m) {
     var resume = function () {
       try { lastUrl = sessionStorage.getItem('arqr.ar.last') || ''; } catch (e) {}
-      if (lastUrl) { step = +m[1]; missed(); } else clearHash();
+      if (lastUrl) { step = +m[1]; missed('reload'); } else clearHash();
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', resume); else resume();
   }
@@ -136,6 +185,6 @@
   window.ARQRAndroidAR = function (intentUrl) {
     lastUrl = intentUrl;
     try { sessionStorage.setItem('arqr.ar.last', intentUrl); } catch (e) {}
-    go(arCoreRoute(intentUrl), 1);
+    go(1);
   };
 })();
