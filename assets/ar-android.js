@@ -304,8 +304,22 @@
             showBar('Tap below to open the room view.', true, 'Open the room view', function () { hideBar(); go(1); });
             return;
           }
-          if (Date.now() - tapped < TAP_WINDOW) mv.activateAR();
-          else showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', function () { hideBar(); mv.activateAR(); });
+          // model-viewer asks for the camera only once the whole rug has downloaded. A tap counts
+          // for about 5 s, so a quick tap on a slow connection would reach the camera too late and be
+          // refused. Start AR from this tap only if the rug is in within the window; otherwise say
+          // it's coming, then ask for one more tap (a fresh tap always counts).
+          var ready = function () { hideBar(); mv.activateAR(); };
+          if (mv.loaded && Date.now() - tapped < TAP_WINDOW) { mv.activateAR(); return; }
+          showBar('Getting your rug ready…', false);
+          return waitFor(function () { return mv.loaded; }, Math.max(0, TAP_WINDOW - (Date.now() - tapped))).then(function (inTime) {
+            if (inTime && Date.now() - tapped < TAP_WINDOW) { ready(); return; }
+            report('t0-slow');
+            return waitFor(function () { return mv.loaded; }, 60000).then(function (ok) {
+              if (ok) { showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', ready); return; }
+              lastUrl = intentFor(glb, o);                         // never arrived: the app route, from a fresh tap
+              showBar('The room view is taking too long. Tap below to open it another way.', true, 'Try again', function () { go(1); });
+            });
+          });
         });
       });
     });
