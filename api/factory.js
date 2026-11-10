@@ -215,6 +215,7 @@ function appPage(gpuOnline) {
 
   return page('Model Factory', `
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<script src="/assets/mv-sharp.js"></script>
 ${gpuNote}
 <div class="card" id="cardBuild">
   <h1>Build an AR view</h1>

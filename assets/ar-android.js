@@ -220,8 +220,16 @@
     return xrCheck;
   }
 
+  // mv-sharp.js sits next to this file: keeps the rug sharp at the angle a shopper sees it in AR
+  var SHARP = String((document.currentScript && document.currentScript.src) || '/assets/ar-android.js').replace(/ar-android\.js(\?.*)?$/, 'mv-sharp.js');
+
   function loadViewer() {
     if (!mvLoading) {
+      if (!window.ARQRSharp) {
+        var sh = document.createElement('script');
+        sh.src = SHARP;
+        document.head.appendChild(sh);
+      }
       mvLoading = new Promise(function (done) {
         if (window.customElements && customElements.get('model-viewer')) { done(); return; }
         var s = document.createElement('script');
@@ -251,6 +259,7 @@
     mv.setAttribute('aria-hidden', 'true');
     // off screen until AR starts; the browser then shows it full screen by itself
     mv.style.cssText = 'position:fixed;left:-300vw;top:0;width:100vw;height:100vh;';
+    mv.addEventListener('load', function () { if (window.ARQRSharp) window.ARQRSharp(mv); });
     mv.addEventListener('ar-status', function (e) {
       var st = e.detail && e.detail.status;
       if (st === 'session-started') report('t0-opened');
