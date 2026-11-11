@@ -164,7 +164,7 @@
     if (step === 1) {
       showBar('The room view didn’t open. Tap “Try again” to open it another way.', true);
     } else if (step === 2) {
-      showBar('Sorry, the room view isn’t available on this phone. It needs Google Play Services for AR, which most recent Android phones have.', false);
+      lastResort(lastUrl);
     }
     step = 0;
   }
@@ -308,13 +308,45 @@
   }
 
   function prepare(glb, o) {
+    return;   // nothing to fetch ahead now: Scene Viewer downloads the rug itself
     o = o || {};
     afterPageLoad(function () {
       hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(glb, o); }); });
     });
   }
 
+  // 11 Nov 2026: the first tap goes to Scene Viewer again (the route Shopify stores use on
+  // Android), launched exactly like model-viewer. AR inside the browser (WebXR) is kept only
+  // as the last resort, after both app routes: on a WebXR-capable Samsung the in-browser
+  // route reported nothing after the tap, and it needs the whole 8 MB rug before it can start.
   function openModel(glb, o) {
+    o = o || {};
+    report('sv-first');
+    handOff(intentFor(glb, o));
+  }
+
+  // Both app routes failed: if this browser has AR itself, load the rug and offer one tap.
+  function lastResort(url) {
+    var sorry = 'Sorry, the room view isn’t available on this phone. It needs Google Play Services for AR, which most recent Android phones have.';
+    hasWebXR().then(function (ok) {
+      if (!ok) { report('t3-none'); showBar(sorry, false); return; }
+      report('t3-offer');
+      showBar('Getting the room view ready in your browser…', false);
+      var p = parts(url);
+      var o = { title: p.title, link: p.link, wall: !!p.enable_vertical_placement };
+      loadViewer().then(function () {
+        var mv = viewer(p.file, o);
+        return waitFor(function () { return mv.loaded; }, 60000).then(function (loaded) {
+          if (!loaded) { report('t3-noload'); showBar(sorry, false); return; }
+          showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', function () {
+            hideBar(); report('t3-tap'); mv.activateAR();
+          });
+        });
+      });
+    });
+  }
+
+  function openModelWebXRFirst(glb, o) {   // the 10 Nov flow, kept for reference; not used
     o = o || {};
     var tapped = Date.now();
     hasWebXR().then(function (ok) {
@@ -324,6 +356,7 @@
         var mv = viewer(glb, o);
         return waitFor(function () { return mv.canActivateAR; }, 3000).then(function (can) {
           if (!can) {                                             // WebXR said yes but can't start: the app route, from a fresh tap
+            report('t0-cant');
             lastUrl = intentFor(glb, o);
             showBar('Tap below to open the room view.', true, 'Open the room view', function () { hideBar(); go(1); });
             return;
