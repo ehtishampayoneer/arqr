@@ -41,7 +41,7 @@
      ARQRAndroidAR.open(glbUrl, opts)      steps 0 to 3 from the tap
        opts: { title, link, wall }         Scene Viewer's title and link; wall placement */
 (function () {
-  var WAIT = 5000;            // ms the page may stay in front before we call it a miss (slow phones open Scene Viewer slowly)
+  var WAIT = 9000;   // Sam's S25 (Chrome 156) took 5+ s to bring Google's viewer up; don't cry wolf            // ms the page may stay in front before we call it a miss (slow phones open Scene Viewer slowly)
   var timer = null, step = 0, lastUrl = '', bar = null;
   var barAction = function () { go(2); };   // what the bar's button does: "Try again" by default
 
@@ -280,8 +280,14 @@
   }
 
   // the intent URL the pages used to build, for steps 1 to 3
+  // Google's AR viewer (Scene Viewer) showed Sam's S25 a blank screen with the full rug files
+  // (6-9 MB, six 2048 px textures). These rugs have a light copy for it: one 2048 px atlas,
+  // ~1.5-2 MB, same size and look (built by tools make_light.py, 11 Nov 2026).
+  var LIGHT = /\/sample\/(afshar-2015-070|sirjan-2015-016)\/\1\.glb(\?.*)?$/;
+  function forSceneViewer(url) { return LIGHT.test(url) ? url.replace(/\.glb(\?.*)?$/, '-android.glb') : url; }
+
   function intentFor(glb, o) {
-    return 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(abs(glb)) +
+    return 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(forSceneViewer(abs(glb))) +
       '&mode=ar_preferred&resizable=false' + (o.wall ? '&enable_vertical_placement=true' : '') +
       (o.title ? '&title=' + encodeURIComponent(o.title) : '') + (o.link ? '&link=' + encodeURIComponent(abs(o.link)) : '') +
       '#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;' +
