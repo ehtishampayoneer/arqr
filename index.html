@@ -1911,7 +1911,7 @@
       </div>
 
       <div class="cat-cta rev">
-        <a class="btn btn-a" href="#contact">Get a free AR sample
+        <a class="btn btn-a" href="#contact" data-sample>Get a free AR sample
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a class="btn demo-btn" href="catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See a live example</span></a>
@@ -2311,7 +2311,7 @@
 
     </div>
 
-    <p class="pr-tryfree rev">Not ready to pay yet? <a href="#f-name">Try one product free first</a>. We build its AR view free, no commitment.</p>
+    <p class="pr-tryfree rev">Not ready to pay yet? <a href="#f-name" data-sample>Try one product free first</a>. We build its AR view free, no commitment.</p>
 
     <div class="pr-strip rev">
       <div class="ps">
@@ -2737,6 +2737,13 @@
 (function(){
   var FORM_ENDPOINT = '/api/contact';
 
+  /* A free-sample request is marked when the visitor reaches the form
+     through a sample button, so the function can thank them on its own. */
+  var isSample = false;
+  document.querySelectorAll('[data-sample]').forEach(function(el){
+    el.addEventListener('click', function(){ isSample = true; });
+  });
+
   /* the ceiling the function enforces too, so the message is the same
      whichever side notices first */
   var MAX_SEND = 3 * 1024 * 1024;
@@ -2944,7 +2951,8 @@
             phone: document.getElementById('f-phone').value,
             website: document.getElementById('f-site').value,
             message: document.getElementById('f-msg').value,
-            files: files
+            files: files,
+            sample: isSample
           })
         });
       })

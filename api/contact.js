@@ -88,6 +88,12 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'Name, a valid email and a message are needed.' });
   }
 
+  /* A sample request is one the visitor marked by reaching the form
+     through a sample button. The enquiry subject carries it so the team
+     sees it at a glance. */
+  const isSample = body.sample === true;
+  const subject = 'AR catalogue enquiry from ' + name + (isSample ? ' (free sample request)' : '');
+
   /* `files` is an array; `file` is the single-attachment shape this used
      to take, kept so an older page cached in someone's browser still
      sends rather than failing silently. */
@@ -127,6 +133,61 @@ module.exports = async (req, res) => {
         attachments.map((a) => a.filename).join(', ')
       : '');
 
+  /* The free-sample thank-you, exact text approved by the founder
+     2026-11-17. It is a second send, never a replacement for the enquiry
+     itself, and a failure here is logged and never fails the form. */
+  async function sendSampleReply() {
+    if (!isSample) return;
+    const firstName = name.split(/\s+/)[0] || name;
+    const replyText = 'Hi ' + firstName + ',\n\n' +
+      'Thank you for requesting a free AR sample from ARQR360. We have your request and our team will get back to you within 1-3 working days with your product\'s AR view.\n\n' +
+      'If you have not shared your product link or photos yet, just reply to this email and we will take it from there.\n\n' +
+      'Best regards,\nEhtisham, CEO\nARQR360\narqr360.com';
+    try {
+      if (useResend) {
+        const r = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + process.env.RESEND_API_KEY,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'ARQR360 <info@arqr360.com>',
+            to: [email],
+            reply_to: 'ARQR360 <info@arqr360.com>',
+            subject: 'Thank you for your free sample request',
+            text: replyText
+          })
+        });
+        if (!r.ok) {
+          const detail = await r.text().catch(() => '');
+          console.error('contact: sample reply resend ' + r.status + ' ' + detail.slice(0, 200));
+        }
+        return;
+      }
+      const port = Number(process.env.SMTP_PORT);
+      const transport = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port,
+        secure: port === 465,
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        connectionTimeout: 8000,
+        greetingTimeout: 8000,
+        socketTimeout: 12000,
+        pool: false
+      });
+      await transport.sendMail({
+        from: 'ARQR360 <' + process.env.SMTP_USER + '>',
+        to: email,
+        replyTo: 'ARQR360 <info@arqr360.com>',
+        subject: 'Thank you for your free sample request',
+        text: replyText
+      });
+    } catch (err) {
+      console.error('contact: sample reply failed ' + String(err && err.message));
+    }
+  }
+
   try {
     if (useResend) {
       const r = await fetch('https://api.resend.com/emails', {
@@ -139,7 +200,7 @@ module.exports = async (req, res) => {
           from: process.env.MAIL_FROM || 'ARQR360 <onboarding@resend.dev>',
           to: [to],
           reply_to: name + ' <' + email + '>',
-          subject: 'AR catalogue enquiry from ' + name,
+          subject,
           text,
           attachments: attachments.map((a) => ({
             filename: a.filename,
@@ -155,6 +216,7 @@ module.exports = async (req, res) => {
           reason: r.status === 401 || r.status === 403 ? 'auth' : 'rejected'
         });
       }
+      await sendSampleReply();
       return res.status(200).json({ ok: true });
     }
 
@@ -184,11 +246,12 @@ module.exports = async (req, res) => {
       from: 'ARQR360 <' + process.env.SMTP_USER + '>',
       to,
       replyTo: name + ' <' + email + '>',
-      subject: 'AR catalogue enquiry from ' + name,
+      subject,
       text,
       attachments
     });
 
+    await sendSampleReply();
     return res.status(200).json({ ok: true });
   } catch (err) {
     /* The visitor gets one sentence. What goes back alongside it is a
