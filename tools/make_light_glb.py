@@ -1,9 +1,10 @@
-"""Light Android/Scene Viewer copy of an ARQR rug GLB: the 6 pile tiles become one
+"""Light Android/Scene Viewer copy of an ARQR rug GLB: the pile tiles (any NX x NY) become one
 atlas (max 2048 px), one pile material, no KHR_materials_specular, smaller images."""
 import sys, io, struct, json, numpy as np
 from PIL import Image
 from pygltflib import GLTF2, Buffer, BufferView, Accessor, Image as GImage, Texture, Sampler, Material, PbrMetallicRoughness, TextureInfo, Mesh, Primitive, Attributes
 src, dst = sys.argv[1], sys.argv[2]
+COLS = int(sys.argv[3]) if len(sys.argv) > 3 else 2          # pile tiles across (build_std.py's NX: 2 for most rugs, 3 for wide ones)
 g = GLTF2().load(src); blob = g.binary_blob()
 CT = {5120:np.int8,5121:np.uint8,5122:np.int16,5123:np.uint16,5125:np.uint32,5126:np.float32}
 NC = {'SCALAR':1,'VEC2':2,'VEC3':3,'VEC4':4}
@@ -20,9 +21,9 @@ mesh=g.meshes[0]; prims=mesh.primitives
 mname=lambda p: g.materials[p.material].name
 piles=sorted([p for p in prims if mname(p).startswith('pile_')], key=lambda p:int(mname(p).split('_')[1]))
 others=[p for p in prims if not mname(p).startswith('pile_')]
-assert len(piles) in (4,6), [mname(p) for p in prims]
-cols=2; rows=len(piles)//2
-T=min(1024, 2048//rows); W,H=cols*T,rows*T
+cols=COLS; assert len(piles) % cols == 0 and len(piles) >= cols, [mname(p) for p in prims]
+rows=len(piles)//cols
+T=min(1024, 2048//rows, 2048//cols); W,H=cols*T,rows*T
 atlas=Image.new('RGB',(W,H))
 P=[];N=[];UV=[];IDX=[];base=0
 for k,p in enumerate(piles):
