@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FAF7F2">
+<meta name="description" content="Maison Ora is a sample AR (Augmented Reality) catalogue of the kind ARQR360 builds for home decor stores. Every piece at true size, live in their own room, from one link or a QR code. No app to download, no setup on your side.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<title>AR for Decor Stores | Maison Ora Sample Decor Catalogue in True-to-Size AR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="i18n.js?v=99"></script>
+<style>
+  :root{
+    --page:#FAF7F2; --page-hi:#FDFBF7; --page-alt:#F4EFE5;
+    --ink:#191919; --ink-soft:#6E6A64; --line:#E4DED4;
+    /* every shop paints its own page */
+    --tone:#6E6BA8; --tone-soft:rgba(110,107,168,.12);
+    --tone-lo:#C8794F; --tone-hi:#7C3F22;
+    --f-head:"Archivo","Arial Black","Segoe UI",Impact,sans-serif;
+    --f-body:"Inter","Segoe UI",-apple-system,Helvetica,Arial,sans-serif;
+    --gutter:clamp(14px,3vw,48px);
+    --wrap:min(1320px, calc(100% - 2 * var(--gutter)));
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;height:100%}
+  /* A catalogue is a screen, not a page. The whole thing is one viewport tall
+     and the parts that can give — the product tiles — take whatever height
+     is left after the fixed furniture. Nothing here scrolls except the grid,
+     and that only on a screen too short to hold two rows. */
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--f-body);
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+    height:100svh;overflow:hidden;display:flex;flex-direction:column}
+  /* the faint drafting grid every ARQR page carries, behind the tiles */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(25,25,25,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(25,25,25,.045) 1px,transparent 1px);
+    background-size:44px 44px;background-position:center top}
+  img,svg{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button,select{font:inherit;color:inherit}
+
+  /* ---- the only ARQR chrome, and it says what it is ----
+     Light, like every other ARQR page, so the logo can sit in it: the old
+     strip was near-black and the lockup is black ink. Logo, then the line
+     saying this is a sample, then the way out, the language and the one
+     call to action, grouped at the end rather than spread across. */
+  .sbar{flex:none;position:relative;z-index:30;background:rgba(250,247,242,.96);
+    border-bottom:1px solid var(--line)}
+  .sbar-in{width:var(--wrap);margin:0 auto;min-height:64px;padding:8px 0;
+    display:flex;align-items:center;gap:10px 16px}
+  .sbar .logo{flex:none;display:block;line-height:0}
+  .sbar .logo img{display:block;height:40px;width:auto}
+  .sbar-note{flex:1 1 auto;min-width:0;margin:0;padding-inline-start:16px;
+    border-inline-start:1px solid var(--line);font-size:13px;line-height:1.4;color:var(--ink-soft)}
+  .sbar-note b{color:var(--ink);font-weight:600}
+  .sbar-act{flex:none;display:flex;align-items:center;gap:10px;margin-inline-start:auto}
+  .sbar-back,.sbar-cta{display:inline-flex;align-items:center;gap:7px;min-height:40px;
+    border-radius:100px;font-size:13.5px;font-weight:600;white-space:nowrap;
+    transition:border-color .2s ease,background .2s ease}
+  .sbar-back{padding:8px 14px 8px 11px;border:1px solid var(--line);background:#FFFDFA;color:var(--ink)}
+  .sbar-back:hover{border-color:var(--ink-soft)}
+  .sbar-back svg{width:15px;height:15px;flex:none}
+  [dir="rtl"] .sbar-back svg{transform:scaleX(-1)}
+  .sbar-cta{padding:8px 16px;background:var(--ink);color:#fff}
+  .sbar-cta:hover{background:#000}
+  .sbar [data-lang-slot] .lang{margin:0}
+  @media(max-width:1000px){
+    /* the sentence takes its own line under the controls */
+    .sbar-in{flex-wrap:wrap;min-height:0;padding:8px 0 7px}
+    .sbar-note{order:3;flex:0 0 100%;padding:0;border:0;font-size:12px}
+  }
+  @media(max-width:620px){
+    .sbar .logo img{height:32px}
+    .sbar-cta{display:none}
+    .sbar-back span{display:none}
+    .sbar-back{padding:8px 11px}
+    .sbar-note{font-size:11.5px}
+  }
+
+  /* ================= the two columns ================= */
+  .shell{flex:1;min-height:0;width:var(--wrap);margin:0 auto;
+    padding:clamp(12px,1.8vw,22px) 0 clamp(12px,1.6vw,20px);
+    display:grid;grid-template-columns:minmax(0,1.34fr) minmax(300px,.86fr);
+    gap:clamp(14px,1.8vw,28px);align-items:stretch;overflow:hidden}
+  .col{display:flex;flex-direction:column;min-height:0}
+
+  /* ---------------- left: the shop's products ---------------- */
+  .cats{flex:none;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .cats::-webkit-scrollbar{display:none}
+  .cats button{white-space:nowrap;cursor:pointer;border:1px solid var(--line);
+    background:var(--page-hi);border-radius:100px;padding:11px 20px;
+    font-size:14px;font-weight:500;color:var(--ink-soft);
+    transition:background .2s,color .2s,border-color .2s}
+  .cats button:hover{border-color:#CFC5B6;color:var(--ink)}
+  .cats button[aria-selected="true"]{background:var(--tone);border-color:var(--tone);
+    color:#FFF;font-weight:600}
+
+  .tools{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    margin:clamp(10px,1.3vw,15px) 0 0}
+  .sel{position:relative;display:inline-flex;align-items:center}
+  .sel select{appearance:none;-webkit-appearance:none;cursor:pointer;
+    border:1px solid var(--line);background:var(--page-hi);border-radius:12px;
+    padding:11px 40px 11px 16px;font-size:13.5px;font-weight:500;color:var(--ink);
+    transition:border-color .2s}
+  .sel select:hover{border-color:#CFC5B6}
+  .sel svg{position:absolute;inset-inline-end:14px;width:14px;height:14px;
+    pointer-events:none;color:var(--ink-soft)}
+
+  /* two rows that share whatever height is left; the tiles are sized by the
+     screen rather than by a fixed picture ratio */
+  .grid{flex:1;min-height:0;overflow:auto;scrollbar-width:none;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:clamp(10px,1.3vw,18px);margin:clamp(11px,1.4vw,18px) 0 0;padding:0;list-style:none}
+  .grid::-webkit-scrollbar{display:none}
+  @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  /* two across holds down to about a 340px phone; below that, one */
+  @media(max-width:339px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+  .prod{display:flex;flex-direction:column;min-height:0;background:var(--page-hi);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    transition:transform .3s cubic-bezier(.3,.8,.3,1),box-shadow .3s,border-color .3s}
+  .prod:hover{transform:translateY(-3px);border-color:#D9D0C2;
+    box-shadow:0 24px 44px -32px rgba(70,50,30,.6)}
+  .shot{position:relative;flex:1;min-height:64px;display:grid;place-items:center;overflow:hidden;
+    background:radial-gradient(120% 100% at 50% 0%,#FFFDFA 0%,var(--page-alt) 100%)}
+  .shot svg{width:54%;height:54%;display:block;color:#A99C89}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tag{position:absolute;top:11px;inset-inline-start:11px;z-index:2;
+    background:rgba(255,255,255,.94);border-radius:100px;padding:5px 11px;
+    font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft)}
+
+  .meta{flex:none;padding:11px 13px 0;min-width:0}
+  .pname{display:block;font-size:14.5px;font-weight:600;line-height:1.35;margin:0 0 5px}
+  .price{display:block;font-size:15px;font-weight:600;color:var(--tone)}
+  .dims{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-soft)}
+
+  .place{display:flex;align-items:center;justify-content:center;gap:8px;
+    width:calc(100% - 28px);margin:13px 14px 14px;cursor:pointer;
+    background:var(--tone);color:#FFF;border:0;border-radius:11px;padding:12px 10px;
+    font-size:13px;font-weight:600;text-align:center;line-height:1.35;min-height:40px;
+    transition:transform .18s ease,filter .18s ease}
+  .place svg{width:16px;height:16px;display:block;flex:none}
+  .place:hover{filter:brightness(1.07)}
+  .place:active{transform:scale(.98)}
+
+  /* ---- pages ---- */
+  /* one page means no pager, and an empty one still held its padding */
+  .pager:empty{display:none}
+  .pager{flex:none;display:flex;align-items:center;justify-content:center;gap:8px;
+    margin:clamp(11px,1.4vw,16px) 0 0}
+  .pager button{min-width:40px;height:40px;cursor:pointer;border:1px solid var(--line);
+    background:var(--page-hi);border-radius:12px;padding:0 12px;
+    font-size:14px;font-weight:600;color:var(--ink-soft);
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:background .2s,color .2s,border-color .2s}
+  .pager button:hover:not(:disabled){border-color:#CFC5B6;color:var(--ink)}
+  .pager button[aria-current="true"]{background:var(--tone);border-color:var(--tone);color:#FFF}
+  .pager button:disabled{opacity:.4;cursor:default}
+  .pager svg{width:15px;height:15px;display:block}
+  [dir="rtl"] .pager svg{transform:scaleX(-1)}
+
+  /* ---------------- right: the shop itself ---------------- */
+  /* The padding lives on the inner block, not here. An absolutely placed
+     child is positioned against the padding box, so with padding on .brand
+     an inset:0 photograph stopped short of the edges and left a border of
+     flat colour around it. */
+  .brand{position:relative;height:100%;min-height:0;
+    border-radius:clamp(18px,1.8vw,24px);overflow:hidden;
+    color:#FFF;display:flex;flex-direction:column;padding:0;
+    background:linear-gradient(158deg,var(--tone-lo) 0%,var(--tone) 46%,var(--tone-hi) 100%);
+    box-shadow:0 40px 70px -46px rgba(60,40,25,.75)}
+  .brand-in{position:relative;z-index:2;flex:none;min-width:0;
+    display:flex;flex-direction:column;gap:clamp(12px,1.6vh,20px);
+    padding:clamp(18px,2vw,28px)}
+  /* with no photograph the copy spreads over the whole panel instead */
+  .brand:not(.has-photo) .brand-in{flex:1;justify-content:space-between;
+    gap:clamp(18px,3vh,30px)}
+
+  /* A photograph takes a band of its own across the top rather than sitting
+     behind everything. Laying the copy over the picture meant the name and
+     headline landed a third of the way down, where any wash strong enough to
+     keep white text readable would have buried the photograph anyway. This
+     way the picture is seen at full strength and the words sit on solid
+     colour, which is also what the reference does. */
+  .brand-figure{position:relative;flex:1;min-height:0;overflow:hidden}
+  .brand-figure img{width:100%;height:100%;object-fit:cover;display:block}
+  /* the picture melts into the colour rather than stopping on a hard line */
+  .brand-figure::after{content:"";position:absolute;inset:auto 0 0;height:38%;
+    background:linear-gradient(to bottom,rgba(var(--tone-hi-rgb),0) 0%,
+      rgba(var(--tone-hi-rgb),.55) 62%,rgba(var(--tone-hi-rgb),1) 100%)}
+  .brand.has-photo{background:linear-gradient(180deg,
+    var(--tone-hi) 0%,var(--tone) 62%,var(--tone-hi) 100%)}
+
+  .brand-id{display:flex;align-items:center;gap:13px}
+  .brand-mark{flex:none;width:46px;height:46px;border-radius:13px;display:grid;
+    place-items:center;background:rgba(255,255,255,.16);color:#FFF;
+    backdrop-filter:blur(4px)}
+  .brand-mark svg{width:56%;height:56%;display:block}
+  .brand-name{font-family:var(--f-head);font-weight:800;letter-spacing:.1em;
+    text-transform:uppercase;font-size:clamp(15px,1.4vw,18px);line-height:1.1;margin:0}
+  .brand-tag{display:block;margin-top:5px;font-size:12px;color:rgba(255,255,255,.78)}
+
+  .brand-say h2{font-family:var(--f-head);font-weight:800;letter-spacing:-.022em;
+    font-size:clamp(24px,2.6vw,38px);line-height:1.04;margin:0}
+  .brand-say p{margin:10px 0 0;font-size:clamp(13px,.95vw,15px);line-height:1.55;
+    color:rgba(255,255,255,.86);max-width:34ch}
+
+  .brand-scan{flex:none;display:flex;align-items:center;gap:13px;
+    background:rgba(255,255,255,.13);border-radius:14px;padding:11px;
+    backdrop-filter:blur(6px)}
+  .brand-qr{flex:none;width:clamp(66px,5.4vw,80px);height:clamp(66px,5.4vw,80px);
+    background:#FFF;border-radius:11px;padding:5px}
+  .brand-qr img{width:100%;height:100%;display:block}
+  .brand-scan strong{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase}
+  .brand-scan span{display:block;margin-top:5px;font-size:12.5px;
+    color:rgba(255,255,255,.82);word-break:break-all}
+
+  /* ---------------- footer ---------------- */
+  .foot{flex:none;border-top:1px solid var(--line);background:var(--page-hi)}
+  .foot-in{width:var(--wrap);margin:0 auto;padding:10px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .foot-by{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft)}
+  .foot-by svg{width:19px;height:19px;display:block;color:#E0682A}
+  .foot-by b{font-family:var(--f-head);font-weight:800;letter-spacing:.07em;color:var(--ink)}
+  .foot-cta{flex:none;display:inline-flex;align-items:center;gap:8px;background:#E0682A;
+    color:#FFF;border-radius:100px;padding:10px 18px;font-size:13.5px;font-weight:600;
+    white-space:nowrap}
+  .foot-cta svg{width:15px;height:15px;display:block}
+  [dir="rtl"] .foot-cta svg,[dir="rtl"] .place svg{transform:scaleX(-1)}
+  .foot-note{width:var(--wrap);margin:0 auto;padding:0 0 12px;font-size:12px;color:var(--ink-soft)}
+  .foot-list{width:var(--wrap);margin:0 auto;padding:0 0 12px;font-size:12.5px;color:var(--ink-soft)}
+  .foot-list summary{cursor:pointer;font-weight:600;color:var(--ink)}
+  .foot-list ul{margin:8px 0 0;padding-left:18px}
+  .foot-list li{margin:2px 0}
+  .foot-guide{width:var(--wrap);margin:0 auto;padding:0 0 26px;font-size:13px;color:var(--ink-soft)}
+  .foot-guide a{color:inherit;font-weight:700}
+
+  /* ---------------- AR sheet ---------------- */
+  .ar{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:20px;
+    background:rgba(24,22,19,.62);backdrop-filter:blur(6px)}
+  .ar.open{display:grid}
+  .ar-box{width:min(420px,100%);background:var(--page-hi);border-radius:20px;
+    padding:clamp(22px,4vw,30px);text-align:center;position:relative;
+    box-shadow:0 40px 90px -40px rgba(20,16,12,.8)}
+  .ar-close{position:absolute;top:12px;inset-inline-end:12px;width:40px;height:40px;
+    cursor:pointer;border:0;border-radius:50%;background:var(--page-alt);
+    display:grid;place-items:center}
+  .ar-close svg{width:15px;height:15px;display:block}
+  .ar-shot{width:110px;height:110px;margin:0 auto 16px;border-radius:16px;
+    background:var(--page-alt);display:grid;place-items:center;color:#A99C89}
+  .ar-shot svg{width:56%;height:56%;display:block}
+  .ar-box h3{font-family:var(--f-head);font-weight:800;font-size:20px;margin:0 0 6px}
+  .ar-box p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+  .ar-qr{width:150px;margin:18px auto 0;background:#FFF;border:1px solid var(--line);
+    border-radius:14px;padding:8px}
+  .ar-qr img{display:block;width:100%}
+
+  /* ---------------- placing guide ---------------- */
+  /* Shown just before AR opens. Quick Look and Scene Viewer are the
+     system's own screens and nothing can be drawn on top of them, so the
+     one chance to tell someone how to place a piece is here, before the
+     handover. It is three steps because that is all anyone reads. */
+  /* On a short screen the three steps plus the button are taller than the
+     phone, and it was the button that fell off the bottom — the one thing
+     that must never happen. So the box is capped at the screen, the steps
+     scroll inside it, and the button is pinned below them. */
+  .guide-box{width:min(430px,100%);background:var(--page-hi);border-radius:22px;
+    padding:clamp(20px,4vw,26px);position:relative;text-align:start;
+    max-height:calc(100svh - 40px);display:flex;flex-direction:column;
+    box-shadow:0 40px 90px -40px rgba(20,16,12,.8)}
+  .guide-scroll{overflow-y:auto;min-height:0;margin-inline:-4px;padding-inline:4px}
+  .guide-go{flex:none}
+  .guide-box h3{font-family:var(--f-head);font-weight:800;font-size:20px;
+    margin:0 0 3px;text-align:center}
+  .guide-sub{margin:0 0 16px;text-align:center;color:var(--ink-soft);font-size:13.5px}
+
+  .step{display:flex;gap:13px;align-items:flex-start;padding:11px 0}
+  .step + .step{border-top:1px solid var(--line)}
+  .step-art{flex:none;width:52px;height:52px;border-radius:14px;
+    background:var(--page-alt);display:grid;place-items:center;color:var(--tone)}
+  .step-art svg{width:30px;height:30px;display:block}
+  .step b{display:block;font-family:var(--f-head);font-weight:700;font-size:14.5px;
+    margin-bottom:2px}
+  .step span{display:block;color:var(--ink-soft);font-size:13px;line-height:1.55}
+
+  /* the size line is the promise the whole product rests on, so it is
+     stated plainly rather than tucked into a step */
+  .guide-size{margin:14px 0 0;padding:11px 13px;border-radius:12px;
+    background:var(--tone-soft,rgba(0,0,0,.04));display:flex;gap:9px;align-items:center;
+    font-size:13px;line-height:1.5;color:var(--ink)}
+  .guide-size svg{flex:none;width:17px;height:17px;color:var(--tone)}
+  .guide-size b{font-weight:600;white-space:nowrap}
+
+  .guide-go{margin-top:16px;width:100%;border:0;cursor:pointer;border-radius:100px;
+    background:var(--tone);color:#FFF;font-family:var(--f-head);font-weight:700;
+    font-size:15.5px;padding:15px;display:flex;align-items:center;justify-content:center;gap:9px}
+  .guide-go svg{width:17px;height:17px;display:block}
+  .guide-skip{display:flex;align-items:center;justify-content:center;gap:8px;
+    margin:12px 0 0;color:var(--ink-soft);font-size:12.5px;cursor:pointer}
+  .guide-skip input{width:15px;height:15px;accent-color:var(--tone);cursor:pointer}
+
+  @media(max-width:420px){
+    .step-art{width:46px;height:46px;border-radius:12px}
+    .step-art svg{width:26px;height:26px}
+    .guide-box h3{font-size:18.5px}
+  }
+  @media(max-height:700px){
+    .step{padding:8px 0}
+    .guide-sub{margin-bottom:10px}
+    .guide-size{margin-top:10px;padding:9px 11px}
+    .guide-go{margin-top:11px;padding:13px}
+    .guide-skip{margin-top:9px}
+  }
+
+  /* This sits below the .brand rules on purpose. A media query adds no
+     specificity, so a plain .brand further down the sheet would beat it —
+     which is exactly what was happening: height:100% won and the banner
+     kept its full-panel height, squeezing the tiles to nothing. */
+  @media(max-width:1000px){
+    .shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+    .brand{order:-1}
+
+    /* Stacked, the panel cannot keep a whole portrait — that plus six tiles
+       is more than a phone screen holds. It becomes a banner instead: the
+       photograph fills it, the name and headline sit over the dark end. */
+    /* height comes from the grid row now, not from a guess */
+    .brand-figure{position:absolute;inset:0;flex:none}
+    .brand-figure::after{inset:0;height:100%;
+      background:linear-gradient(180deg,rgba(var(--tone-hi-rgb),.18) 0%,
+        rgba(var(--tone-hi-rgb),.58) 46%,rgba(var(--tone-hi-rgb),.95) 100%)}
+    .brand-in,.brand:not(.has-photo) .brand-in{position:relative;flex:1;
+      justify-content:flex-end;gap:9px;padding:14px 17px}
+    .brand-say p{display:none}
+    /* the code is for someone who is not holding the phone yet */
+    .brand-scan{display:none}
+    .brand-say h2{font-size:clamp(20px,4.4vw,27px)}
+    .brand-id{gap:11px}
+    .brand-mark{width:36px;height:36px;border-radius:11px}
+    .brand-name{font-size:13.5px}
+    .brand-tag{display:none}
+  }
+
+  /* Short screens: the words and the button give up a few pixels each so the
+     picture is not left on its 64px floor. Keyed to height, because a 1280x720
+     desktop is as tight vertically as a phone. */
+  @media(max-height:820px){
+    .meta{padding:9px 11px 0}
+    .pname{font-size:13.5px;margin-bottom:3px}
+    .price{font-size:13.5px}
+    .dims{font-size:11.5px;margin-top:2px}
+    .place{margin:9px 11px 10px;padding:10px 8px;font-size:12.5px}
+    .cats button{padding:9px 16px}
+    .brand-in{padding:clamp(14px,1.6vw,22px)}
+  }
+
+  /* ---------------- phone ---------------- */
+  @media(max-width:700px){
+
+    .brand{border-radius:15px}
+
+    .cats{gap:7px}
+    .cats button{padding:9px 15px;font-size:13px}
+    .tools{margin-top:10px}
+    .sel select{padding:9px 34px 9px 13px;font-size:12.5px}
+    .grid{gap:9px;margin-top:10px}
+    /* every pixel out of the words here goes to the picture, which is the
+       part that has to carry the product */
+    .meta{padding:7px 10px 0}
+    .pname,.price{font-size:13px;line-height:1.3}
+    .pname{margin-bottom:2px}
+    .dims{font-size:11.5px;margin-top:2px;line-height:1.3}
+    /* the picture may go smaller here than on a desktop; better a short
+       strip than a tile whose button gets trimmed off the bottom */
+    .shot{min-height:50px}
+  }
+
+  @media(max-width:760px){
+    /* One row on a phone. Four tiles plus the banner in 812px left the
+       picture a 54px strip, which reads as broken rather than compact.
+
+       Four tiles to a phone screen is a tight budget, so everything that is
+       not the photograph is trimmed here: the banner, the words on the tile
+       and the button all give up a few pixels each, and all of it goes to
+       the picture, which is the only part carrying the product. */
+    /* Four to a page, two by two. The rows share the box between them on a
+       normal phone, so the page fits with nothing cut off.
+
+       The floor of 168px is what stops a short screen from doing what it did
+       before: with plain 1fr rows a 640-tall phone squeezed each tile to
+       104px and the photograph inside it to two, which is not a smaller
+       tile, it is a broken one. Below that height the four still stand at
+       full size and a short screen scrolls a little instead. */
+    .grid{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+      grid-template-rows:repeat(2,minmax(168px,1fr));
+      grid-auto-rows:minmax(168px,auto)}
+    /* and the picture keeps a floor of its own, whatever happens above it */
+    .shot{min-height:72px}
+    /* the picture takes whatever the row has left after the name, the price
+       and the button, rather than claiming a fixed shape and pushing the
+       button off the tile */
+    .shot{flex:1;aspect-ratio:auto}
+    /* the banner takes what it needs and the products take the rest */
+    .shell{grid-template-rows:auto minmax(0,1fr)}
+    .brand{height:auto;min-height:84px}
+    .col{min-height:0}
+    .grid{gap:8px;margin-top:8px}
+    /* still a 44px target, which is the floor for a thumb, but without the
+       margins it was carrying on a screen this size */
+    .place{width:calc(100% - 16px);margin:6px 8px 8px;padding:8px 6px;
+      font-size:12.5px;min-height:44px;border-radius:9px}
+    /* price and size share a line here. On a desktop they are stacked and
+       have the room for it; on a phone showing four tiles that third line
+       costs the photograph fourteen pixels it cannot spare, and the two of
+       them read perfectly well side by side. */
+    .meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 6px;padding:5px 9px 0}
+    .pname{flex:0 0 100%;font-size:12.5px;line-height:1.25;margin-bottom:1px}
+    .price{font-size:12.5px;line-height:1.2}
+    .dims{font-size:11px;margin-top:0;line-height:1.2}
+    .dims::before{content:'·';margin-inline-end:6px;color:var(--ink-soft);opacity:.6}
+    .pager{padding-top:8px}
+    .pager button{min-width:34px;height:34px}
+    /* a column here would cost 60px of a screen that has none to spare */
+    .foot-in{padding:6px 0;gap:10px}
+    .foot-by{font-size:11.5px}
+    .foot-cta{padding:9px 14px;font-size:12.5px}
+  }
+  /* A tablet is a touch screen at desktop width, so this is keyed to the
+     absence of a mouse rather than to a breakpoint — the width rules above
+     were leaving it a 19px target on anything wider than a phone. */
+  @media(hover:none){
+  }
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+  <!-- seo:start | Maison Ora page: hand-maintained, mirrors seo.js output for this shop only -->
+  <link rel="canonical" href="https://arqr360.com/maison">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARQR">
+  <meta property="og:title" content="AR for Decor Stores | Maison Ora Sample Decor Catalogue in True-to-Size AR">
+  <meta property="og:description" content="Maison Ora is a sample AR (Augmented Reality) catalogue of the kind ARQR360 builds for home decor stores. Every piece at true size, live in their own room, from one link or a QR code. No app to download, no setup on your side.">
+  <meta property="og:url" content="https://arqr360.com/maison">
+  <meta property="og:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AR for Decor Stores | Maison Ora Sample Decor Catalogue in True-to-Size AR">
+  <meta name="twitter:description" content="Maison Ora is a sample AR (Augmented Reality) catalogue of the kind ARQR360 builds for home decor stores. Every piece at true size, live in their own room, from one link or a QR code. No app to download, no setup on your side.">
+  <meta name="twitter:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
+
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#E0682A">
+  <!-- seo:end -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Maison Ora decor catalogue",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Cat Statue",
+          "description": "Objects, 30 × 12 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "640",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Ding Censer With An Openwork Cover",
+          "description": "Lighting, H 27 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "410",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Egyptian Cat Statue",
+          "description": "Objects, H 96 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "730",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Ibex Statue Berlin Tierpark",
+          "description": "Objects, H 200 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "420",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Product",
+          "name": "Lamp Marble Base",
+          "description": "Lighting, H 45 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "740",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Product",
+          "name": "Painting Rembrandt Landscape",
+          "description": "Wall, 52 × 37 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "490",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Product",
+          "name": "Plant Interior Decoration",
+          "description": "Objects, H 38 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "540",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Product",
+          "name": "Table Lamp",
+          "description": "Lighting, H 74 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "620",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Product",
+          "name": "Table Lamp Free",
+          "description": "Lighting, H 45 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "480",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "Product",
+          "name": "Torsion Pendulum Clock",
+          "description": "Wall, H 27 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "170",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@type": "Product",
+          "name": "Victorian Framed Painting",
+          "description": "Wall, 114 × 84 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "550",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@type": "Product",
+          "name": "Vintage Painting Dani",
+          "description": "Wall, 65 × 89 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "690",
+            "priceCurrency": "USD"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "item": {
+          "@type": "Product",
+          "name": "Wall Decor Photoframe",
+          "description": "Wall, 35 × 41 cm",
+          "offers": {
+            "@type": "Offer",
+            "price": "260",
+            "priceCurrency": "USD"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+<script src="https://thegenieofmarketing.vercel.app/api/embed?k=ZjQwMGEzM2ItNWUzNC00YjAxLWIwOTYtN2RjMTVhNzdjNDZl.ca7a6f7fc248e2e874dd" async></script>
+<link rel="stylesheet" href="exit-offer.css?v=7">
+<script src="/assets/ar-android.js"></script>
+</head>
+<body>
+<script src="sprite.js?v=99"></script>
+
+<header class="sbar">
+  <div class="sbar-in">
+    <a class="logo" href="/">
+      <!-- logo:start, generated by logo-write.js -->
+      <img class="logo-full" src="assets/logo-bar.png?v=99" width="421" height="260" alt="ARQR360" decoding="async">
+      <!-- logo:end -->
+    </a>
+    <p class="sbar-note"><b>Sample catalogue.</b> A demo built by ARQR — we don't sell these products.</p>
+    <div class="sbar-act">
+      <a class="sbar-back" href="catalogue">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Sample catalogues</span>
+      </a>
+      <span data-lang-slot></span>
+      <a class="sbar-cta" href="/#f-name">Get your catalogue</a>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+
+  <div class="col">
+    <div class="cats" id="cats" role="tablist" aria-label="Product categories"></div>
+
+    <div class="tools">
+      <span class="sel">
+        <select id="sort" aria-label="Sort by"></select>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+
+    <ul class="grid" id="grid"></ul>
+    <nav class="pager" id="pager" aria-label="Pages"></nav>
+  </div>
+
+  <aside class="brand" id="brand">
+    <div class="brand-in">
+
+    <div class="brand-id">
+      <span class="brand-mark"><svg viewBox="0 0 27 24"><use id="shopMark" href="#mk-maison"></use></svg></span>
+      <div>
+        <h1 class="brand-name" id="shopName">Maison Ora</h1>
+        <span class="brand-tag" id="shopTag">Lighting, mirrors and objects</span>
+      </div>
+    </div>
+
+    <div class="brand-say">
+      <h2 id="lead">The last thing you furnish is the wall</h2>
+      <p id="sub">Hang it, stand it, light it, all before you buy it.</p>
+    </div>
+
+    <div class="brand-scan">
+      <span class="brand-qr"><img id="scanQr" src="assets/qr-maison.svg?v=99" alt=""></span>
+      <div>
+        <strong id="scanTitle">Scan to explore</strong>
+        <span id="scanUrl"></span>
+      </div>
+    </div>
+
+    </div>
+  </aside>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span class="foot-by">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span class="foot-txt">AR catalogue by <b>ARQR</b></span>
+    </span>
+    <a class="foot-cta" href="/#f-name">Apply for your own catalogue
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <p class="foot-note">ARQR360 is a 100% digital service. No physical goods are sold or shipped.</p>
+  <p class="foot-note">Maison Ora is a sample decor catalogue built by ARQR360. Lighting, mirrors and objects, every piece shown at its true size in your own room through your phone camera. Point your phone at the wall or the shelf and see the Cat Statue, the Ding Censer, the lamps and the framed paintings where they would actually live, before you buy.</p>
+  <details class="foot-list"><summary>All 13 pieces in this catalogue</summary><ul><li>Cat Statue, $640, 30 × 12 cm</li><li>Ding Censer With An Openwork Cover, $410, H 27 cm</li><li>Egyptian Cat Statue, $730, H 96 cm</li><li>Ibex Statue Berlin Tierpark, $420, H 200 cm</li><li>Lamp Marble Base, $740, H 45 cm</li><li>Painting Rembrandt Landscape, $490, 52 × 37 cm</li><li>Plant Interior Decoration, $540, H 38 cm</li><li>Table Lamp, $620, H 74 cm</li><li>Table Lamp Free, $480, H 45 cm</li><li>Torsion Pendulum Clock, $170, H 27 cm</li><li>Victorian Framed Painting, $550, 114 × 84 cm</li><li>Vintage Painting Dani, $690, 65 × 89 cm</li><li>Wall Decor Photoframe, $260, 35 × 41 cm</li></ul></details>
+  <p class="foot-guide" id="shopGuide" hidden>Running a rug store? Read <a href="/blog/how-rug-stores-cut-size-returns-with-ar">how rug stores cut size returns with AR</a> and what it takes to get views like these on your own rugs.</p>
+</footer>
+
+<div class="ar" id="ar" role="dialog" aria-modal="true" aria-labelledby="arTitle">
+  <div class="ar-box">
+    <button class="ar-close" id="arClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="ar-shot"><svg viewBox="0 0 48 48"><use id="arIcon" href="#ic-object"></use></svg></div>
+    <h3 id="arTitle"></h3>
+    <p id="arText"></p>
+    <div class="ar-qr" id="arQr"><img id="arQrImg" src="assets/qr-maison.svg?v=99" alt=""></div>
+  </div>
+</div>
+
+<div class="ar" id="guide" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+  <div class="guide-box">
+    <button class="ar-close" id="guideClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+    <h3 id="guideTitle">Before you place it</h3>
+    <p class="guide-sub" id="guideSub">Three things and you are done</p>
+
+    <div class="guide-scroll">
+    <div class="step">
+      <span class="step-art" aria-hidden="true">
+        <!-- a phone tilted at the floor, with the ground marked out -->
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="7" y="2.5" width="12" height="19" rx="2.6" transform="rotate(-18 13 12)"/>
+          <path d="M11.2 5.6l3.6-1.2"/>
+          <path d="M3 27.5h26" stroke-dasharray="3 3"/>
+          <ellipse cx="21.5" cy="24.6" rx="6.4" ry="2.4"/>
+          <circle cx="21.5" cy="24.6" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <div><b id="guideS1">Point the camera at the floor</b>
+      <span id="guideS1b">Move the phone slowly so it can find the floor.</span></div>
+    </div>
+
+    <div class="step">
+      <span class="step-art" aria-hidden="true">
+        <!-- android really does show a marker to tap; ios does not, so it
+             gets a finger sliding the piece instead of a reticle it will
+             never see -->
+        <svg id="artTap" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+          <ellipse cx="16" cy="19" rx="10.5" ry="5"/>
+          <circle cx="16" cy="19" r="1.6" fill="currentColor" stroke="none"/>
+          <path d="M16 6.5v4.2M16 27.5v-3.6M4 19h3.4M28 19h-3.4"/>
+        </svg>
+        <svg id="artDrag" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <ellipse cx="16" cy="24" rx="11" ry="4"/>
+          <path d="M6.5 24h-3M28.5 24h-3M16 3.5v3"/>
+          <path d="M13.4 19.6v-6.1a1.35 1.35 0 0 1 2.7 0v-1.4a1.35 1.35 0 0 1 2.7 0v1.4a1.35 1.35 0 0 1 2.7 0v4.2c0 2.4-1.7 4.1-4.1 4.1h-1.2c-1.6 0-2.3-.7-3.2-1.9l-1.7-2.3a1.3 1.3 0 0 1 2-1.6z" fill="var(--page-hi)"/>
+        </svg>
+      </span>
+      <div><b id="guideS2">Tap to place it</b>
+      <span id="guideS2b">Tap where you want it, then drag with one finger to move it.</span></div>
+    </div>
+
+    <div class="step">
+      <span class="step-art" aria-hidden="true">
+        <!-- two fingers, and the turn they make -->
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M25.6 9.4a11 11 0 1 0 2 6.4"/>
+          <path d="M22.2 5.6l3.9 3.5-4.3 2.6"/>
+          <path d="M12.4 22.4v-6.1a1.35 1.35 0 0 1 2.7 0v-1.5a1.35 1.35 0 0 1 2.7 0v1.5a1.35 1.35 0 0 1 2.7 0v4.3c0 2.4-1.7 4.1-4.1 4.1h-1.3c-1.6 0-2.3-.7-3.2-1.9l-1.7-2.3a1.3 1.3 0 0 1 2-1.6z" fill="var(--page-hi)"/>
+        </svg>
+      </span>
+      <div><b id="guideS3">Turn it with two fingers</b>
+      <span id="guideS3b">Twist two fingers to face it the way you want.</span></div>
+    </div>
+
+    <p class="guide-size">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
+      <span id="guideSize"></span>
+    </p>
+    </div>
+
+    <button class="guide-go" id="guideGo" type="button">
+      <span id="guideGoText">Place it in my room</span>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <label class="guide-skip"><input type="checkbox" id="guideSkip"><span id="guideSkipText">Do not show this again</span></label>
+  </div>
+</div>
+
+<script src="stores.js?v=99"></script>
+<script>
+var V = '?v=99';
+var STORES = window.ARQR_STORES;
+/* A page of the catalogue: six on a desktop, three across and two down, and
+   four on a phone, two by two. Two at a time was too few to browse and the
+   whole range at once made the tiles too small to read, so four is the
+   number that fills a phone screen with tiles you can still see. */
+function perPage(){
+  return matchMedia('(max-width:760px)').matches ? 4 : 6;
+}
+
+/* Which shop is this? The address is the shop's own — /novara, /corso — and
+   a rewrite serves this one file for all of them. The query and hash forms
+   are only so the page can be opened straight off the filesystem. */
+function pick(){
+  var path = location.pathname.replace(/\/+$/,'').split('/').pop().replace(/\.html$/,'');
+  var q = new URLSearchParams(location.search).get('s');
+  var h = (location.hash || '').replace('#','');
+  var want = q || h || path;
+  for (var i = 0; i < STORES.length; i++) if (STORES[i].slug === want) return STORES[i];
+  return STORES[0];
+}
+var shop = pick(), cat = 'All', page = 1, order = 'featured';
+
+/* the shop list is data, so it is translated on the way in — shop and
+   product names stay put, because a brand name is not a word to translate */
+var t = function (x){ return window.ARQR_I18N ? ARQR_I18N.s(x) : x; };
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function num(p){ return parseFloat(String(p).replace(/[^0-9.]/g,'')) || 0; }
+
+function mix(hex, to, amt){
+  var m = hex.replace('#',''), o = to.replace('#','');
+  var out = '#';
+  for (var i = 0; i < 3; i++){
+    var a = parseInt(m.substr(i*2,2),16), b = parseInt(o.substr(i*2,2),16);
+    var v = Math.round(a + (b - a) * amt);
+    out += ('0' + v.toString(16)).slice(-2);
+  }
+  return out;
+}
+function channels(hex){
+  var m = hex.replace('#','');
+  return parseInt(m.slice(0,2),16) + ',' + parseInt(m.slice(2,4),16) + ',' + parseInt(m.slice(4,6),16);
+}
+function rgba(hex, a){ return 'rgba(' + channels(hex) + ',' + a + ')'; }
+
+/* ---------------- dress the page in the shop's identity ---------------- */
+var root = document.documentElement.style;
+root.setProperty('--tone', shop.tone);
+root.setProperty('--tone-soft', rgba(shop.tone, .12));
+root.setProperty('--tone-lo', mix(shop.tone, '#FFFFFF', .18));
+root.setProperty('--tone-hi', mix(shop.tone, '#000000', .42));
+root.setProperty('--tone-hi-rgb', channels(mix(shop.tone, '#000000', .42)));
+
+document.title = shop.seoTitle || (shop.name + ' | AR catalogue');
+document.querySelector('meta[name=theme-color]').setAttribute('content', shop.tone);
+document.querySelector('meta[name=description]')
+  .setAttribute('content', shop.seoDesc || (shop.name + '. ' + shop.tagline + '. Every product at true size, in your own space.'));
+var guideEl = document.getElementById('shopGuide');
+if (guideEl && shop.guide) {
+  if (shop.guideUrl) guideEl.innerHTML = shop.guideLead + ' Read <a href="' + shop.guideUrl + '">' + shop.guideAnchor + '</a> ' + shop.guideTail;
+  guideEl.hidden = false;
+}
+document.getElementById('shopMark').setAttribute('href', '#' + shop.mark);
+document.getElementById('shopName').textContent = shop.name;
+document.getElementById('shopTag').textContent = t(shop.tagline);
+document.getElementById('lead').textContent = t(shop.lead);
+document.getElementById('sub').textContent = t(shop.sub);
+document.getElementById('scanTitle').textContent = t('Scan to explore');
+document.getElementById('scanUrl').textContent = (location.host || 'arqr360.com') + '/' + shop.slug;
+document.getElementById('scanQr').src = 'assets/qr-' + shop.slug + '.svg' + V;
+document.getElementById('scanQr').alt = shop.name + ' catalogue code';
+document.getElementById('arQrImg').src = 'assets/qr-' + shop.slug + '.svg' + V;
+
+/* A portrait photograph is optional. It is probed off to the side and only
+   hung behind the panel once it has loaded, so a shop without one keeps the
+   plain colour wash rather than showing a gap. Drop a file at
+   assets/hero-<slug>.webp and it appears by itself. */
+(function () {
+  var probe = new Image();
+  probe.onload = function(){
+    probe.alt = '';
+    var b = document.getElementById('brand');
+    var fig = document.createElement('div');
+    fig.className = 'brand-figure';
+    fig.appendChild(probe);
+    b.insertBefore(fig, b.firstChild);
+    b.classList.add('has-photo');
+  };
+  probe.src = 'assets/hero-' + shop.slug + '.webp' + V;
+})();
+
+/* ---------------- categories ---------------- */
+var catsEl = document.getElementById('cats');
+catsEl.innerHTML = shop.cats.map(function(c){
+  return '<button type="button" role="tab" data-cat="' + esc(c) + '" aria-selected="' +
+         (c === cat) + '">' + esc(t(c)) + '</button>';
+}).join('');
+[].forEach.call(catsEl.children, function(b){
+  b.addEventListener('click', function(){
+    cat = b.dataset.cat; page = 1;
+    [].forEach.call(catsEl.children, function(x){
+      x.setAttribute('aria-selected', String(x.dataset.cat === cat));
+    });
+    render();
+  });
+});
+
+/* ---------------- sort ---------------- */
+var SORTS = [
+  ['featured', 'Featured'],
+  ['low',      'Price: low to high'],
+  ['high',     'Price: high to low']
+];
+var sortEl = document.getElementById('sort');
+sortEl.innerHTML = SORTS.map(function(s){
+  return '<option value="' + s[0] + '">' + esc(t(s[1])) + '</option>';
+}).join('');
+sortEl.addEventListener('change', function(){ order = sortEl.value; page = 1; render(); });
+
+/* ---------------- products ---------------- */
+var gridEl = document.getElementById('grid');
+var pagerEl = document.getElementById('pager');
+
+function selection(){
+  var list = shop.items.filter(function(it){ return cat === 'All' || it.c === cat; });
+  if (order === 'low')  list = list.slice().sort(function(a,b){ return num(a.p) - num(b.p); });
+  if (order === 'high') list = list.slice().sort(function(a,b){ return num(b.p) - num(a.p); });
+  return list;
+}
+
+function render(){
+  var list = selection();
+  var per = perPage();
+  var pages = Math.max(1, Math.ceil(list.length / per));
+  if (page > pages) page = pages;
+  var slice = list.slice((page - 1) * per, page * per);
+
+  gridEl.innerHTML = slice.map(function(it){
+    return '<li class="prod">' +
+      '<div class="shot">' +
+        (it.tag ? '<span class="tag">' + esc(t(it.tag)) + '</span>' : '') +
+        '<svg viewBox="0 0 48 48"><use href="#' + it.i + '"></use></svg>' +
+      '</div>' +
+      '<div class="meta">' +
+        '<span class="pname">' + esc(it.n) + '</span>' +
+        '<span class="price">' + esc(it.p) + '</span>' +
+        '<span class="dims">' + esc(it.d) + '</span>' +
+      '</div>' +
+      '<button class="place" type="button" data-k="' + shop.items.indexOf(it) + '">' +
+        '<svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>' +
+        esc(t(shop.cta)) + '</button>' +
+    '</li>';
+  }).join('');
+
+  [].forEach.call(gridEl.querySelectorAll('.place'), function(b){
+    b.addEventListener('click', function(){ place(shop.items[+b.dataset.k]); });
+  });
+
+  /* the product photograph, which covers the line art once it loads */
+  [].forEach.call(gridEl.querySelectorAll('.shot'), function(shot, k){
+    var it = slice[k], probe = new Image();
+    probe.onload = function(){ probe.alt = it.n; shot.appendChild(probe); };
+    probe.src = 'assets/shops/' + shop.slug + '/' + it.f + '.webp' + V;
+  });
+
+  /* pages only exist when there is more than one — no decorative pagination */
+  if (pages < 2){ pagerEl.innerHTML = ''; return; }
+  var arrow = '<svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var html = '<button type="button" data-go="prev"' + (page === 1 ? ' disabled' : '') +
+             ' aria-label="' + esc(t('Previous')) + '" style="transform:scaleX(-1)">' + arrow + '</button>';
+  for (var i = 1; i <= pages; i++)
+    html += '<button type="button" data-go="' + i + '" aria-current="' + (i === page) + '">' + i + '</button>';
+  html += '<button type="button" data-go="next"' + (page === pages ? ' disabled' : '') +
+          ' aria-label="' + esc(t('Next')) + '">' + arrow + '</button>';
+  pagerEl.innerHTML = html;
+
+  [].forEach.call(pagerEl.children, function(b){
+    b.addEventListener('click', function(){
+      var g = b.dataset.go;
+      page = g === 'prev' ? page - 1 : g === 'next' ? page + 1 : +g;
+      render();
+      gridEl.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+  });
+}
+
+/* ---------------- launching AR ---------------- */
+var arEl = document.getElementById('ar');
+var ua = navigator.userAgent || '';
+var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+var isAndroid = /Android/.test(ua);
+
+/* Hands the model to the phone's own AR viewer, with its size locked.
+
+   The whole promise here is that a customer sees the piece at the size it
+   really is, so both viewers are told not to let it be pinched larger or
+   smaller. On iOS that is Quick Look's allowsContentScaling flag; on
+   Android it is Scene Viewer's resizable. Without them a sofa can be
+   thumbed down to the size of a cushion and the catalogue has said nothing
+   true about it. On Android that lock is model-viewer's fixed AR scale. */
+/* AR engagement tracking: Vercel custom events so we can see taps on
+   "View in AR" and real AR launches. Read in the Vercel dashboard under
+   Analytics > Events. */
+function arqrTrack(n){
+  try { if (window.va) window.va('event', { name: n }); } catch (e) {}
+}
+function launch(it){
+  if (isIOS && it.usdz){
+    var a = document.createElement('a');
+    a.setAttribute('rel','ar');
+    a.href = it.usdz + '#allowsContentScaling=0';
+    a.appendChild(document.createElement('img'));
+    document.body.appendChild(a); a.click(); a.remove();
+    arqrTrack('arqr_ar_launch');
+    return true;
+  }
+  if (isAndroid && it.glb){
+    // WebXR in Chrome first, then Scene Viewer, then a message: /assets/ar-android.js
+    // (a wall piece goes on the wall; the size stays locked either way)
+    ARQRAndroidAR.open(it.glb, { title: it.n, wall: !!it.wall });
+    arqrTrack('arqr_ar_launch');
+    return true;
+  }
+  return false;
+}
+
+/* localStorage throws outright in some embedded views rather than just
+   coming back empty, so every touch of it is guarded and the guide simply
+   shows when the answer is not available. */
+function seen(){
+  try { return localStorage.getItem('arqr-guide') === 'off'; } catch (e) { return false; }
+}
+function remember(){
+  try { localStorage.setItem('arqr-guide', 'off'); } catch (e) {}
+}
+
+var pending = null;
+
+function place(it){
+  var canAr = (isIOS && it.usdz) || (isAndroid && it.glb);
+  // Android: start loading this piece now, so it is ready by the time the guide is read
+  if (isAndroid && it.glb && window.ARQRAndroidAR) ARQRAndroidAR.prepare(it.glb, { title: it.n, wall: !!it.wall });
+  if (canAr) arqrTrack('arqr_ar_tap');
+  if (canAr && !seen()){ showGuide(it); return; }
+  if (canAr){ launch(it); return; }
+  showSheet(it);
+}
+
+function showGuide(it){
+  pending = it;
+  var wall = !!it.wall;
+  var g = function(id){ return document.getElementById(id); };
+
+  /* a picture on a wall is found by pointing at the wall, not the floor,
+     and the usdz for those carries a vertical anchor to match */
+  g('guideS1').textContent  = wall ? t('Point the camera at the wall')
+                                   : t('Point the camera at the floor');
+  g('guideS1b').textContent = wall
+    ? t('Move the phone slowly across the wall so it can find it.')
+    : t('Move the phone slowly so it can find the floor.');
+
+  /* The two viewers do genuinely different things here, and saying the
+     wrong one is worse than saying nothing: Quick Look drops the piece the
+     moment it finds a surface and never shows anything to tap, while Scene
+     Viewer puts a marker down and waits for you. */
+  g('guideS2').textContent  = isIOS ? t('It places itself') : t('Tap to place it');
+  g('guideS2b').textContent = !isIOS
+    ? t('Tap where you want it, then drag with one finger to move it.')
+    : wall ? t('The picture appears as soon as the wall is found. Drag it with one finger to move it.')
+           : t('The piece appears as soon as the floor is found. Drag it with one finger to move it.');
+  g('artTap').style.display  = isIOS ? 'none' : 'block';
+  g('artDrag').style.display = isIOS ? 'block' : 'none';
+
+  g('guideS3b').textContent = t('Twist two fingers to face it the way you want.') +
+    (isIOS ? ' ' + t('Double-tap it to face front again.') : '');
+  /* a middle dot rather than a full stop: the two halves are separate
+     sentences in every language, and a Latin '.' sits badly between two
+     Chinese clauses */
+  g('guideSize').innerHTML = t('Shown at its real size') + ': <b>' + esc(it.d) +
+    '</b> · ' + t('Pinching will not make it bigger or smaller.');
+  guideEl.classList.add('open');
+}
+
+function showSheet(it){
+  document.getElementById('arIcon').setAttribute('href', '#' + it.i);
+  document.getElementById('arTitle').textContent = it.n;
+  document.getElementById('arText').innerHTML = (isIOS || isAndroid)
+    ? 'This sample has no 3D file for <strong>' + esc(it.n) + '</strong> yet. On ' +
+      esc(shop.name) + "'s live catalogue this button opens your camera and puts it in front of you at " +
+      esc(it.d) + '.'
+    : 'AR opens on a phone. Scan this code with your camera to load ' + esc(shop.name) +
+      "'s catalogue on your phone, then tap <strong>" + esc(t(shop.cta)) + '</strong>.';
+  document.getElementById('arQr').style.display = (isIOS || isAndroid) ? 'none' : 'block';
+  arEl.classList.add('open');
+}
+function shut(){ arEl.classList.remove('open'); }
+document.getElementById('arClose').addEventListener('click', shut);
+arEl.addEventListener('click', function(e){ if (e.target === arEl) shut(); });
+
+var guideEl = document.getElementById('guide');
+function shutGuide(){ guideEl.classList.remove('open'); pending = null; }
+document.getElementById('guideClose').addEventListener('click', shutGuide);
+guideEl.addEventListener('click', function(e){ if (e.target === guideEl) shutGuide(); });
+document.getElementById('guideGo').addEventListener('click', function(){
+  var it = pending;
+  if (document.getElementById('guideSkip').checked) remember();
+  guideEl.classList.remove('open');
+  pending = null;
+  if (it) launch(it);
+});
+
+addEventListener('keydown', function(e){ if (e.key === 'Escape'){ shut(); shutGuide(); } });
+
+render();
+
+/* turning the phone, or dragging a window wider, changes how many tiles fit */
+var reflow;
+addEventListener('resize', function(){
+  clearTimeout(reflow);
+  reflow = setTimeout(render, 150);
+});
+</script>
+<script>ARQR_I18N.apply();</script>
+<script>
+/* Maison Ora has its own file now, so the canonical and the share tags
+   are static above. This script keeps them in step with the shop data
+   and is the same rendering pass that already sets the title. */
+(function (){
+  var s = (window.ARQR_STORES || []).filter(function (x){
+    var p = location.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html$/, '');
+    return x.slug === (new URLSearchParams(location.search).get('s') ||
+                       (location.hash || '').replace('#', '') || p);
+  })[0];
+  if (!s) return;
+  /* the page's own origin, not a host written down here: this is what a
+     move to a real domain used to mean editing, and now does not */
+  var url = location.origin + '/' + s.slug;
+  var set = function (sel, attr, val){
+    var el = document.head.querySelector(sel);
+    if (el) el.setAttribute(attr, val);
+  };
+  set('link[rel="canonical"]', 'href', url);
+  set('meta[property="og:url"]', 'content', url);
+  set('meta[property="og:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
+  set('meta[name="twitter:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
+  if (s.seoDesc){
+    set('meta[property="og:description"]', 'content', s.seoDesc);
+    set('meta[name="twitter:description"]', 'content', s.seoDesc);
+  }
+})();
+</script>
+<!-- Vercel Web Analytics (visitors, countries, referrers; enable in Vercel dashboard > Analytics) -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="exit-offer.js?v=6" defer></script>
+</body>
+</html>

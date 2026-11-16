@@ -32,7 +32,7 @@
     },
     {
       "source": "/maison",
-      "destination": "/store"
+      "destination": "/maison"
     },
     {
       "source": "/terra",
