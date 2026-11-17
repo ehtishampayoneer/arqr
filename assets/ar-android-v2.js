@@ -399,7 +399,7 @@
   // C. the last resort on any phone: the rug in 3D right here (turn it, zoom), no AR needed
   function offer3D(url) {
     var p = parts(url || lastUrl);
-    showBar('The room view isn’t working on this phone right now. You can still see the rug in 3D here.', true, 'See it in 3D', function () {
+    showBar('The room view isn’t working on this phone right now. You can still see it in 3D here.', true, 'See it in 3D', function () {
       hideBar(); report('t3-3d-open');
       loadViewer().then(function () {
         var box = document.getElementById('arqr3d');
@@ -409,7 +409,7 @@
           box.style.cssText = 'position:fixed;inset:0;z-index:2147483001;background:#f4f1ec;display:flex;flex-direction:column';
           var top = document.createElement('div');
           top.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font:600 15px system-ui,sans-serif;color:#1d1b19';
-          top.textContent = p.title || 'The rug in 3D';
+          top.textContent = p.title || 'In 3D';
           var x = document.createElement('button');
           x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Close');
           x.style.cssText = 'background:none;border:0;font:28px/1 system-ui,sans-serif;padding:2px 8px;cursor:pointer';
