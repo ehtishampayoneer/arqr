@@ -270,16 +270,24 @@
     // distance in front of the phone, and only then drops it to the floor (ARRenderer
     // placeInitially / moveToFloor). The default distance for a 1.1 x 2 m rug is 4.65 m, so a
     // phone pointed straight down that hadn't found the floor yet showed it far below the
-    // floor, looking a third of its size (a Tecno Camon 40, 17 Nov 2026). 1.5 m is about where
-    // the floor is from a phone in the hand, so it starts close to its true size, then lands.
-    mv.setAttribute('camera-orbit', '0deg 75deg 1.5m');
-    mv.setAttribute('min-camera-orbit', 'auto auto 0.5m');
+    // floor, looking a third of its size (a Tecno Camon 40, 17 Nov 2026). So the distance is
+    // kept between 0.35 m and 1.5 m (about where a table or the floor is from a phone in the hand):
+    // a rug starts at 1.5 m, close to its true size, then lands. Small things keep model-viewer's own
+    // distance (a jug ~0.6 m), or 0.35 m for tiny ones (a 2 cm ring), so they land on the table in
+    // front of the phone, not a metre past it (only the height changes when it lands).
+    mv.setAttribute('min-camera-orbit', 'auto auto 0.2m');
     mv.setAttribute('loading', 'eager');
+    mv.addEventListener('load', function () {
+      try {
+        var r = mv.getCameraOrbit().radius, want = Math.max(0.35, Math.min(1.5, r));
+        if (Math.abs(want - r) > 0.01) { mv.cameraOrbit = '0deg 75deg ' + want.toFixed(2) + 'm'; mv.jumpCameraToGoal(); }
+      } catch (e) {}
+    });
     // and a hint until it lands (model-viewer 3.5 has none of its own)
     var hint = document.createElement('div');
     hint.className = 'arqr-xr-hint';
-    hint.textContent = o.wall ? 'Point at the wall and move your phone slowly until it settles'
-                              : 'Point at the floor and move your phone slowly until it settles';
+    hint.textContent = o.hint || (o.wall ? 'Point at the wall and move your phone slowly until it settles'
+                                         : 'Point at the floor and move your phone slowly until it settles');
     mv.appendChild(hint);
     if (!document.getElementById('arqr-xr-hint-css')) {
       var css = document.createElement('style');
