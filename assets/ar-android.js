@@ -276,6 +276,7 @@
     // distance (a jug ~0.6 m), or 0.35 m for tiny ones (a 2 cm ring), so they land on the table in
     // front of the phone, not a metre past it (only the height changes when it lands).
     mv.setAttribute('min-camera-orbit', 'auto auto 0.2m');
+    mv.setAttribute('max-camera-orbit', 'auto auto 3m');            // model-viewer's own cap would hold a 2 cm ring at 0.2 m
     mv.setAttribute('loading', 'eager');
     mv.addEventListener('load', function () {
       try {
