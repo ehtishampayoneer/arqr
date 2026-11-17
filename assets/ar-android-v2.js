@@ -266,7 +266,31 @@
     mv.setAttribute('ar-modes', 'webxr');
     mv.setAttribute('ar-scale', 'fixed');                       // the size stays locked
     mv.setAttribute('ar-placement', o.wall ? 'wall' : 'floor');
+    // Until the phone finds the floor, model-viewer holds the model at this 3D view's camera
+    // distance in front of the phone, and only then drops it to the floor (ARRenderer
+    // placeInitially / moveToFloor). The default distance for a 1.1 x 2 m rug is 4.65 m, so a
+    // phone pointed straight down that hadn't found the floor yet showed it far below the
+    // floor, looking a third of its size (a Tecno Camon 40, 17 Nov 2026). 1.5 m is about where
+    // the floor is from a phone in the hand, so it starts close to its true size, then lands.
+    mv.setAttribute('camera-orbit', '0deg 75deg 1.5m');
+    mv.setAttribute('min-camera-orbit', 'auto auto 0.5m');
     mv.setAttribute('loading', 'eager');
+    // and a hint until it lands (model-viewer 3.5 has none of its own)
+    var hint = document.createElement('div');
+    hint.className = 'arqr-xr-hint';
+    hint.textContent = o.wall ? 'Point at the wall and move your phone slowly until it settles'
+                              : 'Point at the floor and move your phone slowly until it settles';
+    mv.appendChild(hint);
+    if (!document.getElementById('arqr-xr-hint-css')) {
+      var css = document.createElement('style');
+      css.id = 'arqr-xr-hint-css';
+      css.textContent = '.arqr-xr-hint{display:none;position:absolute;left:50%;bottom:96px;transform:translateX(-50%);' +
+        'max-width:84vw;padding:12px 18px;border-radius:14px;background:rgba(0,0,0,.72);color:#fff;' +
+        'font:500 15px/1.35 system-ui,-apple-system,Roboto,sans-serif;text-align:center;pointer-events:none}' +
+        'model-viewer[ar-status="session-started"]>.arqr-xr-hint{display:block}';
+      document.head.appendChild(css);
+    }
+    var landTimer = null;
     mv.setAttribute('shadow-intensity', '1');
     mv.setAttribute('alt', o.title || '3D model');
     mv.setAttribute('aria-hidden', 'true');
@@ -275,7 +299,13 @@
     mv.addEventListener('load', function () { if (window.ARQRSharp) window.ARQRSharp(mv); });
     mv.addEventListener('ar-status', function (e) {
       var st = e.detail && e.detail.status;
-      if (st === 'session-started') report('t0-opened');
+      if (st === 'session-started') {
+        report('t0-opened');
+        clearTimeout(landTimer);
+        landTimer = setTimeout(function () { report('t0-no-floor-10s'); }, 10000);
+      }
+      if (st === 'object-placed') { clearTimeout(landTimer); report('t0-on-floor'); }
+      if (st === 'not-presenting') clearTimeout(landTimer);
       if (st === 'failed') {
         report('t0-failed');
         showBar('The room view didn’t open. Tap “Try again” to open it another way.', true, 'Try again', function () { go(1); });
