@@ -417,7 +417,7 @@
           mv.setAttribute('camera-controls', '');
           mv.setAttribute('touch-action', 'pan-y');
           mv.setAttribute('shadow-intensity', '1');
-          mv.setAttribute('camera-orbit', '0deg 55deg auto');
+          mv.setAttribute('camera-orbit', '0deg 50deg 62%');    // a phone screen is tall: closer than model-viewer's own framing, so the rug fills it
           mv.setAttribute('alt', p.title || '3D model');
           mv.style.cssText = 'flex:1;width:100%;background:#f4f1ec';
           mv.addEventListener('load', function () { if (window.ARQRSharp) window.ARQRSharp(mv); });
