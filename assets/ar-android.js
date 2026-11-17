@@ -1,46 +1,39 @@
-/* ARQR360 · Android AR hand-off, with a way back when it fails.
+/* ARQR360 · Android AR hand-off, v2 (17 Nov 2026): live on every page since 17 Nov 2026.
+   Confirmed on a real phone (Tecno Camon 40, current Android): AR opened in the browser and the rug
+   lay on the floor at true size. The previous version is kept as ar-android-v1.js (rollback: copy it back).
+   ar-android-v2.js is the same file (the /test/ar-v2/ pages load that name).
 
-   Every "View in your room" button used to send Android phones to Scene Viewer
-   with location.href and the fallback set to this same page, so when the hand-off
-   failed the shopper tapped and nothing seemed to happen.
+   Why v2: since late October 2026 Google broke both Android AR routes for every website:
+     - Scene Viewer (inside the Google app) crashes on launch since Google app 17.68
+       (google-ar/arcore-android-sdk #1797, #1795; still open 11 Nov; Google's own sample crashes);
+     - WebXR in Chrome 156 starts the camera but never draws the model when the page renders
+       through XRProjectionLayer (crbug 577162402); the classic XRWebGLLayer path still draws.
+   model-viewer 3.5 (three.js) takes the projection-layer path whenever
+   session.renderState.layers is defined, else XRWebGLLayer. So:
+     A. XRRenderState.prototype.layers is hidden (reads undefined) before model-viewer loads:
+        three.js then draws through XRWebGLLayer, the path every WebXR phone has always had.
+        On a browser without WebXR layers this changes nothing.
+     B. The order: a phone whose browser has WebXR AR opens the rug IN THE BROWSER first (no
+        app hand-off); "Try again" then hands off to Scene Viewer (for when Google fixes it).
+        A phone without WebXR AR: Scene Viewer first, as before; if the Google app comes
+        straight back (the crash) we notice at once instead of waiting 9 s.
+     C. Last resort on every phone: the rug in 3D on the page itself, so a shopper is never
+        left with nothing.
 
-   Now a tap goes:
-     0. AR inside the browser itself (WebXR), through Google's <model-viewer>,
-        when the phone and browser have it. No hand-off to any app at all: the
-        way other AR providers open it, and the route that works on a Samsung
-        Galaxy S25 where step 1 showed nothing (Chrome and Samsung Internet,
-        10 Nov 2026). The model starts loading when the page or product opens
-        (ARQRAndroidAR.prepare), so the tap finds it ready.
-     1. Scene Viewer through the Google app, built exactly the way Google's own
-        <model-viewer> (v4.4) builds it: intent version 1.2, mode=ar_preferred,
-        disable_occlusion=true, file last, opened by clicking a link (not by
-        setting location.href), and a fallback that only changes the hash.
-        ar_preferred opens AR where the phone has it, and the 3D viewer where
-        it doesn't, so a phone without AR still sees the rug.
-     2. If nothing opened, a bar offers "Try again", which goes straight to
-        Google Play Services for AR (com.google.ar.core, ar_only), the route
-        Google documents for AR-only hand-offs. A browser only hands off to an
-        app from a tap, so this needs the shopper's tap.
-     3. If that fails too, the bar says the room view is not available here.
-
-   How "it failed" is known:
-     - the fallback is this page + #arqr-ar-N, which changes only the hash (no
-       reload) and fires hashchange; or
-     - the page is still in front several seconds after the tap (an app opening
-       sends the page to the background), which covers a hand-off that was taken
-       and then dropped.
-
-   On a personal preview link (?v=name, see notify.js) each outcome is reported
-   through ARQRNotify, so we learn what happened on the visitor's own phone.
-
-   Two ways in:
-     ARQRAndroidAR(intentUrl)              steps 1 to 3, from the intent URL a page
-                                           always built (file, title, link and size
-                                           lock are read from it)
-     ARQRAndroidAR.prepare(glbUrl, opts)   load the model for step 0 early
-     ARQRAndroidAR.open(glbUrl, opts)      steps 0 to 3 from the tap
-       opts: { title, link, wall }         Scene Viewer's title and link; wall placement */
+   Same API as v1: ARQRAndroidAR(intentUrl), ARQRAndroidAR.prepare(glb, opts),
+   ARQRAndroidAR.open(glb, opts) - pages switch by loading this file instead. */
 (function () {
+  // A. force three.js onto the classic XRWebGLLayer path (Chrome 156 draws nothing through XRProjectionLayer)
+  var CLASSIC = 'not needed';
+  try {
+    if (window.XRRenderState && XRRenderState.prototype) {
+      var d = Object.getOwnPropertyDescriptor(XRRenderState.prototype, 'layers');
+      if (d && d.configurable) {
+        Object.defineProperty(XRRenderState.prototype, 'layers', { get: function () { return undefined; }, configurable: true, enumerable: d.enumerable });
+        CLASSIC = 'on';
+      }
+    }
+  } catch (e) { CLASSIC = 'failed: ' + e.message; }
   var WAIT = 9000;   // Sam's S25 (Chrome 156) took 5+ s to bring Google's viewer up; don't cry wolf            // ms the page may stay in front before we call it a miss (slow phones open Scene Viewer slowly)
   var timer = null, step = 0, lastUrl = '', bar = null;
   var barAction = function () { go(2); };   // what the bar's button does: "Try again" by default
@@ -178,12 +171,20 @@
     open(build(parts(lastUrl), n));
   }
 
-  // An app opened: the page went to the background. Stop the clock.
+  // An app opened: the page went to the background. Stop the clock. If it comes back within a few
+  // seconds the app most likely crashed (Google app 17.68+: Scene Viewer closes at once): carry on.
+  var hiddenAt = 0, hiddenStep = 0;
+  var QUICK = 6000;
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden' && timer) {
       clearTimeout(timer); timer = null;
       report('t' + step + '-opened');
+      hiddenAt = Date.now(); hiddenStep = step;
       step = 0;
+    } else if (document.visibilityState === 'visible' && hiddenAt) {
+      var away = Date.now() - hiddenAt, was = hiddenStep;
+      hiddenAt = 0; hiddenStep = 0;
+      if (away < QUICK) { step = was; missed('quickback'); }
     }
   });
   // The phone could not take the hand-off and came back to #arqr-ar-N.
@@ -209,10 +210,17 @@
     go(1);
   }
 
+  // v2: pages using the old API (an intent URL) get the browser route first too
+  function handOffV2(intentUrl) {
+    var p = parts(intentUrl);
+    if (!p.file) { handOff(intentUrl); return; }
+    openModel(p.file, { title: p.title, link: p.link, wall: !!p.enable_vertical_placement });
+  }
+
   /* ---- Step 0: AR inside the browser (WebXR) through model-viewer ---- */
   var MV = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';  // the version the 3D views use
   var TAP_WINDOW = 4000;      // ms a browser still counts as "just tapped" for starting AR
-  var mvLoading = null, xrCheck = null, viewers = {};
+  var mvLoading = null, xrCheck = null, viewers = {}, triedBrowser = false;
 
   function abs(u) { return new URL(u, location.href).href; }
 
@@ -226,7 +234,7 @@
   }
 
   // mv-sharp.js sits next to this file: keeps the rug sharp at the angle a shopper sees it in AR
-  var SHARP = String((document.currentScript && document.currentScript.src) || '/assets/ar-android.js').replace(/ar-android\.js(\?.*)?$/, 'mv-sharp.js');
+  var SHARP = String((document.currentScript && document.currentScript.src) || '/assets/ar-android.js').replace(/ar-android(-v2)?\.js(\?.*)?$/, 'mv-sharp.js');
 
   function loadViewer() {
     if (!mvLoading) {
@@ -270,7 +278,6 @@
       if (st === 'session-started') report('t0-opened');
       if (st === 'failed') {
         report('t0-failed');
-        lastUrl = intentFor(glb, o);
         showBar('The room view didn’t open. Tap “Try again” to open it another way.', true, 'Try again', function () { go(1); });
       }
     });
@@ -314,10 +321,9 @@
   }
 
   function prepare(glb, o) {
-    return;   // nothing to fetch ahead now: Scene Viewer downloads the rug itself
     o = o || {};
     afterPageLoad(function () {
-      hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(glb, o); }); });
+      hasWebXR().then(function (ok) { if (ok) loadViewer().then(function () { viewer(forSceneViewer(abs(glb)), o); }); });
     });
   }
 
@@ -327,15 +333,18 @@
   // route reported nothing after the tap, and it needs the whole 8 MB rug before it can start.
   function openModel(glb, o) {
     o = o || {};
-    report('sv-first');
-    handOff(intentFor(glb, o));
+    lastUrl = intentFor(glb, o);
+    try { sessionStorage.setItem('arqr.ar.last', lastUrl); } catch (e) {}
+    hasWebXR().then(function (ok) {
+      if (ok) { report('xr-first'); openInBrowser(forSceneViewer(abs(glb)), o); }
+      else { report('sv-first'); go(1); }
+    });
   }
 
   // Both app routes failed: if this browser has AR itself, load the rug and offer one tap.
   function lastResort(url) {
-    var sorry = 'Sorry, the room view isn’t available on this phone. It needs Google Play Services for AR, which most recent Android phones have.';
     hasWebXR().then(function (ok) {
-      if (!ok) { report('t3-none'); showBar(sorry, false); return; }
+      if (!ok || triedBrowser) { report('t3-3d'); offer3D(url); return; }
       report('t3-offer');
       showBar('Getting the room view ready in your browser…', false);
       var p = parts(url);
@@ -343,7 +352,7 @@
       loadViewer().then(function () {
         var mv = viewer(p.file, o);
         return waitFor(function () { return mv.loaded; }, 60000).then(function (loaded) {
-          if (!loaded) { report('t3-noload'); showBar(sorry, false); return; }
+          if (!loaded) { report('t3-noload'); offer3D(url); return; }
           showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', function () {
             hideBar(); report('t3-tap'); mv.activateAR();
           });
@@ -352,18 +361,18 @@
     });
   }
 
-  function openModelWebXRFirst(glb, o) {   // the 10 Nov flow, kept for reference; not used
+  function openInBrowser(glb, o) {
     o = o || {};
     var tapped = Date.now();
     hasWebXR().then(function (ok) {
-      if (!ok) { handOff(intentFor(glb, o)); return; }          // no WebXR here: steps 1 to 3
-      report('t0-tap');
+      if (!ok) { go(1); return; }                                // no WebXR here: steps 1 to 3
+      triedBrowser = true;
+      report('t0-tap-' + CLASSIC.split(':')[0].replace(/ /g, ''));
       loadViewer().then(function () {
         var mv = viewer(glb, o);
         return waitFor(function () { return mv.canActivateAR; }, 3000).then(function (can) {
           if (!can) {                                             // WebXR said yes but can't start: the app route, from a fresh tap
             report('t0-cant');
-            lastUrl = intentFor(glb, o);
             showBar('Tap below to open the room view.', true, 'Open the room view', function () { hideBar(); go(1); });
             return;
           }
@@ -379,7 +388,6 @@
             report('t0-slow');
             return waitFor(function () { return mv.loaded; }, 60000).then(function (ok) {
               if (ok) { showBar('It’s ready. Tap below and point your phone at the floor.', true, 'Place it in my room', ready); return; }
-              lastUrl = intentFor(glb, o);                         // never arrived: the app route, from a fresh tap
               showBar('The room view is taking too long. Tap below to open it another way.', true, 'Try again', function () { go(1); });
             });
           });
@@ -388,7 +396,44 @@
     });
   }
 
-  window.ARQRAndroidAR = handOff;
+  // C. the last resort on any phone: the rug in 3D right here (turn it, zoom), no AR needed
+  function offer3D(url) {
+    var p = parts(url || lastUrl);
+    showBar('The room view isn’t working on this phone right now. You can still see the rug in 3D here.', true, 'See it in 3D', function () {
+      hideBar(); report('t3-3d-open');
+      loadViewer().then(function () {
+        var box = document.getElementById('arqr3d');
+        if (!box) {
+          box = document.createElement('div');
+          box.id = 'arqr3d';
+          box.style.cssText = 'position:fixed;inset:0;z-index:2147483001;background:#f4f1ec;display:flex;flex-direction:column';
+          var top = document.createElement('div');
+          top.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font:600 15px system-ui,sans-serif;color:#1d1b19';
+          top.textContent = p.title || 'The rug in 3D';
+          var x = document.createElement('button');
+          x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Close');
+          x.style.cssText = 'background:none;border:0;font:28px/1 system-ui,sans-serif;padding:2px 8px;cursor:pointer';
+          x.addEventListener('click', function () { box.style.display = 'none'; });
+          top.appendChild(x);
+          var mv = document.createElement('model-viewer');
+          mv.setAttribute('src', p.file);
+          mv.setAttribute('camera-controls', '');
+          mv.setAttribute('touch-action', 'pan-y');
+          mv.setAttribute('shadow-intensity', '1');
+          mv.setAttribute('camera-orbit', '0deg 50deg 62%');    // a phone screen is tall: closer than model-viewer's own framing, so the rug fills it
+          mv.setAttribute('alt', p.title || '3D model');
+          mv.style.cssText = 'flex:1;width:100%;background:#f4f1ec';
+          mv.addEventListener('load', function () { if (window.ARQRSharp) window.ARQRSharp(mv); });
+          box.appendChild(top); box.appendChild(mv);
+          document.body.appendChild(box);
+        }
+        box.style.display = 'flex';
+      });
+    });
+  }
+
+  window.ARQRAndroidAR = handOffV2;
+  window.ARQRAndroidAR.classicLayers = function () { return CLASSIC; };
   window.ARQRAndroidAR.prepare = prepare;
   window.ARQRAndroidAR.open = openModel;
 })();

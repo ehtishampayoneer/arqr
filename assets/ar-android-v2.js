@@ -1,4 +1,7 @@
-/* ARQR360 · Android AR hand-off, v2 (17 Nov 2026) - TEST, used only by the /test/ar-v2/ pages.
+/* ARQR360 · Android AR hand-off, v2 (17 Nov 2026): live on every page since 17 Nov 2026.
+   Confirmed on a real phone (Tecno Camon 40, current Android): AR opened in the browser and the rug
+   lay on the floor at true size. The previous version is kept as ar-android-v1.js (rollback: copy it back).
+   ar-android-v2.js is the same file (the /test/ar-v2/ pages load that name).
 
    Why v2: since late October 2026 Google broke both Android AR routes for every website:
      - Scene Viewer (inside the Google app) crashes on launch since Google app 17.68
