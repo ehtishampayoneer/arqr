@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arqr360.com/blog</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -933,6 +933,11 @@
   <url>
     <loc>https://arqr360.com/blog/how-uae-rug-stores-cut-january-returns-with-ar</loc>
     <lastmod>2026-11-17</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/how-us-decor-stores-cut-january-returns-with-ar</loc>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>
