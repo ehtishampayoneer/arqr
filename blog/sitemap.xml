@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arqr360.com/blog</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -983,6 +983,21 @@
   <url>
     <loc>https://arqr360.com/blog/how-canadian-decor-stores-sell-after-closing-with-ar</loc>
     <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/how-canadian-rug-stores-turn-browsers-into-buyers-ar</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/how-uk-decor-stores-sell-to-distant-shoppers-with-ar</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arqr360.com/blog/how-us-rug-stores-win-first-time-buyers-with-ar</loc>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>
