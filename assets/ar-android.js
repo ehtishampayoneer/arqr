@@ -329,7 +329,7 @@
   // Google's AR viewer (Scene Viewer) showed Sam's S25 a blank screen with the full rug files
   // (6-9 MB, six 2048 px textures). These rugs have a light copy for it: one 2048 px atlas,
   // ~1.5-2 MB, same size and look (built by tools make_light.py, 11 Nov 2026).
-  var LIGHT = /\/sample\/(afshar-2015-070|sirjan-2015-016|chobi-15545)\/\1\.glb(\?.*)?$/;
+  var LIGHT = /\/sample\/(afshar-2015-070|sirjan-2015-016|chobi-15545|jozan-a6237)\/\1\.glb(\?.*)?$/;
   function forSceneViewer(url) { return LIGHT.test(url) ? url.replace(/\.glb(\?.*)?$/, '-android.glb') : url; }
 
   function intentFor(glb, o) {
