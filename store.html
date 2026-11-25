@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FAF7F2">
-<meta name="description" content="An AR catalogue. Every product at true size, in your own space, before you buy.">
+<meta name="description" content="An AR web store. Every product at true size, in your own space, before you buy.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
 <title>AR catalogue</title>
@@ -444,7 +444,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ARQR">
   <meta property="og:title" content="AR catalogue">
-  <meta property="og:description" content="An AR catalogue. Every product at true size, in your own space.">
+  <meta property="og:description" content="An AR web store. Every product at true size, in your own space.">
   <meta property="og:url" content="https://arqr360.com/store">
   <meta property="og:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
   <meta property="og:image:width" content="1200">
@@ -453,7 +453,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AR catalogue">
-  <meta name="twitter:description" content="An AR catalogue. Every product at true size, in your own space.">
+  <meta name="twitter:description" content="An AR web store. Every product at true size, in your own space.">
   <meta name="twitter:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
 
   <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
@@ -475,11 +475,11 @@
       <img class="logo-full" src="assets/logo-bar.png?v=99" width="421" height="260" alt="ARQR360" decoding="async">
       <!-- logo:end -->
     </a>
-    <p class="sbar-note"><b>Sample catalogue.</b> A demo built by ARQR — we don't sell these products.</p>
+    <p class="sbar-note"><b>Sample web store.</b> A demo built by ARQR — we don't sell these products.</p>
     <div class="sbar-act">
       <a class="sbar-back" href="catalogue">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Sample catalogues</span>
+        <span>Sample web stores</span>
       </a>
       <span data-lang-slot></span>
       <a class="sbar-se" id="sbarSE" href="/saleengine" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Owner dashboard</span></a>
@@ -537,9 +537,9 @@
   <div class="foot-in">
     <span class="foot-by">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-      <span class="foot-txt">AR catalogue by <b>ARQR</b></span>
+      <span class="foot-txt">AR web store by <b>ARQR</b></span>
     </span>
-    <a class="foot-cta" href="/#f-name">Apply for your own catalogue
+    <a class="foot-cta" href="/#f-name">Apply for your own web store
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -687,7 +687,7 @@ root.setProperty('--tone-lo', mix(shop.tone, '#FFFFFF', .18));
 root.setProperty('--tone-hi', mix(shop.tone, '#000000', .42));
 root.setProperty('--tone-hi-rgb', channels(mix(shop.tone, '#000000', .42)));
 
-document.title = shop.seoTitle || (shop.name + ' | AR catalogue');
+document.title = shop.seoTitle || (shop.name + ' | AR web store');
 document.querySelector('meta[name=theme-color]').setAttribute('content', shop.tone);
 document.querySelector('meta[name=description]')
   .setAttribute('content', shop.seoDesc || (shop.name + '. ' + shop.tagline + '. Every product at true size, in your own space.'));
@@ -923,10 +923,10 @@ function showSheet(it){
   document.getElementById('arTitle').textContent = it.n;
   document.getElementById('arText').innerHTML = (isIOS || isAndroid)
     ? 'This sample has no 3D file for <strong>' + esc(it.n) + '</strong> yet. On ' +
-      esc(shop.name) + "'s live catalogue this button opens your camera and puts it in front of you at " +
+      esc(shop.name) + "'s live web store this button opens your camera and puts it in front of you at " +
       esc(it.d) + '.'
     : 'AR opens on a phone. Scan this code with your camera to load ' + esc(shop.name) +
-      "'s catalogue on your phone, then tap <strong>" + esc(t(shop.cta)) + '</strong>.';
+      "'s web store on your phone, then tap <strong>" + esc(t(shop.cta)) + '</strong>.';
   document.getElementById('arQr').style.display = (isIOS || isAndroid) ? 'none' : 'block';
   arEl.classList.add('open');
 }
@@ -979,8 +979,8 @@ addEventListener('resize', function(){
   };
   set('link[rel="canonical"]', 'href', url);
   set('meta[property="og:url"]', 'content', url);
-  set('meta[property="og:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
-  set('meta[name="twitter:title"]', 'content', s.seoTitle || (s.name + ' | AR catalogue'));
+  set('meta[property="og:title"]', 'content', s.seoTitle || (s.name + ' | AR web store'));
+  set('meta[name="twitter:title"]', 'content', s.seoTitle || (s.name + ' | AR web store'));
   if (s.seoDesc){
     set('meta[property="og:description"]', 'content', s.seoDesc);
     set('meta[name="twitter:description"]', 'content', s.seoDesc);

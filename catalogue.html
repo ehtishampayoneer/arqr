@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FAF7F2">
-<meta name="description" content="Every shop gets its own AR catalogue. Four samples: furniture, footwear, decoration and rugs, each one a single shop's own.">
+<meta name="description" content="Every shop gets its own AR web store. Four samples: furniture, footwear, decoration and rugs, each one a single shop's own.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
-<title>Sample AR catalogues | ARQR360</title>
+<title>Sample AR web stores | ARQR360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@
     color:#FFF;border-radius:100px;padding:10px 18px;font-weight:600;font-size:14px;
     white-space:nowrap;transition:filter .2s ease}
   .bar-cta:hover{filter:brightness(1.25)}
-  .bar-se{flex:none;display:inline-flex;align-items:center;gap:7px;margin-inline-start:auto;margin-inline-end:10px;padding:9px 16px;border-radius:100px;font-weight:600;font-size:14px;white-space:nowrap;background:#FDEFE6;color:#C2531A;border:1px solid #F6D3BD}
+  .bar-se{flex:none;display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:100px;font-weight:600;font-size:14px;white-space:nowrap;background:#FDEFE6;color:#C2531A;border:1px solid #F6D3BD}
   .bar-se:hover{background:#FBE2D2}
   @media(max-width:620px){.bar-se span{display:none}.bar-se{padding:9px 11px}}
   @media(max-width:560px){
@@ -164,7 +164,12 @@
     .not svg{margin-top:2px}
     .shop-go{flex-wrap:wrap;padding:12px 2px 0}
     .shop-url{width:100%;order:2}
-    .open{order:1;width:100%;justify-content:center;padding:13px}
+    .open{order:1;width:100%;justify-content:center;padding:10px;font-size:13px}
+    .shops{grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+    .shop-url{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .end{padding:28px 0 36px}
+    .end h2{font-size:21px}
+    .end p{font-size:14px}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -173,8 +178,8 @@
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ARQR">
-  <meta property="og:title" content="Sample AR catalogues: furniture, footwear, decor and rugs | ARQR360">
-  <meta property="og:description" content="Four sample catalogues you can open on your phone. Every product at true size in your own room.">
+  <meta property="og:title" content="Sample AR web stores: furniture, footwear, decor and rugs | ARQR360">
+  <meta property="og:description" content="Four sample web stores you can open on your phone. Every product at true size in your own room.">
   <meta property="og:url" content="https://arqr360.com/catalogue">
   <meta property="og:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
   <meta property="og:image:width" content="1200">
@@ -182,8 +187,8 @@
   <meta property="og:locale" content="en">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sample AR catalogues: furniture, footwear, decor and rugs | ARQR360">
-  <meta name="twitter:description" content="Four sample catalogues you can open on your phone. Every product at true size in your own room.">
+  <meta name="twitter:title" content="Sample AR web stores: furniture, footwear, decor and rugs | ARQR360">
+  <meta name="twitter:description" content="Four sample web stores you can open on your phone. Every product at true size in your own room.">
   <meta name="twitter:image" content="https://arqr360.com/assets/og-catalog.jpg?v=fb6b3a3a">
 
   <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
@@ -213,13 +218,13 @@
 
 <main>
   <div class="top">
-    <p class="eyebrow">Sample catalogues</p>
-    <h1>Your shop gets <em>its own catalogue.</em></h1>
+    <p class="eyebrow">Sample web stores</p>
+    <h1>Your shop gets <em>its own web store.</em></h1>
     <p>Your name on it, your products in it, your code on the door, at your own address.
        No other shop appears anywhere inside it.</p>
     <span class="not">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>These four are <b>four separate shops' catalogues</b>, gathered here only so you can open the one that sells what you sell.</span>
+      <span>These four are <b>four separate shops' web stores</b>, gathered here only so you can open the one that sells what you sell.</span>
     </span>
   </div>
 
@@ -228,8 +233,8 @@
   <div class="end">
     <h2>Whatever you sell, it has to be seen in the room.</h2>
     <p>Furniture, footwear, decor, carpets: the moment a customer can put it in their own
-       space, the guessing stops. We build the catalogue; you hand out one code.</p>
-    <a class="end-cta" href="/#f-name">Apply for your AR catalogue
+       space, the guessing stops. We build the web store; you hand out one code.</p>
+    <a class="end-cta" href="/#f-name">Apply for your AR web store
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -268,7 +273,7 @@
            '" alt="' + esc(t(s.kind)) + ', ' + esc(s.name) + '">' +
       '<div class="shop-go">' +
         '<span class="shop-url">' + esc(host) + '/<b>' + esc(s.slug) + '</b></span>' +
-        '<span class="open">' + esc(t('Open this catalogue')) + '' +
+        '<span class="open">' + esc(t('Open this web store')) + '' +
           '<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
         '</span>' +
       '</div>' +

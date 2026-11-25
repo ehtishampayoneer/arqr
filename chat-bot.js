@@ -536,7 +536,9 @@
     setTimeout(function () {
       if (!opened) {
         launcher.classList.add('arqr-attention');
-        openPanel();   /* proactive: ask about the free model, per founder */
+        /* proactive: ask about the free model, per founder. On a phone the open panel
+           covers the whole page, so there the bubble only pulses and waits for a tap. */
+        if (!window.matchMedia || !window.matchMedia('(max-width: 700px)').matches) openPanel();
       }
     }, 1200);
   }
