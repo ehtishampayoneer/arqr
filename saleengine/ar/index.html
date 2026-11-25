@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>See it in your room · ARQR360</title>
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--tone:#E0682A;--ink:#1D1A17;--soft:#7A7268;--line:#E7E2DA}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100svh;background:#F5F3EF;color:var(--ink);font:15px/1.55 Inter,"Segoe UI",Arial,sans-serif;display:grid;place-items:center;padding:18px}
+  .box{width:min(440px,100%);background:#fff;border-radius:22px;box-shadow:0 30px 70px -34px rgba(0,0,0,.45);overflow:hidden}
+  .top{background:var(--tone);color:#fff;padding:14px 20px;font:800 17px Archivo,Arial,sans-serif;text-align:center}
+  .view{position:relative;height:300px;background:#F2EEE8}
+  .view model-viewer,.view img{width:100%;height:100%;object-fit:contain;display:block;--poster-color:transparent}
+  .body{padding:20px 22px 22px}
+  h1{font:800 22px Archivo,Arial,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+  .meta{color:var(--soft);font-size:14px}
+  .go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:18px;border:0;border-radius:999px;background:var(--tone);color:#fff;font:700 16px Archivo,Arial,sans-serif;padding:16px;cursor:pointer}
+  .go svg{width:20px;height:20px}
+  .steps{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px;color:#4A443D}
+  .steps li{display:flex;gap:10px}.steps b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#F2EEE8;font-size:12px;flex:none}
+  .desk{display:none;text-align:center;margin-top:16px}
+  .desk canvas{width:170px;height:170px;border:1px solid var(--line);border-radius:12px;padding:8px;background:#fff}
+  .desk p{font-size:13px;color:var(--soft);margin:6px 0 0}
+  .is-desk .go{display:none}.is-desk .desk{display:block}
+  .by{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:16px;font-size:12px;color:var(--soft);text-decoration:none}
+  .by b{color:var(--ink);font:800 14px Archivo,Arial}.by b i{color:#E0682A;font-style:normal}
+  .err{padding:40px 24px;text-align:center}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/assets/ar-android.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<div class="box" id="box"><div class="err">Loading…</div></div>
+<script src="/stores.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+/* A product's own AR page: what a shopper lands on after scanning a QR code
+   made in the Sales Engine's QR Studio. One tap opens the product at its
+   real size: Quick Look on iPhone, the browser / Scene Viewer on Android,
+   and a QR code to scan on a computer. */
+(function () {
+  var q = new URLSearchParams(location.search), sl = q.get('s'), pf = q.get('p');
+  var st = (window.ARQR_STORES || []).filter(function (s) { return s.slug === sl; })[0];
+  var ua = navigator.userAgent || '', isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), isAndroid = /Android/.test(ua);
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  var box = document.getElementById('box');
+  fetch('/shop-products.json').then(function (r) { return r.json(); }).then(function (all) {
+    var p = st && (all[st.slug] || []).filter(function (x) { return x.f === pf; })[0];
+    if (!p) { box.innerHTML = '<div class="err">This product is no longer in AR.<br><a href="https://arqr360.com">arqr360.com</a></div>'; return; }
+    document.documentElement.style.setProperty('--tone', st.tone);
+    document.title = p.n + ' in your room · ' + st.name;
+    var size = String(p.d || '').replace('�', '×'), glb = '/' + p.glb, usdz = '/' + p.usdz, pic = '/assets/shops/' + st.slug + '/' + p.f + '.webp';
+    box.innerHTML = '<div class="top">' + esc(st.name) + '</div>' +
+      '<div class="view"><model-viewer src="' + glb + '" poster="' + pic + '" alt="' + esc(p.n) + '" camera-controls auto-rotate auto-rotate-delay="0" interaction-prompt="none" shadow-intensity="1" exposure="1.05"></model-viewer></div>' +
+      '<div class="body"><h1>' + esc(p.n) + '</h1><div class="meta">' + esc(p.p) + ' · real size ' + esc(size) + '</div>' +
+      '<button class="go" id="go" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>' + esc(st.cta || 'See it in your room') + '</button>' +
+      '<ul class="steps"><li><b>1</b>Point your camera at the floor or table</li><li><b>2</b>Move the phone slowly until it appears</li><li><b>3</b>Walk around it: it is shown at its real size</li></ul>' +
+      '<div class="desk"><canvas id="qr" width="340" height="340"></canvas><p>AR works on a phone. Scan this with your phone camera.</p></div>' +
+      '<a class="by" href="https://arqr360.com/?utm_source=saleengine&utm_medium=ar-page" target="_blank" rel="noopener">Powered by <b>ARQR<i>360</i></b></a></div>';
+    var go = document.getElementById('go'), opts = { title: p.n + ' · ' + st.name, link: location.href, hint: 'Point at the floor and move your phone slowly until it settles' };
+    if (isAndroid && window.ARQRAndroidAR) ARQRAndroidAR.prepare(glb, opts);
+    go.addEventListener('click', function () {
+      if (isIOS) { var a = document.createElement('a'); a.rel = 'ar'; a.href = usdz + '#allowsContentScaling=0'; a.appendChild(document.createElement('img')); document.body.appendChild(a); a.click(); }
+      else if (isAndroid && window.ARQRAndroidAR) ARQRAndroidAR.open(glb, opts);
+      else { var mv = document.querySelector('model-viewer'); if (mv && mv.canActivateAR) mv.activateAR(); }
+    });
+    if (!isIOS && !isAndroid) {
+      document.body.classList.add('is-desk');
+      var qq = qrcode(0, 'M'); qq.addData(location.href); qq.make();
+      var c = document.getElementById('qr').getContext('2d'), n = qq.getModuleCount(), m = 340 / (n + 4);
+      c.fillStyle = '#fff'; c.fillRect(0, 0, 340, 340); c.fillStyle = '#1D1A17';
+      for (var r = 0; r < n; r++) for (var k = 0; k < n; k++) if (qq.isDark(r, k)) c.fillRect(Math.floor((k + 2) * m), Math.floor((r + 2) * m), Math.ceil(m), Math.ceil(m));
+    }
+  }).catch(function () { box.innerHTML = '<div class="err">Could not load. Check your connection and try again.</div>'; });
+})();
+</script>
+</body>
+</html>

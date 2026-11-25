@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sales Engine · ARQR360</title>
+<meta name="description" content="The ARQR360 Sales Engine: see which products shoppers place in their rooms, who is ready to buy, and make a QR code for any product in one click.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/saleengine/engine.css">
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brandrow">
+      <div>
+        <div class="h" style="font-size:21px;font-weight:800;color:#fff">ARQR<span style="color:var(--brand)">360</span></div>
+        <div class="tag">Sales Engine</div>
+      </div>
+    </div>
+    <div class="storepick">
+      <button class="storebtn" id="storeBtn" type="button" aria-haspopup="true"></button>
+      <div class="storemenu" id="storeMenu" role="menu"></div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="sidefoot">Demo account with sample numbers.<br><b>Every product and 3D model is real</b> and opens in AR.</div>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <div>
+        <div class="crumb" id="crumb"></div>
+        <h1 id="title">Overview</h1>
+      </div>
+      <div class="grow"></div>
+      <span class="sample hide-m" title="This is a demo: the products and AR models are real, the visitor numbers are made up for the demo"><i></i>Sample data</span>
+      <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Search products" autocomplete="off"></label>
+      <div class="avatar" id="avatar" title="Store owner"></div>
+    </header>
+    <main class="content" id="view"></main>
+  </div>
+</div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="dlg" id="dlg"></div></div>
+<div class="toast" id="toast" role="status"></div>
+<div class="tip" id="tip"></div>
+<div id="printArea" style="display:none"></div>
+
+<script src="/stores.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="/saleengine/engine.js"></script>
+</body>
+</html>
