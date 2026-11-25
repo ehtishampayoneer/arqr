@@ -228,6 +228,7 @@ label.lab{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margi
   .side{padding:10px 12px}.brandrow{padding:2px 4px 10px}.storepick{margin-bottom:10px}
   .top h1{font-size:19px}
   .top .grow{display:none}
+  .getit{order:5;flex:1 1 100%;height:38px}
   .top>div:first-child{flex:1 1 100%}
   .qrwrap{grid-template-columns:1fr}
   .plist{max-height:280px}

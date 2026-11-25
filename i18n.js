@@ -259,14 +259,15 @@
 
     style([
       '.lang{position:relative;flex:none;margin-inline-start:auto}',
-      'header.bar .lang,.shop-in .lang{margin-inline-start:12px}',
+      'header.bar .lang,.shop-in .lang{margin-inline-start:8px}',
       '.shop-in .lang{margin-inline-start:auto}',
-      '.lang-btn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;',
+      /* small and last in the row: it is a setting, not something to sell */
+      '.lang-btn{display:inline-flex;align-items:center;gap:5px;cursor:pointer;',
       '  background:transparent;border:1px solid var(--line,#E4DED4);border-radius:100px;',
-      '  padding:8px 13px;min-height:40px;font:inherit;font-size:13.5px;font-weight:600;',
-      '  color:inherit;line-height:1;transition:border-color .2s,background .2s}',
+      '  padding:5px 9px;min-height:32px;font:inherit;font-size:11.5px;font-weight:600;letter-spacing:.04em;',
+      '  color:var(--ink-soft,#6E6A64);line-height:1;transition:border-color .2s,background .2s}',
       '.lang-btn:hover{border-color:#B9AE9C}',
-      '.lang-btn svg{width:17px;height:17px;display:block;flex:none;opacity:.8}',
+      '.lang-btn svg{width:14px;height:14px;display:block;flex:none;opacity:.75}',
       '.lang-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:60;',
       '  min-width:190px;max-height:min(70vh,420px);overflow-y:auto;',
       '  background:#FFFDFA;border:1px solid var(--line,#E4DED4);border-radius:14px;',
@@ -282,8 +283,7 @@
       '.lang-menu button i{font-style:normal;font-size:11px;letter-spacing:.1em;',
       '  text-transform:uppercase;color:#8A8378}',
       '@media(max-width:700px){',
-      '  .lang-btn{padding:11px 12px;font-size:0;gap:0}',
-      '  .lang-btn svg{width:19px;height:19px;opacity:.9}',
+      '  .lang-btn{padding:5px 8px;font-size:11px}',
       '  .lang-menu{min-width:172px}',
       '}'
     ].join(''));
@@ -292,7 +292,7 @@
     wrap.className = 'lang';
     wrap.innerHTML =
       '<button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">' +
-        globe() + '<span>' + esc(lang.name) + '</span>' +
+        globe() + '<span title="' + esc(lang.name) + '">' + esc(lang.c.toUpperCase()) + '</span>' +
       '</button>' +
       '<div class="lang-menu" role="menu">' +
         LANGS.map(function(l){
@@ -303,9 +303,9 @@
         }).join('') +
       '</div>';
 
-    /* index.html keeps its own call-to-action last in the bar; sit before it */
-    var cta = host.querySelector('.cta') || host.querySelector('.back');
-    if (cta && cta.parentNode === host) host.insertBefore(wrap, cta);
+    /* last in the row, after every button (only the phone menu toggle stays after it) */
+    var burger = host.querySelector('.burger');
+    if (burger && burger.parentNode === host) host.insertBefore(wrap, burger);
     else host.appendChild(wrap);
 
     var btn = wrap.querySelector('.lang-btn');
