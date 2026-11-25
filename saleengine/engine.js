@@ -16,10 +16,10 @@
 var BASE = 'https://arqr360.com';
 var STORES = window.ARQR_STORES || [];
 var PRODUCTS = {};
-var S = { store: 'novara', range: 30, view: 'overview', arg: null, q: '', cat: 'All', status: 'All', layout: 'grid',
+var S = { store: 'novara', range: 30, end: 0, preset: 30, custom: null, view: 'overview', arg: null, q: '', cat: 'All', status: 'All', layout: 'grid',
           qr: { slug: null, layout: 'tag', color: null, label: 'Scan to see it in your room', price: true, logo: true }, leadFilter: 'All' };
-try { var sv = JSON.parse(localStorage.getItem('arqr.se.state') || '{}'); if (sv.store) S.store = sv.store; if (sv.range) S.range = sv.range; if (sv.layout) S.layout = sv.layout; } catch (e) {}
-function save() { try { localStorage.setItem('arqr.se.state', JSON.stringify({ store: S.store, range: S.range, layout: S.layout })); } catch (e) {} }
+try { var sv = JSON.parse(localStorage.getItem('arqr.se.state') || '{}'); if (sv.store) S.store = sv.store; if (sv.preset) { S.preset = sv.preset; S.range = sv.range || 30; S.end = sv.end || 0; S.custom = sv.custom || null; } if (sv.layout) S.layout = sv.layout; } catch (e) {}
+function save() { try { localStorage.setItem('arqr.se.state', JSON.stringify({ store: S.store, range: S.range, end: S.end, preset: S.preset, custom: S.custom, layout: S.layout })); } catch (e) {} }
 
 /* ---------------------------------------------------------------- helpers */
 var $ = function (s, el) { return (el || document).querySelector(s); };
@@ -70,7 +70,7 @@ var I = {
 function ic(n, extra) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"' + (extra || '') + '>' + I[n] + '</svg>'; }
 
 /* ---------------------------------------------------------------- sample data */
-var DAYS = 90;
+var DAYS = 400;                                                     // sample history: enough for any range and its previous period
 var CITY = { novara: ['Surry Hills', 'Bondi', 'Parramatta', 'Chatswood', 'Newtown', 'Manly', 'Mosman', 'Penrith', 'Ryde', 'Randwick'],
              corso: ['Fitzroy', 'St Kilda', 'Richmond', 'Carlton', 'Brunswick', 'Southbank', 'Footscray', 'Docklands', 'Toorak', 'Prahran'],
              maison: ['Fortitude Valley', 'New Farm', 'Paddington', 'West End', 'Toowong', 'Bulimba', 'Ascot', 'Kangaroo Point', 'Chermside', 'Indooroopilly'],
@@ -117,7 +117,7 @@ function items_fix(st) { return { novara: 9, corso: 7, maison: 10, terra: 8 }[st
 function items_check(st) { return { novara: 4, corso: 3, maison: 5, terra: 11 }[st] || 3; }
 function sum(it, n, off) {
   off = off || 0; var t = { o: 0, qr: 0, placed: 0, carts: 0, orders: 0, views: 0 };
-  for (var d = DAYS - n - off; d < DAYS - off; d++) { var x = it.daily[d]; if (!x) continue; for (var k in t) t[k] += x[k]; }
+  for (var d = DAYS - n - off - S.end; d < DAYS - off - S.end; d++) { var x = it.daily[d]; if (!x) continue; for (var k in t) t[k] += x[k]; }
   t.rev = t.orders * it.price; return t;
 }
 function totals(items, n, off) {
@@ -125,9 +125,9 @@ function totals(items, n, off) {
   items.forEach(function (it) { var s = sum(it, n, off); for (var k in t) t[k] += s[k]; });
   return t;
 }
-function series(items, n) {
-  var a = [];
-  for (var d = DAYS - n; d < DAYS; d++) { var o = 0, q = 0; items.forEach(function (it) { o += it.daily[d].o; q += it.daily[d].qr; }); a.push({ o: o, qr: q, d: d }); }
+function series(items, n) {                                         // at least a week, so a one-day period still draws a line
+  var a = [], m = Math.max(n, 7), e = DAYS - S.end;
+  for (var d = e - m; d < e; d++) { var o = 0, q = 0; items.forEach(function (it) { o += it.daily[d].o; q += it.daily[d].qr; }); a.push({ o: o, qr: q, d: d }); }
   return a;
 }
 function dayLabel(d) { var t = new Date(); t.setDate(t.getDate() - (DAYS - 1 - d)); return t.toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }); }
@@ -151,12 +151,48 @@ function shell() {
   }).join('');
   $('#avatar').textContent = st.name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2);
 }
+function isoOf(t) { return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }
+function isoDay(back) { var t = new Date(); t.setDate(t.getDate() - back); return isoOf(t); }
+function daysBack(iso) { var a = new Date(iso + 'T00:00:00'), t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((t - a) / 86400000); }
+function niceDay(iso) { return new Date(iso + 'T00:00:00').toLocaleDateString('en-AU', { day: 'numeric', month: 'short' }); }
+function setPeriod(p, from, to) {
+  S.preset = p; S.custom = null;
+  if (p === 'today') { S.range = 1; S.end = 0; }
+  else if (p === 'yesterday') { S.range = 1; S.end = 1; }
+  else if (p === 'custom') {
+    if (from > to) { var x = from; from = to; to = x; }
+    var a = Math.min(DAYS - 1, Math.max(0, daysBack(from))), b = Math.min(DAYS - 1, Math.max(0, daysBack(to)));
+    S.end = b; S.range = a - b + 1; S.custom = { from: from, to: to };
+  }
+  else { S.range = +p; S.end = 0; }
+  save(); render();
+}
+function periodName() {
+  if (S.preset === 'today') return 'today';
+  if (S.preset === 'yesterday') return 'yesterday';
+  if (S.preset === 'custom' && S.custom) return niceDay(S.custom.from) + (S.custom.from !== S.custom.to ? ' – ' + niceDay(S.custom.to) : '');
+  return 'the last ' + S.range + ' days';
+}
 function rangeChips() {
-  return '<div class="chips">' + [[7, 'Last 7 days'], [30, 'Last 30 days'], [90, 'Last 90 days']].map(function (r) {
-    return '<button class="chip' + (S.range === r[0] ? ' on' : '') + '" data-range="' + r[0] + '">' + r[1] + '</button>'; }).join('') + '</div>';
+  var cl = S.preset === 'custom' && S.custom ? periodName() : 'Custom dates';
+  return '<div class="chips">' + [['today', 'Today'], ['yesterday', 'Yesterday'], [7, 'Last 7 days'], [30, 'Last 30 days'], [90, 'Last 90 days']].map(function (r) {
+    return '<button class="chip' + (String(S.preset) === String(r[0]) ? ' on' : '') + '" data-range="' + r[0] + '">' + r[1] + '</button>'; }).join('') +
+    '<button class="chip' + (S.preset === 'custom' ? ' on' : '') + '" data-act="custom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>' + cl + '</button></div>';
+}
+function customModal() {
+  var now = new Date(), from = S.custom ? S.custom.from : isoDay(13), to = S.custom ? S.custom.to : isoDay(0), mn = isoDay(364), mx = isoDay(0);
+  var dow = (now.getDay() + 6) % 7, firstThis = new Date(now.getFullYear(), now.getMonth(), 1), lastPrev = new Date(now.getFullYear(), now.getMonth(), 0), firstPrev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  var quick = [['This week', isoDay(dow), isoDay(0)], ['Last week', isoDay(dow + 7), isoDay(dow + 1)], ['This month', isoOf(firstThis), isoDay(0)], ['Last month', isoOf(firstPrev), isoOf(lastPrev)]];
+  $('#dlg').innerHTML = '<div class="ch"><h2>Choose dates</h2><div class="grow"></div><button class="iconbtn" data-act="close" aria-label="Close">✕</button></div><div class="pad" style="display:grid;gap:16px">' +
+    '<div class="chips">' + quick.map(function (q) { return '<button class="chip" data-quick="' + q[1] + '|' + q[2] + '">' + q[0] + '</button>'; }).join('') + '</div>' +
+    '<div class="grid g2"><div><label class="lab" for="dFrom">From</label><input class="field" type="date" id="dFrom" min="' + mn + '" max="' + mx + '" value="' + from + '"></div>' +
+    '<div><label class="lab" for="dTo">To</label><input class="field" type="date" id="dTo" min="' + mn + '" max="' + mx + '" value="' + to + '"></div></div>' +
+    '<div class="small muted">Any dates in the last year. Each number is compared with the same number of days just before.</div>' +
+    '<div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" data-act="close">Cancel</button><button class="btn brand" data-act="applydates">Show these dates</button></div></div>';
+  $('#modal').classList.add('open');
 }
 function head(title, crumb) { $('#title').textContent = title; $('#crumb').textContent = crumb || store().name; document.title = title + ' · ' + store().name + ' · ARQR360 Sales Engine'; }
-function delta(a, b) { if (!b) return '<span class="d muted">new</span>'; var x = pct(a - b, b); return '<span class="d ' + (x >= 0 ? 'up' : 'down') + '">' + (x >= 0 ? '▲ ' : '▼ ') + Math.abs(x).toFixed(1) + '% <span class="muted" style="font-weight:500">vs previous ' + S.range + ' days</span></span>'; }
+function delta(a, b) { if (!b) return '<span class="d muted">new</span>'; var x = pct(a - b, b); return '<span class="d ' + (x >= 0 ? 'up' : 'down') + '">' + (x >= 0 ? '▲ ' : '▼ ') + Math.abs(x).toFixed(1) + '% <span class="muted" style="font-weight:500">vs ' + (S.preset === 'today' ? 'yesterday' : S.preset === 'yesterday' ? 'the day before' : 'the ' + S.range + ' days before') + '</span></span>'; }
 function spark(vals, col) {
   var w = 200, h = 34, mx = Math.max.apply(null, vals) || 1, n = vals.length;
   var pts = vals.map(function (v, i) { return (i * w / (n - 1)).toFixed(1) + ',' + (h - 3 - (v / mx) * (h - 6)).toFixed(1); }).join(' ');
@@ -210,7 +246,7 @@ function vOverview() {
   focus.push(['qr', '#2F5FA8', 'Put QR codes in your showroom', 'QR scans brought ' + fmt(cur.qr) + ' room opens. Print tags for the ' + Math.max(0, D.items.length - 6) + ' products without one.', 'Open QR Studio', '#/qr']);
   var srcs = [['Showroom QR codes', cur.qr, '#2F5FA8'], ['"View in your room" on product pages', Math.round((cur.o - cur.qr) * 0.72), '#E0682A'], ['Instagram & social links', Math.round((cur.o - cur.qr) * 0.19), '#6B3FA0'], ['Emails & WhatsApp', Math.round((cur.o - cur.qr) * 0.09), '#1E7F4F']];
   var smx = Math.max.apply(null, srcs.map(function (s) { return s[1]; }));
-  return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px"><div><div class="h" style="font-size:18px;font-weight:700">Good afternoon 👋</div><div class="muted">Here is how ' + esc(st.name) + ' is selling with AR.</div></div>' + rangeChips() + '</div>' +
+  return '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px"><div><div class="h" style="font-size:18px;font-weight:700">Good afternoon 👋</div><div class="muted">Here is how ' + esc(st.name) + ' sold with AR ' + (S.preset === 'today' || S.preset === 'yesterday' ? '' : 'in ') + esc(periodName()) + '.</div></div>' + rangeChips() + '</div>' +
     '<div class="grid g5" style="margin-bottom:16px">' +
       kpi('Room opens', fmt(cur.o), cur.o, prev.o, 'eye', '#E0682A', pts.map(function (p) { return p.o; })) +
       kpi('Placed in a room', fmt(cur.placed), cur.placed, prev.placed, 'box', '#6B3FA0') +
@@ -357,7 +393,7 @@ function vReports() {
     '<div class="card"><div class="ch"><h2>AR vs no AR</h2><span class="sub">how often a visitor buys</span></div><div class="pad">' +
       '<div style="display:flex;align-items:flex-end;gap:40px;height:170px;padding:0 20px">' +
         [['Did not use AR', 1.1, '#C9C1B6'], ['Used AR', pct(cur.orders, cur.o), '#1E7F4F']].map(function (b) { return '<div style="flex:1;text-align:center"><div class="h num" style="font-size:22px;font-weight:800">' + p1(b[1]) + '</div><div style="height:' + Math.min(130, b[1] * 26) + 'px;background:' + b[2] + ';border-radius:10px 10px 4px 4px;margin-top:6px"></div><div class="small muted" style="margin-top:8px">' + b[0] + '</div></div>'; }).join('') +
-      '</div><div class="note" style="margin-top:14px">' + ic('bolt') + '<span>Shoppers who placed a product in their room bought <b>' + (pct(cur.orders, cur.o) / 1.1).toFixed(1) + '×</b> as often. That is ' + money(cur.rev - cur.rev / (pct(cur.orders, cur.o) / 1.1)) + ' extra sales in ' + n + ' days.</span></div></div></div></div>' +
+      '</div><div class="note" style="margin-top:14px">' + ic('bolt') + '<span>Shoppers who placed a product in their room bought <b>' + (pct(cur.orders, cur.o) / 1.1).toFixed(1) + '×</b> as often. That is ' + money(cur.rev - cur.rev / (pct(cur.orders, cur.o) / 1.1)) + ' extra sales in ' + esc(periodName()) + '.</span></div></div></div></div>' +
     '<div class="grid g3" style="margin-bottom:16px"><div class="card"><div class="ch"><h2>By category</h2></div><div class="pad" style="display:grid;gap:14px">' +
       Object.keys(cats).map(function (k) { var c = cats[k]; return '<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span>' + esc(k) + '</span><span class="num"><b>' + fmt(c.o) + '</b> opens · ' + money(c.rev) + '</span></div><div class="bar"><i style="width:' + 100 * c.o / cmx + '%"></i></div></div>'; }).join('') + '</div></div>' +
     '<div class="card span2"><div class="ch"><h2>When shoppers use AR</h2><span class="sub">darker = busier</span></div><div class="pad">' + heatHTML(D) + '</div></div></div>' +
@@ -568,13 +604,14 @@ function render() {
 addEventListener('hashchange', route);
 
 document.addEventListener('click', function (e) {
-  var t = e.target.closest('[data-store],[data-range],[data-cat],[data-layout],[data-go],[data-pick],[data-ql],[data-qc],[data-qt],[data-act],[data-lf],[data-conn],[data-t],[data-off],[data-via]');
+  var t = e.target.closest('[data-store],[data-range],[data-quick],[data-cat],[data-layout],[data-go],[data-pick],[data-ql],[data-qc],[data-qt],[data-act],[data-lf],[data-conn],[data-t],[data-off],[data-via]');
   if (!e.target.closest('.storepick')) $('#storeMenu').classList.remove('open');
   if (e.target.closest('#storeBtn')) { $('#storeMenu').classList.toggle('open'); return; }
   if (!t) return;
   var d = t.dataset;
   if (d.store) { S.store = d.store; S.cat = 'All'; S.status = 'All'; S.qr.slug = null; S.qr.color = null; save(); $('#storeMenu').classList.remove('open'); if (S.view === 'product') location.hash = '#/products'; else render(); return; }
-  if (d.range) { S.range = +d.range; save(); render(); return; }
+  if (d.range) { setPeriod(isNaN(+d.range) ? d.range : +d.range); return; }
+  if (d.quick) { var qq = d.quick.split('|'); $('#dFrom').value = qq[0]; $('#dTo').value = qq[1]; return; }
   if (d.cat) { S.cat = d.cat; render(); return; }
   if (d.layout) { S.layout = d.layout; save(); render(); return; }
   if (d.lf) { S.leadFilter = d.lf; render(); return; }
@@ -592,6 +629,8 @@ function act(a, t) {
   var it = currentItem(), st = store();
   if (a === 'close') { $('#modal').classList.remove('open'); return; }
   if (a === 'offer') { offerModal(t.dataset.lead); return; }
+  if (a === 'custom') { customModal(); return; }
+  if (a === 'applydates') { var f = $('#dFrom').value, to_ = $('#dTo').value; if (!f || !to_) { toast('Pick both dates'); return; } $('#modal').classList.remove('open'); setPeriod('custom', f, to_); return; }
   if (a === 'sendoffer') { var l = data(S.store).leads.filter(function (x) { return x.id === t.dataset.lead; })[0]; var o = $('#offSeg .on'); l.offer = o ? o.dataset.off : 'offer'; $('#modal').classList.remove('open'); toast('Offer sent to ' + l.name.split(' ')[0] + ' (demo, nothing was sent)'); render(); return; }
   if (a === 'copylink') { var u = arUrl(st.slug, t.dataset.slug || (it && it.slug), true); (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { toast('AR link copied'); }, function () { prompt('Copy this link', u); }); return; }
   if (a === 'png' && it) { canvasBlob($('#qrCanvas')).then(function (b) { download(b, fileName(it, 'png')); toast('QR code downloaded'); }); return; }
@@ -650,7 +689,7 @@ function csv() {
   var st = store(), D = data(st.slug), n = S.range, rows = [['Product', 'Category', 'Price', 'Room opens', 'QR scans', 'Placed', 'Added to cart', 'Orders', 'Sales', 'AR link']];
   D.items.forEach(function (it) { var s = sum(it, n); rows.push([it.name, it.cat, it.price, s.o, s.qr, s.placed, s.carts, s.orders, Math.round(s.rev), arUrl(st.slug, it.slug, true)]); });
   var txt = rows.map(function (r) { return r.map(function (v) { v = String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\n');
-  download(new Blob([txt], { type: 'text/csv' }), st.slug + '-ar-report-' + n + 'd.csv'); toast('Report downloaded (sample data)');
+  download(new Blob([txt], { type: 'text/csv' }), st.slug + '-ar-report-' + (S.custom ? S.custom.from + '_' + S.custom.to : S.preset) + '.csv'); toast('Report downloaded (sample data)');
 }
 document.addEventListener('input', function (e) {
   if (e.target.id === 'qrLabel') { S.qr.label = e.target.value || 'Scan to see it in your room'; redrawQR(); }
