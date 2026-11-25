@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FAF7F2">
 <meta name="google-site-verification" content="-8BqAzxloim6sQrqnffgXT_SD-qyJulV96aW3tqCqcw" />
-<meta name="description" content="ARQR turns your products into an AR catalogue. Customers scan one code and see every item at true size in their own room, before they buy.">
+<meta name="description" content="ARQR turns your products into an AR web store. Customers scan one code and see every item at true size in their own room, before they buy.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
@@ -445,7 +445,7 @@
 
   /* ---- the four steps ---- */
   .steps4{list-style:none;margin:clamp(18px,2.8vh,42px) 0 0;padding:0;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center}
   .steps4 li{position:relative;padding:0 8px}
   .steps4 li+li::before{content:"";position:absolute;left:-50%;right:50%;top:31px;
     height:1px;background:repeating-linear-gradient(90deg,var(--sec-muted) 0 5px,transparent 5px 11px);
@@ -459,7 +459,7 @@
   .steps4 strong{display:block;font-size:16px;font-weight:600;margin-bottom:5px}
   .steps4 .st-txt{display:block;font-size:14px;color:var(--sec-muted);line-height:1.45}
   @media(max-width:760px){
-    .steps4{grid-template-columns:repeat(2,1fr);gap:30px 0}
+    .steps4{grid-template-columns:repeat(3,1fr);gap:24px 0}
     .steps4 li+li::before,.steps4 li+li::after{display:none}
   }
 
@@ -1612,6 +1612,70 @@
   }
 
   /* ---- samples: pick your trade ---- */
+
+  /* ---------------- Sales Engine ---------------- */
+  .se{position:relative;padding:clamp(64px,8vw,120px) 0;background:linear-gradient(180deg,#FBF7F1 0%,#F6F0E7 100%)}
+  .se-in{width:var(--wrap);margin-inline:auto}
+  .se-head{max-width:860px}
+  .se h2{margin:0;font-family:var(--f-head);font-weight:800;font-size:clamp(30px,3.4vw,48px);line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+  .se-lead{color:var(--ink-soft);margin:16px 0 0;font-size:clamp(15px,1.4vw,18.5px);line-height:1.6;max-width:66ch}
+  .se-stage{position:relative;margin:clamp(34px,4.5vw,60px) auto 0;max-width:1180px;padding:0 clamp(0px,5vw,90px)}
+  .se-browser{border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 50px 90px -40px rgba(40,25,10,.45),0 2px 6px rgba(40,25,10,.06)}
+  .se-chrome{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;background:#F3EEE6;border-bottom:1px solid var(--line)}
+  .se-chrome i{width:11px;height:11px;border-radius:50%;background:#E1D8CB}
+  .se-chrome i:first-child{background:#F0A58A}
+  .se-chrome span{margin-left:12px;padding:4px 14px;border-radius:999px;background:#fff;font-size:12px;color:var(--ink-soft)}
+  .se-browser img{display:block;width:100%;height:auto}
+  .se-float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 26px 50px -24px rgba(40,25,10,.45)}
+  .se-sales{left:0;bottom:12%;width:220px;padding:16px 18px;display:flex;flex-direction:column;gap:2px;animation:seBob 6s ease-in-out infinite}
+  .se-f-label{font-size:12.5px;color:var(--ink-soft)}
+  .se-f-num{font-family:var(--f-head);font-weight:800;font-size:20px}
+  .se-spark{width:100%;height:auto;margin:8px 0 4px}
+  .se-f-up{font-size:13px;font-weight:700;color:#1E7F4F}
+  .se-buyers{right:0;top:16%;display:flex;align-items:center;gap:12px;padding:13px 16px;font-size:13px;animation:seBob 7s ease-in-out -2s infinite}
+  .se-buyers b{display:block;font-size:14px}
+  .se-buyers span:last-child{color:var(--ink-soft)}
+  .se-dot{width:10px;height:10px;border-radius:50%;background:#1E7F4F;box-shadow:0 0 0 6px rgba(30,127,79,.15);flex:none}
+  .se-tag{right:2%;bottom:-6%;width:clamp(120px,13vw,170px);height:auto;border-radius:14px;padding:6px;animation:seBob 8s ease-in-out -4s infinite}
+  @keyframes seBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @media (prefers-reduced-motion:reduce){.se-float{animation:none}}
+  .se-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(56px,6vw,88px)}
+  .se-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 24px}
+  .se-ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:rgba(224,104,42,.1);color:var(--accent);margin-bottom:14px}
+  .se-ico svg{width:22px;height:22px}
+  .se-card h3{margin:0 0 6px;font-family:var(--f-head);font-weight:800;font-size:18px}
+  .se-card p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.55}
+  .se-vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:clamp(14px,2vw,24px)}
+  .se-vs-col{border-radius:18px;padding:22px 24px;background:#EFE9E0}
+  .se-vs-col.se-vs-us{background:#1C1916;color:#fff}
+  .se-vs-t{margin:0 0 10px;font-family:var(--f-head);font-weight:800;font-size:17px}
+  .se-vs-col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15px}
+  .se-vs-col li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-soft)}
+  .se-vs-col:not(.se-vs-us) li::before{content:"";flex:none;width:14px;height:2px;margin-top:11px;background:#B6AC9E;border-radius:2px}
+  .se-vs-us li{color:#EDE6DC}
+  .se-vs-us li svg{flex:none;width:18px;height:18px;margin-top:2px;color:#F09A61}
+  .se-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,3vw,40px)}
+  @media(max-width:1100px){.se-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:760px){
+    .se-stage{padding:0}.se-sales{position:relative;left:auto;bottom:auto;margin:14px 0 0;width:auto}
+    .se-buyers{position:relative;top:auto;right:auto;margin:10px 0 0;padding:12px 14px}.se-tag{display:none}
+    .se-grid,.se-vs{grid-template-columns:1fr}
+  }
+
+  /* ---------------- the Custom plan: full width under the three ---------------- */
+  .pr-grid .plan.plan-custom{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,44px);
+    background:#1C1916;border-color:#1C1916;color:#fff;--band:#2A2622}
+  .plan-custom .plan-name,.plan-custom .plan-count{color:#fff}
+  .plan-custom .plan-for,.plan-custom .plan-count small{color:#BDB3A6}
+  .plan-custom .plan-ico{background:rgba(224,104,42,.18);color:#F09A61}
+  .plan-custom .plan-count{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14)}
+  .pc-left{display:flex;flex-direction:column}
+  .pc-say{color:#D8CFC4;font-size:15px;line-height:1.6;margin:16px 0 22px}
+  .plan-custom .plan-go{margin-top:auto}
+  .pc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;align-content:start}
+  .pc-list li{display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.45;color:#EDE6DC}
+  .pc-list li svg{flex:none;width:17px;height:17px;margin-top:1px;color:#F09A61}
+  @media(max-width:980px){.pr-grid .plan.plan-custom{grid-template-columns:1fr}.pc-list{grid-template-columns:1fr}}
   .samples{padding:clamp(64px,8vw,120px) 0}
   .samples-in{width:var(--wrap);margin-inline:auto}
   .samples .sec-eyebrow{margin-bottom:clamp(13px,1.8vh,26px)}
@@ -1675,7 +1739,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ARQR">
   <meta property="og:title" content="ARQR | Your showroom, in their room">
-  <meta property="og:description" content="ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.">
+  <meta property="og:description" content="ARQR turns your products into an AR web store. One QR code and your customers see every piece at true size in their own room. No app to download.">
   <meta property="og:url" content="https://arqr360.com/">
   <meta property="og:image" content="https://arqr360.com/assets/og-home.jpg?v=8944e361">
   <meta property="og:image:width" content="1200">
@@ -1684,7 +1748,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ARQR | Your showroom, in their room">
-  <meta name="twitter:description" content="ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.">
+  <meta name="twitter:description" content="ARQR turns your products into an AR web store. One QR code and your customers see every piece at true size in their own room. No app to download.">
   <meta name="twitter:image" content="https://arqr360.com/assets/og-home.jpg?v=8944e361">
 
   <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
@@ -1699,7 +1763,7 @@
     "name": "ARQR",
     "url": "https://arqr360.com/",
     "logo": "https://arqr360.com/assets/logo-mark.png?v=f62dee9f",
-    "description": "ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.",
+    "description": "ARQR turns your products into an AR web store. One QR code and your customers see every piece at true size in their own room. No app to download.",
     "sameAs": [
       "https://www.instagram.com/arqr360",
       "https://x.com/arqr360",
@@ -1720,12 +1784,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AR product catalogue",
+    "name": "AR web store",
     "provider": {
       "@type": "Organization",
       "name": "ARQR"
     },
-    "description": "ARQR turns your products into an AR catalogue. One QR code and your customers see every piece at true size in their own room. No app to download.",
+    "description": "ARQR turns your products into an AR web store. One QR code and your customers see every piece at true size in their own room. No app to download.",
     "offers": [
       {
         "@type": "Offer",
@@ -1817,10 +1881,10 @@
       },
       {
         "@type": "Question",
-        "name": "How much does an AR catalogue cost?",
+        "name": "How much does an AR web store cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You pay once to have the catalogue built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range."
+          "text": "You pay once to have the web store built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range."
         }
       },
       {
@@ -1828,12 +1892,12 @@
         "name": "Do my customers need to install an app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. The catalogue opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them."
+          "text": "No. The web store opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does it take to get my catalogue?",
+        "name": "How long does it take to get my web store?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits."
@@ -1864,12 +1928,12 @@
     </a>
     <nav>
       <a href="#samples">Samples</a>
-      <a href="#catalogues">How it works</a>
+      <a href="#saleengine">Sales Engine</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="see" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zM17.5 17.5h3v3h-3z" fill="currentColor"/></svg><span class="see-full">See a live example</span><span class="see-brief">Sample catalogues</span></a>
-    <a class="cta" href="#contact">Get your catalogue</a>
+    <a class="see" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zM17.5 17.5h3v3h-3z" fill="currentColor"/></svg><span class="see-full">See a live example</span><span class="see-brief">Sample web stores</span></a>
+    <a class="cta" href="#contact">Get your web store</a>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
       <span></span><span></span><span></span>
     </button>
@@ -1877,11 +1941,11 @@
 
 <nav class="mnav" id="mnav">
   <a href="#samples">Samples</a>
-  <a href="#catalogues">How it works</a>
+  <a href="#saleengine">Sales Engine</a>
   <a href="#pricing">Pricing</a>
   <a href="#contact">Contact</a>
   <a href="/catalogue">See a live example</a>
-  <a class="mnav-cta" href="#contact">Get your catalogue</a>
+  <a class="mnav-cta" href="#contact">Get your web store</a>
 </nav>
 
 <!-- ================= HOW IT WORKS ================= -->
@@ -1897,8 +1961,8 @@
   <div class="how-in">
 
     <div class="how-left">
-      <p class="sec-eyebrow rev">AR catalogues for shops, showrooms &amp; online sellers</p>    
-        <h1 class="rev">We turn your catalogue into a real-size AR showroom buyers can experience in their own space.</h1>
+      <p class="sec-eyebrow rev">AR web stores for shops, showrooms &amp; online sellers</p>    
+        <h1 class="rev">We turn your products into a real-size AR web store buyers can place, view and order from in their own space.</h1>
 
 
 
@@ -1923,13 +1987,13 @@
         <span>Live in 7 days</span>
       </p>
       <div class="how-qr rev">
-        <a class="qr-shot" href="catalogue" aria-label="Open the four sample AR catalogues">
-          <img src="assets/qr-catalogue.svg?v=99" alt="QR code that opens the sample AR catalogues" width="150" height="150" loading="lazy">
+        <a class="qr-shot" href="catalogue" aria-label="Open the four sample AR web stores">
+          <img src="assets/qr-catalogue.svg?v=99" alt="QR code that opens the sample AR web stores" width="150" height="150" loading="lazy">
         </a>
         <div class="qr-copy">
-          <strong>See a real catalogue first</strong>
-          <span class="qr-scan">Point your phone camera at this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.</span>
-          <span class="qr-tap">Tap this code. Four real catalogues: furniture, footwear, decor and carpets, each one a single shop's own.</span>
+          <strong>See a real web store first</strong>
+          <span class="qr-scan">Point your phone camera at this code. Four real web stores: furniture, footwear, decor and carpets, each one a single shop's own.</span>
+          <span class="qr-tap">Tap this code. Four real web stores: furniture, footwear, decor and carpets, each one a single shop's own.</span>
           <a class="qr-open" href="catalogue">See the samples
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -1955,20 +2019,16 @@
 
       <ol class="steps4">
         <li class="rev">
-          <span class="st-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3.6 12h16.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-          <strong>1. Scan</strong><span class="st-txt">Scan any product</span>
-        </li>
-        <li class="rev">
           <span class="st-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6 20.2 7v10L12 21.4 3.8 17V7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3.8 7 12 11.7 20.2 7M12 11.7v9.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
-          <strong>2. Place</strong><span class="st-txt">Place in your space</span>
+          <strong>1. Place</strong><span class="st-txt">Place in your space</span>
         </li>
         <li class="rev">
           <span class="st-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-          <strong>3. View</strong><span class="st-txt">See in real size &amp; light</span>
+          <strong>2. View</strong><span class="st-txt">See in real size &amp; light</span>
         </li>
         <li class="rev">
           <span class="st-ico"><svg viewBox="0 0 24 24" fill="none"><g transform="translate(0.35 -0.75)"><path d="M2.6 3.2h2.2l2.3 11.1a1.8 1.8 0 0 0 1.8 1.4h8.5a1.8 1.8 0 0 0 1.8-1.4L21 7.1H6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.6" cy="19.9" r="1.4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="19.9" r="1.4" stroke="currentColor" stroke-width="1.7"/></g></svg></span>
-          <strong>4. Order</strong><span class="st-txt">Buy with confidence</span>
+          <strong>3. Order</strong><span class="st-txt">Buy with confidence</span>
         </li>
       </ol>
     </div>
@@ -2031,33 +2091,81 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>02</em> &middot; <span class="dv-txt">Samples</span>
+    <em>02</em> &middot; <span class="dv-txt">Sales Engine</span>
   </span>
 </div>
 
-<!-- ================= SAMPLES ================= -->
-<section class="samples" id="samples">
-  <div class="samples-in">
-    <p class="sec-eyebrow rev">Samples</p>
-    <h2 class="rev">Pick your trade.</h2>
-    <p class="samples-sub rev">Four sample catalogues, each a demo of one shop's own. Open one on your phone and place a product in your room.</p>
-    <div class="samples-grid">
-      <a class="sample-card rev" href="/novara">
-        <img src="assets/shop-card-novara.webp?v=99" alt="Novara Living, a furniture AR catalogue" loading="lazy">
-        <span class="sample-meta"><strong>Furniture</strong><span>Novara Living &middot; arqr360.com/novara</span></span>
-      </a>
-      <a class="sample-card rev" href="/terra">
-        <img src="assets/shop-card-terra.webp?v=99" alt="Terra and Weave, a rugs and carpets AR catalogue" loading="lazy">
-        <span class="sample-meta"><strong>Rugs &amp; carpets</strong><span>Terra &amp; Weave &middot; arqr360.com/terra</span></span>
-      </a>
-      <a class="sample-card rev" href="/maison">
-        <img src="assets/shop-card-maison.webp?v=99" alt="Maison Ora, a decoration AR catalogue" loading="lazy">
-        <span class="sample-meta"><strong>Decoration</strong><span>Maison Ora &middot; arqr360.com/maison</span></span>
-      </a>
-      <a class="sample-card rev" href="/corso">
-        <img src="assets/shop-card-corso.webp?v=99" alt="Corso Footwear, a footwear AR catalogue" loading="lazy">
-        <span class="sample-meta"><strong>Footwear</strong><span>Corso Footwear &middot; arqr360.com/corso</span></span>
-      </a>
+<!-- ================= SALES ENGINE ================= -->
+<section class="se" id="saleengine">
+  <div class="se-in">
+    <div class="se-head">
+      <p class="sec-eyebrow rev">Sales Engine</p>
+      <h2 class="rev">Not just AR. AR with full control of your traffic.</h2>
+      <p class="se-lead rev">Other AR tools stop at the 3D view. Every ARQR360 web store comes with the Sales Engine: see who placed your products in their room, who is ready to buy, and which code sold what. Then act on it, from one screen.</p>
+    </div>
+
+    <div class="se-stage rev">
+      <div class="se-browser">
+        <div class="se-chrome" aria-hidden="true"><i></i><i></i><i></i><span>arqr360.com/saleengine</span></div>
+        <img src="assets/saleengine-dashboard.webp?v=2" width="1800" height="1125" loading="lazy" decoding="async" alt="The ARQR360 Sales Engine dashboard: room opens, sales after AR, buy rate with AR and today's focus for a furniture store">
+      </div>
+      <div class="se-float se-sales" aria-hidden="true">
+        <span class="se-f-label">Sales after AR</span>
+        <span class="se-f-num">Up every week</span>
+        <svg class="se-spark" viewBox="0 0 160 54" fill="none"><path d="M2 48 C22 44 30 40 46 38 S70 30 84 31 108 18 122 17 144 7 158 3" stroke="#1E7F4F" stroke-width="3" stroke-linecap="round"/><path d="M2 48 C22 44 30 40 46 38 S70 30 84 31 108 18 122 17 144 7 158 3 V54 H2Z" fill="rgba(30,127,79,.12)"/></svg>
+        <span class="se-f-up">&#9650; Increase your sales</span>
+      </div>
+      <div class="se-float se-buyers" aria-hidden="true">
+        <span class="se-dot"></span><span><b>7 shoppers ready to buy</b>Placed it in their room 3+ times</span>
+      </div>
+      <img class="se-float se-tag" src="assets/saleengine-qrtag.webp?v=1" width="440" height="597" loading="lazy" decoding="async" alt="A printable showroom tag with a QR code that opens the sofa in AR">
+    </div>
+
+    <div class="se-grid">
+      <div class="se-card rev">
+        <span class="se-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+        <h3>See all your traffic</h3>
+        <p>Every room open, every QR scan, live as it happens. Which products, which suburbs, which hours.</p>
+      </div>
+      <div class="se-card rev">
+        <span class="se-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.6c1.6.6 2.6 2.4 3 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Know who is ready to buy</h3>
+        <p>Shoppers who placed a product again and again, or left it in the cart. Send them an offer on WhatsApp or email.</p>
+      </div>
+      <div class="se-card rev">
+        <span class="se-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="1.8"/><path d="M14 14h3v3h-3zM20 20h1M17 20h1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>A QR code for every product</h3>
+        <p>Make a code in one click. Download it, print it as a showroom tag, share it or save it, and see which one sells.</p>
+      </div>
+      <div class="se-card rev">
+        <span class="se-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Proof that AR sells</h3>
+        <p>Buy rate with AR against without it, sales after AR, and reports for any dates you pick.</p>
+      </div>
+    </div>
+
+    <div class="se-vs rev">
+      <div class="se-vs-col">
+        <p class="se-vs-t">Other AR tools</p>
+        <ul>
+          <li>A 3D viewer on a product page</li>
+          <li>A view count, if anything</li>
+          <li>No idea who looked or what to do next</li>
+        </ul>
+      </div>
+      <div class="se-vs-col se-vs-us">
+        <p class="se-vs-t">ARQR360</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own AR web store, real size</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Every visit, scan and cart, live</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Shoppers ready to buy, and the offer that wins them</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="se-cta rev">
+      <a class="btn btn-a" href="/saleengine" target="_blank" rel="noopener">Open the live Sales Engine demo<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="16" height="16"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn demo-btn" href="#contact"><span>Get your web store</span></a>
     </div>
   </div>
 </section>
@@ -2070,66 +2178,34 @@
       <path d="M12 2.2 20.5 7v10L12 21.8 3.5 17V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
       <path d="M12 8.2 15.8 10.4v4.3L12 16.9 8.2 14.7v-4.3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
     </svg>
-    <em>03</em> &middot; <span class="dv-txt">How it works</span>
+    <em>03</em> &middot; <span class="dv-txt">Samples</span>
   </span>
 </div>
 
-<!-- ================= HOW IT WORKS ================= -->
-<section class="cat" id="catalogues">
-
-  <div class="scanline" aria-hidden="true"></div>
-
-  <div class="mesh" aria-hidden="true">
-    <div class="mesh-base"></div>
-    <div class="mesh-band"><div class="mesh-lit"></div></div>
-  </div>
-
-  <div class="cat-in">
-
-    <div class="cat-head">
-      <p class="cat-eyebrow rev">How it works</p>
-      <h2 class="rev">You send photos. We do the rest.</h2>
-      <p class="cat-sub rev">Four steps. About seven days. Then your customers see your products in their own rooms.</p>
+<!-- ================= SAMPLES ================= -->
+<section class="samples" id="samples">
+  <div class="samples-in">
+    <p class="sec-eyebrow rev">Samples</p>
+    <h2 class="rev">Pick your trade.</h2>
+    <p class="samples-sub rev">Four sample web stores, each a demo of one shop's own. Open one on your phone and place a product in your room.</p>
+    <div class="samples-grid">
+      <a class="sample-card rev" href="/novara">
+        <img src="assets/shop-card-novara.webp?v=99" alt="Novara Living, a furniture AR web store" loading="lazy">
+        <span class="sample-meta"><strong>Furniture</strong><span>Novara Living &middot; arqr360.com/novara</span></span>
+      </a>
+      <a class="sample-card rev" href="/terra">
+        <img src="assets/shop-card-terra.webp?v=99" alt="Terra and Weave, a rugs and carpets AR web store" loading="lazy">
+        <span class="sample-meta"><strong>Rugs &amp; carpets</strong><span>Terra &amp; Weave &middot; arqr360.com/terra</span></span>
+      </a>
+      <a class="sample-card rev" href="/maison">
+        <img src="assets/shop-card-maison.webp?v=99" alt="Maison Ora, a decoration AR web store" loading="lazy">
+        <span class="sample-meta"><strong>Decoration</strong><span>Maison Ora &middot; arqr360.com/maison</span></span>
+      </a>
+      <a class="sample-card rev" href="/corso">
+        <img src="assets/shop-card-corso.webp?v=99" alt="Corso Footwear, a footwear AR web store" loading="lazy">
+        <span class="sample-meta"><strong>Footwear</strong><span>Corso Footwear &middot; arqr360.com/corso</span></span>
+      </a>
     </div>
-
-    <ol class="cat-steps">
-
-      <li class="cat-card rev">
-        <span class="cat-num">01</span>
-        <figure class="cat-shot"><img src="assets/step-1.webp?v=99" alt="A seller photographing products on a shelf" loading="lazy" decoding="async"></figure>
-        <h3>You send photos</h3>
-        <p>The pictures you already have, plus sizes and prices. About ten minutes of your time.</p>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">02</span>
-        <figure class="cat-shot"><img src="assets/step-2.webp?v=99" alt="A product rebuilt as a true-size 3D model" loading="lazy" decoding="async"></figure>
-        <h3>We build your catalogue</h3>
-        <p>Every product rebuilt at its real size. Your brand, your prices, your shop.</p>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">03</span>
-        <figure class="cat-shot"><img src="assets/step-4.webp?v=99" alt="One QR code shared across shop, packaging and phone" loading="lazy" decoding="async"></figure>
-        <h3>You share one code</h3>
-        <p>Print it, post it, message it. Customers scan and see it in their room.</p>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-      <li class="cat-card rev">
-        <span class="cat-num">04</span>
-        <figure class="cat-shot"><img src="assets/step-5.webp?v=99" alt="A customer seeing your product in their own room through their phone" loading="lazy" decoding="async"></figure>
-        <h3>They see it in their room</h3>
-        <p>Customers tap a product and see it in their room. Then they order from you.</p>
-        <span class="cat-link" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </li>
-
-    </ol>
-
-
-
   </div>
 </section>
 
@@ -2160,7 +2236,7 @@
     <div class="pr-head">
       <p class="sec-eyebrow rev">Pricing</p>
       <h2 class="rev">Choose a plan. Start growing today.</h2>
-      <p class="pr-sub rev">Affordable monthly plans to keep your AR catalogue live, shareable, and always up to date.</p>
+      <p class="pr-sub rev">Affordable monthly plans to keep your AR web store live, shareable, and always up to date.</p>
       <p class="pr-try rev"><a class="demo-btn" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See a live example</span></a></p>
     </div>
 
@@ -2186,13 +2262,13 @@
             <s class="band-was">$39/month</s>
             <em class="save-mo">Save $10/month</em>
           </p>
-          <p class="band-note">Keep your AR catalogue live, shareable, and updated.</p>
+          <p class="band-note">Keep your AR web store live, shareable, and updated.</p>
         </div>
 
         <div class="plan-setup">
           <p class="setup-label">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="7.4" ry="2.9" stroke="currentColor" stroke-width="1.7"/><path d="M4.6 6.4v11.2c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9V6.4M4.6 12c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9" stroke="currentColor" stroke-width="1.7"/></svg>
-            One-time catalogue setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
+            One-time web store setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
           <p class="setup-row">
             <b>$249</b>
             <s>$349</s>
@@ -2201,7 +2277,7 @@
         </div>
 
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR catalogue</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branded AR web store</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One QR code and a shareable link</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited QR scans, no per-scan fees</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No percentage of your sales</li>
@@ -2233,13 +2309,13 @@
             <s class="band-was">$79/month</s>
             <em class="save-mo">Save $20/month</em>
           </p>
-          <p class="band-note">Keep your AR catalogue live, shareable, and updated.</p>
+          <p class="band-note">Keep your AR web store live, shareable, and updated.</p>
         </div>
 
         <div class="plan-setup">
           <p class="setup-label">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="7.4" ry="2.9" stroke="currentColor" stroke-width="1.7"/><path d="M4.6 6.4v11.2c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9V6.4M4.6 12c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9" stroke="currentColor" stroke-width="1.7"/></svg>
-            One-time catalogue setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
+            One-time web store setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
           <p class="setup-row">
             <b>$549</b>
             <s>$749</s>
@@ -2251,7 +2327,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited QR scans, no per-scan fees</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No percentage of your sales</li>
-          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority catalogue setup</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority web store setup</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Faster turnaround on new products</li>
           <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
         </ul>
@@ -2278,13 +2354,13 @@
             <s class="band-was">$129/month</s>
             <em class="save-mo">Save $30/month</em>
           </p>
-          <p class="band-note">Keep your AR catalogue live, shareable, and updated.</p>
+          <p class="band-note">Keep your AR web store live, shareable, and updated.</p>
         </div>
 
         <div class="plan-setup">
           <p class="setup-label">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="12" cy="6.4" rx="7.4" ry="2.9" stroke="currentColor" stroke-width="1.7"/><path d="M4.6 6.4v11.2c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9V6.4M4.6 12c0 1.6 3.3 2.9 7.4 2.9s7.4-1.3 7.4-2.9" stroke="currentColor" stroke-width="1.7"/></svg>
-            One-time catalogue setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
+            One-time web store setup<svg class="plan-i" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.1" fill="currentColor"/></svg></p>
           <p class="setup-row">
             <b>$999</b>
             <s>$1,399</s>
@@ -2309,6 +2385,35 @@
         <a class="plan-go" href="https://buy.polar.sh/polar_cl_CGLy0aZ6rDPEtTLBf78YeJqAjXuTMl9PFnt261wE5vQ">Get Showroom<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
 
+      <div class="plan plan-custom rev" data-tier="custom">
+        <div class="pc-left">
+          <div class="plan-top">
+            <span class="plan-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V9l7-5 7 5v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-6h6v6M9 11h.01M15 11h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <div class="plan-id">
+              <p class="plan-name">Custom</p>
+              <p class="plan-for">For bigger stores with more than 100 products.</p>
+            </div>
+            <div class="plan-count">100+<small>AR products</small></div>
+          </div>
+          <p class="pc-say">Every product in AR, the full Sales Engine for your team, and a price built around your range. Tell us what you sell and we come back within one working day.</p>
+          <a class="plan-go" href="#contact" data-custom-plan>Talk to us about Custom<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <ul class="pc-list">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Showroom</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Engine dashboard: live traffic, room opens and QR scans</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>QR Studio: a code for every product, print, share and save</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready-to-buy shoppers, with offers by WhatsApp or email</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reports for any dates, AR vs no AR, CSV export</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Shopify, WooCommerce, Klaviyo and WhatsApp connections</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Several stores and team logins under one account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Premium close-up models for your best sellers</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your own branding and domain</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>A dedicated account manager</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited QR scans, no per-scan fees</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No percentage of your sales</li>
+        </ul>
+      </div>
+
     </div>
 
     <p class="pr-tryfree rev">Not ready to pay yet? <a href="#f-name" data-sample>Try one product free first</a>. We build its AR view free, no commitment.</p>
@@ -2320,7 +2425,7 @@
       </div>
       <div class="ps">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 12a3.5 3.5 0 1 1-3.5 3.5A3.5 3.5 0 0 1 8.5 12Zm0 0a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 8.5 12Zm7 0a3.5 3.5 0 1 1 3.5 3.5A3.5 3.5 0 0 1 15.5 12Zm0 0a3.5 3.5 0 1 0 3.5-3.5A3.5 3.5 0 0 0 15.5 12Z" stroke="currentColor" stroke-width="1.7"/></svg>
-        <span><b>Keep it live</b>Your catalogue stays active</span>
+        <span><b>Keep it live</b>Your web store stays active</span>
       </div>
       <div class="ps">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
@@ -2332,20 +2437,6 @@
       </div>
     </div>
 
-    <div class="plan-more rev">
-      <div class="pm-say">
-        <p class="pm-title">Custom catalogue</p>
-        <ul class="pm-list">
-          <li>More than 50 products</li>
-          <li>Multiple product categories</li>
-          <li>Multi-store catalogues</li>
-          <li>Advanced branding or special requirements</li>
-        </ul>
-      </div>
-      <a class="pm-go" href="#f-name">Request a custom quote
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
 
     <p class="pr-foot rev">Simple products are included at the listed price. Highly detailed, transparent, animated or configurable products may need a custom quote before production.</p>
 
@@ -2377,7 +2468,7 @@
           <div class="mesh-band"><div class="mesh-lit"></div></div>
         </div>
 
-        <p class="ct-eyebrow">Get your catalogue</p>
+        <p class="ct-eyebrow">Get your web store</p>
         <h2>Let&apos;s build yours.</h2>
         <p class="ct-copy">Tell us what you sell. We reply within one working day with the next steps.</p>
 
@@ -2509,8 +2600,8 @@
            the questions and the right side of the page is no longer empty -->
       <aside class="faq-side">
         <p class="sec-eyebrow rev">Our promise</p>
-        <h3 class="rev">Love your catalogue, or we rebuild it.</h3>
-        <p class="rev">Send us your product photos, sizes and prices. In about 7 days you get your catalogue and your QR code — your products, your brand, every piece in true-size AR. Don't love the first version? We rebuild it free, up to three times.</p>
+        <h3 class="rev">Love your web store, or we rebuild it.</h3>
+        <p class="rev">Send us your product photos, sizes and prices. In about 7 days you get your web store and your QR code — your products, your brand, every piece in true-size AR. Don't love the first version? We rebuild it free, up to three times.</p>
         <ul class="gr-list">
           <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No card, no contract. Cancel the monthly plan any time.</span></li>
           <li class="rev"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The 3D models stay yours, whatever you decide.</span></li>
@@ -2523,15 +2614,15 @@
           <p>ARQR turns your product photographs into 3D models your customers can place in their own room at true size, through one QR code or one link. There is no app to download. It opens in the phone’s own camera on both iPhone and Android.</p>
         </details>
         <details class="qa rev">
-          <summary><span>How much does an AR catalogue cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>You pay once to have the catalogue built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range.</p>
+          <summary><span>How much does an AR web store cost?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>You pay once to have the web store built, then a monthly fee keeps it live. At founder pricing that is $249 for 10 products and then $29 a month, $549 for 25 and then $59 a month, or $999 for 50 and then $99 a month. Extra products are $20 each. Above 50 products, or for multiple stores and categories, we quote for the range.</p>
         </details>
         <details class="qa rev">
           <summary><span>Do my customers need to install an app?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-          <p>No. The catalogue opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
+          <p>No. The web store opens in the browser, and the AR view uses what is already built into the phone: Quick Look on iPhone and Scene Viewer on Android. Your customer scans the code or taps a link and the product appears in the room in front of them.</p>
         </details>
         <details class="qa rev">
-          <summary><span>How long does it take to get my catalogue?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <summary><span>How long does it take to get my web store?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
           <p>About seven days from your photographs arriving. Send your best-selling products first. Every product is built to its real measurements, so a three-metre sofa arrives as a three-metre sofa and the customer can see whether it fits.</p>
         </details>
         <details class="qa rev">
@@ -2540,7 +2631,7 @@
         </details>
                 <details class="qa rev">
                     <summary><span>Do you sell or ship anything physical?</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9.5 12 15.5 18 9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-                    <p>No. ARQR360 is a purely digital service — 3D models, catalogue hosting, and your QR code and link. We never sell, ship, or handle physical products. Your customers always order from you, through your own shop or website.</p>
+                    <p>No. ARQR360 is a purely digital service — 3D models, web store hosting, and your QR code and link. We never sell, ship, or handle physical products. Your customers always order from you, through your own shop or website.</p>
                     </details>
       <!-- faq:end -->
       </div>
@@ -3348,8 +3439,17 @@
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
+<script>
+/* "Talk to us about Custom" lands on the contact form with the message started */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('[data-custom-plan]'); if (!a) return;
+  var m = document.getElementById('f-msg');
+  if (m && !m.value) { m.value = 'Custom plan: we have about ___ products. '; m.dispatchEvent(new Event('input', { bubbles: true })); }
+  setTimeout(function () { if (m) { m.focus({ preventScroll: true }); try { m.setSelectionRange(29, 32); } catch (x) {} } }, 650);
+});
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="exit-offer.js?v=6" defer></script><script src="chat-bot.js?v=2" defer></script>
-<script>(function(){var end=new Date("2026-10-31T23:59:59+05:00").getTime();var now=Date.now();if(now>end){var t=document.getElementById("arqTicker");if(t)t.style.display="none";return;}var days=Math.max(1,Math.ceil((end-now)/86400000));var dl=document.getElementById("arqDaysLeft");if(dl)dl.textContent=days+(days===1?" day":" days");var msg='<span><b>THE BIG AR CELEBRATION</b> &nbsp; First month of true-to-size AR <b>FREE</b> for stores that join before Oct 31'+'<span class="arq-ticker-pill">'+days+(days===1?" day":" days")+' left</span>'+'<a class="arq-ticker-cta" href="/?offer=preview">Book your free catalogue now</a></span>';document.getElementById("arqTickerTrack").innerHTML=msg+msg;})();</script></body>
+<script>(function(){var end=new Date("2026-10-31T23:59:59+05:00").getTime();var now=Date.now();if(now>end){var t=document.getElementById("arqTicker");if(t)t.style.display="none";return;}var days=Math.max(1,Math.ceil((end-now)/86400000));var dl=document.getElementById("arqDaysLeft");if(dl)dl.textContent=days+(days===1?" day":" days");var msg='<span><b>THE BIG AR CELEBRATION</b> &nbsp; First month of true-to-size AR <b>FREE</b> for stores that join before Oct 31'+'<span class="arq-ticker-pill">'+days+(days===1?" day":" days")+' left</span>'+'<a class="arq-ticker-cta" href="/?offer=preview">Book your free web store now</a></span>';document.getElementById("arqTickerTrack").innerHTML=msg+msg;})();</script></body>
 
 </html>

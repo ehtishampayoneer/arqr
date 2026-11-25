@@ -241,7 +241,7 @@ function vOverview() {
   var hot = D.leads.filter(function (l) { return l.hot; }), fix = D.items.filter(function (i) { return i.status === 'fix'; })[0];
   var focus = [];
   if (hot[0]) focus.push(['users', '#E0682A', hot.length + ' shoppers are ready to buy', hot[0].name + ' placed the ' + hot[0].item.name + ' in their room. Send an offer while it is warm.', 'Send offers', '#/leads']);
-  if (lots) focus.push(['bulb', '#A86400', 'Lots of looks, few sales: ' + lots.name, fmt(sum(lots, n).o) + ' room opens but only ' + sum(lots, n).orders + ' orders. Try a limited offer or check the price.', 'See report', '#/product/' + lots.slug]);
+  if (lots) focus.push(['bulb', '#A86400', 'Lots of looks, few sales: ' + lots.name, fmt(sum(lots, n).o) + ' room opens but only ' + fmt(sum(lots, n).orders) + ' orders. Try a limited offer or check the price.', 'See report', '#/product/' + lots.slug]);
   if (fix) focus.push(['alert', '#B4362B', fix.name + ' needs better photos', 'Shoppers see a softer model. Upload 3 close-ups and it goes live again in 48 hours.', 'Fix it', '#/health']);
   focus.push(['qr', '#2F5FA8', 'Put QR codes in your showroom', 'QR scans brought ' + fmt(cur.qr) + ' room opens. Print tags for the ' + Math.max(0, D.items.length - 6) + ' products without one.', 'Open QR Studio', '#/qr']);
   var srcs = [['Showroom QR codes', cur.qr, '#2F5FA8'], ['"View in your room" on product pages', Math.round((cur.o - cur.qr) * 0.72), '#E0682A'], ['Instagram & social links', Math.round((cur.o - cur.qr) * 0.19), '#6B3FA0'], ['Emails & WhatsApp', Math.round((cur.o - cur.qr) * 0.09), '#1E7F4F']];
