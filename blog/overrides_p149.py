@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+"""
+2026-11-24 20:00 run (p149): How Australian Decor Stores Win Black Friday
+Sales with AR. Third article of the day. Decor, Australian buyer market,
+buyer-intent "win Black Friday sales" angle. Fresh: no Australian decor
+Black Friday article exists (grep checked 2026-11-24 across build.py +
+overrides_p*.py + blog dirs; the US rug and US decor Black Friday
+articles are different markets/verticals). No competitor names anywhere,
+no comparison table. No invented stories or stats. Hypothetical scenario
+only ("picture a..."). Shopify 94% figure cited as Shopify's own data,
+as allowed. Internal link to the Australian decor returns article.
+Sample link /maison only. NOTE: this run did not execute blog/build.py
+(automated execution-risk flag on the build.py read); the article page,
+blog/index.html card and blog/sitemap.xml URL were hand-generated
+in the same format build.py produces, from the p146 page as skeleton.
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+EXTRA_POSTS = [
+{"slug": "how-australian-decor-stores-win-black-friday-sales-with-ar","title": "How Australian Decor Stores Win Black Friday Sales with AR (Augmented Reality)","date": "November 24, 2026","description": "Black Friday brings record traffic to Australian decor stores, and size doubt still kills the sale. A true-to-size AR view on the product page turns deal hunters into buyers in a minute, and keeps the sale from coming back as a return.","body": """<figure class="postimg"><img src="/blog/how-australian-decor-stores-win-black-friday-sales-with-ar/images/hero.jpg" alt="Happy Australian shopper smiling while pointing her phone at a large framed wall art piece shown at its true size in AR on her living room wall, smiling decor shop owner beside her" loading="lazy"><figcaption>Black Friday traffic is only worth something if the size doubt goes away.</figcaption></figure>
+<p>Picture a decor store owner in Melbourne. She sells wall art, mirrors, lamps and vases from one shop and a website. Black Friday is her biggest weekend of the year. The traffic triples. Her inbox fills with questions. And most of the visitors still leave without buying. The price is right. The piece is right. The doubt is the size.</p>
+<p>That is the Black Friday problem for decor. A sale brings the browsers, but a flat photo cannot tell a shopper if the mirror fits her wall or if the lamp suits her side table. She loves the price, she likes the piece, and she still closes the tab, because a wrong size on a sale item feels worse than no sale at all. Here is how a true-to-size AR (Augmented Reality) view on the product page turns that traffic into orders, and keeps those orders from coming back in January.</p>
+<h2>Why Black Friday browsers hesitate on decor</h2>
+<p>Sale shoppers decide fast, but decor is not a small purchase. The questions in her head are simple, and a photo answers none of them.</p>
+<p>First, will it fit. A mirror that looks right in your bright shop can swallow a small wall at home, or sit too small above the sideboard and look lost. Second, will the colour work in her light. A lamp that glows warm in your shop window can look cold in her living room, or clash with the sofa she already owns. Third, will it suit the room. A bold print looks great in a photo and can take over a small room in real life.</p>
+<p>On Black Friday she has one more worry. The sale ends Sunday. If she waits to measure, the price is gone. If she buys blind, the return costs her the saving. So she does nothing, and your biggest weekend of the year ends with traffic and no orders.</p>
+<h2>What changes when she sees it at true size</h2>
+<p>A true-to-size AR (Augmented Reality) view answers all three questions in about a minute, on her own phone, in her own room. She taps the link on the product page, points her phone at her wall, and the piece appears at its true size, right where it would hang. She steps back. She checks it against her sofa. She sees the colour in her own light, next to her own furniture.</p>
+<p>Our designing department builds each view from the real listed dimensions of the piece, so the size on screen is the size that arrives at the door. That is what turns a deal hunter into a buyer before the sale ends. One number worth knowing, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. Shoppers who can check the true size hesitate less, and sale shoppers hesitate most of all, because the clock is running.</p>
+<figure class="postimg"><img src="/blog/how-australian-decor-stores-win-black-friday-sales-with-ar/images/img1.jpg" alt="Happy Australian shopper smiling while pointing her phone at a tall floor lamp shown at its true size in AR in her living room corner, smiling decor seller beside her" loading="lazy"><figcaption>She checks the lamp against her own side table before the sale ends.</figcaption></figure>
+<h2>Where the view goes for the sale weekend</h2>
+<ul><li><strong>Next to the price on every sale product page.</strong> That is where the size doubt lives. A see-it-at-true-size link beside the buy button answers the question at the moment it matters.</li><li><strong>In the sale emails and social posts.</strong> The link opens on a phone, which is exactly where your Black Friday shoppers browse.</li><li><strong>On the price tags in the shop.</strong> A QR code on the tag opens the same piece in AR. Customers check it at home and come back decided.</li></ul>
+<h2>What the store keeps after the weekend</h2>
+<p>The orders that came in with a true-to-size view behind them stay sold. The pieces that used to come back for size reasons stop coming back, because the buyer saw the true size before she ordered. We wrote about the returns side of this in <a href="/blog/how-australian-decor-stores-cut-returns-with-ar">how Australian decor stores cut returns with AR</a>.</p>
+<p>The route is simple. You send product photos and your listed dimensions. Our designing department produces the true-to-size AR (Augmented Reality) views for you. Photos in, views out. Each piece gets a link and a QR code that opens in the phone browser. No app for the shopper to install. About seven days from photos to a live catalogue.</p>
+<figure class="postimg"><img src="/blog/how-australian-decor-stores-win-black-friday-sales-with-ar/images/img2.jpg" alt="Smiling Australian decor shop owner in an apron and a happy shopper looking together at a phone showing a large round wall mirror at its true size in AR on the living room wall" loading="lazy"><figcaption>The view against the real wall: same size, or it fails the test.</figcaption></figure>
+<h2>The cheapest way to check before you buy</h2>
+<p>You do not have to sign anything to find out. Send a photo of your bestselling mirror or wall art piece and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real piece, and see if your Black Friday shoppers would use it. If it does not convince you, you have spent nothing. No programming, no changes to your website needed. We send you a QR code for each product. Put it on the product page, on your packaging, in your shop, on social media, anywhere. Your buyer scans it and sees your product in their own room, real size. Try the <a href="/maison">live decor demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>Why do Black Friday decor shoppers hesitate even at a good price?</h3><p>They love the price, but they cannot tell if the piece fits their wall, suits their light, or works with the furniture they already own. A photo answers none of that. A true-to-size AR view on the product page shows the piece on their own wall, in their own light, so the doubt goes away before the sale ends. Try the <a href="/maison">live decor demo</a> on your own phone and see it yourself.</p><h3>Do my customers need an app to see my pieces in AR?</h3><p>Not with ARQR360. Each piece gets a link and a QR code that opens the AR view in the phone browser.</p><h3>How long before my sale pieces are live, and what does it cost?</h3><p>About seven days from your photos arriving, and the price is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. Your first view is free, so you can test it before you pay anything.</p></div>
+""",
+},
+];
