@@ -242,6 +242,7 @@
     gap:10px 14px;font-size:15px;color:var(--ink-soft)}
   .bar .see svg{width:15px;height:15px;display:block;flex:none}
   .see-brief{display:none}
+  .pt-brief{display:none}
 
   /* never a flex item that can be shrunk: it is a 44px tap target and
      the row taking width out of it is the row's problem, not its own */
@@ -1643,7 +1644,7 @@
   .se-chip-buy{right:-14px;top:22%}
   .se-chip-buy i{width:9px;height:9px;border-radius:50%;background:#1E7F4F;box-shadow:0 0 0 5px rgba(30,127,79,.14)}
   @media(max-width:980px){.se-in{grid-template-columns:1fr}.se-chip-sales{left:8px}.se-chip-buy{right:8px}}
-  @media(max-width:560px){.se-pts{grid-template-columns:1fr}.se-chip-buy{display:none}}
+  @media(max-width:560px){.se-chip-buy{display:none}}
 
   /* ---------------- the Custom plan: full width under the three ---------------- */
   .pr-grid .plan.plan-custom{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,44px);
@@ -1787,7 +1788,34 @@
     .faq-side{padding:16px}
     .pr-head{text-align:start}
     .pr-try{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
-    .pr-try .demo-btn{min-height:40px;padding:0 14px;font-size:13px}
+    .pr-try{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .pr-try .demo-btn{min-height:40px;padding:0 10px;font-size:13px;gap:6px}
+    .pr-try .demo-btn svg{width:14px;height:14px}
+    .pt-full{display:none}.pt-brief{display:inline}
+    /* hero: the two buttons share one row */
+    .how .cat-cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .how .cat-cta .btn{min-height:46px;padding:8px 10px;font-size:13.5px;gap:6px;text-align:center;line-height:1.25;width:auto}
+    .how .cat-cta .btn svg{width:14px;height:14px}
+    .how .cat-cta .btn-a svg{display:none}
+    .how .cat-cta .btn{font-size:13px;padding:8px 6px;white-space:nowrap}
+    html:not([lang="en"]) .how .cat-cta .btn{white-space:normal}
+    /* pricing: heading on the left like the rest, monthly and setup side by side */
+    .pr-head h2{margin-inline:0;max-width:none;text-align:start}
+    .pr-grid .plan:not(.plan-custom){display:grid;grid-template-columns:1fr 1fr;column-gap:8px;align-content:start}
+    .pr-grid .plan:not(.plan-custom)>*{grid-column:1/-1}
+    .pr-grid .plan:not(.plan-custom)>.plan-band,.pr-grid .plan:not(.plan-custom)>.plan-setup{grid-column:auto;margin:0 0 10px;padding:11px 11px 10px}
+    .plan-band .band-label,.plan-setup .setup-label{font-size:9.5px;letter-spacing:.08em;gap:4px}
+    .plan-setup .setup-label>svg:first-child{display:none}
+    .plan-band .band-now b{font-size:28px}
+    .plan-band .band-was,.plan-setup .setup-row s{font-size:12px}
+    .plan-setup .setup-row b{font-size:22px}
+    .plan-setup .setup-row{gap:3px 7px}
+    .pr-grid .plan-custom li{font-size:13.5px}
+    /* the four Sales Engine points: two by two */
+    .se-pts{grid-template-columns:1fr 1fr;gap:12px 14px}
+    .se-pts li{padding-left:10px}
+    .se-pts b{font-size:13px;line-height:1.3}
+    .se-pts span{font-size:12px;line-height:1.4;margin-top:2px}
     .pr-note{text-align:start;font-size:13px}
   }
 </style>
@@ -2256,7 +2284,7 @@
       <p class="sec-eyebrow rev">Pricing</p>
       <h2 class="rev">Choose a plan. Start growing today.</h2>
       <p class="pr-sub rev">Affordable monthly plans to keep your AR web store live, shareable, and always up to date.</p>
-      <p class="pr-try rev"><a class="demo-btn" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See a live example</span></a> <a class="demo-btn" href="/saleengine" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>See the Sales Engine demo</span></a></p>
+      <p class="pr-try rev"><a class="demo-btn" href="/catalogue"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4" stroke="currentColor" stroke-width="1.9"/><path d="M10.6 18h2.8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span class="pt-full">See a live example</span><span class="pt-brief">Sample web stores</span></a> <a class="demo-btn" href="/saleengine" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span class="pt-full">See the Sales Engine demo</span><span class="pt-brief">Sales Engine demo</span></a></p>
     </div>
 
     <p class="pr-note rev">Launch pricing. One setup fee, one monthly fee, nothing hidden.</p>
