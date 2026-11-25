@@ -700,6 +700,9 @@ $('#modal').addEventListener('click', function (e) { if (e.target.id === 'modal'
 addEventListener('keydown', function (e) { if (e.key === 'Escape') $('#modal').classList.remove('open'); });
 
 fetch('/shop-products.json').then(function (r) { return r.json(); }).then(function (j) {
-  PRODUCTS = j; if (!PRODUCTS[S.store]) S.store = 'novara'; route();
+  PRODUCTS = j;
+  var want = new URLSearchParams(location.search).get('store');
+  if (want && PRODUCTS[want]) { S.store = want; save(); history.replaceState(null, '', location.pathname + location.hash); }
+  if (!PRODUCTS[S.store]) S.store = 'novara'; route();
 }).catch(function () { $('#view').innerHTML = '<div class="card empty">Could not load the catalogue. Refresh the page.</div>'; });
 })();
