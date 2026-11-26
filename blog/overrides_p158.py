@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+"""
+2026-11-26 23:00 run (p158): How Canadian Decor Stores Win Christmas
+Sales with AR. Fourth article of the day. Decor, Canada buyer
+market (Toronto, Vancouver, Montreal, Calgary), buyer-intent "win
+Christmas sales" angle. Fresh: US decor Christmas exists (p96),
+Canadian rug Black Friday exists (p153), Gulf decor Christmas
+exists (p155), but no CANADIAN DECOR Christmas article exists
+(grep checked 2026-11-26 across build.py + overrides_p*.py + blog
+dirs + sitemap.xml). Timely: Christmas shopping weeks start now.
+No competitor names anywhere, no comparison table. No invented
+stories or stats. Hypothetical scenario only ("picture a...").
+Shopify 94% figure cited as Shopify's own data, as allowed.
+Internal link to the Gulf decor Christmas article. Sample link
+/maison only.
+NOTE: this run did not execute blog/build.py (automated execution-risk
+flag on the build.py read); the article page, blog/index.html card and
+blog/sitemap.xml URL were hand-generated in the same format build.py
+produces, from the p155 page as skeleton (decor article, /maison CTA).
+"""
+BODY_OVERRIDES = {}
+DESC_OVERRIDES = {}
+EXTRA_POSTS = [
+{"slug": "how-canadian-decor-stores-win-christmas-sales-with-ar","title": "How Canadian Decor Stores Win Christmas Sales with AR (Augmented Reality)","date": "November 26, 2026","description": "Christmas brings gift buyers and home refreshes to Canadian decor stores, and size doubt still kills the sale. A true-to-size AR view on the product page turns browsers into buyers in a minute, and keeps the piece from coming back in January.","body": """<figure class="postimg"><img src="/blog/how-canadian-decor-stores-win-christmas-sales-with-ar/images/hero.jpg" alt="Happy Canadian shopper smiling while pointing her phone at a large ornate gold framed mirror shown at its true size in AR on her living room wall, smiling decor shop owner beside her, Christmas tree and snow outside the window" loading="lazy"><figcaption>The Christmas order is only safe once the size doubt is gone.</figcaption></figure>
+<p>Picture a decor store owner in Toronto. It is late November, and the biggest shopping weeks of the year are about to start. Shoppers in Toronto, Vancouver, Montreal and Calgary are hunting for gifts and for pieces to freshen the home before the family arrives. A woman in Vancouver wants a large mirror for the hallway before her parents visit. A couple in Montreal found the shop through a search and want a floor lamp for the living room. A man in Calgary has been watching one framed print for weeks and plans to buy it while the Christmas sales are on. They like the piece, they like the price, and they still hesitate, because a piece bought from a screen can arrive the wrong size for the wall, and at Christmas there is no time to send it back and try again. Here is how a true-to-size AR (Augmented Reality) view on the product page wins those Christmas sales before they are lost.</p>
+<h2>Why Christmas decor sales get lost</h2>
+<p>Three reasons drive them. First, the size. A mirror that looked right in a product photo can sit too small above the sofa, or run too wide for the wall, and the buyer only finds out when it is already hung. Second, the colour and the light. The piece in your bright showroom can look different in her living room light, and a warm gold on screen can read cold grey on her wall. Third, the clock. Christmas gifts have a hard date, so a shopper who is not sure waits, and a shopper who waits misses the sale and buys nothing. At Christmas all three hit at once, because shoppers are buying fast, for a fixed date, with no time to measure twice.</p>
+<h2>What changes when they see it at true size</h2>
+<p>A true-to-size AR (Augmented Reality) view answers all three doubts in about a minute, on her own phone, in her own room. She taps the link on the product page, points her phone at her wall, and the piece appears at its true size, right where it would hang. She steps back. She checks it against her sofa and her side table. She sees the colour in her own light, next to her own wall. Our designing department builds each view from the real listed dimensions of the piece, so the size on screen is the size that arrives at the door. One number worth knowing, and it is Shopify's own data, not ours: products with 3D or AR views convert about 94% better than products without. A Christmas shopper who can check the true size hesitates less, and hesitation is the whole problem in the busiest weeks of the year.</p>
+<figure class="postimg"><img src="/blog/how-canadian-decor-stores-win-christmas-sales-with-ar/images/img1.jpg" alt="Smiling Canadian couple looking together at a phone showing a tall decorative floor lamp at its true size in AR beside their armchair, smiling decor seller beside them, Christmas wreath on the wall" loading="lazy"><figcaption>They check the lamp against their own armchair before they spend a cent.</figcaption></figure>
+<h2>Where the view goes at Christmas</h2>
+<ul><li><strong>On every product page, next to the price.</strong> That is where the size doubt lives. A see-it-at-true-size link beside the buy button answers the question at the moment it matters.</li><li><strong>In the Christmas email and the sale banners.</strong> The link opens on a phone, which is where your gift buyers browse.</li><li><strong>On the price tags in the shop.</strong> A QR code on the tag opens the same piece in AR. A visitor checks it at home and orders before the sale ends.</li></ul>
+<h2>What the store keeps after Christmas</h2>
+<p>A Christmas sale placed with a true-to-size view behind it stays sold. The pieces that used to come back for size reasons stop coming back, because the buyer saw the true size before she ordered. And a gift buyer who got the size right comes back for the next room, at full price. We wrote about the same seasonal rush for Gulf decor stores in <a href="/blog/how-gulf-decor-stores-win-christmas-sales-with-ar">how Gulf decor stores win Christmas sales with AR</a>.</p>
+<p>The route is simple. You send product photos and your listed dimensions. Our designing department produces the true-to-size AR (Augmented Reality) views for you. Photos in, views out. Each piece gets a link and a QR code that opens in the phone browser. No app for the shopper to install. About seven days from photos to a live catalogue.</p>
+<figure class="postimg"><img src="/blog/how-canadian-decor-stores-win-christmas-sales-with-ar/images/img2.jpg" alt="Happy Canadian shopper and smiling decor shop owner holding a phone showing a framed festive wreath art piece at its true size in AR on the living room wall, Christmas stockings and tree nearby" loading="lazy"><figcaption>The piece against the real wall: same size, or it fails the test.</figcaption></figure>
+<h2>The cheapest way to check before you buy</h2>
+<p>You do not have to sign anything to find out. Send a photo of your bestselling mirror or lamp and we will build you one true-to-size AR (Augmented Reality) view free. Put it on your own phone, check it against the real piece, and see if your Christmas shoppers would use it. If it does not convince you, you have spent nothing. No programming, no changes to your website needed. We send you a QR code for each product. Put it on the product page, on your packaging, in your shop, on social media, anywhere. Your buyer scans it and sees your product in their own room, real size. Try the <a href="/maison">live decor demo</a> first: it opens in your phone browser, no install.</p>
+<div class="faq"><h2>FAQ</h2><h3>How does a Christmas shopper check a piece fits her room?</h3><p>She taps the link on the product page, points her phone at her wall, and the piece appears at its true size in her own room, next to her own furniture. She can check the size, the colour and the pattern in her own light before she orders. Try the <a href="/maison">live decor demo</a> on your own phone and see it yourself.</p><h3>Do my customers need an app to see my pieces in AR?</h3><p>Not with ARQR360. Each piece gets a link and a QR code that opens the AR view in the phone browser.</p><h3>How long before my pieces are live, and what does it cost?</h3><p>About seven days from your photos arriving, and the price is flat and public: $249 one-time setup and $29 a month, with all AR (Augmented Reality) view production included. Your first view is free, so you can test it before you pay anything.</p></div>
+""",
+},
+];
